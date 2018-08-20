@@ -1770,9 +1770,9 @@ C_{nm}=\bigl\langle\partial_{r}\psi_{n}\bigr|\phi_{m}\bigr\rangle
 status open
 
 \begin_layout Plain Layout
-Derive matrix equation
+Derivation of matrix equation
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Start from 
@@ -2522,7 +2522,7 @@ Solve for
 \begin_layout Itemize
 Stability conditions and characteristic times of the transient dynamics
  are in principle derived by calculating the poles of 
-\begin_inset Formula $v_{1}(s)$
+\begin_inset Formula $r_{1}(s)$
 \end_inset
 
 
@@ -2535,6 +2535,11 @@ Approximate poles, small coupling approximation allows us to approximate
 
 \begin_layout Subsection*
 Stability
+\end_layout
+
+\begin_layout Itemize
+Poles at the imaginary axis (if they exist), separate the region of stability
+ from that of instability 
 \end_layout
 
 \begin_layout Itemize
@@ -2617,13 +2622,25 @@ e^{x\delta}\sin(y\delta)-\text{Im}\left[\boldsymbol{f}\cdot(s\boldsymbol{I}-\bol
 \end_layout
 
 \begin_layout Itemize
-Population of excitatory neurons, 
+Solutions are quite different for inhibitory and excitatory neurons 
+\end_layout
+
+\begin_layout Itemize
+Excitatory neurons, 
 \begin_inset Formula $\Phi$
 \end_inset
 
  is a monotonically increasing, i.e.
  
 \begin_inset Formula $\Phi'>0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Phi(r)=\Phi(\mu(v,r),\sigma^{2}(v,r))=\left.-\frac{1}{2}\partial_{v}\sigma^{2}(v,t)\phi_{0}(v,t)\right|_{v=\theta}
+\]
+
 \end_inset
 
 
@@ -2638,7 +2655,15 @@ For
 \begin_inset Formula $s=0$
 \end_inset
 
- is a pole 
+ is a 
+\series bold
+real
+\series default
+ pole because 
+\begin_inset Formula $R(0)=I(0)=0$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2647,7 +2672,7 @@ This condition determined a transition from stable to unstable steady for
 \end_layout
 
 \begin_layout Itemize
-Approximation 
+Approximate real pole 
 \begin_inset Formula 
 \[
 e^{s_{0}\delta}-\Phi'=0\Leftrightarrow s_{0}=\frac{1}{\delta}\ln\Phi'(r_{0})
@@ -2655,12 +2680,13 @@ e^{s_{0}\delta}-\Phi'=0\Leftrightarrow s_{0}=\frac{1}{\delta}\ln\Phi'(r_{0})
 
 \end_inset
 
-which is a good approximation if the real pole is close to zero 
-\begin_inset Formula $\cos(y\delta)\approx1$
-\end_inset
+which is a good approximation if the real pole is close to zero with 
+\begin_inset Formula 
+\begin{align*}
+R(s) & \approx0\\
+I(s) & \approx0
+\end{align*}
 
- and 
-\begin_inset Formula $\sin(y\delta)\approx0$
 \end_inset
 
 
@@ -2675,7 +2701,7 @@ Small couplings approximation, assume
 \begin_inset Formula $I(s)$
 \end_inset
 
- to be negligible compare to 
+ to be negligible compared to 
 \begin_inset Formula $\Phi'$
 \end_inset
 
@@ -2714,6 +2740,96 @@ Inhibitory
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Excitatory: Solve 
+\begin_inset Formula 
+\begin{align*}
+e^{x\delta}\cos(y\delta) & =\Phi'\\
+\sin(y\delta) & =0
+\end{align*}
+
+\end_inset
+
+for 
+\begin_inset Formula $\Phi'>0$
+\end_inset
+
+.
+ From the second equation follows 
+\begin_inset Formula 
+\[
+y=i\pi n/\delta
+\]
+
+\end_inset
+
+First equation leads to 
+\begin_inset Formula 
+\[
+\pm e^{x\delta}=\Phi'\Leftrightarrow x=\frac{1}{\delta}\ln\left(\pm\Phi'\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From 
+\begin_inset Formula $\Phi'>0$
+\end_inset
+
+ follows that we only need to consider 
+\begin_inset Formula $y=i2\pi n/\delta$
+\end_inset
+
+ because otherwise the logarithm diverges.
+ Hence, we arrive at 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+s_{n}=\frac{\ln\Phi'+i2\pi n}{\delta}\quad\text{for}\,n\in\mathbb{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For inhibitory neurons 
+\begin_inset Formula $\Phi'<0$
+\end_inset
+
+ we get by the same reasoning 
+\begin_inset Formula 
+\[
+s_{n}=\frac{\ln\Phi'+i2\pi(n-1)}{\delta}\quad\text{for}\,n\in\mathbb{N}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -2723,17 +2839,619 @@ Perturbatively expand around
 \end_inset
 
  to find succession of solutions (iteration)
+\begin_inset Formula 
+\[
+s_{n}=s_{n}^{(0)}+\left.\frac{R(s)+iI(s)}{\Phi'\delta}\right|_{s=s_{n}^{(0)}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Point where asynchronous state loses stability 
+Poles cross imaginary axis and destabilize the asynchronous state when 
 \begin_inset Formula $\text{Re}s_{n}=0$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-\Phi'\simeq1-\text{R}(i2n\pi/\delta)
+\Phi'\simeq1-R(i2n\pi/\delta)
+\]
+
+\end_inset
+
+for excitatory neurons and 
+\begin_inset Formula 
+\[
+\Phi'\simeq1-R(i(2n-1)\pi/\delta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s_{n}$
+\end_inset
+
+ move towards imaginary axis for increasing 
+\begin_inset Formula $\bigl|\Phi'\bigr|$
+\end_inset
+
+, and for excitatory neurons pole on the real axis is first to reach imaginary
+ axis 
+\end_layout
+
+\begin_layout Itemize
+Single neuron feature, slope of current-to-rate transduction function 
+\begin_inset Formula $\Phi$
+\end_inset
+
+, determined general stability of the fix point 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Phi'$
+\end_inset
+
+ depends on the synaptic coupling strength via 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and the average properties of the recurrent interactions between neurons
+ 
+\end_layout
+
+\begin_layout Itemize
+Linear analysis, stability of the dynamics depends only on 
+\begin_inset Formula $r$
+\end_inset
+
+ via 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Time evolution 
+\begin_inset Formula $r$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Infinite set of poles responsible for stability are due to delay 
+\begin_inset Formula $\delta$
+\end_inset
+
+ in the transmission of spikes 
+\begin_inset Formula $s_{n}^{(t)}$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Summary: 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\partial_{t}p=Lp
+\]
+
+\end_inset
+
+with Fokker-Planck operator 
+\begin_inset Formula $L=-\partial_{v}A(v,t)+\partial_{v}^{2}B(v,t)$
+\end_inset
+
+ with 
+\begin_inset Formula $A(v,t)=f(v)+\mu(v,t)=h(v,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $B(v,t)=\frac{1}{2}\sigma^{2}(v,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck operator has eigenfunctions 
+\begin_inset Formula $\phi_{n}(v,t)$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+L\phi_{n}(v,t)=\lambda_{n}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $L$
+\end_inset
+
+ changes in time due the time dependence of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}\Rightarrow$
+\end_inset
+
+the eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ and eigenfunctions 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ must depend on time 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L$
+\end_inset
+
+ is not hermitian, i.e.
+ we need to construct bi-orthogonal set of eigenfunctions 
+\begin_inset Formula $[\psi_{n}(v,t),\phi_{n}(v,t)]$
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+\bigl\langle\psi_{n}\bigr|\phi_{m}\bigr\rangle=\int dv\,\psi_{n}(v,t)\phi_{m}(v,t)=\delta_{nm}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand 
+\begin_inset Formula $p$
+\end_inset
+
+ in eigenfunctions 
+\begin_inset Formula 
+\[
+p(v,t)=\sum_{n}a_{n}(t)\phi_{n}(v,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+ evolves in time, the weighting coefficients 
+\begin_inset Formula $a_{n}(t)$
+\end_inset
+
+ must also depend on time 
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions and rate equation lead to system of ODE for the weighting
+ coefficients 
+\begin_inset Formula 
+\[
+\partial_{t}a_{n}=\lambda_{n}a_{n}\sum_{m}a_{m}\bigl\langle\partial_{r}\Psi_{n}\bigr|\phi_{m}\bigr\rangle
+\]
+
+\end_inset
+
+where the derivative 
+\begin_inset Formula $\partial_{r}$
+\end_inset
+
+ with respect to rate appears because the time dependence of 
+\begin_inset Formula $\phi_{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{n}$
+\end_inset
+
+ is implicit through 
+\begin_inset Formula $\mu^{2}(r(t))$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}(r(t))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Matrix notation
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\boldsymbol{a} & =\left(\boldsymbol{\Lambda}+\boldsymbol{C}\dot{\boldsymbol{r}}\right)\boldsymbol{a}+\boldsymbol{c}\dot{\boldsymbol{r}}\\
+r & =\Phi+\boldsymbol{f}\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to know eigenvalues 
+\begin_inset Formula $\lambda_{n}(t)$
+\end_inset
+
+, left and right eigenfunctions 
+\begin_inset Formula $\phi_{n}(v,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{n}(v,t)$
+\end_inset
+
+ and initial conditions 
+\begin_inset Formula $a(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $r(0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Non-interacting neurons 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Coupling terms vanish 
+\begin_inset Formula $\boldsymbol{C}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{c}=0$
+\end_inset
+
+ because 
+\begin_inset Formula $\bigl\langle\partial_{r}\Psi_{n}\bigr|\phi_{m}\bigr\rangle$
+\end_inset
+
+ vanishes because the derivative 
+\begin_inset Formula $\partial_{r}\Psi_{n}$
+\end_inset
+
+ is zero
+\end_layout
+
+\begin_layout Itemize
+This implies that the external input is 
+\series bold
+stationary
+\end_layout
+
+\begin_layout Itemize
+Solve system of ODE using the Laplace transform which incorporates the initial
+ conditions directly 
+\end_layout
+
+\begin_layout Itemize
+Linear stability analysis around stationary state 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ closed rate equation
+\begin_inset Formula 
+\[
+r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s}\left\{ \boldsymbol{f}(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\times\left[\boldsymbol{a}_{1}(0)e^{s\delta}+\boldsymbol{c}v_{1}(0)\right]-(e^{s\delta}-1)\Phi'v_{1}(0)/s\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Poles to determine stability of the stationary solution.
+ Does a perturbation relaxes back to the stationary solution or grow exponential
+ly? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stability requires all poles to have a negative real part
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Poles on the imaginary axis separate region of stability from instability
+ 
+\end_layout
+
+\begin_layout Itemize
+Excitatory neurons 
+\begin_inset Formula $\Phi'>0$
+\end_inset
+
+ and if 
+\begin_inset Formula $\Phi(r_{0})=1$
+\end_inset
+
+, then 
+\begin_inset Formula $s=0$
+\end_inset
+
+ is a pole 
+\begin_inset Formula 
+\[
+\Phi'(r_{0})>0\Rightarrow
+\]
+
+\end_inset
+
+real pole becomes positive and 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ is an unstable state
+\end_layout
+
+\begin_layout Itemize
+Note that the stable point 
+\begin_inset Formula $\Phi(r_{0})$
+\end_inset
+
+ is determined by the parameters of the model like, coupling strength, average
+ number of afferent connections
+\begin_inset Formula 
+\[
+s_{0}=\frac{1}{\delta}\ln\Phi'(r_{0})>0\quad\text{if}\,\Phi'(r_{0})>1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neglect coupling terms compared t o 
+\begin_inset Formula $\Phi'$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+e^{x\delta}\cos(y\delta) & =\Phi'\\
+\sin(y\delta) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solutions 
+\begin_inset Formula $s_{n}^{(0)}=x+iy$
+\end_inset
+
+ are different for excitatory and inhibitory neurons 
+\end_layout
+
+\begin_layout Itemize
+Expand solution with respect to 
+\begin_inset Formula $R(s_{n}^{(0)})\approx0$
+\end_inset
+
+ and 
+\begin_inset Formula $I(s_{n}^{(0)})\approx0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Exact equation 
+\begin_inset Formula 
+\begin{align*}
+e^{x\delta}\cos(y\delta)-R(s_{n}^{(0)}) & =\Phi'\\
+e^{x\delta}\sin(y\delta)-I(s) & =0
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Insert 
+\begin_inset Formula $s=s_{n}^{(0)}$
+\end_inset
+
+ and solve for 
+\begin_inset Formula $s_{n}^{(0)}$
+\end_inset
+
+ again 
+\begin_inset Formula 
+\[
+e^{x\delta}\cos(y\delta)-R(s)=\Phi'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Transient behavior and characteristic times 
+\end_layout
+
+\begin_layout Itemize
+For uncoupled neurons, the poles of 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ are the eigenvalues of the Fokker-Planck operator 
+\end_layout
+
+\begin_layout Itemize
+Population of excitatory neurons in a drift-dominated regime 
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+, assuming 
+\begin_inset Formula $\bigl|s\bigr|\delta\ll1$
+\end_inset
+
+ such 
+\begin_inset Formula $e^{s\delta}\simeq1+s\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Very good approximation for reasonable values of synaptic delays 
+\end_layout
+
+\begin_layout Itemize
+New set of poles
+\end_layout
+
+\begin_layout Itemize
+Matrix inverse
+\begin_inset Formula 
+\[
+\boldsymbol{f}\left(\boldsymbol{I}-\frac{1}{s}\boldsymbol{\Lambda}\right)^{-1}\boldsymbol{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider only eigenvalue 
+\begin_inset Formula $n=\pm1\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{f}\left(\boldsymbol{I}-\frac{1}{s}\boldsymbol{\Lambda}\right)^{-1}\boldsymbol{c}=f_{1}\frac{s}{s-\lambda_{1}}c_{1}+f_{1}\frac{s}{s-\lambda_{1}^{*}}c_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Poles 
+\begin_inset Formula 
+\[
+1+s\delta-\Phi'-\frac{f_{1}c_{1}}{s-\lambda_{1}}s-\frac{f_{1}^{*}c_{1}^{*}}{s-\lambda_{1}^{*}}s=0
+\]
+
+\end_inset
+
+where es used 
+\begin_inset Formula $\lambda_{-n}=\lambda_{n}^{*}$
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $f_{-n}=f_{n}^{*}$
+\end_inset
+
+and 
+\begin_inset Formula $c_{-n}=c_{n}^{*}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take 
+\begin_inset Formula $\bigl|f_{1}c_{1}\bigr|$
+\end_inset
+
+small 
+\end_layout
+
+\begin_layout Itemize
+Zero order 
+\begin_inset Formula $1+s_{0}\delta-\Phi'=0\Rightarrow s_{0}=\frac{\Phi'-1}{\delta}$
+\end_inset
+
+ close to 
+\begin_inset Formula $s_{0}=\frac{1}{\delta}\ln\Phi'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First order 
+\begin_inset Formula 
+\[
+1+s_{1}^{(n)}\delta-\Phi'-\frac{f_{1}c_{1}}{s_{1}^{(n)}-\lambda_{1}}-\frac{f_{1}^{*}c_{1}^{*}}{s_{1}^{(n)}-\lambda_{1}^{*}}=0
 \]
 
 \end_inset
