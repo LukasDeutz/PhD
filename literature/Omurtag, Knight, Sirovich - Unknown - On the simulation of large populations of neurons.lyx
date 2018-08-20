@@ -1,0 +1,1312 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Omurtag2000
+\end_layout
+
+\begin_layout Itemize
+State of neuron 
+\begin_inset Formula $\boldsymbol{v=}(v_{1},\,v_{2},\,\ldots)$
+\end_inset
+
+ where 
+\begin_inset Formula $v_{1}=V$
+\end_inset
+
+ is the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+Dynamics 
+\begin_inset Formula 
+\[
+\frac{d\boldsymbol{v}}{dt}=\boldsymbol{F}(\boldsymbol{v})+\boldsymbol{S}(\boldsymbol{v},\,g(t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{F}(\boldsymbol{v})$
+\end_inset
+
+ is the field vector which caverns the deterministic neuron dynamics 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{S}(\boldsymbol{v},\,g(t))$
+\end_inset
+
+ incoming synaptic currents 
+\end_layout
+
+\begin_layout Itemize
+Hudgkin and Huxley model 
+\begin_inset Formula $\boldsymbol{v}=(V,\,m,\,h,\,n)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{dV}{dt} & =\frac{1}{C}\left(g_{L}(V_{L}+V)+g_{n}m^{3}h(V_{N}-V)+g_{K}n^{4}(V_{K}-V)\right)+\frac{1}{C}g_{s}(t)(V_{s}-V),\\
+\frac{dm}{dt} & =\frac{1}{\tau_{m}(V)}(m_{\infty}(V)-m),\\
+\frac{dh}{dt} & =\frac{1}{\tau_{h}(V)}(h_{\infty}(V)-h),\\
+\frac{dn}{dt} & =\frac{1}{\tau_{n}(V)}(n_{\infty}(V)-n).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We identify deterministic part
+\begin_inset Formula 
+\begin{align*}
+F_{1}(\boldsymbol{v}) & =\frac{1}{C}\left(g_{L}(V_{L}+V)+g_{n}m^{3}h(V_{N}-V)+g_{K}n^{4}(V_{K}-V)\right),\\
+F_{2}(\boldsymbol{v}) & =\frac{1}{\tau_{m}(V)}(m_{\infty}(V)-m),\\
+F_{3}(\boldsymbol{v}) & =\frac{1}{\tau_{h}(V)}(h_{\infty}(V)-h),\\
+F_{4}(\boldsymbol{v}) & =\frac{1}{\tau_{n}(V)}(n_{\infty}(V)-n).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only the first term of 
+\begin_inset Formula $\boldsymbol{S}(\boldsymbol{v},\,g(t))$
+\end_inset
+
+ is nonzero 
+\begin_inset Formula 
+\[
+S_{1}(\boldsymbol{v},g(t))=\frac{1}{C}g_{s}(t)(V_{s}-V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{s}$
+\end_inset
+
+ is the reversal potential of the synapse 
+\end_layout
+
+\begin_layout Itemize
+Leaky-integrate and fire 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-\frac{1}{R}(V-V_{r})+S(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Leaky current
+\begin_inset Formula 
+\[
+I=-\frac{1}{R}(V-V_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Additional current 
+\begin_inset Formula $S(t)$
+\end_inset
+
+ associated with neuron's membrane
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If membrane potential reaches threshold 
+\begin_inset Formula $V_{\text{T}}$
+\end_inset
+
+ it is reset to resting value 
+\begin_inset Formula $V_{\text{r}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation can be rewritten as 
+\begin_inset Formula 
+\[
+\frac{dv}{dt}=-\gamma v+s(t),\quad0\leq v\leq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note similarity to equation describing velocity of Brownian particle in
+ 
+\begin_inset Formula $1d$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma=\frac{1}{\tau}=1/RC$
+\end_inset
+
+ which corresponds to the time constant of a the charging/discharge curves
+ in a 
+\begin_inset Formula $RC$
+\end_inset
+
+-circuit
+\end_layout
+
+\begin_layout Section*
+Direct simulation
+\end_layout
+
+\begin_layout Itemize
+Members of assembly of neurons 
+\begin_inset Formula $\boldsymbol{v}^{j}=\boldsymbol{v}^{j}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All neurons in the same homogeneous subpopulation follow the same dynamics
+ 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\boldsymbol{v}^{j}=\boldsymbol{F}(\boldsymbol{v}^{j})+\boldsymbol{S}(\boldsymbol{v}^{j},g^{j}(t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Direction field 
+\begin_inset Formula $\boldsymbol{F}$
+\end_inset
+
+ is the same for all neurons 
+\end_layout
+
+\begin_layout Itemize
+Conductance 
+\begin_inset Formula $g^{j}(t)$
+\end_inset
+
+ varies with the neurons 
+\end_layout
+
+\begin_layout Itemize
+Current to the 
+\begin_inset Formula $j$
+\end_inset
+
+th neuron is due to synaptic arrivals from all neurons ot the population
+ as well as sources external to the population 
+\end_layout
+
+\begin_layout Itemize
+Simplifying assumptions 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Delay in signaling is ignored
+\end_layout
+
+\begin_layout Itemize
+Synaptic time constants are ignored (short compared to membrane time constant)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Firing times of the 
+\begin_inset Formula $l$
+\end_inset
+
+th neuron 
+\begin_inset Formula $\{t_{n}^{l}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $g_{l}(t)=\hat{g}\sum_{n}\delta(t-t_{n}^{l})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Synaptic arrival will appear in the conductance as an impulse of fixed strength
+ 
+\begin_inset Formula $\hat{g}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fix connectivity 
+\begin_inset Formula 
+\[
+g^{j}(t)=\sum_{l\in\Gamma^{j}}g_{l}=\hat{g}\sum_{l\in\Gamma^{j}}\sum_{n}\delta(t-t_{n}^{l})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+External source drawn from independent Poisson distribution 
+\end_layout
+
+\begin_layout Itemize
+Random connectivity matrix with fixed in and outdegrees 
+\begin_inset Formula $G$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+New connectivity matrix is drawn at each neuronal firing 
+\end_layout
+
+\begin_layout Itemize
+Extensions 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stochastic 
+\begin_inset Formula $\hat{g}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inhibitory connections
+\end_layout
+
+\begin_layout Itemize
+Interacting subpopulations 
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Population equations
+\end_layout
+
+\begin_layout Itemize
+Time evolution of a probability density 
+\begin_inset Formula $\rho=\rho(\boldsymbol{v},t)$
+\end_inset
+
+ in the space determined by 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How to determine 
+\begin_inset Formula $\rho(\boldsymbol{v},t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Imagine large number of replicas of the direct simulation 
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+External stimulus and connectivity matrix is drawn from ensemble 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $d\boldsymbol{v}$
+\end_inset
+
+ is a small volume in phase space 
+\begin_inset Formula $n_{k}(\boldsymbol{v},t)d\boldsymbol{v}$
+\end_inset
+
+ is the number of neurons in 
+\begin_inset Formula $d\boldsymbol{v}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ of the 
+\begin_inset Formula $k$
+\end_inset
+
+th replica
+\end_layout
+
+\begin_layout Itemize
+Density 
+\begin_inset Formula 
+\[
+n(\boldsymbol{v},t)=\left\langle n_{k}(\boldsymbol{v},t)\right\rangle =\lim_{N\rightarrow\infty}\frac{1}{N}\sum_{k}n_{k}(\boldsymbol{v},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Normalization 
+\begin_inset Formula 
+\[
+\rho(\boldsymbol{v},t)=\frac{n(\boldsymbol{v},t)}{\int n(\boldsymbol{v},t)d\boldsymbol{v}}=\frac{n(\boldsymbol{v},t)}{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P=\int n(\boldsymbol{v},t)d\boldsymbol{v}$
+\end_inset
+
+ number of neurons in each replicate population 
+\begin_inset Formula 
+\[
+\int n(\boldsymbol{v},t)d\boldsymbol{v}=\frac{1}{N}\sum_{k=1}^{N}\int n_{k}(\boldsymbol{v},t)d\boldsymbol{v}=\frac{1}{N}\sum_{k=1}^{N}P=P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calculate average firing rate per neuron 
+\begin_inset Formula $r(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r(t)=\frac{1}{P}\lim_{\Delta t\rightarrow0}\left\langle \frac{1}{\Delta t}\int_{t}^{t+\Delta t}dt\sum_{m\neq0}\sum_{n}\delta(t-t_{n}^{m})\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sum over all neurons sum over all spike times in interval 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Average over replica 
+\end_layout
+
+\begin_layout Itemize
+Normalize by number of neurons 
+\begin_inset Formula $P$
+\end_inset
+
+ and interval width 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Part of arriving firing rate due to external sources 
+\begin_inset Formula 
+\[
+\sigma^{0}(t)=\lim_{\Delta t\rightarrow0}\left\langle \frac{1}{\Delta t}\int_{t}^{t+\Delta t}dt\sum_{n}\delta(t-t_{n}^{0})\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neurons feels on average impulse rate
+\begin_inset Formula 
+\[
+\sigma(t)=\sigma^{0}(t)+Gr(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G$
+\end_inset
+
+ is average number of afferent neurons 
+\end_layout
+
+\begin_layout Itemize
+Dynamic mean field approximation 
+\end_layout
+
+\begin_layout Itemize
+Denote by 
+\begin_inset Formula $D$
+\end_inset
+
+ a small enough fixed volume in 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ space 
+\end_layout
+
+\begin_layout Itemize
+Consider the rate of change of the number of elements in 
+\begin_inset Formula $D$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial t}\int_{D}\rho\,dv & =-\int_{\partial D}\boldsymbol{F}(\boldsymbol{v})\cdot\boldsymbol{n}\rho\,d\omega\\
+ & -\int_{D}d\boldsymbol{v}\left(\frac{\delta\rho}{\delta t}\right)_{imp}^{-}\\
+ & +\int_{D}d\boldsymbol{v}\left(\frac{\delta\rho}{\delta t}\right)_{imp}^{+}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First term 
+\begin_inset Formula 
+\[
+\int_{\partial D}\boldsymbol{F}(\boldsymbol{v})\cdot\boldsymbol{n}\,\rho\,d\omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Change of probability due to deterministic part of dynamics 
+\end_layout
+
+\begin_layout Itemize
+Integrate over the surface and check if 
+\begin_inset Formula $\boldsymbol{F}(\boldsymbol{v})$
+\end_inset
+
+ points inwards or or outwards 
+\begin_inset Formula $D$
+\end_inset
+
+ and multiply with 
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{n}$
+\end_inset
+
+ is outward normal to the surface 
+\begin_inset Formula $\partial D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $d\omega$
+\end_inset
+
+ is the surface elements 
+\end_layout
+
+\begin_layout Itemize
+Next to terms represent effect of synaptic impulses 
+\end_layout
+
+\begin_layout Itemize
+Choose 
+\begin_inset Formula $D$
+\end_inset
+
+ small enough so that every neuron within 
+\begin_inset Formula $D$
+\end_inset
+
+ leaves receiving an impulse 
+\end_layout
+
+\begin_layout Itemize
+Loss rate at point 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{\delta\rho}{\delta t}\right)_{imp}^{-}=\sigma(t)\rho(\boldsymbol{v},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Average arrival firing rate 
+\begin_inset Formula $\sigma(t)$
+\end_inset
+
+ multiplied by 
+\begin_inset Formula $\rho(\boldsymbol{v},t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neurons is kicked from 
+\begin_inset Formula $V$
+\end_inset
+
+ to 
+\begin_inset Formula $V'=V+h$
+\end_inset
+
+ with efficacy 
+\begin_inset Formula 
+\[
+h=\frac{\hat{g}}{V_{s}}C
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gain rate 
+\begin_inset Formula $\left(\frac{\delta\rho}{\delta t}\right)_{imp}^{+}$
+\end_inset
+
+, construct volume 
+\begin_inset Formula $D''$
+\end_inset
+
+ such that under an impulse 
+\begin_inset Formula $D''$
+\end_inset
+
+ goes into
+\begin_inset Formula 
+\[
+v''(D'')\rightarrow v(D)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $V$
+\end_inset
+
+ jumps by 
+\begin_inset Formula $h$
+\end_inset
+
+, 
+\begin_inset Formula $V''$
+\end_inset
+
+ must be given by 
+\begin_inset Formula 
+\[
+V''=V''(V)=V-h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, the gain rate is 
+\begin_inset Formula 
+\begin{align*}
+\int_{D}\left(\frac{\delta\rho}{\delta t}\right)_{imp}^{+}d\boldsymbol{v} & =\sigma(t)\int_{D''}\rho(\boldsymbol{v}'')d\boldsymbol{v}''\\
+ & =\sigma(t)\int_{D}\rho(\boldsymbol{v}''(\boldsymbol{v}))\frac{\partial\boldsymbol{v}''}{\partial\boldsymbol{v}}d\boldsymbol{v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $D$
+\end_inset
+
+ is small but otherwise arbitrary 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\rho}{\partial t} & =-\frac{\partial}{\partial\boldsymbol{v}}\left(F(\boldsymbol{v})\rho\right)-\sigma(t)\left\{ \rho(\boldsymbol{v},t)-\rho(\boldsymbol{v}''(\boldsymbol{v}),t)\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here, we used 
+\begin_inset Formula $\frac{\partial\boldsymbol{v}''}{\partial\boldsymbol{v}}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define flux 
+\begin_inset Formula 
+\[
+\boldsymbol{J}_{imp}=-\sigma(t)\int_{V}^{V''(V)}dW\rho(W,v_{2},\ldots)\boldsymbol{e}_{V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Leibniz rule 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial V}\int_{V}^{V''(V)}dW\,\rho(W,v_{2},\ldots)=\rho(V''(V))\frac{\partial V''(V)}{\partial V}-\rho(V)\frac{\partial V}{\partial V}=\rho(V''(V))-\rho(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So that 
+\begin_inset Formula 
+\[
+-\frac{\partial}{\partial\boldsymbol{v}}\boldsymbol{J}_{imp}=-\sigma(t)\left(\rho(V)-\rho(V''(V))\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula 
+\[
+\boldsymbol{J}_{str}=\rho\boldsymbol{F}(\boldsymbol{v})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Though, we artificially introduced 
+\begin_inset Formula $\boldsymbol{J}_{imp}$
+\end_inset
+
+ flux to arrive at continuity equation
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}=-\frac{\partial}{\partial\boldsymbol{v}}\boldsymbol{J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux has the form a linear operator acting on density 
+\begin_inset Formula 
+\[
+\boldsymbol{J}=\boldsymbol{C}(\sigma)\rho
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear operator 
+\begin_inset Formula 
+\[
+\boldsymbol{C}(\sigma)=\boldsymbol{F}(\boldsymbol{v})-\sigma(t)\int_{V}^{V''(V)}dV'\boldsymbol{e}_{V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integral is a linear operator 
+\begin_inset Formula 
+\[
+\boldsymbol{C}(\sigma)(\alpha f+\beta g)=\alpha\boldsymbol{C}(\sigma)f+\beta\boldsymbol{C}(\sigma)g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate per neuron of population can be determined by the flux of neurons
+ of the population passing a threshold 
+\begin_inset Formula 
+\[
+r(t)=R[\boldsymbol{J}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is a functional of 
+\begin_inset Formula $\boldsymbol{J}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{J}$
+\end_inset
+
+ depends on 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ depends 
+\begin_inset Formula $r$
+\end_inset
+
+, so the above equation is not closed form (non linear)
+\end_layout
+
+\begin_layout Itemize
+Integrating over the domain 
+\begin_inset Formula $S$
+\end_inset
+
+ of the dynamical space
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\int_{S}\rho(\boldsymbol{v}')d\boldsymbol{v}'=-\int_{\partial S}\boldsymbol{n}\cdot\boldsymbol{J}\,dS
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability must be conserved
+\begin_inset Formula 
+\[
+\int_{\partial S}\boldsymbol{n}\cdot\boldsymbol{J}\,dS=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Resting state surface my be introduced in analogy to threshold surface
+\end_layout
+
+\begin_layout Itemize
+Probability flux leaving the threshold surface must equal the probability
+ flux entering the reset surface
+\end_layout
+
+\begin_layout Itemize
+Generalization to interacting 
+\begin_inset Formula $k=1,\ldots,M$
+\end_inset
+
+ subpopulations 
+\end_layout
+
+\begin_layout Itemize
+Each population is described by 
+\begin_inset Formula 
+\[
+\rho_{k}=\rho_{k}(\boldsymbol{v},t),\quad\boldsymbol{J}_{k}=\boldsymbol{C}_{k}(s_{k}^{0},\,r_{1},\ldots,r_{M})\rho_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity equation 
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}=-\frac{\partial}{\partial\boldsymbol{v}}\boldsymbol{J}_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $s_{k}^{0}$
+\end_inset
+
+ denotes external firing rate to 
+\begin_inset Formula $k$
+\end_inset
+
+th population 
+\end_layout
+
+\begin_layout Itemize
+Firing rate of 
+\begin_inset Formula $k$
+\end_inset
+
+th population 
+\begin_inset Formula 
+\[
+r_{k}=R[\boldsymbol{J}_{k}],\quad k=1,2,\ldots,M
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Integrate-and-Fire model
+\end_layout
+
+\begin_layout Itemize
+Recap:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variable transformation 
+\begin_inset Formula 
+\begin{align*}
+v & =\frac{V-V_{r}}{V_{T}-V_{r}}\\
+s & =\frac{S}{C(V_{T}-V_{r})}\\
+\gamma & =\frac{1}{RC}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We can define 
+\begin_inset Formula $V$
+\end_inset
+
+ such that reset potential 
+\begin_inset Formula $V_{r}=0$
+\end_inset
+
+ because only the voltage difference between 
+\begin_inset Formula $V_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{T}$
+\end_inset
+
+ is important.
+ For this choice
+\begin_inset Formula 
+\[
+v=\frac{V}{V_{T}}\Rightarrow0\leq v\leq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Input 
+\begin_inset Formula 
+\[
+s=\frac{S}{V_{T}C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The expression comes from the variable transformation.
+ 
+\begin_inset Formula $\gamma=1/RC$
+\end_inset
+
+ is simply the time constant of a 
+\begin_inset Formula $RC$
+\end_inset
+
+-current.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dynamics 
+\begin_inset Formula 
+\[
+\frac{dv}{dt}=-\gamma v+s(t),\quad0\leq v\leq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux 
+\begin_inset Formula 
+\[
+J=\rho F(v)+\sigma(t)\int_{v-h}^{v}dv'\rho(v')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here they swapped the integral borders and replaced the minus in front of
+ the integral by a plus and used 
+\begin_inset Formula $v''=v-h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h$
+\end_inset
+
+ is the normalized efficacy 
+\begin_inset Formula $h=h/(V_{T}-V_{r})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+input current 
+\begin_inset Formula 
+\[
+s=\sigma h=(\sigma^{0}+Gr)h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Population equation 
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}=\gamma\frac{\partial(v\rho)}{\partial v}+\sigma(t)\left\{ \rho(v-h)-\rho(v)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula 
+\[
+r(t)=J(v=1)=-\gamma\rho(1,t)+\sigma\int_{1-h}^{1}\rho(v')v'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Contribution from deterministic dynamics 
+\begin_inset Formula $-\gamma\rho(1,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Contribution due to incoming spikes 
+\begin_inset Formula $\sigma\int_{1-h}^{h}\rho(v')v'$
+\end_inset
+
+ can only come from the region 
+\begin_inset Formula $v\in[1,1-h]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All probability mass in this region will be kicked above the threshold 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Flux which goes through the threshold must equal to flux which is reinserted
+ at the reset 
+\begin_inset Formula $J(0)=J(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Additional boundary condition 
+\begin_inset Formula $\rho(v=1,t)=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The leak term always moves probability in negative 
+\begin_inset Formula $v$
+\end_inset
+
+ direction 
+\end_layout
+
+\begin_layout Itemize
+Thus, probability mass can only be moved in positive 
+\begin_inset Formula $v$
+\end_inset
+
+ direction through jumps invoked by incoming spikes
+\end_layout
+
+\begin_layout Itemize
+That we land directly at 
+\begin_inset Formula $v=1$
+\end_inset
+
+ seems very unlikely 
+\end_layout
+
+\begin_layout Itemize
+That we land at 
+\begin_inset Formula $v-\epsilon$
+\end_inset
+
+ seems more likely but still very unlikely if 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is small 
+\end_layout
+
+\begin_layout Itemize
+Thus, we expect that 
+\begin_inset Formula $\rho(v=1,t)$
+\end_inset
+
+ goes continuously to zero if 
+\begin_inset Formula $v$
+\end_inset
+
+ approaches 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+How to solve partial differential equation?
+\end_layout
+
+\end_body
+\end_document

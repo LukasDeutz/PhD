@@ -1,0 +1,7741 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Risken 1992
+\end_layout
+
+\begin_layout Part*
+Introduction
+\end_layout
+
+\begin_layout Section*
+Brownian motion
+\end_layout
+
+\begin_layout Subsection*
+Deterministic differential equation
+\end_layout
+
+\begin_layout Itemize
+Fokker and Planck first used the Fokker-Planck equation to describe Brownian
+ motion 
+\end_layout
+
+\begin_layout Itemize
+Small particle of mass 
+\begin_inset Formula $m$
+\end_inset
+
+ is immersed in a fluid
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ damping or friction force (Stoke's law) 
+\begin_inset Formula 
+\begin{equation}
+F_{\text{c}}=-\alpha v
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Negative sign 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ force is in opposite direction of the velocity 
+\end_layout
+
+\begin_layout Itemize
+Force is proportional to velocity times damping constant 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Equation of motion in absence of additional forces 
+\begin_inset Formula $m\dot{v}+\alpha v=0$
+\end_inset
+
+ which can be written as 
+\begin_inset Formula 
+\begin{equation}
+\dot{v}+\gamma v=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define relaxation time 
+\begin_inset Formula $\tau=1/\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Physics behind friction, molecules of the fluid collide with particle 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ momentum of the particle is transferred to molecules 
+\end_layout
+
+\begin_layout Itemize
+Why do the molecules of fluid do not transfer there momentum to the particle
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ mass difference between particles 
+\end_layout
+
+\begin_layout Subsection*
+Stochastic differential equation
+\end_layout
+
+\begin_layout Itemize
+Velocity due to thermal fluctuation becomes important if mass of particle
+ isi small 
+\end_layout
+
+\begin_layout Itemize
+Equipartition law 
+\begin_inset Formula $\frac{1}{2}m\bigl\langle v^{2}\bigr\rangle=\frac{1}{2}KT$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thermal velocity 
+\begin_inset Formula $v_{\text{th}}=\sqrt{\bigl\langle v^{2}\bigr\rangle}=\sqrt{KT/m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If mass of particle is still large compared to molecules 
+\begin_inset Formula $F_{\text{c}}=-\alpha v$
+\end_inset
+
+ is valid approximately 
+\end_layout
+
+\begin_layout Itemize
+It must be modified to lead to the correct thermal energy 
+\end_layout
+
+\begin_layout Itemize
+Add fluctuation force 
+\begin_inset Formula $F_{\text{f}}(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+F(t)=F_{\text{c}}(t)+F_{\text{f}}(t)=-\alpha v(t)+F_{\text{f}}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Large number of molecules in the fluid 
+\begin_inset Formula $10^{23}\Rightarrow$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+we generally can not solve coupled differential equations 
+\end_layout
+
+\begin_layout Itemize
+we do not know initial conditions 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consider ensemble of systems (Gibbs ensemble)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $F_{\text{f}}(t)$
+\end_inset
+
+ varies from system to system and we can only consider averages 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rewrite stochastic differential equation 
+\begin_inset Formula 
+\begin{equation}
+\dot{v}+\gamma v=\Gamma(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fluctuating force per unit mass 
+\begin_inset Formula $\Gamma(t)=F_{\text{f}}(t)/m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Properties of Langevin force
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+average 
+\begin_inset Formula $\bigl\langle\Gamma(t)\bigr\rangle=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+collision of the particle with different molecules is approximately independent
+ 
+\begin_inset Formula $\bigl\langle\Gamma(t)\Gamma(t')\bigr\rangle=0$
+\end_inset
+
+ for 
+\begin_inset Formula $\bigl|t-t'\bigr|\geq\tau_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+ duration time of a collision 
+\end_layout
+
+\begin_layout Itemize
+Usually, collision time is much smaller compared to relaxation time 
+\end_layout
+
+\begin_layout Itemize
+Approximation 
+\begin_inset Formula $\bigl\langle\Gamma(t)\Gamma(t')\bigr\rangle=q\delta(t-t')$
+\end_inset
+
+ with 
+\begin_inset Formula $q$
+\end_inset
+
+ the noise strength 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+To determine higher correlation like 
+\begin_inset Formula $\bigl\langle v(t_{1})v(t_{2})\ldots v(t_{n})\bigr\rangle$
+\end_inset
+
+ higher correlations of 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ must be known
+\end_layout
+
+\begin_layout Subsection*
+Equation of Motion for the Distribution Function
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is a stochastic quantity, i.e.
+ it varies from system to system in the ensemble 
+\end_layout
+
+\begin_layout Itemize
+velocity 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ will also vary from system to system and become a stochastic quantity 
+\end_layout
+
+\begin_layout Itemize
+What is probability to find velocity in the interval 
+\begin_inset Formula $(v,v+dv)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What is the number of systems of the ensemble whose velocities are in the
+ interval 
+\begin_inset Formula $(v,v+dv)$
+\end_inset
+
+ divided by the total number of systems in the ensemble 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Probability density 
+\begin_inset Formula $W(v)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W(v)$
+\end_inset
+
+ depends on time and the initial distribution
+\end_layout
+
+\begin_layout Itemize
+Equation of motion for the probability density 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W}{\partial t}=\gamma\frac{\partial(vW)}{\partial v}+\gamma\frac{kT}{m}\frac{\partial^{2}W}{\partial v^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+One of the simplest Fokker-Planck equations 
+\end_layout
+
+\begin_layout Itemize
+Solving 
+\begin_inset Formula $W(v,0)$
+\end_inset
+
+ for 
+\begin_inset Formula $t=0$
+\end_inset
+
+ and subject to appropriate boundary conditions 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ distribution function 
+\begin_inset Formula $W(v,t)$
+\end_inset
+
+ for all times 
+\end_layout
+
+\begin_layout Itemize
+In principle, average of arbitrary functions of 
+\begin_inset Formula $v$
+\end_inset
+
+ can be calculated 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle h(v(t))\bigr\rangle=\int_{-\infty}^{\infty}h(v)W(v,t)dv
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Fokker-Planck equation
+\end_layout
+
+\begin_layout Itemize
+General Fokker-Planck equation for one variable 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W}{\partial t}=\left[-\frac{\partial}{\partial x}D^{(1)}(x)+\frac{\partial^{2}}{\partial x^{2}}D^{(2)}(x)\right]W
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Drift coefficient 
+\begin_inset Formula $D^{(1)}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion coefficient 
+\begin_inset Formula $D^{(2)}(x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Linear second-order partial differential equation 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation for 
+\begin_inset Formula $N$
+\end_inset
+
+ variables 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W}{\partial t}=\left[-\sum_{i=1}^{N}\frac{\partial}{\partial x_{i}}D_{i}^{(1)}(\boldsymbol{x})+\sum_{i=1}^{N}\frac{\partial^{2}}{\partial x_{i}\partial x_{j}}D_{ij}^{(2)}(\boldsymbol{x})\right]W
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Drift vector 
+\begin_inset Formula $\boldsymbol{D}^{(1)}(\boldsymbol{x})=(D_{1}^{(1)}(\boldsymbol{x}),\ldots,D_{N}^{(1)}(\boldsymbol{x}))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion tensor 
+\begin_inset Formula $D_{ij}^{(2)}(\boldsymbol{x})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Distribution function for 
+\begin_inset Formula $N$
+\end_inset
+
+ macroscopic variables 
+\end_layout
+
+\begin_layout Subsection*
+How does a Fokker-Planck equation arise?
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is an equation of motion for the distribution function
+ of fluctuating macroscopic variables 
+\end_layout
+
+\begin_layout Itemize
+Deterministic treatment we neglect fluctuation 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ neglect diffusion term 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is equivalent to system of equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{dx_{i}}{dt}=\dot{x}_{i}=D_{i}^{(1)}(\boldsymbol{x})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Distribution 
+\begin_inset Formula $W$
+\end_inset
+
+ is replaced by deterministic variable 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Brownian motion
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W}{\partial t}=\gamma\frac{\partial(vW)}{\partial v}+\gamma\frac{kT}{m}\frac{\partial^{2}W}{\partial v^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neglecting the diffusion term yields 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial v}{\partial t}=-D_{i}^{(1)}(v)=-\gamma v
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stationary solution 
+\begin_inset Formula 
+\begin{equation}
+\gamma W+v\frac{\partial W}{\partial v}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be written as 
+\begin_inset Formula 
+\begin{align}
+\frac{1}{W}\partial W & =\gamma\frac{1}{v}\partial v
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W\sim\gamma\cdot v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Compare to 
+\begin_inset Formula 
+\begin{equation}
+\dot{v}+\gamma v=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Start from deterministic microscopic system 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ stochastic treatment 
+\begin_inset Formula $\text{\ensuremath{\Rightarrow} }$
+\end_inset
+
+recover deterministic treatment by neglecting fluctuations 
+\end_layout
+
+\begin_layout Itemize
+Drift and diffusion coefficients should be derived rigorously from microscopic
+ equations 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is not the only function for the distribution function
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Boltzmann equaion 
+\end_layout
+
+\begin_layout Itemize
+Master equation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fokker-Planck equation is one of the simplest equations for continuous macroscop
+ic variables 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation can also be used to treat non-stationary systems
+ far from thermal equilibrium 
+\end_layout
+
+\begin_layout Itemize
+Kramers and Smoluchowski equation 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ distribution functions in position and velocity spae 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Brownian motion of particles in an external field 
+\end_layout
+
+\begin_layout Subsection*
+Solutions of the Fokker-Planck Equation
+\end_layout
+
+\begin_layout Itemize
+Analytic solutions can be found 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Linear drift vector and constant diffusion tensor 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Gaussian distribution for stationary as well as for instationary solution
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Generalization of Fokker-Planck equation
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Several
+\series default
+ generalizations of the Fokker-Planck equation exist
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kramers-Moyal expansion does not stop after second order
+\end_layout
+
+\begin_layout Itemize
+For Gaussian 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated noise, Fokker-Planck is exact 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Taking memory effects into account 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+distribution function is completely determined by 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ (Markov process)
+\end_layout
+
+\begin_layout Itemize
+Generalization is determined by all earlier distributions (non-Markov process)
+\end_layout
+
+\begin_layout Itemize
+Memory coefficients decrease with time 
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Master equation 
+\end_layout
+
+\begin_layout Itemize
+Linear equations for probability density 
+\end_layout
+
+\begin_layout Itemize
+If variable 
+\begin_inset Formula $x$
+\end_inset
+
+ takes only integer variables, master equation has the form 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W_{n}}{\partial t}=\sum_{m}\left[w(m\rightarrow n)W_{m}-w(n\rightarrow m)W_{n}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $w(m\rightarrow n)W_{m}$
+\end_inset
+
+ probability to transition into state 
+\begin_inset Formula $n$
+\end_inset
+
+ from 
+\begin_inset Formula $m$
+\end_inset
+
+ times probability to be in state 
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $w(n\rightarrow m)W_{n}$
+\end_inset
+
+ probability to transition out of the state from 
+\begin_inset Formula $n$
+\end_inset
+
+ to 
+\begin_inset Formula $m$
+\end_inset
+
+ times probability to be in 
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Continuous variable 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ sum must be exchanged by an integration 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W(x,t)}{\partial t}=\int dx'\left[w(x\rightarrow x')W(x',t)-w(x'\rightarrow x)W(x,t)\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is a special form of the continuous master equation
+ 
+\begin_inset Formula 
+\begin{equation}
+w(x'\rightarrow x)=\left[-\frac{\partial}{\partial x}D^{(1)}(x)+\frac{\partial}{\partial x^{2}}D^{(2)}(x)\right]\delta(x-x')
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Detailed calculation
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial W(x,t)}{\partial t} & =\int dx'\left[w(x\rightarrow x')W(x',t)-w(x'\rightarrow x)W(x,t)\right]\\
+ & =\int dx'\left[-\frac{\partial}{\partial x}D^{(1)}(x)+\frac{\partial}{\partial x^{2}}D^{(2)}(x)\right]\delta(x-x')W(x',t)\\
+ & +\int dx'\left[-\frac{\partial}{\partial x'}D^{(1)}(x')+\frac{\partial}{\partial x'^{2}}D^{(2)}(x')\right]\delta(x'-x)W(x,t)\\
+= & \left[-\frac{\partial}{\partial x}D^{(1)}(x)+\frac{\partial}{\partial x^{2}}D^{(2)}(x)\right]W(x,t)\\
+ & +\left[-\frac{\partial}{\partial x'}D^{(1)}(x')+\frac{\partial}{\partial x'^{2}}D^{(2)}(x')\right]W(x,t)\int dx'\delta(x'-x)\\
+= & \left[-\frac{\partial}{\partial x}D^{(1)}(x)+\frac{\partial}{\partial x^{2}}D^{(2)}(x)\right]W(x,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transition probability is proportional to 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+, i.e.
+ there is only one nonzero transition probability where 
+\begin_inset Formula $x=x'$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Fokker-Planck equation assumes no big jumps 
+\end_layout
+
+\begin_layout Part*
+Probability theory 
+\end_layout
+
+\begin_layout Section*
+Random variables
+\end_layout
+
+\begin_layout Itemize
+Transformation of Random variables 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transform random variable 
+\begin_inset Formula $\xi$
+\end_inset
+
+ via function 
+\begin_inset Formula $g(\xi)$
+\end_inset
+
+ to random variable 
+\begin_inset Formula $\eta=g(\xi)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+W_{\eta}(y)=\int dx\,\delta(y-g(x))W_{\xi}(x)dx
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $g_{n}^{-1}(y)$
+\end_inset
+
+ is the 
+\begin_inset Formula $n$
+\end_inset
+
+th simple root of 
+\begin_inset Formula $g(x)-y=0$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\begin{equation}
+W_{\eta}(y)=\sum_{n}W_{\xi}(g_{n}^{-1}(y))\left|\frac{dg(x)}{dx}\right|_{x=x_{n}=g_{n}^{-1}(y)}^{-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\delta(y-x)$
+\end_inset
+
+, then 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ is straight line and there is only one root 
+\end_layout
+
+\begin_layout Itemize
+However, fro an arbitrary 
+\begin_inset Formula $g(x)$
+\end_inset
+
+, multiple points 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ can fulfill the condition 
+\begin_inset Formula $g(x_{n})=y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+One-dimensional Maxwell distribution 
+\begin_inset Formula 
+\begin{equation}
+W(v)=\sqrt{\frac{m}{2\pi kT}}\exp\left(-\frac{mv^{2}}{2kT}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transform to probability density for energy 
+\begin_inset Formula $E=\frac{1}{2}mv^{2}\Rightarrow g(v)=\frac{1}{2}mv^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to find the roots of 
+\begin_inset Formula $E-g(v_{n})=0\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $v_{n}\pm\sqrt{2E/m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Derivative 
+\begin_inset Formula $\left|dg(v)/dv\right|_{v=v_{n}}=\sqrt{2mE}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thus, we find 
+\begin_inset Formula 
+\begin{equation}
+W(E)=2\frac{1}{\sqrt{E}}\sqrt{\frac{m}{\pi kT}}\exp\left(-\frac{E}{kT}\right)=\frac{1}{\sqrt{\pi kTE}}\exp\left(-\frac{E}{kT}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Time dependent random variables
+\end_layout
+
+\begin_layout Itemize
+Multivariate random variable 
+\begin_inset Formula $\xi=\xi(t)$
+\end_inset
+
+ which depends on the time 
+\begin_inset Formula $t$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\xi(t_{1})$
+\end_inset
+
+ can possibly be a different random variable than 
+\begin_inset Formula $\xi(t_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ensemble of systems 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume that ensemble averages exist and that they can be calculated 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ from the existence of averages follows that a probability density must
+ exist
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $t=t_{1}$
+\end_inset
+
+, we define probability density 
+\begin_inset Formula 
+\begin{equation}
+W_{1}(x_{1},t)=\bigl\langle\delta(x_{1}-\xi(t_{1})\bigr\rangle=\int d\xi(t_{1})\,W_{1}(\xi(t_{1}))\delta(x-\xi(t_{1}))
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability to find random variable 
+\begin_inset Formula $\xi(t_{1})$
+\end_inset
+
+ in 
+\begin_inset Formula $x_{1}\leq$
+\end_inset
+
+
+\begin_inset Formula $\xi(t_{1})\leq x+dx_{1}$
+\end_inset
+
+ is given by 
+\begin_inset Formula $W_{1}(x_{1},t)dx_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $n$
+\end_inset
+
+ time points we may write 
+\begin_inset Formula 
+\begin{equation}
+W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})=\bigl\langle\delta(x_{1}-\xi(t_{1})\cdots\delta(x_{n}-\xi(t_{n})\bigr\rangle
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hierarchy of probability densities for every 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ in 
+\begin_inset Formula $t_{0}\leq t_{i}\leq t_{0}+T$
+\end_inset
+
+ completely determines time dependence of process described by 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ in interval 
+\begin_inset Formula $[t_{0},t_{0}+T]$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align}
+ & W_{1}(x_{1},t_{1})\nonumber \\
+ & W_{2}(x_{2},t_{2};x_{1},t_{1})\nonumber \\
+ & W_{3}(x_{3},t_{3};x_{2},t_{2};x_{1},t_{1})\nonumber \\
+ & \vdots
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Hierarchy? 
+\begin_inset Formula $t_{1}\rightarrow t_{2}\rightarrow t_{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Classification of Stochastic Processes
+\end_layout
+
+\begin_layout Itemize
+Probability density for random variable 
+\begin_inset Formula $\xi(t_{n})$
+\end_inset
+
+ under the condition that 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi(t_{n-1})$
+\end_inset
+
+ has value 
+\begin_inset Formula $x_{n-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi(t_{n-2})$
+\end_inset
+
+ has value 
+\begin_inset Formula $x_{n-2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi(t_{n-3})$
+\end_inset
+
+ has value 
+\begin_inset Formula $x_{n-3}$
+\end_inset
+
+ and so on
+\begin_inset Formula 
+\begin{equation}
+P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1};\ldots;x_{1},t_{1})=\bigl\langle\delta(x_{n}-\xi(t_{n})\bigr\rangle\bigl|_{\xi(t_{n-1})=x_{n-1},\ldots,\xi(t_{1})=x_{1}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bayes law, write conditional probability in terms of joint and prior 
+\begin_inset Formula 
+\begin{align}
+P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1};\ldots;x_{1},t_{1}) & =\frac{W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})}{W_{n-1}(x_{n-1},t_{n-1};\ldots;x_{1},t_{1})}\nonumber \\
+ & =\frac{W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})}{\int dx_{n}W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(a) Purely Random Processes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conditional probability 
+\begin_inset Formula $P_{n}(n\geq2)$
+\end_inset
+
+ does not depend on value 
+\begin_inset Formula $x_{i}=\xi(t_{i})\,(i<n)$
+\end_inset
+
+ of the random variable at earlier times 
+\begin_inset Formula 
+\begin{equation}
+P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1};\ldots;x_{1},t_{1})=P(x_{n},t_{n})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using 
+\begin_inset Formula 
+\begin{align*}
+W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1}) & =P(x_{n},t_{n})W_{n-1}(x_{n-1},t_{n-1};\ldots;x_{1},t_{1})\\
+W_{n-1}(x_{n-1},t_{n-1};\ldots;x_{1},t_{1}) & =P(x_{n-1},t_{n-1})W_{n-2}(x_{n-2},t_{n-2};\ldots;x_{1},t_{1})\\
+ & \vdots\\
+W_{2}(x_{2},t_{2};x_{1},t_{1}) & =P(x_{2},t_{2})W_{1}(x_{1},t_{1})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We see that the probability distribution factorizes 
+\begin_inset Formula 
+\begin{equation}
+W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})=P(x_{n},t_{n})\cdots P_{1}(x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Complete information of the process is contained in 
+\begin_inset Formula $P(x_{1},t_{1})=W_{1}(x_{1},t_{1})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For physical system where 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ is a continuous function in time, random variable at two arbitrary close
+ time 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+and 
+\begin_inset Formula $t_{n-\epsilon}$
+\end_inset
+
+ must have some correlation 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ probability densities can not factorize 
+\end_layout
+
+\begin_layout Itemize
+(b) Markov Processes 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For Markov processes, conditional probability density depends only on 
+\begin_inset Formula $\xi(t_{n-1})=x_{n-1}$
+\end_inset
+
+ at the next earlier time but not on 
+\begin_inset Formula $t\leq t_{n-2}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1};\ldots;x_{1},\,t_{1})=P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can express joint probability as 
+\begin_inset Formula 
+\begin{equation}
+W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1})=P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1})W_{n-1}(x_{n-1},t_{n-1};\ldots;x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using the same argument for 
+\begin_inset Formula $W_{n-1}$
+\end_inset
+
+ and so on we obtain 
+\begin_inset Formula 
+\begin{align}
+W_{n}(x_{n},t_{n};\ldots;x_{1},t_{1}) & =P(x_{n},t_{n}\bigl|x_{n-1},t_{n-1})P(x_{n-1},t_{n-1}\bigl|x_{n-2},t_{n-2})\\
+ & \cdots P(x_{2},t_{2}\bigl|x_{1},t_{1})W_{1}(x_{1},t_{1})\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conditional probabilities are also called transition probabilities 
+\begin_inset Formula 
+\begin{equation}
+W_{2}(x_{2},t_{2};x_{1},t_{1})=P(x_{2},t_{2}\bigl|x_{1},t_{1})W_{1}(x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Joint probability 
+\begin_inset Formula $W_{2}(x_{2},t_{2};x_{1},t_{1})$
+\end_inset
+
+ is given by product of transition probability 
+\begin_inset Formula $x_{1},t_{1}\rightarrow x_{2},t_{2}$
+\end_inset
+
+ and the probability to be in state 
+\begin_inset Formula $x_{1},t_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Time difference 
+\begin_inset Formula $t_{2}-t_{1}$
+\end_inset
+
+ of conditional probability is arbitrary 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If time difference is large dependence of 
+\begin_inset Formula $P$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ will be small 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ uniform distribution in 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If, on the other hand, time difference is infinitesimally small, conditional
+ probability will have sharp value 
+\begin_inset Formula $x_{1}\Rightarrow$
+\end_inset
+
+ for 
+\begin_inset Formula $t_{2}\rightarrow t_{1}$
+\end_inset
+
+ 
+\begin_inset Formula $P(x_{2},t_{2}\bigl|x_{1},t_{1})=\delta(x_{1}-x_{2})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(c) General processes 
+\end_layout
+
+\begin_layout Subsection*
+Chapman-Kolmogorov equation 
+\end_layout
+
+\begin_layout Itemize
+We can obtain 
+\begin_inset Formula $W_{2}$
+\end_inset
+
+ from 
+\begin_inset Formula $W_{3}$
+\end_inset
+
+ by integrating out the intermediate variable 
+\begin_inset Formula 
+\begin{equation}
+W_{2}(x_{3},t_{3};x_{1},t_{1})=\int dx_{2}W_{3}(x_{3},t_{3};x_{2},t_{2};x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Markov process 
+\begin_inset Formula 
+\begin{equation}
+P(x_{3},t_{3}\bigl|x_{1},t_{1})W_{1}(x_{1},t_{1})=\int dx_{2}P(x_{3},t_{3}\bigl|x_{2},t_{2})P(x_{2},t_{2}\bigl|x_{1},t_{1})W_{1}(x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $W_{1}(x_{1},t_{1})$
+\end_inset
+
+ is arbitrary we obtain Chapman-Kolmogorov equation
+\begin_inset Formula 
+\begin{equation}
+P_{2}(x_{3},t_{3}\bigl|x_{1},t_{1})=\int dx_{2}P(x_{3},t_{3}\bigl|x_{2},t_{2})P(x_{2},t_{2}\bigl|x_{1},t_{1})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Langevin Equations
+\end_layout
+
+\begin_layout Section*
+Langevin equation for Brownian Motion
+\end_layout
+
+\begin_layout Itemize
+Langevin equation 
+\begin_inset Formula 
+\begin{equation}
+\dot{v}+\gamma v=\Gamma(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Langevin force 
+\begin_inset Formula 
+\begin{align}
+\bigl\langle\Gamma(t)\bigr\rangle & =0\nonumber \\
+\bigl\langle\Gamma(t)\Gamma(t')\bigr\rangle & =q\delta(t-t')
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Due to linearity of Langevin equation it is sufficient to calculate two-time
+ correlation functions of 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ to calculate the two-time correlation function 
+\begin_inset Formula $\bigl\langle v(t_{1})v(t_{2})\bigr\rangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume 
+\begin_inset Formula $\xi_{i}=\Gamma(t_{i})$
+\end_inset
+
+ are distributed according to Gaussian distributed functions with zero mean
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ all cumulants higher than second order vanish 
+\end_layout
+
+\begin_layout Itemize
+Moments of uneven number of terms 
+\begin_inset Formula $\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\cdots\Gamma(t_{2n-1})\bigr\rangle=0$
+\end_inset
+
+ vanish
+\end_layout
+
+\begin_layout Itemize
+Even number of terms decompose in products of second order cumulants 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\cdots\Gamma(t_{2n})\bigr\rangle=q^{n}\sum_{P_{d}}\delta(t_{i_{1}}-t_{i_{2}})(t_{i_{3}}-t_{i_{4}})\cdots(t_{i_{2n-1}}-t_{i_{2n}})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $n=2$
+\end_inset
+
+ 
+\begin_inset Formula $\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\Gamma(t_{3})\bigr\rangle=0$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\Gamma(t_{3})\Gamma(t_{4})\bigr\rangle & =q^{2}\left[\delta(t_{1}-t_{2})\delta(t_{3}-t_{4})+\delta(t_{1}-t_{3})\delta(t_{2}-t_{4})+\delta(t_{1}-t_{4})\delta(t_{2}-t_{3})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve Langevin equation for initial condition that 
+\begin_inset Formula $t=0$
+\end_inset
+
+ has a sharp value 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+v(t)=v_{0}e^{-\gamma t}+\int_{0}^{t}dt'e^{-\gamma(t-t')}\Gamma(t')
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Detailed calculation 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Ordinary linear first order differential equation
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\dot{v}+\gamma v=\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating factor 
+\begin_inset Formula 
+\[
+c(t)=ee^{\int dt\gamma}=e^{\gamma t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In the end, all constants which enter due to integration can be be absorbed
+ into a single constant, so we do not need to consider it here.
+ Multiply left and right side with 
+\begin_inset Formula $c(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+c(t)\frac{dv}{dt}+v\frac{dc(t)}{dt} & =c(t)\Gamma(t)\\
+\Leftrightarrow\frac{d(c(t)v(t))}{dt} & =c(t)\Gamma(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating both sides yields 
+\begin_inset Formula 
+\[
+c(t)v(t)=\int dt'c(t')\Gamma(t')+\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solving for 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+v(t)=\frac{\int dt'c(t')\Gamma(t')+d}{c(t)}=\int dt'e^{-\gamma(t-t')}\Gamma(t')+e^{-\gamma t}\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Initial condition 
+\begin_inset Formula $v(0)=v_{0}$
+\end_inset
+
+: We set the integral borders to 
+\begin_inset Formula $[0,t]$
+\end_inset
+
+ and determine 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+v_{0}=v(0)\Rightarrow\alpha=v_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Thus, we arrive at 
+\begin_inset Formula 
+\[
+v(t)=\int_{0}^{\infty}dt'e^{-\gamma(t-t')}\Gamma(t')+v_{0}e^{-\gamma t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Correlation function 
+\begin_inset Formula 
+\begin{align}
+\bigl\langle v(t_{1})v(t_{2})\bigr\rangle & =v_{\text{0}}^{2}e^{-\gamma(t_{1}+t_{2})}+q\int_{0}^{t_{1}}\int_{0}^{t_{2}}dt'_{1}dt'_{2}e^{-\gamma(t_{1}+t_{2}-t'_{1}-t'_{2})}\delta(t'_{1}-t'_{2})
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integral 
+\begin_inset Formula 
+\begin{align}
+\int_{0}^{t_{1}}\int_{0}^{t_{2}}dt'_{1}dt'_{2}e^{-\gamma(t_{1}+t_{2}-t'_{1}-t'_{2})}\delta(t'_{1}-t'_{2}) & =q\int_{0}^{\text{min}(t_{1},t_{2})}e^{-\gamma(t_{1}+t_{2}-2t'_{1})}\nonumber \\
+ & =\frac{q}{2\gamma}(e^{-\gamma\bigl|t_{1}-t_{2}\bigr|}-e^{-\gamma(t_{1}+t_{2})})
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integral in only nozero on the line 
+\begin_inset Formula $t'_{1}=t'_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Final results for veloctiy function
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle v(t_{1})v(t_{2})\bigr\rangle=v_{\text{0}}^{2}e^{-\gamma(t_{1}+t_{2})}+\frac{q}{2\gamma}(e^{-\gamma\bigl|t_{1}-t_{2}\bigr|}-e^{-\gamma(t_{1}+t_{2})})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For large 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\gamma t_{1}\gg1$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma t_{2}\gg1$
+\end_inset
+
+, the velocity correlation does not depend on initial velcocity 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ and is only a function of the time difference 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle v(t_{1})v(t_{2})\bigr\rangle=\frac{q}{2\gamma}e^{-\gamma\bigl|t_{1}-t_{2}\bigr|}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $t$
+\end_inset
+
+ is close to the initial value, velocities will be by default correlated
+ because they have the same initial value 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Stationary state, average energy of Brownian particle is given by 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle E\bigr\rangle=\frac{1}{2}m\bigl\langle v(t)^{2}\bigr\rangle=\frac{1}{2}m\frac{q}{2\gamma}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constant 
+\begin_inset Formula $q$
+\end_inset
+
+ is determined so that average energy 
+\begin_inset Formula $\bigl\langle E\bigr\rangle=\frac{1}{2}kT$
+\end_inset
+
+ is given according to equipartition law of statistical mechanics 
+\end_layout
+
+\begin_layout Subsection*
+Mean-Squared displacement
+\end_layout
+
+\begin_layout Itemize
+Assume particle starts at 
+\begin_inset Formula $x=x_{0}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ with velocity 
+\begin_inset Formula $v=v_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean-square displacement 
+\begin_inset Formula 
+\begin{align}
+\bigl\langle(x(t)-x_{0})^{2}\bigr\rangle & =\left\langle \int_{0}^{t}v(t_{1})dt_{1}\int_{0}^{t}v(t_{2})dt_{2}\right\rangle \\
+ & =\int_{0}^{t}\int_{0}^{t}dt_{1}dt_{2}\bigl\langle v(t_{1})v(t_{2})\bigr\rangle\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert velocity correlation function 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle(x(t)-x_{0})^{2}\bigr\rangle=\left(v_{0}^{2}-\frac{q}{2\gamma}\right)\frac{(1-e^{-\gamma t})^{2}}{\gamma^{2}}+\frac{q}{\gamma^{2}}t-\frac{q}{\gamma^{3}}(1-e^{-\gamma t})
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Detailed calculation
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+We need to solve the integral 
+\begin_inset Formula 
+\[
+\int_{0}^{t}\int_{0}^{t}dt_{1}dt_{2}\bigl\langle v(t_{1})v(t_{2})\bigr\rangle=\int_{0}^{t}\int_{0}^{t}dt_{1}dt_{2}v_{\text{0}}^{2}e^{-\gamma(t_{1}+t_{2})}+\frac{q}{2\gamma}(e^{-\gamma\bigl|t_{1}-t_{2}\bigr|}-e^{-\gamma(t_{1}+t_{2})})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two integrals 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{t}\int_{0}^{t}dt_{1}dt_{2}e^{-\gamma(t_{1}+t_{2})} & =\frac{1}{\gamma^{2}}\left(1-e^{-\gamma t}\right)^{2}\\
+\int_{0}^{t}\int_{0}^{t}dt_{1}dt_{2}e^{-\gamma\bigl|t_{1}-t_{2}\bigr|} & =\frac{2}{\gamma}t-\frac{2}{\gamma^{2}}(1-e^{-\gamma t})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using a velocity distribution instead sharp velocity 
+\begin_inset Formula $v_{0}\Rightarrow\bigl\langle v_{0}^{2}\bigr\rangle=\frac{q}{2\gamma}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For very large 
+\begin_inset Formula $t\gamma\gg1$
+\end_inset
+
+ exponentials are approximately zero and leading terms is
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle(x(t)-x_{0})^{2}\bigr\rangle=\frac{q}{\gamma^{2}}t=2Dt
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion coefficient 
+\begin_inset Formula $D=\frac{q}{2\gamma^{2}}=\frac{KT}{m\gamma}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If one is only inserted in large time limit 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ neglect time derivative in Langevin equation 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ stationary point 
+\end_layout
+
+\begin_layout Itemize
+We may think of Langevin force as successive number of peaked functions
+ with nearly zero width and infinite height 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ velocity will be superposition of exponential kernels 
+\end_layout
+
+\begin_layout Itemize
+Exponential kernel height 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and width 
+\begin_inset Formula $\sigma=1/\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neglecting derivative is equivalent to replacing exponential delta-distributions
+ 
+\end_layout
+
+\begin_layout Itemize
+If we are only interested in slow movement, replacement leads to the same
+ result 
+\end_layout
+
+\begin_layout Subsection*
+Calculation of the stationary velocity distribution function
+\end_layout
+
+\begin_layout Itemize
+To obtain velocity distribution we could calculate all moments 
+\begin_inset Formula $\bigl\langle v^{2n}\bigr\rangle\Rightarrow$
+\end_inset
+
+ characteristic function whose Fourier transform is the distribution function
+ 
+\end_layout
+
+\begin_layout Itemize
+Distribution function can be calculated much simpler with the Fokker-Planck
+ equation
+\end_layout
+
+\begin_layout Itemize
+Stationary state for large time 
+\begin_inset Formula 
+\[
+v(t)=\int_{0}^{\infty}e^{-\gamma t}\Gamma(t-\tau)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Ornstein-Uhlenbeck Process 
+\end_layout
+
+\begin_layout Itemize
+Langevin equation of the type 
+\begin_inset Formula 
+\begin{equation}
+\dot{\xi}_{i}+\sum_{j=1}^{N}\gamma_{ij}\xi_{j}=\Gamma_{i}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated Gaussian distributed Langevin forces 
+\begin_inset Formula 
+\begin{equation}
+\bigl\langle\Gamma_{i}(t)\bigr\rangle=0,\quad\bigl\langle\Gamma_{i}(t)\Gamma_{j}(t')\bigr\rangle=q_{ij}\delta(t-t'),\quad q_{ij}=q_{ji}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Features: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Homogeneous equation are linear
+\end_layout
+
+\begin_layout Itemize
+Coefficients 
+\begin_inset Formula $q_{ij}$
+\end_inset
+
+ describing strength of the noise to not depend on variable 
+\begin_inset Formula $\xi_{k}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Langevin equation for Brownian motion is simplest form of OU-process with
+ 
+\begin_inset Formula $N=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Find a solution for initial condition 
+\begin_inset Formula $\xi_{i}(0)=x_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Matrix notation 
+\begin_inset Formula 
+\begin{equation}
+\dot{\boldsymbol{\xi}}+\boldsymbol{\gamma}\boldsymbol{\xi}=\boldsymbol{\Gamma}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Green's function 
+\begin_inset Formula $\boldsymbol{G}(t)=e^{-\boldsymbol{\gamma}t}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\xi}=\boldsymbol{G}(t)\boldsymbol{x}+\int_{0}^{t}dt'\boldsymbol{G}(t-t')\boldsymbol{\Gamma}(t')
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Detailed calculation
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{\xi}}+\boldsymbol{\gamma}\boldsymbol{\xi}=\boldsymbol{\Gamma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply with integration factor (matrix) 
+\begin_inset Formula $\boldsymbol{c}(t)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\dot{\boldsymbol{c}}(t)=\boldsymbol{\gamma}\boldsymbol{c}(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{\xi}}\boldsymbol{c}+\boldsymbol{\gamma}\boldsymbol{\xi}\boldsymbol{c} & =\boldsymbol{\Gamma}\boldsymbol{c}\\
+\Leftrightarrow\dot{\boldsymbol{\xi}}\boldsymbol{c}+\boldsymbol{\xi}\dot{\boldsymbol{c}} & =\boldsymbol{\Gamma}\boldsymbol{c}\\
+\Leftrightarrow\dot{(\boldsymbol{\xi}\boldsymbol{c})} & =\boldsymbol{\Gamma}\boldsymbol{c}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrating 
+\begin_inset Formula 
+\[
+\boldsymbol{\xi}\boldsymbol{c}=\int_{0}^{t}dt'\boldsymbol{\Gamma}\boldsymbol{c}+\boldsymbol{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition determines 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{\xi}(0)=\boldsymbol{x}=\boldsymbol{c}(0)^{-1}\boldsymbol{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+With 
+\begin_inset Formula $\boldsymbol{c}(t)=e^{\boldsymbol{\gamma}t}$
+\end_inset
+
+ we find 
+\begin_inset Formula $\boldsymbol{\alpha}=\boldsymbol{x}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\xi}(t) & =\boldsymbol{c}^{-1}(t)\boldsymbol{x}+\int_{0}^{t}dt'\boldsymbol{c}^{-1}(t)\boldsymbol{c}(t')\boldsymbol{\Gamma}(t')\\
+ & =e^{-\boldsymbol{\gamma}t}\boldsymbol{x}+\int_{0}^{t}dt'e^{-\boldsymbol{\gamma}(t'-t)}\boldsymbol{\Gamma}(t')
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Calculation of moments
+\end_layout
+
+\begin_layout Itemize
+Using 
+\begin_inset Formula $\bigl\langle\boldsymbol{\Gamma}(t)\bigr\rangle=0$
+\end_inset
+
+, the first moment is given by 
+\begin_inset Formula 
+\[
+\bigl\langle\boldsymbol{\xi}\bigr\rangle=\boldsymbol{G}(t)\boldsymbol{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Nonlinear Langevin Equation, One Variable 
+\end_layout
+
+\begin_layout Itemize
+For one stochastic variable 
+\begin_inset Formula $\xi$
+\end_inset
+
+, the general Langevin equation has the form 
+\begin_inset Formula 
+\[
+\dot{\xi}=h(\xi,t)+g(\xi,t)\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Langevin force 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is assumed to be Gaussian random variable with zero mean and 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlation function 
+\end_layout
+
+\begin_layout Itemize
+Noise strength 
+\begin_inset Formula $q$
+\end_inset
+
+ is absorbed into function 
+\begin_inset Formula $g(\xi,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Statistic of the noise 
+\begin_inset Formula $\bigl\langle\Gamma(t)\bigr\rangle=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl\langle\Gamma(t)\Gamma(t')\bigr\rangle=2\delta(t-t')$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+For constant 
+\begin_inset Formula $g$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Langevin equation with additive noise 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $g$
+\end_inset
+
+ depending on 
+\begin_inset Formula $\xi$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Langevin equation with multiplicative noise term 
+\end_layout
+
+\begin_layout Itemize
+For time independent 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ and for 
+\begin_inset Formula $g\neq0$
+\end_inset
+
+, multiplicative noise becomes and additive noise by a simple transformation
+ of variables 
+\begin_inset Formula 
+\[
+\dot{\eta}=h_{1}(\eta)+\Gamma(t)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Details
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\dot{\xi}=h(\xi)+g(\xi)\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divide by 
+\begin_inset Formula $g(\xi)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\dot{\xi}}{g(\xi)}=\frac{h(\xi)}{g(\xi)}+\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Introduce 
+\begin_inset Formula 
+\[
+\eta=f(\xi)=\int^{\xi(t)}d\xi'\frac{1}{g(\xi')},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\[
+\dot{\eta}=\frac{\dot{\xi}}{g(\xi)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula $\xi=f^{-1}(\eta)$
+\end_inset
+
+ we arrive at 
+\begin_inset Formula 
+\[
+\dot{\eta}=\frac{h(f^{-1}(\eta))}{g(f^{-1}(\eta))}+\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which we can write as 
+\begin_inset Formula 
+\[
+\dot{\eta}=h_{1}(\eta)+\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $h_{1}(\eta)=h(f^{-1}(\eta))/g(f^{-1}(\eta))$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\xi$
+\end_inset
+
+-dependent 
+\begin_inset Formula $g$
+\end_inset
+
+ the following difficulty arises.
+ Because 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ has no correlation time, it is not yet clear which 
+\begin_inset Formula $\xi$
+\end_inset
+
+ value one has to in the function 
+\begin_inset Formula $g$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is considered a sum of peaked functions with no width, the stochastic variable
+ 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ will jump at every time 
+\begin_inset Formula $t_{v}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Which value should one use in 
+\begin_inset Formula $g$
+\end_inset
+
+, before 
+\begin_inset Formula $t_{v}$
+\end_inset
+
+ , after 
+\begin_inset Formula $t_{v}$
+\end_inset
+
+ or some value between those values 
+\end_layout
+
+\begin_layout Itemize
+From mathematical point one cannot anser this question, but one has to use
+ some additional specification 
+\end_layout
+
+\begin_layout Itemize
+Replace 
+\begin_inset Formula $\delta(t)$
+\end_inset
+
+ function by function 
+\begin_inset Formula $\delta_{\epsilon}(t)$
+\end_inset
+
+ with very small finite width 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+ in the end 
+\end_layout
+
+\begin_layout Itemize
+Average value of 
+\begin_inset Formula $\bigl\langle g(\xi,t)\Gamma(t)\bigr\rangle$
+\end_inset
+
+ is no longer zero 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ above average leads to 
+\begin_inset Quotes eld
+\end_inset
+
+noise-induced
+\begin_inset Quotes erd
+\end_inset
+
+ drift
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Example
+\end_layout
+
+\begin_layout Itemize
+Consider 
+\begin_inset Formula 
+\[
+\dot{\xi}=a\xi\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simplified version of the Kubo oscillator 
+\end_layout
+
+\begin_layout Itemize
+Formal solution 
+\begin_inset Formula 
+\[
+\xi(t)=x\exp\left[a\int_{0}^{t}\Gamma(t')dt'\right]
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Details 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\dot{\xi}=a\xi\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is stochastic linear first order ODE 
+\begin_inset Formula 
+\[
+\frac{1}{\xi}d\xi=a\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate both sides 
+\begin_inset Formula 
+\[
+\ln(\xi)=a\int_{0}^{t}dt'\,\Gamma(t')+y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which yields 
+\begin_inset Formula 
+\[
+\xi=x\exp\left[a\int_{0}^{t}dt'\,\Gamma(t')\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Initial conition 
+\begin_inset Formula $\xi(0)$
+\end_inset
+
+ fixes 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To calculate the average of 
+\begin_inset Formula $\xi$
+\end_inset
+
+ we expand the exponential in a power series and denote noise force by 
+\begin_inset Formula $\epsilon(t)$
+\end_inset
+
+ is a stationary process with Gaussian distribution and zero mean value
+ 
+\begin_inset Formula 
+\[
+\bigl\langle\exp\left[a\int_{0}^{t}dt'\,\Gamma(t')\right]\bigr\rangle=1+\int_{0}^{t}\bigl\langle\epsilon(t_{1})\bigr\rangle dt_{1}+\frac{1}{2!}a^{2}\int_{0}^{t}\int_{0}^{t}\bigl\langle\epsilon(t_{1})\epsilon(t_{2})\bigr\rangle dt_{1}dt_{2}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gaussian property and stationarity of the noise requires 
+\begin_inset Formula $\bigl\langle\epsilon(t_{i})\bigr\rangle=0$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle\epsilon(t_{1})\bigl\langle\epsilon(t_{2})\bigr\rangle & =\Phi(t_{1}-t_{2})\\
+\bigl\langle\epsilon(t_{1})\ldots\epsilon(t_{2n-1})\bigr\rangle & =0\\
+\bigl\langle\epsilon(t_{1})\ldots\epsilon(t_{2n})\bigr\rangle & =\sum_{P}\Phi(t_{i_{1}}-t_{i_{2}})\ldots\Phi(t_{i_{2n-1}}-t_{i_{2n}})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calculate 
+\begin_inset Formula 
+\[
+\int_{0}^{t}\ldots\int_{0}^{t}\bigl\langle\epsilon(t_{1})\ldots\epsilon(t_{2n})\bigr\rangle dt_{1}\ldots dt_{2n}=\sum_{P}\int_{0}^{t}\ldots\int_{0}^{t}\Phi(t_{i_{1}}-t_{i_{2}})\ldots\Phi(t_{i_{2n-1}}-t_{i_{2n}})dt_{1}\ldots dt_{2n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because we integrate all correlation functions over the same domain 
+\begin_inset Formula $t_{i_{1}}=[0,t]$
+\end_inset
+
+ and 
+\begin_inset Formula $t_{i_{2}}=[0,t]$
+\end_inset
+
+, every double integral yields the same 
+\begin_inset Formula 
+\[
+\int_{0}^{t}\ldots\int_{0}^{t}\bigl\langle\epsilon(t_{1})\ldots\epsilon(t_{2n})\bigr\rangle dt_{1}\ldots dt_{2n}=\sum_{P}\left[\int_{0}^{t}\int_{0}^{t}\Phi(t_{1}-t_{2})dt_{1}dt_{2}\right]^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $\left(2n\right)!/(2^{n}n!)$
+\end_inset
+
+ different possibilities for the permutation of the 
+\begin_inset Formula $2n$
+\end_inset
+
+ times 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{0}^{t}\ldots\int_{0}^{t}\bigl\langle\epsilon(t_{1})\ldots\epsilon(t_{2n})\bigr\rangle dt_{1}\ldots dt_{2n}=\frac{\left(2n\right)!}{2^{n}n!}\left[\int_{0}^{t}\int_{0}^{t}\Phi(t_{1}-t_{2})dt_{1}dt_{2}\right]^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Perform summation of the power series of the exponential, leading to 
+\begin_inset Formula 
+\[
+\bigl\langle\exp\left[a\int_{0}^{t}dt'\,\Gamma(t')\right]\bigr\rangle=\exp\left[\frac{1}{2}a^{2}\int_{0}^{t}\int_{o}^{t}\bigl\langle\epsilon(t_{1})\epsilon(t_{2})\bigr\rangle dt_{1}dt_{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For non-Gaussian processes one obtains expansion in the exponential in terms
+ of cumulants
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated Langevin force 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+, the double integral reduces to 
+\begin_inset Formula 
+\[
+\int_{0}^{t}\int_{0}^{t}\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\bigr\rangle dt_{1}dt_{2}=2t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at 
+\begin_inset Formula 
+\[
+\bigl\langle\xi(t)\bigr\rangle=x\exp(a^{2}t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Average value objects differential equation 
+\begin_inset Formula 
+\[
+\partial_{t}\bigl\langle\xi(t)\bigr\rangle=xa^{2}\exp(a^{2}t)=a^{2}\bigl\langle\xi(t)\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For real 
+\begin_inset Formula $a$
+\end_inset
+
+ (positive or negative), 
+\begin_inset Formula $\bigl\langle\xi(t)\bigr\rangle$
+\end_inset
+
+ increases and for pure imaginary 
+\begin_inset Formula $a$
+\end_inset
+
+ it decreases exponentially 
+\end_layout
+
+\begin_layout Itemize
+For complex 
+\begin_inset Formula $a$
+\end_inset
+
+ it oscillates in time and increases for Re
+\begin_inset Formula $(a)^{2}>\text{Im}(a)^{2}$
+\end_inset
+
+ and decreases for 
+\begin_inset Formula $Re(a)^{2}<\text{Im}(a)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For small times, we get a drift from the stochastic force
+\begin_inset Formula 
+\[
+\frac{d}{dt}\bigl\langle\xi(t)\bigr\rangle\bigr|_{t=0}=a^{2}x
+\]
+
+\end_inset
+
+called a spurious or noise-induced drift 
+\end_layout
+
+\begin_layout Itemize
+Average of higher moments can also be calculated 
+\begin_inset Formula 
+\[
+\bigl\langle\xi(t)^{n}\bigr\rangle=\bigl\langle x^{n}\exp\left[an\int_{0}^{t}\Gamma(t')dt'\right]\bigr\rangle=x^{n}\exp[(an)^{2}t]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n$
+\end_inset
+
+th moment centered at the initial conditions 
+\begin_inset Formula 
+\[
+M_{n}(t)=\bigl\langle\bigl[\xi(t)-x_{n}\bigr]^{2}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+TODO
+\end_layout
+
+\begin_layout Section*
+Kramers-Moyal Expansion Coefficients
+\end_layout
+
+\begin_layout Itemize
+In the Fokker-Planck equation Kramers-Moyal expansion coefficients enter
+ 
+\begin_inset Formula 
+\[
+D^{(n)}(x,t)=\frac{1}{n!}\lim_{\tau\rightarrow0}\frac{1}{\tau}\left.\bigl\langle\bigl[\xi(t+\tau)-x\bigr]^{n}\bigr\rangle\right|_{t=0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can calculate the Kramers-Moyal expansion coefficients from the the centraliz
+ed moments which are determined through the nonlinear Langevin equation
+ 
+\end_layout
+
+\begin_layout Itemize
+Write differential equation 
+\begin_inset Formula 
+\[
+\dot{\xi}=h(\xi,t)+g(\xi,t)\Gamma(t)
+\]
+
+\end_inset
+
+as integral equation 
+\begin_inset Formula 
+\[
+\xi(t+\tau)-x=\int_{t}^{t+\tau}h(\xi,t')+g(\xi,t')\Gamma(t')dt'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ can be expanded according 
+\begin_inset Formula 
+\begin{align*}
+h(\xi(t'),t') & =h(x,t')+h'(x,t')(\xi(t')-x)+\\
+g(\xi(t'),t') & =g(x,t')+g'(x,t')(\xi(t')-x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting into integral expression 
+\begin_inset Formula 
+\begin{align*}
+\xi(t+\tau)-x= & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}h'(x,t')(\xi(t')-x)dt'+\ldots\\
+ & +\int_{t}^{t+\tau}g(x,t')\Gamma(t')dt'+\int_{t}^{t+\tau}g'(x,t')\Gamma(t')(\xi(t')-x)dt'+\ldots
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note: 
+\begin_inset Formula $\xi(t+\tau)-x$
+\end_inset
+
+ is on the left hand side and 
+\begin_inset Formula $\xi(t')-x$
+\end_inset
+
+ on the r.h.s 
+\end_layout
+
+\begin_layout Itemize
+Iterate 
+\begin_inset Formula $\xi(t')-x$
+\end_inset
+
+ in the integrand 
+\end_layout
+
+\begin_layout Itemize
+Only Lagevin forces and the know functions 
+\begin_inset Formula $g(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $h(x,t)$
+\end_inset
+
+ will remain 
+\end_layout
+
+\begin_layout Itemize
+Take average of both sided 
+\begin_inset Formula 
+\begin{align*}
+\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}\int_{t}^{t'}h(x,t')h(,t'')dt''dt'+\ldots\\
+ & +\int_{t}^{t+\tau}g'(x,t')\int_{t}^{t'}g(x,t'')2\delta(t''-t')dt''dt'+\ldots
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take for the 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function representation 
+\begin_inset Formula $\delta_{\epsilon}(t)$
+\end_inset
+
+ symmetric around the origin and finallay take 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{t}^{t'}g(x,t'')2\delta(t''-t)dt'' & =g(x,t')\int_{t}^{t'}2\delta(t''-t')dt''\\
+ & =g(x,t')
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+where does the factor 
+\begin_inset Formula $2$
+\end_inset
+
+ go?
+\end_layout
+
+\end_inset
+
+ and therefore get 
+\begin_inset Formula 
+\begin{align*}
+\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}\int_{t}^{t'}h'(x,t')h(,t'')dt''dt'+\ldots\\
+ & +\int_{t}^{t+\tau}g'(x,t')g(x,t')dt'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Approximate integral for small 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{t}^{t+\tau}h(x,t')dt' & \approx h(x,t)\tau+\mathcal{O}(\tau^{2})\\
+\int_{t}^{t+\tau}g'(x,t')g(x,t')dt' & \approx g'(x,t)g(x,t)\tau
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All other terms are of order 
+\begin_inset Formula $\mathcal{O}(\tau^{2})$
+\end_inset
+
+ or higher
+\end_layout
+
+\begin_layout Itemize
+In limit 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+, we arrive at the following expression for the first coefficient
+\begin_inset Formula 
+\[
+D^{(1)}(x,t)=\frac{1}{1!}\lim_{\tau\rightarrow0}\frac{1}{\tau}\left\langle \xi(t+\tau)-x\right\rangle =h(x,t)+g'(x,t)g(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second coefficientt
+\begin_inset Formula 
+\[
+D^{(2)}(x,t)=g^{2}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Higher coefficients are are zero
+\end_layout
+
+\begin_layout Itemize
+In addition to deterministic drift 
+\begin_inset Formula $h(x,t)$
+\end_inset
+
+, 
+\begin_inset Formula $D^{(1)}$
+\end_inset
+
+ contains a term which is called the spurious drift or the noise-induced
+ drift 
+\begin_inset Formula 
+\[
+D_{\text{noise-ind}}^{(1)}=\frac{\partial g(x,t)}{\partial x}g(x,t)=\frac{1}{2}\frac{\partial}{\partial x}D^{(2)}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Ito's and Stratonovich's Definitions 
+\end_layout
+
+\begin_layout Itemize
+Langevin equation 
+\begin_inset Formula 
+\[
+\dot{\xi}=h(\xi,t)+g(\xi,t)\Gamma(t)
+\]
+
+\end_inset
+
+with Gassuian distributed Langevin force and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ correlation function is mathematically not fully defined 
+\end_layout
+
+\begin_layout Itemize
+Impossible to plot a realization with a 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated noise, i.e.
+ where 
+\begin_inset Formula $\Gamma(t_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma(t_{2})$
+\end_inset
+
+ are completeley independent for arbitrary small 
+\begin_inset Formula $\bigl|t_{2}-t_{1}\bigr|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume that the correlation function of the Langevin force has a very small
+ width 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finite correlation function 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ spectral density must vanish for frequencies larger than 
+\begin_inset Formula $1/\epsilon$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If
+\begin_inset Formula 
+\[
+a(t_{1},t_{2})=a(\tau=t_{2}-t_{1})=\bigl\langle\Gamma(t_{1})\Gamma(t_{2})\bigr\rangle\propto\delta(t_{2}-t_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Spectral density, Fourier transform 
+\begin_inset Formula 
+\[
+\hat{a}(\omega)\propto\int d\tau\,e^{-i\omega\tau}\delta(\tau)=\text{const}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+How is the width (variance) of a unimodal function related to the width
+ of its Fourier transform? They are related inversely.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mathematicians use modified form of the Langevin equation where the limes
+ 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+ can be taken from beginning on, Stieltjes integral 
+\begin_inset Formula 
+\[
+\xi(t+\tau)=x+\int_{t}^{t+\tau}h(\xi,t')dt'+\int_{t}^{t+\tau}g(\xi,t')dW(t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Stieltjes integral (
+\begin_inset Formula $dW(t')$
+\end_inset
+
+) must be used because for 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{W}=\Gamma(t)$
+\end_inset
+
+ does not exist and therefore 
+\begin_inset Formula $dW=\dot{W}dt=\Gamma(t)dt$
+\end_inset
+
+ cannot be used 
+\end_layout
+
+\begin_layout Itemize
+In our notation, the increment is 
+\begin_inset Formula 
+\[
+w(\tau)=W(t+\tau)-W(t)=\int_{t}^{t+\tau}\Gamma(t')dt'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Distribution of 
+\begin_inset Formula $w(\tau)$
+\end_inset
+
+ is Gaussian because 
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is Gaussian distributed 
+\end_layout
+
+\begin_layout Part*
+Fokker-Planck equation
+\end_layout
+
+\begin_layout Itemize
+Expectation values can be immediately for processes which can be described
+ by a linear Langevin equation 
+\end_layout
+
+\begin_layout Itemize
+For nonlinear Langevin equations, expectation values are much more difficult
+ to obtain 
+\end_layout
+
+\begin_layout Itemize
+First try to derive equation for distribution function 
+\end_layout
+
+\begin_layout Section*
+Kramers-Moyal Forward Expansion
+\end_layout
+
+\begin_layout Itemize
+Chapman-Kolmogorov equation
+\begin_inset Formula 
+\begin{equation}
+W(x,t+\tau)=\int dx'\,P(x,t+\tau\bigr|x',t)W(x',t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Goal: Derive an differential expression for 
+\begin_inset Formula $\partial W(x,t)/\partial t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to know the transition probability 
+\begin_inset Formula $P(x,t+\tau\bigr|x',t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume we know all the moments 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+M_{n}(x',t,\tau)=\int dx\,(x-x')^{n}P(x,t+\tau\bigr|x',t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Moments centered with respect to 
+\begin_inset Formula $x'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+First way
+\series default
+:
+\end_layout
+
+\begin_layout Itemize
+Characteristic function 
+\begin_inset Formula 
+\begin{align}
+C(u,x',t,\tau) & =\int e^{iu(x-x')}P(x,t+\tau\bigr|x',t)\nonumber \\
+ & =1+\sum_{n=1}^{\infty}\frac{(iu)^{n}}{n!}M_{n}(x',t,\tau)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fouriert back transform yields probability density 
+\begin_inset Formula 
+\begin{equation}
+P(x,t+\tau\bigr|x',t)=\left[1+\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}M_{n}(x,t,\tau)\right]\delta(x-x')
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Detailed caculation 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Fourier back transform i
+\begin_inset Formula 
+\[
+\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{-iu(x-x')}\left(1+\sum_{n=1}^{\infty}\frac{(iu)^{n}}{n!}M_{n}(x',t,\tau)\right)du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider 
+\begin_inset Formula $u$
+\end_inset
+
+ dependcy of integrand isolted 
+\begin_inset Formula 
+\[
+\frac{1}{2\pi}\int_{-\infty}^{\infty}du(iu)^{n}e^{-iu(x-x')}=\left(-\frac{\partial}{\partial x}\right)^{n}\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thus, we get 
+\begin_inset Formula 
+\[
+P(x,t+\tau\bigr|x',t)=\left(1+\sum_{n=1}^{\infty}\frac{1}{n!}M_{n}(x',t,\tau)\left(-\frac{\partial}{\partial x}\right)^{n}\right)\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting into Chapman-Kolmogorov equation 
+\begin_inset Formula 
+\begin{align}
+\tau\frac{\partial W(x,t)}{\partial t} & =W(x,t+\tau)-W(x,t)+\mathcal{O}(\tau^{2})\nonumber \\
+ & =\int dx'\,P(x,t+\tau\bigr|x',t)W(x',t)-W(x,t)\nonumber \\
+ & =\int dx'\delta(x-x')W(x',t)+\int dx'\left[\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}\int dx'\delta(x-x')M_{n}(x,t,\tau)W(x',t)\right]-W(x,t)\nonumber \\
+ & =\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}M_{n}(x,t,\tau)W(x,t)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W(x,t)}{\partial t}=\lim_{\tau\rightarrow0}\frac{1}{\tau}\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}M_{n}(x,t,\tau)W(x,t)+\mathcal{O}(\tau)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume can expanded in a Taylor series with respect to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{n!}M_{n}(x,t,\tau)=D_{n}(x,t)\tau+\mathcal{O}(\tau^{2})\label{eq:Kramers-Moyal}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thus, we can write 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W(x,t)}{\partial t}=\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)W(x,t)=L_{\text{KM}}W
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Differential symbol acts on 
+\begin_inset Formula $D_{n}(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+.
+ Kramers-Moyal operator 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\begin{equation}
+L_{\text{KM}}(x,t)=\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Markovian process, 
+\begin_inset Formula $D_{n}(x,t)$
+\end_inset
+
+ does not depend on the history 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ is determined by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Kramers-Moyal"
+
+\end_inset
+
+ and initial distribution 
+\begin_inset Formula $W(x,t_{0})$
+\end_inset
+
+ and boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Transition probability 
+\begin_inset Formula $P(\left.x,t\right|x',t')$
+\end_inset
+
+ for special initial condition 
+\begin_inset Formula $W(x,t')=\delta(x-x')$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transition probability must also obey 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial P(\left.x,t\right|x',t')}{\partial t}=L_{\text{KM}}P(\left.x,t\right|x',t')\label{eq: Kramers-Moyal P}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Formal Solution
+\end_layout
+
+\begin_layout Itemize
+Formal solution of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: Kramers-Moyal P"
+
+\end_inset
+
+ for 
+\begin_inset Formula $P(\left.x,t\right|x',t)=\delta(x-x')$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(\left.x,t\right|x',t)=e^{L_{\text{KM}}(x)(t-t')}\delta(x-x')
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Start from
+\begin_inset Formula 
+\[
+\frac{\partial P(\left.x,t\right|x',t')}{\partial t}=L_{\text{KM}}P(\left.x,t\right|x',t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrate over time 
+\begin_inset Formula 
+\[
+P(\left.x,t\right|x',t')=a+\int_{t'}^{t}dt_{1}\,L_{\text{KM}}(x,t_{1})P(\left.x,t_{1}\right|x',t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition 
+\begin_inset Formula $t=t'\Rightarrow P(\left.x,t\right|x',t)=\delta(x-x')$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+P(\left.x,t\right|x',t')=\delta(x-x')+\int_{t'}^{t}dt_{1}\,L_{\text{KM}}(x,t_{1})P(\left.x,t_{1}\right|x',t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand by iteration
+\begin_inset Formula 
+\begin{align*}
+P_{0}(\left.x,t\right|x',t') & =\delta(x-x')\\
+P_{1}(\left.x,t\right|x',t') & =\int_{t'}^{t}dt_{1}\,L_{\text{KM}}(x,t_{1})\delta(x-x')\\
+P_{2}(\left.x,t\right|x',t') & =\int_{t'}^{t}dt_{1}\,L_{\text{KM}}(x,t_{1})\int_{t'}^{t_{1}}dt_{2}\,L_{\text{KM}}(x,t_{2})\delta(x-x')\\
+ & \vdots\\
+P_{n}(\left.x,t\right|x',t') & =\int_{t'}^{t}dt_{1}\,L_{\text{KM}}(x,t_{1})\int_{t'}^{t_{1}}dt_{2}\,L_{\text{KM}}(x,t_{2})\ldots\int_{t'}^{t_{n}}dt_{n}\,L_{\text{KM}}(x,t_{n})\delta(x-x')
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Time ordering 
+\begin_inset Formula $t>t_{1}>t_{2}>\cdots>t_{n}$
+\end_inset
+
+, integral domain 
+\begin_inset Formula $D$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Rewrite as Dyson series: Expand integral domain 
+\begin_inset Formula $\int_{t'}^{t_{k-1}}dt_{k}\rightarrow\int_{t'}^{t}dt_{k}$
+\end_inset
+
+.
+ Account for the expansion by factor 
+\begin_inset Formula $1/n!$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+P(\left.x,t\right|x',t') & =\delta(x-x')+\sum_{n=1}^{\infty}\frac{1}{n!}\left[\int_{t'}^{t}dt''\,L_{\text{KM}}(x,t'')\right]^{n}\delta(x-x')\\
+ & =\exp\left(\int_{t'}^{t}dt''\,L_{\text{KM}}(x,t'')\right)\times\delta(x-x')
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For small difference 
+\begin_inset Formula $\tau=t-t'$
+\end_inset
+
+ this reduces to 
+\begin_inset Formula 
+\[
+P(\left.x,t+\tau\right|x',t)=\left[1+L_{\text{KM}}(x,t)\tau+\mathcal{O}(\tau^{2})\right]\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Kramers-Moyal Backward Expansion
+\end_layout
+
+\begin_layout Itemize
+We derived an equation of motion for the transition probability 
+\begin_inset Formula $P(\left.x,t\right|x',t')$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the differential operator 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+ derivatives with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ occur, i.e.
+ with respect to the later state at time 
+\begin_inset Formula $t>t'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Backward equations are equation of motion for 
+\begin_inset Formula $P$
+\end_inset
+
+ where we differentiate with respect to 
+\begin_inset Formula $x'$
+\end_inset
+
+ and 
+\begin_inset Formula $t'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Both equation lead to the same result for 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+At the end, one arrives at 
+\begin_inset Formula 
+\[
+\frac{\partial P(\left.x,t\right|x',t')}{\partial t'}=-L_{\text{KM}}^{+}(x',t')P(\left.x,t\right|x',t')
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+L_{\text{KM}}^{+}(x',t')=\sum_{n=1}^{\infty}D_{n}(x',t')\left(\frac{\partial}{\partial x'}\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is the adjoint operator of the Forward Expansion
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof:
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Start from
+\begin_inset Formula 
+\[
+L_{\text{KM}}(x,t)=\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We want to show 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula 
+\[
+L_{\text{KM}}^{+}(x',t)=\sum_{n=1}^{\infty}D_{n}(x',t')\left(\frac{\partial}{\partial x'}\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inner product 
+\begin_inset Formula 
+\[
+v(x)L_{\text{KM}}(x,t)u(x)=u(x)\left(L_{\text{KM}}^{+}(x,t)v(x)\right)^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We are not dealing with a complex operator, so we can simply write 
+\begin_inset Formula 
+\[
+v(x)L_{\text{KM}}(x,t)u(x)=u(x)\left(L_{\text{KM}}^{+}(x,t)v(x)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integration by parts 
+\begin_inset Formula 
+\[
+v(x)\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)u(x)=v(x)\left(-\partial_{x}\right)\left(D_{n}(x,t)u(x)\right)+\frac{1}{2}v(x)\partial_{x}^{2}\left(D_{n}(x,t)u(x)\right)+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Term one 
+\begin_inset Formula 
+\[
+v(x)\left(-\partial_{x}\right)\left(D_{n}(x,t)u(x)\right)=\underbrace{-v(x)D_{1}(x,t)u(x)}_{\text{b.t.}}+D_{1}(x,t)u(x)\partial_{x}v(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second term 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}v(x)\partial_{x}^{2}\left(D_{n}(x,t)u(x)\right) & =\frac{1}{2}v(x)\partial_{x}D_{2}(x,t)u(x)-\frac{1}{2}\left(\partial_{x}v(x)\right)\partial_{x}\left(D_{2}(x,t)u(x)\right)\\
+ & =\underbrace{\frac{1}{2}v(x)\partial_{x}D_{2}(x,t)u(x)-\frac{1}{2}\left(D_{2}(x,t)u(x)\right)\left(\partial_{x}v(x)\right)}_{\text{b.t.}}+\frac{1}{2}D_{2}(x,t)u(x)\partial_{x}^{2}v(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We identify 
+\begin_inset Formula 
+\begin{align*}
+L_{\text{KM}}^{+} & =D_{1}(x,t)\partial_{x}+\frac{1}{2}D_{2}(x,t)\partial_{x}^{2}+\ldots\\
+ & =\sum_{n=1}^{\infty}D_{n}(x,t)\left(\frac{\partial}{\partial_{x}}\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Formal solution 
+\end_layout
+
+\begin_layout Itemize
+Formal solution 
+\begin_inset Formula 
+\[
+P(x,t\bigr|x',t')=e^{L_{\text{KM}}^{+}(x')(t-t')}\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Equivalence of the Solutions of the Forward and Backward Equation 
+\end_layout
+
+\begin_layout Itemize
+First, derive the relation 
+\begin_inset Formula 
+\[
+A(x)\delta(x-x')=A^{+}(x')\delta(x-x')
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From this the equivalence follows immediately 
+\end_layout
+
+\begin_layout Subsection*
+Pawula Theorem
+\end_layout
+
+\begin_layout Itemize
+For the solution of the 
+\begin_inset Formula 
+\[
+\frac{\partial W(x,t)}{\partial t}=\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)W(x,t)=L_{\text{KM}}W
+\]
+
+\end_inset
+
+it is crucial to know how many terms to consider
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pawula theorem
+\series default
+: For positive transition probability 
+\begin_inset Formula $P$
+\end_inset
+
+, the expansion may stop either
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+after the first term
+\end_layout
+
+\begin_layout Itemize
+after the second
+\end_layout
+
+\begin_layout Itemize
+or have infinite terms
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If the expansion stops after the second, we call it the Fokker-Planck equation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\series bold
+Pawula theorem
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Generalize Schwartz inequality 
+\begin_inset Formula 
+\[
+\left[\int f(x)g(x)P(x)dx\right]^{2}\leq\int dxf^{2}(x)P(x)\int dxg^{2}(x)P(x)
+\]
+
+\end_inset
+
+with nonnegative function 
+\begin_inset Formula $P(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It can be derived from 
+\begin_inset Formula 
+\[
+\int dx\int dy\left[f(x)g(y)-f(y)g(x)\right]^{2}P(x)P(y)\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The integral has to be greater equal zero because 
+\begin_inset Formula $\left[f(x)g(y)-f(y)g(x)\right]^{2}\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $P(x)\geq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can write 
+\begin_inset Formula 
+\[
+\int dx\int dy\left[f^{2}(x)g^{2}(y)-2f(y)g(x)f(x)g(y)+f^{2}(y)g^{2}(x)\right]P(x)P(y)\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Middle term
+\begin_inset Formula 
+\[
+\int dxP(x)g(x)f(x)\int dyf(y)g(y)P(y)=\left[\int dx\,f(x)g(x)P(x)\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Other terms 
+\begin_inset Formula 
+\begin{align*}
+\int dx\int dy\left[f^{2}(x)g^{2}(y)+f^{2}(y)g^{2}(x)\right]P(x)P(y) & =\int dx\,f^{2}(x)P(x)\int dy\,g^{2}(y)P(y)+\int dxP(x)g^{2}(x)\int dy\,f^{2}(y)P(y)\\
+ & =2\int dx\,f^{2}(x)P(x)\int dx\,g^{2}(x)P(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thus, we can write 
+\begin_inset Formula 
+\[
+\int dx\,f^{2}(x)P(x)\int dx\,g^{2}(x)P(x)\geq\left[\int dx\,f(x)g(x)P(x)\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use 
+\begin_inset Formula $f(x)=(x-x')^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $g(x)=(x-x')^{n+m}$
+\end_inset
+
+ and 
+\begin_inset Formula $P(\left.x,t+\tau\right|x',t')$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We obtain for the moments 
+\begin_inset Formula 
+\[
+M_{n}(x',t,\tau)=\int dx\,(x-x')^{n}P(x,t+\tau\bigr|x',t)
+\]
+
+\end_inset
+
+the inequality 
+\begin_inset Formula 
+\[
+M_{2n+m}^{2}\leq M_{2n}\cdot M_{2n+2m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $n=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+M_{m}^{2}\leq M_{2m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+M_{0}^{2}\leq M_{0}
+\]
+
+\end_inset
+
+which is fulfilled since 
+\begin_inset Formula $M_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m\geq1$
+\end_inset
+
+ no striction follows from this relation for the infinitisimal coefficients
+ 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ of 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+M_{2n}^{2}\leq M_{2n}^{2}
+\]
+
+\end_inset
+
+which is always fulfilled 
+\end_layout
+
+\begin_layout Itemize
+Consider inequality only for 
+\begin_inset Formula $n,m\geq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting 
+\begin_inset Formula 
+\[
+\frac{M_{n}}{n!}=D_{n}\tau+\mathcal{O}(\tau^{2})
+\]
+
+\end_inset
+
+and dividing by 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+ and taking the limit 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left[(2n+m)!D_{2n+m}\right]^{2}\leq(2n)!(2n+2m)!D_{2n}D_{2n+2m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D_{2n}$
+\end_inset
+
+ is zero 
+\begin_inset Formula $D_{2n+m}$
+\end_inset
+
+ must too
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m=1$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $D_{2n}=0\Rightarrow D_{2n+1}=0\Rightarrow D_{2n+2}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Furthermore if 
+\begin_inset Formula $D_{2n+2m}$
+\end_inset
+
+ is zero 
+\begin_inset Formula $D_{2n+m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m=1,$
+\end_inset
+
+ i.e.
+ 
+\begin_inset Formula $D_{2n+2}=0\Rightarrow D_{2n+1}=0\Rightarrow D_{2n}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Also, 
+\begin_inset Formula $D_{2(n\text{-1})+1}=D_{2n-1}=0\Rightarrow D_{2(n\text{-1})+1}=D_{2(n\text{-1})+1}=D_{2n-1}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Setting 
+\begin_inset Formula $n=1$
+\end_inset
+
+ and 
+\begin_inset Formula $m=1$
+\end_inset
+
+, 
+\begin_inset Formula $D_{2+2}=D_{4}=0\Rightarrow D_{2+1}=D_{3}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If any 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ vanish, then all 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ are zero
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Fokker-Planck Equation for one Variable
+\end_layout
+
+\begin_layout Itemize
+If the Kramers-Moyal expansion stops after the second term we get the Fokker-Pla
+nck equation 
+\begin_inset Formula 
+\[
+\dot{W}(x,t)=L_{\text{FP}}W(x,t)
+\]
+
+\end_inset
+
+with the Fokker-Planck operator 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=-\frac{\partial}{\partial x}D_{1}(x,t)+\frac{\partial}{\partial x^{2}}D_{2}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Nonlinear Langevin equation, drift coefficient 
+\begin_inset Formula $D_{1}$
+\end_inset
+
+ and diffusion coefficient 
+\begin_inset Formula $D_{2}$
+\end_inset
+
+ are given in terms of the functions occuring in the Langevin equation 
+\end_layout
+
+\begin_layout Itemize
+All higher Kramers-Moyal coefficients 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ are zero 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $L_{\text{FP}}$
+\end_inset
+
+ is exact 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation can be written as a conservation law
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}+\frac{\partial S}{\partial x}=0
+\]
+
+\end_inset
+
+with the probablility flux 
+\begin_inset Formula 
+\[
+S=\left[\frac{\partial}{\partial x}D_{1}(x,t)-\frac{\partial}{\partial x^{2}}D_{2}(x,t)\right]W(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $S$
+\end_inset
+
+ vanishes at the boundaries 
+\begin_inset Formula $x_{\text{min}}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{\text{max}}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}+\frac{\partial S}{\partial x}=0
+\]
+
+\end_inset
+
+guarantees that the normalization is perserved 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}W(x,t)dx=\text{const}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Integration of the conservation law 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}\frac{\partial W}{\partial t}\,dx=-\int_{x_{\text{min}}}^{x_{\text{max}}}\frac{\partial S}{\partial x}dx=S(x_{\text{min}})-S(x_{\text{max}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If flux is zero at the boundaries, we find 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}\frac{\partial W}{\partial t}\,dx=0,
+\]
+
+\end_inset
+
+i.e.
+ the probability density does not change 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ conserved 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Natural boundary conditions 
+\begin_inset Formula $x_{\text{min}}=-\infty$
+\end_inset
+
+, 
+\begin_inset Formula $x_{\text{max}}=\infty$
+\end_inset
+
+, 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ and the probability current 
+\begin_inset Formula $S$
+\end_inset
+
+ vanish at 
+\begin_inset Formula $x=\pm\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For a stationary process the probability flux must be constant 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+the probability is zero for natural boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Calculate stationary distribution function for Brownian motion described
+ by the Langevin equation 
+\begin_inset Formula 
+\[
+\dot{\xi}=-\gamma\xi(x,t)+\Gamma(x,t)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+D_{1} & =-\gamma v\\
+D_{2} & =\frac{q}{2}=\frac{\gamma kT}{m}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We immediately get from 
+\begin_inset Formula 
+\[
+S=\left(-\gamma v-\frac{\gamma kT}{m}\frac{\partial}{\partial v}\right)W=0
+\]
+
+\end_inset
+
+and from the normalization condition the Maxwell distribution 
+\begin_inset Formula 
+\[
+W(v)=\sqrt{\frac{m}{2\pi kT}}\exp\left(-\frac{mv^{2}}{2kT}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Transition probability density for small times
+\end_layout
+
+\begin_layout Itemize
+Derive expression for the transition probability density for small 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(\left.x,t+\tau\right|x',t)=\left[1+L_{\text{FP}}(x,t)\tau+\mathcal{O}(\tau^{2})\right]\delta(x-x')
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+L_{\text{FP}}(x,t)=-\frac{\partial}{\partial x}D_{1}(x,t)+\frac{\partial}{\partial x^{2}}D_{2}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Up to corrections of order 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\begin{align*}
+P(\left.x,t+\tau\right|x',t) & =\left[1-\frac{\partial}{\partial x}D_{1}(x',t)\tau+\frac{\partial}{\partial x^{2}}D_{2}(x',t)\tau\right]\delta(x-x')\\
+ & =\exp\left[-\frac{\partial}{\partial x}D_{1}(x',t)\tau+\frac{\partial}{\partial x^{2}}D_{2}(x',t)\tau\right]\delta(x-x')
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Replace 
+\begin_inset Formula $\delta$
+\end_inset
+
+ function in terms of a Fourier integral 
+\begin_inset Formula 
+\begin{align*}
+P(\left.x,t+\tau\right|x',t) & =\exp\left[-\frac{\partial}{\partial x}D_{1}(x',t)\tau+\frac{\partial}{\partial x^{2}}D_{2}(x',t)\tau+\right]\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{iu(x-x')}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For small 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+P(\left.x,t+\tau\right|x',t) & =\frac{1}{2\pi}\int_{-\infty}^{\infty}\exp\left[-iuD_{1}(x',t)\tau-u^{2}D_{2}(x',t)\tau+iu(x-x')\right]\\
+ & =\frac{1}{2\sqrt{\pi D_{2}(x',t)\tau}}\exp\left(-\frac{\left[x-x'-D_{1}(x',t)\tau\right]^{2}}{4D_{2}(x',t)\tau}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For drift and diffusion coefficients independent of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+, the above equation is not only valid for small 
+\begin_inset Formula $\tau$
+\end_inset
+
+, but for arbitrary 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Application of Tuncated Kramers-Moyal Expansion 
+\end_layout
+
+\begin_layout Itemize
+Cotinuous stochastic variable obeying the Langevin equation with 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated Gaussian Langevin force lead to a Fokker-Plack equation, i.e.
+ Kramers-Moyal expansion which stops after the second term
+\end_layout
+
+\begin_layout Itemize
+For discrete generation and recombination process, Kramers-Moyal expansion
+ has infinite number of terms
+\end_layout
+
+\begin_layout Itemize
+An equation with infinite number of terms cannot be treated numerically
+ 
+\end_layout
+
+\begin_layout Itemize
+Approximate infinite Kramers-Moyal expansion by finite order truncation
+ 
+\end_layout
+
+\begin_layout Itemize
+Pawula theorem 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Kramers-Moyal expansion can only be truncated after the first or second
+ terms because transition probability at some finite term of order
+\begin_inset Formula $N\geq3$
+\end_inset
+
+ must have negative values fo small enough times 
+\end_layout
+
+\begin_layout Itemize
+Distribuion function does 
+\series bold
+not
+\series default
+ need to be positive everywhere
+\end_layout
+
+\begin_layout Itemize
+Investigate different approximation for 
+\series bold
+Poisson process
+\end_layout
+
+\begin_layout Itemize
+Master equation for the Poisson process 
+\begin_inset Formula 
+\[
+\dot{W}(m,t)=\mu W(m-1,t)-\mu W(m,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution to the above equation with initial value 
+\begin_inset Formula $W(m,0)=\delta_{m,0}$
+\end_inset
+
+ is the Poisson distribution 
+\begin_inset Formula 
+\[
+W(m,t)=\frac{\tau^{m}}{m!}e^{-\tau},\quad\text{with}\,\tau=\mu t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Summary
+\end_layout
+
+\begin_layout Itemize
+We start from the Chapman-Kolmogorov equation
+\begin_inset Formula 
+\[
+W(x,t+\tau)=\int dx'\,P(x,t+\tau\bigr|x',t)W(x',t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Our goal is to determine the probability density 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Kramers-Moyal forward expansion
+\end_layout
+
+\begin_layout Itemize
+We need to know the transition probability 
+\begin_inset Formula $P(x,t+\tau\bigr|x',t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define centralized moments of the transition probability 
+\begin_inset Formula 
+\[
+M_{n}(x',t,\tau)=\int dx\,(x-x')^{n}P(x,t+\tau\bigr|x',t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume we know all the moments 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From the Chapman-Kolmogorov, we can derive the Kramers-Moyal expansion
+\begin_inset Formula 
+\[
+\frac{\partial W(x,t)}{\partial t}=\lim_{\tau\rightarrow0}\frac{1}{\tau}\sum_{n=1}^{\infty}\frac{1}{n!}\left(-\frac{\partial}{\partial x}\right)^{n}M_{n}(x,t,\tau)W(x,t)+\mathcal{O}(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume moments 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ can expanded in a Taylor series with respect to 
+\begin_inset Formula $\tau$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{M_{n}(x,t,\tau)}{n!}=D_{n}(x,t)\tau+\mathcal{O}(\tau^{2})
+\]
+
+\end_inset
+
+where the zero order term vanished because 
+\begin_inset Formula $P(x,t\bigr|x',t)=\delta(x-x')\Rightarrow M_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define infinitesimal moments (expansion coefficients) 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+D_{n}(x,t)=\lim_{\tau\rightarrow0}\frac{M_{n}(x,t,\tau)}{n!\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the limit 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+, we arrive at 
+\begin_inset Formula 
+\[
+\frac{\partial W(x,t)}{\partial t}=\sum_{n=1}^{\infty}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)W(x,t)
+\]
+
+\end_inset
+
+where the differential operator acts on 
+\begin_inset Formula $D_{n}(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}=L_{\text{KM}}W
+\]
+
+\end_inset
+
+the Kramers-Moyal operator and call the above equation differential Chapman-Kolm
+ogorov equation
+\begin_inset Formula 
+\[
+L_{\text{KM}}=\sum_{n=1}^{\infty}\left(-\frac{\partial}{\partial x}\right)^{n}D_{n}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For non-Markovian processes, conditional probability depends on the history
+ of the stochastic variable 
+\begin_inset Formula $x(t')$
+\end_inset
+
+ for 
+\begin_inset Formula $t'<t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Moments 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ and expansion coefficients 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ depend on earlier times for non-Markovian processes 
+\end_layout
+
+\begin_layout Itemize
+For Markovian processes 
+\begin_inset Formula $D_{n}$
+\end_inset
+
+ depend only on 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial W}{\partial t}=L_{\text{KM}}W$
+\end_inset
+
+ is a differential equation of first order with respect to time 
+\end_layout
+
+\begin_layout Itemize
+It is uniquely determined by integrating 
+\begin_inset Formula $\frac{\partial W}{\partial t}=L_{\text{KM}}W$
+\end_inset
+
+, the initial distribution 
+\begin_inset Formula $W(x,t_{0})$
+\end_inset
+
+ and appropriate boundary conditions
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Transition probability
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+The transition probability 
+\begin_inset Formula $P(x,t+\tau\bigr|x',t)$
+\end_inset
+
+ is the distribution 
+\begin_inset Formula $W(x,t)$
+\end_inset
+
+ for the special initial condition 
+\begin_inset Formula $W(x,t')=\delta(x-x')$
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow P(x,t+\tau\bigr|x',t)$
+\end_inset
+
+ must also obey the differential Chapman-Kolmogorov equation
+\end_layout
+
+\begin_layout Itemize
+Formal solution with initial condition 
+\begin_inset Formula $P(x,t\bigr|x',t)=\delta(x-x')$
+\end_inset
+
+ for time independent 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(x,t+\tau\bigr|x',t)=\exp\left(\int_{t'}^{t}dt''L_{\text{KM}}(x,t'')\right)\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Kramers-Moyal backward expansion
+\end_layout
+
+\begin_layout Itemize
+Differential operator 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ occurs, i.e.
+ with respect to the value of the stochastic variable 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ at the later time 
+\begin_inset Formula $t>t'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Backward expansion are equations of motion for 
+\begin_inset Formula $P$
+\end_inset
+
+ where we differentiate with respect to 
+\begin_inset Formula $x'$
+\end_inset
+
+ and 
+\begin_inset Formula $t'$
+\end_inset
+
+, i.e.
+ with respect to 
+\begin_inset Formula $x(t')$
+\end_inset
+
+ at earlier times 
+\begin_inset Formula 
+\[
+\frac{\partial P(x,t\bigr|x',t')}{\partial t'}=-L_{\text{KM}}^{+}P(x,t\bigr|x',t')
+\]
+
+\end_inset
+
+where we define Kramers-Moyal backward operator
+\begin_inset Formula 
+\[
+L_{\text{KM}}^{+}=\sum_{n=1}^{\infty}D_{n}(x',t')\left(\frac{\partial}{\partial x'}\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note 
+\begin_inset Formula $L_{\text{KM}}^{+}$
+\end_inset
+
+ is the adjoint operator of 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Does the backward equation only applies to the transition probability? Or
+ could we use it to derive a time evolution of the probability distribution
+ in negative time direction?
+\end_layout
+
+\begin_layout Itemize
+Formal solution with initial condition 
+\begin_inset Formula $P(x,t\bigr|x',t)=\delta(x-x')$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(x,t+\tau\bigr|x',t)=\exp\left(\int_{t'}^{t}dt''L_{\text{KM}}^{+}(x,t'')\right)\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equivalence follows from between both formal solution of 
+\begin_inset Formula $P(x,t+\tau\bigr|x',t)$
+\end_inset
+
+ follows from 
+\begin_inset Formula $A(x)\delta(x-x')=A^{+}(x')\delta(x-x')$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Pawula Theorem
+\end_layout
+
+\begin_layout Itemize
+If one coefficient 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ for 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ is zero, then all coefficients 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $n\geq3$
+\end_inset
+
+ are zero.
+ Hence, there are only three types differential Champman-Kolmogorov equaions
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Only the drift coefficient is nonzero: 
+\begin_inset Formula $M_{1}\neq0$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{n}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $n\geq2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The drift and diffusion term is non zero: 
+\begin_inset Formula $M_{1}\neq0,\,M_{2}\neq0$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{n}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $n\geq2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Infinite number terms 
+\begin_inset Formula $M_{n}\neq0$
+\end_inset
+
+ for 
+\begin_inset Formula $n\geq2\Rightarrow$
+\end_inset
+
+ all 
+\begin_inset Formula $M_{n}$
+\end_inset
+
+ are nonzero 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We call the first and second case Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}=L_{\text{FP}}W
+\]
+
+\end_inset
+
+with the Fokker-Planck operator 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=-\frac{\partial}{\partial x}D_{1}(x,t)+\left(\frac{\partial}{\partial x}\right)^{2}D_{2}(x,t)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Fokker-Planck Equation for 
+\begin_inset Formula $N$
+\end_inset
+
+ variables
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N$
+\end_inset
+
+ stochastic variables 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\xi}=\xi_{1},\xi_{2},\ldots,\xi_{N}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Start with extension of 
+\begin_inset Formula 
+\begin{equation}
+W(x,t+\tau)=\int dx'P(\left.x,t+\tau\right|x',t)W(x',t)
+\end{equation}
+
+\end_inset
+
+to 
+\begin_inset Formula $N$
+\end_inset
+
+ variables 
+\begin_inset Formula 
+\begin{equation}
+W(\boldsymbol{x},t+\tau)=\int d^{N}\boldsymbol{x}'P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)W(\boldsymbol{x}',t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Volume elemente 
+\begin_inset Formula $d^{N}\boldsymbol{x}'$
+\end_inset
+
+ is a shorthand for 
+\begin_inset Formula 
+\begin{equation}
+d^{N}\boldsymbol{x}'=dx'_{1}dx'_{2}\ldots dx'_{N}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Kramers-Moyal expansion 
+\begin_inset Formula 
+\begin{equation}
+P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)=\left[1+\sum_{v=1}^{\infty}\frac{1}{v!}\frac{(-\partial)^{v}}{\partial x_{j_{1}}\partial x_{j_{2}}\cdots\partial x_{j_{v}}}M_{j_{1},j_{2},\ldots,j_{v}}^{(v)}(\boldsymbol{x},t,\tau)\right]\delta(\boldsymbol{x}-\boldsymbol{x}')
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Centralized moments are 
+\begin_inset Formula $M_{j_{1},j_{2},\ldots,j_{v}}^{(v)}$
+\end_inset
+
+ are defined as
+\begin_inset Formula 
+\begin{equation}
+M_{j_{1},j_{2},\ldots,j_{v}}^{(v)}(\boldsymbol{x},t,\tau)=\int d^{N}\boldsymbol{y}\,(y_{j_{1}}-x'_{j_{1}})(y_{j_{1}}-x'_{j_{1}})(y_{j_{1}}-x'_{j_{2}})\cdots(y_{j_{v}}-x'_{j_{v}})\times P(\left.\boldsymbol{y},t+\tau\right|\boldsymbol{x}',t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand 
+\begin_inset Formula $M_{j_{1},j_{2},\ldots,j_{v}}^{(v)}$
+\end_inset
+
+ for small 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{M_{j_{1},j_{2},\ldots,j_{v}}^{(v)}(\boldsymbol{x},t,\tau)}{v!}=D_{j_{1},j_{2},\ldots,j_{v}}^{(v)}(\boldsymbol{x},t,\tau)\tau+\mathcal{O}(\tau^{2})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the limes 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+, we arrive at
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W(\boldsymbol{x},t)}{\partial t}=\sum_{v=1}^{\infty}\frac{(-\partial)^{v}}{\partial x_{j_{1}}\partial x_{j_{2}}\cdots\partial x_{j_{v}}}D_{j_{1},j_{2},\ldots,j_{v}}^{(v)}(\boldsymbol{x},t,\tau)W(\boldsymbol{x},t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define Kramers-Moyal operator 
+\begin_inset Formula $L_{\text{KM}}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+L_{\text{KM}}=\sum_{v=1}^{\infty}\frac{(-\partial)^{v}}{\partial x_{j_{1}}\partial x_{j_{2}}\cdots\partial x_{j_{v}}}D_{j_{1},j_{2},\ldots,j_{v}}^{(v)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution for the special initial condition 
+\begin_inset Formula $W(\boldsymbol{x},t')=\delta(\boldsymbol{x}-\boldsymbol{x}')$
+\end_inset
+
+ determines transition probability 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)}{\partial t}=L_{\text{KM}}P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Backward equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)}{\partial t'}=L_{\text{KM}}^{+}(\boldsymbol{x}',t')P(\left.\boldsymbol{x},t+\tau\right|\boldsymbol{x}',t)
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\begin{equation}
+L_{\text{KM}}^{+}=\sum_{v=1}^{\infty}D_{j_{1},j_{2},\ldots,j_{v}}^{(v)}\frac{(-\partial)^{v}}{\partial x_{j_{1}}\partial x_{j_{2}}\cdots\partial x_{j_{v}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W(\boldsymbol{x},t)}{\partial t}=L_{\text{FP}}(\boldsymbol{x},t)W(\boldsymbol{x},t)
+\end{equation}
+
+\end_inset
+
+where we defined the Fokker-Planck operator 
+\begin_inset Formula 
+\begin{equation}
+L_{\text{FP}}(\boldsymbol{x},t)=-\frac{\partial}{\partial x_{i}}D_{i}(\boldsymbol{x},t)+\frac{\partial^{2}}{\partial x_{i}\partial x_{j}}D_{ij}(\boldsymbol{x},t)
+\end{equation}
+
+\end_inset
+
+where the we sum over repeated indices 
+\end_layout
+
+\begin_layout Itemize
+Drift vector 
+\begin_inset Formula 
+\begin{equation}
+D_{i}(\boldsymbol{x},t)=\lim_{\tau\rightarrow0}\frac{1}{\tau}M_{i}^{(v)}(\boldsymbol{x},t,\tau)=\lim_{\tau\rightarrow0}\frac{1}{\tau}\int d^{N}\boldsymbol{y}\,(y_{i}-x'_{i})\times P(\left.\boldsymbol{y},t+\tau\right|\boldsymbol{x}',t)=\lim_{\tau\rightarrow0}\frac{1}{\tau}\bigl\langle\xi_{i}(t+\tau)-\xi_{i}(t)\bigr\rangle
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion matrix 
+\begin_inset Formula 
+\begin{equation}
+D_{ij}(\boldsymbol{x},t)=D_{ji}(\boldsymbol{x},t)=\lim_{\tau\rightarrow0}\frac{1}{\tau}\int d^{N}\boldsymbol{y}\,(y_{i}-x'_{i})(y_{j}-x'_{j})\times P(\left.\boldsymbol{y},t+\tau\right|\boldsymbol{x}',t)=\lim_{\tau\rightarrow0}\frac{1}{\tau}\bigl\langle[\xi_{i}(t+\tau)-\xi_{i}(t)][\xi_{j}(t+\tau)-\xi_{j}(t)]\bigr\rangle
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Diffusion matrix is symmetric and semidefinite, i.e.
+\begin_inset Formula $D_{ij}\geq0$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Probability current
+\end_layout
+
+\begin_layout Itemize
+We may write differential Fokker-Planck equation as a conservation law 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial W}{\partial t}+\frac{\partial S_{i}}{\partial_{x_{i}}}=0
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ is the probability flux 
+\begin_inset Formula 
+\begin{equation}
+S_{i}=D_{i}W-\frac{\partial}{\partial x_{i}}D_{ij}W
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the flux vanishes at an 
+\begin_inset Formula $N-1$
+\end_inset
+
+ dimensional surface 
+\begin_inset Formula $F$
+\end_inset
+
+ of the 
+\begin_inset Formula $N$
+\end_inset
+
+-dimensional space, then continuity equation ensures that the total probability
+ within the volume is constant.
+ Normalization requires 
+\begin_inset Formula 
+\begin{equation}
+\int_{V(F)}W(\boldsymbol{x},t)d^{N}\boldsymbol{x}=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For natural boundary conditions the probability density 
+\begin_inset Formula $W$
+\end_inset
+
+ and the flux 
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+ vanish at infinity and therefore the normalization condition reads 
+\begin_inset Formula 
+\begin{equation}
+\int_{-\infty}^{\infty}W(\boldsymbol{x},t)d^{N}\boldsymbol{x}=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Joint distribution
+\end_layout
+
+\begin_layout Itemize
+TODO
+\end_layout
+
+\begin_layout Subsection*
+Variable transformation 
+\end_layout
+
+\begin_layout Itemize
+We want to transform old variables 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ in new variables 
+\begin_inset Formula $\boldsymbol{x}'$
+\end_inset
+
+ with 
+\begin_inset Formula $x'_{i}=f_{i}(\boldsymbol{x},t)$
+\end_inset
+
+ and express the Fokker-Planck equation in terms of the new variables 
+\end_layout
+
+\begin_layout Itemize
+Our objective is to determine the drift and diffusion coefficient in the
+ new variables
+\end_layout
+
+\begin_layout Itemize
+After some work, one arrives at 
+\begin_inset Formula 
+\[
+\frac{\partial W'(x',t)}{\partial t}=\left(-\frac{\partial}{\partial x'_{k}}D'_{k}+\frac{\partial^{2}}{\partial x'_{k}\partial x'_{r}}D'_{kr}\right)W'
+\]
+
+\end_inset
+
+where the new drift and diffusion coefficients 
+\begin_inset Formula $D'_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $D'_{kr}$
+\end_inset
+
+ are given by 
+\begin_inset Formula 
+\begin{align*}
+D'_{k} & =\left(\frac{\partial x'_{k}}{\partial t}\right)+\left(\frac{\partial x'_{k}}{\partial x_{i}}\right)D_{i}+\left(\frac{\partial^{2}x'_{k}}{\partial x_{i}\partial x_{j}}\right)D_{ij}\\
+D'_{kr} & =\frac{\partial x'_{k}}{\partial x_{i}}\frac{\partial x'_{r}}{\partial x_{j}}D_{ij}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Fokker-Planck equation for one Variable; Methods of Solution
+\end_layout
+
+\begin_layout Itemize
+Methods for solving one-variable Fokker-Planck equation with time
+\series bold
+ independent
+\series default
+ drift and diffusion coefficient 
+\begin_inset Formula 
+\[
+\frac{\partial W(x,t)}{\partial t}=L_{\text{FP}}W(x,t)=-\frac{\partial}{\partial x}S(x,t)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+L_{\text{FP}}(x)=-\frac{\partial}{\partial x}D_{1}(x)+\frac{\partial}{\partial x^{2}}D_{2}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Normalization
+\end_layout
+
+\begin_layout Itemize
+By suitable transformation 
+\begin_inset Formula $x'=y(x)$
+\end_inset
+
+, the 
+\begin_inset Formula $x$
+\end_inset
+
+-dependent diffusion coefficient can be transformed to an arbitrary constant
+ 
+\begin_inset Formula $D>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the one-variable case, new diffusion and drift coefficients are given
+ by
+\begin_inset Formula 
+\begin{align*}
+D'_{1} & =\left(\frac{\partial y}{\partial x}\right)D_{1}+\left(\frac{\partial^{2}y}{\partial x^{2}}\right)D_{2}\\
+D'_{2} & =\left(\frac{\partial y}{\partial x}\right)^{2}D_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use transformation 
+\begin_inset Formula 
+\[
+y=y(x)=\int_{x_{0}}^{x}\sqrt{\frac{D}{D_{2}(x')}}dx'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take the derivative 
+\begin_inset Formula 
+\[
+\frac{\partial y(x)}{\partial x}=\sqrt{\frac{D}{D_{2}(x)}}
+\]
+
+\end_inset
+
+which leads to a constant diffusion coefficient in the new coordinates 
+\begin_inset Formula 
+\[
+D'_{2}=D
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The new drift coefficient is given by 
+\begin_inset Formula 
+\begin{align*}
+D'_{1} & =\sqrt{\frac{D}{D_{2}(x)}}D_{1}-\frac{1}{2}\sqrt{\frac{D}{D_{2}(x)}}\left(\frac{\partial D_{2}(x)}{\partial_{x}}\right)\\
+ & =\sqrt{\frac{D}{D_{2}(x)}}\left(D_{1}-\frac{1}{2}\left(\frac{\partial D_{2}(x)}{\partial_{x}}\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transformed Fokker-Planck equation reads 
+\begin_inset Formula 
+\[
+\frac{\partial W'(y,t)}{\partial t}=\left[-\frac{\partial}{\partial y}D'_{1}(y)+D\frac{\partial^{2}}{\partial y^{2}}\right]W'(y,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Without loss of generality, we may solve equation with constant diffusion
+ coefficient
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}=\left[\frac{\partial}{\partial x}f'(x)+D\frac{\partial}{\partial x^{2}}\right]W=-\frac{\partial}{\partial x}S(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here we introduced the potential 
+\begin_inset Formula 
+\[
+f(x)=-\int^{x}D_{1}(x')dx'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Stationary solution
+\end_layout
+
+\begin_layout Itemize
+For the stationary solutions the probability flux must be constant
+\end_layout
+
+\begin_layout Itemize
+If the probability flux vanishes at some 
+\begin_inset Formula $x$
+\end_inset
+
+ it must be zero for 
+\series bold
+any
+\series default
+ 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $S=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+D_{1}(x)W(x)=W(x)\frac{\partial D_{2}(x)}{\partial x}+D_{2}(x)\frac{\partial W(x)}{\partial x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation is separable and can be immediately solved integration
+\begin_inset Formula 
+\[
+W(x)=\frac{N}{D_{2}(x)}e^{\int dx\frac{D_{1}(x)}{D_{2}(x)}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Rewrite as 
+\begin_inset Formula 
+\[
+\frac{1}{W}dW(x)=\frac{1}{D_{2}(x)}\left[D_{1}(x)-\frac{\partial D_{2}(x)}{\partial x}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating both sides yields 
+\begin_inset Formula 
+\[
+\ln W(x)=\int dx\frac{1}{D_{2}(x)}\left[D_{1}(x)-\frac{\partial D_{2}(x)}{\partial x}\right]+N_{0}
+\]
+
+\end_inset
+
+which yields 
+\begin_inset Formula 
+\[
+W(x)=\frac{N_{0}}{D_{2}(x)}e^{\int dx\frac{D_{1}(x)}{D_{2}(x)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The integration constant 
+\begin_inset Formula $N$
+\end_inset
+
+ has to be chosen such that 
+\begin_inset Formula $W$
+\end_inset
+
+ is normalized 
+\end_layout
+
+\begin_layout Itemize
+Introduce potential 
+\begin_inset Formula 
+\[
+\Phi(x)=\ln D_{2}(x)-\int dx\frac{D_{1}(x)}{D_{2}(x)}
+\]
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+W(x)=Ne^{-\Phi(x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux 
+\begin_inset Formula 
+\[
+S(x,t)=-D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}[e^{\Phi(x)}W(x,t)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the stationary state, where 
+\begin_inset Formula $S$
+\end_inset
+
+ is constant, for arbitrary 
+\begin_inset Formula $S$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+W(x)=Ne^{-\Phi(x)}-Se^{-\Phi(x)}\int dx'\frac{e^{\Phi(x')}}{D_{2}(x')}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\[
+-\frac{S}{D_{2}(x)}=\frac{\partial W(x)}{\partial x}-\frac{1}{D_{2}(x)}\left[D_{1}(x)-\frac{\partial D_{2}(x)}{\partial x}\right]W(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply with integrating factor 
+\begin_inset Formula 
+\[
+c(x)=e^{\int\frac{1}{D_{2}(x)}\left[D_{1}(x)-\frac{\partial D_{2}(x)}{\partial x}\right]dx}=e^{\ln D_{2}(x)-\int dx\frac{D_{1}(x)}{D_{2}(x)}}=e^{\Phi(x)}
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\begin{align*}
+-\frac{Sc(x)}{D_{2}(x)} & =\frac{\partial W(x)}{\partial x}-\Phi'(x)W(x)=\frac{\partial}{\partial x}(W\Phi)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrating yields 
+\begin_inset Formula 
+\[
+W=\frac{N}{c(x)}-S\int dx\frac{\Phi(x)}{D_{2}(x)}=c(x)e^{-\Phi(x)}-S\int^{x}dx'\frac{e^{\Phi(x')}}{D_{2}(x')}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the integration constant 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+One of the integration constants must be determined by the normalization
+ 
+\end_layout
+
+\begin_layout Itemize
+The other must be determined from the boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+The problem arises which boundary conditions must be used
+\end_layout
+
+\begin_layout Itemize
+Where 
+\begin_inset Formula $x$
+\end_inset
+
+ extends to 
+\begin_inset Formula $\pm\infty$
+\end_inset
+
+ (natural boundary conditions), we require the integral 
+\begin_inset Formula $\int dx\,W(x)$
+\end_inset
+
+ to be finite 
+\end_layout
+
+\begin_layout Itemize
+In that case 
+\begin_inset Formula $W$
+\end_inset
+
+ and also 
+\begin_inset Formula $S$
+\end_inset
+
+ must vanish at 
+\begin_inset Formula $\pm\infty$
+\end_inset
+
+, and therefore 
+\begin_inset Formula $S=0$
+\end_inset
+
+ for every 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Important question: Does every initial distribution finally decays to the
+ stationary distribution?
+\end_layout
+
+\begin_layout Itemize
+For some restrictions on the drift and diffusion coefficient and the boundary
+ conditions, every two solutions of the Fokker-Planck equation must decay
+ to the same solution
+\end_layout
+
+\begin_layout Itemize
+If stationary solution exists 
+\end_layout
+
+\begin_layout Subsection*
+Ornstein-Uhlenbeck process
+\end_layout
+
+\begin_layout Itemize
+Nonstationary solution of the Fokker-Planck equation are more difficult
+ to obtain 
+\end_layout
+
+\begin_layout Itemize
+General expression for the nonstationary solution can only be found for
+ special drift and diffusion coefficients 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Wiener process
+\end_layout
+
+\begin_layout Itemize
+Drift coefficient 
+\begin_inset Formula $D_{1}=0$
+\end_inset
+
+ and diffusion coefficient 
+\begin_inset Formula $D_{2}=D$
+\end_inset
+
+ is constant 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=D\frac{\partial^{2}P}{\partial x^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition 
+\begin_inset Formula 
+\[
+P(x,t\bigl|x',t)=\delta(x-x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution for 
+\begin_inset Formula $t\geq t'$
+\end_inset
+
+ reads 
+\begin_inset Formula 
+\[
+P(x,t\bigl|x',t)=\frac{1}{\sqrt{4\pi D(t-t')}}\exp\left(-\frac{(x-x')^{2}}{4D(t-t')}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that the variance is proportional to the time difference 
+\begin_inset Formula $t-t'$
+\end_inset
+
+ which means that 
+\begin_inset Formula $P(x,t\bigl|x',t)$
+\end_inset
+
+ becomes wider in the order of 
+\begin_inset Formula $\sqrt{t-t'}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Wiener process diverges with time
+\end_layout
+
+\begin_layout Itemize
+Sometimes 
+\begin_inset Formula $P(x,t\bigl|x',t)$
+\end_inset
+
+ is called Green's function 
+\end_layout
+
+\begin_layout Itemize
+General solution for probability density with initial distribution 
+\begin_inset Formula $W(x',t')$
+\end_inset
+
+ is then given by 
+\begin_inset Formula 
+\[
+W(x,t)=\int dx'P(x,t\bigl|x',t')W(x',t')
+\]
+
+\end_inset
+
+which reads like a convolution
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ornstein-Uhlenbeck process
+\end_layout
+
+\begin_layout Itemize
+Drift and diffusion coefficient 
+\begin_inset Formula 
+\begin{align*}
+D_{1}(x) & =-\gamma x\\
+D_{2}(x) & =D=\text{const}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation for transition probability reads 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\gamma\frac{\partial}{\partial x}(xP)+D\frac{\partial^{2}}{\partial x^{2}}P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution is best found by making a Fourier transform with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(k,t\bigl|x',t')=\int dx\,e^{-ikx}\hat{P}(x,t\bigl|x',t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Partial differential equation after the Fourier transform reads 
+\begin_inset Formula 
+\[
+\frac{\partial\hat{P}}{\partial t}=-\gamma k\frac{\partial}{\partial k}\hat{P}-Dk^{2}P
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\gamma\frac{\partial}{\partial x}(xP)+D\frac{\partial^{2}}{\partial x^{2}}P=\gamma P+x\frac{\partial}{\partial x}P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the Fourier transform on both sides with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\hat{P}}{\partial t}=\gamma\hat{P}+\gamma F[x\frac{\partial}{\partial x}P]-Dk^{2}\hat{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fourier transform 
+\begin_inset Formula 
+\begin{align*}
+F[x\frac{\partial}{\partial x}P] & =\int_{-\infty}^{\infty}dx\,e^{ikx}x\frac{\partial}{\partial x}P\\
+ & =-i\int dx\left(\frac{\partial}{\partial k}e^{ikx}\right)\frac{\partial}{\partial x}P\\
+ & =-i\frac{\partial}{\partial k}\int dx\,e^{ikx}\frac{\partial}{\partial x}P\\
+ & =(-i)^{2}\frac{\partial}{\partial k}(k\hat{P})\\
+ & =-\hat{P}-k\frac{\partial\hat{P}}{\partial k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\hat{P}}{\partial t} & =\gamma\hat{P}-\gamma\hat{P}-\gamma k\frac{\partial\hat{P}}{\partial k}-Dk^{2}\hat{P}\\
+\frac{\partial\hat{P}}{\partial t} & =-\gamma k\frac{\partial\hat{P}}{\partial k}-Dk^{2}\hat{P}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is simpler because it only contains the first-order derivative with
+ respect to 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition for the Fourier transform is 
+\begin_inset Formula 
+\[
+\hat{P}(k,t'\bigl|x',t')=e^{-ikx'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve first order equation by the methods of characteristics 
+\begin_inset Formula 
+\[
+P(k,t\bigl|x',t')=\exp\left(-ikx'e^{-\gamma(t-t')}-\frac{Dk^{2}(1-e^{-2\gamma(t-t'})}{2\gamma}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Performing back transform 
+\begin_inset Formula 
+\[
+P(x,t\bigl|x',t')=\sqrt{\frac{\gamma}{2\pi D(1-e^{-2\gamma(t-t')})}}\exp\left(-\frac{\gamma(x-e^{-\gamma(t-t')}x')^{2}}{2D(1-e^{-2\gamma(t-t')})}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For positive 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma(t-t')\gg1$
+\end_inset
+
+ we recover the stationary distribution 
+\end_layout
+
+\begin_layout Subsection*
+Eigenfunction expansion
+\end_layout
+
+\begin_layout Itemize
+We want to find nonstationary solutions for 
+\begin_inset Formula 
+\begin{equation}
+W_{t}=L_{\text{FP}}W=-S_{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Separation ansatz 
+\begin_inset Formula $W=\varphi(x)\phi(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\varphi\phi_{t}=\phi L_{\text{FP}}\varphi
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Divide by 
+\begin_inset Formula $W$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{\phi_{t}}{\phi}=\frac{L_{\text{FP}}\varphi}{\varphi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Both sides have to equivalent for each 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+, i.e.
+ they must be equivalent to the same constant 
+\begin_inset Formula 
+\begin{align}
+\frac{\phi_{t}}{\phi} & =-\lambda\\
+\frac{L_{\text{FP}}\varphi}{\varphi} & =-\lambda
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solving the first equation yields 
+\begin_inset Formula 
+\begin{equation}
+\phi=ce^{-\lambda t}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, 
+\begin_inset Formula 
+\begin{equation}
+W(x,t)=\varphi(x)e^{-\lambda t}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\varphi(x)$
+\end_inset
+
+ is the solution to 
+\begin_inset Formula 
+\begin{equation}
+L_{\text{FP}}\varphi=-\lambda\varphi
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This tells us that 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ are eigenfunctions of the Fokker-Planck operator with appropriate boundary
+ conditions 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Boundary conditions
+\end_layout
+
+\begin_layout Itemize
+We defined the potential 
+\begin_inset Formula $\Phi(x)$
+\end_inset
+
+ during our derivation of the stationary distribution 
+\begin_inset Formula 
+\begin{equation}
+\Phi(x)=\ln D_{2}(x)-\int dx\frac{D_{1}(x)}{D_{2}(x)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Why do we call 
+\begin_inset Formula $\Phi(x)$
+\end_inset
+
+ potential?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We derived 
+\begin_inset Formula $W(x)=Ne^{-\Phi(x)}$
+\end_inset
+
+ for natural boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $W(x)$
+\end_inset
+
+ has its maximum at 
+\begin_inset Formula $\min\Phi(x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Phi(x)$
+\end_inset
+
+ (e.g.
+ for 
+\begin_inset Formula $x$
+\end_inset
+
+-dependent diffusion) jumps to infinite high positive value, then the particles
+ cannot penetrate in the region 
+\begin_inset Formula $x>x_{\text{max}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability current 
+\begin_inset Formula $S$
+\end_inset
+
+ must vanish at that point
+\end_layout
+
+\begin_layout Itemize
+Infinite potential acts as a 
+\series bold
+reflecting wall 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Phi(x)$
+\end_inset
+
+ jumps to infinite negative value, it follows from the continuity condition
+ for the probability current that 
+\begin_inset Formula $e^{\Phi}W$
+\end_inset
+
+ should vanish at this point
+\begin_inset Formula 
+\[
+S(x,t)=-D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}[e^{\Phi(x)}W(x,t)]=S(x,t)=-D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}[0]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Other wise 
+\begin_inset Formula $S(x,t)$
+\end_inset
+
+ would be not continuous 
+\end_layout
+
+\begin_layout Itemize
+We call this an 
+\series bold
+absorbing wall
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Finite 
+\begin_inset Formula $x_{\text{max}}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{\text{min}}$
+\end_inset
+
+, 
+\begin_inset Formula $e^{\Phi}W=0$
+\end_inset
+
+ requires 
+\begin_inset Formula $W$
+\end_inset
+
+ to be zero
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Transformation of the Fokker-Planck operator
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck operator may be written in the form 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We want to show that 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=-\frac{\partial}{\partial x}D_{1}(x)+\frac{\partial^{2}}{\partial x^{2}}D_{2}(x)
+\]
+
+\end_inset
+
+equals 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\Phi(x)=\ln D_{2}(x)-\int^{x}dx'\frac{D_{1}(x')}{D_{2}(x')}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}D_{2}e^{-\Phi}\partial_{x}e^{\Phi} & =\partial_{x}\left[D_{2}e^{-\Phi}e^{\Phi}(\Phi_{x}+\partial_{x})\right]\\
+ & =\partial_{x}\left[D_{2}\Phi_{x}+D_{2}\partial_{x}\right]\\
+ & =D_{x}\partial_{x}^{2}+D_{x}^{(2)}\partial_{x}+D_{x}^{(2)}\Phi_{x}+D_{2}\Phi_{xx}+D_{2}\Phi_{x}\partial_{x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative of the potential
+\begin_inset Formula 
+\[
+\Phi_{x}=\frac{D_{x}^{(2)}}{D_{2}}-\frac{D_{1}}{D_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative of the potential 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}\Phi}{\partial x^{2}}=-\frac{\left(D_{x}^{(2)}\right)^{2}}{D_{2}^{2}}+\frac{D_{xx}^{(2)}}{D_{2}}-\frac{D_{x}^{(1)}D_{2}-D_{1}D_{x}^{(2)}}{D_{2}^{2}(x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting term by term 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+D_{x}^{(2)}\Phi_{x} & =D_{x}^{(2)}\left(\frac{D_{x}^{(2)}}{D_{2}}-\frac{D_{1}}{D_{2}}\right)\\
+ & \text{=}\frac{\left(D_{x}^{(2)}\right)^{2}}{D_{2}}-\frac{D_{x}^{(2)}D_{1}}{D_{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+D_{2}\Phi_{xx} & =D_{2}\left(-\frac{1}{D_{2}^{2}}\left(D_{x}^{(2)}\right)^{2}+\frac{D_{xx}^{(2)}}{D_{2}}-\frac{D_{x}^{(1)}D_{2}-D_{1}D_{x}^{(2)}}{D_{2}^{2}(x)}\right)\\
+ & =-\frac{\left(D_{x}^{(2)}\right)^{2}}{D_{2}}+D_{xx}^{(2)}-D_{x}^{(1)}+\frac{D_{1}D_{x}^{(2)}}{D_{2}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+D_{2}\Phi_{x}\partial_{x} & =D_{2}\left(\frac{D_{x}^{(2)}}{D_{2}}-\frac{D_{1}}{D_{2}}\right)\frac{\partial}{\partial x}\\
+ & =D_{x}^{(2)}\partial_{x}-D_{1}\partial_{x}
+\end{align*}
+
+\end_inset
+
+Hence, we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)} & =D_{x}\partial_{x}^{2}+D_{x}^{(2)}\partial_{x}+D_{x}^{(2)}\Phi_{x}+D_{2}\Phi_{xx}+D_{2}\Phi_{x}\partial_{x}\\
+ & =D_{x}\partial_{x}^{2}+D_{x}^{(2)}\partial_{x}\\
+ & +\frac{\left(D_{x}^{(2)}\right)^{2}}{D_{2}}-\frac{D_{x}^{(2)}D_{1}}{D_{2}}\\
+ & -\frac{\left(D_{x}^{(2)}\right)^{2}}{D_{2}}+D_{xx}^{(2)}-D_{x}^{(1)}+\frac{D_{1}D_{x}^{(2)}}{D_{2}}\\
+ & +D_{x}^{(2)}\partial_{x}-D_{1}\partial_{x}\\
+ & =D_{x}\partial_{x}^{2}+2D_{x}^{(2)}\partial_{x}+D_{xx}^{(2)}-D_{x}^{(1)}-D_{1}\partial_{x}\\
+ & =\partial_{x}D_{1}+\partial_{x}^{2}D_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is obviously not a Hermitian operator
+\end_layout
+
+\begin_layout Itemize
+Consider two functions 
+\begin_inset Formula $W_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{2}$
+\end_inset
+
+ both which satisfy the same boundary conditions 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}W_{1}L_{\text{FP}}W_{2}=\int_{x_{\text{min}}}^{x_{\text{max}}}W_{2}e^{\Phi}L_{\text{FP}}W_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{2}e^{\Phi}L_{\text{FP}}W_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insert alternative notation for 
+\begin_inset Formula $L_{\text{FP}}$
+\end_inset
+
+ operator
+\begin_inset Formula 
+\begin{align*}
+ & \int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{2}e^{\Phi}\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration yields 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{2}e^{\Phi}\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}= & \left.W_{2}e^{\Phi}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}\right|_{x_{\text{min}}}^{x_{\text{max}}}\\
+ & -\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\frac{\partial}{\partial x}\left[W_{2}e^{\Phi}\right]D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary term vanishes.
+ Remember that 
+\begin_inset Formula $L_{\text{FP}}W=-S$
+\end_inset
+
+ and the flux must be zero at the boundary.
+\begin_inset Formula 
+\[
+\left.W_{2}e^{\Phi}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}\left[e^{\Phi(x)}W_{1}\right]\right|_{x_{\text{min}}}^{x_{\text{max}}}=-W_{2}e^{\Phi}S_{1}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second partial integration yields 
+\begin_inset Formula 
+\begin{align*}
+ & -\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\left[\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}\right]D_{2}(x)e^{-\Phi(x)}\left[\frac{\partial}{\partial x}W_{2}e^{\Phi}\right]\\
+= & -\left.W_{1}e^{\Phi}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}\right|_{x_{\text{min}}}^{x_{\text{max}}}+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{1}e^{\Phi(x)}\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\left[\frac{\partial}{\partial x}W_{2}e^{\Phi}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary term vanishes.
+\begin_inset Formula 
+\[
+-\left.W_{1}e^{\Phi}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}\right|_{x_{\text{min}}}^{x_{\text{max}}}=W_{1}e^{\Phi}S_{2}=0
+\]
+
+\end_inset
+
+ Hence, we showed that 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{2}e^{\Phi}\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}W_{1}=\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,W_{1}e^{\Phi(x)}\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\left[\frac{\partial}{\partial x}W_{2}e^{\Phi}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For all boundary conditions the adjoint operator of 
+\begin_inset Formula $e^{\Phi}L_{\text{FP}}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+\left(e^{\Phi}L_{\text{FP}}\right)^{+}=L_{\text{FP}}^{+}e^{\Phi}=e^{\Phi}L_{\text{FP}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula $e^{\Phi}L_{\text{FP}}$
+\end_inset
+
+ as well as 
+\begin_inset Formula 
+\[
+L=e^{-\Phi/2}e^{\Phi}L_{\text{FP}}e^{-\Phi/2}=e^{\Phi/2}L_{\text{FP}}e^{-\frac{\Phi}{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Proof is identical to before 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Orthogonality of eigenfunctions
+\end_layout
+
+\begin_layout Itemize
+In the following we use the notation for discrete eigenvalues but they could
+ also be continuous
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\varphi_{n}(x)$
+\end_inset
+
+ are the eigenfunctions of the Fokker-Planck operator 
+\begin_inset Formula $L_{\text{FP}}$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Psi_{n}(x)=e^{\frac{\Phi(x)}{2}}\varphi_{n}(x)
+\]
+
+\end_inset
+
+are the eigenfunctions of 
+\begin_inset Formula $L$
+\end_inset
+
+ with the same eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+L\Psi_{n}=-\lambda\Psi_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $L$
+\end_inset
+
+ is hermitian, eigenvalues are real and two eigenfunctions with 
+\series bold
+different
+\series default
+ eigenvalues must be orthogonal
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\Psi_{n}\Psi_{m}=\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,e^{\Phi}\varphi_{n}\varphi_{m}=\delta_{nm}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Positivity of eigenvalues
+\end_layout
+
+\begin_layout Itemize
+Using 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\varphi_{n}e^{\Phi}L_{\text{FP}}\varphi_{n} & =\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\Psi_{n}L\Psi_{m}=-\lambda_{n}\\
+ & =-\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\left(\frac{\partial}{\partial x}\Psi_{n}e^{\frac{\Phi}{2}}\right)D_{2}e^{-\Phi}\leq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the stationary distribution 
+\begin_inset Formula $\Psi_{0}(x)=\sqrt{N}e^{-\frac{\Phi}{2}}$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\[
+-N\int_{x_{\text{min}}}^{x_{\text{max}}}dx\,\left(\frac{\partial}{\partial x}1\right)D_{2}e^{-\Phi}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All other eigenvalues must be large than zero
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Explicit form of
+\series default
+ 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=\frac{\partial}{\partial x}D_{2}(x)e^{-\Phi(x)}\frac{\partial}{\partial x}e^{\Phi(x)}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+L=e^{\frac{\Phi}{2}}L_{\text{FP}}e^{-\frac{\Phi}{2}}
+\]
+
+\end_inset
+
+we find 
+\begin_inset Formula 
+\[
+L=e^{\frac{\Phi}{2}}\frac{\partial}{\partial x}\sqrt{D_{2}}e^{-\frac{\Phi}{2}}\sqrt{D_{2}}e^{-\frac{\Phi}{2}}\frac{\partial}{\partial x}e^{\frac{\Phi}{2}}=-\hat{a}a
+\]
+
+\end_inset
+
+with the operator 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ given by 
+\begin_inset Formula 
+\begin{align*}
+a & =\sqrt{D_{2}}\partial_{x}+\frac{1}{2\sqrt{D}_{2}}\left(D_{x}^{(2)}-D_{1}\right)\\
+\hat{a} & =-\partial_{x}\sqrt{D_{2}}+\frac{1}{2\sqrt{D}_{2}}\left(D_{x}^{(2)}-D_{1}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=\partial_{x}D_{2}e^{-\Phi}\partial_{x}e^{\Phi}
+\]
+
+\end_inset
+
+which yields 
+\begin_inset Formula 
+\begin{align*}
+L & =e^{\frac{\Phi}{2}}\partial_{x}D_{2}e^{-\Phi}\partial_{x}e^{\frac{\Phi}{2}}\\
+ & =\underbrace{e^{\frac{\Phi}{2}}\partial_{x}\sqrt{D_{2}}e^{-\frac{\Phi}{2}}}_{-\hat{a}}\underbrace{\sqrt{D_{2}}e^{-\frac{\Phi}{2}}\partial_{x}e^{\frac{\Phi}{2}}}_{a}\\
+ & =-\hat{a}a
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The operator 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ can be written as 
+\begin_inset Formula 
+\begin{align*}
+\hat{a} & =-e^{\frac{\Phi}{2}}\partial_{x}\sqrt{D_{2}}e^{-\frac{\Phi}{2}}\\
+ & =-\partial_{x}\sqrt{D_{2}}+\frac{1}{2\sqrt{D}_{2}}\left(D_{x}^{(2)}-D_{1}\right)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+a=\sqrt{D_{2}}\partial_{x}+\frac{1}{2\sqrt{D}_{2}}\left(D_{x}^{(2)}-D_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sturm-Liouville equation 
+\begin_inset Formula 
+\[
+\boldsymbol{L}=\frac{\partial}{\partial x}D_{2}\frac{\partial}{\partial x}-V
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+V(x)=\frac{1}{4D_{2}}\left(D_{x}^{(2)}-D_{1}\right)^{2}+\frac{1}{2}D_{x}^{(1)}-\frac{1}{2}D_{xx}^{(2)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues are usually ordered 
+\begin_inset Formula 
+\[
+0\leq\lambda_{0}\text{\le}\lambda_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stationary distribution is associated with 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues are non degenerate 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Transformation to a Schrödinger equation
+\end_layout
+
+\begin_layout Itemize
+Variable transformation such that diffusion coefficient is 
+\begin_inset Formula $x$
+\end_inset
+
+ independent 
+\begin_inset Formula 
+\[
+\boldsymbol{L}=D\frac{\partial^{2}}{\partial x^{2}}-V_{\text{S}}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Potential 
+\begin_inset Formula 
+\[
+V_{\text{S}}(x)=\frac{1}{4D}f'(x)^{2}-\frac{1}{2}f''(x)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\Phi(x)=f(x)/D$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+L_{\text{FP}}(x)=-\frac{\partial}{\partial x}D_{1}(x)+\frac{\partial}{\partial x^{2}}D_{2}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula 
+\[
+y(x)=\int_{x_{0}}^{x}\sqrt{\frac{D}{D_{2}(x')}}dx'
+\]
+
+\end_inset
+
+leads to
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\frac{\partial W'(y,t)}{\partial t}=\left[-\frac{\partial}{\partial y}D'_{1}(y)+D\frac{\partial^{2}}{\partial y^{2}}\right]W'(y,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Introduce potential 
+\begin_inset Formula 
+\[
+f(y)=-\int^{y}D_{1}(y')dx'
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\[
+\frac{\partial W'(y,t)}{\partial t}=\left[-\frac{\partial}{\partial y}f'(y)+D\frac{\partial^{2}}{\partial y^{2}}\right]W'(y,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Replace 
+\begin_inset Formula $D_{1}(x)$
+\end_inset
+
+ by 
+\begin_inset Formula $f'(y)$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{2}(x)$
+\end_inset
+
+ by 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula 
+\[
+V(x)=\frac{1}{4D_{2}}\left(D_{x}^{(2)}-D_{1}\right)^{2}+\frac{1}{2}D_{x}^{(1)}-\frac{1}{2}D_{xx}^{(2)}
+\]
+
+\end_inset
+
+ simplifies to 
+\begin_inset Formula 
+\[
+V_{\text{S}}(x)=\frac{1}{4D}f'(y)^{2}+\frac{1}{2}f''(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Liouville equation 
+\begin_inset Formula 
+\[
+\boldsymbol{L}=\frac{\partial}{\partial x}D^{(2)}\frac{\partial}{\partial x}-V
+\]
+
+\end_inset
+
+becomes 
+\begin_inset Formula 
+\[
+\boldsymbol{L}=D\frac{\partial^{2}}{\partial x^{2}}-V_{\text{S}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The potential 
+\begin_inset Formula 
+\[
+\Phi(x)=\ln D_{2}(x)-\int^{x}dx'\frac{D_{1}(x')}{D_{2}(x')}
+\]
+
+\end_inset
+
+becomes 
+\begin_inset Formula 
+\[
+\Phi(x)=\ln D-\frac{1}{D}\int^{x}dx'D_{1}(x')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which we can write as 
+\begin_inset Formula 
+\[
+\Phi(x)=\ln D+\frac{f(x)}{D}
+\]
+
+\end_inset
+
+Negelect additive constant 
+\begin_inset Formula 
+\[
+\Phi(x)=\frac{f(x)}{D}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue of the stationary solution 
+\begin_inset Formula 
+\[
+\Psi_{0}=\sqrt{N}\exp\left(-\frac{f(x)}{2D}\right)
+\]
+
+\end_inset
+
+is zero 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\boldsymbol{L}\Psi_{0}=D\frac{\partial^{2}}{\partial x^{2}}-V_{\text{S}}(x)
+\]
+
+\end_inset
+
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+D\partial_{x}^{2}\sqrt{N}\exp\left(-\frac{f(x)}{2D}\right) & =-\frac{\sqrt{N}}{2}\partial_{x}\left(f_{x}\exp\left(-\frac{f}{2D}\right)\right)=\frac{\sqrt{N}}{2D}\left(f_{xx}-\frac{f_{x}^{2}}{2D}\right)\exp\left(-\frac{f}{2D}\right)\\
+ & =\frac{1}{4D}f_{x}^{2}\Psi_{0}-\frac{1}{2}f_{xx}\Psi_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+\boldsymbol{L}\Psi_{0}=\frac{1}{4D}f_{x}^{2}\Psi_{0}-\frac{1}{2}f_{xx}\Psi_{0}-\frac{1}{4D}f_{x}^{2}\Psi_{0}+\frac{1}{2}f_{xx}\Psi_{0}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The operator 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+ simplify to 
+\begin_inset Formula 
+\begin{align*}
+a & =\sqrt{D}\partial_{x}-\frac{1}{2\sqrt{D}}f'(x)\\
+\hat{a} & =-\sqrt{D}\partial_{x}+\frac{1}{2\sqrt{D}}f'(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is formally equivalent to time-dependent Schrödinger
+ equation with imaginary time 
+\begin_inset Formula $t=-i\hbar t$
+\end_inset
+
+ and mass 
+\begin_inset Formula $m=\hbar^{2}/(2D)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Jump condition
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Finite jumps
+\series default
+: We assume that a finite jump of the potential 
+\begin_inset Formula $\Phi(x)=\ln D_{2}(x)-\int dx\frac{D_{1}(x)}{D_{2}(x)}$
+\end_inset
+
+ occurs at 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It finite jump may occur if 
+\begin_inset Formula $D_{2}(x)$
+\end_inset
+
+ has a finite jump or 
+\begin_inset Formula $D_{1}(x)$
+\end_inset
+
+ has a 
+\begin_inset Formula $\delta$
+\end_inset
+
+ singularity 
+\end_layout
+
+\begin_layout Itemize
+If we assume that time derivative of the probability is finite at the jump,
+ it follows from the continuity equation that the probability flux must
+ be 
+\series bold
+continuous
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+S(0_{+},t) & =S(0_{-},t)
+\end{align*}
+
+\end_inset
+
+from which follows 
+\begin_inset Formula 
+\[
+-D_{2}(0_{+})\left[\Phi_{x}(0_{+})W(0_{+},t)+W(0_{+},t)\right]=-D_{2}(0_{-})\left[\Phi_{x}(0_{-})W(0_{-},t)+W(0_{-},t)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $f(0_{\pm})$
+\end_inset
+
+ denotes 
+\begin_inset Formula 
+\[
+\lim_{\epsilon\rightarrow0}f(\pm\epsilon)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the probability current would not be continuous at zero this would mean
+ that at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ particles would be added or removed 0
+\end_layout
+
+\begin_layout Subsubsection*
+Expansion into a Complete Set
+\end_layout
+
+\begin_layout Itemize
+One approach to solve the Fokker-Planck equation is to expand the probability
+ density into a complete set 
+\begin_inset Formula $\varphi_{n}(x)$
+\end_inset
+
+ satisfying the boundary conditions 
+\begin_inset Formula 
+\[
+W(x,t)=F(x)\sum_{n}q_{n}(t)\varphi_{n}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Natural boundary conditions
+\series default
+: One may use for 
+\begin_inset Formula $\varphi_{n}(x)$
+\end_inset
+
+ Hermite functions 
+\end_layout
+
+\end_body
+\end_document

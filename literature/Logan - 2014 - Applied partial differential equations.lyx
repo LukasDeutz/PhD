@@ -1,0 +1,5916 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Applied Partial Differential Equation by D.
+ Logan
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Itemize
+ODE models the evolution of a system in time
+\end_layout
+
+\begin_layout Itemize
+PDE models the evolution of a system in both time and space
+\end_layout
+
+\begin_layout Itemize
+Laterally insulated metelbar of length 
+\begin_inset Formula $l$
+\end_inset
+
+ whose ends are maintained at a constant zero degrees 
+\end_layout
+
+\begin_layout Itemize
+Temperature is fixed function 
+\begin_inset Formula $\Phi(x)$
+\end_inset
+
+ at time zero 
+\end_layout
+
+\begin_layout Itemize
+How does the bar cool down?
+\end_layout
+
+\begin_layout Itemize
+State variable 
+\begin_inset Formula $u$
+\end_inset
+
+ is the temperature, and t depends upon when in where we measure 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ with 
+\begin_inset Formula $0<x<l$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Heat equation 
+\begin_inset Formula 
+\begin{equation}
+u_{t}=ku_{xx}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First partial derivative 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+ must be proportional to second partial derivative 
+\begin_inset Formula $u_{xx}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Parameter 
+\begin_inset Formula $k$
+\end_inset
+
+ is called diffusivity 
+\end_layout
+
+\begin_layout Itemize
+Condition that ends of bar are mainted at zero degrees
+\begin_inset Formula 
+\begin{equation}
+u(0,t)=0,\quad u(l,t)=0,\quad t>0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+These are called 
+\series bold
+boundary conditions
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Impose conditions on the state variable on the boundary of the spatial domain
+\end_layout
+
+\begin_layout Itemize
+Condition that bar has the initial temperature 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is expressed as 
+\begin_inset Formula 
+\begin{equation}
+u(x,0)=\Phi(x),\quad0<x<l
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Initial condition
+\series default
+ because it specifies the state variable at 
+\begin_inset Formula $t=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Initial boundary value problem
+\series default
+\emph on
+ 
+\end_layout
+
+\begin_layout Itemize
+State variable 
+\begin_inset Formula $u$
+\end_inset
+
+ depends on time and spatial variable which is called an 
+\series bold
+evolution model
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Some systems do not depends on time, but only on spatial variables which
+ are called 
+\series bold
+static
+\series default
+, 
+\series bold
+steady state
+\series default
+, or 
+\series bold
+equilibrium models
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Example: 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ represents bound 
+\begin_inset Formula $3$
+\end_inset
+
+d region in which no charges are present
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+time-independent electric potential on the boundary 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+ is given
+\end_layout
+
+\begin_layout Itemize
+electric potential 
+\begin_inset Formula $u=u(x,y,z)$
+\end_inset
+
+ inside 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ satisfies Laplace equation 
+\begin_inset Formula 
+\begin{equation}
+u_{xx}+u_{yy}+u_{zz}=0,\quad(x,y,z)\in\Omega
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+along boundary 
+\begin_inset Formula 
+\begin{equation}
+u(x,y,z)=f(x,y,z),\quad(x,y,z)\in\partial\Omega
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Static problems are 
+\series bold
+boundary value problems
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Solving Laplace's equation in a region 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ subject to given condition on the boundary is called 
+\series bold
+Dirichlet problem
+\end_layout
+
+\begin_layout Itemize
+PDE in one spatial variable and time is an equation of form 
+\begin_inset Formula 
+\begin{equation}
+G(x,t,u,u_{x},u_{t},u_{xx},u_{tt},u_{xt},\ldots)=0,\quad x\in\Omega,\,t\in I
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $I$
+\end_inset
+
+ is the given time interval and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is an interval in one dimension
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Omega$
+\end_inset
+
+ may be a bounded or unbounded interval 
+\end_layout
+
+\begin_layout Itemize
+Why equal zero, we can always bring everything on one side
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+order of PDE is the order of the highest derivative that occurs 
+\end_layout
+
+\begin_layout Itemize
+PDEs are classifies according to their order and other properties 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linear or nonlinear 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $G$
+\end_inset
+
+ is linear if it is a linear function in 
+\begin_inset Formula $u$
+\end_inset
+
+ and all of its derivatives 
+\end_layout
+
+\begin_layout Itemize
+A linear equation is homogeneous if every term contains 
+\begin_inset Formula $u$
+\end_inset
+
+ or some derivative of 
+\begin_inset Formula $u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Examples: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $u_{t}+uu_{xx}=0$
+\end_inset
+
+ is nonlinear because of the product 
+\begin_inset Formula $uu_{xx}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{tt}-u_{x}+\sin u=0$
+\end_inset
+
+ is nonlinear because of 
+\begin_inset Formula $\sin u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u_{t}-\sin(x^{2}t)u_{xx}=0$
+\end_inset
+
+ is linear and homogeneous 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u_{t}=-3xu_{x}+tx^{2}$
+\end_inset
+
+ is linear and nonhomogeneous 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Linear equations have an algebraic structure to their solution sets, the
+ sum of two solutions to a homogeneous linear equation is again a solution,
+ as constant multiplies of solutions 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ solutions superimpose! 
+\end_layout
+
+\begin_layout Itemize
+Classification schemes for a PDE depending on the physical phenomenon that
+ it describes 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+wave-like
+\end_layout
+
+\begin_layout Itemize
+diffusion-like
+\end_layout
+
+\begin_layout Itemize
+static 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Solution of PDE we mean a function 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ defined on the space-time domain 
+\begin_inset Formula $t\in I,\,x\in\Omega$
+\end_inset
+
+ which satisfies the equation on that domain 
+\end_layout
+
+\begin_layout Itemize
+Implicit in this definition 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $u$
+\end_inset
+
+ must possess as many continuous partial derivatives as requires by the
+ PDE
+\end_layout
+
+\begin_layout Itemize
+General solution to an ODE involves arbitrary constants
+\end_layout
+
+\begin_layout Itemize
+General solution to a PDE involves arbitrary functions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We go from 1d to multi dimensional space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: Both equations 
+\begin_inset Formula $u_{1}(x,t)=x^{2}+2t$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2}(x,t)=e^{-t}\sin x$
+\end_inset
+
+ solve the heat equation 
+\begin_inset Formula $u_{t}-u_{xx}=0$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Calculate partial derivatives for 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =2\\
+u_{xx} & =2
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calculate partial derivatives for 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =-e^{-t}\sin x\\
+u_{xx} & =-e^{-t}\sin x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are many other solutions to this equation.
+ Initial and boundary conditions usually single out the appropriate solution
+ to the problem 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: First-order, linear, nonhomogeneous PDE
+\begin_inset Formula 
+\[
+u_{x}=t\sin x
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Solve by integration for fixed 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(x,t)=-t\cos(x)+\Phi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integration with respect to one variable produces an arbitrary function
+ 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ not an arbitrary constant as in one-dimensional calculus 
+\end_layout
+
+\begin_layout Itemize
+Does the function have to be continuous?
+\end_layout
+
+\begin_layout Itemize
+Basically, for each 
+\begin_inset Formula $t$
+\end_inset
+
+ we get constant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Geometrically we can think of a solution 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ as surface in 
+\begin_inset Formula $xtu$
+\end_inset
+
+-space
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Verify that a solution to the heat equation on the domain 
+\begin_inset Formula $-\infty<x<\infty$
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $t>0$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{\sqrt{4\pi kt}}e^{-\frac{x^{2}}{4kt}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Heat equation 
+\begin_inset Formula 
+\[
+u_{t}=ku_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First, define 
+\begin_inset Formula $4kt=\alpha$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{\sqrt{\pi\alpha}}e^{-\frac{x^{2}}{\alpha}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+u_{xx} & =\frac{1}{\sqrt{\pi\alpha}}\partial_{x}\left(-\frac{2x}{\alpha}e^{-\frac{x^{2}}{\alpha}}\right)\\
+ & =-\frac{2}{\sqrt{\pi\alpha^{3}}}\partial_{x}xe^{-\frac{x^{2}}{\alpha}}\\
+ & =\frac{2}{\sqrt{\pi\alpha^{3}}}\left(\frac{2x^{2}}{\alpha}-1\right)e^{-\frac{x^{2}}{\alpha}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Temporal derivative 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =\frac{1}{\sqrt{\pi4kt}}e^{-\frac{x^{2}}{4kt}}\\
+ & =\frac{1}{\sqrt{\pi\alpha}}\left(-\frac{1}{2t}+\frac{x^{2}}{\alpha t}\right)e^{-\frac{x^{2}}{\alpha}}\\
+ & =\frac{1}{2\sqrt{\pi\alpha}t}\left(\frac{2x^{2}}{\alpha}-1\right)e^{-\frac{x^{2}}{\alpha}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+So we need to show that 
+\begin_inset Formula 
+\begin{align*}
+\frac{2k}{\sqrt{\pi\alpha^{3}}} & =\frac{1}{2\sqrt{\pi\alpha}t}\\
+\Leftrightarrow\frac{2k}{a} & =\frac{1}{2t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $\alpha=4kt$
+\end_inset
+
+ on the left hand side yields
+\begin_inset Formula 
+\[
+\frac{1}{2t}=\frac{1}{2t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+At 
+\begin_inset Formula $t=0$
+\end_inset
+
+, the solution becomes a dirac delta 
+\begin_inset Formula 
+\[
+u(x,0)=\delta(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Larger 
+\begin_inset Formula $k$
+\end_inset
+
+ leads to faster diffusion 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Verfiy that 
+\begin_inset Formula $u(x,y)=\text{ln}\sqrt{x^{2}+y^{2}}$
+\end_inset
+
+ satisfies the Laplace equation
+\begin_inset Formula 
+\[
+u_{xx}+u_{yy}=0
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+u_{xx} & =\partial_{x}\frac{2x}{x^{2}+y^{2}}\\
+ & =\frac{2(x^{2}+y^{2})-4x^{2}}{(x^{2}+y^{2})^{2}}\\
+ & =\frac{2(y^{2}-x^{2})}{x^{2}+y^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Symmetry reasons
+\begin_inset Formula 
+\[
+u_{yy}=\frac{2(x^{2}-y^{2})}{x^{2}+y^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Sum yields 
+\begin_inset Formula 
+\[
+2\frac{y^{2}-x^{2}+x^{2}-y^{2}}{x^{2}+y^{2}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Find a function 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ that satisfies the PDE
+\begin_inset Formula 
+\[
+u_{xx}=0,\quad0<x<1,\,t>0
+\]
+
+\end_inset
+
+ subject to the boundary condition 
+\begin_inset Formula 
+\[
+u(0,t)=t^{2},\quad u(1,t)=1,\quad t>0
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The function 
+\begin_inset Formula 
+\[
+u_{xx}=f(t)x+g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+solves the PDE.
+ Boundary condition 
+\begin_inset Formula $u(0,t)=t^{2}$
+\end_inset
+
+ leads to 
+\begin_inset Formula $g(t)=t^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $u(1,t)=1$
+\end_inset
+
+ leads to 
+\begin_inset Formula 
+\begin{align*}
+f(t)+g(t) & =1\\
+\Leftrightarrow f(t) & =1-t^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which leads to 
+\begin_inset Formula 
+\[
+u_{xx}=(1-t^{2})x+t^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Verify that
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{2c}\int_{x-ct}^{x+ct}g(\xi)d\xi
+\]
+
+\end_inset
+
+is a solution to the PDE 
+\begin_inset Formula $u_{tt}=c^{2}u_{xx}$
+\end_inset
+
+ where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant and 
+\begin_inset Formula $g$
+\end_inset
+
+ is a continuously differentiable function 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Leibniz rule
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a(t)}^{b(t)}dx\,f(x,t)=\int_{a(t)}^{b(t)}f_{t}(x,t)+f(b(t))b'(t)-f(a(t))a'(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2c}\partial t^{2}\int_{x-ct}^{x+ct}g(\xi)d\xi & =\frac{1}{2}\partial_{t}\left[g(x+ct)+g(x-ct)\right]\\
+ & =\frac{1}{2c}\left[g'(x+ct)-g'(x-ct)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+where we used that 
+\begin_inset Formula $g'(\xi)=\frac{1}{c}\partial_{t}g(x+ct)$
+\end_inset
+
+.
+ Second derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2c}\frac{\partial^{2}}{\partial x^{2}}\int_{x-ct}^{x+ct}g(\xi)d\xi & =\frac{1}{2c}\frac{\partial}{\partial x}\left[g(x+ct)-g(x-ct)\right]\\
+ & =\frac{1}{2c}[g'(x+ct)-g'(x-ct)]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Conservation Laws
+\end_layout
+
+\begin_layout Itemize
+A conversation law is just a mathematical formulation of the basic fact
+ that the rate at which a quantity changes in a given domain must equal
+ rate at which quantity flows across the boundary plus the rate which quantity
+ is created
+\end_layout
+
+\begin_layout Itemize
+State variable 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ denote the density of a given quantity 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Phi(x,t)$
+\end_inset
+
+ denote the flux of the quantity 
+\begin_inset Formula $x$
+\end_inset
+
+, at time 
+\begin_inset Formula $t$
+\end_inset
+
+ which measures the amount of quantity crossing section 
+\begin_inset Formula $x$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Source term 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ how much quantity is created or destroyed at 
+\begin_inset Formula $x$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conservation 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a}^{b}u(x,t)dx=\Phi(a,t)-\Phi(b,t)+\int_{a}^{b}f(x,t)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ are sufficient smooth, then the integral model can be reformulated as PDE
+ model 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u$
+\end_inset
+
+ has continuous first partial derivatives, we can brint the derivative under
+ the integral 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a}^{b}u(x,t)dx=\int_{a}^{b}u_{t}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ has a continuous first partials, we can write the change in flux as the
+ integral of 
+\begin_inset Formula 
+\[
+\Phi(a,t)-\Phi(b,t)=-\int_{a}^{b}\Phi_{x}(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This leads to 
+\begin_inset Formula 
+\[
+\int_{a}^{b}\left(u_{t}(x,t)+\Phi_{x}(x,t)-f(x,t)\right)dx=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $a\leq x\leq b$
+\end_inset
+
+ can be any interval the integrand is continuous
+\begin_inset Formula 
+\[
+u_{t}(x,t)+\Phi_{x}(x,t)-f(x,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+PDE descibes relation between density, flux and creation rate 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\Phi_{x}(x,t)$
+\end_inset
+
+ flux term
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ source term
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dependence of 
+\begin_inset Formula $\Phi_{x}(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ may depend on 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ through dependence upon density 
+\begin_inset Formula $u$
+\end_inset
+
+ itself 
+\end_layout
+
+\begin_layout Itemize
+These dependencies may lead to a nonlinear model 
+\end_layout
+
+\begin_layout Itemize
+Single equation but two unknowns 
+\begin_inset Formula $u_{t}(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi_{x}(x,t)$
+\end_inset
+
+ (source is assumed to be given)
+\end_layout
+
+\begin_layout Itemize
+Another equation is needed to relate 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This equation is called 
+\series bold
+constitutive
+\series default
+ 
+\series bold
+relation 
+\series default
+or 
+\series bold
+equations of state
+\end_layout
+
+\begin_layout Itemize
+They arise from physical assumptions about the medium 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example Advection
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Flux is proportional to density 
+\begin_inset Formula 
+\[
+\Phi=cu
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant 
+\end_layout
+
+\begin_layout Itemize
+Conservation law in absence of a source 
+\begin_inset Formula 
+\[
+u_{t}+cu_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Function 
+\begin_inset Formula $u(x,t)=F(x-ct)$
+\end_inset
+
+ is a solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Partial derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{t}F(x-ct)=-\frac{1}{c}F'(x-ct)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{t}F(x-ct)=F'(x-ct)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into conservation law 
+\begin_inset Formula 
+\[
+F'(x-ct)-F'(x-ct)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The function 
+\begin_inset Formula $F(x-ct)$
+\end_inset
+
+ is the function 
+\begin_inset Formula $F(x)$
+\end_inset
+
+ shifted by 
+\begin_inset Formula $ct$
+\end_inset
+
+ to the right 
+\end_layout
+
+\begin_layout Itemize
+Solutions of the form 
+\begin_inset Formula $F(x-ct)$
+\end_inset
+
+ are called 
+\series bold
+right-traveling waves
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Density moves undistorted 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If flux is a nonlinear function of the density 
+\begin_inset Formula $\Phi=\Phi(\mu)$
+\end_inset
+
+ then the conservation law takes the form
+\begin_inset Formula 
+\[
+u_{t}+\Phi_{x}(\mu)=u_{t}+\Phi'(u)u_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Phi(u)$
+\end_inset
+
+ is not linear in 
+\begin_inset Formula $u$
+\end_inset
+
+, then the above equation models nonlinear advection 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example Advection and Decay
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Decaying substance advecting through a tube at velocity 
+\begin_inset Formula $c$
+\end_inset
+
+ would be modeled by the advection-decay equation 
+\begin_inset Formula 
+\[
+u_{t}+cu_{x}=-\lambda u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pure initial value problem 
+\begin_inset Formula 
+\begin{align*}
+u_{t}+cu_{x} & =0,\quad x\in\mathbb{R},\,t>0\\
+u(x,0) & =u_{0}(x),\quad x\in\mathbb{R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution to initial value problem 
+\begin_inset Formula $u(x,t)=u_{0}(x-ct)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initially density moves to the right with speed 
+\begin_inset Formula $c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Density signal moving along family of straight lines 
+\begin_inset Formula $\xi=x-ct$
+\end_inset
+
+ constant in space-time
+\end_layout
+
+\begin_layout Itemize
+These lines are called 
+\series bold
+characteristics
+\end_layout
+
+\begin_layout Itemize
+General advection equation 
+\begin_inset Formula 
+\[
+u_{t}+cu_{x}+au=f(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve equation by transforming to a new, moving coordinate system 
+\begin_inset Formula 
+\[
+y=x-ct,\quad\tau=t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We denote 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ in the new variables by 
+\begin_inset Formula $U(y,\tau)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We obtain 
+\begin_inset Formula $U(y,\tau)$
+\end_inset
+
+ from 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ by expressing 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ in the new variables 
+\begin_inset Formula $u(x(y,\tau),t(y,\tau)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Similarly, we recover 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ from 
+\begin_inset Formula $U(y,\tau)$
+\end_inset
+
+ by expressing 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ in the old variables 
+\begin_inset Formula $U(y(x,t),\tau(x,t))$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Thus to express the derivative 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{x}$
+\end_inset
+
+ in terms of the new variables, we need to use the chain rule which yields
+\begin_inset Formula 
+\[
+u_{t}=\partial_{t}U(y(x,t),\tau(x,t))=U_{y}y_{t}+U_{\tau}\tau_{t}=-cU_{y}+U_{\tau}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+u_{x}=\partial_{x}U(y(x,t),\tau(x,t))=U_{y}y_{x}+U_{\tau}\tau_{x}=U_{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the new variables, advection equation becomes 
+\begin_inset Formula 
+\begin{align*}
+u_{t}+cu_{x}+au=f(x,t) & \Rightarrow-cU_{y}+U_{\tau}+cU_{y}+aU=f(y,\tau)\\
+ & \Leftrightarrow U_{\tau}+aU=f(y,\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What to have achieved by this? We got ride of the spatial derivative 
+\begin_inset Formula $u_{x}$
+\end_inset
+
+ and are left with an ordinary differential equation
+\end_layout
+
+\begin_layout Itemize
+It is a linear ODE and can be solved by multiplying with a integrating factor
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Example
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Find the general solution of 
+\begin_inset Formula 
+\[
+u_{t}+2u_{x}-u=t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $y=x-2t,\quad\tau=t$
+\end_inset
+
+.
+ In the characteristic coordinates the equation becomes 
+\begin_inset Formula 
+\[
+U_{\tau}-U=\tau
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Derivatives
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =\partial_{t}U(y(x,t),\tau(x,t))=U_{y}y_{t}+U_{\tau}\tau_{t}=-2U_{y}+U_{\tau}\\
+u_{x} & =\partial_{x}U(y(x,t),\tau(x,t))=U_{y}y_{x}+U_{\tau}\tau_{x}=U_{y}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting yields 
+\begin_inset Formula 
+\begin{align*}
+-2U_{y}+U_{\tau}+2U_{y}-U & =\tau\\
+\Leftrightarrow U_{\tau}-U & =\tau
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution in old coordinates
+\begin_inset Formula 
+\[
+u(x,t)=-(1+t)+g(x-2t)e^{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g$
+\end_inset
+
+ is an arbitrary function
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Write as integrating factor 
+\begin_inset Formula $c(\tau)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+U_{\tau}c-Uc=\tau c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $c_{\tau}=-c$
+\end_inset
+
+ such that 
+\begin_inset Formula $U_{\tau}c-Uc=U_{\tau}c+Uc_{\tau}=(Uc)_{\tau}$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $c_{\tau}=-c$
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\[
+c(\tau)=e^{-\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integration gives a constant which we suppress because it can be absorbed
+ in the end.
+ We need to solve 
+\begin_inset Formula 
+\[
+(Ue^{-\tau})_{\tau}=\tau e^{-\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating yields
+\begin_inset Formula 
+\begin{align*}
+e^{-\tau}U & =\int d\tau\,\tau e^{-\tau}\\
+\Rightarrow e^{-\tau}U & =-(1+\tau)e^{-\tau}+g(y)\\
+\Leftrightarrow U & =-(1+\tau)+g(y)e^{\tau}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+where 
+\begin_inset Formula $g(y)$
+\end_inset
+
+ is an arbitrary function.
+ Transforming back to 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u=-(1+t)+g(x-2t)e^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+More general reaction-advection PDE 
+\begin_inset Formula 
+\[
+u_{t}+2cu_{x}=f(x,t,u)
+\]
+
+\end_inset
+
+can be theoretically be solved by the same transformation in turns the PDE
+ into a ODE
+\begin_inset Formula 
+\[
+U_{\tau}=F(y,\tau,U)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Important point: Advection operator 
+\begin_inset Formula $\frac{\partial}{\partial t}+c\frac{\partial}{\partial x}$
+\end_inset
+
+ simplifies to 
+\begin_inset Formula $\frac{\partial}{\partial\tau}$
+\end_inset
+
+ in characteristic coordinates 
+\end_layout
+
+\begin_layout Itemize
+Solution method is called 
+\series bold
+method of characteristics
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Similar method can be applied to solve the equation 
+\begin_inset Formula 
+\[
+u_{t}+c(x,t)u_{x}=f(x,t,u)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Think of 
+\begin_inset Formula $c(x,t)$
+\end_inset
+
+ as the advection speed in a heterogeneous medium 
+\end_layout
+
+\begin_layout Itemize
+The constant 
+\begin_inset Formula $c$
+\end_inset
+
+ depends now on the location in the medium and on time 
+\end_layout
+
+\begin_layout Itemize
+Characteristic coordinates 
+\begin_inset Formula $y=\Phi(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau=t$
+\end_inset
+
+, where 
+\begin_inset Formula $\Phi(x,t)=C$
+\end_inset
+
+ is the general solution of the ODE 
+\begin_inset Formula 
+\[
+\frac{dx}{dt}=c(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In these new coordinates 
+\begin_inset Formula 
+\[
+U_{\tau}=F(\xi,\tau,U)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+u_{t}+c(x,t)u_{x}=f(x,t,u)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $y=f(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau=t$
+\end_inset
+
+.
+ Derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+u_{t}=\partial_{t}U(y(x,t),\tau(t))=U_{y}y_{t}+U_{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{x}=\partial_{x}U(y(x,t),\tau(t))=U_{y}y_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into 
+\begin_inset Formula 
+\[
+U_{y}y_{t}+U_{\tau}+c(x,t)U_{y}y_{x}=F(y,\tau,U)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If we want to get ride of 
+\begin_inset Formula $U_{y}$
+\end_inset
+
+ we need to choose 
+\begin_inset Formula $y$
+\end_inset
+
+ such that 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+y_{t}=c(x,t)y_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can accomplish that by 
+\begin_inset Formula 
+\[
+y_{t}=x-C(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $C_{t}=c(x,t)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Example
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider PDE 
+\begin_inset Formula $u_{t}+2tu_{x}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $c(x,t)=2t$
+\end_inset
+
+.
+ Setting 
+\begin_inset Formula 
+\[
+y=x-t^{2}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $\tau=t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chain rule 
+\begin_inset Formula 
+\begin{align*}
+-2tU_{y}+U_{\tau}+2tU_{y} & =0\\
+\Leftrightarrow U_{\tau} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, 
+\begin_inset Formula $U=g(y)$
+\end_inset
+
+ which reads in the old coordinates 
+\begin_inset Formula $u(x-t^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+How does the basic conservation law changes if the tube has variable cross-secti
+onal area
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Diffusion
+\end_layout
+
+\begin_layout Itemize
+Basic conservation law 
+\begin_inset Formula 
+\[
+u_{t}+\Phi_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Model simple diffusion process, 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ may be conenctration of some chemical species 
+\end_layout
+
+\begin_layout Itemize
+Random motion and collisions cause the concentration of the gas to spread
+ out
+\end_layout
+
+\begin_layout Itemize
+Gas moves from regions of higher concentration to regions of lower concentration
+ 
+\end_layout
+
+\begin_layout Itemize
+Random motions, two assumptions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+movement is from higher concentration to lower concentration
+\end_layout
+
+\begin_layout Itemize
+the steeper the concentration gradient, the greater the flux 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ flux should depend on 
+\begin_inset Formula $x$
+\end_inset
+
+-derivative of the density 
+\end_layout
+
+\begin_layout Itemize
+the 
+\begin_inset Formula $x$
+\end_inset
+
+-derivative measures the steepness of the density curve 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Assume simple linear relationship 
+\begin_inset Formula 
+\[
+\Phi=-Du_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The flow is 
+\series bold
+down the gradient
+\end_layout
+
+\begin_layout Itemize
+The above equation is Fick's law and constant 
+\begin_inset Formula $D$
+\end_inset
+
+ is called 
+\series bold
+diffusion constant
+\end_layout
+
+\begin_layout Itemize
+Inserting the flux into the conservation law yields  
+\begin_inset Formula 
+\[
+u_{t}-Du_{xx}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This equation is called 
+\series bold
+diffusion equation
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\end_layout
+
+\begin_layout Itemize
+Heat flow in a one-dimensional bar having constant density 
+\begin_inset Formula $\rho$
+\end_inset
+
+ and specific heat 
+\begin_inset Formula $C$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $C$
+\end_inset
+
+ has units energy per mass per degree 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Energy density 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+, apply basic conservation law to the bar 
+\begin_inset Formula 
+\[
+u(x,t)=\rho C\theta(x,t)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta=\theta(x,t)$
+\end_inset
+
+ is the temperature at 
+\begin_inset Formula $x$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+R.h.s.
+ has unit energy per volume 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Assumption that energy is proportional to temperature is, in itself, an
+ assumption about the medium 
+\begin_inset Formula 
+\[
+\rho C\theta_{t}+\Phi_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux is assumed to be given by Flick's law-type exprresion 
+\begin_inset Formula 
+\[
+\Phi=-K\theta_{x}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $K$
+\end_inset
+
+ is thermal conductivity 
+\end_layout
+
+\begin_layout Itemize
+In the context of heat flow, flux equation is called 
+\series bold
+Fourier heat law
+\end_layout
+
+\begin_layout Itemize
+Inserting flux yields a single equation for the temerpature 
+\begin_inset Formula 
+\[
+\theta_{t}-k\theta_{xx}=0,\quad k=\frac{K}{\rho C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constant 
+\begin_inset Formula $k$
+\end_inset
+
+ is called the diffusity 
+\end_layout
+
+\begin_layout Itemize
+Thermal conductivity 
+\begin_inset Formula $K$
+\end_inset
+
+ may not be constant but depend on 
+\begin_inset Formula $x$
+\end_inset
+
+ if the bar is nonhomogeneous 
+\end_layout
+
+\begin_layout Itemize
+Over large temperatur ranges the conductivity could also depend on the temperatu
+re 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $K=K(\theta)$
+\end_inset
+
+, then we obtain a nonlinear model 
+\begin_inset Formula 
+\[
+\rho C\theta_{t}-(K(\theta)\theta_{x})_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example Advection-Diffusion 
+\end_layout
+
+\begin_layout Itemize
+If both diffusion and advection are present, then the flux is given by 
+\begin_inset Formula 
+\[
+\Phi=cu-Du_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation would model density of a chemical, that is being advected by a
+ bulk motion of a fluid moving with 
+\begin_inset Formula $c$
+\end_inset
+
+ in which it is dissolved, while at the same time it is diffusing according
+ to Flick's law 
+\end_layout
+
+\begin_layout Itemize
+Diffusion-like equations are often accompanied by an initial condition that
+ specifies density at 
+\begin_inset Formula $t=0$
+\end_inset
+
+ at all points of the spatial domain 
+\end_layout
+
+\begin_layout Itemize
+Tube of length 
+\begin_inset Formula $0\leq x\leq l$
+\end_inset
+
+ with initial condition 
+\begin_inset Formula 
+\[
+u(x,0)=u_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Three types of additional boundary conditions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Density is specified at the boundary 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(0,t)=g(t),\quad t>0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g$
+\end_inset
+
+ is given, this condition is called a 
+\series bold
+Dirichlet condition
+\end_layout
+
+\begin_layout Enumerate
+We could also 
+\series bold
+specify the flux
+\series default
+ at a boundary, i.e.
+ 
+\begin_inset Formula 
+\[
+-Du_{x}(0,t)=h(t),\quad t>0
+\]
+
+\end_inset
+
+which is called a 
+\series bold
+Neumann condition
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $h(t)=0$
+\end_inset
+
+, then we say that the boundary is insulated 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $g$
+\end_inset
+
+ or 
+\begin_inset Formula $h$
+\end_inset
+
+ is zero, we also say that the corresponding boundary condition is 
+\series bold
+homogeneous
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Boundary condition has the form at 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-Du_{x}(0,t)=-\beta(u(0,t)-\psi(t)),\quad t>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In heat flow in a bar, for example, flux is proportional to the temperature
+ difference between the end of the bar and the given temperature 
+\begin_inset Formula $\psi(t)$
+\end_inset
+
+ of the environment
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the constant of proportionality representing a heatloss factor 
+\end_layout
+
+\begin_layout Itemize
+These type of conditions are called 
+\series bold
+radiation condition
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Requirement for well-posed PDE model is that the PDE is accompanied by appropria
+te initial and boundary conditions so that the resulting mathematical problem
+ has a unique solution 
+\end_layout
+
+\begin_layout Itemize
+Many PDE have the property that after a long time the transients caused
+ by initial conditions decay away and the solution approaches a 
+\series bold
+steady-state 
+\begin_inset Formula $u=u(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In this case time derivatives vanish and 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ satisfies an ODE with the appropriate boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Diffusion equation 
+\begin_inset Formula $u_{t}=Du_{xx}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Steady state solution 
+\begin_inset Formula $Du_{xx}=0$
+\end_inset
+
+ which gives a linear density profile 
+\begin_inset Formula $u(x)=ax+b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constants 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ are determined by given boundary conditions 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\end_layout
+
+\begin_layout Itemize
+Consider an initial boundary value problem for the diffusion-decay equation
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =Du_{xx}-ru,\quad0<x<L,\quad t>0\\
+u(0,t) & =0,\quad-Du_{x}(L,t)=-1,\quad t>0\\
+u(x,0) & =g(x),\quad0<x<L
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fish population in tube with per capita death rate 
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Left boundary condition, population density is maintained at zero 
+\end_layout
+
+\begin_layout Itemize
+Right boundary condition, fish are introduced into the canal at 
+\begin_inset Formula $1$
+\end_inset
+
+ per unit are per unit time
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Advection model, flux is 
+\begin_inset Formula 
+\[
+\Phi(x,t)=cu(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Conservation law 
+\begin_inset Formula 
+\[
+u_{t}=-\Phi_{x}=-cu_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Here 
+\begin_inset Formula $-Du_{x}(L,t)=-1\Rightarrow$
+\end_inset
+
+ flux at 
+\begin_inset Formula $L$
+\end_inset
+
+ is equivalent to 
+\begin_inset Formula $-1$
+\end_inset
+
+, i.e.
+ per unit time and area 
+\begin_inset Formula $1$
+\end_inset
+
+ fish is swimming through the boundary inside the system (negative sign
+ is defined as flow to the left).
+ Insert into conservation law 
+\begin_inset Formula 
+\[
+u_{t}(L)=-ru,\quad0<x<L,\quad t>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The steady-state model is the pure boundary value problem 
+\begin_inset Formula 
+\begin{align*}
+Du''-ru & =0,\quad0<x<L,\\
+u(0) & =L,\\
+-Du'(L) & =-1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition is ignored since it no longer affects the solution
+\end_layout
+
+\begin_layout Itemize
+PDE is becomes a ODE if we only interested in steady-state solution
+\end_layout
+
+\begin_layout Itemize
+Pure boundary value problems for ODEs are 
+\series bold
+unlike 
+\series default
+initial value problems 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+They do not always have solution
+\end_layout
+
+\begin_layout Itemize
+They may have many solutions 
+\end_layout
+
+\begin_layout Itemize
+There is no guarantee that the system has a steady-state solution 
+\end_layout
+
+\begin_layout Itemize
+Steady state solution may be unstable 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Exercises
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ satisfy the PDE model 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx},\quad0<x<l,\,t>0\\
+u(0,t) & =u(l,t)=0,\quad t>0\\
+u(x,0) & =u_{0}(x),\quad0\leq x\leq l
+\end{align*}
+
+\end_inset
+
+show that 
+\begin_inset Formula 
+\[
+\int_{0}^{l}u(x,t)^{2}dx\leq\int_{0}^{l}u_{0}(x)^{2}dx,\quad t\geq0
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula 
+\[
+E(t)=\int_{0}^{l}u(x,t)^{2}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Show that 
+\begin_inset Formula $E'(t)\leq0$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+E_{t}=\int_{0}^{l}dx\,2u_{t}u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From low of conversation it follows that 
+\begin_inset Formula $u_{t}=ku_{xx}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E_{t}=2k\int_{0}^{l}dx\,uu_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{l}uu_{xx}dx & =\left.uu_{x}\right|_{0}^{l}-\int_{0}^{l}dxu_{x}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using boundary conditions 
+\begin_inset Formula $u(0,t)=u(l,t)=0$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\int_{0}^{l}uu_{xx}dx=-\int_{0}^{l}dxu_{x}^{2}\leq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From this follows 
+\begin_inset Formula 
+\[
+E_{t}\leq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From this follows 
+\begin_inset Formula 
+\[
+\int_{0}^{l}u(x,t)^{2}dx\leq\int_{0}^{l}u_{0}(x)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $u_{0}(x)=0$
+\end_inset
+
+ than 
+\begin_inset Formula 
+\[
+u_{t}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that the problem 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx},\quad0<x<l,\,t>0\\
+u(0,t) & =g(t),\quad t>0\\
+u(l,t) & =h(t),\quad t>0\\
+u(x,0) & =u_{0}(x),\quad0\leq x\leq l
+\end{align*}
+
+\end_inset
+
+with nonhomogeneous boundary conditions can be transformed into a problem
+ with homogeneous boundary conditions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Introduce a new dependent variable 
+\begin_inset Formula $w$
+\end_inset
+
+ by subtracting from 
+\begin_inset Formula $u$
+\end_inset
+
+ a linear function of 
+\begin_inset Formula $x$
+\end_inset
+
+ that satisfies the boundary conditions at any fixed 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Linear function in 
+\begin_inset Formula $x$
+\end_inset
+
+ which satisfies the boundary condition at any time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f(0) & =g(t)\\
+f(L) & =h(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This are two points which define a line at each time point 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Slope 
+\begin_inset Formula 
+\[
+m=\frac{h(t)-g(t)}{L}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Offset 
+\begin_inset Formula 
+\[
+b=g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Linear equation 
+\begin_inset Formula 
+\[
+f(x,t)=\frac{h(t)-g(t)}{L}x+g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define independent variable
+\begin_inset Formula 
+\[
+w(x,t)=u(x,t)-f(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivatives 
+\begin_inset Formula 
+\[
+u_{t}=w_{t}+f_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula 
+\[
+u_{xx}=w_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+because 
+\begin_inset Formula $f$
+\end_inset
+
+ is linear in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Thus, we obtain 
+\begin_inset Formula 
+\[
+w_{t}-kw_{xx}+f_{t}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+PDE picks up a source term, so we trading boundary conditions for source
+ terms.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that the advection-diffusion-decay equation 
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}-cu_{x}-\lambda u
+\]
+
+\end_inset
+
+can be transformed into the diffusion equation by a transformation of the
+ form
+\begin_inset Formula 
+\[
+u(x,t)=w(x,t)e^{\alpha x-\beta t}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{t}=w_{t}e^{\alpha x-\beta t}-\beta we^{\alpha x-\beta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{x}=w_{x}e^{\alpha x-\beta t}+\alpha we^{\alpha x-\beta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{xx}=w_{xx}e^{\alpha x-\beta t}+2\alpha w_{x}e^{\alpha x-\beta t}+\alpha^{2}we^{\alpha x-\beta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into the PDE yields 
+\begin_inset Formula 
+\begin{align*}
+-\beta w_{t}e^{\alpha x-\beta t} & =D\left(\alpha w_{xx}e^{\alpha x-\beta t}+\alpha^{2}w_{x}e^{\alpha x-\beta t}\right)-\alpha cw_{x}e^{\alpha x-\beta t}-\lambda u\\
+-\beta w_{t} & =\alpha Dw_{xx}+\alpha^{2}Dw_{x}-\alpha cw_{x}-\lambda\frac{u}{e^{\alpha x-\beta t}}\\
+-\beta w_{t} & =\alpha Dw_{xx}+\left(\alpha^{2}D-\alpha c\right)w_{x}-\lambda\alpha w
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Show that the equation 
+\begin_inset Formula $u_{t}=k(t)u_{xx}$
+\end_inset
+
+ can be transformed into the diffusion equation by changing the independent
+ variable 
+\begin_inset Formula $t$
+\end_inset
+
+ to 
+\begin_inset Formula $\tau=\int_{0}^{t}k(t')dt'$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We want to replace 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ by 
+\begin_inset Formula $U(x,\tau)$
+\end_inset
+
+ with 
+\begin_inset Formula $\tau=\int_{0}^{t}dt'\,k(t')$
+\end_inset
+
+.
+ The derivative 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ can be expressed in terms of the derivatives 
+\begin_inset Formula 
+\[
+u_{t}=\frac{\partial}{\partial t}U(x,\tau(t))=U_{\tau}\tau_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivative 
+\begin_inset Formula $\tau(t)$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau_{t}=\frac{\partial}{\partial t}\int_{0}^{t}k(t')dt'=\frac{\partial}{\partial t}\int_{0}^{b(t)}k(t')dt'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Leibniz rule 
+\begin_inset Formula 
+\[
+\tau_{t}=k(t)\frac{\partial b(t)}{\partial t}=k(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivative 
+\begin_inset Formula $u_{xx}$
+\end_inset
+
+ does not change in the new coordinates 
+\begin_inset Formula 
+\[
+U_{xx}=u_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into the PDE yields 
+\begin_inset Formula 
+\begin{align*}
+U_{\tau}k(t) & =k(t)U_{xx}\\
+\Leftrightarrow U_{\tau} & =U_{xx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+PDE Models in Biology
+\end_layout
+
+\begin_layout Itemize
+Nature science are to complex, models are more phenomenological in nature
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+predicting only qualitative features 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Large insect population in a cylindrical tube of length 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Populations are often modeled by a growth law
+\begin_inset Formula 
+\[
+\frac{du(t)}{dt}=ru(t)\Rightarrow u(t)=u_{0}e^{rt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infinite exponential growth is impossible due to liminting environmental
+ factors 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Logistic model 
+\begin_inset Formula 
+\[
+\frac{du(t)}{dt}=ru(t)\left(1-\frac{u(t)}{K}\right)
+\]
+
+\end_inset
+
+
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We have
+\begin_inset Formula 
+\[
+u_{t}=ru-\frac{r}{K}u^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is a Bernoulli Differential Equation of the type 
+\begin_inset Formula 
+\[
+y_{t}+p(x)y=q(x)y^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which can be reduced to a linear differential equation by dividing by 
+\begin_inset Formula $y^{n}$
+\end_inset
+
+ and substituting 
+\begin_inset Formula $v=y^{1-n}$
+\end_inset
+
+.
+ For the above equation, we have 
+\begin_inset Formula 
+\[
+u^{-2}u_{t}=ru^{-1}-\frac{r}{K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $w=u^{-1}$
+\end_inset
+
+.
+ Derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+w_{t}=-u^{-2}u_{t}\Leftrightarrow u_{t}=-u^{2}w_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into the ODE yields 
+\begin_inset Formula 
+\begin{align*}
+-u^{-2}u^{2}w_{t} & =rw-\frac{r}{K}\\
+\Leftrightarrow w_{t} & =-rw+\frac{r}{K}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This linear ODE can be solve using the integrating factor 
+\begin_inset Formula $e^{rt}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+w_{t}e^{rt}+re^{rt}w & =\frac{r}{K}e^{rt}\\
+\Leftrightarrow(we^{rt})_{t} & =\frac{r}{K}e^{rt}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating by 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+we^{rt} & =\frac{1}{K}e^{rt}+\alpha\\
+w & =\frac{1}{K}+\alpha e^{-rt}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting back 
+\begin_inset Formula 
+\begin{align*}
+u^{-1} & =\frac{1}{K}+\alpha e^{-rt}\\
+\Leftrightarrow u & =\frac{K}{1+\alpha Ke^{-rt}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+S-shaped curve.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This model ignores how insects are distributed spatially in the tube 
+\begin_inset Formula $u(t)\Rightarrow u(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+With this interpretation 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ is a local population density measuring the number of insects in a small
+ volume 
+\begin_inset Formula $A\Delta x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If spatial motion is due to diffusion, PDE model for logistic growth is
+ given by 
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}+ru\left(1-\frac{u}{K}\right),\quad u=u(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This equation is called Fisher's equation 
+\end_layout
+
+\begin_layout Itemize
+Fundamental nonlinear PDEs of biology 
+\end_layout
+
+\begin_layout Itemize
+If we know 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+, then the total number of insects at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+N(t)=\int_{0}^{L}u(x,t)Adx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two fundamental models in biology to describe motion
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+advection
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+diffusion
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Advection refers to transport via bulk motion of the supporting medium,
+ e.g., wind, water, blood, and so on ...
+ 
+\end_layout
+
+\begin_layout Itemize
+Diffusion refers to random motion that cause the entities to disperse from
+ high to low concentration 
+\end_layout
+
+\begin_layout Itemize
+Advection equation with source 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =-cu_{x}+f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion equation with source 
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}+f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For advection and diffusion the flux is given by
+\begin_inset Formula 
+\[
+\Phi=-Du_{x}+cu
+\]
+
+\end_inset
+
+and the conservation law by 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}-cu_{x}+f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sources and sinks depend upon the model 
+\end_layout
+
+\begin_layout Itemize
+In population models the source term 
+\begin_inset Formula $f$
+\end_inset
+
+ represents birth and growth rates 
+\end_layout
+
+\begin_layout Itemize
+Chemical reaction source/sink term is called reaction term and represents
+ the rate that the chemical species is created or consumed by reaction
+\end_layout
+
+\begin_layout Itemize
+Advection speed 
+\begin_inset Formula $c$
+\end_inset
+
+ and diffusion constant can depend on 
+\begin_inset Formula $x$
+\end_inset
+
+ or 
+\begin_inset Formula $u$
+\end_inset
+
+ itself 
+\begin_inset Formula 
+\[
+u_{t}=(Du_{x})_{x}-(cu)_{x}+f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $c$
+\end_inset
+
+ or 
+\begin_inset Formula $D$
+\end_inset
+
+ depends upon 
+\begin_inset Formula $u$
+\end_inset
+
+, the equation is nonlinear
+\end_layout
+
+\begin_layout Itemize
+Diffusion 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ random spreading by e.g
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+random microscopic collisions with medium 
+\end_layout
+
+\begin_layout Itemize
+interactions on macroscopic scale 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Show how diffusion model arises from a stochastic argument based upon random
+ motion 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ is a random variable with normal probability 
+\end_layout
+
+\begin_layout Itemize
+Take standard deviation to depend on time 
+\begin_inset Formula $\sigma=\sqrt{2Dt}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\mu)^{2}}{4Dt}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is a solution to the diffusion equation generated by a unit point source
+ given at 
+\begin_inset Formula $x=\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $x$
+\end_inset
+
+ represent arbitrary point on the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis 
+\end_layout
+
+\begin_layout Itemize
+Divide axis into equal segments of length 
+\begin_inset Formula $h$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+u=u(x,t)h
+\]
+
+\end_inset
+
+are the number of particles in the interval 
+\begin_inset Formula $(x,x+h)$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Assume that in the next small instant of time 
+\begin_inset Formula $\tau$
+\end_inset
+
+ all particles in 
+\begin_inset Formula $x$
+\end_inset
+
+ move randomly to left or right with an equal probability of 
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calculate particle distribution at the next time 
+\begin_inset Formula $t+\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Change in number of particles in 
+\begin_inset Formula $(x,x+h)=$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Number that move in from the left
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $+$
+\end_inset
+
+ Number that move in from the right
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-$
+\end_inset
+
+ Number that leave to the left
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-$
+\end_inset
+
+ Number that leave to the right 
+\begin_inset Formula 
+\begin{align*}
+u(x,t+\tau)-u(x,t) & =\frac{1}{2}u(x-h,t)+\frac{1}{2}u(x+h,t)-\frac{1}{2}u(x,t)-\frac{1}{2}u(x,t)\\
+u(x,t+\tau) & =\frac{1}{2}u(x-h,t)+\frac{1}{2}u(x+h,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Difference equation relating number of particles in three adjacent intervals
+ at two different times.
+ Because 
+\begin_inset Formula $h$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are small, expand the three terms in Taylor series 
+\begin_inset Formula 
+\begin{align*}
+u(x,t)+u_{t}(x,t)\tau+\mathcal{O}(\tau^{2}) & =\frac{1}{2}\left(u(x,t)-u_{x}(x,t)h+\frac{1}{2}u_{xx}(x,t)h^{2}+\mathcal{O}(h^{3})\right)\\
+ & +\frac{1}{2}\left(u(x,t)+u_{x}(x,t)h+\frac{1}{2}u_{xx}(x,t)h^{2}+\mathcal{O}(h^{3})\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simplifying yields 
+\begin_inset Formula 
+\[
+u_{t}(x,t)\tau=\frac{h^{2}}{2\tau}u_{xx}(x,t)+\mathcal{O}(\tau)+\frac{1}{\tau}\mathcal{O}(h^{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take limit 
+\begin_inset Formula $\tau\rightarrow0$
+\end_inset
+
+ and 
+\begin_inset Formula $h\rightarrow0$
+\end_inset
+
+ such that ratio 
+\begin_inset Formula $h^{2}/2\tau$
+\end_inset
+
+ equal to a fixed constant 
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability moving right or left is 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $1-p$
+\end_inset
+
+ yields diffusion equation with drift 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ advection-diffusion equation
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Point-source solutions 
+\series default
+are called 
+\series bold
+fundamental solutions
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Those that also satisfy given boundary conditions are called 
+\series bold
+Green's functions
+\end_layout
+
+\begin_layout Itemize
+Advection-diffusion equation 
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}-cu_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Point-source solution is 
+\begin_inset Formula 
+\[
+u=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x.\mu-ct)^{2}}{4Dt}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the growth-diffusion equation 
+\begin_inset Formula 
+\[
+u_{t}=Du_{xx}+\gamma u
+\]
+
+\end_inset
+
+the point-source solution is 
+\begin_inset Formula 
+\[
+u=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{(x-\mu)^{2}}{4Dt}+\gamma t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion equation in two dimensions with radial symmetry and unit source
+ at the origin
+\begin_inset Formula 
+\[
+u_{t}=D\frac{1}{r}(ru_{r})_{r}
+\]
+
+\end_inset
+
+the point-source solution is 
+\begin_inset Formula 
+\[
+u(r,t)=\frac{1}{4\pi Dt}e^{-\frac{r^{2}}{4Dt}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion equation in three dimensions with spherical symmetry and unit
+ source at the origin 
+\begin_inset Formula 
+\[
+u_{t}=D\frac{1}{\rho^{2}}(\rho^{2}\mu_{\rho})_{\rho}
+\]
+
+\end_inset
+
+the point-source solution is 
+\begin_inset Formula 
+\[
+u_{t}=D\frac{1}{\rho^{2}}(\rho^{2}\mu_{\rho})_{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Difference between point-source solutions in planar, radial, and spherical
+ symmetry is the decaying, time-dependent amplitude factor in front of exponenti
+al
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1d
+\begin_inset Formula $1/\sqrt{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+2d 
+\begin_inset Formula $1/t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+3d 
+\begin_inset Formula $1/t^{3/2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Signals diffuse faster as the dimension increase because there is more space
+ for the material to go 
+\end_layout
+
+\begin_layout Subsection*
+Exercises
+\end_layout
+
+\begin_layout Enumerate
+In Flick's law, assume that diffusion coefficient 
+\begin_inset Formula $D$
+\end_inset
+
+ is a function of the density 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ In this case show that the diffusion equation without sources can be written
+ as 
+\begin_inset Formula 
+\[
+u_{t}=D(u)u_{xx}+D'(u)u_{x}^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+u_{t}=-\Phi_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $\Phi=-Du_{x}$
+\end_inset
+
+.
+ Flux is proportional to gradient but in opposite direction.
+ If diffusion coefficient depends on 
+\begin_inset Formula $u$
+\end_inset
+
+ we need to use the chain rule
+\begin_inset Formula 
+\[
+u_{t}=D_{x}u_{x}^{2}+D_{x}u_{xx}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the diffusion equation with no sources, find steady state concentration
+ 
+\begin_inset Formula $u=u(x)$
+\end_inset
+
+.
+ Diffusion coefficient is 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Boundary conditions 
+\begin_inset Formula $u(0)=4$
+\end_inset
+
+ and 
+\begin_inset Formula $u'(2)=2$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Explain boundary conditions: First, 
+\begin_inset Formula $u(0)=4$
+\end_inset
+
+.
+ Concentration is constant at 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Second, 
+\begin_inset Formula $u'(2)=2$
+\end_inset
+
+.
+ For the diffusion equation 
+\begin_inset Formula $u_{t}=-\Phi_{x}$
+\end_inset
+
+, the flux is
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\Phi=-Du_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, the boundary condition 
+\begin_inset Formula $u'(2)=2$
+\end_inset
+
+ means that 
+\begin_inset Formula $2D$
+\end_inset
+
+ particles entering the system per unit time from the left border.
+ Steady state solution 
+\begin_inset Formula 
+\[
+u_{xx}=0
+\]
+
+\end_inset
+
+from which follows 
+\begin_inset Formula $u=ax+b$
+\end_inset
+
+.
+ Boundary conditions determine coefficients 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ such
+\begin_inset space ~
+\end_inset
+
+ that 
+\begin_inset Formula 
+\[
+u=2x+4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+What is the steady state solution if 
+\begin_inset Formula $D$
+\end_inset
+
+ depends on 
+\begin_inset Formula $u$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Steady state solution starting from 
+\begin_inset Formula 
+\[
+(D(u)u_{x})_{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating yields
+\begin_inset Formula 
+\[
+D(u)u_{x}=c\Leftrightarrow u_{x}=\frac{c}{D(u)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating again yields 
+\begin_inset Formula 
+\[
+u=c\int dx\frac{1}{D(u)}+d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula $u'(2)=2$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+u_{x}(2)=\frac{c}{D(u(2))}=1\Leftrightarrow c=D(u(2))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula $u(0)=4$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+u(0)=D(u(2))\left.\int dx\frac{1}{D(u)}\right|_{x=0}+d=4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $d$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Consider all cases, find the form of steady-state solutions to the advection-dif
+fusion equation 
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Consider the advection-diffusion equation on an interval 
+\begin_inset Formula $0<x<L$
+\end_inset
+
+.
+ Show that if the flux at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ equals the flux at 
+\begin_inset Formula $x=L$
+\end_inset
+
+, then the density is constant 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+u_{t}=-\Phi_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Steady-state solution 
+\begin_inset Formula 
+\[
+\Phi_{x}=a
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From which follows 
+\begin_inset Formula 
+\[
+\Phi=ax+b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary conditions 
+\begin_inset Formula $\Phi(0,t)=\Phi(L,t)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+b=aL+b\Leftrightarrow a=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $\Phi=b$
+\end_inset
+
+ into the advection-diffusion equation 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+b=-Du_{x}+cu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The flux is 
+\begin_inset Formula 
+\begin{align*}
+-Du_{x}+cu & =b\\
+u_{x}+Au & =B
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $A=-c/D$
+\end_inset
+
+ and 
+\begin_inset Formula $B=-b/D$
+\end_inset
+
+.
+ Multiply with integrating factor 
+\begin_inset Formula $e^{Ax}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+u_{x}+Ae^{Ax}u & =Be^{Ax}\\
+(ue^{Ax})_{x} & =Be^{Ax}\\
+ue^{Ax} & =B\int dxe^{Ax}+a\\
+ue^{Ax} & =\frac{B}{A}e^{Ax}+a\\
+u & =\frac{B}{A}+ae^{-Ax}\\
+u & =\frac{b}{c}+ae^{\frac{c}{D}x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivative 
+\begin_inset Formula 
+\[
+u_{x}=\frac{ac}{D}e^{\frac{c}{D}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Determine 
+\begin_inset Formula $a$
+\end_inset
+
+ from boundary conditions 
+\begin_inset Formula $\Phi(0)=b$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+b & =-Du_{x}(0)+cu(0)\\
+b & =-ac+b+ac\\
+0 & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Show that the steady-state solutions to the diffusion equation in linear
+ geometry, in planar geometry with radial symmetry and in spatial geomtry
+ with spherical symmetry are
+\begin_inset Formula 
+\begin{align*}
+u & =ax+b\\
+u & =a\ln(r)+b\\
+u & =\frac{a}{\rho}+b
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+d: 
+\begin_inset Formula 
+\[
+u_{xx}=0\Rightarrow u=ax+b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+d:
+\begin_inset Formula 
+\begin{align*}
+D\frac{1}{r}(ru_{r})_{r} & =0\\
+(ru_{r})_{r} & =0\\
+u_{r} & =\frac{a}{r}\\
+u & =a\ln(r)+b
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+d:
+\begin_inset Formula 
+\begin{align*}
+D\frac{1}{\rho^{2}}(\rho^{2}u_{\rho})_{\rho} & =0\\
+(\rho^{2}u_{\rho})_{\rho} & =0\\
+u_{\rho} & =\frac{a}{\rho^{2}}\\
+u_{\rho} & =-\frac{a}{\rho}+b=\frac{\tilde{a}}{\rho}+b
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Derive the radially symmetric diffusion equation 
+\begin_inset Formula 
+\[
+u_{t}=D\frac{1}{r}(ru_{r})_{r}
+\]
+
+\end_inset
+
+from the law of conservation.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Recap: Conservation law in one dimension
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,u_{t}=\Phi(a,t)-\Phi(b,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The r.h.s.
+ can be written as an integral 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,u_{t}=-\int_{a}^{b}\Phi_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Since the interval 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ is arbitrary and 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi_{x}$
+\end_inset
+
+ are assumed to be continuous functions
+\begin_inset Formula 
+\[
+u_{t}=-\Phi_{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In two dimensions
+\begin_inset Formula 
+\[
+\int_{a}^{b}dr\int_{0}^{2\pi}d\varphi\,ru_{t}=\int_{0}^{2\pi}d\varphi\,a\,\Phi(a,t)-\int_{0}^{2\pi}d\varphi\,b\,\Phi(b,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Since 
+\begin_inset Formula $u$
+\end_inset
+
+ is radial symmetric, i.e.
+ 
+\begin_inset Formula $u(r,\varphi,t)=u(r,t)$
+\end_inset
+
+, we can perform the angle integration 
+\begin_inset Formula 
+\[
+\int_{a}^{b}drru_{t}=a\Phi(a,t)-b\Phi(b,t)
+\]
+
+\end_inset
+
+The letter can be written as in integral 
+\begin_inset Formula 
+\[
+\int_{a}^{b}drru_{t}=-\int_{a}^{b}dr\,(r\Phi(r,t))_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Thus, we find 
+\begin_inset Formula 
+\[
+ru_{t}=-(r\Phi(r,t))_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $\Phi=-Du_{r}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+u_{t}=D\frac{1}{r}(ru_{r})_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Conservation law in three dimensions 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dr\int d\Omega\,r^{2}u_{t}=\int d\Omega\,a^{2}\boldsymbol{\Phi}(a)\boldsymbol{e}_{r}-\int d\Omega\,b^{2}\boldsymbol{\Phi}(a)\boldsymbol{e}_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Performing the angel integral and defining 
+\begin_inset Formula $\boldsymbol{\Phi}(x)\boldsymbol{e}_{r}=\Phi(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{a}^{b}drr^{2}u_{t}=a^{2}\Phi(a)-b^{2}\Phi(b)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This can be written as 
+\begin_inset Formula 
+\[
+\int_{a}^{b}drr^{2}u_{t}=-\int_{a}^{b}dr\,(r^{2}\Phi(r))_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Compare integrands 
+\begin_inset Formula 
+\[
+r^{2}u_{t}=(r^{2}\Phi(r))_{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $\Phi(r)=-Du_{r}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =D\frac{1}{r^{2}}(r^{2}\Phi(r))_{r}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Vibrations and Acoustics
+\end_layout
+
+\begin_layout Itemize
+Wave motion is one of the most commonly occuring phenomena in nature e.g.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Electromagnetic waves
+\end_layout
+
+\begin_layout Itemize
+Water waves
+\end_layout
+
+\begin_layout Itemize
+Sound waves
+\end_layout
+
+\begin_layout Itemize
+Acoustic waves
+\end_layout
+
+\begin_layout Itemize
+Stress waves in solids 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+One of the fundamental PDEs is the wave equation 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+ 
+\series bold
+vibrations of a string
+\end_layout
+
+\begin_layout Itemize
+Small, transverse vibrations of a flexible, elastic string
+\end_layout
+
+\begin_layout Itemize
+Motion is described by a function 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+ that gives vertical displacement of each point 
+\begin_inset Formula $x$
+\end_inset
+
+ of the string at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assumptions: Movement is in a plane, i.e.
+ no horizontal movement 
+\end_layout
+
+\begin_layout Itemize
+At each instant of time we assume that the string has the density 
+\begin_inset Formula $\rho(x,t)$
+\end_inset
+
+ with dimensions mass per unit length and Tension in the string is given
+ by function 
+\begin_inset Formula $T(x,t)$
+\end_inset
+
+ with force dimensions 
+\end_layout
+
+\begin_layout Section*
+Quantum Mechanics 
+\end_layout
+
+\begin_layout Itemize
+Schrödinger equation is a second-order partial differential equation having
+ the form 
+\begin_inset Formula 
+\[
+i\hbar\Psi_{t}=-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\Psi_{xx}+V(x)\Psi,\quad x\in R,\quad t>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Free Schrödinger equation 
+\begin_inset Formula 
+\[
+\Psi_{t}=i\Psi_{xx}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $V(x)=0$
+\end_inset
+
+ and constant are taken to be one
+\end_layout
+
+\begin_layout Itemize
+Method do find a solution is to assume that the variables seperate 
+\begin_inset Formula 
+\[
+\Psi(x,t)=y(x)\phi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting yields 
+\begin_inset Formula 
+\[
+\Psi_{t}=\frac{i\hbar\phi'}{\phi}=\frac{-\frac{\hbar^{2}}{2m}y''+V(x)y(x)}{y(x)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+L.h.s.
+ depends only on 
+\begin_inset Formula $t$
+\end_inset
+
+ and r.h.s.
+ depends only on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ They only way equality can occur for all 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ is if both sides are equal to the same constant which we shall call 
+\begin_inset Formula $E$
+\end_inset
+
+ (for engery)
+\end_layout
+
+\begin_layout Itemize
+Seperation ansatz yields two equations, one for 
+\begin_inset Formula $\phi,$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{d\phi}{dt}=-i\frac{E}{\hbar}\phi
+\]
+
+\end_inset
+
+and one for 
+\begin_inset Formula $y$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+-\frac{\hbar^{2}}{2m}y''+(V(x)-E)y=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution to the first equation is 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\phi}d\phi & =-i\frac{E}{\hbar}dt\\
+\phi(t) & =c\cdot e^{-\frac{iE}{\hbar}t}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The time dependent part 
+\begin_inset Formula $\phi(t)$
+\end_inset
+
+ of the overall solution 
+\begin_inset Formula $\psi(t)=\phi(t)y(x)$
+\end_inset
+
+ is a complex exponential.
+ If we want to calculate the probability of presence 
+\begin_inset Formula 
+\begin{align*}
+\left|\psi(t)\right|^{2} & =\left|\phi(t)\right|^{2}\left|y(x)\right|^{2}\\
+ & =\left|y(x)\right|^{2}
+\end{align*}
+
+\end_inset
+
+we see that is independent of the time 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $y(x)$
+\end_inset
+
+ is the spatial part of the wave function and is called time-independent
+ Schrödinger equation x)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The energy levels 
+\begin_inset Formula $E$
+\end_inset
+
+ for which the ODE determining 
+\begin_inset Formula $y$
+\end_inset
+
+ has a nontrivial solution 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $\int dx\,y(x)=1$
+\end_inset
+
+ are interpreted as the allowable energy levels 
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Show that the ordinary differential equation 
+\begin_inset Formula $y''+p(x)y'+q(x)y=0$
+\end_inset
+
+ can be transformed into a Schrödinger-like equatio n 
+\begin_inset Formula $u''+r(x)u=0,\,r=q-p'/2-p^{2}/4$
+\end_inset
+
+ without a first derivative by the Liuville transformation 
+\begin_inset Formula 
+\[
+u=y\exp\left(\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Liuville transformation 
+\begin_inset Formula 
+\begin{align*}
+u & =y\exp\left(\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)\\
+y & \text{=}u\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative 
+\begin_inset Formula 
+\begin{align*}
+y_{x} & =u_{x}\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)-\frac{p(x)}{2}u\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)\\
+ & =\left(u_{x}-\frac{p(x)}{2}u\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+y_{xx} & =\left(u_{xx}-\frac{p_{x}}{2}u-\frac{p}{2}u_{x}\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)-\frac{p}{2}\left(u_{x}-\frac{p}{2}u\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)\\
+ & =\left(u_{xx}-\frac{p_{x}}{2}u+\frac{p^{2}}{4}u-pu_{x}\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into ODE yields 
+\begin_inset Formula 
+\[
+\left(u_{xx}-\frac{p_{x}}{2}u+\frac{p^{2}}{4}u-pu_{x}\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)+p\left(u_{x}-\frac{p}{2}u\right)\exp\left(-\frac{1}{2}\int_{a}^{x}p(\xi)d\xi\right)+q(x)y=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply with exponential 
+\begin_inset Formula 
+\begin{align*}
+u_{xx}-\frac{p_{x}}{2}u+\frac{p^{2}}{4}u-pu_{x} & +pu_{x}-\frac{p^{2}}{2}u+qu=0\\
+u_{xx} & -\frac{p_{x}}{2}u-\frac{p^{2}}{4}u+qu=0\\
+u_{xx} & +\left(q-\frac{p_{x}}{2}-\frac{p^{2}}{4}\right)u=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $V(x)\text{=}\frac{k}{2}x^{2}$
+\end_inset
+
+, then for special value of 
+\begin_inset Formula $E$
+\end_inset
+
+, equation 
+\begin_inset Formula 
+\[
+-\frac{\hbar^{2}}{2m}y''+(V(x)-E)y=0
+\]
+
+\end_inset
+
+admits the solution of the form 
+\begin_inset Formula $y(x)=ce^{-ax^{2}}$
+\end_inset
+
+for some 
+\begin_inset Formula $a>0$
+\end_inset
+
+ amd any constant 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ Determine 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $E$
+\end_inset
+
+ and sketch 
+\begin_inset Formula $\left|\psi\right|^{2}$
+\end_inset
+
+ in the case 
+\begin_inset Formula $k=m=\hbar$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+-\frac{\hbar^{2}}{2m}y''+(V(x)-E)y=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insert 
+\begin_inset Formula $y(x)=ce^{-ax^{2}}$
+\end_inset
+
+.
+ Second derivative 
+\begin_inset Formula 
+\begin{align*}
+y_{xx} & =-2ac\left(xe^{-ax^{2}}\right)_{x}\\
+ & =2ac(2x^{2}-1)e^{-ax^{2}}\\
+ & =2a(2x^{2}-1)y
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insering into the ODE 
+\begin_inset Formula 
+\begin{align*}
+\frac{\hbar^{2}a}{m}(1-2x^{2})y+(\frac{k}{2}x^{2}-E)y & =0\\
+\left(\frac{\hbar^{2}a}{m}(1-2x^{2})+\frac{k}{2}x^{2}-E\right)y & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Equation is fulfilled for 
+\begin_inset Formula 
+\begin{align*}
+\frac{k}{2} & =-2\frac{\hbar^{2}a}{m}\\
+E & =\frac{\hbar^{2}a}{m}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From the first equation, we get 
+\begin_inset Formula 
+\[
+a=-\frac{m}{4\hbar^{2}}k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $a$
+\end_inset
+
+ into the second equation yields 
+\begin_inset Formula 
+\[
+E=-\frac{k}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\Psi(x,t)$
+\end_inset
+
+ is a twice continuously differentiable function that satisfies and both
+ 
+\begin_inset Formula $\left|\Psi\right|$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl|\Psi_{x}\bigr|\rightarrow0$
+\end_inset
+
+ for 
+\begin_inset Formula $\bigl|x\bigr|\rightarrow0$
+\end_inset
+
+.
+ Show 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}dx\,\bigl|\Psi(x,t)\bigr|^{2}=\text{constant }
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Take the time derivative 
+\begin_inset Formula 
+\begin{align*}
+0 & =\int_{-\infty}^{\infty}dx\,\left(\Psi\Psi^{*}\right)_{t}\\
+ & =\int_{-\infty}^{\infty}dx\,\left(\Psi_{t}\Psi^{*}+\Psi\Psi_{t}^{*}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Free Schrödinger equation 
+\begin_inset Formula $\Psi_{t}=i\Psi_{xx}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+0 & =\int_{-\infty}^{\infty}dx\,\left(i\Psi_{xx}\Psi^{*}-i\Psi\Psi_{xx}^{*}\right)\\
+ & =i\left(\int_{-\infty}^{\infty}dx\,\Psi_{xx}\Psi^{*}-\int_{-\infty}^{\infty}\Psi\Psi_{xx}^{*}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration 
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{\infty}dx\,\Psi_{xx}\Psi^{*} & =\Psi_{x}\Psi^{*}-\int_{-\infty}^{\infty}dx\,\Psi_{x}\Psi_{x}^{*}\\
+ & =-\int_{-\infty}^{\infty}dx\,\bigl|\Psi_{x}\bigr|^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Likewise 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\Psi\Psi_{xx}^{*}=\int_{-\infty}^{\infty}dx\,\bigl|\Psi_{x}\bigr|^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+0=i\left(\int_{-\infty}^{\infty}dx\,\bigl|\Psi_{x}\bigr|^{2}-\int_{-\infty}^{\infty}dx\,\bigl|\Psi_{x}\bigr|^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A free particle of mass 
+\begin_inset Formula $m$
+\end_inset
+
+ is confined to the interval 
+\begin_inset Formula $0<x<\pi$
+\end_inset
+
+, and 
+\begin_inset Formula $\Psi(0,t)=\Psi(\pi,t)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Show that the associated time-independent problem is 
+\begin_inset Formula 
+\[
+y''=\frac{2mE}{\hbar^{2}}=0,\quad0<x<\pi;\quad y(0)=y(\pi)=0
+\]
+
+\end_inset
+
+Show that the problem has a nontrivial solution only if 
+\begin_inset Formula $E$
+\end_inset
+
+ is one of the values 
+\begin_inset Formula $E_{n}=\frac{n^{2}\hbar^{2}}{2m}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Starting from the Shrödinger equation
+\begin_inset Formula 
+\[
+i\hbar\Psi_{t}=-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\Psi_{xx}+V(x)\Psi,\quad x\in R,\quad t>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Seperation ansatz 
+\begin_inset Formula 
+\[
+\Psi(x,t)=\phi(t)\varphi(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting into Schrödinger equation yields 
+\begin_inset Formula 
+\[
+i\hbar\phi_{t}\varphi=-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\varphi_{xx}\phi+V\phi\varphi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Dividing by 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ and seperating 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\frac{i\hbar\phi_{t}}{\phi}=-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\frac{\varphi_{xx}}{\varphi}+V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Both sides need to be constant 
+\begin_inset Formula 
+\begin{align*}
+\frac{i\hbar\phi_{t}}{\phi} & =E\\
+-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\frac{\varphi_{xx}}{\varphi}+V & =E
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First equation yields 
+\begin_inset Formula 
+\[
+\phi=e^{-i\frac{E}{\hbar}t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second equation can be written as 
+\begin_inset Formula 
+\[
+-\frac{\text{\ensuremath{\hbar^{2}}}}{2m}\varphi_{xx}+V\varphi-E\varphi=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Which can be written as 
+\begin_inset Formula 
+\[
+\varphi_{xx}+\frac{2m(E-V)}{\hbar^{2}}\varphi=0
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $V=0$
+\end_inset
+
+, the above equation simplifies to
+\begin_inset Formula 
+\[
+\varphi_{xx}+\frac{2mE}{\hbar^{2}}\varphi=0
+\]
+
+\end_inset
+
+How to find the general solution? 
+\begin_inset Formula 
+\[
+\varphi_{xx}=-\frac{2mE}{\hbar^{2}}\varphi=-\omega^{2}\varphi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution is 
+\begin_inset Formula 
+\[
+\varphi=\cos(\omega x)
+\]
+
+\end_inset
+
+since then
+\begin_inset Formula 
+\[
+\varphi_{xx}=-\omega^{2}\cos(\omega x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Another possible solution is 
+\begin_inset Formula 
+\[
+\varphi=\sin(\omega x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+since 
+\begin_inset Formula 
+\[
+\varphi_{xx}=-\omega^{2}\sin(\omega x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+General solution 
+\begin_inset Formula 
+\[
+\varphi=a\cos(\omega x)+b\sin(\omega x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First boundary conditions 
+\begin_inset Formula 
+\[
+\varphi(0)=0\Rightarrow a=0
+\]
+
+\end_inset
+
+Hence 
+\begin_inset Formula 
+\[
+\varphi=b\sin(\omega x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second boundary condition 
+\begin_inset Formula 
+\[
+\varphi(\pi)=0\Rightarrow\omega\pi=\pi\cdot n,\quad\text{with}\,n=1,2,\ldots
+\]
+
+\end_inset
+
+We find 
+\begin_inset Formula 
+\[
+\sqrt{\frac{2mE}{\hbar^{2}}}=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From which follows 
+\begin_inset Formula 
+\[
+E=\frac{\hbar^{2}}{2m}n^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Heat Flow in Three Dimensions
+\end_layout
+
+\end_body
+\end_document

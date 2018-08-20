@@ -1,0 +1,2745 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Population dynamics of interacting spiking neurons by 
+\end_layout
+
+\begin_layout Author
+Maurizio Mattia and Paolo Del Giudice
+\end_layout
+
+\begin_layout Section*
+Generic approach
+\end_layout
+
+\begin_layout Itemize
+Generic integrate-and-fire (IF) neurons
+\begin_inset Formula 
+\[
+\dot{V}=f(V)+\frac{I(V,t)}{C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+threshold 
+\begin_inset Formula $\theta$
+\end_inset
+
+ reset value 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Under reasonable assumptions, the limit large number of afferents, and the
+ independence between the activities of presynaptic cells, the afferent
+ current 
+\begin_inset Formula $I(V,t)$
+\end_inset
+
+ is well described by a Wiener process
+\end_layout
+
+\begin_layout Itemize
+Dynamics of the neuron's membrane potential is governed by nonlinear Langevin
+ equation 
+\begin_inset Formula 
+\[
+\dot{V}=h(V,t)+\sigma(V,t)\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $h(V,t)$
+\end_inset
+
+ is the total drift sum of 
+\begin_inset Formula $f(V)$
+\end_inset
+
+ and the average afferent current 
+\begin_inset Formula $\mu(V,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+noise strength or current fluctuations 
+\begin_inset Formula $\sigma(V,t)=\frac{1}{C}\sqrt{\left\langle \left[I(V,t)-C\mu(V,t)\right]^{2}\right\rangle }$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is a 
+\begin_inset Formula $\delta$
+\end_inset
+
+-correlated (white) noise with zero mean and unitary variance 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+The dynamics of a single neuron population
+\end_layout
+
+\begin_layout Itemize
+Assumption, homogeneous network of 
+\begin_inset Formula $N$
+\end_inset
+
+ interacting IF neurons, mean-field approximation assumes the same stastitical
+ properties 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ for the afferent currents to all cells 
+\end_layout
+
+\begin_layout Itemize
+Membrane potential 
+\begin_inset Formula $V$
+\end_inset
+
+ are considered as 
+\begin_inset Formula $N$
+\end_inset
+
+ independent realizations of the stochastic process 
+\begin_inset Formula $\dot{V}=h(V,t)+\sigma(V,t)\Gamma(t)$
+\end_inset
+
+ which properties are described by probability density 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\partial_{t}p(v,t)=Lp(v,t)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $L$
+\end_inset
+
+ is the Fokker-Planck operator 
+\begin_inset Formula 
+\[
+L=-\partial_{v}A(v,t)+\partial_{v}^{2}B(v,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Drift and diffusion coefficient can be derived from Langevin equation 
+\begin_inset Formula 
+\begin{align*}
+A(v,t) & =f(v)+\mu(v,t)=h(v,t)\\
+B(v,t) & =\frac{1}{2}\sigma^{2}(v,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity equation
+\begin_inset Formula 
+\[
+\partial_{t}p(v,t)=-\partial_{v}S(v,t)
+\]
+
+\end_inset
+
+with the probability flux 
+\begin_inset Formula 
+\[
+S=\left[A(v,t)-\partial_{v}B(v,t)\right]p(v,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Membrane potential varies between 
+\begin_inset Formula $v_{\text{min}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ including the possibility 
+\begin_inset Formula $v_{\text{min}}\rightarrow-\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Average emission rate of the population 
+\begin_inset Formula $\nu(t)$
+\end_inset
+
+ is equivalent to flux at threshold 
+\begin_inset Formula 
+\[
+r(t)=S(\theta,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The threshold acts as an absorbing boundary from which follows
+\begin_inset Formula 
+\[
+p(\theta,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Emission rate becomes 
+\begin_inset Formula 
+\[
+r(t)=-B(v,t)\left.\partial_{v}p(v,t)\right|_{\nu=\theta}=-\frac{1}{2}\sigma^{2}(v,t)\partial_{v}\left.p(v,t)\right|_{v=\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Equivalent
+\series default
+ definition of the population rate for a finite Number of neurons is 
+\begin_inset Formula 
+\[
+r(t)=\lim_{\Delta t\rightarrow0}\frac{\mathcal{N}(t,t+\Delta t)}{N\Delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Realizations crossing the threshold start random walk at 
+\begin_inset Formula $v=H$
+\end_inset
+
+ after refractory period on inactivity 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This implies the following conservation of the net flux 
+\begin_inset Formula 
+\[
+S(\theta,t-\tau_{0})=S(H_{+},t)-S(H_{-},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reflecting barrier prevents 
+\begin_inset Formula $V$
+\end_inset
+
+ from going below 
+\begin_inset Formula $v_{\text{min}}$
+\end_inset
+
+ from which follows 
+\begin_inset Formula 
+\[
+S(v_{\text{min}},t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the mean-field approach, infinitesimal moments of the afferent currents
+ are expresses as functions 
+\begin_inset Formula $v(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mu(v,t) & =\mu[v,\,r(t)]\\
+\sigma^{2}(v,t) & =\sigma^{2}[v,\,r(t)]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Closing the loop makes Fokker-Planck equation nonlinear because infinitesimal
+ depend on 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ and therefore on the state 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+ itself
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Absorbing boundary at the threshold 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(\theta,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Flux get reinserted from the threshold to the reset 
+\begin_inset Formula $H$
+\end_inset
+
+ after refractory time 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S(\theta,t-\tau_{0})=S(H_{+},t)-S(H_{-},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Reflecting boundary at 
+\begin_inset Formula $v_{\text{min}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S(v_{\text{min}},t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Conditions for eigenfunctions 
+\begin_inset Formula $\psi_{n}$
+\end_inset
+
+ of the adjoint 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ can be derived
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\psi_{n}(\theta,t)S_{\phi_{n}}(\theta,t)=\psi_{n}(H,t)S_{\phi_{n}}(\theta,t-\tau_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\partial_{v}\psi_{n}(v_{\text{min}},t)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\partial_{v}\psi_{n}(H_{+},t)=\partial_{v}\psi_{n}(H_{-},t)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from the definition 
+\begin_inset Formula 
+\[
+\int_{v_{\text{min}}}^{\theta}dv\,\psi L\phi=\int_{v_{\text{min}}}^{\theta}dv\,\left(L^{+}\psi\right)\phi,
+\]
+
+\end_inset
+
+defining the adjoint operator 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+.
+ Split the integral into two parts 
+\begin_inset Formula 
+\[
+\int_{v_{\text{min}}}^{\theta}dv\,\psi L\phi=\lim_{\epsilon\rightarrow0}\left(\int_{v_{\text{min}}}^{H_{-}}dv\,\psi L\phi+\int{}_{H_{+}}^{\theta}dv\,\psi L\phi\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Rewrite first integral can be rewritten 
+\begin_inset Formula 
+\[
+\int dv\,\psi L\phi=-\int dv\,\psi\partial_{v}S_{\phi},
+\]
+
+\end_inset
+
+where we defined the flux 
+\begin_inset Formula $S_{\phi}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+S_{\phi}=\left(A-\partial_{v}B\right)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration of yields 
+\begin_inset Formula 
+\begin{align*}
+-\int_{a}^{b}dv\,\psi\partial_{v}S_{\phi} & =-\left.\psi S_{\phi}\right|_{a}^{b}+\int_{a}^{b}dv\,\psi_{v}S_{\phi}\\
+ & =-\left.\psi S_{\phi}\right|_{a}^{b}+\int_{a}^{b}dv\,\psi_{v}\left(A-\partial_{v}B\right)\phi\\
+ & =-\left.\psi S_{\phi}\right|_{a}^{b}+\int_{a}^{b}dv\,\psi_{v}A\phi-\int_{a}^{b}dv\,\psi_{v}\partial_{v}B\phi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration of the last integral yields 
+\begin_inset Formula 
+\begin{align*}
+-\int_{a}^{b}dv\,\psi\partial_{v}S_{\phi} & =-\left.\psi S_{\phi}\right|_{a}^{b}-\left.\psi_{v}B\phi\right|_{a}^{b}+\int_{a}^{b}dv\,\psi_{v}A\phi+\int_{a}^{b}dv\,\psi_{vv}B\phi\\
+ & =-\left.\psi S_{\phi}\right|_{a}^{b}-\left.\psi_{v}B\phi\right|_{a}^{b}+\int_{a}^{b}dv\,\left(A\psi_{v}+B\psi_{vv}\right)\phi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We identify the adjoint operator 
+\begin_inset Formula $L^{+}=A\partial_{v}+B\partial_{vv}$
+\end_inset
+
+.
+ Hence, we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\int_{v_{\text{min}}}^{\theta}dv\,\psi L\phi & =\lim_{\epsilon\rightarrow0}\left(\int_{v_{\text{min}}}^{H_{-}}dv\,\psi L\phi+\int{}_{H_{+}}^{\theta}dv\,\psi L\phi\right)\\
+ & =\lim_{\epsilon\rightarrow0}\left(-\left.\psi S_{\phi}\right|_{v_{\text{min}}}^{H_{-}}-\left.\psi_{v}B\phi\right|_{v_{\text{min}}}^{H_{-}}-\left.\psi S_{\phi}\right|_{H_{+}}^{\theta}-\left.\psi_{v}B\phi\right|_{H_{+}}^{\theta}+\int_{_{v_{\text{min}}}}^{H_{-}}dv\,\left(L^{+}\psi\right)\phi+\int_{H_{+}}^{\theta}dv\,\left(L^{+}\psi\right)\phi\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In the limit 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+, the latter integral becomes 
+\begin_inset Formula 
+\[
+\lim_{\epsilon\rightarrow0}\int_{_{v_{\text{min}}}}^{H_{-}}dv\,\left(L^{+}\psi\right)\phi+\int_{H_{+}}^{\theta}dv\,\left(L^{+}\psi\right)\phi=\int_{v_{\text{min}}}^{\theta}dv\,\left(L^{+}\psi\right)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Bounary terms must vanish 
+\begin_inset Formula 
+\begin{align*}
+ & \lim_{\epsilon\rightarrow0}\left(-\left.\psi S_{\phi}\right|_{v_{\text{min}}}^{H_{-}}-\left.\psi_{v}B\phi\right|_{v_{\text{min}}}^{H_{-}}-\left.\psi S_{\phi}\right|_{H_{+}}^{\theta}-\left.\psi_{v}B\phi\right|_{H_{+}}^{\theta}\right)\\
+= & \lim_{\epsilon\rightarrow0}\left(-\psi(H_{-})S_{\phi}(H_{-})+\psi(v_{\text{min}})S_{\phi}(v_{\text{min}})-\psi_{v}(H_{-})B\phi(H_{-})+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}})-\psi(\theta)S_{\phi}(\theta)+\psi(H_{+})S_{\phi}(H_{+})-\psi_{v}(\theta)B\phi(\theta)+\psi_{v}(H_{+})B\phi(H_{+})\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We use 
+\begin_inset Formula $\phi(\theta)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{\phi}(v_{\text{min}})=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\lim_{\epsilon\rightarrow0}\left(-\psi(H_{-})S_{\phi}(H_{-})-\psi_{v}(H_{-})B\phi(H_{-})+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}})-\psi(\theta)S_{\phi}(\theta)+\psi(H_{+})S_{\phi}(H_{+})+\psi_{v}(H_{+})B\phi(H_{+})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Because we assume 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ to be continous functions, 
+\begin_inset Formula 
+\begin{align*}
+\lim_{\epsilon\rightarrow0}\phi(H_{+/-}) & =\phi(H)\\
+\lim_{\epsilon\rightarrow0}\psi(H_{+/-}) & =\psi(H)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+However, we expect the first derivative 
+\begin_inset Formula $\psi_{v}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{v}$
+\end_inset
+
+ to have a kink at reset due to discontinuity of the flux.
+ Hence, we need to distinguish between 
+\begin_inset Formula $\phi_{v}(H_{+})$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{v}(H_{-})$
+\end_inset
+
+.
+ Hence, taking the limit 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+ & \lim_{\epsilon\rightarrow0}\left(-\psi(H_{-})S_{\phi}(H_{-})-\psi_{v}(H_{-})B\phi(H_{-})+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}})-\psi(\theta)S_{\phi}(\theta)+\psi(H_{+})S_{\phi}(H_{+})+\psi_{v}(H_{+})B\phi(H_{+})\right)\\
+= & -\psi(H)S_{\phi}(H_{-})-\psi_{v}(H_{-})B\phi(H)+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}})-\psi(\theta)S_{\phi}(\theta)+\psi(H)S_{\phi}(H_{+})+\psi_{v}(H_{+})B\phi(H)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condtions 
+\begin_inset Formula 
+\[
+-\psi_{v}(H_{-})B\phi(H)+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}})+\psi_{v}(H_{+})B\phi(H)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\psi(H)\left(S_{\phi}(H_{+})-S_{\phi}(H_{-})\right) & =\psi(\theta)S_{\phi}(\theta)\\
+\psi_{v}(H_{+})B\phi(H) & =\psi_{v}(H_{-})B\phi(H)\\
+\psi_{v}(v_{\text{min}})B\phi(v_{\text{min}}) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula $S_{\phi}(H_{+})-S_{\phi}(H_{-})=S_{\phi}(\theta,t-\tau_{0})$
+\end_inset
+
+ we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\psi(H)S_{\phi}(\theta,t-\tau_{0}) & =\psi(\theta)S_{\phi}(\theta)\\
+\psi_{v}(H_{+}) & =\psi_{v}(H_{-})\\
+\psi_{v}(v_{\text{min}}) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Eigenfunction expansion
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck operator has a set of eigenfunctions and associated eigenvalues
+ 
+\begin_inset Formula 
+\[
+L\bigl|\phi_{n}\bigr\rangle=\lambda_{n}(t)\bigl|\phi_{n}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inner product 
+\begin_inset Formula 
+\[
+\bigl\langle\psi\bigl|\phi\bigr\rangle=\int dv\,\psi(v,t)\phi(v,t)dv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Adjoint operator 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bigl\langle\psi\bigl|L\phi\bigr\rangle=\bigl\langle L^{+}\psi\bigl|\phi\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $L^{+}\neq L$
+\end_inset
+
+ because 
+\begin_inset Formula $L$
+\end_inset
+
+ is not Hermitian
+\end_layout
+
+\begin_layout Itemize
+Time dependence is implicitly due to the time dependence of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions for 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and expression for 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ can derived from boundary conditions of 
+\begin_inset Formula $\phi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+L^{+}(v,t)=A(v,t)\partial_{v}+B(v,t)\partial_{v}^{2}
+\]
+
+\end_inset
+
+which is the evolution operator of the backward Chapman-Kolmogorov equation
+ 
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions 
+\begin_inset Formula $\bigl|\phi_{n}\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl\langle\psi_{m}\bigr|$
+\end_inset
+
+ form a bi-orthogonal set 
+\end_layout
+
+\begin_layout Itemize
+Completeness assumption 
+\begin_inset Formula 
+\[
+\boldsymbol{I}=\sum_{n}\bigl|\phi_{n}\bigr\rangle\bigl\langle\psi_{n}\bigr|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For proper normalization eigenfunctions are bi-orthonormal 
+\begin_inset Formula 
+\[
+\bigl\langle\psi\bigl|\phi_{n}\bigr\rangle=\delta_{nm}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remarks on eigenvalues and eigenfunctions
+\end_layout
+
+\begin_layout Itemize
+Stationary solution 
+\begin_inset Formula $\phi_{0}$
+\end_inset
+
+ is an eigenfunction of 
+\begin_inset Formula $L$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues are in general complex, with 
+\begin_inset Formula $\text{Re}\lambda_{n}\leq0$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For noninteracting neurons, the solution of the Fokker-Planck equation is
+ directly related to the eigenvalues of 
+\begin_inset Formula $L$
+\end_inset
+
+, and is expected to converge to 
+\begin_inset Formula $\phi_{0}$
+\end_inset
+
+, instead of exploding 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Seperatation ansatz 
+\begin_inset Formula 
+\[
+\phi(x,t)=f(t)g(x)
+\]
+
+\end_inset
+
+leads to 
+\begin_inset Formula 
+\[
+f(t)\propto e^{-\lambda t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ is an eigenvalue, also 
+\begin_inset Formula $\lambda_{n}^{*}$
+\end_inset
+
+ is an eigenvalue with eigenfunctions 
+\begin_inset Formula $\left(\bigl|\phi_{n}^{*}\bigr\rangle,\,\bigl\langle\psi_{n}^{*}\bigr|\right)$
+\end_inset
+
+ because 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ are real 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $\bigl|\phi_{n}\bigr\rangle$
+\end_inset
+
+ is an eigenfunction, then 
+\begin_inset Formula 
+\[
+L\bigl|\phi_{n}\bigr\rangle=\lambda_{n}\bigl|\phi_{n}\bigr\rangle
+\]
+
+\end_inset
+
+Taking the complex conjugate and both sides 
+\begin_inset Formula 
+\[
+L\bigl|\phi_{n}^{*}\bigr\rangle=\lambda_{n}^{*}\bigl|\phi_{n}^{*}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Notation 
+\begin_inset Formula $\lambda_{-n}=\lambda_{n}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl|\phi_{-n}\bigr\rangle=\bigl|\phi_{n}^{*}\bigr\rangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\lambda_{n}\in\mathbb{R}$
+\end_inset
+
+, then the enumeration along negative values of 
+\begin_inset Formula $n$
+\end_inset
+
+ is redundant 
+\end_layout
+
+\begin_layout Itemize
+From the form of 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+, and the boundary condition 
+\begin_inset Formula $\partial_{v}\psi_{n}(v_{\text{min}},t)=0$
+\end_inset
+
+, it can be seen that the eigenfunction 
+\begin_inset Formula $\psi_{0}$
+\end_inset
+
+ must always satisfy 
+\begin_inset Formula $\partial_{v}\psi_{0}=1\Rightarrow$
+\end_inset
+
+so 
+\begin_inset Formula $\psi_{0}$
+\end_inset
+
+ is constant 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+L^{+}=A(v,t)\partial_{v}+B(v,t)\partial_{v}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiplying 
+\begin_inset Formula $L^{+}$
+\end_inset
+
+ with 
+\begin_inset Formula $\psi_{0}$
+\end_inset
+
+ and using 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+\left(A\partial_{v}+B\partial_{v}^{2}\right)\psi_{0} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which we can write as 
+\begin_inset Formula 
+\[
+\frac{A}{B}\psi_{v}^{(0)}+\psi_{vv}^{(0)}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This can be transformed into a separable first order ODE by defining 
+\begin_inset Formula $y=\psi_{v}^{(0)}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{A}{B}y+y_{v}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The first order ODE can be solved by separation of variables 
+\begin_inset Formula 
+\[
+\frac{1}{y}dy=-\frac{A}{B}dv\Rightarrow y=a\cdot e^{-\int_{v_{\text{min}}}^{v}dv'\frac{A}{B}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From the initial condition 
+\begin_inset Formula $\psi_{v}(v_{\text{min}})=0$
+\end_inset
+
+ follows 
+\begin_inset Formula $a=0$
+\end_inset
+
+ and that 
+\begin_inset Formula $\psi_{0}$
+\end_inset
+
+ must be a constant 
+\begin_inset Formula 
+\[
+\psi_{0}=b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $\bigl\langle\psi_{0}\bigl|\phi_{0}\bigr\rangle=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{0}(v)$
+\end_inset
+
+ is p.d.f.
+ we have 
+\begin_inset Formula $\psi_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This tells us that 
+\begin_inset Formula 
+\[
+\bigl\langle\psi_{0}\bigl|\phi_{n}\bigr\rangle=\int_{v_{\text{min}}}^{\theta}dv\,\phi_{n}(v)=0\qquad\forall\,n\neq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only stationary mode 
+\begin_inset Formula $\phi_{0}$
+\end_inset
+
+ contributes to the normalization condition for 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $A(\theta,t)\leq0$
+\end_inset
+
+, diffusion term is necessary to have generate spike emmision and we are
+ in the 
+\series bold
+noise-dominated
+\series default
+, 
+\series bold
+subthreshold
+\series default
+ regime 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $A(\theta,t)>0$
+\end_inset
+
+, the emmsion of a spike can occure in the absence of fluctuations and we
+ are in the 
+\series bold
+drift-dominated
+\series default
+,
+\series bold
+ subthreshold 
+\series default
+regime 
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues of 
+\begin_inset Formula $L$
+\end_inset
+
+ are real for noise-dominated regimes and complex conjugates for drift dominated
+ regimes 
+\end_layout
+
+\begin_layout Itemize
+Drift-dominated regimes the neural non-interacting population can undergo
+ transient oscillations 
+\end_layout
+
+\begin_layout Itemize
+Think of a 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+ which is initially very sharply concentrated, if dynamics governed essentially
+ by 
+\begin_inset Formula $A$
+\end_inset
+
+, its motion is close to a translation with a minor spreading effect 
+\end_layout
+
+\begin_layout Itemize
+Emmision rate untergoes increasingly damped oscillations until reaching
+ the stationary distribution 
+\end_layout
+
+\begin_layout Subsubsection*
+Emission rate equation
+\end_layout
+
+\begin_layout Itemize
+Completeness relation allows to expand 
+\begin_inset Formula $p(v,t)$
+\end_inset
+
+ in terms of eigenfunctions 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|p\right\rangle =\sum_{n}a_{n}\left|\phi_{n}\right\rangle 
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{n}=\bigl\langle\psi_{n}\bigl|p\bigr\rangle$
+\end_inset
+
+ are the 
+\series bold
+time dependent
+\series default
+ of the modal expansion 
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $p$
+\end_inset
+
+ is real 
+\begin_inset Formula $a_{n}^{*}=a_{-n}$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Starting from
+\begin_inset Formula 
+\[
+a_{n}=\bigl\langle\psi_{n}\bigl|p\bigr\rangle=\int dv\,\psi_{n}\,p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and taking the complex conjugate yields 
+\begin_inset Formula 
+\[
+a_{n}^{*}=\int dv\,\psi_{n}^{*}\,p.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We defined 
+\begin_inset Formula $\psi_{n}^{*}=\psi_{-n}$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\lambda_{-n}=\lambda_{n}^{*}$
+\end_inset
+
+ since 
+\begin_inset Formula 
+\begin{align*}
+\int dv\psi_{n}\phi_{n}=1 & \Leftrightarrow\int dv\psi_{n}^{*}\phi_{n}^{*}=1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dynamics of 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ can be determined directly from the Fokker-Planck equation 
+\begin_inset Formula 
+\begin{align*}
+\dot{a}_{n} & =\bigl\langle\psi_{n}\bigl|p_{t}\bigr\rangle+\bigl\langle\psi_{t}^{(n)}\bigl|p_{t}\bigr\rangle\\
+ & =\bigl\langle\psi_{n}\bigl|Lp\bigr\rangle+\sum_{m}a_{m}\bigl\langle\dot{r}\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\
+ & =\bigl\langle L^{+}\psi_{n}\bigl|p\bigr\rangle+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\
+ & =\lambda_{n}\bigl\langle\psi_{n}\bigl|p\bigr\rangle+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\
+ & =\lambda_{n}a_{n}+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only time dependence of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is implicitly due to the 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ which are functions of the rate 
+\begin_inset Formula $r(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assumption, external input is stationary, i.e.
+ it depends not on time 
+\end_layout
+
+\begin_layout Itemize
+For multiple populations, 
+\begin_inset Formula $\partial_{t}\psi$
+\end_inset
+
+ has contributions from the emission rates of different populations 
+\end_layout
+
+\begin_layout Itemize
+Population coupling term 
+\begin_inset Formula $\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle$
+\end_inset
+
+, it vanished if 
+\begin_inset Formula $v$
+\end_inset
+
+ does not enter the afferent current (noninteracting populations)
+\end_layout
+
+\begin_layout Itemize
+Infinite set of nonlinear differential equations is not closed, rate 
+\begin_inset Formula $r$
+\end_inset
+
+ depends on 
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need a relation connection 
+\begin_inset Formula $p(v)$
+\end_inset
+
+ to 
+\begin_inset Formula $r$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r=-\frac{1}{2}\sum_{n}a_{n}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Emission rate is equivalent to flux at the boundary 
+\begin_inset Formula 
+\[
+v(t)=S(\theta,t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+S(\theta,t)=\left.\left[A(v,t)-\partial_{v}B(v,t)\right]p(v,t)\right|_{v=\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Due to the boundary condition 
+\begin_inset Formula $p(\theta,t)=0$
+\end_inset
+
+, the only term which survives is 
+\begin_inset Formula 
+\[
+S(\theta,t)=-B(\theta,t)p_{v}(\theta,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which can be expressed in the terms of the eigenfunctions 
+\begin_inset Formula 
+\begin{align*}
+r(t)=S(\theta,t) & =-\frac{1}{2}\sigma^{2}(\theta,t)\sum_{n}\left.\partial_{v}\left(a_{n}\phi(v,t)\right)\right|_{v=\theta}\\
+ & =-\frac{1}{2}\sigma^{2}(\theta,t)\sum_{n}a_{n}\phi_{v}(\theta,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ depends on 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ which confirms that the system of equations determining coefficients 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ is nonlinear 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Small number of 
+\begin_inset Formula $a$
+\end_inset
+
+'s is often enough for an adequate description of the time evolution of
+ 
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only stationary mode contributes to normalization, i.e.
+ 
+\begin_inset Formula $a_{0}=1$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof: 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from eigenfunctions expansion 
+\begin_inset Formula 
+\[
+p=\sum_{n}a_{n}\phi_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Normalization 
+\begin_inset Formula 
+\[
+1=\int_{v_{\text{min}}}^{\theta}p=\sum_{n}a_{n}\int_{v_{\text{min}}}^{\theta}dv\,\phi_{n}
+\]
+
+\end_inset
+
+Using 
+\begin_inset Formula $\int_{v_{\text{min}}}^{\theta}dv\,\phi_{n}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $n\neq0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+1=a_{0}\int_{v_{\text{min}}}^{\theta}\phi_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using that 
+\begin_inset Formula $\phi_{0}$
+\end_inset
+
+ is the stationary distribution which is normalized, we find 
+\begin_inset Formula 
+\[
+a_{0}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Alternatively, we could have used 
+\begin_inset Formula 
+\[
+a_{0}=\bigl\langle\psi_{0}\bigl|p_{t}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula $\psi_{0}=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux due to stationary mode 
+\begin_inset Formula $\phi_{0}$
+\end_inset
+
+ is the current-to-rate transduction function 
+\begin_inset Formula $\Phi(\mu,\sigma^{2})$
+\end_inset
+
+ of the single neuron in stationary conditions 
+\begin_inset Formula 
+\[
+\Phi(r)=\Phi(\mu(v,r),\sigma^{2}(v,r))=\left.-\frac{1}{2}\partial_{v}\sigma^{2}(v,t)\phi_{0}(v,t)\right|_{v=\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Emmision rate equation can be written in matrix form
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}} & =\left(\boldsymbol{\Lambda}+\boldsymbol{C}\dot{r}\right)\boldsymbol{a}+\boldsymbol{c}\dot{r}\\
+r & =\Phi+\boldsymbol{f}\,\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{a}=(a_{1},\ldots,)$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{f}$
+\end_inset
+
+ are the flux over the absorbing boundary for nonstationary modes 
+\begin_inset Formula 
+\[
+f_{n}=\left.-\frac{1}{2}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\right|_{v=\phi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{c}$
+\end_inset
+
+ are the coupling terms between the 
+\begin_inset Formula $n$
+\end_inset
+
+th mode and the stationary one 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ is the matrix of the coupling terms between nonstationary modes 
+\begin_inset Formula 
+\[
+C_{nm}=\bigl\langle\partial_{r}\psi_{n}\bigr|\phi_{m}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\boldsymbol{\Lambda}$
+\end_inset
+
+ is a diagonal matrix 
+\begin_inset Formula 
+\[
+\Lambda_{nm}=\lambda_{n}\delta_{nm}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Derive matrix equation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\begin{align*}
+\dot{a}_{n} & =\lambda_{n}a_{n}+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second term 
+\begin_inset Formula 
+\[
+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle=\dot{r}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{0}\bigr\rangle\,a_{0}+\dot{r}\sum_{m\neq0}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\,a_{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Defining 
+\begin_inset Formula $c_{n}=\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{0}\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{nm}=\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\dot{r}\boldsymbol{c}+\dot{r}\boldsymbol{C}\boldsymbol{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+ and define 
+\begin_inset Formula $\Lambda_{nm}=\lambda_{n}\delta_{nm}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{a}=(a_{1},\ldots)$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{a}}=\boldsymbol{\Lambda}\boldsymbol{a}+\dot{r}\boldsymbol{c}+\dot{r}\boldsymbol{C}\boldsymbol{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Rate 
+\begin_inset Formula 
+\[
+r=-\frac{1}{2}\sum_{n}a_{n}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)=-\frac{1}{2}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\bigr|_{v=\theta}-\frac{1}{2}\sum_{n\neq0}a_{n}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\bigr|_{v=\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+With stationary rate contribution 
+\begin_inset Formula $\Phi(v,t)=-\frac{1}{2}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\bigr|_{v=\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{n}=-\frac{1}{2}a_{n}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\bigr|_{v=\theta}$
+\end_inset
+
+ we can write 
+\begin_inset Formula 
+\[
+r=\Phi(v,t)+\boldsymbol{f}\boldsymbol{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean-field approximation described collective behavior of a neuron population
+ in terms of its average rate 
+\begin_inset Formula $r(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The formulation is equally valid for stationary or transient regimes 
+\end_layout
+
+\begin_layout Itemize
+Nonstationary 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ embodies change in time of the average statistical properties of the neurons
+ afferent current 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $v(t)$
+\end_inset
+
+ correlates the activity of neurons in the population 
+\end_layout
+
+\begin_layout Itemize
+This does not imply a breakdown of the independence hypothesis which is
+ at the heart of the formalism 
+\end_layout
+
+\begin_layout Itemize
+Collective activity is still adequately described by a renewal nonstationary
+ Poisson process 
+\end_layout
+
+\begin_layout Itemize
+Neurons are independent, conditionally to the average emission rate 
+\end_layout
+
+\begin_layout Subsection*
+Noninteracting neurons
+\end_layout
+
+\begin_layout Itemize
+Population of noninteracting neurons 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ do not depend on 
+\begin_inset Formula $r\Rightarrow\partial_{r}\psi=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coupling between higher and zero mode 
+\begin_inset Formula $\boldsymbol{c}$
+\end_inset
+
+ and coupling matrix 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ vanish 
+\end_layout
+
+\begin_layout Itemize
+Rate equation has a explicit solution 
+\begin_inset Formula 
+\[
+r(t)=\Phi(\mu(t),\,\sigma^{2}(t))+\boldsymbol{f}(t)e^{\int_{0}^{t}\boldsymbol{\Lambda}(t')dt'}\boldsymbol{a}(0)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof:
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}} & =\left(\boldsymbol{\Lambda}+\boldsymbol{C}\dot{r}\right)\boldsymbol{a}+\boldsymbol{c}\dot{v}\\
+\dot{r} & =\Phi+\boldsymbol{f}\,\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+which simplifies to 
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}} & =\boldsymbol{\Lambda}\boldsymbol{a}\\
+\dot{r} & =\Phi+\boldsymbol{f}\,\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From the first equation, we find 
+\begin_inset Formula 
+\[
+\boldsymbol{a}=\boldsymbol{a}(0)e^{\int_{0}^{t}dt'\boldsymbol{\Lambda}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting in the second equation yields 
+\begin_inset Formula 
+\[
+r(t)=\Phi(\mu(t),\sigma^{2}(t))+\boldsymbol{f}(t)\cdot\boldsymbol{a}(0)\,e^{\int_{0}^{t}dt'\boldsymbol{\Lambda}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If afferent current is stationary, eigenvalues, the flux vector, and the
+ transfer function are constants and the emission emission rate is 
+\begin_inset Formula 
+\[
+r(t)=\Phi(\mu,\sigma^{2})+\sum_{n}f_{n}a_{n}(0)e^{\lambda_{n}t}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Transfer function 
+\begin_inset Formula 
+\begin{align*}
+f_{n} & =\left.-\frac{1}{2}\sigma^{2}\partial_{v}\phi_{n}(v)\right|_{v=\theta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Time dependence of 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is implicitly due to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $t\rightarrow\infty$
+\end_inset
+
+, 
+\begin_inset Formula $r(t)\rightarrow\Phi(\mu,\sigma^{2})$
+\end_inset
+
+ due to negative real part of 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\text{Re}\lambda_{n}<0$
+\end_inset
+
+, after a time greater then 
+\begin_inset Formula $1/\text{min}\bigl|\text{Re}\lambda_{n}\bigr|$
+\end_inset
+
+ initial conditions and transients are forgotten 
+\end_layout
+
+\begin_layout Itemize
+When interaction is turned on, the population characteristic times are a
+ complex mixture of single neuron properties and the properties of the collectiv
+ity activity 
+\end_layout
+
+\begin_layout Itemize
+Remarks on initial conditions: Coefficient 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ of stationary mode is fixed 
+\begin_inset Formula $a_{0}=1$
+\end_inset
+
+.
+ For the higher modes, we need to provide initial condition 
+\begin_inset Formula $a_{0}(0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Synaptic delays
+\end_layout
+
+\begin_layout Itemize
+Introduce synaptic delay 
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}}(t) & =[\boldsymbol{\Lambda}(t-\delta)+\boldsymbol{C}(t-\delta)r(t-\delta)]\boldsymbol{a}+\boldsymbol{c}(t-\delta)\dot{r}(t-\delta)\\
+r(t) & =\Phi(t-\delta)+\boldsymbol{f}(t-\delta)\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Generalize to independently randomly drawn delays 
+\begin_inset Formula $\rho(\delta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Local analysis 
+\end_layout
+
+\begin_layout Itemize
+Stationary solution 
+\begin_inset Formula $\dot{\boldsymbol{a}}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{\boldsymbol{r}}=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0=[\boldsymbol{\Lambda}(t-\delta)+\boldsymbol{C}(t-\delta)r(t-\delta)]\boldsymbol{a}\Rightarrow\boldsymbol{a}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rate 
+\begin_inset Formula 
+\[
+r=\Phi(r)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The condition 
+\begin_inset Formula $\boldsymbol{a}=0$
+\end_inset
+
+ implies that the p.d.f is the stationary distribution 
+\begin_inset Formula $p(v)=\phi_{0}(v)$
+\end_inset
+
+ at the 
+\series bold
+fixed point
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Time-dependent perturbation approach to study stability 
+\end_layout
+
+\begin_layout Itemize
+Set 
+\begin_inset Formula $\boldsymbol{a}=\epsilon\boldsymbol{a}_{1}+\epsilon^{2}\boldsymbol{a}_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $r=r_{0}+\epsilon r_{1}+\epsilon^{2}r_{2}+\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ is the solution of the self-consistency equation 
+\end_layout
+
+\begin_layout Itemize
+Expand arbitrary function 
+\begin_inset Formula $F(r)$
+\end_inset
+
+ in 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F(r)=F(r_{0})+\epsilon F'(r_{0})v_{1}+\epsilon^{2}\left[F'(r_{0})r_{2}+\frac{1}{2}F''(r_{0})r_{1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting into rate equation and comparing terms of the same order
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}}_{1} & =\boldsymbol{\Lambda}(r_{0})\boldsymbol{a}_{1}+c(r_{0})\boldsymbol{r}_{1}(t-\delta)\\
+r_{1}(t) & =\Phi'(r_{0})r_{1}(t-\delta)+\boldsymbol{f}(r_{0})\boldsymbol{a}_{1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Insert 
+\begin_inset Formula $\boldsymbol{a}(t)=\epsilon\boldsymbol{a}_{1}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $r(t)=r_{0}+\epsilon r(t)$
+\end_inset
+
+ into 
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}}(t) & =[\boldsymbol{\Lambda}(t-\delta)+\boldsymbol{C}(t-\delta)\dot{r}(t-\delta)]\boldsymbol{a}+\boldsymbol{c}(t-\delta)\dot{r}(t-\delta)\\
+r)(t) & =\Phi(t-\delta)+\boldsymbol{f}(t-\delta)\boldsymbol{a}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and keep all terms in order 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\epsilon\dot{\boldsymbol{a}_{1}}=[\boldsymbol{\Lambda}+\boldsymbol{C}\epsilon\dot{r}_{1}]\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Do 
+\begin_inset Formula $\boldsymbol{\Lambda}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ depend on 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+? 
+\begin_inset Formula 
+\begin{align*}
+\Lambda_{nm} & =\lambda_{n}(t)\,\delta_{nm}\\
+C_{nm} & =\bigl\langle\partial_{r}\psi_{n}\bigr|\phi_{m}\bigr\rangle
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Eigenfunctions 
+\begin_inset Formula $\psi_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{m}$
+\end_inset
+
+ have a implicit time dependence through 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ through 
+\begin_inset Formula $r(t)$
+\end_inset
+
+.
+ Hence, the same must be true for the eigenvalues 
+\begin_inset Formula $\lambda(r_{0}+\epsilon r_{1}(t))$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+\epsilon\dot{\boldsymbol{a}_{1}} & =[\boldsymbol{\Lambda}(r_{0}+\epsilon r_{1}(t))+\boldsymbol{C}(r_{0}+\epsilon r_{1}(t))\epsilon r_{1}(t)]\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1})\\
+\epsilon\dot{\boldsymbol{a}_{1}} & =\boldsymbol{\Lambda}(r_{0})\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1}+\mathcal{O}(\epsilon^{2})\\
+\dot{\boldsymbol{a}_{1}} & =\boldsymbol{\Lambda}(r_{0})\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1}+\mathcal{O}(\epsilon)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Rate equation 
+\begin_inset Formula 
+\begin{align*}
+r_{0}+\epsilon r_{1} & =\Phi(r_{0}+\epsilon r_{1})+\boldsymbol{f}(r_{0}+\epsilon r_{1})\epsilon\boldsymbol{a}_{1}+\mathcal{O}(\epsilon^{2})\\
+r_{0}+\epsilon r_{1} & =\underbrace{\Phi(r_{0})}_{r_{0}}+\Phi'(r_{0})\epsilon r_{1}+\boldsymbol{f}(r_{0})\epsilon\boldsymbol{a}_{1}+\mathcal{O}(\epsilon^{2})\\
+r_{1} & =\Phi'(r_{0})r_{1}(t-\delta)+\boldsymbol{f}(r_{0})\boldsymbol{a}_{1}+\mathcal{O}(\epsilon)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace transformation 
+\begin_inset Formula 
+\[
+r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s}\left\{ \boldsymbol{f}(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\times\left[\boldsymbol{a}_{1}(0)e^{s\delta}+\boldsymbol{c}v_{1}(0)\right]-(e^{s\delta}-1)\Phi'v_{1}(0)/s\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ProofStart from 
+\begin_inset Formula 
+\begin{align*}
+\dot{\boldsymbol{a}}_{1}(t) & =\boldsymbol{\Lambda}(r_{0})\boldsymbol{a}_{1}(t)+\boldsymbol{c}\dot{r}_{1}(t-\delta)\\
+r_{1}(t) & =\Phi'(r_{0})r_{1}(t-\delta)+\boldsymbol{f}(r_{0})\boldsymbol{a}_{1}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Take the Laplace transform of the first equation on both sides 
+\begin_inset Formula 
+\[
+s\hat{\boldsymbol{a}}_{1}(s)-\boldsymbol{a}_{1}(0)=\boldsymbol{\Lambda}(r_{0})\hat{\boldsymbol{a}}_{1}(s)+\boldsymbol{c}e^{-\delta s}\left(\hat{r}_{1}(s)+r_{1}(0)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $\hat{\boldsymbol{a}}_{1}(s)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]\hat{\boldsymbol{a}}_{1}(s) & =\boldsymbol{a}_{1}(0)+e^{-\delta s}\boldsymbol{c}\hat{r}_{1}(s)\\
+\Leftrightarrow\hat{\boldsymbol{a}}_{1}(s) & =\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(\boldsymbol{a}_{1}(0)+e^{-\delta s}\left(\hat{r}_{1}(s)+r_{1}(0)\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Laplace transform of the rate equation
+\begin_inset Formula 
+\[
+\hat{r}_{1}(s)=\Phi'(r_{0})e^{\delta s}\hat{r}_{1}(s)+\boldsymbol{f}(r_{0})\hat{\boldsymbol{a}}_{1}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insert 
+\begin_inset Formula $\hat{\boldsymbol{a}}_{1}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\hat{r}_{1}(s) & =\Phi'(r_{0})e^{-\delta s}\hat{r}_{1}(s)+\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(\boldsymbol{a}_{1}(0)+e^{-\delta s}\boldsymbol{c}\hat{r}_{1}(s)+e^{-\delta s}\boldsymbol{c}r_{1}(0)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $r_{1}(s)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\hat{r}_{1}(s)\left(1-\Phi'(r_{0})e^{-\delta s}\right) & =\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}e^{-\delta s}\boldsymbol{c}\hat{r}_{1}(s)+\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(\boldsymbol{a}_{1}(0)+e^{-\delta s}\boldsymbol{c}r_{1}(0)\right)\\
+\left(1-\Phi'(r_{0})e^{-\delta s}-\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}e^{-\delta s}\boldsymbol{c}\right)\hat{r}_{1}(s) & =\\
+\hat{r}_{1}(s) & =\frac{1}{\left(1-\Phi'(r_{0})e^{-\delta s}-\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}e^{-\delta s}\boldsymbol{c}\right)}\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(\boldsymbol{a}_{1}(0)-e^{-\delta s}\boldsymbol{c}r_{1}(0)\right)\\
+\hat{r}_{1}(s) & =\frac{1}{\left(e^{\delta s}-\Phi'(r_{0})-\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\boldsymbol{c}\right)}\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(e^{\delta s}\boldsymbol{a}_{1}(0)-\boldsymbol{c}r_{1}(0)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stability conditions and characteristic times of the transient dynamics
+ are in principle derived by calculating the poles of 
+\begin_inset Formula $v_{1}(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Approximate poles, small coupling approximation allows us to approximate
+ two sets of poles 
+\end_layout
+
+\begin_layout Subsection*
+Stability
+\end_layout
+
+\begin_layout Itemize
+Asynchronous state 
+\begin_inset Formula $r(t)=r_{0}$
+\end_inset
+
+ is stable if all poles have negative real part
+\end_layout
+
+\begin_layout Itemize
+Poles 
+\begin_inset Formula $s_{n}=x_{n}+iy_{n}$
+\end_inset
+
+ solve equation 
+\begin_inset Formula 
+\begin{align*}
+e^{x\delta}\cos(y\delta)-R(s) & =\Phi'\\
+e^{x\delta}\sin(y\delta)-I(s) & =0
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $R(s)=\text{Re}\left[\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $I(s)=\text{Im}\left[\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right]$
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Poles 
+\begin_inset Formula 
+\begin{align*}
+(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s & =0\\
+e^{x\delta}\left(\text{\cos}(y\delta)+i\sin(y\delta)\right)-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s & =\Phi'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Real part in imaginary part must be zero.
+ Real part
+\begin_inset Formula 
+\begin{align*}
+\text{Re}\left[e^{x\delta}\left(\text{\cos}(y\delta)+i\sin(y\delta)\right)-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right] & =\Phi\\
+e^{x\delta}\text{\cos}(y\delta)-\text{Re}\left[\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right] & \text{=}\Phi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Imaginary part 
+\begin_inset Formula 
+\begin{align*}
+\text{Im}\left[e^{x\delta}\left(\text{\cos}(y\delta)+i\sin(y\delta)\right)-\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right] & =0\\
+e^{x\delta}\sin(y\delta)-\text{Im}\left[\boldsymbol{f}\cdot(s\boldsymbol{I}-\boldsymbol{\Lambda})^{-1}\boldsymbol{c}s\right] & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Population of excitatory neurons, 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is a monotonically increasing, i.e.
+ 
+\begin_inset Formula $\Phi'>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\Phi'=1$
+\end_inset
+
+, 
+\begin_inset Formula $s=0$
+\end_inset
+
+ is a pole 
+\end_layout
+
+\begin_layout Itemize
+This condition determined a transition from stable to unstable steady for
+ because the real pole becomes positive 
+\end_layout
+
+\begin_layout Itemize
+Approximation 
+\begin_inset Formula 
+\[
+e^{s_{0}\delta}-\Phi'=0\Leftrightarrow s_{0}=\frac{1}{\delta}\ln\Phi'(r_{0})
+\]
+
+\end_inset
+
+which is a good approximation if the real pole is close to zero 
+\begin_inset Formula $\cos(y\delta)\approx1$
+\end_inset
+
+ and 
+\begin_inset Formula $\sin(y\delta)\approx0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Small couplings approximation, assume 
+\begin_inset Formula $R(s)$
+\end_inset
+
+ and 
+\begin_inset Formula $I(s)$
+\end_inset
+
+ to be negligible compare to 
+\begin_inset Formula $\Phi'$
+\end_inset
+
+, at least in the neighborhood of a point 
+\begin_inset Formula $s_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+e^{x\delta}\cos(y\delta) & =\Phi'\\
+\sin(y\delta) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Excitatory 
+\begin_inset Formula $s_{n}^{(0)}=\ln(\Phi'+i2n\pi)/\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inhibitory 
+\begin_inset Formula $s_{n}^{(09}=\ln(\Phi'+i(2n-1)\pi)/\delta$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Perturbatively expand around 
+\begin_inset Formula $s_{n}^{(0)}$
+\end_inset
+
+ to find succession of solutions (iteration)
+\end_layout
+
+\begin_layout Itemize
+Point where asynchronous state loses stability 
+\begin_inset Formula $\text{Re}s_{n}=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Phi'\simeq1-\text{R}(i2n\pi/\delta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

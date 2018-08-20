@@ -1,0 +1,347 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Pasupath 2011
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Counting process
+\series bold
+\emph default
+ 
+\begin_inset Formula $\{N_{t},t\geq0\}$
+\end_inset
+
+ 
+\series default
+is a stochstic process 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sample space 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+for each 
+\begin_inset Formula $\omega\text{\ensuremath{\in\Omega}, function \ensuremath{N_{t}(\omega)}}$
+\end_inset
+
+ is a realization of the number of even happening in the interval 
+\begin_inset Formula $(0,t]$
+\end_inset
+
+ with 
+\begin_inset Formula $N_{0}(\omega)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{t}($
+\end_inset
+
+
+\begin_inset Formula $\omega)$
+\end_inset
+
+ is integer valued 
+\end_layout
+
+\begin_layout Itemize
+non-decreasing
+\end_layout
+
+\begin_layout Itemize
+right-continuous 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nonhomogenoeus Poisson process is a couting process defined as 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $N_{t+s}$
+\end_inset
+
+ is indepndent of 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+: Number of events in a time window are indepndent of previous events
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{Pr}\{N_{t+s}-N_{t}\geq2\}=o(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\text{Pr}\{N_{t+s}-N_{t}=1\}=\lambda(t)s+o(s)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rate function 
+\begin_inset Formula $\lambda(t)$
+\end_inset
+
+ completely characterizes the Poisson process 
+\end_layout
+
+\begin_layout Section*
+Generating Nonhomogeneous Poisson Processes
+\end_layout
+
+\begin_layout Itemize
+Three broad groups 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inversion methods
+\end_layout
+
+\begin_layout Itemize
+order-statistics methods
+\end_layout
+
+\begin_layout Itemize
+acceptence rejection methods
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Inversion methods 
+\end_layout
+
+\begin_layout Itemize
+Distribution of inter-event times 
+\end_layout
+
+\begin_layout Itemize
+Consider the 
+\begin_inset Formula $i$
+\end_inset
+
+th inter-event time 
+\begin_inset Formula $X_{i}=T_{i+1}-T_{i}$
+\end_inset
+
+ conditional on the first 
+\begin_inset Formula $i$
+\end_inset
+
+ event times 
+\begin_inset Formula $T_{1}=t_{1},T_{2}=t_{2},\ldots,T_{i}=t_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Derive cdf of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+F_{t_{i}}(x) & =\text{Pr}\{\left.X_{i}\leq x\right|T_{j}=t_{j},j=1,2,\ldots,i\}\\
+ & =\text{Pr}\{\left.N_{t_{i}+x}-N_{t_{i}}\geq1\right|T_{j}=t_{j},j=1,2,\ldots,i\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using independent increment property, we can write 
+\begin_inset Formula 
+\begin{align*}
+F_{t_{i}}(x) & =\text{Pr}\{N_{t_{i+x}}-N_{t_{i}}\geq1\}\\
+ & =1-\text{Pr}\{N_{t_{i+x}}-N_{t_{i}}=0\}\\
+ & =1-\exp(-\lambda(t_{i}+x)+\lambda(t_{i}))
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+The inverse cdf method
+\end_layout
+
+\begin_layout Itemize
+If one ones cdf of a probability distribution, then you can always generate
+ a random sample from that distribution 
+\end_layout
+
+\begin_layout Itemize
+Inverse cdf technique uses the fact that a continuous cdf is a one-to-one
+ mapping of the of the cdf to the interval 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therfore, if 
+\begin_inset Formula $U$
+\end_inset
+
+ is a uniform random variable on 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+, then 
+\begin_inset Formula $X=F^{-1}(U)$
+\end_inset
+
+ has the distribution 
+\begin_inset Formula $F$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Example 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The exponential distribution has probability 
+\begin_inset Formula $f(x)=e^{-x}$
+\end_inset
+
+ for 
+\begin_inset Formula $x\geq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cumulative distribution 
+\begin_inset Formula $F(x)=1-e^{-x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inversion by 
+\begin_inset Formula $F(x)=y$
+\end_inset
+
+ for 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+1-e^{-x}=y\Rightarrow x(y)=-\ln(1-y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
