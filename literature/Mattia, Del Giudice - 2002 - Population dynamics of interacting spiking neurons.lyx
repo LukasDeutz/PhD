@@ -3444,19 +3444,139 @@ Zero order
 \begin_inset Formula $s_{0}=\frac{1}{\delta}\ln\Phi'$
 \end_inset
 
+ assuming 
+\begin_inset Formula $\Phi'$
+\end_inset
 
+ is close to one?
 \end_layout
 
 \begin_layout Itemize
 First order 
 \begin_inset Formula 
 \[
-1+s_{1}^{(n)}\delta-\Phi'-\frac{f_{1}c_{1}}{s_{1}^{(n)}-\lambda_{1}}-\frac{f_{1}^{*}c_{1}^{*}}{s_{1}^{(n)}-\lambda_{1}^{*}}=0
+s_{1}=\lambda_{1}\left(1+\frac{f_{1}c_{1}}{1-\Phi'+\lambda_{1}\delta}\right)
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Excitatory population, 
+\begin_inset Formula $\Phi'>0$
+\end_inset
+
+, when 
+\begin_inset Formula $\Phi'\rightarrow1$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{1}=-\frac{1}{\text{Re}(s_{1})}$
+\end_inset
+
+ characteristic time of the system becomes small 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ faster relaxation into the steady state 
+\end_layout
+
+\begin_layout Itemize
+Increase of synaptic couplings brings about an increase in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Phi'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If learning is expressed as a potentiation of the synaptic efficacies this
+ could be observed in the response time of the population to external stimulatio
+n 
+\end_layout
+
+\begin_layout Subsection*
+Remarks on the nature of the poles 
+\end_layout
+
+\begin_layout Itemize
+Two families of poles of 
+\begin_inset Formula $v_{1}(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion poles 
+\begin_inset Formula $s_{n}^{(d)}$
+\end_inset
+
+ do not affect the stability of the excitatory population since their real
+ part is always negative, as that of the eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Increasing 
+\begin_inset Formula $\Phi'$
+\end_inset
+
+, the 
+\begin_inset Formula $s_{n}^{(d)}$
+\end_inset
+
+ get farther away from imaginary axis 
+\end_layout
+
+\begin_layout Itemize
+Transmission poles 
+\begin_inset Formula $s_{n}^{(t)}$
+\end_inset
+
+ get closer to imaginary axis bringing the network to instability 
+\end_layout
+
+\begin_layout Itemize
+Real part of 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ increases with 
+\begin_inset Formula $n$
+\end_inset
+
+, relaxation times of the system are essentially determined by 
+\begin_inset Formula $s_{1}^{(d)}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\tau_{n}\sim\frac{1}{\text{Re}\lambda_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transmission poles 
+\begin_inset Formula $s_{n}^{(t)}$
+\end_inset
+
+ disappear for a noninteracting network or vanishing transmission delays
+ 
 \end_layout
 
 \end_body
