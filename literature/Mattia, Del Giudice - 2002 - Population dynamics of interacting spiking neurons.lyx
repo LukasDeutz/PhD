@@ -3579,5 +3579,749 @@ Transmission poles
  
 \end_layout
 
+\begin_layout Subsection*
+Finite-size effects 
+\end_layout
+
+\begin_layout Itemize
+Sparse input, i.e.
+ neurons share negligible portion of common input 
+\end_layout
+
+\begin_layout Itemize
+Decorrelation of neurons firing even for high connectivity 
+\end_layout
+
+\begin_layout Itemize
+Here, randomness is associated to decorrelation 
+\end_layout
+
+\begin_layout Itemize
+Stochastic changes of the current are sensed by different neurons as incoherent
+ fluctuations 
+\begin_inset Formula $\Rightarrow\sigma^{2}(v,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spiking activity in time interval 
+\begin_inset Formula $dt$
+\end_inset
+
+ is assume to be Poisson with mean and variance 
+\begin_inset Formula $Nr(t)dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stochastic process 
+\begin_inset Formula $v_{N}(t)$
+\end_inset
+
+ in the limit of large 
+\begin_inset Formula $N$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v_{N}(t)=v(t)+\sqrt{\frac{v(t)}{N}}\Gamma(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Gamma(t)$
+\end_inset
+
+ is a white noise 
+\end_layout
+
+\begin_layout Itemize
+For an infinite population, the emission rate can only be calculated for
+ noninteracting neurons? 
+\end_layout
+
+\begin_layout Subsection*
+One population of linear IF neurons 
+\end_layout
+
+\begin_layout Itemize
+Integrate-and-Fire neurons, 
+\begin_inset Formula $v_{\text{min}}=H=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constant decay term 
+\begin_inset Formula $f(v)=-\beta$
+\end_inset
+
+, set 
+\begin_inset Formula $\mu(t)\rightarrow\mu(t)-\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider 
+\begin_inset Formula $\beta$
+\end_inset
+
+ as constant inhibitory afferent current 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck operator 
+\begin_inset Formula 
+\[
+L(v,t)=-\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The equation which determined the Eigenfunctions 
+\begin_inset Formula $\phi_{n}(v,t)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+L(v,t)\phi_{n}(v,t)=\lambda_{n}(t)\phi_{n}(v,t)
+\]
+
+\end_inset
+
+is a linear homogeneous second-order differential equation with constant
+ coefficients 
+\end_layout
+
+\begin_layout Itemize
+General solution 
+\begin_inset Formula 
+\[
+\phi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\zeta(\lambda)=\frac{\theta}{\sigma^{2}}\sqrt{\mu^{2}+2\sigma^{2}\lambda},\quad\xi=\frac{\mu\theta}{\sigma^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\begin{align*}
+\left[-\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}\right]\phi & =\lambda\phi\\
+-\mu\phi_{v}+\frac{1}{2}\sigma^{2}\phi_{vv}-\lambda\phi & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Assume solution of the form 
+\begin_inset Formula $\phi=e^{av}$
+\end_inset
+
+.
+ Substituting into the differential equation 
+\begin_inset Formula 
+\begin{align*}
+-\mu a\phi+\frac{1}{2}\sigma^{2}a^{2}\phi-\lambda\phi & =0\\
+\left(-\mu a+\frac{1}{2}\sigma^{2}a^{2}-\lambda\right)\phi & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Characteristic equation 
+\begin_inset Formula 
+\[
+-\mu a+\frac{1}{2}\sigma^{2}a^{2}-\lambda=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $r$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+a^{2}-2\frac{\mu}{\sigma^{2}}a & =\frac{2\lambda}{\sigma^{2}}\\
+\left(a-\frac{\mu}{\sigma^{2}}\right)^{2} & =\frac{1}{\sigma^{2}}\left(2\lambda+\frac{\mu^{2}}{\sigma^{2}}\right)\\
+a_{1/2} & =\pm\frac{1}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}+\frac{\mu}{\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $\zeta=\frac{\theta}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi=\frac{\theta\mu}{\sigma^{2}}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is real, then 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ are real.
+ General solution 
+\begin_inset Formula 
+\[
+\phi(v,t)=c_{1}e^{a_{1}v}+c_{2}e^{a_{2}v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+They divide membrane potential 
+\begin_inset Formula $v$
+\end_inset
+
+ by threshold 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constant 
+\begin_inset Formula $c_{+}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{-}$
+\end_inset
+
+ are determined by the boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Adjoint operator 
+\begin_inset Formula 
+\[
+L^{+}=\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions 
+\begin_inset Formula 
+\[
+\psi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{-\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Eigenvalues and eigenfunctions of 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+ is a eigenvalue of 
+\begin_inset Formula $L$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\phi_{0}(v,t)=\frac{c}{\mu}\left[1-e^{\frac{-2\xi(\theta-v)}{\theta}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Constant 
+\begin_inset Formula $c$
+\end_inset
+
+ is determined by normalization 
+\begin_inset Formula 
+\[
+c=\Phi(\mu,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the stationary condition 
+\begin_inset Formula $\Phi(\mu,\sigma^{2})$
+\end_inset
+
+ gives the output emission rate of the population 
+\end_layout
+
+\begin_layout Itemize
+Eigenfunction 
+\begin_inset Formula $\psi_{0}$
+\end_inset
+
+ of the adjoint operator 
+\begin_inset Formula $L_{+}$
+\end_inset
+
+ is 
+\begin_inset Formula $\psi_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Nonstationary modes 
+\end_layout
+
+\begin_layout Itemize
+Study 
+\begin_inset Formula $\phi_{\lambda}(v,t)$
+\end_inset
+
+ for 
+\begin_inset Formula $\lambda\neq0$
+\end_inset
+
+ with appropriate boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Absorbing barrier 
+\begin_inset Formula $p(\theta,t)=0\Rightarrow\phi(\theta,t)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\phi_{\lambda}(v,t)=c_{\lambda}e^{\frac{\xi}{\theta}v}\sinh\frac{\zeta(\theta-v)}{\theta}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from general solution 
+\begin_inset Formula 
+\[
+\phi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From 
+\begin_inset Formula $\phi(\theta,t)=0$
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\begin{align*}
+\left[c_{+}e^{\zeta}+c_{-}e^{-\zeta}\right]e^{\xi} & =0\\
+c_{+}e^{\zeta}+c_{-}e^{-\zeta} & =0\\
+c_{-}= & -c_{+}e^{2\zeta}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+\phi_{\lambda}(v,t) & =c\left[e^{\zeta\frac{v}{\theta}}-e^{-\zeta\frac{v}{\theta}+2\zeta}\right]e^{\frac{\xi v}{\theta}}\\
+ & =ce^{\zeta}\left[e^{\zeta\frac{v}{\theta}-\zeta}-e^{-\zeta\frac{v}{\theta}+\zeta}\right]e^{\frac{\xi v}{\theta}}\\
+ & =c_{\lambda}\sinh\left(\frac{v-\theta}{\zeta\theta}\right)e^{\frac{\xi v}{\theta}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux conservation and reflecting barrier 
+\begin_inset Formula 
+\[
+\left.\frac{1}{2}\sigma^{2}\partial_{v}\phi_{\lambda}\right|_{v=\theta}=\left.\left(\frac{1}{2}\sigma^{2}\partial_{v}\phi_{v}-\mu\phi_{\lambda}\right)\right|_{v\rightarrow0^{+}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Characteristic equation 
+\begin_inset Formula 
+\[
+\zeta e^{\xi}=\zeta\cosh(\zeta)+\xi\cosh(\zeta)
+\]
+
+\end_inset
+
+whose solution gives us the set of all nonvanishing eigenvalues of the operator
+ 
+\begin_inset Formula $L$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int\phi_{\lambda}(v,t)dv=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions of the adjoint operator 
+\begin_inset Formula 
+\[
+\psi_{\lambda}(v,t)=\tilde{c}_{\lambda}e^{-\frac{\xi}{\theta}v}\left[\xi\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Adjoint operator 
+\begin_inset Formula 
+\[
+L^{+}=\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}
+\]
+
+\end_inset
+
+Eigenfunctions are determined by 
+\begin_inset Formula 
+\begin{align*}
+L^{+}\psi & =\lambda\psi\\
+-\lambda\psi+\mu\psi_{v}+\frac{1}{2}\sigma^{2}\psi_{vv} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ansatz 
+\begin_inset Formula $\psi=e^{at}$
+\end_inset
+
+ leads to 
+\begin_inset Formula 
+\[
+\left(-\lambda+a\mu+\frac{1}{2}\sigma^{2}a^{2}\right)\psi=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Characteristic equation 
+\begin_inset Formula 
+\begin{align*}
+-\lambda+a\mu+\frac{1}{2}\sigma^{2}a^{2} & =0\\
+a^{2}+2\frac{\mu}{\sigma^{2}}a & =\frac{2\lambda}{\sigma^{2}}\\
+\left(a+\frac{\mu}{\sigma^{2}}\right)^{2} & =\frac{2\lambda}{\sigma^{2}}+\frac{\mu^{2}}{\sigma^{4}}\\
+a_{1/2} & =\pm\frac{1}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}-\frac{\mu}{\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+yields 
+\begin_inset Formula 
+\[
+a_{1/2}==\pm\frac{1}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}-\frac{\mu}{\sigma^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+So we find 
+\begin_inset Formula 
+\[
+a_{1/2}=\pm\frac{\zeta}{\theta}-\frac{\xi}{\theta}
+\]
+
+\end_inset
+
+General solution 
+\begin_inset Formula 
+\begin{align*}
+\psi & =c_{+}e^{a_{1}v}+c_{-}e^{a_{2}v}\\
+ & =\left(c_{+}e^{\frac{\zeta}{\theta}v}+c_{-}e^{-\frac{\zeta}{\theta}v}\right)e^{-\frac{\xi}{\theta}v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula $\psi_{v}(0)=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\theta}(\zeta-\xi)c_{+}-c_{-}\frac{1}{\theta}(\zeta+\xi) & =0\\
+(\zeta-\xi)c_{+} & =(\zeta+\xi)c_{-}\\
+c_{-}= & \frac{\zeta-\xi}{\zeta+\xi}c_{+}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We find 
+\begin_inset Formula 
+\begin{align*}
+\psi & =c\left(e^{\frac{\zeta}{\theta}v}+\frac{\zeta-\xi}{\zeta+\xi}e^{-\frac{\zeta}{\theta}v}\right)e^{-\frac{\xi}{\theta}v}\\
+ & =\frac{c}{\zeta+\xi}\left((\zeta+\xi)e^{\frac{\zeta}{\theta}v}+(\zeta-\xi)e^{-\frac{\zeta}{\theta}v}\right)e^{-\frac{\xi}{\theta}v}\\
+ & =\frac{c}{\zeta+\xi}\left[\zeta\left(e^{\frac{\zeta}{\theta}v}+e^{-\frac{\zeta}{\theta}v}\right)+\xi\left(e^{\frac{\zeta}{\theta}v}-e^{-\frac{\zeta}{\theta}v}\right)\right]e^{-\frac{\xi}{\theta}v}\\
+ & =2\frac{c}{\zeta+\xi}\left[\zeta\cosh\left(\frac{\zeta}{\theta}v\right)+\xi\sinh\left(\frac{\zeta}{\theta}v\right)\right]e^{-\frac{\xi}{\theta}v}\\
+ & =c\left[\zeta\cosh\left(\frac{\zeta}{\theta}v\right)+\xi\sinh\left(\frac{\zeta}{\theta}v\right)\right]e^{-\frac{\xi}{\theta}v}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second boundary condition 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\psi(\theta)=\psi(0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+yields 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+2\frac{c}{\zeta+\xi}\left[\zeta\cosh\left(\zeta\right)+\xi\sinh\left(\zeta\right)\right]e^{-\xi} & =2\frac{c}{\zeta+\xi}\zeta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This equation does not fix 
+\begin_inset Formula $c$
+\end_inset
+
+ but yields again the characteristic equation for the eigenvalues 
+\begin_inset Formula 
+\[
+\zeta\cosh\left(\zeta\right)+\xi\sinh\left(\zeta\right)=\zeta e^{\xi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can absorb 
+\begin_inset Formula $\tilde{c}_{\lambda}$
+\end_inset
+
+ into 
+\begin_inset Formula $c$
+\end_inset
+
+ in 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and enforce 
+\begin_inset Formula 
+\begin{align*}
+\int dv\,\phi_{\lambda}\psi_{\lambda} & =1
+\end{align*}
+
+\end_inset
+
+which yields 
+\begin_inset Formula 
+\[
+c_{\lambda}=\frac{2\zeta}{\theta\left[\zeta\xi\cosh\left(\zeta\right)+(\zeta^{2}-\xi)\sinh\zeta\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+The spectrum of 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\end_layout
+
 \end_body
 \end_document
