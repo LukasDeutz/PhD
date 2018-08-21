@@ -925,7 +925,7 @@ Eigenvalues are in general complex, with
 \end_inset
 
  for 
-\begin_inset Formula $n=0$
+\begin_inset Formula $n\neq0$
 \end_inset
 
 
