@@ -5912,5 +5912,759 @@ E=\frac{\hbar^{2}}{2m}n^{2}
 Heat Flow in Three Dimensions
 \end_layout
 
+\begin_layout Itemize
+Our objective is formulate a integral conservation law similar to the one
+ dimensional case
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ be region in space where heat is flowing, and let 
+\begin_inset Formula $u=u(x,y,z,t)$
+\end_inset
+
+ be the temperature at time 
+\begin_inset Formula $t$
+\end_inset
+
+ at point 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Total amount of heat in small volume element 
+\begin_inset Formula $dV=dxdydz$
+\end_inset
+
+ is 
+\begin_inset Formula $cu\rho dV$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Total amount heat energy ín small volume 
+\begin_inset Formula $B$
+\end_inset
+
+ is given by the three dimensional integral
+\begin_inset Formula 
+\[
+\int_{B}c\rho udV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Heat sources of sinks are given by a point function 
+\begin_inset Formula $f=f(x,y,z,t)$
+\end_inset
+
+ where 
+\begin_inset Formula $fdV$
+\end_inset
+
+ is the rate at which heat is generated in 
+\begin_inset Formula $dV$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{B}fdV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ has the unit engery per unit volume, per unit time 
+\end_layout
+
+\begin_layout Itemize
+Heat flow vector 
+\begin_inset Formula $\boldsymbol{\phi}=\boldsymbol{\phi}(x,y,z,t)$
+\end_inset
+
+ points into the direction of the heat flow at position 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rate at which heat flows across an oblique surface element 
+\begin_inset Formula $dA$
+\end_inset
+
+ oriented by a unit vector 
+\begin_inset Formula $n$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\left(\boldsymbol{\phi\cdot}\boldsymbol{n}\right)dA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Net rate that heat energy flows across the boundary of 
+\begin_inset Formula $B$
+\end_inset
+
+, denoted by 
+\begin_inset Formula $\partial B$
+\end_inset
+
+, is the surface integral 
+\begin_inset Formula 
+\[
+\int_{\partial B}\left(\boldsymbol{\phi\cdot}\boldsymbol{n}\right)\,dA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conservation law 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{B}dV\,c\rho u=-\int_{\partial B}\left(\boldsymbol{\phi}\cdot\boldsymbol{n}\right)dA+\int_{B}f\,dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Divergence theorem (Gauss integral law)
+\begin_inset Formula 
+\[
+\int dV\text{div}\boldsymbol{\phi}=\int_{\partial B}\left(\boldsymbol{\phi}\cdot\boldsymbol{n}\right)dA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at 
+\begin_inset Formula 
+\[
+\int_{B}\left(c\rho u_{t}+\text{div}\boldsymbol{\phi}-f\right)dV=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Balance law must hold for any shape 
+\begin_inset Formula $B$
+\end_inset
+
+ in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, and therefore 
+\begin_inset Formula 
+\[
+c\rho u_{t}+\text{div}\boldsymbol{\phi}=f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The flux 
+\begin_inset Formula $\boldsymbol{\phi}$
+\end_inset
+
+ must be related to 
+\begin_inset Formula $u$
+\end_inset
+
+ depending on the problem 
+\end_layout
+
+\begin_layout Itemize
+E.h.
+ Fourier's heat conduction law
+\begin_inset Formula 
+\[
+\boldsymbol{\phi}=-K\text{grad}u=-K(u_{x},u_{y},u_{z})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the thermal conductivity
+\end_layout
+
+\begin_layout Itemize
+Negative gradient points in the direction of maximum decrease 
+\end_layout
+
+\begin_layout Itemize
+Inserting into conservation law 
+\begin_inset Formula 
+\[
+c\rho u_{t}-K\left(u_{xx}+u_{yy}+u_{zz}\right)=f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace operator 
+\begin_inset Formula 
+\[
+u_{t}-k\Delta u=\frac{1}{c\rho}f
+\]
+
+\end_inset
+
+with diffusivity 
+\begin_inset Formula $k=K/(c\rho)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition 
+\begin_inset Formula $u(x,y,z,0)=u_{0}(x,y,z)$
+\end_inset
+
+ and conditions on the boundary 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $f$
+\end_inset
+
+ and boundary conditions are independent of time, we expect the body 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ to eventually reach equilibrium 
+\begin_inset Formula $u=u(x,y,z)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Prescribe temperature on the boundary 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+u(x,y,z) & =g(x,y,z),\quad(x,y,z)\in\partial\Omega
+\end{align*}
+
+\end_inset
+
+which is called Dirichlet condition 
+\end_layout
+
+\begin_layout Itemize
+Prescribe heat flux on the boundary 
+\begin_inset Formula 
+\[
+-K\text{grad}u\cdot\boldsymbol{n}=h(x,y,z),\quad(x,y,z)\in\partial\Omega
+\]
+
+\end_inset
+
+which is called Neumann condition 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercises
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $u(x,y,z)$
+\end_inset
+
+ be a scalar field.
+ Verify that 
+\begin_inset Formula 
+\[
+\text{div}(\text{grad}u)=u_{xx}+u_{yy}+u_{zz}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+\text{grad}u=u_{x}\boldsymbol{e}_{x}+u_{y}\boldsymbol{e}_{y}+u_{z}\boldsymbol{e}_{z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\begin{align*}
+\text{div}(\text{grad}u) & =\text{div}\left(u_{x}\boldsymbol{e}_{x}+u_{y}\boldsymbol{e}_{y}+u_{z}\boldsymbol{e}_{z}\right)\\
+ & =\left(\partial_{x}\boldsymbol{e}_{x}+\partial_{y}\boldsymbol{e}_{y}+\partial_{z}\boldsymbol{e}_{z}\right)\left(u_{x}\boldsymbol{e}_{x}+u_{y}\boldsymbol{e}_{y}+u_{z}\boldsymbol{e}_{z}\right)\\
+ & =u_{xx}+u_{yy}+u_{zz}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+What is the form of the conservation law
+\begin_inset Formula 
+\[
+c\rho u_{t}+\text{div}\boldsymbol{\phi}=f
+\]
+
+\end_inset
+
+ if the thermal conductivity depends in 
+\begin_inset Formula 
+\[
+\boldsymbol{\phi}=-K(x,y,z)\text{grad}u
+\]
+
+\end_inset
+
+depends on the position 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\boldsymbol{\phi}=-K(x,y,z)\text{grad}u=-\begin{pmatrix}Ku_{x}\\
+Ku_{y}\\
+Ku_{z}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\begin{align*}
+\text{div}\boldsymbol{\phi} & =-K_{x}u_{x}-Ku_{xx}-K_{y}u_{y}-Ku_{yy}-K_{z}u_{z}-Ku_{zz}\\
+ & -K\Delta u-\text{grad}K\cdot\text{grad}u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\[
+c\rho u_{t}-K\Delta u-\text{grad}K\cdot\text{grad}u=f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $u=u(x,y,z)$
+\end_inset
+
+ is a solution of the Neumann boundary value problem 
+\begin_inset Formula 
+\begin{align*}
+-K\Delta u & =f,\quad(x,y,z)\\
+-K\text{grad}u\cdot\boldsymbol{n} & =g(x,y,z),\quad(x,y,z)\in\partial\Omega
+\end{align*}
+
+\end_inset
+
+show that 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ must satisfy 
+\begin_inset Formula 
+\[
+\int_{\Omega}dV\,f=\int_{\partial\Omega}g\,dA
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+-K\Delta u=f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate over 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ on both sides 
+\begin_inset Formula 
+\[
+-\int_{\Omega}dV\,K\Delta u=\int_{\Omega}dV\,f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The l.h.s.
+ can be written as 
+\begin_inset Formula 
+\[
+-\int_{\Omega}dV\,K\text{div}(\text{grad}u)=-\int_{\partial\Omega}K\,\text{grad}u\cdot\boldsymbol{n}\,dA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that integrand is equivalent to flux at the boundary
+\begin_inset Formula 
+\[
+-\int_{\partial\Omega}K\,\text{grad}u\cdot\boldsymbol{n}\,dA=\int_{\partial\Omega}g(x,y,z)\,dA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so we arrive at 
+\begin_inset Formula 
+\[
+\int_{\partial\Omega}g(x,y,z)\,dA=\int_{\Omega}dV\,f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Steady heat flow: What is produced in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ must be vanish through the boundary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $w$
+\end_inset
+
+ be a scalar field and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ a vector field.
+ Prove the vector identity 
+\begin_inset Formula 
+\[
+\text{div}(w\boldsymbol{\phi})=\boldsymbol{\phi}\cdot\text{grad}w+w\cdot\text{div}\phi
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $\boldsymbol{\phi}=(\alpha,\beta.\gamma)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{div}(w\boldsymbol{\phi}) & =\partial_{x}w\alpha+\partial_{y}w\beta+\partial_{z}w\gamma\\
+ & =w_{x}\alpha+w\alpha_{x}+w_{y}\beta+w\beta_{y}+w_{z}\gamma+w\gamma_{z}\\
+ & =w(a_{x}+\beta_{y}+\gamma_{z})+w_{x}\alpha+w_{y}\beta+w_{z}\gamma\\
+ & =w\text{div}\boldsymbol{\phi}+\text{grad}w\cdot\boldsymbol{\phi}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Integrate over 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and take 
+\begin_inset Formula $\boldsymbol{\phi}\text{=\ensuremath{\text{grad}u} to prove Green's identity }$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{\Omega}dV\,w\Delta u=-\int_{\Omega}dV\text{grad}u\cdot\text{grad}w+\int_{\partial\Omega}w\,\text{grad}u\cdot\boldsymbol{n}\,dA
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula 
+\begin{align*}
+\int_{\Omega}dV\,\text{div}(w\boldsymbol{\phi}) & =\int_{\Omega}dV\,\left(w\text{div}\boldsymbol{\phi}+\text{grad}w\cdot\boldsymbol{\phi}\right)\\
+\int_{\partial\Omega}dA\,w\,\text{grad}u\cdot\boldsymbol{n} & =\int_{\Omega}dV\,w\Delta u+\int_{\Omega}dV\text{grad}w\cdot\text{grad}u\\
+\int_{\Omega}dV\,w\Delta u & =-\int_{\Omega}dV\text{grad}w\cdot\text{grad}u+\int_{\partial\Omega}dA\,w\,\text{grad}u\cdot\boldsymbol{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Prove that if the Dirichtlet problem 
+\begin_inset Formula 
+\begin{align*}
+\Delta u & =\lambda u,\quad(x,y,z)\in\Omega\\
+u & =0,\quad(x,y,z)\in\partial\Omega
+\end{align*}
+
+\end_inset
+
+has a non trivial solution 
+\begin_inset Formula $u=u(x,y,z)$
+\end_inset
+
+, then 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ must be negative 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Multiply by 
+\begin_inset Formula $u$
+\end_inset
+
+ and integrate over 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{\Omega}dV\,u\Delta u & =\lambda\int dVu\cdot u\\
+-\int_{\Omega}dV\text{grad}u\cdot\text{grad}u+\int_{\partial\Omega}dA\,w\,\text{grad}u\cdot\boldsymbol{n} & =\lambda\int dVu\cdot u\\
+-\int_{\Omega}dV\text{grad}u\cdot\text{grad}u & =\lambda\int dVu\cdot u\\
+\int_{\Omega}dV\left(-\text{grad}u\cdot\text{grad}u-\lambda u\cdot u\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\[
+\lambda=-\frac{\left|\text{grad}u\right|^{2}}{\left|u\right|^{2}}\leq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
