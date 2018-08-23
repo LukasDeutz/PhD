@@ -1979,7 +1979,7 @@ status open
 \begin_layout Plain Layout
 Proof:
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Start from 
@@ -2380,7 +2380,7 @@ Eigenfunctions
 \begin{align*}
 \epsilon\dot{\boldsymbol{a}_{1}} & =[\boldsymbol{\Lambda}(r_{0}+\epsilon r_{1}(t))+\boldsymbol{C}(r_{0}+\epsilon r_{1}(t))\epsilon r_{1}(t)]\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1})\\
 \epsilon\dot{\boldsymbol{a}_{1}} & =\boldsymbol{\Lambda}(r_{0})\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1}+\mathcal{O}(\epsilon^{2})\\
-\dot{\boldsymbol{a}_{1}} & =\boldsymbol{\Lambda}(r_{0})\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1}+\mathcal{O}(\epsilon)
+\dot{\boldsymbol{a}_{1}} & =\boldsymbol{\Lambda}(r_{0})\boldsymbol{a}_{1}+\boldsymbol{c}\dot{r}_{1}+\mathcal{O}(\epsilon)
 \end{align*}
 
 \end_inset
@@ -2423,7 +2423,7 @@ r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\bolds
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 ProofStart from 

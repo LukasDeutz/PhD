@@ -3003,7 +3003,7 @@ Write differential equation
 as integral equation 
 \begin_inset Formula 
 \[
-\xi(t+\tau)-x=\int_{t}^{t+\tau}h(\xi,t')+g(\xi,t')\Gamma(t')dt'
+\xi(t+\tau)-x=\int_{t}^{t+\tau}\left(h(\xi,t')+g(\xi,t')\Gamma(t')\right)dt'
 \]
 
 \end_inset
@@ -3180,7 +3180,7 @@ D^{(1)}(x,t)=\frac{1}{1!}\lim_{\tau\rightarrow0}\frac{1}{\tau}\left\langle \xi(t
 \end_layout
 
 \begin_layout Itemize
-Second coefficientt
+Second coefficient
 \begin_inset Formula 
 \[
 D^{(2)}(x,t)=g^{2}(x,t)
@@ -7735,6 +7735,71 @@ Natural boundary conditions
 \end_inset
 
  Hermite functions 
+\end_layout
+
+\begin_layout Section*
+Fokker-Planck Equation for Several Variables; Methods of Solutions 
+\end_layout
+
+\begin_layout Itemize
+Time-independent drift and diffusion coefficients 
+\begin_inset Formula 
+\[
+\frac{\partial W}{\partial t}=L_{\text{FP}}W=-\partial S_{i}/\partial x_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker Planck operator 
+\begin_inset Formula 
+\[
+L_{\text{FP}}=-\frac{\partial}{\partial x_{i}}D_{i}(\boldsymbol{x})+\frac{\partial^{2}}{\partial x_{i}\partial x_{j}}D_{ij}(\boldsymbol{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability current 
+\begin_inset Formula 
+\[
+S_{i}=D_{i}W-\frac{\partial}{\partial x_{j}}D_{ij}W
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $N$
+\end_inset
+
+ variables, the current is generally not constant in the stationary state
+ and for natural boundary conditions it is generally not zero 
+\end_layout
+
+\begin_layout Itemize
+Assume that diffusion matrix 
+\begin_inset Formula $D_{ij}=D\delta_{ij}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+ and proportional to the unit matrix 
+\begin_inset Formula $D_{ij}=D\delta_{ij}$
+\end_inset
+
+
 \end_layout
 
 \end_body
