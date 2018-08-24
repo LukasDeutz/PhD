@@ -2302,7 +2302,7 @@ Using
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section*
 Nonlinear Langevin Equation, One Variable 
 \end_layout
 
@@ -2575,8 +2575,8 @@ Which value should one use in
 \end_layout
 
 \begin_layout Itemize
-From mathematical point one cannot anser this question, but one has to use
- some additional specification 
+From mathematical point one cannot answer this question, but one has to
+ use some additional specification 
 \end_layout
 
 \begin_layout Itemize
@@ -2882,7 +2882,7 @@ We arrive at
 \end_layout
 
 \begin_layout Itemize
-Average value objects differential equation 
+Differential equation for the average value 
 \begin_inset Formula 
 \[
 \partial_{t}\bigl\langle\xi(t)\bigr\rangle=xa^{2}\exp(a^{2}t)=a^{2}\bigl\langle\xi(t)\bigr\rangle
@@ -2977,7 +2977,7 @@ In the Fokker-Planck equation Kramers-Moyal expansion coefficients enter
  
 \begin_inset Formula 
 \[
-D^{(n)}(x,t)=\frac{1}{n!}\lim_{\tau\rightarrow0}\frac{1}{\tau}\left.\bigl\langle\bigl[\xi(t+\tau)-x\bigr]^{n}\bigr\rangle\right|_{t=0}
+D^{(n)}(x,t)=\frac{1}{n!}\lim_{\tau\rightarrow0}\frac{1}{\tau}\left.\bigl\langle\bigl[\xi(t+\tau)-\xi(t)\bigr]^{n}\bigr\rangle\right|_{\xi(t)=x}
 \]
 
 \end_inset
@@ -3081,7 +3081,7 @@ Only Lagevin forces and the know functions
 Take average of both sided 
 \begin_inset Formula 
 \begin{align*}
-\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}\int_{t}^{t'}h(x,t')h(,t'')dt''dt'+\ldots\\
+\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}\int_{t}^{t'}h(x,t')h(x,t'')dt''dt'+\ldots\\
  & +\int_{t}^{t+\tau}g'(x,t')\int_{t}^{t'}g(x,t'')2\delta(t''-t')dt''dt'+\ldots
 \end{align*}
 
@@ -3129,7 +3129,7 @@ where does the factor
  and therefore get 
 \begin_inset Formula 
 \begin{align*}
-\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}h(x,t')dt'+\int_{t}^{t+\tau}\int_{t}^{t'}h'(x,t')h(,t'')dt''dt'+\ldots\\
+\left\langle \xi(t+\tau)-x\right\rangle = & \int_{t}^{t+\tau}dt'h(x,t')+\int_{t}^{t+\tau}dt'\int_{t}^{t'}dt''h'(x,t')h(x,t'')+\ldots\\
  & +\int_{t}^{t+\tau}g'(x,t')g(x,t')dt'
 \end{align*}
 
@@ -4978,7 +4978,7 @@ Define infinitesimal moments (expansion coefficients)
  as 
 \begin_inset Formula 
 \[
-D_{n}(x,t)=\lim_{\tau\rightarrow0}\frac{M_{n}(x,t,\tau)}{n!\tau}
+D_{n}(x,t)=\lim_{\tau\rightarrow0}\frac{1}{\tau}\frac{M_{n}(x,t,\tau)}{n!}
 \]
 
 \end_inset
