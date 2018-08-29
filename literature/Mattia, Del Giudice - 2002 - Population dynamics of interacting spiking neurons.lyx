@@ -942,32 +942,6 @@ For noninteracting neurons, the solution of the Fokker-Planck equation is
 \end_inset
 
 , instead of exploding 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Seperatation ansatz 
-\begin_inset Formula 
-\[
-\phi(x,t)=f(t)g(x)
-\]
-
-\end_inset
-
-leads to 
-\begin_inset Formula 
-\[
-f(t)\propto e^{-\lambda t}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -1234,14 +1208,14 @@ For
 \begin_inset Formula $A(\theta,t)\leq0$
 \end_inset
 
-, diffusion term is necessary to have generate spike emmision and we are
+, diffusion term is necessary to have generate spike emission and we are
  in the 
 \series bold
 noise-dominated
 \series default
 , 
 \series bold
-subthreshold
+super-threshold
 \series default
  regime 
 \end_layout
@@ -1258,7 +1232,7 @@ drift-dominated
 \series default
 ,
 \series bold
- subthreshold 
+ sub-threshold 
 \series default
 regime 
 \end_layout
@@ -1273,8 +1247,8 @@ Eigenvalues of
 \end_layout
 
 \begin_layout Itemize
-Drift-dominated regimes the neural non-interacting population can undergo
- transient oscillations 
+In the Drift-dominated regimes, the neural non-interacting population can
+ undergo transient oscillations 
 \end_layout
 
 \begin_layout Itemize
@@ -1291,8 +1265,11 @@ Think of a
 \end_layout
 
 \begin_layout Itemize
-Emmision rate untergoes increasingly damped oscillations until reaching
- the stationary distribution 
+Emission rate undergoes increasingly 
+\series bold
+damped oscillations
+\series default
+ until reaching the stationary distribution 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1324,7 +1301,7 @@ where
 \series bold
 time dependent
 \series default
- of the modal expansion 
+ coefficient of the modal expansion 
 \end_layout
 
 \begin_layout Itemize
@@ -1410,11 +1387,10 @@ Dynamics of
 \end_layout
 
 \begin_layout Itemize
-Only time dependence of 
 \begin_inset Formula $\psi$
 \end_inset
 
- is implicitly due to the 
+ depends on time implicitly due to the time dependence of 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -1443,11 +1419,11 @@ For multiple populations,
 \end_layout
 
 \begin_layout Itemize
-Population coupling term 
+The population coupling term 
 \begin_inset Formula $\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle$
 \end_inset
 
-, it vanished if 
+ vanishes if 
 \begin_inset Formula $v$
 \end_inset
 
@@ -1467,7 +1443,7 @@ Infinite set of nonlinear differential equations is not closed, rate
 \end_layout
 
 \begin_layout Itemize
-We need a relation connection 
+We need a relation connecting 
 \begin_inset Formula $p(v)$
 \end_inset
 
@@ -1696,7 +1672,7 @@ Flux due to stationary mode
 \end_layout
 
 \begin_layout Itemize
-Emmision rate equation can be written in matrix form
+Emission rate equation can be written in matrix form
 \begin_inset Formula 
 \begin{align*}
 \dot{\boldsymbol{a}} & =\left(\boldsymbol{\Lambda}+\boldsymbol{C}\dot{r}\right)\boldsymbol{a}+\boldsymbol{c}\dot{r}\\
@@ -1757,7 +1733,7 @@ C_{nm}=\bigl\langle\partial_{r}\psi_{n}\bigr|\phi_{m}\bigr\rangle
 \begin_inset Formula $\boldsymbol{\Lambda}$
 \end_inset
 
- is a diagonal matrix 
+ is the diagonal eigenvalue matrix 
 \begin_inset Formula 
 \[
 \Lambda_{nm}=\lambda_{n}\delta_{nm}
@@ -1894,12 +1870,16 @@ Mean-field approximation described collective behavior of a neuron population
 \end_layout
 
 \begin_layout Itemize
-The formulation is equally valid for stationary or transient regimes 
+The formulation is equally valid 
+\series bold
+for stationary or transient 
+\series default
+regimes 
 \end_layout
 
 \begin_layout Itemize
 Nonstationary 
-\begin_inset Formula $v(t)$
+\begin_inset Formula $r(t)$
 \end_inset
 
  embodies change in time of the average statistical properties of the neurons
@@ -1907,7 +1887,7 @@ Nonstationary
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $v(t)$
+\begin_inset Formula $r(t)$
 \end_inset
 
  correlates the activity of neurons in the population 
@@ -1944,7 +1924,7 @@ Population of noninteracting neurons
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- do not depend on 
+ do not depend on the rate 
 \begin_inset Formula $r\Rightarrow\partial_{r}\psi=0$
 \end_inset
 
@@ -1979,7 +1959,7 @@ status open
 \begin_layout Plain Layout
 Proof:
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Start from 
@@ -2119,7 +2099,7 @@ For
 \begin_layout Itemize
 When interaction is turned on, the population characteristic times are a
  complex mixture of single neuron properties and the properties of the collectiv
-ity activity 
+e activity 
 \end_layout
 
 \begin_layout Itemize
@@ -2283,7 +2263,7 @@ Proof
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Insert 
@@ -2423,7 +2403,7 @@ r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\bolds
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ProofStart from 

@@ -1,0 +1,1198 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\numberwithin{equation}{section}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Knight, B.
+ W.
+ (2000).
+ Dynamics of encoding in neuron populations: Some general mathematical features
+\end_layout
+
+\begin_layout Section
+Population Dynamics: Preliminaries
+\end_layout
+
+\begin_layout Itemize
+Generalized integrate-and-fire equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{dx}{dt}=f(x,s)+\eta(x,s),\quad s=s(t)\label{eq:integrate-and-fire}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $x=1$
+\end_inset
+
+ resets to 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transmembrane voltage 
+\begin_inset Formula $x$
+\end_inset
+
+ depends accumulation of average transmembrane current 
+\begin_inset Formula $f(x,s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic input signal 
+\begin_inset Formula $s(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Noise current 
+\begin_inset Formula $\eta(x,s)$
+\end_inset
+
+ is statistically uncorrelated with noise current felt by other neurons
+ 
+\end_layout
+
+\begin_layout Itemize
+Probability flux
+\begin_inset Formula 
+\begin{equation}
+J(x,t)=\left(f(x,s)-D(x,s)\frac{\partial}{\partial x}\right)\rho(x,t)
+\end{equation}
+
+\end_inset
+
+is a 
+\series bold
+linear transformation
+\series default
+ of the density 
+\begin_inset Formula $\rho(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Population Dynamics: Common Structure 
+\end_layout
+
+\begin_layout Itemize
+Probability density 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is solution to the partial differential equation 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho=L\rho
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation is linear, i.e.
+ a weighted superposition of two solution 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ is again a solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}(\alpha\rho_{1}+\beta\rho_{2}) & =L(\alpha\rho_{1}+\beta\rho_{2})\\
+\alpha\left(\partial_{t}\rho_{1}-L\rho_{1}\right) & =\beta\left(\partial_{t}-L\rho_{2}\right)\rho_{2}\\
+0 & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho$
+\end_inset
+
+ may be regarded as a member of a linear vector space 
+\end_layout
+
+\begin_layout Itemize
+Probability current 
+\begin_inset Formula $J$
+\end_inset
+
+ is a linear transformation 
+\begin_inset Formula $\rho$
+\end_inset
+
+ which can be expressed by defining the linear current operator 
+\begin_inset Formula $C(s)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+C\rho=J
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conservation operator 
+\begin_inset Formula $K$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho=-KJ
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $K$
+\end_inset
+
+ is the familiar divergence operator if 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is represented in a state-space 
+\end_layout
+
+\begin_layout Itemize
+Dynamical operator 
+\begin_inset Formula 
+\begin{equation}
+Q(s)=-KC(s)
+\end{equation}
+
+\end_inset
+
+which leads to 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho=Q(s(t))\rho\label{eq:conservation law}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integration of the the dynamical equation yields 
+\begin_inset Formula $\rho$
+\end_inset
+
+ at all times 
+\end_layout
+
+\begin_layout Itemize
+For integrate-and-fir neurons 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:conservation law"
+
+\end_inset
+
+ becomes 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $r(t)$
+\end_inset
+
+ firing rate
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R[J,s]$
+\end_inset
+
+ a firing-rate linear functional of 
+\begin_inset Formula $J$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear transformation from 
+\begin_inset Formula $J$
+\end_inset
+
+ to the scalar firing rate 
+\begin_inset Formula 
+\begin{equation}
+r=R[J]
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Normally, we think of the rate as the flux passing through some potentially
+ higher dimensional surface 
+\begin_inset Formula $S$
+\end_inset
+
+ in the state space of the neuron.
+ Hence, 
+\begin_inset Formula 
+\[
+r=\int dS\,\boldsymbol{n}\cdot\boldsymbol{J}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which is indeed a linear transformation 
+\begin_inset Formula 
+\begin{align*}
+\int dS\,\boldsymbol{n}\cdot\left(\alpha\boldsymbol{J}_{1}+\beta\boldsymbol{J}_{2}\right) & =\alpha\int dS\,\boldsymbol{n}\cdot\boldsymbol{J}_{1}+\beta\int dS\,\boldsymbol{n}\cdot\boldsymbol{J}_{2}\\
+ & =\alpha r_{1}+\beta r_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+which implies 
+\begin_inset Formula 
+\begin{equation}
+r=R[C\rho]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For Hodgkin-Huxley neurons, the rate is equivalent to the rate at which
+ neurons achieve the peak value of their action potential 
+\end_layout
+
+\begin_layout Itemize
+At the moment of maximum voltage 
+\begin_inset Formula $dV/dt=0$
+\end_inset
+
+which defines three-dimensional surface in the four-dimensional state-space
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+H-H-like system 
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=\frac{1}{C}g_{N}m^{3}h(V_{N}-V)+g_{K}n^{4}(V_{K}-V)+g_{L}(V_{L}-V)+\text{synaptic input}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From 
+\begin_inset Formula $dV/dt=0$
+\end_inset
+
+ at 
+\begin_inset Formula $V_{\text{spike}}$
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\[
+0=\frac{1}{C}g_{N}m^{3}h(V_{N}-V)+g_{K}n^{4}(V_{K}-V)+g_{L}(V_{L}-V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution surface 
+\begin_inset Formula $m,h,t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Integrating the flux of the probability current across that surface yields
+ average firing rate 
+\end_layout
+
+\begin_layout Itemize
+Integral 
+\begin_inset Formula $R[J,s]$
+\end_inset
+
+ is linear in 
+\begin_inset Formula $J$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For any specified input 
+\begin_inset Formula $s$
+\end_inset
+
+, the dynamical operator 
+\begin_inset Formula $Q$
+\end_inset
+
+ has a set of eigenvalues 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+Q\phi_{n}=\lambda_{n}\phi_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All of these depend on the value of the input 
+\begin_inset Formula $s$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+Q=Q(s),\quad\phi_{n}=\phi_{n}(s),\quad\lambda_{n}=\lambda_{n}(s)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For time-independent 
+\begin_inset Formula $s$
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:conservation law"
+
+\end_inset
+
+ has a time-independent steady-state solution 
+\begin_inset Formula $\rho_{0}(s)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+Q\rho_{0}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ is eigenvector with eigenvalue 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+ which depends on 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discretization of the state space 
+\begin_inset Formula 
+\begin{equation}
+\frac{d\rho_{i}}{dt}=\sum_{k}Q_{ik}\rho_{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probabilities 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ sum to unity, and so there sum has no time dependence 
+\end_layout
+
+\begin_layout Itemize
+This holds independently of initial conditions for 
+\begin_inset Formula $\rho$
+\end_inset
+
+, and hence ever column of 
+\begin_inset Formula $Q$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\sum_{k}Q_{ik}=0
+\end{equation}
+
+\end_inset
+
+must be zero 
+\end_layout
+
+\begin_layout Itemize
+Define inner product and adjoint dynamical operator 
+\begin_inset Formula $Q^{\dagger}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions of 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $Q^{\dagger}$
+\end_inset
+
+ form bi-orthogonal set 
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues come in complex conjugate pairs
+\end_layout
+
+\begin_layout Itemize
+Real part is negative
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue expansion of the density 
+\begin_inset Formula 
+\begin{equation}
+\rho(t)=\sum_{n}a_{n}(t)\phi_{n}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{n}(0)=\left(\hat{\phi}_{n},\rho(0)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Full solution 
+\begin_inset Formula $a_{n}(t)=a_{n}(0)e^{\lambda_{n}t}$
+\end_inset
+
+, and hence 
+\begin_inset Formula 
+\begin{equation}
+\rho(t)=\sum_{n}a_{n}(0)e^{\lambda_{n}t}\phi_{n}\label{eq:rho eigenfunction expansion}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ for 
+\begin_inset Formula $n>0$
+\end_inset
+
+ do not contribute to normalization 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ no probability is lost due to decay of higher modes 
+\end_layout
+
+\begin_layout Itemize
+Zero's adjoint eigenfunction 
+\begin_inset Formula $\hat{\phi}_{0}=1$
+\end_inset
+
+ independent of the input 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If input is constant, steady-state firing rate is 
+\begin_inset Formula 
+\begin{equation}
+r(s)=R\left[C(s)\rho_{0}(s),s\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $r$
+\end_inset
+
+ responds to 
+\begin_inset Formula $s$
+\end_inset
+
+ in a manner that in general is nonlinear 
+\end_layout
+
+\begin_layout Itemize
+What can we learn about the eigenvalues? 
+\end_layout
+
+\begin_layout Itemize
+Consider, neuron model that incorporates stochastic effects but quantitatively
+ resembles a nonstochastic model 
+\end_layout
+
+\begin_layout Itemize
+Assume steady input 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ is fixed at a value 
+\end_layout
+
+\begin_layout Itemize
+Example is the general integrate-and-fire neuron 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:integrate-and-fire"
+
+\end_inset
+
+ with 
+\begin_inset Formula $f(x,s_{0})$
+\end_inset
+
+ always positive between 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ drift-dominated regime
+\end_layout
+
+\begin_layout Itemize
+For the nonstochastic model, the noise 
+\begin_inset Formula $\eta$
+\end_inset
+
+ is set to zero 
+\end_layout
+
+\begin_layout Itemize
+For H-H like model, a steady input current in the most interesting range
+\series bold
+(?)
+\series default
+ gives a limit cycle that is a one-dimensional closed curve in 
+\begin_inset Formula $4$
+\end_inset
+
+-space, around which the system circulates at fixed frequency
+\end_layout
+
+\begin_layout Itemize
+For the nonstochastic counterpart, construct a artificial time-dependent
+ probability 
+\begin_inset Formula $\rho(x,t)$
+\end_inset
+
+ only nonzero at the limit circle 
+\end_layout
+
+\begin_layout Itemize
+Along limit circle initially a variable density must be chosen, 
+\begin_inset Formula $\rho(\boldsymbol{x},t)$
+\end_inset
+
+ is periodic in time 
+\begin_inset Formula 
+\begin{equation}
+\rho(\boldsymbol{x},t)=\sum_{n}e^{inw_{0}t}\rho_{n}(\boldsymbol{x})\label{eq: nonstochastic rho}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $w_{0}(s_{0})$
+\end_inset
+
+ is the fundamental firing frequency
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: nonstochastic rho"
+
+\end_inset
+
+ is consistent with 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho eigenfunction expansion"
+
+\end_inset
+
+ for eigenvalues 
+\begin_inset Formula $\lambda_{n}(s)=in\omega_{0}(s)$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{n}(\boldsymbol{x})\sim\phi_{n}(\boldsymbol{x})$
+\end_inset
+
+ only that 
+\begin_inset Formula $\phi_{n}(\boldsymbol{x})$
+\end_inset
+
+ are not normalized? 
+\end_layout
+
+\begin_layout Itemize
+Stochastic effects superimpose random walk on the trajectory of a system
+ point 
+\end_layout
+
+\begin_layout Itemize
+Excursion of the random walk is limited by greater exerted on trajectories
+ further from the limit cycle 
+\end_layout
+
+\begin_layout Itemize
+Probability density lives in a region of state-space we may call 
+\series bold
+fattened limit cycle
+\end_layout
+
+\begin_layout Itemize
+Eigenfunction whose eigenvalues lie nearest to zero will be confined to
+ this region as well 
+\end_layout
+
+\begin_layout Itemize
+First nonzero eigenvalues approximate the form 
+\begin_inset Formula 
+\begin{equation}
+\lambda_{n}(s)=-n^{2}\Gamma(s)+in\omega_{0}(s)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The frequency response 
+\end_layout
+
+\begin_layout Itemize
+Probe system with large steady input superimposed by sinusoidal in time
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Input signal
+\begin_inset Formula 
+\begin{equation}
+s=s_{0}=s_{1}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability density 
+\begin_inset Formula 
+\begin{equation}
+\rho=\rho_{0}+\rho_{1}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability current 
+\begin_inset Formula 
+\begin{equation}
+J=J_{0}+J_{1}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear current operator
+\begin_inset Formula 
+\begin{equation}
+C(s_{0}+s_{1}(t))=C_{0}(s_{0})+C_{1}(s_{1}(t))\approx C_{0}(s_{0})+s_{1}(t)C_{s}
+\end{equation}
+
+\end_inset
+
+where subscript 
+\begin_inset Formula $s$
+\end_inset
+
+ implies differentiation with respect to 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In first order approximation 
+\begin_inset Formula 
+\begin{equation}
+J_{1}=s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+J=C\rho
+\]
+
+\end_inset
+
+and insert approximation for 
+\begin_inset Formula $C$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+J & =\left(C_{0}+s_{1}C_{2}\right)\left(\rho_{0}+\rho_{1}\right)\\
+ & =C_{0}\rho_{0}+s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}+s_{1}C_{2}\rho_{1}\\
+ & =C_{0}\rho_{0}+s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}+\mathcal{O}(s_{1}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+J_{0} & =C_{0}\rho_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula 
+\[
+J_{1}=s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conservation operator 
+\begin_inset Formula $K$
+\end_inset
+
+ is not 
+\begin_inset Formula $s$
+\end_inset
+
+-dependent and linear so that 
+\begin_inset Formula 
+\begin{equation}
+K(J_{0}+J_{1})=KJ_{0}+KJ_{1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability conservation 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho_{1}=-KJ_{1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\partial_{t}\rho=-KJ
+\]
+
+\end_inset
+
+and insert 
+\begin_inset Formula $J=J_{0}+J_{1}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\rho & =-K(J_{0}+J_{1})\\
+\partial_{t}\rho & =-KJ_{0}-KJ_{1}
+\end{align*}
+
+\end_inset
+
+If we insert 
+\begin_inset Formula $\rho=\rho_{0}+\rho_{1}$
+\end_inset
+
+ on the l.h.s.
+ we find 
+\begin_inset Formula 
+\[
+\partial_{t}\rho_{0}=-KJ_{0}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula 
+\[
+\partial_{t}\rho_{1}=-KJ_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First-order departure of the dynamical operator 
+\begin_inset Formula $Q$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+Q_{1}=-KC_{1}=-s_{1}KC_{s}=s_{1}Q_{s}
+\end{equation}
+
+\end_inset
+
+First-order dynamical equation 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho_{1}=Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\partial_{t}\rho=Q\rho
+\]
+
+\end_inset
+
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\rho_{1} & =\left(Q_{0}+Q_{1}\right)\left(\rho_{0}+\rho_{1}\right)\\
+ & =Q_{0}\rho_{0}+Q_{1}\rho_{0}+Q_{0}\rho_{1}+Q_{1}\rho_{1}\\
+ & =Q_{1}\rho_{0}+Q_{0}\rho_{1}+\mathcal{O}(s_{1}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Approximate 
+\begin_inset Formula $Q_{1}=-KC_{1}\approx-s_{1}KC_{s}=s_{1}Q_{s}$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+\partial_{t}\rho_{1}=Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The above equation depends directly on the input and contains only known
+ quantities 
+\end_layout
+
+\begin_layout Itemize
+he equation linear inhomogeneous in the first-order probability density
+ and input 
+\end_layout
+
+\end_body
+\end_document
