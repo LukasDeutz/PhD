@@ -934,7 +934,7 @@ where subscript
 In first order approximation 
 \begin_inset Formula 
 \begin{equation}
-J_{1}=s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}
+J_{1}=s_{1}C_{s}\rho_{0}+C_{0}\rho_{1}
 \end{equation}
 
 \end_inset
@@ -964,9 +964,9 @@ and insert approximation for
 
 \begin_inset Formula 
 \begin{align*}
-J & =\left(C_{0}+s_{1}C_{2}\right)\left(\rho_{0}+\rho_{1}\right)\\
- & =C_{0}\rho_{0}+s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}+s_{1}C_{2}\rho_{1}\\
- & =C_{0}\rho_{0}+s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}+\mathcal{O}(s_{1}^{2})
+J & =\left(C_{0}+s_{1}C_{1}\right)\left(\rho_{0}+\rho_{1}\right)\\
+ & =C_{0}\rho_{0}+s_{1}C_{1}\rho_{0}+C_{0}\rho_{1}+s_{1}C_{1}\rho_{1}\\
+ & =C_{0}\rho_{0}+s_{1}C_{1}\rho_{0}+C_{0}\rho_{1}+\mathcal{O}(s_{1}^{2})
 \end{align*}
 
 \end_inset
@@ -990,9 +990,17 @@ J_{0} & =C_{0}\rho_{0}
 and 
 \begin_inset Formula 
 \[
-J_{1}=s_{1}C_{2}\rho_{0}+C_{0}\rho_{1}
+J_{1}=s_{1}C_{1}\rho_{0}+C_{0}\rho_{1}
 \]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Approximate 
+\begin_inset Formula $C_{1}=s_{1}C_{s}$
 \end_inset
 
 
@@ -1122,7 +1130,7 @@ Q_{1}=-KC_{1}=-s_{1}KC_{s}=s_{1}Q_{s}
 First-order dynamical equation 
 \begin_inset Formula 
 \begin{equation}
-\partial_{t}\rho_{1}=Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}
+\partial_{t}\rho_{1}=Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}\label{eq:rho_1}
 \end{equation}
 
 \end_inset
@@ -1190,8 +1198,174 @@ The above equation depends directly on the input and contains only known
 \end_layout
 
 \begin_layout Itemize
-he equation linear inhomogeneous in the first-order probability density
- and input 
+The equation linear inhomogeneous in the first-order probability density
+ and input
+\end_layout
+
+\begin_layout Itemize
+In principle, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_1"
+
+\end_inset
+
+ may be solved e.g.
+ by construction of a Green's function solution 
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula 
+\begin{align*}
+r_{0}+r_{1}(t) & =R[C_{0}\rho_{1},s_{0}]+s_{1}\left(R[C_{s}\rho_{0},s_{0}]+R_{s}[C_{0}\rho_{0},s_{0}]\right)\\
+ & =R[C_{0}\rho_{1}]+s_{1}\hat{R}[\rho_{0}]
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The rate is a linear functional of the probability flux 
+\begin_inset Formula 
+\[
+r=R[J,s]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Firs order approximation 
+\begin_inset Formula 
+\[
+r=R[J_{0},s_{0}]+R[J_{1},s_{0}]+s_{1}R_{s}[J_{0},s_{0}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $J_{1}=s_{1}C_{s}\rho_{0}+C_{0}\rho_{1}$
+\end_inset
+
+ one finds 
+\begin_inset Formula 
+\begin{align*}
+r_{1} & =R[C_{0}\rho_{1},s_{0}]+s_{1}R[C_{s}\rho_{0},s_{0}]+s_{1}R_{s}[C_{0}\rho_{0},s_{0}]\\
+ & =R[C_{0}\rho_{1},s_{0}]+s_{1}\hat{R}[\rho_{0}]
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\hat{R}[\rho_{0}]=R[C_{s}\rho_{0},s_{0}]+s_{1}R_{s}[C_{0}\rho_{0},s_{0}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Work our expansion...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assumptions for time-varying input perturbation 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sinusoid 
+\begin_inset Formula 
+\[
+s_{1}(t)=s_{1}(0)e^{i\omega t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sinusoid with exponentially growing envelope 
+\begin_inset Formula 
+\[
+s_{1}(t)=s_{1}(0)e^{\sigma t},\text{\quad where }\sigma=\alpha+i\omega
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Because all first-order dynamical quantities are 
+\series bold
+linear and time invariant
+\series default
+, the will respond will be like 
+\begin_inset Formula 
+\begin{align*}
+J_{1}(t) & =J_{1}(0)e^{\sigma t}\\
+\rho_{1}(t) & =\rho_{1}(0)e^{\sigma t}\\
+r_{1}(t) & =r_{1}(0)e^{\sigma t}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What does linearity do imply?
+\begin_inset Formula 
+\begin{align*}
+J_{1} & =s_{1}C_{s}\rho_{0}+C_{0}\rho_{1}\\
+\partial_{t}\rho_{1} & =Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}\\
+r_{1} & =R[C_{0}\rho_{1}]+s_{1}\hat{R}[\rho_{0}]
+\end{align*}
+
+\end_inset
+
+What does time in variance imply? 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
