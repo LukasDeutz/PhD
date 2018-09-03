@@ -483,7 +483,11 @@ Integral
 \end_layout
 
 \begin_layout Itemize
-For any specified input 
+
+\series bold
+For any specified input
+\series default
+ 
 \begin_inset Formula $s$
 \end_inset
 
@@ -492,6 +496,10 @@ For any specified input
 \end_inset
 
  has a set of eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ and associated eigenfunctions 
 \begin_inset Formula $\phi_{n}$
 \end_inset
 
@@ -507,7 +515,18 @@ Q\phi_{n}=\lambda_{n}\phi_{n}
 \end_layout
 
 \begin_layout Itemize
-All of these depend on the value of the input 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ all depend on the value of the input 
 \begin_inset Formula $s$
 \end_inset
 
@@ -910,7 +929,7 @@ Stochastic effects superimpose random walk on the trajectory of a system
 \end_layout
 
 \begin_layout Itemize
-Excursion of the random walk is limited by greater exerted on trajectories
+Excursion of the random walk is limited by greater pull back on trajectories
  further from the limit cycle 
 \end_layout
 
@@ -940,7 +959,7 @@ with
 
  positive 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Eigenvalue expansion 
@@ -1918,6 +1937,15 @@ Future challenge, determine
 \end_inset
 
  for multidimensional neuron models 
+\end_layout
+
+\begin_layout Section
+Application of the Frequency Response: Stability of Interacting Subpoplations
+ and of Feedback 
+\end_layout
+
+\begin_layout Itemize
+TODO
 \end_layout
 
 \end_body
