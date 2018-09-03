@@ -5659,7 +5659,7 @@ status open
 \begin_layout Plain Layout
 Solution 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Starting from the Shrödinger equation
@@ -5954,7 +5954,7 @@ Total amount of heat in small volume element
 \end_layout
 
 \begin_layout Itemize
-Total amount heat energy ín small volume 
+Total amount of heat energy in small volume 
 \begin_inset Formula $B$
 \end_inset
 
@@ -5997,7 +5997,7 @@ Heat sources of sinks are given by a point function
 \begin_inset Formula $f$
 \end_inset
 
- has the unit engery per unit volume, per unit time 
+ has the unit energy per unit volume, per unit time 
 \end_layout
 
 \begin_layout Itemize
@@ -6017,7 +6017,7 @@ Heat flow vector
 \end_layout
 
 \begin_layout Itemize
-Rate at which heat flows across an oblique surface element 
+Rate at which heat flows crosses an oblique surface element 
 \begin_inset Formula $dA$
 \end_inset
 
@@ -6125,7 +6125,7 @@ The flux
 \end_layout
 
 \begin_layout Itemize
-E.h.
+E.g.
  Fourier's heat conduction law
 \begin_inset Formula 
 \[
@@ -6517,7 +6517,7 @@ status open
 \begin_layout Plain Layout
 Solution 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Define 
@@ -6568,7 +6568,7 @@ status open
 \begin_layout Plain Layout
 Solution 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Define 
@@ -6619,7 +6619,7 @@ status open
 \begin_layout Plain Layout
 Solution
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Multiply by 
@@ -6659,6 +6659,381 @@ Hence
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Laplace's equation
+\end_layout
+
+\begin_layout Itemize
+Laplace's equation in two and three dimension
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Delta u & =u_{xx}+u_{yy}=0\\
+\Delta u & =u_{xx}+u_{yy}+u_{zz}=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace's equation steady heat flow in a region where the temperature is
+ fixed on the boundary 
+\end_layout
+
+\begin_layout Itemize
+What does Laplace's equation tells us physically 
+\end_layout
+
+\begin_layout Itemize
+Taylor expand 
+\begin_inset Formula $u(x-h,y)$
+\end_inset
+
+ for small 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+u(x-h,y)=u(x,y)-hu_{x}(x,y)+\frac{1}{2}h^{2}u_{xx}(x,y)+\mathcal{O}(h^{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Similarly 
+\begin_inset Formula 
+\[
+u(x+h,y)=u(x,y)+hu_{x}(x,y)+\frac{1}{2}h^{2}u_{xx}(x,y)+\mathcal{O}(h^{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solving for 
+\begin_inset Formula $u_{xx}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+h^{2}u_{xx}(x,y) & \text{=}u(x-h,y)+u(x+h,y)-2u(x,y)+\mathcal{O}(h^{3})\\
+u_{xx}(x,y) & =\frac{u(x-h,y)+u(x+h,y)-2u(x,y)}{h^{2}}+\mathcal{O}(h)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Incrementing 
+\begin_inset Formula $y$
+\end_inset
+
+ instead of 
+\begin_inset Formula $x$
+\end_inset
+
+ leads to 
+\begin_inset Formula 
+\[
+u_{yy}(x,y)=\frac{u(x,y-h)+u(x,y+h)-2u(x,y)}{h^{2}}+\mathcal{O}(h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace equation 
+\begin_inset Formula 
+\begin{align*}
+\Delta u(x,y) & =\frac{u(x-h,y)+u(x+h,y)-2u(x,y)}{h^{2}}\\
+ & +\frac{u(x,y-h)+u(x,y+h)-2u(x,y)}{h^{2}}\\
+ & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solving for 
+\begin_inset Formula $2u(x,y)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(x,y)=\frac{1}{4}\left(u(x+h,y)+u(x-h,y)+u(x,y+h)+u(x,y-h)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Temperature at 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ can not exceed temperature at neighboring points, i.e.
+ a maximum can not occur at 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Theorem (The maximum principle)
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ satisfies the Laplace's equation in 
+\begin_inset Formula $D$
+\end_inset
+
+, an open, bounded, connection region in the plane and is not a constant
+ function, then the maximum and minimum values of 
+\begin_inset Formula $u$
+\end_inset
+
+ are attained on the boundary of 
+\begin_inset Formula $D$
+\end_inset
+
+ and nowhere inside 
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace's equation in cylinder coordinates 
+\end_layout
+
+\begin_layout Section*
+Classification of PDEs
+\end_layout
+
+\begin_layout Itemize
+ODE are classified according to its order and weather it is linear or nonlinear
+ 
+\end_layout
+
+\begin_layout Itemize
+PDE models are more difficult to classify, their structure is equally important
+ compared to order and linearity
+\end_layout
+
+\begin_layout Itemize
+Second-order equations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Diffusion:
+\series default
+ 
+\begin_inset Formula $u_{t}-ku_{xx}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Wave equation:
+\series default
+ 
+\begin_inset Formula $u_{tt}-c^{2}u_{xx}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Laplace's equation: 
+\begin_inset Formula $u_{xx}+u_{yy}=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In general 
+\begin_inset Formula 
+\begin{equation}
+Au_{xx}+Bu_{xt}+Cu_{tt}+F(x,t,u,u_{x},u_{t})=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Principle part
+\series default
+ 
+\begin_inset Formula $Au_{xx}+Bu_{xt}+Cu_{tt}$
+\end_inset
+
+ defines class 
+\end_layout
+
+\begin_layout Itemize
+Classification is based on the sign of 
+\begin_inset Formula 
+\[
+D=B^{2}-4AC
+\]
+
+\end_inset
+
+which is called discriminant 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $D>0$
+\end_inset
+
+, we say the PDE is parabolic: Shows diffusion-like behavior 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D=0$
+\end_inset
+
+, we say that it is elliptic: They are static equation
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D<0$
+\end_inset
+
+, we say that it is hyperbolic: Shows wave like behavior 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $A,B,$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ are not constant, but rather functions of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+, then the discriminant 
+\begin_inset Formula $D$
+\end_inset
+
+ depends on 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+We can make the same discrimination based on the sign of 
+\begin_inset Formula $D$
+\end_inset
+
+, but now the sign of 
+\begin_inset Formula $D$
+\end_inset
+
+ can change depending on the domain of interest 
+\end_layout
+
+\begin_layout Itemize
+Classification of systems of PDEs is also possible with nonlinear principal
+ part, i.e.
+ 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ depend on the solution 
+\begin_inset Formula $u$
+\end_inset
+
+ itself
+\end_layout
+
+\begin_layout Itemize
+Principle part can be simplified 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
 \end_layout
 
 \end_inset
