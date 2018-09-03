@@ -231,11 +231,15 @@ Probability current
 \begin_inset Formula $J$
 \end_inset
 
- is a linear transformation 
+ is a linear transformation of 
 \begin_inset Formula $\rho$
 \end_inset
 
- which can be expressed by defining the linear current operator 
+ which can be expressed by defining the linear 
+\series bold
+current operator
+\series default
+ 
 \begin_inset Formula $C(s)$
 \end_inset
 
@@ -251,7 +255,11 @@ C\rho=J
 \end_layout
 
 \begin_layout Itemize
-Conservation operator 
+
+\series bold
+Conservation operator
+\series default
+ 
 \begin_inset Formula $K$
 \end_inset
 
@@ -306,7 +314,7 @@ Integration of the the dynamical equation yields
 \end_layout
 
 \begin_layout Itemize
-For integrate-and-fir neurons 
+For integrate-and-fire neurons 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:conservation law"
@@ -407,7 +415,7 @@ At the moment of maximum voltage
 \begin_inset Formula $dV/dt=0$
 \end_inset
 
-which defines three-dimensional surface in the four-dimensional state-space
+ which defines three-dimensional surface in the four-dimensional state-space
  
 \begin_inset Note Note
 status collapsed
@@ -546,7 +554,7 @@ Note that
 \begin_inset Formula $\rho_{0}$
 \end_inset
 
- is eigenvector with eigenvalue 
+ is a eigenvector with eigenvalue 
 \begin_inset Formula $\lambda_{0}=0$
 \end_inset
 
@@ -618,7 +626,9 @@ Eigenfunctions of
 \end_layout
 
 \begin_layout Itemize
-Eigenvalues come in complex conjugate pairs
+Eigenvalues come in 
+\series bold
+complex conjugate pairs
 \end_layout
 
 \begin_layout Itemize
@@ -705,7 +715,9 @@ Note that
 \begin_inset Formula $s$
 \end_inset
 
- in a manner that in general is nonlinear 
+ in a manner that in general is 
+\series bold
+nonlinear 
 \end_layout
 
 \begin_layout Itemize
@@ -738,11 +750,11 @@ reference "eq:integrate-and-fire"
 \end_inset
 
  always positive between 
-\begin_inset Formula $0$
+\begin_inset Formula $x=0$
 \end_inset
 
  and 
-\begin_inset Formula $1$
+\begin_inset Formula $x=1$
 \end_inset
 
  
@@ -798,7 +810,69 @@ where
 \begin_inset Formula $w_{0}(s_{0})$
 \end_inset
 
- is the fundamental firing frequency
+ is the fundamental firing frequency 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Periodicity 
+\begin_inset Formula 
+\[
+\rho(\boldsymbol{x},t+T_{0})=\rho(\boldsymbol{x},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Eigenfunction expansion 
+\begin_inset Formula 
+\[
+\rho(t,\boldsymbol{x})=\sum_{n}a_{n}(0)e^{\lambda_{n}t}\phi_{n}(\boldsymbol{x})=\sum_{n}e^{\lambda_{n}t}\rho_{n}(\boldsymbol{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we conclude 
+\begin_inset Formula 
+\[
+e^{\lambda_{n}t}=e^{\lambda_{n}(t+T_{0})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $\lambda_{n}=in\omega_{0}$
+\end_inset
+
+ with 
+\begin_inset Formula $w_{0}=\frac{2\pi}{T_{0}}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+e^{\lambda_{n}(t+T_{0})}=e^{\lambda_{n}t}e^{i2\pi n}=e^{\lambda_{n}t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -860,6 +934,43 @@ First nonzero eigenvalues approximate the form
 
 \end_inset
 
+with 
+\begin_inset Formula $\Gamma(s)$
+\end_inset
+
+ positive 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigenvalue expansion 
+\begin_inset Formula 
+\[
+\rho(t)=\sum_{n}a_{n}(0)e^{\lambda_{n}t}\phi_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Presence of noise in the system leads to damped oscillations where the speed
+ of decay is controlled by 
+\begin_inset Formula $\Gamma(s)$
+\end_inset
+
+ and is proportional to 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+.
+ This suggests higher modes decay faster, and are therefore less important.
+ 
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -877,7 +988,7 @@ Probe system with large steady input superimposed by sinusoidal in time
 Input signal
 \begin_inset Formula 
 \begin{equation}
-s=s_{0}=s_{1}(t)
+s=s_{0}+s_{1}(t)
 \end{equation}
 
 \end_inset
@@ -1217,10 +1328,10 @@ reference "eq:rho_1"
 \begin_layout Itemize
 Firing rate 
 \begin_inset Formula 
-\begin{align*}
-r_{0}+r_{1}(t) & =R[C_{0}\rho_{1},s_{0}]+s_{1}\left(R[C_{s}\rho_{0},s_{0}]+R_{s}[C_{0}\rho_{0},s_{0}]\right)\\
+\begin{align}
+r_{0}+r_{1}(t) & =R[C_{0}\rho_{1},s_{0}]+s_{1}\left(R[C_{s}\rho_{0},s_{0}]+R_{s}[C_{0}\rho_{0},s_{0}]\right)\nonumber \\
  & =R[C_{0}\rho_{1}]+s_{1}\hat{R}[\rho_{0}]
-\end{align*}
+\end{align}
 
 \end_inset
 
@@ -1308,9 +1419,9 @@ Assumptions for time-varying input perturbation
 \begin_layout Itemize
 Sinusoid 
 \begin_inset Formula 
-\[
+\begin{equation}
 s_{1}(t)=s_{1}(0)e^{i\omega t}
-\]
+\end{equation}
 
 \end_inset
 
@@ -1320,9 +1431,19 @@ s_{1}(t)=s_{1}(0)e^{i\omega t}
 \begin_layout Itemize
 Sinusoid with exponentially growing envelope 
 \begin_inset Formula 
-\[
-s_{1}(t)=s_{1}(0)e^{\sigma t},\text{\quad where }\sigma=\alpha+i\omega
-\]
+\begin{equation}
+s_{1}(t)=s_{1}(0)e^{\sigma t},\text{\quad where }\sigma=\alpha+i\omega\label{eq:s_1 growing complex oscillation}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A complex input does not make sense!
+\end_layout
 
 \end_inset
 
@@ -1337,11 +1458,102 @@ linear and time invariant
 \series default
 , the will respond will be like 
 \begin_inset Formula 
-\begin{align*}
-J_{1}(t) & =J_{1}(0)e^{\sigma t}\\
-\rho_{1}(t) & =\rho_{1}(0)e^{\sigma t}\\
+\begin{align}
+J_{1}(t) & =J_{1}(0)e^{\sigma t}\nonumber \\
+\rho_{1}(t) & =\rho_{1}(0)e^{\sigma t}\nonumber \\
 r_{1}(t) & =r_{1}(0)e^{\sigma t}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+What does linearity do imply? What does time in variance imply? 
+\begin_inset Formula 
+\[
+J_{1}=s_{1}C_{s}\rho_{0}+C_{0}\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\begin{align*}
+C(s_{0}+s_{1}(0)e^{\sigma t}) & =C(s_{0})+C(s_{1}(0)e^{\sigma t})\\
+ & =C(s_{0})+e^{\sigma t}C(s_{1}(0))\\
+ & =C_{0}+e^{\sigma t}C_{1}(t=0)
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\begin{align*}
+J & =\left(C_{0}+e^{\sigma t}C_{1}(t=0)\right)\left(\rho_{0}+\rho_{1}\right)\\
+ & =C_{0}\rho_{0}+e^{\sigma t}C_{1}(0)\rho_{0}+C_{0}\rho_{1}+\mathcal{O}(s_{1}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula 
+\[
+J_{0}=C_{0}\rho_{0}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+J_{1}=e^{\sigma t}C_{1}(0)\rho_{0}+C_{0}\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the special choice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:s_1 growing complex oscillation"
+
+\end_inset
+
+, the dynamical equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_1"
+
+\end_inset
+
+ simplifies to
+\begin_inset Formula 
+\begin{equation}
+(\sigma I-Q_{0})\rho_{1}=s_{1}Q_{s}\rho_{0}
+\end{equation}
 
 \end_inset
 
@@ -1350,22 +1562,362 @@ r_{1}(t) & =r_{1}(0)e^{\sigma t}
 status open
 
 \begin_layout Plain Layout
-What does linearity do imply?
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
 \begin_inset Formula 
-\begin{align*}
-J_{1} & =s_{1}C_{s}\rho_{0}+C_{0}\rho_{1}\\
-\partial_{t}\rho_{1} & =Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}\\
-r_{1} & =R[C_{0}\rho_{1}]+s_{1}\hat{R}[\rho_{0}]
-\end{align*}
+\[
+\partial_{t}\rho_{1}=Q_{0}\rho_{1}+s_{1}Q_{s}\rho_{0}
+\]
 
 \end_inset
 
-What does time in variance imply? 
+which becomes 
+\begin_inset Formula 
+\[
+\sigma e^{\sigma t}\rho_{1}(0)=Q_{0}e^{\sigma t}\rho_{1}(0)+s_{1}(0)e^{\sigma t}Q_{s}\rho_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Dividing by 
+\begin_inset Formula $e^{\sigma t}$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\[
+\left(\sigma I-Q_{0}\right)\rho_{1}(0)=s_{1}(0)Q_{s}\rho_{0}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Formal solution 
+\begin_inset Formula 
+\begin{equation}
+\rho_{1}=s_{1}(\sigma I-Q_{0})^{-1}Q_{s}\rho_{0}\label{eq:rho_1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Express 
+\begin_inset Formula $Q_{s}\rho_{0}$
+\end_inset
+
+ as a sum of eigenvectors 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ of the operator 
+\begin_inset Formula $Q_{0}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Remember 
+\begin_inset Formula $\partial_{t}\rho=Q\rho$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{equation}
+(\sigma I-Q_{0})^{-1}\phi_{n}=\frac{1}{\sigma-\lambda_{n}}\phi_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This explicitly solves 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_1-1"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\rho_{1}=s_{1}\sum_{n}\frac{1}{\sigma-\lambda_{n}}(\hat{\phi}_{n},Q_{s}\rho_{0})\phi_{n}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $(\hat{\phi}_{n},Q_{s}\rho_{0})$
+\end_inset
+
+ are the weighting coefficients 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\sigma=i\omega$
+\end_inset
+
+, the expression tells us that the frequency response of the population
+ density to a small sinusoidal input 
+\end_layout
+
+\begin_layout Itemize
+If we expect eigenvalues of the form 
+\begin_inset Formula $\lambda_{n}(s)=-n^{2}\Gamma(s)+in\omega_{0}(s)$
+\end_inset
+
+, there will be a frequency response at multiples of 
+\begin_inset Formula $\omega_{0}(s)$
+\end_inset
+
+ and the eigenfunction 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ will become prominent 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula $\lambda_{n}(s)=-n^{2}\Gamma(s)+in\omega_{0}(s)$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\[
+\frac{1}{\sigma-\lambda_{n}}=\frac{1}{\sigma-n^{2}\Gamma(s)+in\omega_{0}}
+\]
+
+\end_inset
+
+which clearly has a pole if 
+\begin_inset Formula $\sigma=n^{2}\Gamma(s)-in\omega_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There is no resonance for 
+\begin_inset Formula $\sigma=0$
+\end_inset
+
+ even though 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+, the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ term vanishes 
+\end_layout
+
+\begin_layout Itemize
+Population firing-rate frequency response, or transfer function, (typically
+ complex) ratio of output to input 
+\begin_inset Formula 
+\begin{equation}
+T_{0}(\sigma)=\frac{r_{1}}{s_{1}}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In linear response 
+\begin_inset Formula $s_{1}(t)=s_{1}(0)e^{\sigma t}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{1}(t)=r_{1}(0)e^{\sigma t}$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+T_{0}(\sigma)=\frac{r_{1}(t)}{s_{1}(t)}=\frac{r_{1}(0)}{s_{1}(0)}
+\]
+
+\end_inset
+
+which we write as 
+\begin_inset Formula 
+\[
+T_{0}(\sigma)=\frac{r_{1}}{s_{1}}
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $T_{0}(\sigma)>1$
+\end_inset
+
+, then output is larger than the input.
+ If 
+\begin_inset Formula $T_{0}(\sigma)<1$
+\end_inset
+
+, then output is smaller than the input
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+T_{0}(\sigma)=\hat{R}[\rho_{0}]+\sum_{n\neq0}\frac{(\hat{\phi}_{n},Q_{s}\rho_{0})}{\sigma-\lambda_{n}}R[C_{0}\phi_{n}]\label{eq:transfer function}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+r_{1}(t)=r_{1}(0)e^{\sigma t}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $r_{1}(0)=r_{1}$
+\end_inset
+
+ given by 
+\begin_inset Formula 
+\[
+r_{1}=R[C_{0}\rho_{1}]+s_{1}\hat{R}[\rho_{0}]
+\]
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\begin{align*}
+T_{0}(\sigma) & =\hat{R}[\rho_{0}]+\frac{1}{s_{1}}R[C_{0}\rho_{1}]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula 
+\[
+\rho_{1}=s_{1}\sum_{n}\frac{1}{\sigma-\lambda_{n}}(\hat{\phi}_{n},Q_{s}\rho_{0})\phi_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+yields 
+\begin_inset Formula 
+\[
+T_{0}(\sigma)=\hat{R}[\rho_{0}]+\sum_{n}\frac{(\hat{\phi}_{n},Q_{s}\rho_{0})}{\sigma-\lambda_{n}}R[C_{0}\phi_{n}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ which is called population frequency response which more properly is 
+\begin_inset Formula $T_{0}(i\omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula $b_{n}=(\hat{\phi}_{n},Q_{s}\rho_{0})R[C_{0}\phi_{n}]$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+T_{0}(\sigma)=\hat{R}[\rho_{0}]+\sum_{n\neq0}\frac{b_{n}}{\sigma-\lambda_{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Future challenge, determine 
+\begin_inset Formula $b_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ for multidimensional neuron models 
 \end_layout
 
 \end_body
