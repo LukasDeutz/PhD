@@ -883,6 +883,50 @@ Completeness assumption
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This actually means 
+\begin_inset Formula 
+\[
+\sum_{n}\phi_{n}(v)\psi_{n}(v')=\delta(v-v')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+So that for a arbitrary function 
+\begin_inset Formula $f(v)$
+\end_inset
+
+ can be expanded 
+\begin_inset Formula 
+\begin{align*}
+f(v) & =\int dv'\delta(v-v')f(v')\\
+ & =\sum_{n}\phi_{n}(v)\int dv'\psi_{n}(v')f(v')\\
+ & =\sum_{n}a_{n}\phi_{n}(v)
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+a_{n}=\int dv\,\psi_{n}(v)f(v)=\bigl\langle\psi_{n},\,f\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1374,7 +1418,7 @@ Dynamics of
  can be determined directly from the Fokker-Planck equation 
 \begin_inset Formula 
 \begin{align*}
-\dot{a}_{n} & =\bigl\langle\psi_{n}\bigl|p_{t}\bigr\rangle+\bigl\langle\psi_{t}^{(n)}\bigl|p_{t}\bigr\rangle\\
+\dot{a}_{n} & =\bigl\langle\psi_{n}\bigl|p_{t}\bigr\rangle+\bigl\langle\psi_{t}^{(n)}\bigl|p\bigr\rangle\\
  & =\bigl\langle\psi_{n}\bigl|Lp\bigr\rangle+\sum_{m}a_{m}\bigl\langle\dot{r}\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\
  & =\bigl\langle L^{+}\psi_{n}\bigl|p\bigr\rangle+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\
  & =\lambda_{n}\bigl\langle\psi_{n}\bigl|p\bigr\rangle+\dot{r}\sum_{m}a_{m}\bigl\langle\partial_{r}\psi_{n}\bigl|\phi_{m}\bigr\rangle\\

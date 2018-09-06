@@ -125,7 +125,7 @@ Axons: Can traverse large fractions of the brain or, in some cases, the
 \end_layout
 
 \begin_layout Itemize
-Mouse brain: Neurons send out 
+Mouse brain: Cortical neurons send out on average 
 \begin_inset Formula $40$
 \end_inset
 
@@ -333,8 +333,596 @@ Depending on the nature of the ion flow, synapses can either have excitatory,
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
+\begin_layout Subsection*
 Recording neural responses 
+\end_layout
+
+\begin_layout Itemize
+Intracellularly recording
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Technique: Connect hollow glass electrode filled with conducting electrolyte
+ to a neuron and compare to extracellular electrode
+\end_layout
+
+\begin_layout Itemize
+Sharp electrodes can be inserted through the cell membrane 
+\end_layout
+
+\begin_layout Itemize
+Patch electrodes have a broader tip and sealed tightly to the membrane surface.
+ After sealing membrane beneath the tip is broken or perforated providing
+ electrical contact 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Extracellular recordings in close distance to the soma of a cell can reveal
+ its action potentials but not the subthreshold fluctuations of the membrane
+ potential 
+\end_layout
+
+\begin_layout Subsection*
+From Stimulus to Response
+\end_layout
+
+\begin_layout Itemize
+Stimulus 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ complex spike sequence 
+\end_layout
+
+\begin_layout Itemize
+This sequence reflects both the intrinsic dynamics of the neuron and temporal
+ characteristics of stimulus 
+\end_layout
+
+\begin_layout Itemize
+Isolate feature that encode changes in the stimulus 
+\end_layout
+
+\begin_layout Itemize
+How should a single neuron encode changes on time scale faster than time
+ interval between spikes?
+\end_layout
+
+\begin_layout Itemize
+Trial to trial variability 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Variable level of arousal and attention
+\end_layout
+
+\begin_layout Itemize
+Randomness associated with various biophysical processes 
+\end_layout
+
+\begin_layout Itemize
+Other cognitive processes running in parallel 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Deterministic description is not suitable, we rather aim for a probabilistic
+ model to predict likelihood for different spike sequences 
+\end_layout
+
+\begin_layout Itemize
+Stimulus features are encoded by activities of large neural populations
+ 
+\end_layout
+
+\begin_layout Itemize
+Relationship of firing patterns of individual neurons 
+\end_layout
+
+\begin_layout Subsection
+Spike Trains and Firing Rates
+\end_layout
+
+\begin_layout Itemize
+Spike train is called 
+\series bold
+neural response function
+\series default
+
+\begin_inset Formula 
+\[
+\rho(t)=\sum_{i=1}^{n}\delta(t-t_{i})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $0\leq t_{i}\leq T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula $r(t)=p(t)$
+\end_inset
+
+, where 
+\begin_inset Formula $p(t)\Delta t$
+\end_inset
+
+ is the probability that a spike occurs between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+\Delta t$
+\end_inset
+
+ for small 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Trial average 
+\begin_inset Formula $\bigl\langle\bigr\rangle$
+\end_inset
+
+ obtained from many trials involving the same stimulus
+\end_layout
+
+\begin_layout Itemize
+Trial averaged neural response function 
+\begin_inset Formula $\bigl\langle\rho(t)\bigr\rangle$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r(t)\Delta t=\int_{t}^{t+\Delta t}d\tau\,\bigl\langle\rho(t)\bigr\rangle
+\]
+
+\end_inset
+
+hence 
+\begin_inset Formula $r(t)\approx\bigl\langle\rho(t)\bigr\rangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spike-count rate is obtained simply by counting the number of action potentials
+ that appear during a trial and dividing by the duration of the trial 
+\end_layout
+
+\begin_layout Itemize
+Unlike 
+\begin_inset Formula $r(t)$
+\end_inset
+
+, spike-count rate can be determined for a single trial 
+\begin_inset Formula 
+\[
+r=\frac{n}{T}=\frac{1}{T}\int_{0}^{T}\rho(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spike-cont rate is time average of the neural response function 
+\begin_inset Formula $\int d\tau\rho(\tau)=n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the same way the response function 
+\begin_inset Formula $\rho(t)$
+\end_inset
+
+ can be averaged across trials to give the firing rate
+\begin_inset Formula $r(t)$
+\end_inset
+
+, the spike-count firing rate can also be averaged over trials 
+\begin_inset Formula 
+\[
+\bigl\langle r\bigr\rangle=\frac{\bigl\langle n\bigr\rangle}{T}=\frac{1}{T}\int_{0}^{T}d\tau\bigl\langle\rho(t)\bigr\rangle=\frac{1}{T}\int_{0}^{T}dt\,r(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula $r(t)$
+\end_inset
+
+, spike-count rate 
+\begin_inset Formula $r$
+\end_inset
+
+ and average firing-rate 
+\begin_inset Formula $\bigl\langle r\bigr\rangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Measuring Firing Rates
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r(t)$
+\end_inset
+
+ is a probability density and cannot be determined exactly from limited
+ amount of data 
+\end_layout
+
+\begin_layout Itemize
+There is 
+\series bold
+no
+\series default
+ unique way to determine 
+\begin_inset Formula $r(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Method to estimate the firing rate 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bin time 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ axis and calculate spike-count rate 
+\begin_inset Formula $r=\frac{n}{\Delta t}$
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+discretized firing rate values because 
+\begin_inset Formula $n$
+\end_inset
+
+ can only be a integer
+\end_layout
+
+\begin_layout Itemize
+Sliding window avoids the arbitrariness of bin spike position within bins
+ 
+\end_layout
+
+\begin_layout Itemize
+For a box-car window the estimated curve for the firing rate will be jagged
+ due to the hard edges of the kernel 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tuning Curves
+\end_layout
+
+\begin_layout Itemize
+Characterize response of neurons as functions of just one stimulus attribute
+ 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Parameter 
+\begin_inset Formula $s$
+\end_inset
+
+ characterizing the stimulus is held constant 
+\begin_inset Formula $s$
+\end_inset
+
+, i.e.
+ we represent the same stimulus over many trials 
+\end_layout
+
+\begin_layout Itemize
+The average firing rate 
+\begin_inset Formula $\bigl\langle r(s)\bigr\rangle=f(s)$
+\end_inset
+
+ in dependence of 
+\begin_inset Formula $s$
+\end_inset
+
+ is called neural 
+\series bold
+response tuning curve
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Different type of tuning curves 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gaussian around 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s$
+\end_inset
+
+-shaped (logistic or sigmoidal) centered at threshold 
+\begin_inset Formula $s_{\text{th}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Spike-Count Variability 
+\end_layout
+
+\begin_layout Itemize
+Tuning curves represent average firing rate, but they do not provide information
+ about how the spike-count firing rate 
+\begin_inset Formula $r$
+\end_inset
+
+ varies about its mean 
+\begin_inset Formula $\bigl\langle r\bigr\rangle=f(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r$
+\end_inset
+
+ values can be generated from probability distribution with mean 
+\begin_inset Formula $f(s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Trial-to-trial deviation of 
+\begin_inset Formula $r$
+\end_inset
+
+ from 
+\begin_inset Formula $f(s)$
+\end_inset
+
+ is considered to be noise 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If the noise is independent of 
+\begin_inset Formula $f(s)$
+\end_inset
+
+ then it is called additive 
+\end_layout
+
+\begin_layout Itemize
+If the noise depends on 
+\begin_inset Formula $f(s)$
+\end_inset
+
+ then it is called multiplicative 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Here, multiplicative noise corresponds to having the standard deviation
+ proportional to 
+\begin_inset Formula $f(s)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Explanation 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+r=f(s)+f(s)\Gamma
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bigl\langle\Gamma\bigr\rangle=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl\langle\Gamma^{2}\bigr\rangle=1$
+\end_inset
+
+.
+ Expectation value 
+\begin_inset Formula 
+\[
+\bigl\langle r\bigr\rangle=f(s)+f(s)\bigl\langle\Gamma\bigr\rangle=f(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second moment 
+\begin_inset Formula 
+\[
+\bigl\langle r^{2}\bigr\rangle=f(s)^{2}+2f(s)\bigl\langle\Gamma\bigr\rangle+f^{2}(s)\bigl\langle\Gamma^{2}\bigr\rangle=2f^{2}(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\[
+\sigma_{r}^{2}=\bigl\langle r^{2}\bigr\rangle-\bigl\langle r\bigr\rangle^{2}=f^{2}(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+What makes a neuron fire 
+\end_layout
+
+\begin_layout Itemize
+We ask, what on average did the stimulus do before an action potential was
+ fired 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ spike-triggered average stimulus 
+\end_layout
+
+\begin_layout Itemize
+We have a stimuli characterized by a parameter 
+\begin_inset Formula $s(t)$
+\end_inset
+
+ that varies over time 
+\end_layout
+
+\begin_layout Subsubsection*
+Describing the stimulus 
+\end_layout
+
+\begin_layout Itemize
+Neurons often respond most strongly to rapid changes in stimulus properties
+ and are relatively insensitive to steady-state levels
+\end_layout
+
+\begin_layout Itemize
+Steady-state responses are highly compressed functions of stimulus intensity
+ with logarithmic or weak power law dependence 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Weber's law:
+\series default
+ Noticeable difference 
+\begin_inset Formula $\Delta s$
+\end_inset
+
+ between stimuli is proportional to the magnitude of the stimulus 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Noticeable differences set the scale for perceived intensities
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fechner's law:
+\series default
+ Integrating Weber's law, perceived intensity of a stimulus of intensity
+ 
+\begin_inset Formula $s$
+\end_inset
+
+ varies as 
+\begin_inset Formula $\log s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sensory systems make numerous adaptations to adjust to average level of
+ stimulus intensity 
+\end_layout
+
+\begin_layout Itemize
+After adaptation, response can be studied in a potentially simpler regime
+ by describing responses to fluctuations about a mean stimulus level 
+\end_layout
+
+\begin_layout Itemize
+In this case 
+\begin_inset Formula $s(t)$
+\end_inset
+
+ is defined such that 
+\begin_inset Formula $\int_{0}^{T}dt\,s(t)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+String together all of the stimuli we wish to consider into a single time-depend
+ent stimulus sequence and average over time 
 \end_layout
 
 \end_body
