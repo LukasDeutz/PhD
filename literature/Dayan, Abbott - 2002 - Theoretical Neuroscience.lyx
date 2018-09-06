@@ -1,0 +1,341 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Theoretical Neuroscienc
+\end_layout
+
+\begin_layout Section
+Neural Encoding I: Firing Rates and Spike Statistics 
+\end_layout
+
+\begin_layout Subsection
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Neural encoding
+\series default
+: Mapping from stimuli to response 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Neural decoding: 
+\series default
+Reverse map, from response to stimuli 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reconstruct stimulus or certain aspect of the stimulus from spike sequences
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Neurons morphology:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dendrites: Receive inputs from other neurons.
+ 
+\begin_inset Formula $10^{4-5}$
+\end_inset
+
+ dendritic connections 
+\end_layout
+
+\begin_layout Itemize
+Axons: Can traverse large fractions of the brain or, in some cases, the
+ entire body
+\end_layout
+
+\begin_layout Itemize
+Mouse brain: Neurons send out 
+\begin_inset Formula $40$
+\end_inset
+
+mm of axon and about 
+\begin_inset Formula $4$
+\end_inset
+
+mm of dendritic cable
+\end_layout
+
+\begin_layout Itemize
+Axons male 
+\begin_inset Formula $180$
+\end_inset
+
+ connections with other neurons, 
+\begin_inset Formula $2$
+\end_inset
+
+ synaptic inputs per 
+\begin_inset Formula $\mu m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cell body 
+\begin_inset Formula $10$
+\end_inset
+
+-
+\begin_inset Formula $50\mu m$
+\end_inset
+
+ diameter 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ion channels:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sodium (
+\begin_inset Formula $\text{Na}^{+}$
+\end_inset
+
+), potassium K
+\begin_inset Formula $^{+}$
+\end_inset
+
+, calcium Ca
+\begin_inset Formula $^{2+}$
+\end_inset
+
+, and chloride Cl
+\begin_inset Formula $^{-}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ion channels control flow of ions across the cell membrane 
+\end_layout
+
+\begin_layout Itemize
+They respond to voltage changes and internal and external signals 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Membrane potential 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+electrical potential between interior of a neuron and the surrounding 
+\end_layout
+
+\begin_layout Itemize
+resting conditions, 
+\begin_inset Formula $-70$
+\end_inset
+
+mV relative to the surrounding bath which is conventionally defined to be
+ 
+\begin_inset Formula $0$
+\end_inset
+
+ mV
+\end_layout
+
+\begin_layout Itemize
+cell is to said to be 
+\series bold
+polarized
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Ion pumps in the cell membrane support potential difference, balance between
+ electrical force and diffusion due to concentration gradients (dynamic
+ equilibrium)
+\end_layout
+
+\begin_layout Itemize
+If positive ions flow out of the cell or negatively into the cell, then
+ the membrane potential becomes more negative which is called 
+\series bold
+hyperpolarization
+\end_layout
+
+\begin_layout Itemize
+Opposite process is called 
+\series bold
+depolarization 
+\end_layout
+
+\begin_layout Itemize
+If membrane potential is raised above threshold, a positive feedback process
+ is initiated and a neurons generates an action potential 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Action potential
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+roughly 
+\begin_inset Formula $100$
+\end_inset
+
+mV fluctuation that lasts for about 
+\begin_inset Formula $1$
+\end_inset
+
+ms
+\end_layout
+
+\begin_layout Itemize
+Action potential generation depends on the cells history, 
+\series bold
+refractory period 
+\series default
+which can last up to 
+\begin_inset Formula $10$
+\end_inset
+
+ms 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ maximal rate 
+\begin_inset Formula $1/10\text{ms}=100$
+\end_inset
+
+Hz
+\end_layout
+
+\begin_layout Itemize
+Action potentials are the only form of membrane potential fluctuation that
+ can propagate over long distances 
+\end_layout
+
+\begin_layout Itemize
+Subthreshold fluctuations are attenuated over distances of 
+\begin_inset Formula $1$
+\end_inset
+
+mm or less 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Synapses
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Axons terminate at synapses where the action potential opens ion channels
+ producing in influx of Ca
+\begin_inset Formula $^{2+}$
+\end_inset
+
+ that leads to release of a neurotransmitter 
+\end_layout
+
+\begin_layout Itemize
+Neurotransmitter binds to receptors at the postsynaptic side 
+\end_layout
+
+\begin_layout Itemize
+This causes ion-conducting channels to open 
+\end_layout
+
+\begin_layout Itemize
+Depending on the nature of the ion flow, synapses can either have excitatory,
+ depolorazing or an inhibitory, typically hyperpolorazing effect
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Recording neural responses 
+\end_layout
+
+\end_body
+\end_document
