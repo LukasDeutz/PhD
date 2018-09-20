@@ -1720,7 +1720,7 @@ Emission rate equation can be written in matrix form
 \begin_inset Formula 
 \begin{align*}
 \dot{\boldsymbol{a}} & =\left(\boldsymbol{\Lambda}+\boldsymbol{C}\dot{r}\right)\boldsymbol{a}+\boldsymbol{c}\dot{r}\\
-r & =\Phi+\boldsymbol{f}\,\boldsymbol{a}
+r & =\Phi+\boldsymbol{f}\boldsymbol{a}
 \end{align*}
 
 \end_inset
@@ -1756,6 +1756,14 @@ f_{n}=\left.-\frac{1}{2}\sigma^{2}(v,t)\partial_{v}\phi_{n}(v,t)\right|_{v=\phi}
 \end_inset
 
 th mode and the stationary one 
+\begin_inset Formula 
+\[
+c_{n}=\left\langle \partial_{r}\psi_{n}|\phi_{0}\right\rangle 
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2307,7 +2315,7 @@ Proof
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Insert 
@@ -2322,7 +2330,7 @@ Insert
 \begin_inset Formula 
 \begin{align*}
 \dot{\boldsymbol{a}}(t) & =[\boldsymbol{\Lambda}(t-\delta)+\boldsymbol{C}(t-\delta)\dot{r}(t-\delta)]\boldsymbol{a}+\boldsymbol{c}(t-\delta)\dot{r}(t-\delta)\\
-r)(t) & =\Phi(t-\delta)+\boldsymbol{f}(t-\delta)\boldsymbol{a}
+r(t) & =\Phi(t-\delta)+\boldsymbol{f}(t-\delta)\boldsymbol{a}
 \end{align*}
 
 \end_inset
@@ -2339,7 +2347,7 @@ and keep all terms in order
  
 \begin_inset Formula 
 \[
-\epsilon\dot{\boldsymbol{a}_{1}}=[\boldsymbol{\Lambda}+\boldsymbol{C}\epsilon\dot{r}_{1}]\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1})
+\epsilon\dot{\boldsymbol{a}_{1}}=[\boldsymbol{\Lambda}+\boldsymbol{C}\epsilon\dot{r}_{1}]\epsilon\boldsymbol{a}_{1}+\boldsymbol{c}\epsilon\dot{r}_{1}
 \]
 
 \end_inset
@@ -2447,7 +2455,7 @@ r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\bolds
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 ProofStart from 
@@ -4032,7 +4040,7 @@ Start from general solution
 
 \begin_layout Plain Layout
 From 
-\begin_inset Formula $\phi(\theta,t)=0$
+\begin_inset Formula $\phi_{n}(\theta,t)=0$
 \end_inset
 
  follows 
@@ -4054,8 +4062,76 @@ Hence,
 \begin{align*}
 \phi_{\lambda}(v,t) & =c\left[e^{\zeta\frac{v}{\theta}}-e^{-\zeta\frac{v}{\theta}+2\zeta}\right]e^{\frac{\xi v}{\theta}}\\
  & =ce^{\zeta}\left[e^{\zeta\frac{v}{\theta}-\zeta}-e^{-\zeta\frac{v}{\theta}+\zeta}\right]e^{\frac{\xi v}{\theta}}\\
- & =c_{\lambda}\sinh\left(\frac{v-\theta}{\zeta\theta}\right)e^{\frac{\xi v}{\theta}}
+ & =ce^{\zeta}\left[e^{\zeta\frac{v-\theta}{\theta}}-e^{\zeta\frac{\theta-v}{\theta}}\right]e^{\frac{\xi v}{\theta}}\\
+ & =c_{\lambda}\sinh\left(\zeta\frac{\theta-v}{\theta}\right)e^{\frac{\xi v}{\theta}}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Check boundary condition 
+\begin_inset Formula $S_{\phi_{\lambda}}(v_{\text{min}}=0)=0$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+S_{\phi_{\lambda}}=(\mu-\frac{1}{2}\sigma^{2}\partial_{v})\phi_{\lambda}=(\mu-\frac{1}{2}\sigma^{2}\partial_{v})c_{\lambda}\sinh\frac{\zeta(\theta-v)}{\theta}e^{\frac{\xi}{\theta}v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Taking the derivative yields 
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{\lambda}=-c_{\lambda}\frac{\zeta}{\theta}\cosh\left(\zeta\frac{\theta-v}{\theta}\right)e^{\frac{\xi v}{\theta}}+\phi_{\lambda}+c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\frac{v-\theta}{\theta}\right)e^{\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Set 
+\begin_inset Formula $v=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{\lambda}=-c_{\lambda}\frac{\zeta}{\theta}\cosh\zeta+c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\right)
+\]
 
 \end_inset
 
@@ -4093,6 +4169,148 @@ Characteristic equation
 
 \end_inset
 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Boundary conditions 
+\begin_inset Formula 
+\[
+S(\theta)=S(0^{+})-S(0^{-})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Because 
+\begin_inset Formula $v_{\text{min}}=0$
+\end_inset
+
+, 
+\begin_inset Formula $S(0^{-})=0$
+\end_inset
+
+.
+ Start from 
+\begin_inset Formula 
+\[
+\left.\frac{1}{2}\sigma^{2}\partial_{v}\phi_{\lambda}\right|_{v=\theta}=\left.\left(\frac{1}{2}\sigma^{2}\partial_{v}\phi_{v}-\mu\phi_{\lambda}\right)\right|_{v\rightarrow0^{+}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $\phi_{\lambda}=c_{\lambda}\sinh\left(\zeta\frac{v-\theta}{\theta}\right)e^{\frac{\xi v}{\theta}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\phi_{\lambda}(0)=c_{\lambda}\sinh\left(\zeta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative 
+\begin_inset Formula 
+\begin{align*}
+\partial_{v}\phi_{\lambda} & =\frac{c_{\lambda}}{\theta}\left(\xi\sinh\left(\zeta\frac{v-\theta}{\theta}\right)-\zeta\cosh\left(\zeta\frac{\theta-v}{\theta}\right)\right)e^{\frac{\xi v}{\theta}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Set 
+\begin_inset Formula $v=\theta$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{\lambda}(\theta)=-\frac{c_{\lambda}}{\theta}e^{\xi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Set 
+\begin_inset Formula $v=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{\lambda}(0)=\frac{c_{\lambda}}{\theta}\left(c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\right)-\frac{\zeta}{\theta}\cosh\left(\zeta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+-\frac{1}{2}\sigma^{2}\frac{c_{\lambda}}{\theta}\zeta e^{\xi}=\frac{1}{2}\sigma^{2}\frac{c_{\lambda}}{\theta}\left(c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\right)-\frac{\zeta}{\theta}\cosh\left(\zeta\right)\right)-c_{\lambda}\mu\sinh\left(\zeta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use 
+\begin_inset Formula $\mu=\frac{\xi\sigma^{2}}{\theta}$
+\end_inset
+
+ so that we have 
+\begin_inset Formula 
+\begin{align*}
+-\frac{1}{2}\sigma^{2}\frac{c_{\lambda}}{\theta}\zeta e^{\xi} & =\frac{1}{2}\sigma^{2}\frac{c_{\lambda}}{\theta}\left(c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\right)-\frac{\zeta}{\theta}\cosh\left(\zeta\right)\right)-c_{\lambda}\frac{\xi\sigma^{2}}{\theta}\sinh\left(\zeta\right)\\
+-\zeta e^{\xi} & =\xi\sinh\left(\zeta\right)-\zeta\cosh\left(\zeta\right)-2\xi\sinh\left(\zeta\right)\\
+\zeta e^{\xi} & =\xi\sinh\left(\zeta\right)+\zeta\cosh\left(\zeta\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 whose solution gives us the set of all nonvanishing eigenvalues of the operator
  
 \begin_inset Formula $L$
@@ -4113,7 +4331,7 @@ whose solution gives us the set of all nonvanishing eigenvalues of the operator
 Eigenfunctions of the adjoint operator 
 \begin_inset Formula 
 \[
-\psi_{\lambda}(v,t)=\tilde{c}_{\lambda}e^{-\frac{\xi}{\theta}v}\left[\xi\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]
+\psi_{\lambda}(v,t)=\tilde{c}_{\lambda}\left[\xi\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]e^{-\frac{\xi}{\theta}v}
 \]
 
 \end_inset
@@ -4285,7 +4503,7 @@ This equation does not fix
  but yields again the characteristic equation for the eigenvalues 
 \begin_inset Formula 
 \[
-\zeta\cosh\left(\zeta\right)+\xi\sinh\left(\zeta\right)=\zeta e^{\xi}
+\zeta e^{\xi}=\zeta\cosh\left(\zeta\right)+\xi\sinh\left(\zeta\right)
 \]
 
 \end_inset
@@ -4329,6 +4547,190 @@ which yields
 \[
 c_{\lambda}=\frac{2\zeta}{\theta\left[\zeta\xi\cosh\left(\zeta\right)+(\zeta^{2}-\xi)\sinh\zeta\right]}
 \]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Laplace transformation
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Laplace transform 
+\begin_inset Formula 
+\[
+\mathcal{L}[u](s)=U(s)=\int_{0}^{\infty}u(t)e^{-st}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+In our cause 
+\begin_inset Formula 
+\[
+\hat{\phi}_{n}(s)=\int_{0}^{\infty}\phi_{n}(v)e^{-sv}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inverse transform 
+\begin_inset Formula 
+\[
+\mathcal{L}^{-1}[\hat{\phi}_{n}(s)]=\phi(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Laplace transform changes derivative operations to multiplication operations
+ 
+\begin_inset Formula 
+\[
+(\mathcal{L}\phi'_{n})=s\hat{\phi}_{n}-\phi_{n}(0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\[
+\mathcal{L}\phi''_{n}=s^{2}\hat{\phi}_{n}-s\phi_{n}(0)-\phi'_{n}(0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Start from eigenvalue equation 
+\begin_inset Formula 
+\[
+L(v,t)\phi_{n}(v,t)=\lambda_{n}(t)\phi_{n}(v,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $L(v,t)=-\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+-\mu\partial_{v}\phi_{n}(v)+\frac{1}{2}\sigma^{2}\partial_{v}^{2}\phi_{n}(v)=\lambda_{n}\phi_{n}(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Take the Laplace transform 
+\begin_inset Formula 
+\[
+-\mu\left(s\hat{\phi}_{n}(s)-\phi_{n}(0)\right)+\frac{1}{2}\sigma^{2}\left(s^{2}\hat{\phi}_{n}(s)-s\phi_{n}(0)-\phi'_{n}(0)\right)=\lambda_{n}\hat{\phi}_{n}(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $\hat{\phi}_{n}(v)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+-\mu s\hat{\phi}_{n}(s)-\mu\phi_{n}(0)+\frac{1}{2}\sigma^{2}s^{2}\hat{\phi}_{n}(s)-\frac{1}{2}\sigma^{2}\left(s\phi_{n}(0)+\phi'_{n}(0)\right) & =\lambda_{n}\hat{\phi}_{n}(s)\\
+\Leftrightarrow\hat{\phi}_{n}(s)\left(\frac{1}{2}\sigma^{2}s^{2}-\mu s-\lambda_{n}\right) & =\mu\phi_{n}(0)+\frac{1}{2}\sigma^{2}\left(s\phi_{n}(0)+\phi'_{n}(0)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary conditions 
+\begin_inset Formula 
+\[
+\phi_{n}(0)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\hat{\phi}_{n}(v)\left(\frac{1}{2}\sigma^{2}s^{2}-\mu s-\lambda_{n}\right) & =\frac{1}{2}\sigma^{2}\phi'_{n}(0)\\
+\hat{\phi}_{n}(v) & =\frac{\phi'_{n}(0)}{\left(s^{2}-\frac{2\mu}{\sigma^{2}}s-\frac{2}{\sigma^{2}}\lambda_{n}\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula 
+\begin{align*}
+\partial_{v}\phi_{\lambda}(0) & =\left.\frac{c_{\lambda}}{\theta}\left(\xi\sinh\left(\zeta\frac{\theta-v}{\theta}\right)-\zeta\cosh\left(\zeta\frac{\theta-v}{\theta}\right)\right)e^{\frac{\xi v}{\theta}}\right|_{v=0}\\
+ & =\frac{c_{\lambda}}{\theta}\left(\xi\sinh\left(\zeta\right)-\zeta\cosh\left(\zeta\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\[
+\hat{\phi}_{n}(s)=\frac{\frac{c_{\lambda}}{\theta}\left(\xi\sinh\left(\zeta\right)-\zeta\cosh\left(\zeta\right)\right)}{\left(s^{2}-\frac{2\mu}{\sigma^{2}}s-\frac{2}{\sigma^{2}}\lambda_{n}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Fourier transformation 
+\end_layout
 
 \end_inset
 
