@@ -1,0 +1,1183 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Note.
+ Functional Analysis for Physics and Engineering
+\end_layout
+
+\begin_layout Section
+Section 
+\end_layout
+
+\begin_layout Subsection
+Infinite-dimensional spaces 
+\end_layout
+
+\begin_layout Itemize
+Function can have a continuous infinite number of degrees of freedom 
+\end_layout
+
+\begin_layout Itemize
+Functional spaces can be infinite 
+\end_layout
+
+\begin_layout Itemize
+Functional analysis helps us to understand the nature of infinite-dimensional
+ spaces 
+\end_layout
+
+\begin_layout Subsection
+From the perspective of the limit 
+\end_layout
+
+\begin_layout Subsubsection
+Limit of a function 
+\end_layout
+
+\begin_layout Itemize
+Three major branches of mathematics, 
+\series bold
+analysis
+\series default
+, 
+\series bold
+algebra
+\series default
+ and 
+\series bold
+geometry
+\end_layout
+
+\begin_layout Itemize
+Analysis is centering on the understanding of the concept of 
+\series bold
+limits
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Measuring instantaneous rate change 
+\begin_inset Formula $\Delta x/\Delta t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Limit 
+\begin_inset Formula $\Delta t\rightarrow0$
+\end_inset
+
+, setting 
+\begin_inset Formula $\Delta t=0$
+\end_inset
+
+ would mean not measuring at all 
+\end_layout
+
+\begin_layout Itemize
+Array of measurements 
+\begin_inset Formula 
+\[
+\{\Delta x_{1},\Delta x_{2},\ldots\}
+\]
+
+\end_inset
+
+taken over finite time intervals 
+\begin_inset Formula 
+\[
+\{\Delta t_{1},\Delta t_{2},\ldots\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Behavior 
+\begin_inset Formula $\Delta x_{n}/\Delta t_{n}$
+\end_inset
+
+ is observed with 
+\begin_inset Formula $\Delta t\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define limiting behavior in an unambiguously way is the task of mathematical
+ 
+\series bold
+analysis
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Infinite repetitions can not be executed, hence we relay on mathematics
+ 
+\end_layout
+
+\begin_layout Subsubsection
+What do you want to know: The limit's value of existence?
+\end_layout
+
+\begin_layout Itemize
+The paradox of Achilles and the tortoise 
+\end_layout
+
+\begin_layout Itemize
+Although sequence 
+\begin_inset Formula $t_{1},t_{2},\ldots$
+\end_inset
+
+ is infinite, 
+\begin_inset Formula ${\displaystyle \lim_{n\rightarrow\infty}t_{n}}$
+\end_inset
+
+ exists as a finite limit 
+\end_layout
+
+\begin_layout Itemize
+However large the number of terms for which 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ is determined, value can never exceed limit 
+\end_layout
+
+\begin_layout Subsubsection
+Indirect approach to the limit
+\end_layout
+
+\begin_layout Itemize
+Mathematical analysis, rigorous treatment of limits is epsilon-delta logic
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-
+\begin_inset Formula $\delta$
+\end_inset
+
+ logic avoids tackling the target value of 
+\begin_inset Formula $x=a$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+To know continuity at 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ at 
+\begin_inset Formula $x=a$
+\end_inset
+
+, it is sufficient to know behavior of the function in the immediate vicinity
+ of 
+\begin_inset Formula $x=a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Function as the limit of mathematical operations 
+\end_layout
+
+\begin_layout Itemize
+Functions induces from experience and measurement 
+\end_layout
+
+\begin_layout Itemize
+Functions deduced from assumptions are more important in mathematics, e.g.
+ 
+\begin_inset Formula $x=F(t)$
+\end_inset
+
+ describes movement of a object 
+\end_layout
+
+\begin_layout Itemize
+Knowing the nature of 
+\begin_inset Formula $F(t)$
+\end_inset
+
+ would mean understanding the movement of the object 
+\end_layout
+
+\begin_layout Itemize
+What does knowing the function mean?
+\end_layout
+
+\begin_layout Itemize
+In general, identity of any function cannot be known unless infinitely many
+ mathematical procedures are followed
+\end_layout
+
+\begin_layout Itemize
+Known elementary functions 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Trigonometry functions such as 
+\begin_inset Formula $\cos(\omega t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Bessel function 
+\begin_inset Formula $J_{v}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Jacobi elliptic function 
+\begin_inset Formula $sn(u,k)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+How to investigate fundamental properties? Give a specific identity to target
+ function 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Power series expansion
+\end_layout
+
+\begin_layout Itemize
+Indefinite integral
+\end_layout
+
+\begin_layout Itemize
+Differential equation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Exponential function 
+\begin_inset Formula $f(x)=e^{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f(x+y)=f(x)+f(y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(x)={\displaystyle \lim_{N\rightarrow\infty}\left(\sum_{n=0}^{N}\frac{x^{n}}{n!}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{df}{dx}=f(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(0)=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Differential equations establish relationships with respect to an infinitesimal
+ 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+True function can only be perceived as the limit of its approximations 
+\end_layout
+
+\begin_layout Itemize
+To regard a function as a limit, we need concept of the limit of a sequence
+ to form a theory to take the limit of a sequence of a function 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Theory for calculating the limit of one function 
+\end_layout
+
+\begin_layout Itemize
+Theory for the limit of an infinite sequence of functions 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+From the perspective of infinite dimension
+\end_layout
+
+\begin_layout Subsubsection
+Topology of a space 
+\end_layout
+
+\begin_layout Itemize
+The standard that determines the difference between the elements is called
+ 
+\series bold
+topology
+\series default
+ of the space
+\end_layout
+
+\begin_layout Subsubsection
+Length of a vector 
+\end_layout
+
+\begin_layout Itemize
+Functions have infinite degrees of freedom.
+ If we want to treat functions as vectors then we need an infinite dimensional
+ vector space 
+\end_layout
+
+\begin_layout Itemize
+Comparison: Three dimensional euclidean space 
+\begin_inset Formula 
+\[
+(x_{1},x_{2},x_{3})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infinite-dimensional space 
+\begin_inset Formula 
+\[
+\boldsymbol{x}=(x_{1},x_{2},x_{3},\ldots,x_{n},\ldots)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Length of a vector 
+\begin_inset Formula $\boldsymbol{x}=(x_{1},x_{2},x_{3})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sqrt{\bigl|x_{1}\bigr|^{2}+\bigl|x_{2}\bigr|^{2}+\bigl|x_{3}\bigr|^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infinite dimension 
+\begin_inset Formula 
+\[
+\sqrt{\bigl|x_{1}\bigr|^{2}+\bigl|x_{2}\bigr|^{2}+\bigl|x_{3}\bigr|^{2}\ldots+\bigl|x_{n}\bigr|^{2}+\ldots}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This infinite sum is not necessarily convergent 
+\end_layout
+
+\begin_layout Itemize
+What to do? 
+\end_layout
+
+\begin_layout Itemize
+Redefine the length of a vector would be a option.
+ 
+\end_layout
+
+\begin_layout Itemize
+Here, consider only all those 
+\begin_inset Formula $\boldsymbol{x}=(x_{1},x_{2},x_{3},\ldots,x_{n},\ldots)$
+\end_inset
+
+ that will make sum convergent so that 
+\begin_inset Formula 
+\[
+\bigl\Vert\boldsymbol{x}\bigr\Vert=\sqrt{\bigl|x_{1}\bigr|^{2}+\bigl|x_{2}\bigr|^{2}+\bigl|x_{3}\bigr|^{2}\ldots+\bigl|x_{n}\bigr|^{2}+\ldots}
+\]
+
+\end_inset
+
+exists 
+\end_layout
+
+\begin_layout Itemize
+The space which contains only those 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+'s is called 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ space 
+\end_layout
+
+\begin_layout Subsubsection
+Size of a function 
+\end_layout
+
+\begin_layout Itemize
+Entire set of continuous functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ of the real variable 
+\begin_inset Formula $0\leq x\leq1$
+\end_inset
+
+ which is denoted as 
+\begin_inset Formula $C[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Supremum or magnitude norm 
+\begin_inset Formula 
+\[
+\bigl\Vert f(x)\bigr\Vert=\max_{0\leq x\leq1}\bigl|f(x)\bigr|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ 
+\series bold
+norm
+\series default
+ 
+\begin_inset Formula 
+\[
+\bigl\Vert f(x)\bigr\Vert=\sqrt{\int_{0}^{1}\bigl|f(x)\bigr|dx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+All functions that would make the 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ norm take a finite value is called 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ 
+\series bold
+space
+\end_layout
+
+\begin_layout Itemize
+Two of the most well-known classes of infinite-dimensional spaces, are 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ spaces 
+\end_layout
+
+\begin_layout Itemize
+real 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ space is a set of sequences 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ space is a set of functions 
+\end_layout
+
+\begin_layout Subsubsection
+Small infinity and large infinity 
+\end_layout
+
+\begin_layout Itemize
+The smallest infinity is the infinity that can be counted using natural
+ numbers 
+\end_layout
+
+\begin_layout Itemize
+The infinite set has the same 
+\series bold
+cardinality 
+\series default
+(size) as the set of all natural numbers 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ is called a 
+\series bold
+countable set
+\end_layout
+
+\begin_layout Itemize
+Set if real number 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ has a higher cardinality (
+\series bold
+Cantor's theorem
+\series default
+)
+\end_layout
+
+\begin_layout Itemize
+The set of complex numbers is equivalent to 
+\begin_inset Formula $\mathbb{R\times\mathbb{R}}$
+\end_inset
+
+ but its cardinality is equal to 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How big the infinite number of degrees of freedom of function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+value of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is determined by real number 
+\begin_inset Formula $x$
+\end_inset
+
+, hence one suspect cardinality equal to 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+However, it turns out that number is countable infinite 
+\end_layout
+
+\begin_layout Subsection
+From the perspective of quantum mechanical theory 
+\end_layout
+
+\begin_layout Subsubsection
+Physical realization of the operator theory 
+\end_layout
+
+\begin_layout Subsubsection
+Difficulty in choosing a basis in infinite dimension 
+\end_layout
+
+\begin_layout Itemize
+Operators in quantum mechanics denoting different physical quantities are
+ in general non-commutative 
+\begin_inset Formula $A_{1}A_{2}\neq A_{2}A_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Most basic theory of expressing non-commutative algebra is the theory of
+ matrices, or, 
+\series bold
+linear algebra
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Functional analysis can be regarded as an extension of finite-dimensional
+ linear algebra to infinite dimensions 
+\end_layout
+
+\begin_layout Itemize
+Linear algebra, choose abase which represents linear mapping by a simple
+ matrix 
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue problem, reduce linear mapping to a proportionality rule 
+\begin_inset Formula 
+\[
+A:\mathbb{C}^{n}\mapsto\mathbb{C}^{n},\quad A\boldsymbol{u}=\lambda\boldsymbol{u}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue representation of 
+\begin_inset Formula $A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Limitations to generalization when it comes to infinite-dimensional space
+ 
+\end_layout
+
+\begin_layout Itemize
+It is particularly difficult to judge excess of deficiency of the number
+ of eigenfunctions through numerical calculations 
+\end_layout
+
+\begin_layout Itemize
+If number 
+\begin_inset Formula $n$
+\end_inset
+
+ of dimensions is finite, finding 
+\begin_inset Formula $n$
+\end_inset
+
+ independent eigenfunctions is sufficient 
+\end_layout
+
+\begin_layout Itemize
+If the space is infinite, infinite many eigefunctions can be found but it
+ is not possible to determine weather they are sufficient by comparison
+ with the number of dimensions of the space 
+\end_layout
+
+\begin_layout Itemize
+General theory exist only for self-adjoint operators
+\end_layout
+
+\begin_layout Subsubsection
+Plane waves are anomalous wave functions 
+\end_layout
+
+\begin_layout Itemize
+Plane wave, the 
+\begin_inset Quotes eld
+\end_inset
+
+eigenfunction
+\begin_inset Quotes erd
+\end_inset
+
+ of the momentum operator 
+\end_layout
+
+\begin_layout Itemize
+Plane wave is a eigenfunction of the momentum operator 
+\begin_inset Formula 
+\[
+-i\hbar\frac{\partial}{\partial x_{j}}e^{i(\boldsymbol{k}\boldsymbol{x}-\omega t)}=\hbar k_{j}e^{i(\boldsymbol{k}\boldsymbol{x}-\omega t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Value of momentum of the plane wave 
+\begin_inset Formula $\exp\left[i(\boldsymbol{k}\boldsymbol{x}-\omega t)\right]$
+\end_inset
+
+ is estimated by operating 
+\begin_inset Formula $p_{j}=i\hbar\partial/\partial x_{j}$
+\end_inset
+
+ on it 
+\begin_inset Formula 
+\[
+\int_{\mathbb{R}^{3}}\left[-i\hbar\frac{\partial}{\partial x_{j}}e^{i(\boldsymbol{k}\boldsymbol{x}-\omega t)}\right]\exp\left[-i(\boldsymbol{k}\boldsymbol{x}-\omega t)\right]=\int_{\mathbb{R}^{3}}\hbar k_{j}d\boldsymbol{x}\rightarrow\infty
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigenfunction 
+\begin_inset Formula 
+\[
+f(x,t)=e^{i(\boldsymbol{k}x-\omega t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inner-product 
+\begin_inset Formula 
+\[
+(\hat{p}f,f)=\int_{\mathbb{R}^{3}}d\boldsymbol{x}\,\left(i\hbar\frac{\partial}{\partial x_{j}}f(x)\right)f(x)^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Why is the integral indicating observed value for momentum divergent 
+\end_layout
+
+\begin_layout Itemize
+Plane wave is represented by vector in infinite-dimensional space with divergent
+ norm.
+ Plane wave is not a wave function in the correct sense
+\end_layout
+
+\begin_layout Itemize
+Quantum theory, particle is represented by an infinite-dimensional vector
+ with finite length 
+\begin_inset Formula 
+\[
+\left\Vert f\right\Vert =\left(\int_{\mathbb{R}^{3}}\left|f(x)\right|^{2}d\boldsymbol{x}\right)^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Norm of planar wave 
+\begin_inset Formula 
+\[
+\left\Vert e^{i\boldsymbol{k}\boldsymbol{x}}\right\Vert ^{2}=\int_{\mathbb{R}^{3}}1d\boldsymbol{x}\rightarrow\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Planar wave is not contained in the elements of function space that quantum
+ theory is contained with 
+\end_layout
+
+\begin_layout Itemize
+Mathematical terms, plane wave is not an element of the function space 
+\begin_inset Formula $L^{2}(\mathbb{R}^{3})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Plane wave 
+\begin_inset Formula $e^{i\boldsymbol{k}\boldsymbol{x}}$
+\end_inset
+
+is defined for arbitrary 
+\begin_inset Formula $\boldsymbol{k}\in\mathbb{R}^{3}$
+\end_inset
+
+, i.e.
+ eigenvalues belonging to the operator 
+\begin_inset Formula $p_{j}$
+\end_inset
+
+ take continuous values 
+\end_layout
+
+\begin_layout Itemize
+Regarding plane wave as a countably infinite base and resolving function
+ into the sum of independent components is not applicable 
+\end_layout
+
+\begin_layout Itemize
+Momentum cannot be expressed as a diagonal matrix 
+\end_layout
+
+\begin_layout Itemize
+Analogy to finite-dimensional linear algebra fails 
+\end_layout
+
+\begin_layout Itemize
+Instead of writing function as the sum of independent components, it can
+ be represented using integration 
+\begin_inset Formula 
+\[
+\psi(\boldsymbol{x},t)=\int\hat{\psi}(\boldsymbol{k},t)e^{i\boldsymbol{k}\boldsymbol{x}}d\boldsymbol{k}
+\]
+
+\end_inset
+
+which is nothing but the Fourier transform 
+\end_layout
+
+\begin_layout Itemize
+Stated this way momentum operator can be expressed in a similar form to
+ the proportionality rule of finitely many dimensions 
+\begin_inset Formula 
+\begin{align*}
+p_{j}u(\boldsymbol{x},t) & =-i\hbar\frac{\partial}{\partial x_{j}}\int\hat{u}(\boldsymbol{k},t)e^{i\boldsymbol{k}\boldsymbol{x}}d\boldsymbol{k}\\
+ & =\hbar\int k_{j}\hat{u}(\boldsymbol{k},t)e^{i\boldsymbol{k}\boldsymbol{x}}d\boldsymbol{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuous spectrum 
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions that belong to a continuous spectrum are called singular
+ eigenfunctions which do not belong to the space 
+\end_layout
+
+\begin_layout Itemize
+To build quantum theory, it is necessary to consider general eigenvalue
+ problem containing continuous spectra 
+\end_layout
+
+\begin_layout Section
+Topology
+\end_layout
+
+\begin_layout Subsection
+Fundamentals
+\end_layout
+
+\begin_layout Subsubsection
+What is topology?
+\end_layout
+
+\begin_layout Itemize
+Topology tells us what mathematical properties are conserved through deformation
+ (mapping)
+\end_layout
+
+\begin_layout Itemize
+How to handle transformations of more abstract objects like point sets and
+ sequences of functions 
+\end_layout
+
+\begin_layout Itemize
+Develop notion of closeness 
+\end_layout
+
+\begin_layout Subsubsection
+What is closeness
+\end_layout
+
+\begin_layout Itemize
+In functional analysis, we are allowed to set rules for distance between
+ elements at our convenience 
+\end_layout
+
+\begin_layout Subsubsection
+Convergence of point sequences
+\end_layout
+
+\begin_layout Itemize
+Distance between to points 
+\end_layout
+
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are located on the real line with, then 
+\begin_inset Formula 
+\[
+d(P,Q)=\bigl|b-a\bigr|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two dimensional plane 
+\begin_inset Formula 
+\[
+d(P,Q)=\sqrt{(b_{1}-a_{1})^{2}+(b_{2}-a_{2})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What does is mean that the infinite sequence of points 
+\begin_inset Formula $P_{1},P_{2},\ldots,P_{n},\ldots$
+\end_inset
+
+ converges to 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The distance 
+\begin_inset Formula $d(P_{n},P)$
+\end_inset
+
+ decreases unlimitedly with increasing 
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exist an integer 
+\begin_inset Formula $k$
+\end_inset
+
+ such that if 
+\begin_inset Formula $n>k$
+\end_inset
+
+, then 
+\begin_inset Formula $d(P_{n},P)<\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The statement can be simplified by the concept of neighborhood 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-neighborhood of 
+\begin_inset Formula $P$
+\end_inset
+
+, 
+\begin_inset Formula $V_{\epsilon}(P)$
+\end_inset
+
+, is the set of points whose distances from 
+\begin_inset Formula $P$
+\end_inset
+
+ are smaller than 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{\epsilon}(P)=\{Q:\,d(P,Q)<\epsilon\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The convergence of 
+\begin_inset Formula $\{P_{n}\}$
+\end_inset
+
+ to 
+\begin_inset Formula $P$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ can be written as 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exists 
+\begin_inset Formula $k$
+\end_inset
+
+ such that if 
+\begin_inset Formula $n>k$
+\end_inset
+
+, then 
+\begin_inset Formula $P_{n}\in V_{\epsilon}(P)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Open set and closed set
+\end_layout
+
+\end_body
+\end_document
