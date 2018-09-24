@@ -1035,7 +1035,7 @@ Suppose
 \begin_inset Formula $Q$
 \end_inset
 
- are located on the real line with, then 
+ are located on the real line with, then we can define the norm 
 \begin_inset Formula 
 \[
 d(P,Q)=\bigl|b-a\bigr|
@@ -1047,7 +1047,7 @@ d(P,Q)=\bigl|b-a\bigr|
 \end_layout
 
 \begin_layout Itemize
-Two dimensional plane 
+Two dimensional plane, we can define the norm 
 \begin_inset Formula 
 \[
 d(P,Q)=\sqrt{(b_{1}-a_{1})^{2}+(b_{2}-a_{2})^{2}}
@@ -1177,6 +1177,1395 @@ For any
 \end_deeper
 \begin_layout Subsubsection
 Open set and closed set
+\end_layout
+
+\begin_layout Itemize
+Consider infinite sequence of points 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ that converges to 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume all elements 
+\begin_inset Formula $P_{1},P_{2},\ldots$
+\end_inset
+
+ are contained in set 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Point 
+\begin_inset Formula $P$
+\end_inset
+
+ may not be contained in 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Every point 
+\begin_inset Formula $P$
+\end_inset
+
+ in an open set 
+\begin_inset Formula $B$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $V_{\epsilon}(P)\in B$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Here, we assume for each 
+\begin_inset Formula $P$
+\end_inset
+
+ in 
+\begin_inset Formula $B$
+\end_inset
+
+, we can make 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ small enough, that all points in 
+\begin_inset Formula $V_{\epsilon}(P)$
+\end_inset
+
+ are in 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In a closed set there is at least on point which does not satisfy this condition
+ 
+\end_layout
+
+\begin_layout Itemize
+If the sequence 
+\begin_inset Formula $\{P_{n}\}$
+\end_inset
+
+ in a closed disk 
+\begin_inset Formula $\overline{B}$
+\end_inset
+
+ converges, then 
+\begin_inset Formula $P\in\overline{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A set is closed if it equal to all points of adherence 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The limit 
+\begin_inset Formula $P$
+\end_inset
+
+ of convergence set 
+\begin_inset Formula $\{P_{n}\}$
+\end_inset
+
+ is point which is contained in 
+\begin_inset Formula $\overline{B}$
+\end_inset
+
+ is a point adherence with respect to 
+\begin_inset Formula $\overline{B}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Open set)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If all points 
+\begin_inset Formula $P$
+\end_inset
+
+ in a set 
+\begin_inset Formula $S$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $V_{\epsilon}(P)\subset S$
+\end_inset
+
+ for sufficiently small 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $S$
+\end_inset
+
+ is called an 
+\series bold
+open set
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Definition (Closed Set)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A set 
+\begin_inset Formula $S$
+\end_inset
+
+ contains an infinite sequence of points 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+ that converges to 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $P\in S$
+\end_inset
+
+, then 
+\begin_inset Formula $S$
+\end_inset
+
+ is a closed set.
+\end_layout
+
+\begin_layout Itemize
+Denote the set of all points of adherence as 
+\begin_inset Formula $\overline{S}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $S=\overline{S}$
+\end_inset
+
+, then 
+\begin_inset Formula $S$
+\end_inset
+
+ is closed 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Accumulation points
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 
+\series default
+(Accumulation point)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $M$
+\end_inset
+
+ is a set in the plane (or on a line).
+ Suppose 
+\begin_inset Formula $\{P_{n}\}$
+\end_inset
+
+ is infinite sequence that consists of different points.
+ If 
+\begin_inset Formula $\{P_{n}\}$
+\end_inset
+
+ converges to 
+\begin_inset Formula $P$
+\end_inset
+
+, then 
+\begin_inset Formula $P$
+\end_inset
+
+ is called an accumulation point of 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Accumulation point can exist only in infinite sets
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $M$
+\end_inset
+
+ is closed, then accumulation points of 
+\begin_inset Formula $M$
+\end_inset
+
+ are in 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $M$
+\end_inset
+
+ is open, accumulation points do not have to be in 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example 1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Every point in the set 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ is an accumulation point of the set 
+\begin_inset Formula $\mathbb{Q}$
+\end_inset
+
+.
+ For any real number 
+\begin_inset Formula $a$
+\end_inset
+
+, we can find infinitely many rational numbers 
+\begin_inset Formula $x$
+\end_inset
+
+ that satisfy 
+\begin_inset Formula $\bigl|x-a\bigr|<\epsilon$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Example 3
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Open set 
+\begin_inset Formula $O$
+\end_inset
+
+ in the coordinate plane defined as 
+\begin_inset Formula $O=\{(x,y):x^{2}+y^{2}<1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Accumulation points of 
+\begin_inset Formula $O$
+\end_inset
+
+ are all the points contained in 
+\begin_inset Formula $O$
+\end_inset
+
+ 
+\series bold
+and
+\series default
+ the points on the circumference of the circle 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Given an accumulation point 
+\begin_inset Formula $P$
+\end_inset
+
+, you can find infinitely many points within a small region around 
+\begin_inset Formula $P$
+\end_inset
+
+, no matter how small the region is 
+\end_layout
+
+\begin_layout Itemize
+Accumulation point of set 
+\begin_inset Formula $X$
+\end_inset
+
+ may or may not be contained in 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+General sets 
+\begin_inset Formula $M$
+\end_inset
+
+ which are neither open nor closed.
+ Almost all points of 
+\begin_inset Formula $M$
+\end_inset
+
+ should be accumulation points 
+\end_layout
+
+\begin_layout Itemize
+Exceptions are 
+\series bold
+isolated points
+\series default
+.
+ Necessary and sufficient condition (if and only if)
+\begin_inset Formula 
+\[
+V_{\epsilon}(P)\cap M=\{P\}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is sufficient small 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P$
+\end_inset
+
+ looks like a tiny isolated island separated from the mainland 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only to possibilities for points 
+\begin_inset Formula $P$
+\end_inset
+
+ in 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P$
+\end_inset
+
+ is a point of accumulation
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P$
+\end_inset
+
+ is a isolated point
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Continuous mapping
+\end_layout
+
+\begin_layout Subsubsection
+Relation between continuity and open sets 
+\end_layout
+
+\begin_layout Itemize
+Real valued function 
+\begin_inset Formula $y=f(x)$
+\end_inset
+
+ that maps a real number 
+\begin_inset Formula $x$
+\end_inset
+
+ to another real number.
+ Define 
+\begin_inset Formula $X=\mathbb{R}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+f:X\mapsto X
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity can be evaluated using elementary mathematical analysis 
+\end_layout
+
+\begin_layout Itemize
+Concept of continuity is applicable to broader spectrum of mathematical
+ entities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We need define distance between entities and convergence of an infinite
+ sequence 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Definition (Continuity of mapping at a point)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Suppose mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ between two planes satisfies the following condition for arbitrary points
+ in the planes 
+\begin_inset Formula 
+\[
+P_{n}\rightarrow P[n\rightarrow\infty]\Rightarrow\varphi(P_{n})\rightarrow\varphi(P)\,[n\rightarrow\infty]
+\]
+
+\end_inset
+
+then we say 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous at 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous if the property of infinite sequences is conserved 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+From a geometric viewpoint, continuity of the mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is a sort of mechanical deformation of a elastic object without tearing
+ it apart or making holes
+\end_layout
+
+\begin_layout Itemize
+Restate converging behavior of 
+\begin_inset Formula $P_{n}\rightarrow P$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi(P_{n})\rightarrow\varphi(P)$
+\end_inset
+
+ using concept of neighborhood 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P_{n}\rightarrow P$
+\end_inset
+
+ with 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ is equivalent to the statement: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, there exists and integer 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $n>k\Rightarrow P_{n}\in V_{\delta}(P)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The proposition 
+\begin_inset Formula $\varphi(P_{n})\rightarrow\varphi(P)$
+\end_inset
+
+ with 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ is equivalent to the statement 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exists in integer 
+\begin_inset Formula $k'$
+\end_inset
+
+ such that 
+\begin_inset Formula $n>k'\Rightarrow\varphi(P_{n})\in V_{\epsilon}(\varphi(P))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Continuous mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ transforms any point 
+\begin_inset Formula $Q$
+\end_inset
+
+ in 
+\begin_inset Formula $V_{\delta}(P)$
+\end_inset
+
+ to point 
+\begin_inset Formula $\varphi(Q)$
+\end_inset
+
+ in 
+\begin_inset Formula $V_{\epsilon}(\varphi(P))$
+\end_inset
+
+.
+ For every 
+\begin_inset Formula $\delta$
+\end_inset
+
+ we find a 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The point 
+\begin_inset Formula $Q$
+\end_inset
+
+ can be arbitrarily chosen in the set 
+\begin_inset Formula $V_{\delta}(P)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous at 
+\begin_inset Formula $P$
+\end_inset
+
+ if given 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exists 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $\varphi(V_{\delta}(P))\subset\varphi(V_{\epsilon}(P))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Is there a condition such that 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous everywhere in a given set.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem
+\series default
+ (
+\series bold
+Continuous mappings and open sets
+\series default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous everywhere if and only if given an 
+\series bold
+arbitrary
+\series default
+ open set 
+\begin_inset Formula $O$
+\end_inset
+
+ the inverse 
+\begin_inset Formula $\varphi^{-1}(O)$
+\end_inset
+
+ is also an open set
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Relation between continuity and closed sets 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem (Continuous mappings and closed sets)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous everywhere if and only if, given an arbitrary closed set
+ 
+\begin_inset Formula $F$
+\end_inset
+
+, its inverse image 
+\begin_inset Formula $\varphi^{-1}(F)$
+\end_inset
+
+ is closed
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The continuity of a mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is judged by the nature of its inverse 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity is not determined by the property of its image.
+ Weather 
+\begin_inset Formula $\varphi(O)$
+\end_inset
+
+ or 
+\begin_inset Formula $\varphi(F)$
+\end_inset
+
+ is open or closed is irrelevant to the continuity of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+We learned that continuity in a mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is determined by its inverse image of open or closed sets
+\end_layout
+
+\begin_layout Itemize
+Concept of openness is based on the global, not local.
+ characteristics of a set 
+\end_layout
+
+\begin_layout Itemize
+Hence, when evaluating the continuity of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ on 
+\begin_inset Formula $M$
+\end_inset
+
+, we do not need to check convergence at certain points in 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This contrasts the continuity in functions studied in elementary mathematical
+ analysis
+\end_layout
+
+\begin_layout Itemize
+Open set is a global entity defined by its local condition.
+ This combination of the local and global requirements for an open set is
+ suitable for defining continuity in a mapping 
+\end_layout
+
+\begin_layout Itemize
+Pointwise continuity and uniformity are satisfied by a single concept: the
+ open set
+\end_layout
+
+\begin_layout Itemize
+Examples discontinuous mappings 
+\end_layout
+
+\begin_layout Subsubsection
+Closure of a set
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Closure)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The closure of a set 
+\begin_inset Formula $S$
+\end_inset
+
+, denoted 
+\begin_inset Formula $\overline{S}$
+\end_inset
+
+, is the union of 
+\begin_inset Formula $S$
+\end_inset
+
+ and all its accumulation points 
+\begin_inset Formula $S=S\cup\{\text{All accumulation points of }S\}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Relate continuity in the mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ to the concept of closure 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem (Continuous mapping and closure)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A mapping 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous in 
+\begin_inset Formula $X$
+\end_inset
+
+ if and only if all subsets 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $X$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $\varphi(\overline{S})\subset\overline{\varphi(S)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The image 
+\begin_inset Formula $\varphi(\overline{S})$
+\end_inset
+
+ is necessarily included in 
+\begin_inset Formula $\overline{\varphi(S)}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Why should we use the concept of closure to define a continuous map?
+\end_layout
+
+\begin_layout Itemize
+Homeomorphism: Deformation does not preserve point-to-point distance, but
+ openness and closeness, the neighborhood, closure, and many more topological
+ properties 
+\end_layout
+
+\begin_layout Subsection
+Homeomorphism
+\end_layout
+
+\begin_layout Subsubsection
+Homeomorphic mapping
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is continuous, its inverse 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+ may or may not be continuous 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+ is also continuous, then it is called to be 
+\series bold
+homeomorphic
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+continuous mapping 
+\begin_inset Formula $\varphi:(X,d_{1})\mapsto(Y,d_{2})$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+ is also continuous we say
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are homeomorphic (topologically equivalent)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is a homeomorphic mapping from 
+\begin_inset Formula $X$
+\end_inset
+
+ to 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+General homeomorphic mappings to not conserve the distance 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+, we can define a lot of different metrics 
+\end_layout
+
+\begin_layout Itemize
+Independent of the metric, convergence property of a point sequence 
+\begin_inset Formula $\{x_{n}\}$
+\end_inset
+
+ remains unchanged 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\{x_{n}\}$
+\end_inset
+
+ converges to 
+\begin_inset Formula $x$
+\end_inset
+
+ under distant 
+\begin_inset Formula $d_{1}$
+\end_inset
+
+, it converges under 
+\begin_inset Formula $d_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Other properties are conserved 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x_{n}\rightarrow x\Leftrightarrow\varphi(x_{n})\rightarrow\varphi(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $O$
+\end_inset
+
+ is an open set in 
+\begin_inset Formula $X\Leftrightarrow\varphi(O)$
+\end_inset
+
+ is an open set in 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F$
+\end_inset
+
+ is a closed set in 
+\begin_inset Formula $X\Leftrightarrow\varphi(F)$
+\end_inset
+
+ is a closed set in 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $V$
+\end_inset
+
+ is a neighborhood of 
+\begin_inset Formula $x\Leftrightarrow\varphi(V)$
+\end_inset
+
+ is a neighborhood of 
+\begin_inset Formula $\varphi(x)\in Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The closure of a set 
+\begin_inset Formula $S$
+\end_inset
+
+ in 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{S}$
+\end_inset
+
+ is mapped to the closure of 
+\begin_inset Formula $\varphi(S)$
+\end_inset
+
+ in 
+\begin_inset Formula $Y$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\varphi(S)}\Leftrightarrow\overline{\varphi(S)}=\varphi(\overline{S})$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For 
+\begin_inset Formula $5$
+\end_inset
+
+ , use that the continuity of 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ implies 
+\begin_inset Formula 
+\[
+\varphi(\overline{S})\subset\overline{\varphi(S)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity of 
+\begin_inset Formula $\varphi^{-1}$
+\end_inset
+
+ implies 
+\begin_inset Formula 
+\[
+\varphi^{-1}\left(\overline{\varphi(S)}\right)\subset\overline{\varphi^{-1}\left(\varphi(S)\right)}=\overline{S}
+\]
+
+\end_inset
+
+from which we obtain 
+\begin_inset Formula 
+\[
+\overline{\varphi(S)}\subset\overline{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From 
+\begin_inset Formula $\varphi(\overline{S})\subset\overline{\varphi(S)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\overline{\varphi(S)}\subset\overline{S}$
+\end_inset
+
+ follows 
+\begin_inset Formula $\overline{\varphi(S)}=\varphi(\overline{S})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Revisited: What is topology
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Topological equivalence):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two metric spaces 
+\begin_inset Formula $(X,d_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $(Y,d_{2})$
+\end_inset
+
+ are said to have the same topology, if they are 
+\series bold
+homeomorphic 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Topological properties
+\series default
+ is what is conserved by homeomorphic mappings 
+\end_layout
+
+\begin_layout Subsubsection
+Topological space theory
+\end_layout
+
+\begin_layout Itemize
+Instead of defining the distance between points and derive all properties
+ which make up the topological space
+\end_layout
+
+\begin_layout Itemize
+We can also start from topological properties of the set 
+\end_layout
+
+\begin_layout Itemize
+Collection of open sets 
+\begin_inset Formula $\Theta=\{O_{i}\}$
+\end_inset
+
+ of a given set 
+\begin_inset Formula $X$
+\end_inset
+
+ from topology 
+\begin_inset Formula $(X,\Theta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suppose 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula ${\displaystyle \sum_{i}}\cup O_{i}$
+\end_inset
+
+ is a open set 
+\end_layout
+
+\begin_layout Enumerate
+Finite intersection
+\begin_inset Formula ${\displaystyle \sum_{i=1}^{n}}\cap O_{i}\in X$
+\end_inset
+
+ is an open set 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ are in the topology
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Vector space
+\end_layout
+
+\begin_layout Subsection
+What is vector space?
+\end_layout
+
+\begin_layout Subsubsection
+Beyond arrow-based representation
+\end_layout
+
+\begin_layout Itemize
+Equip linear space, with norm, inner product, completeness 
+\end_layout
+
+\begin_layout Itemize
+Inner product provide a way to quantify similarity and difference between
+ elements contained in the same space 
+\end_layout
+
+\begin_layout Itemize
+Completeness open a gate for establishing a wide variety of complete 
+\series bold
+orthonormal set
+\end_layout
+
+\begin_layout Subsubsection
+Axiom of vector spaces
+\end_layout
+
+\begin_layout Itemize
+Algebraic rules 
+\end_layout
+
+\begin_layout Itemize
+Vector space is collection of elements 
+\begin_inset Formula $x$
+\end_inset
+
+ called vectors that satisfy axioms with respect to a field 
+\begin_inset Formula $\mathbb{F}=(\mathbb{R},\mathbb{C})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Property of vector space
+\end_layout
+
+\begin_layout Subsubsection
+Inner product 
+\end_layout
+
+\begin_layout Itemize
+Axioms of vector give no information about length and relative angle between
+ two vectors 
+\end_layout
+
+\begin_layout Subsubsection
+Geometry of inner product spaces 
+\end_layout
+
+\begin_layout Itemize
+
 \end_layout
 
 \end_body
