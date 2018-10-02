@@ -1,0 +1,1186 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Model of global spontaneous activity and local structured activity during
+ delay periods in the cerebral cortex 
+\end_layout
+
+\begin_layout Itemize
+Low spontaneous background activity in cortex 
+\begin_inset Formula $1-5$
+\end_inset
+
+ spikes/s 
+\end_layout
+
+\begin_layout Itemize
+Due to dense connectivity 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ synapses in neocortex (outer layer of the cerebrum), neuron receives enormous
+ number of afferent spikes before it engages in any stimulus-related computation
+al activity 
+\end_layout
+
+\begin_layout Itemize
+Reverberation (echo) provoked by stimulus are small in comparison with the
+ background 
+\end_layout
+
+\begin_layout Itemize
+Neurons can be described as linear elements on the input side 
+\end_layout
+
+\begin_layout Itemize
+Conclusion neurons operating in cortex have their physiological parameters
+ significantly renormalized by the flux of the spontaneous activity 
+\end_layout
+
+\begin_layout Itemize
+Low activity rate, spikes arriving at different synapses are uncorrelated
+ 
+\end_layout
+
+\begin_layout Itemize
+Stimulus enhanced spike rates have been observed during the delay period
+ following the removal of the stimulus 
+\end_layout
+
+\begin_layout Itemize
+Spontaneous activity is non-specific and global, it must be an attractor
+ which is global on the cortical level 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ self-consistency 
+\end_layout
+
+\begin_layout Itemize
+Attractor must be 
+\series bold
+stable
+\series default
+ against local fluctuations or selective delay activity (stimulus evoked)
+\end_layout
+
+\begin_layout Itemize
+Stability requirement imposes severe constraints on model parameter
+\end_layout
+
+\begin_layout Itemize
+Synaptic modification due to learning should not destabilize this spontaneous
+ activity state 
+\end_layout
+
+\begin_layout Itemize
+Coexistence between spontaneous and selective activity states 
+\end_layout
+
+\begin_layout Itemize
+Noise due to background activity should not wash out the signal in the selective
+ population 
+\end_layout
+
+\begin_layout Itemize
+Rates in local selective attractor are usually close to spontaneous rates
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Why would the brain have a background activity of 
+\begin_inset Formula $1-5$
+\end_inset
+
+ spikes/s?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Assumptions and Summary of Results
+\end_layout
+
+\begin_layout Itemize
+Assumptions
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Background activity is 
+\series bold
+stochastic
+\series default
+.
+ Expression of the empirical character of spontaneous activity 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Non-specific
+\series default
+.
+ All neurons are subject to the same background activity despite fluctuations.
+ Fluctuations cause spike emission 
+\end_layout
+
+\begin_layout Enumerate
+Spike emission times of different neurons are uncorrelated.
+ Neural activity does not synchronize in the range of biological parameters
+ 
+\end_layout
+
+\begin_layout Enumerate
+Synaptic input to every cell is the 
+\series bold
+linear sum
+\series default
+ of individual synaptic contributions 
+\end_layout
+
+\begin_layout Enumerate
+Spontaneous and selectivity activity can be described by 
+\series bold
+Gaussian stationary process 
+\series default
+(spikes arrive at a low rate on a large number of uncorrelated channels)
+ Excitatory and inhibitory can be described as two 
+\series bold
+uncorrelated
+\series default
+ Gaussian processes 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If integration time constant of excitatory and inhibitory neurons are equivalent
+, stability requires tide balance 
+\end_layout
+
+\begin_layout Itemize
+This constraint can be relaxed if time constant of inhibitory neurons is
+ faster 
+\end_layout
+
+\begin_layout Itemize
+Spontaneous activity is globally stable, as is the state with all neurons
+ silent in absence of external inputs 
+\end_layout
+
+\begin_layout Itemize
+State of spontaneous activity will not drift gradually into the silent state
+ 
+\end_layout
+
+\begin_layout Itemize
+Learning transition
+\end_layout
+
+\begin_layout Itemize
+Local network develops rather abruptly a variety of local attractors on
+ the back of the stability 
+\end_layout
+
+\begin_layout Itemize
+Neurons representative of a particular stimulus remains active at elevated
+ rates 
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Subsection*
+The network
+\end_layout
+
+\begin_layout Itemize
+Cortical column 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+ neurons embedded in a vast sea of neurons 
+\end_layout
+
+\begin_layout Itemize
+Connectivity features which distinguish local from global module 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+High internal excitatory connectivity, low otherwise
+\end_layout
+
+\begin_layout Enumerate
+Range of inhibitory neurons is only local.
+ External connections are excitatory because only pyramidal cells have axons
+ which are long enough 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Number of inhibitory units in the module is taken to be 
+\begin_inset Formula $20\%$
+\end_inset
+
+ of the number of local excitatory neurons
+\end_layout
+
+\begin_layout Itemize
+No spatial structure of connectivity within the local module 
+\end_layout
+
+\begin_layout Itemize
+Afferents come in equal proportion from the local module and outside 
+\begin_inset Formula $x=50\%$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+The Integrate-and-fire neuron
+\end_layout
+
+\begin_layout Itemize
+Dynamics 
+\begin_inset Formula 
+\[
+\tau\dot{V}=-V(t)+I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tau\sim10$
+\end_inset
+
+ms is the integration time of the membrane depolarization at the spike stemming
+ part of the soma 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I(t)$
+\end_inset
+
+ is the synaptic current charging that part of the membrane 
+\end_layout
+
+\begin_layout Itemize
+Refractory 
+\begin_inset Formula $\tau_{0}\sim2$
+\end_inset
+
+ms
+\end_layout
+
+\begin_layout Itemize
+Current is expressed in efficacy 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Synaptic inputs to a cell 
+\end_layout
+
+\begin_layout Itemize
+Dentrites of a given neuron are assumed to be randomly distributed 
+\begin_inset Formula $P(J)$
+\end_inset
+
+ with mean 
+\begin_inset Formula $J$
+\end_inset
+
+ and standard deviation 
+\begin_inset Formula $\Delta J$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Distribution accounts randomness in synaptic transmission etc.
+ 
+\end_layout
+
+\begin_layout Itemize
+Exponential current synapses 
+\begin_inset Formula 
+\[
+\tau'\dot{I}(t)=-I(t)+\tau'\sum_{i=1}^{C}J_{i}\sum_{k}\delta(t_{i}^{k}-t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tau$
+\end_inset
+
+ is the time constant of the conductance changes at the synaptic site
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\tau'\ll\tau$
+\end_inset
+
+, we can treat input current as delta-pulse 
+\end_layout
+
+\begin_layout Subsection*
+Dynamics of a Single EPSP
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V=0$
+\end_inset
+
+ at 
+\begin_inset Formula $t=0$
+\end_inset
+
+, and a spike arrives at synapse 
+\begin_inset Formula $i$
+\end_inset
+
+ with efficacy 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+, unitary 
+\series bold
+EPSP
+\series default
+
+\begin_inset Formula 
+\[
+V(t)=J_{i}\exp(-\frac{t}{\tau})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Average EPSP amplitude equals 
+\begin_inset Formula $J$
+\end_inset
+
+ if time constant of the current is very short 
+\end_layout
+
+\begin_layout Itemize
+Estimates of the 
+\begin_inset Formula $J$
+\end_inset
+
+ average EPSP amplitude 
+\begin_inset Formula $0.05$
+\end_inset
+
+-
+\begin_inset Formula $0.5$
+\end_inset
+
+mV
+\end_layout
+
+\begin_layout Itemize
+Variability in amplitude of unitary EPSPs from different synapses is taken
+ the same order as their average amplitude 
+\begin_inset Formula $\Delta\sim1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Simplified IF Neuron 
+\end_layout
+
+\begin_layout Itemize
+Neglect decay 
+\end_layout
+
+\begin_layout Subsection*
+Full IF Neuron
+\end_layout
+
+\begin_layout Itemize
+If time constant of conductance changes is of the same order or larger than
+ the depolarization, delta-synapses are not an adequate description 
+\end_layout
+
+\begin_layout Itemize
+Rate conductance/transfer function is not valid 
+\end_layout
+
+\begin_layout Itemize
+Refractory time can be neglected if times between spike arrivals (input
+ rate) is long compared with the integration time 
+\end_layout
+
+\begin_layout Section*
+Results 
+\end_layout
+
+\begin_layout Subsection*
+Excitatory unstructured network of simplified neurons 
+\end_layout
+
+\begin_layout Itemize
+Mean and standard deviation of afferent current (Gaussian process)
+\begin_inset Formula 
+\[
+\mu=JCvt,\quad\sigma=J\sqrt{Cv\tau(1+\Delta^{2})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Standard deviation of 
+\begin_inset Formula $J$
+\end_inset
+
+ enters 
+\end_layout
+
+\begin_layout Itemize
+Cortical conditions 
+\begin_inset Formula $\tau=10$
+\end_inset
+
+ms and 
+\begin_inset Formula $C=10^{5}$
+\end_inset
+
+, for uniform synapses 
+\begin_inset Formula $\Delta=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu=400J,\quad\sigma=20J
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Learning is associated with the synapse
+\end_layout
+
+\begin_layout Itemize
+Is it reasonable to consider time constant time invariant constant parameter
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ they should be constraint by experiment 
+\end_layout
+
+\begin_layout Itemize
+Variable parameter is 
+\begin_inset Formula $J$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean number of spikes arriving at neuron integration time is typically a
+ view 
+\begin_inset Formula $100$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spontaneous stationary global activity 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+output of each neuron must lead to the same overall input which produced
+ the output 
+\end_layout
+
+\begin_layout Subsection*
+Local stability
+\end_layout
+
+\begin_layout Itemize
+State must be stable against local fluctuations of the local mean rate
+\end_layout
+
+\begin_layout Itemize
+The change in the output rate must be smaller than the change in the input
+ rate that caused it
+\begin_inset Formula 
+\[
+\left|\frac{1}{\tau}\frac{d\text{Pr}}{dv}(v*)\right|<1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For purely excitatory module self-consistency solution is unstable in the
+ desired range 
+\begin_inset Formula $1-5$
+\end_inset
+
+Hz 
+\end_layout
+
+\begin_layout Itemize
+Perturbation of rates will drive network to a state where all neurons are
+ either quiescent (silent) or to a state of high activity 
+\end_layout
+
+\begin_layout Itemize
+Network lacks regulatory units that would control local perturbations in
+ rates 
+\end_layout
+
+\begin_layout Subsection*
+The role of unstructured local inhibition 
+\end_layout
+
+\begin_layout Itemize
+Main effect of inhibitory input on the Gaussian process is o reduce the
+ mean of depolarizing current while increasing the SD 
+\end_layout
+
+\begin_layout Itemize
+Number of parameters including local inhibition is large 
+\end_layout
+
+\begin_layout Itemize
+Reduction 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Both types of neurons receive an equal number of inputs 
+\begin_inset Formula $C\sim10^{4}$
+\end_inset
+
+ divided into excitatory and inhibitory 
+\end_layout
+
+\begin_layout Enumerate
+Both types of neurons receive and equal fraction of excitatory inputs from
+ inside the local module 
+\end_layout
+
+\begin_layout Enumerate
+Relative SDs of the synaptic efficacy are equal for all four synaptic types
+ 
+\end_layout
+
+\begin_layout Enumerate
+excitatory and inhibitory post-spike hyperpolarizations are equivalent 
+\begin_inset Formula $H_{i}=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Remaining parameter
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ratio of average strengthes of the inhibitory to the excitatory synapses
+ 
+\begin_inset Formula $J_{EI}/J_{EE}$
+\end_inset
+
+ and 
+\begin_inset Formula $J_{II}/J_{IE}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ratio of integration time constants 
+\begin_inset Formula $\tau_{I}/\tau_{E}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Rates 
+\begin_inset Formula $v_{E}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{I}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ratios 
+\begin_inset Formula $\theta_{E}/J_{EE}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{I}/J_{IE}$
+\end_inset
+
+ are determined by self-consistency constraint of the rates 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Simplified neurons
+\end_layout
+
+\begin_layout Itemize
+Simplification 
+\begin_inset Formula 
+\begin{align*}
+\tau_{I} & =\tau_{E}=\tau\\
+J_{EE} & =J_{IE}=J\\
+J_{EI} & =J_{II}=gJ\\
+\theta_{I} & =\theta_{E}=\theta\\
+\Delta & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neurons have equal rates and receive a synaptic current with the same mean
+ and variance
+\end_layout
+
+\begin_layout Itemize
+Self-reproducing rate 
+\begin_inset Formula $v*$
+\end_inset
+
+ are the solution to the same equation
+\end_layout
+
+\begin_layout Subsection*
+Local stability analysis
+\end_layout
+
+\begin_layout Itemize
+Stability condition requires balance between average excitatory and inhibitory
+ input 
+\begin_inset Formula $\mu_{l}=J(xC_{EE}-gC_{EI})\tau v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Stable spontaneous rates 
+\end_layout
+
+\begin_layout Itemize
+Equal time constants and inhibitory couplings 
+\end_layout
+
+\begin_layout Itemize
+Spontaneous rates are stable if local excitatory and inhibitory local inputs
+ approximately balance 
+\end_layout
+
+\begin_layout Itemize
+This could be realized by stronger inhibitory synapses or by relatively
+ higher rates
+\end_layout
+
+\begin_layout Itemize
+Hippocampus inhibitory couplings are indeed more efficient than excitatory
+ ones 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Check this
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Fast inhibition
+\end_layout
+
+\begin_layout Itemize
+Perturbation in the rates are more easily controlled, allows for a smaller
+ 
+\begin_inset Formula $g$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two small time constant, transition delays between excitatory and inhibitory
+ neurons destabilize the spontaneous activity 
+\end_layout
+
+\begin_layout Itemize
+Network finds it easier to transient to the quiescent state 
+\end_layout
+
+\begin_layout Subsection*
+Robustness to variations of Threshold-to-EPSP ratio 
+\end_layout
+
+\begin_layout Itemize
+Threshold-to-EPSP ratios 
+\begin_inset Formula $\theta_{E}/J_{EE}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{I}/J_{IE}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\theta_{I}/J_{IE}$
+\end_inset
+
+ is smaller than 
+\begin_inset Formula $\theta_{E}/J_{EE}$
+\end_inset
+
+, then inhibitory neurons have a higher rate 
+\end_layout
+
+\begin_layout Itemize
+Decrease in 
+\begin_inset Formula $g$
+\end_inset
+
+ requires decrease of 
+\begin_inset Formula $J_{EE}/J_{IE}$
+\end_inset
+
+ which implies higher inhibitory spike rates 
+\end_layout
+
+\begin_layout Subsection*
+Effect of Variation of the external current 
+\end_layout
+
+\begin_layout Enumerate
+Start from stable state in which 
+\begin_inset Formula $v_{E}=v_{\text{ext}}$
+\end_inset
+
+ and fix all parameters
+\end_layout
+
+\begin_layout Enumerate
+Vary external rate 
+\begin_inset Formula $v_{\text{ext}}$
+\end_inset
+
+ which leads to readjustment of the equilibrium rates 
+\begin_inset Formula $(v_{E},v_{I})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inhibition adjusts itself to the variation of the external rates, whereas
+ excitatory local rates stay almost constant 
+\end_layout
+
+\begin_layout Subsection*
+Global stability 
+\end_layout
+
+\begin_layout Itemize
+To be stable against global fluctuation of the 
+\begin_inset Quotes eld
+\end_inset
+
+entire
+\begin_inset Quotes erd
+\end_inset
+
+ brain stronger inhibition would be required
+\end_layout
+
+\begin_layout Itemize
+More realistic case would be fluctuation in the surrounding modules 
+\end_layout
+
+\begin_layout Itemize
+Local inhibition would be sufficient to suppress effect at the cost of perhaps
+ a small change in inhibitory rate 
+\end_layout
+
+\begin_layout Subsection*
+Learning and selective activity 
+\end_layout
+
+\begin_layout Itemize
+Can a network characterized which allow for stable spontaneous activity
+ in the regime of biological plausible parameters sustain stable local delay
+ activity by modification of synapses 
+\end_layout
+
+\begin_layout Itemize
+Assume structured distribution of efficacies to been generated by stimuli
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Binary stimuli, 
+\series default
+subset of neurons respond with higher rates and the rest of neurons remains
+ at steady state 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hebbian
+\series default
+ 
+\series bold
+plasticity, 
+\series default
+a pair of neurons simultaneously activated by a stimulus will enhance the
+ efficacy of the connecting synapse, plasticity of anti-correlated activities
+ reduce the efficacy.
+ 
+\series bold
+What fires together wires together
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+No-overlapping stimuli: 
+\series default
+Neurons respond only to one of 
+\begin_inset Formula $p$
+\end_inset
+
+ stimuli 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ fraction of neurons which represent stimuli 
+\end_layout
+
+\begin_layout Itemize
+Divide neurons into two subpopulations 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encoder 
+\begin_inset Formula $pfN$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Local bath 
+\begin_inset Formula $(1-pf)N$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Synapses between excitatory neurons representing the same stimuli have greater
+ mean 
+\end_layout
+
+\begin_layout Itemize
+On average synaptic depression compensate for potentiations so that the
+ entire module is not changed by the learning
+\end_layout
+
+\begin_layout Subsection*
+Non-stimulus-related activity in the local network
+\end_layout
+
+\begin_layout Itemize
+Both types of states, spontaneous and selective are stable
+\end_layout
+
+\begin_layout Itemize
+Four population 
+\begin_inset Formula $v_{\text{sel}},v_{+},v_{E}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{I}$
+\end_inset
+
+ can be solved self-consistently 
+\end_layout
+
+\begin_layout Itemize
+If synaptic potentiation 
+\begin_inset Formula $J_{+}/J$
+\end_inset
+
+ is large enough, new attractor emerges with 
+\begin_inset Formula $v_{\text{sel}}$
+\end_inset
+
+ in the range 
+\begin_inset Formula $20$
+\end_inset
+
+-
+\begin_inset Formula $30$
+\end_inset
+
+s
+\begin_inset Formula $^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Which of the two states is active depends on stimuli 
+\end_layout
+
+\begin_layout Itemize
+If stimuli was uncorrelated with the learned stimuli network relaxes back
+ to spontaneous activity 
+\end_layout
+
+\begin_layout Itemize
+If stimuli is similar to one of the memories, high selective branch is maintaine
+d after the stimulus is removed 
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+How to get our of the selective branch?
+\end_layout
+
+\begin_layout Itemize
+Noise
+\end_layout
+
+\begin_layout Itemize
+Another stimuli 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Discussion
+\end_layout
+
+\begin_layout Itemize
+Spontaneous activity can sustain on top of local structured meta stable
+ states, representing learned selective delay activity 
+\end_layout
+
+\begin_layout Itemize
+Requires an interplay between excitation and inhibition.
+ 
+\end_layout
+
+\begin_layout Itemize
+Interplay is rather robust
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+unstructured 
+\end_layout
+
+\begin_layout Itemize
+wide range of valid parameters including biologically plausible values 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Criticism 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Full linearity on the input side
+\series default
+.
+ Input current is simply linear superposition of currents evoked at different
+ synapses due to incoming spikes 
+\end_layout
+
+\begin_layout Itemize
+Finite time constants for 
+\series bold
+synaptic conductance changes: 
+\series default
+Introduction does not have severe effects on the stability of the network
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Spontaneous activity has the advantage of placing neurons close to threshold,
+ rather at their resting potential
+\end_layout
+
+\begin_layout Itemize
+Response of spontaneous active system will be much faster 
+\end_layout
+
+\begin_layout Itemize
+Experimental prediction, longer learning makes selective delay activity
+ more robust against noise 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+How is one-shot learning possible?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

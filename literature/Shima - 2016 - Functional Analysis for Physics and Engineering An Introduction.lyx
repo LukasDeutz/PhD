@@ -2565,7 +2565,2222 @@ Geometry of inner product spaces
 \end_layout
 
 \begin_layout Itemize
+Properties
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Schwarz's inequality
+\series default
+: 
+\begin_inset Formula 
+\[
+\bigl|(x,y)\bigr|\leq\bigl\Vert x\bigr\Vert\bigl\Vert y\bigr\Vert
+\]
+
+\end_inset
+
+ Geometric intuition: Projection 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ results in a vector with smaller length compared to length 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ itself.
+ Equality holds in the case that 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are linear dependent 
+\begin_inset Formula $x\neq\alpha y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Triangle inequality
+\series default
+: 
+\begin_inset Formula 
+\[
+\bigl\Vert x+y\bigr\Vert\leq\bigl\Vert x\bigr\Vert+\bigl\Vert y\bigr\Vert
+\]
+
+\end_inset
+
+Geometric intuition: Shortest distance between arrow heads of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ is the direct connection 
+\begin_inset Formula $\bigl\Vert x+y\bigr\Vert$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bigl\Vert x-y\bigr\Vert\geq\bigl|\bigl\Vert x\bigr\Vert-\bigl\Vert y\bigr\Vert\bigr|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Parallelogramm law
+\series default
+:
+\series bold
+
+\begin_inset Formula 
+\[
+\bigl\Vert x+y\bigr\Vert^{2}+\bigl\Vert x-y\bigr\Vert^{2}=2(\bigl\Vert x\bigr\Vert^{2}+\bigl\Vert y\bigr\Vert^{2})
+\]
+
+\end_inset
+
+
+\series default
+Geometric intuition.
+ Squared lengths of its four sides 
+\begin_inset Formula $2(\bigl\Vert x\bigr\Vert^{2}+\bigl\Vert y\bigr\Vert^{2})$
+\end_inset
+
+ equals the squared lengths of its diagonals 
+\begin_inset Formula $\bigl\Vert x+y\bigr\Vert^{2}+\bigl\Vert x-y\bigr\Vert^{2}$
+\end_inset
+
+.
+ Simplest case rectangle
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Orthogonality and orthonormality 
+\end_layout
+
+\begin_layout Itemize
+Linear algebra, orthogonality simply means two arrows are perpendicular
+ 
+\end_layout
+
+\begin_layout Itemize
+In functional analysis, relative angle between elements is not defined in
+ general 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Orthogonality)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two elements 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ in an inner product space are said to be orthogonal if and only if 
+\begin_inset Formula $(x,y)=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Linear independence 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Linear independence in finite dimension):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A finite set 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+is linearly independent if and only if 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}c_{i}e_{i}=0\Rightarrow c_{i}=0\quad\text{for all }i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Theorem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ab orthonormal set is linearly independent 
+\begin_inset Formula 
+\[
+0=\left(x_{j},\sum_{i=1}^{n}\alpha_{i}x_{i}\right)=\sum_{i=1}^{n}\alpha_{i}\left(x_{j},x_{i}\right)=\alpha_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Orthonormal set serves as a 
+\series bold
+basis
+\series default
+ of an inner product space
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Basis in finite dimension)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Basis of the vector space 
+\begin_inset Formula $V$
+\end_inset
+
+ is a set of linearly independent vectors 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ of 
+\begin_inset Formula $V$
+\end_inset
+
+ such that every 
+\begin_inset Formula $x$
+\end_inset
+
+ can be expressed as 
+\begin_inset Formula 
+\[
+\boldsymbol{x}=\sum_{i=1}^{n}\alpha_{i}e_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ are unique 
+\end_layout
+
+\begin_layout Itemize
+Every set of linearly independent vectors is a basis in 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional vector space (Hamel basis)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Theorem 
+\series default
+(
+\series bold
+Bessel's inequality in finite dimension
+\series default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Set of orthonormal vectors 
+\begin_inset Formula $\{x_{1},\ldots,x_{n}\}$
+\end_inset
+
+where 
+\begin_inset Formula $n\leq\text{dim}(V)$
+\end_inset
+
+ , then for any vector 
+\begin_inset Formula $x$
+\end_inset
+
+ in the same space 
+\begin_inset Formula 
+\[
+\bigl\Vert x\bigr\Vert^{2}\geq\sum_{i=1}^{n}(x_{i},x)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Bessel's inequality
+\series default
+ reduces to 
+\series bold
+Parseval's identity
+\series default
+ 
+\begin_inset Formula 
+\[
+\bigl\Vert x\bigr\Vert^{2}=\sum_{i=1}^{\text{dim}(V)}(x_{i},x)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Complete vector spaces 
+\end_layout
+
+\begin_layout Itemize
+Completeness is the salient feature inherent to Hilbert spaces 
+\end_layout
+
+\begin_layout Itemize
+If the space is finite, completeness can be proved by finding a orthonormal
+ set that is not contained in another larger orthonormal set, i.e.
+ it is maximal 
+\end_layout
+
+\begin_layout Itemize
+For an infinite-dimensional space, it becomes nontrivial because we are
+ dealing with an infinite number of orthonormal vectors
+\end_layout
+
+\begin_layout Itemize
+Linear combinations of an infinite number of vectors sometimes deviate from
+ the space considered or infinitely many vectors are not enough to represent
+ a vector contained in the same space 
+\end_layout
+
+\begin_layout Itemize
+These ambiguity can be removed by confirming completeness of the infinite
+ dimensional space 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cauchy
+\series default
+ 
+\series bold
+criterion
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Cauchy sequence of vectors):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A sequence of vectors 
+\begin_inset Formula $\{x_{1},x_{2},\ldots\}$
+\end_inset
+
+ is called 
+\series bold
+Cauchy sequence
+\series default
+ of vectors if for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exists an appropriate number 
+\begin_inset Formula $N$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bigl\Vert x_{m}-x_{n}\bigr\Vert<\epsilon$
+\end_inset
+
+ for all 
+\begin_inset Formula $m,n>N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sequence is a Cauchy sequence if the vectors 
+\begin_inset Formula $x_{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ in the sequence get unlimitedly closer as 
+\begin_inset Formula $m,n\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Definition (Convergence of an infinite vector sequence)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+an infinite vector sequence 
+\begin_inset Formula $\{x_{1},x_{2},\ldots\}$
+\end_inset
+
+ is said to be convergent if there exist a vector 
+\begin_inset Formula $x$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bigl\Vert x_{n}-x\bigr\Vert\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Completeness of a vector space.
+ If every Cauchy sequence in a vector space is convergent, we say that the
+ vector space is complete.
+ 
+\end_layout
+
+\begin_layout Subsection
+Hierarchy of vector space
+\end_layout
+
+\begin_layout Subsubsection
+From a mere collection of elements
+\end_layout
+
+\begin_layout Subsubsection
+Metric vector spaces 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Distance function or metric)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Twp elements in a topological vector space 
+\begin_inset Formula $V$
+\end_inset
+
+ are mapped to non-negative real number 
+\begin_inset Formula $\rho:(x,y)\rightarrow\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Normed spaces
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\in V$
+\end_inset
+
+, there is a corresponding non-negative 
+\begin_inset Formula $\bigl\Vert x\bigr\Vert$
+\end_inset
+
+ which is called the 
+\series bold
+norm
+\series default
+ of 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Normed space is a metric vector space under the definition of the distance
+ 
+\begin_inset Formula $\rho(x,y)=\bigl\Vert x-y\bigr\Vert$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Subscpaces of normed spaces
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Banach space)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Complete normed vector spaces are called 
+\series bold
+Banach spaces
+\series default
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Completeness of a space implies that every Cauchy sequence in the space
+ is convergent 
+\end_layout
+
+\begin_layout Itemize
+Every finite dimensional space is a Banach space 
+\end_layout
+
+\begin_layout Itemize
+Conversely, 
+\series bold
+infinite
+\series default
+ dimensional normed spaces may or may not be complete 
+\end_layout
+
+\begin_layout Itemize
+Two of the most famous Banach spaces with infinite dimension
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example 1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Suppose that a set of infinite-dimensional vectors 
+\begin_inset Formula $x=(x_{1},x_{2},\ldots)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+\sum_{i}^{\infty}\bigl|x_{i}\bigr|^{p}<\infty,\quad(p\geq1)
+\]
+
+\end_inset
+
+Then, this set is a Banach space, called 
+\begin_inset Formula $l^{p}$
+\end_inset
+
+ space under the norm 
+\begin_inset Formula 
+\[
+\bigl\Vert x\bigr\Vert_{p}=\left(\sum_{i=1}^{\infty}\bigl|x_{i}\bigr|^{p}\right)^{1/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Example 2
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A set of functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ which satisfy 
+\begin_inset Formula 
+\[
+\int_{a}^{b}\bigl|f(x)\bigr|^{p}dx<\infty
+\]
+
+\end_inset
+
+forms a Banach space, called an 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+ space, under the norm 
+\begin_inset Formula 
+\[
+\bigl\Vert f\bigr\Vert_{p}=\left(\int_{a}^{b}\bigl|f(x)\bigr|^{p}dx\right)^{1/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Hilbert spaces
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Hilbert space)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A complete normed space endowed with inner product is called a 
+\series bold
+Hilbert space
+\end_layout
+
+\begin_layout Itemize
+Only 
+\begin_inset Formula $l^{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{p}$
+\end_inset
+
+ space with 
+\begin_inset Formula $p=2$
+\end_inset
+
+ are Hilbert spaces with the inner product 
+\begin_inset Formula 
+\begin{align*}
+(x,y) & =\sum_{i=1}^{\infty}x_{i}*y_{i}\\
+(f,g) & =\int_{a}^{b}f*(x)g(x)dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inner product must satisfy the parallelogram law 
+\begin_inset Formula 
+\begin{align*}
+\bigl\Vert x+y\bigr\Vert_{p}^{2}+\bigl\Vert x-y\bigr\Vert_{p}^{2} & =2\left(\bigl\Vert x\bigr\Vert_{p}^{2}+\bigl\Vert y\bigr\Vert_{p}^{2}\right)\\
+\bigl\Vert f+g\bigr\Vert_{p}^{2}+\bigl\Vert f-g\bigr\Vert_{p}^{2} & =2\left(\bigl\Vert f\bigr\Vert_{p}^{2}+\bigl\Vert g\bigr\Vert_{p}^{2}\right)
+\end{align*}
+
+\end_inset
+
+which works only for 
+\begin_inset Formula $p=2$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Difference between Hilbert space and Banach space is the source of the norm
+\end_layout
+
+\begin_layout Itemize
+In a Hilbert space the norm is defined on the basis of the inner product,
+ in a Banach space, the norm is defined without reference to a inner product
+ 
+\end_layout
+
+\begin_layout Section
+Hilbert space
+\end_layout
+
+\begin_layout Subsubsection
+Basis of infinite-dimensional spaces
+\end_layout
+
+\begin_layout Itemize
+If a vector space is 
+\series bold
+complete
+\series default
+, then an orthonormal set of vectors works as a basis
+\end_layout
+
+\begin_layout Itemize
+An infinite sum of vectors in a space can be convergent, but the limit may
+ or may not be contained in the same vector space 
+\end_layout
+
+\begin_layout Itemize
+Infinite set 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ of orthonormal vectors in a Hilbert space 
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choose vector 
+\begin_inset Formula $x\in V$
+\end_inset
+
+ and calculate 
+\begin_inset Formula 
+\[
+c_{i}=(e_{i},x)\in\mathbb{C}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take first 
+\begin_inset Formula $n$
+\end_inset
+
+ terms 
+\begin_inset Formula 
+\[
+x_{n}=\sum_{i=1}^{n}c_{i}e_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Schwarz's inequality 
+\begin_inset Formula 
+\[
+\bigl|(x,x_{n})\bigr|^{2}\leq\bigl\Vert x\bigr\Vert^{2}\bigl\Vert x_{n}\bigr\Vert=\bigl\Vert x\bigr\Vert^{2}\left(\sum_{i=1}^{n}\bigl|c_{i}\bigr|^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inner product 
+\begin_inset Formula 
+\[
+\bigl|(x,x_{n})\bigr|=\sum_{i=1}^{n}\bigl|c_{i}\bigr|^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula 
+\begin{align*}
+\left(\sum_{i=1}^{n}\bigl|c_{i}\bigr|^{2}\right)^{2} & \leq\bigl\Vert x\bigr\Vert^{2}\left(\sum_{i=1}^{n}\bigl|c_{i}\bigr|^{2}\right)
+\end{align*}
+
+\end_inset
+
+which leads to 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{n}\bigl|c_{i}\bigr|^{2}\leq\bigl\Vert x\bigr\Vert^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem (Bessel's inequality in infinite dimension)
+\series default
+ 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{\infty}\bigl|c_{i}\bigr|^{2}\leq\bigl\Vert x\bigr\Vert^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Limiting vector 
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}x_{n}=\lim_{n\rightarrow\infty}\left(\sum_{i=1}^{n}c_{i}e_{i}\right)=\sum_{i=1}^{\infty}c_{i}e_{i}
+\]
+
+\end_inset
+
+xhas a finite norm represented by 
+\begin_inset Formula $\sum_{i=1}^{\infty}\bigl|c_{i}\bigr|^{2}$
+\end_inset
+
+because 
+\begin_inset Formula $\bigl\Vert x\bigr\Vert^{2}$
+\end_inset
+
+ is finite by definition 
+\end_layout
+
+\begin_layout Itemize
+However, it remains unknown if limiting vector is identical to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To make such a statement, the set 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ need to be complete 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Complete orthonormal vectors)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ is an infinite set of orthonormal vectors in a Hilbert space 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ The set is 
+\series bold
+complete 
+\series default
+if there exists no vector (except for 
+\begin_inset Formula $0$
+\end_inset
+
+) in 
+\begin_inset Formula $V$
+\end_inset
+
+ that is orthogonal to all 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+'s
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Theorem (Parseval's indetity)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ be an infinite set of orthonormal vectors in Hilbert space 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Then for any 
+\begin_inset Formula $x\in V$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\bigl\Vert x\bigr\Vert^{2}=\sum_{i=1}^{\infty}\bigl|c_{i}\bigr|^{2}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $c_{i}=(e_{i},x)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+y=x-\sum_{i=1}^{\infty}c_{i}e_{i}
+\]
+
+\end_inset
+
+Multiplying by 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\[
+(e_{j},y)=c_{j}-c_{j}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This means that 
+\begin_inset Formula $y$
+\end_inset
+
+ is the zero vector by our definition of a complete orthonormal basis so
+ that 
+\begin_inset Formula 
+\[
+0=x-\sum_{i=1}^{\infty}c_{i}e_{i}\Leftrightarrow x=\sum_{i=1}^{\infty}c_{i}e_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parseval's identity provides a criterion for the availability of an infinite
+ set of vectors 
+\begin_inset Formula $\{e_{i}\}$
+\end_inset
+
+ as a basis 
+\end_layout
+
+\begin_layout Subsubsection
+Completeness of 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ spaces
+\end_layout
+
+\begin_layout Itemize
+We need to proof
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Every Chauchy sequence 
+\begin_inset Formula $(x_{n})$
+\end_inset
+
+ in the 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+space converges to a limit 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+He limit 
+\begin_inset Formula $x$
+\end_inset
+
+ belongs to the 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ space
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consider a set of infinite-dimensional vectors 
+\begin_inset Formula 
+\[
+\boldsymbol{x}_{n}=(x_{1}^{(n)},x_{2}^{(n)},\ldots)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{i}^{(n)}\in\mathbb{F}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Let sequence of vectors 
+\begin_inset Formula $\{\boldsymbol{x}_{1},\boldsymbol{x}_{2},\ldots\}$
+\end_inset
+
+ be a Chauchy sequence in the sense that 
+\begin_inset Formula 
+\[
+\bigl\Vert\boldsymbol{x}\bigr\Vert=\sqrt{\sum_{i=1}^{\infty}\bigl|x_{i}\bigr|^{2}}<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Every convergent sequence is a Chauchy sequence 
+\end_layout
+
+\begin_layout Subsubsection
+Completeness of 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ spaces
+\end_layout
+
+\begin_layout Subsection
+Equivalence of 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ spaces with 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ spaces
+\end_layout
+
+\begin_layout Subsubsection
+Generalized Fourier coefficient
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Generalized Fourier coefficients)
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider a set of square integrable functions 
+\begin_inset Formula $\{\phi_{i}\}$
+\end_inset
+
+ that are orthonormal (not necessarily complete ) in the norm of the 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ space.
+ Then the numbers 
+\begin_inset Formula 
+\[
+c_{k}=(f,\phi_{k})
+\]
+
+\end_inset
+
+are called Fourier coefficients 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Generalized Fourier series
+\begin_inset Formula 
+\[
+\sum_{k=1}^{\infty}c_{k}\phi_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bessel's inequality
+\series default
+ 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{\infty}\bigl|c_{k}\bigr|^{2}\leq\bigl\Vert f\bigr\Vert
+\]
+
+\end_inset
+
+because 
+\begin_inset Formula $f\in L^{2}$
+\end_inset
+
+ the norm 
+\begin_inset Formula $\bigl\Vert f\bigr\Vert$
+\end_inset
+
+ is finite 
+\end_layout
+
+\begin_layout Itemize
+Inequality ensure the convergence of the Fourier series 
+\end_layout
+
+\begin_layout Itemize
+This means that the sequence of Fourier coefficients 
+\begin_inset Formula $\{c_{k}\}$
+\end_inset
+
+ is an element of the space 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Whichever orthonormal set of functions 
+\begin_inset Formula $\phi_{k}(x)$
+\end_inset
+
+ we choose, we have 
+\begin_inset Formula 
+\[
+f\in L^{2}\quad\text{and}\quad c=(c_{1},c_{2},\ldots)\in l^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Riesz-Fisher theorem
+\end_layout
+
+\begin_layout Itemize
+We showed that the Fourier coefficients of a function 
+\begin_inset Formula $f\in L^{2}$
+\end_inset
+
+ are convergent 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{\infty}\bigl|c_{k}\bigr|^{2}
+\]
+
+\end_inset
+
+It turns out that this condition is not only necessary, but also sufficient
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem (Riesz-Fisher theorem)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Given any set of complex numbers 
+\begin_inset Formula $\{c_{i}\}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{\infty}\bigl|c_{k}\bigr|^{2}<\infty
+\]
+
+\end_inset
+
+there exists a function 
+\begin_inset Formula $f\in L^{2}$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+c_{k}=(f,\phi_{k})\quad\text{and}\quad\sum_{k=1}^{\infty}\bigl|c_{k}\bigr|^{2}=\bigl\Vert f\bigr\Vert
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\{\phi_{i}\}$
+\end_inset
+
+ is a complete orthonormal set 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Isomorphism between 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Riesz-Fisher theorem 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ isomorphism between the Hilbert spaces 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $l^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+one-to-one correspondence
+\begin_inset Formula 
+\begin{align*}
+f & \rightarrow(c_{1},c_{2},\ldots)\\
+g & \rightarrow(d_{1},d_{2},\ldots)\\
+f+g & =(c_{1}+d_{1},c_{2}+d_{2},\ldots)\\
+\alpha f & =(\alpha c_{1},\alpha c_{2},\ldots)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fourier coefficients function as a coordinate system in 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ and vice versa 
+\end_layout
+
+\begin_layout Itemize
+Heisenberg's matrix mechanics based on infinite-dimensional vectors and
+ Schroedinger's wave mechanics based on square integrable functions 
+\end_layout
+
+\begin_layout Section
+Operator
+\end_layout
+
+\begin_layout Subsection
+Classification of operators
+\end_layout
+
+\begin_layout Itemize
+Linear operator theory: Linear operators in vector spacec
+\end_layout
+
+\begin_layout Subsubsection
+Norms and completeness
+\end_layout
+
+\begin_layout Itemize
+Meaningful discussion of infinite-dimensional space requires a 
+\series bold
+norm
+\series default
+ and 
+\series bold
+completeness
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+In an infinite vector space, limit of a sum or sequence are often not contained
+ in the vector space 
+\end_layout
+
+\begin_layout Subsubsection
+Continuous operators 
+\end_layout
+
+\begin_layout Itemize
+There are a variety of different types of linear operators 
+\end_layout
+
+\begin_layout Itemize
+Focus on 
+\series bold
+continuous
+\series default
+ or equivalently 
+\series bold
+bounded 
+\series default
+in the sense of our norm 
+\end_layout
+
+\begin_layout Itemize
+Continuous operator maps two elements which are substantially close to each
+ other onto two elements that are substantially close to each other 
+\end_layout
+
+\begin_layout Subsubsection
+Completely continuous operators 
+\end_layout
+
+\begin_layout Itemize
+Completely continuous linear operators help us to formulate a concept of
+ eigenvalues and eigenvectors tat work in function spaces 
+\end_layout
+
+\begin_layout Itemize
+Continuity of linear operators is not sufficient, but we need to develop
+ the notion of 
+\emph on
+complete 
+\emph default
+continuous linear operators 
+\end_layout
+
+\begin_layout Subsubsection
+Non-continuous operators 
+\end_layout
+
+\begin_layout Itemize
+Continuous operators are not so versatile 
+\end_layout
+
+\begin_layout Itemize
+Restrictions are to strong for many practical situations, e.g differential
+ equations or quantum mechanics 
+\end_layout
+
+\begin_layout Itemize
+Major classes of non-continuous operators of significant practical importance
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+differential operator that act on 
+\begin_inset Formula $L^{2}(\mathbb{R})$
+\end_inset
+
+ spaces 
+\end_layout
+
+\begin_layout Enumerate
+Multiplication operator that map 
+\begin_inset Formula $f\in L^{2}(\mathbb{R})$
+\end_inset
+
+ onto 
+\begin_inset Formula $xf$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Closed operator 
+\end_layout
+
+\begin_layout Itemize
+Weakened condition onto linear operator, creates class of linear operator
+ called 
+\series bold
+closed operators
+\end_layout
+
+\begin_layout Subsection
+Essence of operator theory
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Linear operator)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are topological vector spaces with infinite dimension and 
+\begin_inset Formula $D$
+\end_inset
+
+ to be a subspace of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T(\alpha u+\beta v)=\alpha T(u)+\beta T(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If the domain 
+\begin_inset Formula $D(T)$
+\end_inset
+
+ and range 
+\begin_inset Formula $R(T)$
+\end_inset
+
+ of 
+\begin_inset Formula $T$
+\end_inset
+
+ are both in 
+\begin_inset Formula $X$
+\end_inset
+
+, then we say that 
+\begin_inset Formula $T$
+\end_inset
+
+ is an operator in 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Definition of linear operators do not depend on norm, limit, nor convergence
+ 
+\end_layout
+
+\begin_layout Itemize
+Generality disappears if we define the continuity and boundedness which
+ requires concepts of distance and convergence 
+\end_layout
+
+\begin_layout Subsubsection
+Operator's domain
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For the differential operator 
+\begin_inset Formula $T=id/dx$
+\end_inset
+
+ we can define different domains 
+\begin_inset Formula 
+\begin{align*}
+D(T) & =C^{\infty}(\mathbb{R})\\
+D(T) & =\{f\in C^{\infty}(\mathbb{R}):\,f(x)\text{ is \ensuremath{2\pi} periodic }\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Allow operator to act on any functions that are infinitely differentiable
+ 
+\end_layout
+
+\begin_layout Itemize
+Operator is only restricted to periodic functions 
+\end_layout
+
+\begin_layout Itemize
+Equivalence of two operators 
+\begin_inset Formula $S$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+ requires them to have the same domain
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D(S)\subset D(T)$
+\end_inset
+
+ and 
+\begin_inset Formula $S(u)=T(u)$
+\end_inset
+
+ hold simultaneously we say that the operator 
+\begin_inset Formula $T$
+\end_inset
+
+ is an extension of the operator 
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Definition of continuous linear operator 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Locally continuous linear operator)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider to Banach spaces 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+There exists an infinite sequence 
+\begin_inset Formula $\{u_{n}\}$
+\end_inset
+
+ which is contained in 
+\begin_inset Formula $D(T)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The sequence 
+\begin_inset Formula $\{u_{n}\}$
+\end_inset
+
+ converges to 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ in the norm of 
+\begin_inset Formula $X$
+\end_inset
+
+, namely 
+\begin_inset Formula 
+\[
+\bigl\Vert u_{n}-u_{0}\bigr\Vert\rightarrow0\quad(n\rightarrow\infty)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The image of the sequence 
+\begin_inset Formula $\{T(u_{n})\}$
+\end_inset
+
+ converges to 
+\begin_inset Formula $T(u_{0})$
+\end_inset
+
+ in the norm of 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bigl\Vert T(u_{n})-T(u_{0})\bigr\Vert\rightarrow0,\quad(n\rightarrow\infty)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The definition requires 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ to be Banach spaces to ensure convergence 
+\begin_inset Formula $\bigl\Vert u_{n}-u_{0}\bigr\Vert$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl\Vert T(u_{n})-T(u_{0})\bigr\Vert$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Continuity means that local convergence at a specific point is preserved
+ before and after the mapping 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Continuous linear operator)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $T$
+\end_inset
+
+ is locally continuous at everywhere in 
+\begin_inset Formula $D(T)$
+\end_inset
+
+, we say that 
+\begin_inset Formula $T$
+\end_inset
+
+ is continuous linear operator 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Definition of bounded operator 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Bounded Operator)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An operator that maps one Banach space 
+\begin_inset Formula $X$
+\end_inset
+
+ onto another Banach space 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\series bold
+bounded 
+\series default
+if for any 
+\begin_inset Formula $u\in D(T)$
+\end_inset
+
+, there exists 
+\begin_inset Formula $M>0$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\bigl\Vert T(u)\bigr\Vert_{Y}\leq M\bigl\Vert u\bigr\Vert_{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The boundedness of an operator 
+\begin_inset Formula $T$
+\end_inset
+
+ indicates that the image of 
+\begin_inset Formula $u$
+\end_inset
+
+, denoted by 
+\begin_inset Formula $T(u)$
+\end_inset
+
+ is not jumping out of place extremely far away from the zero element in
+ 
+\begin_inset Formula $R(T)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundedness has no relation to linearity 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition (Operator norm)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $T$
+\end_inset
+
+:
+\begin_inset Formula $X\mapsto Y$
+\end_inset
+
+ be a continuous linear operator.
+ Its operator norm is defined by 
+\begin_inset Formula 
+\[
+\bigl\Vert T\bigr\Vert=\frac{\bigl\Vert T(u)\bigr\Vert_{y}}{\bigl\Vert u\bigr\Vert_{x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\bigl\Vert T\bigr\Vert<\infty$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $T$
+\end_inset
+
+ is bounded on the domain 
+\begin_inset Formula $D(T)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Equivalence between continuity and boundedness 
+\end_layout
+
+\begin_layout Itemize
+Concept of boundedness and continuity become equivalent if the operator
+ is linear 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Continuous linear operators are bounded
+\end_layout
+
+\begin_layout Itemize
+Bounded linear operator are continuous 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ is continuous 
+\begin_inset Formula $\Rightarrow T$
+\end_inset
+
+ is locally continuous at 
+\begin_inset Formula $0$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $T$
+\end_inset
+
+ is bounded
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $T$
+\end_inset
+
+ is bounded 
+\begin_inset Formula $\Rightarrow T$
+\end_inset
+
+ is globally continuous 
+\end_layout
+
+\begin_layout Itemize
+Hence, for linear operator we have an equivalence between local and global
+ continuity 
+\end_layout
+
+\begin_layout Subsubsection
+Artificial downscale of operator domain 
+\end_layout
+
+\begin_layout Itemize
+Preferably we want to deal with continuous operators 
+\end_layout
+
+\begin_layout Itemize
+What can we do if we encounter a linear operator that is not bounded
+\end_layout
+
+\begin_layout Itemize
+We can scale down its domain in order for it to be bounded 
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be a non-bounded operator whose domain is entirely over an infinite-dimensional
+ vector space 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Artificially pick up finite number of elements 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ from 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Every linear operator on finite-dimensional space is bounded 
+\end_layout
+
+\begin_layout Itemize
+Make 
+\begin_inset Formula $T$
+\end_inset
+
+ bounded by downscale domain of 
+\begin_inset Formula $T$
+\end_inset
+
+ from 
+\begin_inset Formula $X$
+\end_inset
+
+ to 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Preparation toward eigenvalue like problem 
+\end_layout
+
+\begin_layout Itemize
+Solving eigenvalue problem is the central topic in elementary linear algebra
+ that deals in infinite-dimensional vector spaces 
+\end_layout
+
+\begin_layout Itemize
+For a linear operator in function space, it is generally impossible to establish
+ notion of eigenvalues and eigenvectors 
+\end_layout
+
+\begin_layout Itemize
+Expand concept using the proportionality relation 
+\begin_inset Formula 
+\[
+Tx=\alpha x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infinite-dimensional vector spaces generally do not possess elements 
+\begin_inset Formula $x$
+\end_inset
+
+ that satisfy the above relation 
+\end_layout
+
+\begin_layout Itemize
+Look for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ that makes 
+\begin_inset Formula $T-\alpha I$
+\end_inset
+
+ 
+\series bold
+invertible 
+\series default
+which means that there exists a operator 
+\begin_inset Formula $T^{-1}$
+\end_inset
+
+ such that 
+\begin_inset Formula $T^{-1}T=TT^{-1}=I$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The set of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ for which we can find 
+\begin_inset Formula $T^{-1}$
+\end_inset
+
+ is called 
+\series bold
+spectrum 
+\series default
+of the operator 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $T$
+\end_inset
+
+ is 
+\series bold
+completely 
+\series default
+continuous, then the spectrum behaves similar to finite-dimensional matrices
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Self-adjoint operator 
+\end_layout
+
+\begin_layout Itemize
+Spectrum-eigenvalue correspondence holds only if the operator is linear,
+ completely continuous, self-adjoint and it acts on Hilbert spaces 
+\end_layout
+
+\begin_layout Subsubsection
+Definition of self-adjoint operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be a linear operator in a Hilbert space.
+ The adjoint operator 
+\begin_inset Formula $T*$
+\end_inset
+
+ of 
+\begin_inset Formula $T$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\[
+(T(u),v)=(u,T*(v))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Domain of 
+\begin_inset Formula $D(T*)=v\in C$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $u\in D(T)$
+\end_inset
+
+ there exists in 
+\begin_inset Formula $w\in X$
+\end_inset
+
+ such that 
+\begin_inset Formula $(T(u),v)=(u,w)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Compactness or non-compact
+\end_layout
+
+\begin_layout Itemize
+Compactness is important when we look at eigenvalue problems in infinite-dimensi
+ons 
+\end_layout
+
+\begin_layout Itemize
+Compactness is a generalization of the closedness in Euclidean space, i.e.
+ all finite points lie in a certain finite distance to each other 
+\end_layout
+
+\begin_layout Itemize
+Suppose a infinite sequence of points is contained in a space
+\end_layout
+
+\begin_layout Itemize
+We extract infinite sub sequence from the original sequence under the condition
+ that the sub sequence must converge to a point in the space considered
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S=\{(z_{1},z_{2},\ldots,z_{n}):\,\bigl|z_{1}\bigr|^{2}+\ldots+\bigl|z_{n}\bigr|^{2}=1\}$
+\end_inset
+
+ is compact, because a converging subsequence can be picked up from arbitrary
+ infinite point sequences in 
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is not possible in infinite dimension 
+\begin_inset Formula $S=\{x:\bigl\Vert x\bigr\Vert=1\}$
+\end_inset
+
+ is not compact 
+\end_layout
+
+\begin_layout Itemize
+Infinite-dimensional spaces are not closed but open to infinitely many direction
+s.
+ Subsequences that extracted from an infinite sequence may not be convergent
+\end_layout
+
+\begin_layout Itemize
+Why is 
+\begin_inset Formula $S$
+\end_inset
+
+ not compact, although 
+\begin_inset Formula $S_{c}^{n}$
+\end_inset
+
+ is compact 
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\{e_{1},e_{2},\ldots\}$
+\end_inset
+
+ be an orthonormal basis of the space 
+\begin_inset Formula $S$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bigl\Vert e_{m}-e_{n}\bigr\Vert^{2}=\bigl\Vert e_{m}\bigr\Vert^{2}-(e_{n},e_{m})-(e_{m},e_{n})+\bigl\Vert e_{n}\bigr\Vert^{2}=2
+\]
+
+\end_inset
+
+from which follows 
+\begin_inset Formula $\bigl\Vert e_{m}-e_{n}\bigr\Vert^{2}=\sqrt{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can find infinitely many sequences of points on 
+\begin_inset Formula $S$
+\end_inset
+
+ in which all pairs of point in the sequence are apart by 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There exists on 
+\begin_inset Formula $S$
+\end_inset
+
+ an infinite number of points all of which equi-separated.
+ Not matter what subsequence are picked from the original sequence 
+\end_layout
+
+\begin_layout Itemize
+The subsequence does not longer be convergent 
+\end_layout
+
+\begin_layout Subsection
+Loss of eigenvectors in infinite dimension 
 \end_layout
 
 \end_body
