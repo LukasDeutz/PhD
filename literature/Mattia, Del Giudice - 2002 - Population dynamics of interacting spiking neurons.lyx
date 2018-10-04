@@ -2150,8 +2150,12 @@ For
 
 \begin_layout Itemize
 When interaction is turned on, the population characteristic times are a
- complex mixture of single neuron properties and the properties of the collectiv
-e activity 
+ 
+\series bold
+complex mixture
+\series default
+ of single neuron properties and the properties of the collective activity
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -2315,7 +2319,7 @@ Proof
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Insert 
@@ -2458,7 +2462,12 @@ r_{1}(s)=\frac{1}{(e^{s\delta}-\Phi')-\boldsymbol{f}\cdot(s\boldsymbol{I}-\bolds
 status open
 
 \begin_layout Plain Layout
-ProofStart from 
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
 \begin_inset Formula 
 \begin{align*}
 \dot{\boldsymbol{a}}_{1}(t) & =\boldsymbol{\Lambda}(r_{0})\boldsymbol{a}_{1}(t)+\boldsymbol{c}\dot{r}_{1}(t-\delta)\\
@@ -2540,6 +2549,11 @@ Solve for
 \hat{r}_{1}(s) & =\frac{1}{\left(1-\Phi'(r_{0})e^{-\delta s}-\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}e^{-\delta s}\boldsymbol{c}\right)}\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(\boldsymbol{a}_{1}(0)-e^{-\delta s}\boldsymbol{c}r_{1}(0)\right)\\
 \hat{r}_{1}(s) & =\frac{1}{\left(e^{\delta s}-\Phi'(r_{0})-\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\boldsymbol{c}\right)}\boldsymbol{f}(r_{0})\left[s\boldsymbol{I}-\boldsymbol{\Lambda}(r_{0})\right]^{-1}\left(e^{\delta s}\boldsymbol{a}_{1}(0)-\boldsymbol{c}r_{1}(0)\right)
 \end{align*}
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4557,7 +4571,7 @@ status open
 \begin_layout Plain Layout
 Laplace transformation
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Laplace transform 
@@ -4746,6 +4760,182 @@ The spectrum of
 \end_layout
 
 \begin_layout Itemize
+For 
+\begin_inset Formula $\xi=0$
+\end_inset
+
+ and 
+\begin_inset Formula $n\neq0$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\lambda_{n}(0)=-\frac{2\pi^{2}\sigma^{2}}{\theta^{2}}n^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from characteristic equation 
+\begin_inset Formula 
+\[
+\zeta e^{\xi}=\zeta\cosh(\zeta)+\xi\cosh(\zeta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $\xi=0$
+\end_inset
+
+ we are left with 
+\begin_inset Formula 
+\[
+\zeta=\zeta\cosh(\zeta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The implicit equation is solved by 
+\begin_inset Formula 
+\[
+\zeta=2i\pi n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+because 
+\begin_inset Formula $\cosh(2i\pi n)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+.
+ Solving 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\zeta & =\frac{\theta}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}=2i\pi n
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+for the eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\begin{align*}
+\sqrt{\frac{2\lambda\theta^{2}}{\sigma^{2}}+\frac{\mu^{2}\theta^{2}}{\sigma^{4}}} & =2i\pi n\\
+\sqrt{\frac{2\lambda\theta^{2}}{\sigma^{2}}+\underbrace{\xi^{2}}_{=0}} & =2i\pi n\\
+\frac{2\lambda\theta^{2}}{\sigma^{2}} & =-4\pi^{2}n^{2}\\
+\lambda & =-\frac{2\pi^{2}\sigma^{2}}{\theta^{2}}n^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\begin{align*}
+\zeta & =\frac{\theta}{\sigma^{2}}\sqrt{2\lambda\sigma^{2}+\mu^{2}}\\
+2\lambda\sigma^{2}+\mu^{2} & =\frac{\sigma^{4}}{\theta^{2}}\zeta^{2}\\
+\lambda & =\frac{\sigma^{2}}{2\theta^{2}}(\zeta^{2}-\xi^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is real if 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ is purely imaginary or purely real.
+ If 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ is complex, then 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is also complex 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $\xi=0$
+\end_inset
+
+ implies 
+\begin_inset Formula $\mu=0$
+\end_inset
+
+, i.e.
+ the average excitatory input cancels exactly with the constant inhibitory
+ current.
+ 
+\end_layout
+
+\begin_layout Itemize
+It turns out 
+\begin_inset Formula 
+\[
+\text{Re}\lambda_{n}(\xi)\sim-\frac{2\pi^{2}\sigma^{2}}{\theta^{2}}n^{2}-\mathcal{O}(\xi)
+\]
+
+\end_inset
+
 
 \end_layout
 

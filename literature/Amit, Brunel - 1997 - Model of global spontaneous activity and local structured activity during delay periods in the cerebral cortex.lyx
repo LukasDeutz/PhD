@@ -115,6 +115,17 @@ Low activity rate, spikes arriving at different synapses are uncorrelated
 \begin_layout Itemize
 Stimulus enhanced spike rates have been observed during the delay period
  following the removal of the stimulus 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Time delayed activity, network stays at stimulated attractor state after
+ the stimulus is removed
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -475,8 +486,12 @@ mV
 \end_layout
 
 \begin_layout Itemize
-Variability in amplitude of unitary EPSPs from different synapses is taken
- the same order as their average amplitude 
+
+\series bold
+Variability in amplitude
+\series default
+ of unitary EPSPs from different synapses is taken the same order as their
+ average amplitude 
 \begin_inset Formula $\Delta\sim1$
 \end_inset
 
@@ -488,7 +503,15 @@ Simplified IF Neuron
 \end_layout
 
 \begin_layout Itemize
-Neglect decay 
+Neglect leak term
+\end_layout
+
+\begin_layout Itemize
+Just consider input as superposition in time interval 
+\begin_inset Formula $\tau$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -1112,7 +1135,11 @@ Discussion
 
 \begin_layout Itemize
 Spontaneous activity can sustain on top of local structured meta stable
- states, representing learned selective delay activity 
+ states, representing learned selective 
+\series bold
+delay activity
+\series default
+ 
 \end_layout
 
 \begin_layout Itemize

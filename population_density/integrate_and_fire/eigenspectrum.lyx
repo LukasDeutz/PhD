@@ -1,0 +1,542 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Parameter 
+\begin_inset Formula $\mu=\tau hr$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}=\tau h^{2}r$
+\end_inset
+
+.
+ Constant inhibitory current 
+\begin_inset Formula $\beta$
+\end_inset
+
+ allows us to change 
+\begin_inset Formula $\mu$
+\end_inset
+
+ while keeping 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ The average current is given by 
+\begin_inset Formula $\eta=\mu-\beta$
+\end_inset
+
+ and the fluctuations are given by 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Our objective is solve the characteristic equation 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+ze^{\xi}=z\cosh(z)+\xi\sinh(z)
+\end{equation}
+
+\end_inset
+
+for 
+\begin_inset Formula $x$
+\end_inset
+
+ where 
+\begin_inset Formula $\xi=\frac{\eta\theta}{\sigma}$
+\end_inset
+
+.
+ The sign of 
+\begin_inset Formula $\xi$
+\end_inset
+
+ determines the dynamical regime of the network
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\xi>0\Rightarrow\eta>0$
+\end_inset
+
+ : Drift-dominated regime 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\xi<0\Rightarrow\eta<0$
+\end_inset
+
+: Noise-dominated regime 
+\end_layout
+
+\begin_layout Standard
+From the solution we can determine the eigenvalue via 
+\begin_inset Formula 
+\begin{equation}
+\lambda=\frac{\sigma^{2}}{2\theta}\left(z^{2}-\xi^{2}\right)
+\end{equation}
+
+\end_inset
+
+The characteristic is solved numerically.
+ Since it has infinite solutions, we need to identify the important solutions.
+ Eigenvalues can be labeled
+\begin_inset Formula $\left|\text{Re}(\lambda_{1})\right|<\left|\text{Re}(\lambda_{2})\right|<\ldots$
+\end_inset
+
+ according to the absolute of their real part.
+ The authors first guess a start value analytically 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\xi<0$
+\end_inset
+
+: 
+\begin_inset Formula $z=i\left[2\pi n+\frac{1}{2\pi n}\left(1+\xi-e^{\xi}\pm\sqrt{(1+\xi-e^{\xi})^{2}-8\pi^{2}n^{2}(e^{\xi}-1)}\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\xi>0$
+\end_inset
+
+: 
+\begin_inset Formula $z=\xi+\ln\left(1+\sqrt{1-e^{-2\xi}}\right)\pm i\cdot2\pi n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Motivation:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[Knight, B.
+ W.
+ (2000)] 
+\end_layout
+
+\begin_layout Plain Layout
+In the deterministic (noiseless) regime drift-dominated probability density
+ is periodic in time and can be expanded in Fourier series
+\begin_inset Formula 
+\[
+\rho(x,t)=\sum_{n}e^{in\omega_{0}t}\rho_{n}(x)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\omega_{0}(r)=2\pi f_{0}$
+\end_inset
+
+ is the fundamental firing frequency.
+ For the perfect integrate-and-fire neuron we have 
+\begin_inset Formula $f_{0}=\eta/\theta$
+\end_inset
+
+.
+ This equation is consistent with 
+\begin_inset Formula 
+\[
+\rho(x,t)=\sum_{n}a_{n}(0)e^{\lambda_{n}t}\rho_{n}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and we identify 
+\begin_inset Formula $\lambda_{n}=in\omega_{0}$
+\end_inset
+
+.
+ Including noise, density feels advection and diffusion which leads to fattened
+ deterministic limit cycles.
+ [Knight, B.
+ W.
+ (2000)] suggests 
+\begin_inset Formula 
+\[
+\lambda_{n}\approx-n^{2}\Gamma(s)+in\omega_{0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For the leaky integrate-and-fire sett [Knight, B.
+ W., Manin, D., & Sirovich, L.
+ (1996)] eq.
+ 36
+\begin_inset Formula 
+\[
+\lambda_{n}=i2\pi\left(f_{0}+Da(r)\right)\cdot n-Db(s)\cdot n^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Case 2 
+\begin_inset Formula $\xi>0$
+\end_inset
+
+: Define 
+\begin_inset Formula $z=x+iy$
+\end_inset
+
+ and assume.
+ First we want to determine a approximation of 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+We start from 
+\begin_inset Formula 
+\[
+\text{Im}(\lambda)=\text{Im}\left(\frac{\sigma^{2}}{2\theta^{2}}\left((x+iy)^{2}-\xi^{2}\right)\right)=in\omega_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solving for 
+\begin_inset Formula $y$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\begin{align*}
+\frac{\sigma^{2}}{\theta^{2}}xy & =in\omega_{0}\\
+\frac{\sigma^{2}}{\theta^{2}}xy & =i2\pi n\frac{\eta}{\theta}\\
+y & =i2\pi n\frac{\eta\theta}{x\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $x\approx\xi=\eta\theta/\sigma^{2}$
+\end_inset
+
+ we arrive at 
+\begin_inset Formula 
+\[
+y=i2\pi n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We show not that 
+\begin_inset Formula $x\approx\xi$
+\end_inset
+
+ and 
+\begin_inset Formula $y=i2\pi n$
+\end_inset
+
+ is a reasonable approximation 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+ze^{\xi}=z\cosh(z)+\xi\sinh(z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+then we obtain
+\begin_inset Formula 
+\begin{align*}
+(x+i2\pi n)e^{\xi} & =(x+i2\pi n)\cosh(x+i2\pi n)+\xi\sinh(x+i2\pi n)\\
+ & =(x+i2\pi n)\cosh(x)+\xi\sinh(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This yields to equations for 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+e^{\xi} & =\cosh(x)\\
+xe^{\xi} & =x\cosh(x)+\xi\sinh(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution of the first equation
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\cosh(x) & =e^{\xi}\\
+x & =\cosh^{-1}\left(e^{\xi}\right)\\
+ & =\ln\left(e^{\xi}+\sqrt{e^{2\xi}-1}\right)\\
+ & =\ln\left(e^{\xi}\left(1+e^{-\xi}\sqrt{e^{2\xi}-1}\right)\right)\\
+ & =\ln\left(e^{\xi}\right)+\ln\left(1+\sqrt{1-e^{-2\xi}}\right)\\
+ & =\xi+\ln\left(1+\sqrt{1-e^{-2\xi}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which is in agrees with approximation used by the authors.
+ Inserting this solution into the second equation yields 
+\begin_inset Formula 
+\[
+xe^{\xi}=xe^{\xi}+\xi\sinh(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Real part 
+\begin_inset Formula 
+\begin{align*}
+\text{Re}(\lambda) & =\text{Re}\left(\frac{\sigma^{2}}{2\theta^{2}}\left((x+iy)^{2}-\xi^{2}\right)\right)\\
+ & =\frac{\sigma^{2}}{2\theta^{2}}\left(x^{2}-y^{2}-\xi^{2}\right)\\
+ & \approx-\frac{\sigma^{2}}{2\theta^{2}}y^{2}\\
+ & =-\frac{\sigma^{2}}{\theta^{2}}2\pi^{2}n^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which is independent of 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Case 2 
+\begin_inset Formula $\xi<0$
+\end_inset
+
+: Noise-dominated regime.
+ Assume 
+\begin_inset Formula $\text{Im}(\lambda)=0$
+\end_inset
+
+ from which follows 
+\begin_inset Formula 
+\[
+\frac{\sigma^{2}}{\theta^{2}}xy=0
+\]
+
+\end_inset
+
+which can be realized by either setting 
+\begin_inset Formula $x=0$
+\end_inset
+
+ or 
+\begin_inset Formula $y=0$
+\end_inset
+
+.
+ The authors go with 
+\begin_inset Formula $x=0$
+\end_inset
+
+ which is leads essentially the same equation
+\begin_inset Formula 
+\[
+iye^{\xi}=iy\cosh(iy)+\xi\sinh(iy)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+however 
+\begin_inset Formula $y\in\mathbb{R}$
+\end_inset
+
+.
+ If we expand 
+\begin_inset Formula $y=2\pi n+\Delta y$
+\end_inset
+
+ with 
+\begin_inset Formula $\Delta y$
+\end_inset
+
+ small then
+\begin_inset Formula 
+\begin{align*}
+i(2\pi n+\Delta y)e^{\xi} & =i(2\pi n+\Delta y)\cosh(i\Delta y)+\xi\sinh(i\Delta y)\\
+i(2\pi n+\Delta y) & =i(2\pi n+\Delta y)\left(1-\frac{1}{2}\Delta y^{2}\right)+\xi i\Delta y\\
+i2\pi ne^{\xi}+i\Delta ye^{\xi} & =i2\pi n-i\pi n\Delta y^{2}+i\Delta y+\xi i\Delta y\\
+i\pi n\Delta y^{2}+i\Delta ye^{\xi} & -i\Delta y-\xi i\Delta y=i2\pi n-i2\pi ne^{\xi}\\
+\pi n\Delta y^{2}+(e^{\xi}-1-\xi)\Delta y & =2\pi n-2\pi ne^{\xi}\\
+\Delta y^{2}+\frac{1}{\pi n}(e^{\xi}-1-\xi)\Delta y & =2\left(1-e^{\xi}\right)\\
+\left(\Delta y^{2}+\frac{1}{2\pi n}(e^{\xi}-1-\xi)\right)^{2} & =2\left(1-e^{\xi}\right)-\frac{1}{\pi^{2}n^{2}}(e^{\xi}-1-\xi)^{2}\\
+\left(\Delta y^{2}+\frac{1}{2\pi n}(e^{\xi}-1-\xi)\right)^{2} & =\pm\sqrt{\frac{1}{4\pi^{2}n^{2}}\left(8\pi^{2}n^{2}\left(1-e^{\xi}\right)-4(e^{\xi}-1-\xi)^{2}\right)}\\
+\Delta y^{2} & =\frac{1}{2\pi n}(1+\xi-e^{\xi}\pm\sqrt{-\left(8\pi^{2}n^{2}\left(e^{\xi}-1\right)-4(1+\xi-e^{\xi})^{2}\right)})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+y=2\pi n+\frac{1}{2\pi n}\left(1+\xi-e^{\xi}\pm\sqrt{(1+\xi-e^{\xi})^{2}-8\pi^{2}n^{2}(e^{\xi}-1)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document
