@@ -303,6 +303,21 @@ which leads to
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Compare to 
+\begin_inset Formula $\partial_{t}\rho=L\rho$
+\end_inset
+
+ which suggests that the dynamical operator is not equivalent to the Fokker-Plan
+ck operator 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize

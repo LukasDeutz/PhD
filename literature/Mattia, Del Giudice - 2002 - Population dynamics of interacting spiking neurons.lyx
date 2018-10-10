@@ -2011,7 +2011,7 @@ status open
 \begin_layout Plain Layout
 Proof:
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Start from 
@@ -3780,7 +3780,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Start from 
@@ -3927,7 +3927,7 @@ L^{+}=\mu(t)\partial_{v}+\frac{1}{2}\sigma^{2}(t)\partial_{v}^{2}
 Eigenfunctions 
 \begin_inset Formula 
 \[
-\psi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{-\frac{\xi v}{\theta}}
+\psi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{\frac{\xi v}{\theta}}
 \]
 
 \end_inset
@@ -3972,6 +3972,129 @@ Constant
 \[
 c=\Phi(\mu,\sigma^{2})
 \]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\phi_{\lambda}(v,t)=\left[c_{+}e^{\zeta\frac{v}{\theta}}+c_{-}e^{-\zeta\frac{v}{\theta}}\right]e^{\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula $\zeta(\lambda=0)=\xi$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+\phi_{0}(v,t) & =\left[c_{+}e^{\xi\frac{v}{\theta}}+c_{-}e^{-\xi\frac{v}{\theta}}\right]e^{\frac{\xi v}{\theta}}\\
+ & =c_{+}e^{2\xi\frac{v}{\theta}}+c_{-}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula $\phi_{0}(\theta,t)=0$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+c_{+}+c_{-}e^{-2\xi} & =0\\
+\Leftrightarrow c_{+} & =-c_{-}e^{-2\xi}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\[
+\phi_{0}(v,t)=c_{-}(1-e^{-2\xi}e^{2\xi\frac{v}{\theta}})=c_{-}(1-e^{-2\xi\frac{\theta-v}{\theta}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Constant 
+\begin_inset Formula $c_{-}$
+\end_inset
+
+ must be chosen such that 
+\begin_inset Formula $\phi_{0}(v,t)$
+\end_inset
+
+ is normalized 
+\begin_inset Formula 
+\[
+\int_{0}^{\theta}\phi_{0}(v,t)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\begin{align*}
+1 & =c_{-}\left(\theta-\frac{\theta}{2\xi}e^{-2\xi}\left(e^{2\xi}-1\right)\right)\\
+\Leftrightarrow c_{-} & =\left(\theta-\frac{\sigma^{2}}{2\mu}\left(1-e^{-2\xi}\right)\right)^{-1}\\
+2\xi & =\left[\frac{\sigma^{2}}{2\mu}\left(\frac{2\mu\theta}{\sigma^{2}}+e^{-2\xi}-1\right)\right]^{-1}\\
+ & =\left[\frac{\sigma^{2}}{2\mu}\left(2\xi+e^{-2\xi}-1\right)\right]^{-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Emission rate 
+\begin_inset Formula 
+\begin{align*}
+\Phi(\mu,\sigma^{2}) & =-\frac{1}{2}\sigma^{2}\partial_{v}\phi_{0}(\theta)\\
+ & =c_{-}\frac{\sigma^{2}\xi}{\theta}\\
+ & =\mu c_{-}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4110,7 +4233,7 @@ Proof
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Start from 
@@ -4190,7 +4313,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Boundary conditions 
@@ -4345,7 +4468,7 @@ whose solution gives us the set of all nonvanishing eigenvalues of the operator
 Eigenfunctions of the adjoint operator 
 \begin_inset Formula 
 \[
-\psi_{\lambda}(v,t)=\tilde{c}_{\lambda}\left[\xi\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]e^{-\frac{\xi}{\theta}v}
+\psi_{\lambda}(v,t)=\tilde{c}_{\lambda}\left[\zeta\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]e^{-\frac{\xi}{\theta}v}
 \]
 
 \end_inset
@@ -4357,7 +4480,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Adjoint operator 
@@ -4783,7 +4906,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Start from characteristic equation 
