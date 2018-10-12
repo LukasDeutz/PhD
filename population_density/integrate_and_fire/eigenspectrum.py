@@ -12,7 +12,11 @@ def CEAS(xi, n, m):
     i = np.complex(0, 1)
     a_n = 2*np.pi*n
     
-    if xi <= 0: # noise-dominated regime: Eigenvalues are real, i.e. zeta must be purely imaginary or real                
+    if xi == 0: 
+        
+        zeta = i*2*np.pi*n    
+    
+    elif xi < 0: # noise-dominated regime: Eigenvalues are real, i.e. zeta must be purely imaginary or real                
         
         zeta = i * (a_n + 1./a_n * (1. + xi - np.exp(xi) + (-1)**m * np.sqrt((1 + xi - np.exp(xi))**2 - 2.*a_n**2*(np.exp(xi) - 1))))                 
     
@@ -111,7 +115,7 @@ def phi_n(v, lam_n, eta, xi, sig2, theta):
     
     zeta = theta/sig2*np.sqrt(eta**2 + 2*sig2*lam_n) 
     
-    cn = 2*xi/(theta*(zeta*xi*np.cosh(zeta) + (zeta**2 + xi)*np.sinh(zeta))) 
+    cn = 2.*zeta/(theta*(zeta*xi*np.cosh(zeta) + (zeta**2 - xi)*np.sinh(zeta))) 
                    
     return cn*np.exp(xi*v/theta)*np.sinh(zeta*(theta - v)/theta) 
                
@@ -132,12 +136,32 @@ def flux_0(eta, sig2, theta):
     
     return 1./(sig2/(2*eta**2)*(2*xi + np.exp(-2*xi) -1))
     
-def flux_n(lam_n, eta, xi, sig2, theta):
-        
+def flux_n(lam_n, eta, sig2, theta):
+    
+
+    #------------------------------------------------------------------------------ 
+    # sometimes the solution which comes out solver of the solve 
+    # has a tiny imaginary part which causes problems    
+    eps = 1.e-10
+    
+    lam_n_real = lam_n.real
+    lam_n_imag = lam_n.imag
+
+    if np.abs(lam_n_real) < eps:
+        lam_n_real = 0.
+    if np.abs(lam_n_imag) < eps:
+        lam_n_imag = 0.
+    
+    lam_n = np.complex(lam_n_real, lam_n_imag)
+    #------------------------------------------------------------------------------ 
+    
+    xi = eta*theta/sig2
+    
     zeta = theta/sig2*np.sqrt(eta**2 + 2*sig2*lam_n)     
-    cn = 2*xi/(theta*(zeta*xi*np.cosh(zeta) + (zeta**2 + xi)*np.sinh(zeta))) 
+    cn = 2*zeta/(theta*(zeta*xi*np.cosh(zeta) + (zeta**2 - xi)*np.sinh(zeta))) 
     
     return 0.5*sig2*cn*zeta*np.exp(xi)
+
 
 def emission_rate(t, n_arr, eta, sig2, theta):
 
@@ -147,21 +171,47 @@ def emission_rate(t, n_arr, eta, sig2, theta):
         
     for n in n_arr: 
             
-        lam_n0 = EV(xi, sig2, theta, n, 0) #m=0
-        lam_n1 = EV(xi, sig2, theta, n, 1) #m=1
+        lam_n = EV(xi, sig2, theta, n, 0) #m=0        
+        lam_n = np.complex(lam_n.real, lam_n.imag)
+
+        #------------------------------------------------------------------------------ 
+        # sometimes the solution which comes out solver of the solve 
+        # has a tiny imaginary part which causes problems    
+        eps = 1.e-10
         
-        lam_n0 = np.complex(lam_n0.real, lam_n0.imag)
-        lam_n1 = np.complex(lam_n1.real, lam_n1.imag)
+        lam_n_real = lam_n.real
+        lam_n_imag = lam_n.imag
+    
+        if np.abs(lam_n_real) < eps:
+            lam_n_real = 0.
+        if np.abs(lam_n_imag) < eps:
+            lam_n_imag = 0.
         
-        an0 = theta/sig2*np.sqrt(eta**2 + 2*sig2*lam_n0)
-        an1 = theta/sig2*np.sqrt(eta**2 + 2*sig2*lam_n1)
+        lam_n = np.complex(lam_n_real, lam_n_imag)
+                            
+        an0 = theta/sig2*np.sqrt(eta**2 + 2*sig2*lam_n) 
+        f_n = flux_n(lam_n, eta, sig2, theta)
+        r_n = an0*f_n*np.exp(lam_n*t)
         
-        r_n0 = an0*flux_n(lam_n0, eta, xi, sig2, theta)*np.exp(lam_n0*t)
-        r_n1 = an1*flux_n(lam_n1, eta, xi, sig2, theta)*np.exp(lam_n1*t)
-        r_n = r_n0 + r_n1
-        
-        r += r_n
+        r += 2.*r_n.real
         
     return r   
 
-
+def f_n_eta_sig2(eta_arr, sig2_arr, theta, n):
+    
+    f_n_mat = np.zeros((len(sig2_arr), len(eta_arr)), dtype = np.complex)
+    
+    eps = 1e-10
+    
+    for i, sig2 in enumerate(sig2_arr):        
+        for j, eta in enumerate(eta_arr):
+        
+            xi = eta*theta/sig2
+            lam_n = EV(xi, sig2, theta, n, 0)                        
+            lam_n = np.complex(lam_n.real, lam_n.imag)                    
+            
+            f_n = flux_n(lam_n, eta, sig2, theta)
+            
+            f_n_mat[i, j] = f_n
+    
+    return f_n_mat
