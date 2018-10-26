@@ -1,0 +1,593 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+electrophysiological 
+\series default
+(from Greek electron and physis = nature, origin) is the study of electrical
+ properties of biological cells and tissues 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+electroencephalographic
+\series default
+ (
+\series bold
+EEG
+\series default
+) (celphalo - relating to brain or head): electrophysiological monitoring
+ method to record electrical activity of the brain
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is typically noninvasive with electrodes placed along the scalp 
+\end_layout
+
+\begin_layout Itemize
+EEG measures voltage fluctuations resulting from ionic current within the
+ neurons of the brain 
+\end_layout
+
+\begin_layout Itemize
+The spectral content of EEG signal which describes neural activity oscillations
+ is popularly called 
+\series bold
+brain waves
+\end_layout
+
+\begin_layout Itemize
+EEG is often used to diagnose epilepsy 
+\end_layout
+
+\begin_layout Itemize
+EEG offers millisecond-range temporal resolution which is not possible with
+ MRI 
+\end_layout
+
+\begin_layout Itemize
+First human EEG recorded by German Physiologist Hans Berger in 1924
+\end_layout
+
+\begin_layout Itemize
+Advantages: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+High temporal resolution 
+\end_layout
+
+\begin_layout Itemize
+Noninvasive 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Disadvantages:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Low spatial resolution
+\end_layout
+
+\begin_layout Itemize
+Can not record activity of brain regions beneath the cortex 
+\end_layout
+
+\begin_layout Itemize
+Poor Signal-to-noise ratio 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Scalp EEG showed 
+\series bold
+oscillatory
+\series default
+ patterns during sleep and rest 
+\end_layout
+
+\begin_layout Itemize
+EEG during conscious waking behavior low amplitude 
+\begin_inset Quotes eld
+\end_inset
+
+desynchronized
+\begin_inset Quotes erd
+\end_inset
+
+ patterns 
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+The brain is active during sleep 
+\end_layout
+
+\begin_layout Itemize
+How does this activity differs from the awake non-resting state activity?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dominance of oscillations in anesthesia and epilepsy 
+\end_layout
+
+\begin_layout Itemize
+Synchronous activity of oscillating networks is viewed as the critical 
+\begin_inset Quotes eld
+\end_inset
+
+middle ground
+\begin_inset Quotes erd
+\end_inset
+
+ linking single-neuron activity to behavior 
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Oscillations indicate synchronous activity of neurons 
+\end_layout
+
+\begin_layout Itemize
+Synchrony suggests a common task shared by the neurons taking part in the
+ oscillation 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+A System of Brain Oscillators 
+\end_layout
+
+\begin_layout Itemize
+Different oscillatory bands are observed 
+\begin_inset Formula $0.05$
+\end_inset
+
+Hz to 
+\begin_inset Formula $500$
+\end_inset
+
+Hz
+\end_layout
+
+\begin_layout Itemize
+Spectral power over frequency in log-log plot form show linear progression
+ 
+\end_layout
+
+\begin_layout Itemize
+Power density is inversely proportional to frequency 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Low frequency oscillations are stronger than high frequencies 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Spectral power over log of frequency shows structure at different orders
+ of magnitudes if log slope is removed
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+band structure 
+\end_layout
+
+\begin_layout Itemize
+Properties of neuronal oscillators are the result of physical architecture
+ of neuronal networks 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Limited speed 
+\series default
+of neuronal communication due to axon conduction and synaptic delay 
+\end_layout
+
+\begin_layout Itemize
+Most neuronal connections are local, the period of oscillations is constrained
+ to size of the neuronal pool engaged in a given cycle 
+\end_layout
+
+\begin_layout Itemize
+Higher frequency oscillations are confined to a 
+\series bold
+small neural space
+\end_layout
+
+\begin_layout Itemize
+Large networks are recruited during slow oscillations 
+\end_layout
+
+\begin_layout Itemize
+This could explain the power 
+\begin_inset Formula $\sim1/f$
+\end_inset
+
+ relationship 
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Assembly Synchronization by Oscillation
+\end_layout
+
+\begin_layout Itemize
+Integration of information requires 
+\begin_inset Quotes eld
+\end_inset
+
+synchrony
+\begin_inset Quotes erd
+\end_inset
+
+ of the convergent inputs 
+\end_layout
+
+\begin_layout Itemize
+Synchrony is defined by the temporal window within some trace of an earlier
+ event is retained which alters then the response to a subsequent event
+ 
+\end_layout
+
+\begin_layout Itemize
+Successive events that evoke identical responses are deemed nonsynchronous
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Response of the system is not altered by previous input (memory less)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Synchrony is the most energy-efficient physical mechanism for temporal coordinat
+ion 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO (21, 22)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Brain oscillators, belong to limit-cycle and weakly chaotic oscillators
+ share features of harmonic and relaxation oscillators 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Relaxation oscillators times intervals in which not much happens followed
+ by time intervals of drastic change 
+\end_layout
+
+\begin_layout Itemize
+This relates to 
+\series bold
+bursting neurons
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Relaxation oscillators synchronize robustly and with great stability 
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Scaling of Oscillatory Network in Growing Brains 
+\end_layout
+
+\begin_layout Itemize
+Different classes of oscillations and their behavioral correlates are largely
+ preserved throughout mammalian evolution 
+\end_layout
+
+\begin_layout Itemize
+Spiking of single cortical principal neurons typically display Poisson statistic
+s 
+\end_layout
+
+\begin_layout Itemize
+Assembly behavior is often characterized by oscillatory properties 
+\end_layout
+
+\begin_layout Itemize
+This implies non-homogeneous rates on the neuron level
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+oscillations are non-homogeneous in time, the non-homogeneity must have
+ a source
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Dense local connections supplemented by a small fraction of long-range connectio
+ns which effectively reduces the synaptic path lengths between distant cells
+ 
+\end_layout
+
+\begin_layout Section*
+Functions for Brain Oscillators 
+\end_layout
+
+\begin_layout Subsection*
+Input selection and plasticity 
+\end_layout
+
+\begin_layout Itemize
+Single neurons and networks respond with transient oscillations to a strong
+ input 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Natural frequency
+\series default
+ or 
+\series bold
+eigenfrequency
+\series default
+ of the damped oscillation is a result of two opposing effects 
+\end_layout
+
+\begin_layout Itemize
+Leak conductance and capacitance of neuronal membrane are mainly responsible
+ for the low-pass filtering property of neurons 
+\end_layout
+
+\begin_layout Itemize
+Voltage-gated currents, whose activation range is close to resting membrane
+ potential act as high pass filters 
+\end_layout
+
+\begin_layout Itemize
+High-pass (voltage-dependent) and low-pass (time-dependent) filtering properties
+ of neurons can be exploited for the construction of band-pass filters 
+\end_layout
+
+\begin_layout Itemize
+This allows neurons to select inputs based on their frequency 
+\end_layout
+
+\begin_layout Itemize
+Cortical interneuron classes have a wide range of preferred frequencies
+ 
+\end_layout
+
+\begin_layout Itemize
+High-frequency (high rate) discharge of a pyramidal cell in its receptive
+ field 
+\series bold
+enslaves
+\series default
+ its 
+\series bold
+basket cells
+\series default
+ (inhibitory interneurons) through resonance tuning 
+\end_layout
+
+\begin_layout Itemize
+Increasing commitment to an oscillatory network can reduce responsiveness
+ of neurons to external inputs 
+\end_layout
+
+\begin_layout Itemize
+Thalamocortical spindle oscillations (oscillatory bursts of neural activity)
+ effectively reduce environmental influences on neocortical activity, actively
+ shifting sleep into deeper stages 
+\end_layout
+
+\begin_layout Itemize
+Ongoing phase of a centrally organized oscillation creates temporal opportunity
+ windows for the neuron to respond 
+\end_layout
+
+\begin_layout Itemize
+Implication of oscillation-gating functions is that perception is not a
+ continuous event but subject to cyclic changes of the network 
+\end_layout
+
+\begin_layout Subsection*
+Binding cell assemblies 
+\end_layout
+
+\begin_layout Itemize
+Information in the brain has been hypothesized to be processes, transferred,
+ and stored by flexible cell assemblies 
+\end_layout
+
+\begin_layout Itemize
+Mechanism how the binding of representations (cell assemblies) could work
+ is unknown 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dynamic change in synaptic strength (energy efficient)
+\end_layout
+
+\begin_layout Itemize
+Oscillatory synchrony (more cost effective)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Binding by gamma hypothesis 
+\begin_inset Formula $30$
+\end_inset
+
+-
+\begin_inset Formula $80$
+\end_inset
+
+Hz 
+\end_layout
+
+\begin_layout Itemize
+Time scale of oscillation must relate to time scale needed to perform cognitive
+ act 
+\end_layout
+
+\begin_layout Subsection*
+Consolidation and combination of learned information
+\end_layout
+
+\begin_layout Itemize
+Default state of unperturbed sleeping brain is a complex system of numerous
+ self-governed oscillations 
+\end_layout
+
+\begin_layout Itemize
+Content of these oscillations reflects spike sequence patterns created by
+ prior waking experience 
+\end_layout
+
+\begin_layout Itemize
+Are oscillations are epiphenomenon of the replay 
+\end_layout
+
+\begin_layout Itemize
+How does the brain replay information
+\end_layout
+
+\begin_layout Subsection*
+Representation by phase information
+\end_layout
+
+\begin_layout Itemize
+Oscillatory network is under the combined influence of external inputs and
+ internal dynamics 
+\end_layout
+
+\begin_layout Itemize
+Basis for information representation by phase 
+\end_layout
+
+\begin_layout Itemize
+Distance from center of place cell encoded in phase of spike timing compared
+ to theta oscillation 
+\end_layout
+
+\begin_layout Subsection*
+Unexplored Benefits of Brain Oscillations 
+\end_layout
+
+\begin_layout Itemize
+Feed-forward and feedback networks are good to predict what happens next.
+ Oscillators are good at predicting when
+\end_layout
+
+\begin_layout Itemize
+Oscillations are how we define time (Feynmann)
+\end_layout
+
+\end_body
+\end_document

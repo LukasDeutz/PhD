@@ -193,7 +193,7 @@ Motivation:
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 [Knight, B.
@@ -535,7 +535,179 @@ y=2\pi n+\frac{1}{2\pi n}\left(1+\xi-e^{\xi}\pm\sqrt{(1+\xi-e^{\xi})^{2}-8\pi^{2
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Section*
+Emission rate
+\end_layout
+
+\begin_layout Subsubsection*
+Non-interacting neurons
+\end_layout
+
+\begin_layout Standard
+For non-interacting neurons with stationary input, the time evolution of
+ the emission rate for initial condition 
+\begin_inset Formula $\rho(v,0)=\rho_{0}(v)$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+r(t)=\Phi(\eta,\sigma^{2})+\sum_{n}f_{n}a_{n}(0)e^{\lambda_{n}t}
+\]
+
+\end_inset
+
+The initial value 
+\begin_inset Formula $a_{n}(0)$
+\end_inset
+
+ can be determined from 
+\begin_inset Formula $\rho_{0}(v)$
+\end_inset
+
+ using 
+\begin_inset Formula 
+\[
+a_{n}(0)=\int_{v_{\text{min}}}^{\theta}dv\,\psi_{n}(v)\rho_{0}(v)
+\]
+
+\end_inset
+
+Choosing the a delta-distribution 
+\begin_inset Formula $\rho_{0}(v)=\delta(v)$
+\end_inset
+
+ as initial condition yields 
+\begin_inset Formula 
+\[
+a_{n}(0)=\psi_{n}(0)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Adjoint eigenfunction
+\begin_inset Formula 
+\[
+\psi_{\lambda}(v,t)=\left[\zeta\cosh\frac{\zeta v}{\theta}+\xi\sinh\frac{\zeta v}{\theta}\right]e^{-\frac{\xi}{\theta}v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From this follows 
+\begin_inset Formula 
+\[
+\psi_{\lambda}(0,t)=\zeta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The flux over threshold is given by
+\begin_inset Formula 
+\[
+f_{n}=-\frac{1}{2}\sigma^{2}\partial_{v}\phi_{n}(\theta)=\frac{1}{2}\sigma^{2}c_{n}\zeta_{n}e^{\xi}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from definition of 
+\begin_inset Formula $\phi_{n}(v)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\phi_{n}(v)=c_{n}\sinh\left(\zeta_{n}\frac{\theta-v}{\theta}\right)e^{\frac{\xi v}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Derivative 
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{n}(v)=c_{n}\left[-\frac{\zeta_{n}}{\theta}\cosh\left(\zeta_{n}\frac{\theta-v}{\theta}\right)e^{\frac{\xi v}{\theta}}+\frac{\xi}{\theta}\sinh\left(\zeta_{n}\frac{\theta-v}{\theta}\right)e^{\frac{\xi v}{\theta}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Setting 
+\begin_inset Formula $v=\theta$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\partial_{v}\phi_{n}(\theta)=-\frac{c_{n}\zeta_{n}}{\theta}e^{\xi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The characteristic decay time is given by 
+\begin_inset Formula $\tau_{n}=1/\text{RE}(\lambda_{n})$
+\end_inset
+
+.
+ The fundamental frequency is given 
+\begin_inset Formula $f_{0}=\text{Im}(\lambda_{n})/2\pi\Rightarrow T_{0}^{-1}=2\pi/\text{Im}(\lambda_{n})$
+\end_inset
+
+.
+ To see prominent oscillations, the eigenvalues need to 
+\begin_inset Formula 
+\[
+T_{0}\sim\tau_{n}\Rightarrow\frac{2\pi}{\left|\text{Im}(\lambda_{n})\right|}\sim\frac{1}{\left|\text{RE}(\lambda_{n})\right|}\Leftrightarrow2\pi\left|\text{RE}(\lambda_{n})\right|\sim\left|\text{Im}(\lambda_{n})\right|
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
