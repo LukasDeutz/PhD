@@ -1,0 +1,360 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: A review of the integrate-and-fire neuron model: Homogeneous synaptic
+ input 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+The integrate-and-fire neuron model 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Current synapse:
+\series default
+ Synaptic inputs are modeled as injected currents 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Summation is linear 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Conductance synapse: 
+\series default
+Synaptic inputs are modeled as changes in the membrane conductance 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Summation is not linear, i.e.
+ amplitude depends on the value of the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+They take account of the change in amplitude of inputs depending upon the
+ difference between membrane potential and reversal potential 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Interspike intervals (ISIs) are identified as the 
+\series bold
+first passage time
+\series default
+ of the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+First passage time distribution 
+\begin_inset Formula $f_{\theta}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Model dynamics 
+\begin_inset Formula 
+\[
+C_{\text{m}}\frac{dv(t)}{dt}=I_{\text{leak}}(t)+I_{\text{s}}(t)+I_{\text{inj}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is possible to formally include the spiking mechanism in terms of a spiking
+ current 
+\begin_inset Formula $I_{\text{spike}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{\text{spike}}(t)=C_{\text{m}}\left[\frac{dv(t)}{dt}\right]_{v=V_{\text{th}}}^{-1}(V_{\text{reset}}-V_{\text{th}})\delta\left[v(t)-V_{\text{th}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Argument of the delta distribution is a function of time 
+\end_layout
+
+\begin_layout Itemize
+This should explain the derivative 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Synaptic input to integrate-and-fire neurons 
+\end_layout
+
+\begin_layout Subsubsection
+Current synapses 
+\end_layout
+
+\begin_layout Itemize
+Synaptic current
+\end_layout
+
+\begin_layout Itemize
+Contribution of a single 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function input upon the membrane potential, is called the (normalized)
+ postsynaptic response function 
+\begin_inset Formula 
+\[
+\epsilon(t)=\frac{1}{\tau_{\text{m}}}e^{-t/\tau_{\text{m}}}\Theta(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Go beyond simple 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function synaptic input 
+\begin_inset Formula 
+\[
+I_{\text{s}}=I_{0}e^{-t/\tau_{\text{s}}}\Theta(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic time constant is in general different for each type of neuron
+\end_layout
+
+\begin_layout Itemize
+Normalized postsynaptic response function 
+\begin_inset Formula 
+\[
+\epsilon(t)=\frac{e^{-t/\tau_{m}}-e^{-t/\tau_{s}}}{\tau_{\text{m}}-\tau_{\text{s}}}\Theta(t)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Membrane potential 
+\begin_inset Formula 
+\[
+\dot{V}=-\frac{1}{\tau_{\text{m}}}V+I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Postsynaptic current caused by spike at 
+\begin_inset Formula $t=0$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+I(t)=I_{0}e^{-t/\tau_{\text{s}}}\Theta(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Green's function of the the differential equation 
+\begin_inset Formula 
+\[
+\dot{V}=-\frac{1}{\tau_{\text{m}}}V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+is 
+\begin_inset Formula $G(t)=e^{-\frac{t}{\tau_{\text{m}}}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+V(t) & =\int_{0}^{t}dt'\,e^{-\frac{t-t'}{\tau}}I(t')
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insert 
+\begin_inset Formula 
+\begin{align*}
+V(t) & =\int_{0}^{t}dt'\,e^{-\frac{t-t'}{\tau_{\text{m}}}}e^{-\frac{t'}{\tau_{\text{s}}}}\\
+ & =e^{-\frac{t}{\tau_{\text{m}}}}\int_{0}^{t}dt'\,e^{\frac{\tau_{\text{s}}-\tau_{\text{m}}}{\tau_{\text{m}}\tau_{\text{s}}}t'}\\
+ & \sim\frac{1}{\tau_{\text{s}}-\tau_{\text{m}}}e^{-\frac{t}{\tau_{\text{m}}}}\left.e^{\frac{\tau_{\text{s}}-\tau_{\text{m}}}{\tau_{\text{m}}\tau_{\text{s}}}t'}\right|_{0}^{t}\\
+ & =\frac{1}{\tau_{\text{s}}-\tau_{\text{m}}}e^{-\frac{t}{\tau_{\text{m}}}}\left(e^{\frac{\tau_{\text{s}}-\tau_{\text{m}}}{\tau_{\text{m}}\tau_{\text{s}}}t}-1\right)\\
+ & =\frac{1}{\tau_{\text{m}}-\tau_{\text{s}}}\left(e^{-\frac{t}{\tau_{\text{m}}}}-e^{-\frac{t}{\tau_{\text{s}}}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The above function has a rise followed by decay 
+\end_layout
+
+\begin_layout Itemize
+Note that the 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is always positive because the denominator corrects for the sign 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Other forms of synaptic current input can be considered, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-function 
+\begin_inset Formula $I_{\text{s}}\propto te^{-\alpha t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Conductance synapses 
+\end_layout
+
+\begin_layout Itemize
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
