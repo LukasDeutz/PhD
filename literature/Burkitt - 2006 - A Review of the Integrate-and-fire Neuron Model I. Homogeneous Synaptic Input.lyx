@@ -850,16 +850,43 @@ Perfect integrator neuron model
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
+Current synapses 
 \end_layout
+
+\begin_layout Itemize
+Homogeneous Poisson input 
+\end_layout
+
+\begin_layout Itemize
+If we consider only excitatory input follows, then the solution follows
+ straightforwardly from the Poisson statistics 
+\end_layout
+
+\begin_layout Itemize
+If the threshold is reached with 
+\begin_inset Formula $m_{\theta}$
+\end_inset
+
+ excitatory synaptic inputs , then the output interspike interval distribution
+ is exactly the distribution of the 
+\begin_inset Formula $m_{\theta}^{\text{th}}$
+\end_inset
+
+ input 
+\begin_inset Formula 
+\[
+f_{m_{\theta}}(t)=\frac{\lambda_{E}^{m_{\theta}}t^{m_{\theta}-1}e^{-\lambda t}}{(m_{\theta}-1)!}
+\]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+For excitatory and inhibitory inputs the first passage time density may
+ be calculated using the renewal equation for the first passage time using
+ Laplace transforms 
 \end_layout
 
 \begin_layout Subsection
