@@ -108,12 +108,13 @@ Synaptic inputs are modeled as changes in the membrane conductance
 \begin_deeper
 \begin_layout Itemize
 Summation is not linear, i.e.
- amplitude depends on the value of the membrane potential 
+ amplitude of the current depends on the value of the membrane potential
+ 
 \end_layout
 
 \begin_layout Itemize
-They take account of the change in amplitude of inputs depending upon the
- difference between membrane potential and reversal potential 
+They take account the change in amplitude of inputs depending upon the differenc
+e between membrane potential and reversal potential 
 \end_layout
 
 \end_deeper
@@ -325,7 +326,11 @@ Note that the
 \begin_inset Formula $\epsilon$
 \end_inset
 
- is always positive because the denominator corrects for the sign 
+ is always positive because the denominator changes sign if 
+\begin_inset Formula $\tau_{\text{s}}>\tau_{\text{m}}$
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -346,9 +351,638 @@ Conductance synapses
 \end_layout
 
 \begin_layout Itemize
+Synaptic current 
+\begin_inset Formula 
+\[
+I_{\text{s}}(t)=C_{\text{m}}[V_{E}-v(t)]\sum_{k=1}^{N_{E}}g_{E,k}(t)+C_{\text{m}}[V_{I}-v(t)]\sum_{k=1}^{N_{E}}g_{I,k}(t)
+\]
+
+\end_inset
+
 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Reversal potential
+\series default
+ 
+\begin_inset Formula $V_{I}\leq V_{\text{reset}}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{\text{reset}}<V_{\text{th}}<V_{E}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $v(t)<V_{E},$
+\end_inset
+
+ then EPS current is positive 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $v(t)>V_{E},$
+\end_inset
+
+ then EPS current is negative 
+\end_layout
+
+\begin_layout Itemize
+The same is true for the IPS current 
+\end_layout
+
+\begin_layout Itemize
+Excitatory/inhibitory inputs drive the membrane potential to the respective
+ reversal potential 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When the membrane potential passes through reversal potential the direction
+ of the associated current flow switches 
+\end_layout
+
+\begin_layout Itemize
+Reversal potential introduce a nonlinearity into summation of individual
+ synaptic currents
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inputs can not be summed because they depend on 
+\begin_inset Formula $v(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $g_{\alpha,k}(t)$
+\end_inset
+
+ is replaced by stochastic quantity, dynamics are described by nonlinear
+ Langevin equation (multiplicative noise)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Deterministic input to integrate-and-fire neurons
+\end_layout
+
+\begin_layout Itemize
+Injected current 
+\begin_inset Formula $I_{\text{inj}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v(t)=V_{0}+e^{-\tau/\tau_{\text{m}}}\int_{t_{0}}^{t}\frac{I_{\text{inj}}(t')}{C_{\text{m}}}e^{t'/\tau_{\text{m}}}dt'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set 
+\begin_inset Formula $V_{0}=V_{\text{reset}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For fixed threshold and constant injected current, the time it takes for
+ a spike to be generated is 
+\begin_inset Formula 
+\[
+T_{\text{ISI}}=-\tau_{\text{m}}\ln\left[1-\frac{\theta}{IR_{\text{m}}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spiking-rate 
+\begin_inset Formula 
+\[
+\lambda_{\text{out}}=(\tau_{\text{r}}+T_{\text{ISI}})^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Peculiarity of integrate-and-fire neuron, slope of input-output curve 
+\begin_inset Formula $\lambda_{\text{out}}(I)$
+\end_inset
+
+ has a singularity at 
+\begin_inset Formula $I=I_{\text{th}}=\theta/R_{\text{m}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Variants of the integrate-and-fire neuron model 
+\end_layout
+
+\begin_layout Itemize
+Spike response model by Gerstner 
+\end_layout
+
+\begin_layout Itemize
+Reduced responsiveness and increased threshold after spike generation 
+\end_layout
+
+\begin_layout Itemize
+Hyperpolarizing spike-afterpotential 
+\end_layout
+
+\begin_layout Itemize
+Adding to the membrane potential an additional afterpotential term 
+\begin_inset Formula $\eta(t-t_{\text{f}})$
+\end_inset
+
+ where 
+\begin_inset Formula $t_{\text{f}}$
+\end_inset
+
+ is firing time of the previous spike 
+\end_layout
+
+\begin_layout Section
+Methods of analysis for stochastic models 
+\end_layout
+
+\begin_layout Itemize
+Two sources of noise:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Intrinsic noise:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+stochastic nature of the underlying mechanism controlling the release of
+ neurotransmitter and the opening of channels 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+External noise
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Apparently random arrival of spike times 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Representation of the neuron as a point means that there is no clear distinction
+ between these two sources 
+\end_layout
+
+\begin_layout Itemize
+They need to treated together in terms of the variance of the fluctuations
+ in the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+Internal noise is generally 
+\series bold
+insignificant
+\series default
+ in comparison with that associated synaptic input 
+\end_layout
+
+\begin_layout Itemize
+Input to single synapse may significantly vary from Poisson process 
+\end_layout
+
+\begin_layout Itemize
+As long as individual synapse input can be modeled by 
+\series bold
+renewal process 
+\series default
+(independent and identically distributed ISI) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Pooling property
+\series default
+ of independent renewal processes lead to Poisson description of combined
+ input 
+\end_layout
+
+\begin_layout Subsection
+Diffusion model 
+\end_layout
+
+\begin_layout Itemize
+Notation 
+\begin_inset Formula 
+\[
+\tau\frac{dv(t)}{dt}=-\left[v(t)-V_{0}\right]+\mu+\sigma\sqrt{2\tau}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Random walk model and Wiener process 
+\end_layout
+
+\begin_layout Subsubsection
+Stein model and Ornstein-Uhlenbeck process 
+\end_layout
+
+\begin_layout Itemize
+Drift and diffusion coefficients 
+\begin_inset Formula 
+\begin{align*}
+\mu & =\tau_{\text{m}}(a_{E}\lambda_{E}-a_{I}\lambda_{I})\\
+\sigma^{2} & =\frac{\tau_{\text{m}}}{2}\left(a_{E}^{2}\lambda_{E}+a_{I}^{2}\lambda_{I}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Gaussian approximation 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p(v,t)=\frac{1}{\sqrt{2\pi\sigma(t;v_{0})}}\exp\left\{ -\frac{[v-\mu(t;v_{0})]^{2}}{2\sigma^{2}(t;v_{0})}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gaussian approximation is accurate in the limit of large number of small-amplitu
+de synaptic inputs 
+\end_layout
+
+\begin_layout Itemize
+Error scales as 
+\begin_inset Formula $1/\sqrt{N}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Stein model with conductance synapses 
+\end_layout
+
+\begin_layout Itemize
+Dynamic are governed 
+\begin_inset Formula 
+\[
+\tau_{\text{m}}\frac{dv(t)}{dt}=-[v(t)-V_{0}]+g_{E}[V_{E}-v(t)]S_{E}(t)+g_{I}[V_{I}-v(t)]S_{I}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discontinuous jumps associated with each synaptic input are now 
+\series bold
+state dependent
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Jump size depends on the value of the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $v(t)$
+\end_inset
+
+ is close to reversal potential, then the jumps are small, otherwise they
+ are large 
+\end_layout
+
+\begin_layout Itemize
+The discontinuous nature of the trajectory, together with the nonlinear
+ summation of the PSPs complicates the analytical study of the model 
+\end_layout
+
+\begin_layout Itemize
+Convenient to model corresponding diffusion model 
+\end_layout
+
+\begin_layout Subsubsection
+Renewal equation 
+\end_layout
+
+\begin_layout Itemize
+Diffusion and Gaussian approximation, time at which the membrane potential,
+ 
+\begin_inset Formula $v(t)$
+\end_inset
+
+, crosses the threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ for the first time 
+\end_layout
+
+\begin_layout Itemize
+The first passage time density 
+\begin_inset Formula $f_{\theta}(t)$
+\end_inset
+
+ represents the output interspike interval distribution 
+\begin_inset Formula 
+\[
+p(V_{\text{th}},t\bigr|v_{0},t_{0})=\int_{t_{0}}^{t}dt'f_{\theta}(t')p(V_{\text{th}},t\bigr|v_{0},t')
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $p(v,t\bigr|v',t')$
+\end_inset
+
+ is the conditional probability defined in the description of the Gaussian
+ approximation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(V_{\text{th}},t\bigr|v_{0},t_{0})$
+\end_inset
+
+ considers all membrane potential traces including those which already passed
+ the threshold at earlier time 
+\begin_inset Formula $t'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Exact for 
+\begin_inset Formula $\delta$
+\end_inset
+
+-synapses, otherwise it is approximate, since finite synaptic time constants
+ introduce temporal correlations that destroy renewal property of the equation
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What is does renewal property means in this context 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve renewal equation using Laplace transform and time-translation invariance
+ 
+\begin_inset Formula $p(v,t\bigr|v_{0},t_{0})=p(v,t-t_{0}\bigr|v_{0},0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fokker-Planck formalism 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck formalism enables a systematic perturbative expansion that
+ has proven useful in the study of finite synaptic time constants and temporal
+ correlations 
+\end_layout
+
+\begin_layout Itemize
+Average output or emission rate can be determined by average inter-spike
+ interval 
+\begin_inset Formula 
+\[
+\lambda_{\text{out}}=[\tau_{\text{r}}+\overline{T}_{\text{ISI}}]^{-1}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\overline{T}_{\text{ISI}}=\int_{0}^{\infty}dt\,t\,f_{\theta}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Higher moments of the interspike interval distribution play important role
+ in understanding the statistic of the model 
+\end_layout
+
+\begin_layout Itemize
+Coefficient of variation 
+\begin_inset Formula $C_{\text{V}}$
+\end_inset
+
+ of the interspike interval distribution 
+\begin_inset Formula 
+\[
+C_{\text{V}}=\frac{\sqrt{\text{Var}[T_{\text{ISI}}]}}{\text{E}[T_{\text{ISI}}]}=\frac{\sqrt{\overline{(T_{\text{ISI}}-\overline{T}_{\text{ISI}})^{2}}}}{\text{E}[T_{\text{ISI}}]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The spiking rate and interspike interval distribution
+\end_layout
+
+\begin_layout Subsection
+Perfect integrator neuron model 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The leaky integrate-and-fire neuron model 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Extensions of the integrate-and-fire neuron
+\end_layout
+
+\begin_layout Subsection
+Finite synaptic time constants 
+\end_layout
+
+\begin_layout Subsection
+Temporal correlations in the synaptic input 
+\end_layout
+
+\begin_layout Subsection
+Adaptation and relative refractory effects 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Spike-rate adaptation
+\series default
+: Lengthening of the interspike intervals over time when a neuron is injected
+ with a constant current before it settles into a 
+\series bold
+steady-state value
+\end_layout
+
+\begin_layout Itemize
+Inclusion of adaptation into the framework of integrate-and-fire models
+ is problematic 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reset mechanism after the spike emission means that the history of the m
+\end_layout
+
+\begin_layout Itemize
+embrane potential and previous spike times is forgotten 
+\end_layout
+
+\begin_layout Itemize
+Renewal behavior facilitates the analytic study, but makes including adaptation
+ difficult 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Leaky integrate-and-fire neuron with conductance synapses and adaptation
+ current 
+\begin_inset Formula 
+\[
+I_{\text{adapt}}(t)=-g_{\text{adapt}}(t)[v(t)-V_{0}]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g_{\text{adapt}}(t)$
+\end_inset
+
+ is a time-dependent shunting conductance 
+\end_layout
+
+\begin_layout Itemize
+Shunting refers to synaptic conductance short-circuit currents (short-circuit
+ allows current to flow along unintended path with no or very low impedance)
+\end_layout
+
+\begin_layout Itemize
+Each output spike increases this conductance by a fixed amount 
+\begin_inset Formula $g_{\text{inc}}$
+\end_inset
+
+ and between spikes the conductance decays exponentially 
+\begin_inset Formula 
+\[
+\tau_{\text{adapt}}(t)\frac{dg_{\text{adapt}}(t)}{dt}=-g_{\text{adapt}}(t)+\sum_{t_{\text{out}}}g_{\text{inc}}\delta(t-t_{\text{out}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Adaptation mechanism mimics the activation of the fast potassium current
+ that occurs after a spike is generated 
+\end_layout
+
+\begin_layout Itemize
+Alternative methods to introduce spike-rate adaptation
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Increase the threshold for a time following the generation of a spike 
+\end_layout
+
+\begin_layout Enumerate
+Include relative refractory into the model 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
