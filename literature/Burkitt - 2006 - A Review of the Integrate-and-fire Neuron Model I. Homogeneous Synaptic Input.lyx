@@ -354,7 +354,7 @@ Conductance synapses
 Synaptic current 
 \begin_inset Formula 
 \[
-I_{\text{s}}(t)=C_{\text{m}}[V_{E}-v(t)]\sum_{k=1}^{N_{E}}g_{E,k}(t)+C_{\text{m}}[V_{I}-v(t)]\sum_{k=1}^{N_{E}}g_{I,k}(t)
+I_{\text{s}}(t)=C_{\text{m}}[V_{E}-v(t)]\sum_{k=1}^{N_{E}}g_{E,k}(t)+C_{\text{m}}[V_{I}-v(t)]\sum_{k=1}^{N_{I}}g_{I,k}(t)
 \]
 
 \end_inset
@@ -381,18 +381,23 @@ Reversal potential
 \begin_deeper
 \begin_layout Itemize
 If 
-\begin_inset Formula $v(t)<V_{E},$
+\begin_inset Formula $v(t)>V_{I},$
 \end_inset
 
- then EPS current is positive 
+ IPS current is negative, membrane potential approaches 
+\begin_inset Formula $V_{I}$
+\end_inset
+
+ asymptotically for purely inhibitory input 
 \end_layout
 
 \begin_layout Itemize
 If 
-\begin_inset Formula $v(t)>V_{E},$
+\begin_inset Formula $v(t)<V_{E}$
 \end_inset
 
- then EPS current is negative 
+ always, i.e.
+ EPS current is always positive
 \end_layout
 
 \begin_layout Itemize
@@ -569,6 +574,13 @@ Representation of the neuron as a point means that there is no clear distinction
  between these two sources 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+One could introduce synaptic noise by drawing the synaptic weight from a
+ distribution at time arrivals 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 They need to treated together in terms of the variance of the fluctuations
  in the membrane potential 
@@ -661,7 +673,11 @@ de synaptic inputs
 \end_layout
 
 \begin_layout Itemize
-Error scales as 
+
+\series bold
+Error scales
+\series default
+ as 
 \begin_inset Formula $1/\sqrt{N}$
 \end_inset
 
@@ -711,7 +727,7 @@ The discontinuous nature of the trajectory, together with the nonlinear
 \end_layout
 
 \begin_layout Itemize
-Convenient to model corresponding diffusion model 
+It is therefor more convenient to model corresponding diffusion model 
 \end_layout
 
 \begin_layout Subsubsection
@@ -887,6 +903,14 @@ f_{m_{\theta}}(t)=\frac{\lambda_{E}^{m_{\theta}}t^{m_{\theta}-1}e^{-\lambda t}}{
 For excitatory and inhibitory inputs the first passage time density may
  be calculated using the renewal equation for the first passage time using
  Laplace transforms 
+\begin_inset Formula 
+\[
+f_{m_{\theta}}(t)=m_{\theta}\left(\frac{\lambda_{E}}{\lambda_{I}}\right)^{m_{\theta}/2}\frac{e^{-(\lambda_{E}+\lambda_{I})t}}{t}I_{m_{\theta}}(2t\sqrt{\lambda_{E}\lambda_{I}})
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -894,16 +918,213 @@ The leaky integrate-and-fire neuron model
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+Current-
+\series default
+based synapses 
+\end_layout
+
+\begin_layout Itemize
+To equivalent approaches: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+First-passage time problem 
+\end_layout
+
+\begin_layout Enumerate
+Fokker-Planck formalism 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Equation for average first passage time, i.e.
+ emission rate can be calculated using both formalism
+\end_layout
+
+\begin_layout Itemize
+The stationary distribution for the membrane potential can be calculated
+ from the Fokker-Planck formalism 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conductance
+\series default
+-based synapses 
+\end_layout
+
+\begin_layout Itemize
+Jumps become voltage dependent 
+\end_layout
+
+\begin_layout Itemize
+Approximate first passage time by the instant at which the 
+\series bold
+mean
+\series default
+ membrane potential crosses the threshold 
+\end_layout
+
+\begin_layout Itemize
+This procedure breaks down when the membrane potential approaches asymptotically
+ a sub-threshold value 
+\end_layout
+
+\begin_layout Itemize
+Analytic solution for 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function conductance synaptic input 
+\begin_inset Formula 
+\begin{align*}
+\mu_{Q} & =\tau_{Q}\left(\frac{V_{0}}{\tau_{\text{m}}}+r_{11}\right),\\
+\sigma_{Q}^{2} & =\frac{\mu_{Q}^{2}r_{20}-2\mu_{Q}r_{21}+r_{22}}{2\tau_{Q}-r_{20}},
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tau_{Q}} & =\frac{1}{\tau_{\text{m}}}+r_{10}\\
+r_{kl} & =\lambda_{I}g_{I}^{k}V_{I}^{l}+\lambda_{I}g_{I}^{k}V_{E}^{l}
+\end{align*}
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-TODO
+Here 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ are exponents and no indexes
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Introduce excitatory and inhibitory conductances 
+\begin_inset Formula $G_{E}=g_{E}\lambda_{E},\quad G_{I}=g_{I}\lambda_{I}$
+\end_inset
+
+, the effective membrane time constant take the simple form 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tau_{Q}} & =g_{L}+G_{E}+G_{I}\\
+\mu_{Q} & =\tau_{Q}(g_{L}V_{0}+G_{E}E_{E}+G_{E}E_{I})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the large 
+\begin_inset Formula $N_{E},N_{I}$
+\end_inset
+
+ limit, the individual synaptic conductances do not scale, it is sufficient
+ that 
+\begin_inset Formula $g_{E},g_{I}\ll1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is in contrast to the case with current synapses, for which 
+\begin_inset Formula $a_{E},a_{I}$
+\end_inset
+
+ scale as 
+\begin_inset Formula $1/\sqrt{N}$
+\end_inset
+
+ where 
+\begin_inset Formula $N=N_{E},N_{I}$
+\end_inset
+
+ respectively 
+\end_layout
+
+\begin_layout Itemize
+Output spiking-rate is given by the LIF neuron equation using 
+\begin_inset Formula $\mu_{Q},\sigma_{Q}^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+ above 
+\end_layout
+
+\begin_layout Itemize
+More general equation for the emission rate and a equation for the stationary
+ distribution of the membrane potential 
+\begin_inset Formula $P_{0}(v)$
+\end_inset
+
+ has been derived using the Fokker-Planck formalism (Richardson 2004)
+\end_layout
+
+\begin_layout Itemize
+Essential difference of conductance synapses to current synapses is that
+ the membrane potential approaches 
+\begin_inset Formula $\mu_{Q}$
+\end_inset
+
+ with an 
+\series bold
+effective membrane time constant
+\series default
+ 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+ that is 
+\series bold
+less
+\series default
+ then the passive time constant 
+\begin_inset Formula $\tau_{\text{m}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As the rates 
+\begin_inset Formula $\lambda_{E}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{I}$
+\end_inset
+
+ increase, the effective time constant 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+ decreases, due to the neuron becoming more leaky as more synaptic channel
+ open 
 \end_layout
 
 \begin_layout Section
@@ -914,8 +1135,152 @@ Extensions of the integrate-and-fire neuron
 Finite synaptic time constants 
 \end_layout
 
+\begin_layout Itemize
+Effect of the synaptic time constant 
+\begin_inset Formula $\tau_{\text{s}}$
+\end_inset
+
+ may be approximated in the model by modeling the synaptic input as a 
+\series bold
+dynamical quantity
+\series default
+ 
+\begin_inset Formula 
+\[
+\tau_{\text{m}}\frac{dv(t)}{dt}=-[v(t)-V_{0}]+R_{\text{m}}I_{\text{s}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic current 
+\begin_inset Formula $I_{\text{s}}(t)$
+\end_inset
+
+ obeys the Langevin equation 
+\begin_inset Formula 
+\[
+\tau_{\text{s}}\frac{dI_{s}(t)}{dt}=-I_{\text{s}}(t)+\mu+\sigma\sqrt{2\tau_{\text{s}}}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is possible to write a Fokker-Planck equation for the probability density
+ 
+\begin_inset Formula $P(v,I_{\text{s}},t)$
+\end_inset
+
+ (Brunel and Sergi 1998)
+\end_layout
+
+\begin_layout Itemize
+Stationary solution can be obtained by expanding as a power series in the
+ parameter 
+\begin_inset Formula $k=\sqrt{\tau_{\text{s}}/\tau_{\text{m}}}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In case of conductance synapses, finite synaptic time constants are introduced
+ in an analogous fashion to current synapses 
+\begin_inset Formula 
+\[
+\tau_{\text{s}}\frac{dg(t)}{dt}=-g(t)+g_{0}+\sigma_{g}\sqrt{2\tau_{\text{s}}}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analytic study of this model is more complicated than current synapses,
+ since the resulting fluctuations are not simply additive (as they are for
+ the current synapse)
+\end_layout
+
+\begin_layout Itemize
+They have a component with a multiplicative dependence upon the membrane
+ potential 
+\end_layout
+
+\begin_layout Itemize
+Perturbation method has been developed by (Richardson and Gerstner 2005)
+ which successfully describes 
+\series bold
+non-Gaussian
+\series default
+ nature of the 
+\series bold
+free
+\series default
+ membrane potential
+\end_layout
+
+\begin_layout Itemize
+First order gives effective-time-constant approximation and higher orders
+ give the skew of the distribution 
+\end_layout
+
+\begin_layout Itemize
+Due to the multiplicative noise, there is no straightforward extension of
+ the results for the spiking-rate and 
+\begin_inset Formula $C_{V}$
+\end_inset
+
+ obtained for 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function synaptic input using the Fokker-Planck formalism ((Lindner and
+ Longtin 2005a, in press)
+\end_layout
+
 \begin_layout Subsection
 Temporal correlations in the synaptic input 
+\end_layout
+
+\begin_layout Itemize
+Existence of correlations in the arrival times of input on different synapses
+ 
+\end_layout
+
+\begin_layout Itemize
+Temporal correlations in the synaptic input current 
+\begin_inset Formula $I_{s}(t)$
+\end_inset
+
+ can be included by modeling the current as colored noise 
+\begin_inset Formula 
+\[
+\left\langle \eta(t)\right\rangle =0,\quad\left\langle \eta(t)\eta(t')\right\rangle =\exp\left(\frac{-\bigl|t-t'\bigr|}{\tau_{\text{c}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Colored noise can be generated from Gaussian white noise using the Langevin
+ equation 
+\begin_inset Formula 
+\[
+\tau_{\text{c}}\frac{d\eta(t)}{dt}=-\eta(t)+\sqrt{2\tau_{\text{c}}}\xi(t)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1010,6 +1375,173 @@ Include relative refractory into the model
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Relationship to the Hodgkin-Huxley model and electrophysiological date 
+\end_layout
+
+\begin_layout Section
+Discussion 
+\end_layout
+
+\begin_layout Subsection
+ISI variability with the integrate-and-fire model 
+\end_layout
+
+\begin_layout Itemize
+Irregular firing is considered as the ground or resting state of neural
+ networks 
+\end_layout
+
+\begin_layout Itemize
+Irregularity is measured by the coefficient of variation of the interspike
+ intervals 
+\end_layout
+
+\begin_layout Itemize
+Balance of excitation and inhibition produces an effective membrane time
+ constant that is much shorter than the passive membrane time constant and
+ is likely cause of irregular firing 
+\end_layout
+
+\begin_layout Itemize
+Comparison of the 
+\begin_inset Formula $C_{V}$
+\end_inset
+
+ between two analytical studies of a sparsely connected network of integrate-and
+-fire neurons
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+current synapses (Brunel 2000)
+\end_layout
+
+\begin_layout Enumerate
+conductance synapses (Meffin 2004)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Different mechanism underlie the irregular spiking in these two models 
+\end_layout
+
+\begin_layout Itemize
+In case of conductance-based synapses, irregular firing is maintained across
+ different levels of external input through changes in the effective membrane
+ time constant 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+This causes a rapid charging of the membrane potential to values just below
+ threshold, and then random fluctuations then occasionally cause it to cross
+ threshold 
+\end_layout
+
+\begin_layout Itemize
+Does not require 
+\series bold
+strict 
+\series default
+balance between excitation and inhibition 
+\end_layout
+
+\begin_layout Itemize
+Why is this required in case of current synapses?
+\end_layout
+
+\begin_layout Subsection
+Gain modulation 
+\end_layout
+
+\begin_layout Itemize
+How does the amplitude of the output response of a system can be changed
+ in a nonlinear way 
+\end_layout
+
+\begin_layout Itemize
+How is a neuron's spiking-rate (in response to a stimulus) modulated by
+ features in the internal or external environment 
+\end_layout
+
+\begin_layout Itemize
+How do neuron achieve the nonlinear, multiplicative behavior characteristic
+ of gain modulation when their input output relationship is basically integrativ
+e (Neuron is forgettable, it is not a perfect integrator) 
+\end_layout
+
+\begin_layout Itemize
+Gain can be modulated by the degree of correlation of the synaptic input
+ (synchronous stimulation)
+\end_layout
+
+\begin_layout Itemize
+Balance of components of the synaptic input provide a mechanism for nonlinear
+ gain modulation 
+\end_layout
+
+\begin_layout Itemize
+Increasing the balance in the background activity can be understood in terms
+ of two competing processes both influenced by the effective membrane time
+ constant 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Contribution of a driving excitatory synaptic input to the mean membrane
+ potential is approximately linear in the spiking-rate of the driving input
+ 
+\end_layout
+
+\begin_layout Itemize
+If the level of background activity increases, the effective time constant
+ 
+\begin_inset Formula $\tau_{Q}$
+\end_inset
+
+ decreases 
+\end_layout
+
+\begin_layout Itemize
+This leads to a lower 
+\begin_inset Formula $\mu_{Q}$
+\end_inset
+
+ which leads to smaller out-put rate because 
+\begin_inset Formula $\sigma_{Q}^{2}$
+\end_inset
+
+ is approximately constant 
+\end_layout
+
+\begin_layout Itemize
+However, neuron operators on a faster time scale, i.e.
+ it reaches 
+\begin_inset Formula $\mu_{Q}$
+\end_inset
+
+ faster 
+\end_layout
+
+\begin_layout Itemize
+Linear regime, these to effects approximately cancel and there is no gain
+ modulation 
+\end_layout
+
+\begin_layout Itemize
+When the neuron is in the nonlinear regime, the effect of the extra leakiness
+ dominates over the effect of the faster time scale, resulting in diminished
+ gain as the level of background activity 
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
