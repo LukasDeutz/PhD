@@ -3876,7 +3876,7 @@ Classification of operators
 \end_layout
 
 \begin_layout Itemize
-Linear operator theory: Linear operators in vector spacec
+Linear operator theory: Linear operators in vector spaces
 \end_layout
 
 \begin_layout Subsubsection
@@ -3931,16 +3931,20 @@ Completely continuous operators
 
 \begin_layout Itemize
 Completely continuous linear operators help us to formulate a concept of
- eigenvalues and eigenvectors tat work in function spaces 
+ eigenvalues and eigenvectors that work in function spaces 
 \end_layout
 
 \begin_layout Itemize
 Continuity of linear operators is not sufficient, but we need to develop
  the notion of 
+\series bold
+complete
 \emph on
-complete 
+ 
 \emph default
-continuous linear operators 
+continuous linear operators
+\series default
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -4153,7 +4157,7 @@ Definition (Locally continuous linear operator)
 
 \begin_deeper
 \begin_layout Itemize
-Consider to Banach spaces 
+Consider the Banach spaces 
 \begin_inset Formula $X$
 \end_inset
 
@@ -4262,7 +4266,7 @@ If
 \begin_inset Formula $T$
 \end_inset
 
- is locally continuous at everywhere in 
+ is locally continuous everywhere in 
 \begin_inset Formula $D(T)$
 \end_inset
 
@@ -4771,17 +4775,467 @@ There exists on
 \begin_inset Formula $S$
 \end_inset
 
- an infinite number of points all of which equi-separated.
- Not matter what subsequence are picked from the original sequence 
+ an infinite number of points all of which equi-separated
 \end_layout
 
 \begin_layout Itemize
-The subsequence does not longer be convergent 
+Think about the sequence 
+\begin_inset Formula $\{e_{1},e_{2},\ldots\}$
+\end_inset
+
+.
+ All neighboring points have a distance 
+\begin_inset Formula $\sqrt{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Not matter what subsequence are picked from the original sequence, the subsequen
+ce does not longer be convergent 
 \end_layout
 
 \begin_layout Subsection
 Loss of eigenvectors in infinite dimension 
 \end_layout
 
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $H$
+\end_inset
+
+ is a linear, bounded, and self-adjoint operator in an infinite-dimensional
+ Hilbert space 
+\end_layout
+
+\begin_layout Itemize
+We further assume that 
+\begin_inset Formula $H$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+(Hx,x)\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relation 
+\begin_inset Formula 
+\[
+Hx_{0}=\lambda x_{0}
+\]
+
+\end_inset
+
+should provide a way of determining the eigenvalue and eigenvector of 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda$
+\end_inset
+
+ must be non-negative real number
+\begin_inset Formula 
+\[
+0\leq(H_{0}x_{0},x_{0})\text{=}\lambda(x_{0},x_{0})\Rightarrow\lambda>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Try to find maximum eigenvalue of 
+\begin_inset Formula $H$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+0\leq(Hx,x)\leq\left\Vert Hx\right\Vert \cdot\left\Vert x\right\Vert \leq\left\Vert H\right\Vert \left\Vert x\right\Vert ^{2}
+\]
+
+\end_inset
+
+where we used
+\begin_inset Formula 
+\[
+\left\Vert H\right\Vert =\sup\frac{\left\Vert Hx\right\Vert }{\left\Vert x\right\Vert }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Divide by 
+\begin_inset Formula $\left\Vert x\right\Vert ^{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0\leq\left(H\frac{x}{\left\Vert x\right\Vert },\frac{x}{\left\Vert x\right\Vert }\right)\leq\left\Vert H\right\Vert 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Setting 
+\begin_inset Formula $y=x/\left\Vert x\right\Vert $
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+0\leq\left(Hy,y\right)\leq\left\Vert H\right\Vert 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note 
+\begin_inset Formula $\left\Vert y\right\Vert =1$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $y\in S$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If we assume 
+\begin_inset Formula $y$
+\end_inset
+
+ is a normed eigenvector of 
+\begin_inset Formula $H$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(Hy,y\right)=\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula $0\leq\left(Hy,y\right)\leq\left\Vert H\right\Vert $
+\end_inset
+
+ allows us to define an upper bound for the eigenvalues of 
+\begin_inset Formula $H$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\lambda_{\text{max}}=\max_{y\in S}(Hy,y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Non-compact nature of 
+\begin_inset Formula $S$
+\end_inset
+
+ prevents us from finding 
+\begin_inset Formula $y$
+\end_inset
+
+ that makes 
+\begin_inset Formula $(Hy,y)$
+\end_inset
+
+ maximal 
+\end_layout
+
+\begin_layout Itemize
+Imagine that the point 
+\begin_inset Formula $y$
+\end_inset
+
+ is traveling over 
+\begin_inset Formula $S$
+\end_inset
+
+ which results in a variation in 
+\begin_inset Formula $(Hy,y)$
+\end_inset
+
+ while the value 
+\begin_inset Formula $(Hy,y)$
+\end_inset
+
+ is restricted within the closed interval 
+\begin_inset Formula $[0,\left\Vert H\right\Vert ]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider supremum 
+\begin_inset Formula 
+\[
+\overline{\lambda}=\sup_{y\in S}(Hy,y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $\overline{\lambda}\leq\left\Vert H\right\Vert $
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+ is a candidate for the maximum of 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+ is the supremum of 
+\begin_inset Formula $(Hy,y)$
+\end_inset
+
+ there exists a point sequence 
+\begin_inset Formula $\{y_{1},y_{2},\ldots,y_{n},\ldots\}$
+\end_inset
+
+ on 
+\begin_inset Formula $S$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+\overline{\lambda}-(Hy_{n},y_{n})<\frac{1}{n},\quad\text{for any }n=1,2,\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sequence 
+\begin_inset Formula $\{(Hy_{n},y_{n})\}$
+\end_inset
+
+ approaches 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+ unlimitedly 
+\end_layout
+
+\begin_layout Itemize
+But 
+\begin_inset Formula $\{y_{n}\}$
+\end_inset
+
+ does not converge to any point on 
+\begin_inset Formula $S$
+\end_inset
+
+ due to the loss of compactness 
+\end_layout
+
+\begin_layout Itemize
+There exists no vector 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ which is in one-to-one correspondence to 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is impossible to find on 
+\begin_inset Formula $S$
+\end_inset
+
+ such a 
+\begin_inset Formula $y$
+\end_inset
+
+ that makes 
+\begin_inset Formula $(Hy,y)$
+\end_inset
+
+ to be maximum 
+\end_layout
+
+\begin_layout Subsection
+Eigenvalue of completely continuous operator 
+\end_layout
+
+\begin_layout Subsubsection
+Condition imposed on continuous operator 
+\end_layout
+
+\begin_layout Itemize
+We can not rely on 
+\begin_inset Formula $Hx_{0}=\lambda x_{0}$
+\end_inset
+
+ anymore in infinite dimensional spaces
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S$
+\end_inset
+
+ is not compact, there contrivance to improve the convergence property of
+ 
+\begin_inset Formula $\{y_{n}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Instead of 
+\begin_inset Formula $\{y_{n}\}$
+\end_inset
+
+, we rely on 
+\begin_inset Formula $\{Hy_{n}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Condition for continuous operator
+\series default
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ (Cross)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\{x_{n}\}$
+\end_inset
+
+ be an infinite point sequence on 
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we pick up an appropriate subsequence 
+\begin_inset Formula $\{x_{n_{i}}\}$
+\end_inset
+
+ from 
+\begin_inset Formula $\{x_{n}\}$
+\end_inset
+
+, then the subsequence is mapped by an operator 
+\begin_inset Formula $H$
+\end_inset
+
+ to 
+\begin_inset Formula $\{Hx_{n_{i}}\}$
+\end_inset
+
+ that is convergent on 
+\begin_inset Formula $S$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Theorem
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If self-adjoint operator 
+\begin_inset Formula $H$
+\end_inset
+
+ in 
+\begin_inset Formula $S$
+\end_inset
+
+ is linear, bounded, and satisfies the condition (cross), the operator possess
+ an eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and eigenvector 
+\begin_inset Formula $x_{0}\neq0$
+\end_inset
+
+ such as 
+\begin_inset Formula 
+\[
+Hx_{0}=\lambda x_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
