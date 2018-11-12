@@ -6935,10 +6935,10 @@ which is called discriminant
 \begin_deeper
 \begin_layout Itemize
 If 
-\begin_inset Formula $D>0$
+\begin_inset Formula $D<0$
 \end_inset
 
-, we say the PDE is parabolic: Shows diffusion-like behavior 
+, we say the PDE is elliptic: They are static equation
 \end_layout
 
 \begin_layout Itemize
@@ -6946,18 +6946,69 @@ If
 \begin_inset Formula $D=0$
 \end_inset
 
-, we say that it is elliptic: They are static equation
+, we say that it is parabolic: Shows diffusion-like behavior 
 \end_layout
 
 \begin_layout Itemize
 If 
-\begin_inset Formula $D<0$
+\begin_inset Formula $D>0$
 \end_inset
 
 , we say that it is hyperbolic: Shows wave like behavior 
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+The terminology comes from the familiar classification of plane curve
+\end_layout
+
+\begin_layout Itemize
+For example 
+\begin_inset Formula $Ax^{2}+Ct^{2}=1,$
+\end_inset
+
+where 
+\begin_inset Formula $A,C>0$
+\end_inset
+
+ and 
+\begin_inset Formula $B=0$
+\end_inset
+
+, so 
+\begin_inset Formula $D<0$
+\end_inset
+
+ graphs as an ellipse 
+\end_layout
+
+\begin_layout Itemize
+Introduce coordinate 
+\begin_inset Formula $y=x/\sqrt{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $s=t/\sqrt{C}$
+\end_inset
+
+ would yield 
+\begin_inset Formula $y^{2}+t^{2}=1$
+\end_inset
+
+ which is a sphere in the 
+\begin_inset Formula $yt$
+\end_inset
+
+-plane 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Ax^{2}-Ct^{2}=1$
+\end_inset
+
+ graphs a hyperbola 
+\end_layout
+
 \begin_layout Itemize
 If 
 \begin_inset Formula $A,B,$
@@ -7029,11 +7080,703 @@ Principle part can be simplified
 \end_layout
 
 \begin_layout Itemize
+Examine case where 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ are constant and seek a linear transformation 
+\begin_inset Formula 
+\[
+\xi=ax+bt,\quad\tau=cx+dt
+\]
+
+\end_inset
+
+that simplifies 
+\begin_inset Formula $Lu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We assume 
+\begin_inset Formula $ad-bc\neq0$
+\end_inset
+
+, so the transformation is invertible 
+\end_layout
+
+\begin_layout Itemize
+Denote 
+\begin_inset Formula $U=U(\xi,\tau)$
+\end_inset
+
+ and 
+\begin_inset Formula $u(x,t)=U(ax+bt,\,cx+dt)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chain rule 
+\begin_inset Formula 
+\begin{align*}
+u_{x} & =U_{\xi}\xi_{x}+U_{\tau}\tau_{x}=aU_{\xi}+cU_{\tau}\\
+u_{t} & =U_{\xi}\xi_{t}+U_{\tau}\tau_{t}=bU_{\xi}+dU_{\tau}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+u_{xx} & =a^{2}U_{\xi\xi}+2acU_{\xi\tau}+c^{2}U_{\tau\tau}\\
+u_{xt} & =abU_{\xi\xi}+(ad+cb)U_{\xi\tau}+cdU_{\tau\tau}\\
+u_{tt} & =b^{2}U_{\xi\xi}+2bdU_{\xi\tau}+d^{2}U_{\tau\tau}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting into the principle part yields 
+\begin_inset Formula 
+\begin{align*}
+Au_{xx}+Bu_{xt}+Cu_{tt} & =(Aa^{2}+Bab+Cb^{2})U_{\xi\xi}\\
+ & +(2acA+B(ad+bc)+2Cbd)U_{\xi\tau}\\
+ & +(Ac^{2}+Bcd+Cd^{2})U_{\tau\tau}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hyperbolic case
+\series default
+, 
+\begin_inset Formula $D>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choosing 
+\begin_inset Formula $a=c=1$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+b=\frac{-B+\sqrt{D}}{2C},\quad d=\frac{-B-\sqrt{D}}{2C}
+\]
+
+\end_inset
+
+transform the PDE into 
+\begin_inset Formula 
+\[
+U_{\xi t}+G(\xi,\tau,U,U_{\xi},U_{\tau})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is called canonical form of the hyperbolic equation and the coordinates
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are called characteristic coordinates 
+\end_layout
+
+\begin_layout Part*
+Partial differential equations on unbounded domains 
+\end_layout
+
+\begin_layout Subsection*
+Cauchy Problem for the Heat Equation 
+\end_layout
+
+\begin_layout Itemize
+Problems on unbounded spatial domains
+\end_layout
+
+\begin_layout Itemize
+Heat equation, or diffusion equation, on the real line
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx},\quad x\in R,\quad t>0,
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial value 
+\begin_inset Formula $u(x,0)=\phi(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pure initial value problem is often called a 
+\series bold
+Chauchy problem
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Let us consider 
+\begin_inset Formula 
+\begin{align*}
+w_{t} & =kw_{xx}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $w(x,0)=0$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+ and 
+\begin_inset Formula $w(x,0)=u_{0}$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dimensional analysis,
+\series bold
+ pi theorem
+\end_layout
+
+\begin_layout Itemize
+Whenever a physical law relating dimensioned quantities 
+\begin_inset Formula $q_{1},\ldots,q_{m}$
+\end_inset
+
+, then there is an equivalent physical law relating the independent dimensional
+ less quantities that can be formed from 
+\begin_inset Formula $q_{1},\ldots,q_{m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In our problem 
+\begin_inset Formula $w,u_{0},k,t,x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{w}{u_{0}}$
+\end_inset
+
+ is dimensional less and 
+\begin_inset Formula $x/\sqrt{4kt}$
+\end_inset
+
+ is dimensional less because 
+\begin_inset Formula $[k]=[x^{2}/t]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We expect 
+\begin_inset Formula 
+\[
+\frac{w}{w_{0}}=f\left(\frac{x}{\sqrt{4kt}}\right)
+\]
+
+\end_inset
+
+which we write as 
+\begin_inset Formula 
+\[
+w=f(z),\quad z=\frac{x}{\sqrt{4kt}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chain rule allows to compute partial derivative 
+\begin_inset Formula 
+\begin{align*}
+w_{t} & =f'(z)z_{t}=-\frac{1}{2}\frac{x}{\sqrt{4kt^{3}}}f'(z)\\
+w_{x} & =f'(z)z_{x}=\frac{1}{\sqrt{4kt}}f'(z)\\
+w_{xx} & =\frac{1}{4kt}f''(z)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting into PDE 
+\begin_inset Formula 
+\begin{align*}
+-2\frac{x}{\sqrt{4kt}}f'(z) & =f''(z)\\
+0 & =f''(z)+2f'(z)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply through by integrating factor 
+\begin_inset Formula $e^{z^{2}}$
+\end_inset
+
+ to get 
+\begin_inset Formula 
+\[
+0=y'(z)+2y(z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Separation of variables 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{y}dy & =-2zdz\\
+y & =c_{1}e^{-z^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula 
+\begin{align*}
+f(z) & =c_{1}\int_{0}^{z}dr\,e^{-r^{2}}+c_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we have 
+\begin_inset Formula 
+\[
+w(x,t)=c_{1}\int_{0}^{x/\sqrt{4kt}}e^{-r^{2}}dr+c_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Apply 
+\begin_inset Formula $u_{0}=1$
+\end_inset
+
+ to determine constant 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Remember, 
+\begin_inset Formula $u(x,0)$
+\end_inset
+
+ is a step function 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $x<0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+0=w(x,0)=c_{1}\int_{0}^{-\infty}e^{-r^{2}}dr+c_{2},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $x>0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+1=w(x,0)=c_{1}\int_{0}^{\infty}e^{-r^{2}}dr+c_{2},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We obtain 
+\begin_inset Formula 
+\begin{align*}
+0 & =-\frac{\sqrt{\pi}}{2}c_{1}+c_{2}\\
+1 & =\frac{\sqrt{\pi}}{2}c_{1}+c_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Adding both equation yields 
+\begin_inset Formula 
+\[
+c_{2}=1/2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Subtracting both equation 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{\pi}}=c_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula 
+\[
+w(x,t)=\frac{1}{2}+\frac{1}{\sqrt{\pi}}\int_{0}^{x/\sqrt{4kt}}e^{-r^{2}}dr
+\]
+
+\end_inset
+
+which can be written as 
+\begin_inset Formula 
+\[
+w(x,t)=\frac{1}{2}\left(1+\text{erf}\left(\frac{x}{\sqrt{4kt}}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $w$
+\end_inset
+
+ satisfies the diffusion equation, then 
+\begin_inset Formula $w_{x}$
+\end_inset
+
+ also satisfies it
+\begin_inset Formula 
+\[
+0=\left(w_{t}-kw_{xx}\right)=(w_{x})_{t}-k(w_{x})_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $w(x,t)$
+\end_inset
+
+ solves the heat equation, the function 
+\begin_inset Formula 
+\[
+G(x,t)=w_{x}(x,t)=\frac{1}{\sqrt{4\pi kt}}e^{-\frac{x^{2}}{4kt}}
+\]
+
+\end_inset
+
+also solves the heat equation (Leibniz rule)
+\end_layout
+
+\begin_layout Itemize
+The function 
+\begin_inset Formula $G$
+\end_inset
+
+ is called 
+\series bold
+the heat kernel
+\series default
+ or 
+\series bold
+fundamental
+\series default
+ 
+\series bold
+solution
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G(x,t)$
+\end_inset
+
+ is the temperature surface that results from an initial unit heat source
+ 
+\end_layout
+
+\begin_layout Itemize
+Shifting temperature profile 
+\begin_inset Formula $G(x-y,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\phi(y)$
+\end_inset
+
+ is the magnitude of the source at 
+\begin_inset Formula $y$
+\end_inset
+
+, then 
+\begin_inset Formula $\phi(y)G(x-y,t)$
+\end_inset
+
+ is the profile
+\end_layout
+
+\begin_layout Itemize
+In general 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{-\infty}^{\infty}\phi(y)G(x-y,t)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Another way to write solution by defining 
+\begin_inset Formula $r=(x-y)/\sqrt{4kt}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(r,t)=\frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}e^{-r^{2}}\phi(x-r\sqrt{4kt})dr
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution is integral equation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ is nonzero for every real 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Signal propagated by the hear, or diffusion, equation travels infinitely
+ fast 
+\end_layout
+
+\begin_layout Itemize
+Solution is very smooth, i.e.
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ is infinitely differentiable 
+\end_layout
+
+\begin_layout Itemize
+This is true even if 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is piece wise continuous 
+\end_layout
+
+\begin_layout Itemize
+Heat kernel 
+\begin_inset Formula $G(x,t)$
+\end_inset
+
+ is also called the Green's function 
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Consider 
+\begin_inset Formula 
+\[
+u_{t}=ku_{xx},\quad x\in R,\quad t>0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{0}=1$
+\end_inset
+
+.
+ For a fixed 
+\begin_inset Formula $x=x_{0}$
+\end_inset
+
+ what is the approximate temperature 
+\begin_inset Formula $w(x_{0},t)$
+\end_inset
+
+ for very large 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+w(x_{0},t)=\frac{1}{2}+\frac{1}{\sqrt{\pi}}\int_{0}^{\frac{x_{0}}{\sqrt{4kt}}}e^{-r^{2}}dt
+\]
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-TODO
+Expand exponential 
+\begin_inset Formula 
+\begin{align*}
+w(x_{0},t) & =\frac{1}{2}+\frac{1}{\sqrt{\pi}}\int_{0}^{\frac{x_{0}}{\sqrt{4kt}}}\sum_{n=0}^{\infty}(-1)^{n}\frac{r^{2n}}{n!}dr\\
+ & =\frac{1}{2}+\frac{1}{\sqrt{\pi}}\int_{0}^{\frac{x_{0}}{\sqrt{4kt}}}dr-\frac{1}{\sqrt{\pi}}\int_{0}^{\frac{x_{0}}{\sqrt{4kt}}}r^{2}dr+\frac{1}{2\sqrt{\pi}}\int_{0}^{\frac{x_{0}}{\sqrt{4kt}}}r^{4}\\
+ & =\frac{1}{2}+\frac{1}{\sqrt{\pi}}\left(\frac{x_{0}}{\sqrt{4kt}}-\frac{1}{3}\frac{x_{0}^{3}}{(4kt)^{3/2}}+\frac{1}{10}\frac{x_{0}^{5}}{(4kt)^{5/2}}+\ldots\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $t\rightarrow\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow\infty}w(x_{0},t)\sim\frac{1}{2}+\frac{1}{\sqrt{\pi}}\frac{x_{0}}{\sqrt{4kt}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7041,5 +7784,754 @@ TODO
 
 \end_layout
 
+\begin_layout Enumerate
+If 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ and 
+\begin_inset Formula $v(x,t)$
+\end_inset
+
+ are any two solutions to the heat equation, then 
+\begin_inset Formula $w(x,y,t)=u(x,t)v(y,t)$
+\end_inset
+
+ solves the two-dimensional heat equation 
+\begin_inset Formula $w_{t}=k(w_{xx}+w_{yy})$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $u(x,t)v(y,t)$
+\end_inset
+
+ we find 
+\begin_inset Formula 
+\[
+u_{t}v+uv_{t}=k(u_{xx}v+uv_{yy})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divide by 
+\begin_inset Formula $w=uv$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{u_{t}}{u}+\frac{v_{t}}{v} & =k\frac{u_{xx}}{u}+k\frac{v_{yy}}{v}\\
+\frac{1}{u}\left(u_{t}-ku_{xx}\right) & =\frac{1}{v}\left(kv_{yy}-v_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The terms within the brackets are zero.
+ Guess solution of two-dimensional Cauchy problem
+\begin_inset Formula 
+\begin{align*}
+w_{t} & =k(w_{xx}+w_{yy})\\
+w(x,y,0) & =\psi(x,y)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Guess solution 
+\begin_inset Formula 
+\[
+\int dx\psi(x',y)G(t,x-x')\int dy'\psi(x,y')G(t,y-y')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Cauchy Problem for the wave equation 
+\end_layout
+
+\begin_layout Itemize
+One-dimensional wave equation 
+\begin_inset Formula 
+\[
+u_{tt}-c^{2}u_{xx}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transformation of variables 
+\begin_inset Formula 
+\[
+\xi=x-ct,\quad\tau=x+ct
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chain rule 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =U_{\xi}\xi_{t}+U_{\tau}\tau_{t}\\
+u_{x} & =U_{\xi}\xi_{x}+U_{\tau}\tau_{x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+u_{tt} & =U_{\xi\xi}\xi_{t}\xi_{t}+2U_{\xi\tau}\xi_{t}\tau_{t}+U_{\tau\tau}\tau_{t}\tau_{t}\\
+u_{xx} & =U_{\xi\xi}\xi_{x}\xi_{x}+2U_{\xi\tau}\xi_{x}\tau_{x}+U_{\tau\tau}\tau_{x}\tau_{x}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we find
+\begin_inset Formula 
+\begin{align*}
+u_{tt} & =c^{2}U_{\xi\xi}-2c^{2}U_{\xi\tau}+c^{2}U_{\tau\tau}\\
+u_{xx} & =U_{\xi\xi}+2U_{\xi\tau}+U_{\tau\tau}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting into PDE 
+\begin_inset Formula 
+\begin{align*}
+c^{2}U_{\xi\xi}-2c^{2}U_{\xi\tau}+c^{2}U_{\tau\tau}-c^{2}\left(U_{\xi\xi}+2U_{\xi\tau}+U_{\tau\tau}\right) & =0\\
+-4c^{2}U_{\xi\tau} & =0\\
+U_{\xi\tau} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be integrated twice to obtain the general solution 
+\begin_inset Formula 
+\[
+U(\xi,\tau)=F(\xi)+G(\tau)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+U_{\xi\tau}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate with respect to 
+\begin_inset Formula $\xi$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U_{\tau}=G(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Taking the derivative brings is back to our starting point 
+\begin_inset Formula 
+\[
+U_{\tau\xi}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate with respect to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U=\int_{0}^{\tau}G(\tau')d\tau'+F(\xi)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Taking the derivative with respect to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U_{\tau}=G(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Taking the derivative with respect to 
+\begin_inset Formula $\xi$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U_{\tau\xi}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+General solution 
+\begin_inset Formula 
+\[
+u(x,t)=F(x-ct)+G(x+ct)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Superposition of right- and left-traveling waves moving at speed 
+\begin_inset Formula $c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cauchy problem for the wave equation is 
+\begin_inset Formula 
+\begin{align*}
+u_{tt}-c^{2}u_{xx} & =0
+\end{align*}
+
+\end_inset
+
+with the initial conditions 
+\begin_inset Formula $u(x,0)=f(x),\quad u_{t}(x,0)=g(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation is second order in 
+\begin_inset Formula $t$
+\end_inset
+
+, so both the position and velocity must be specified initially 
+\end_layout
+
+\begin_layout Itemize
+Simple analytic formula for the solution to the Cauchy problem 
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{2}\left(f(x-ct)+f(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+The three-dimensional wave equation is 
+\begin_inset Formula 
+\[
+u_{tt}-c^{2}\Delta u=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For waves with spherical symmetry 
+\begin_inset Formula $u=(\rho,t)$
+\end_inset
+
+ the Laplacian is given by 
+\begin_inset Formula 
+\[
+\Delta u=u_{\rho\rho}+\frac{2}{\rho}u_{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Introducing the change of dependent variable 
+\begin_inset Formula $U=\rho u$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{tt}=c^{2}\left(u_{\rho\rho}+\frac{2}{\rho}u_{\rho}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative 
+\begin_inset Formula 
+\[
+U_{\rho}=\rho u_{\rho}+u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\[
+U_{\rho\rho}=\rho u_{\rho\rho}+2u_{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solving for 
+\begin_inset Formula $u_{\rho\rho}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{\rho}U_{\rho\rho}-\frac{2}{\rho}u_{\rho}=u_{\rho\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\rho}U_{tt} & =c^{2}\left(\frac{1}{\rho}U_{\rho\rho}-\frac{2}{\rho}u_{\rho}+\frac{2}{\rho}u_{\rho}\right)\\
+\frac{1}{\rho}U_{tt} & =c^{2}\frac{1}{\rho}U_{\rho\rho}\\
+U_{tt} & =c^{2}U_{\rho\rho}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Characteristic coordinates 
+\begin_inset Formula 
+\[
+\xi=\rho-ct,\quad\tau=\rho+ct
+\]
+
+\end_inset
+
+yield 
+\begin_inset Formula 
+\[
+U=F(\rho-ct)+G(\rho+ct)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+u=\frac{1}{\rho}\left(F(\rho-ct)+G(\rho+ct)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Outward moving wave decays in amplitude because it covers more area 
+\begin_inset Formula $\sim r^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solve the Cauchy problem 
+\begin_inset Formula 
+\[
+u_{tt}-c^{2}u_{xx}=0
+\]
+
+\end_inset
+
+with initial conditions 
+\begin_inset Formula $u(x,0)=e^{-\left|x\right|},\quad u_{t}(x,0)=\cos(x)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from d'Alembert's formula 
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{2}\left(f(x-ct)+f(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First part 
+\begin_inset Formula 
+\[
+\frac{1}{2}\left(f(x-ct)+f(x+ct)\right)=\frac{1}{2}\left(e^{-\left|x-ct\right|}+e^{-\left|x+ct\right|}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integral part 
+\begin_inset Formula 
+\[
+\frac{1}{2c}\int_{x-ct}^{x+ct}\cos(s)\,ds=\frac{1}{2c}\left(\sin(x+ct)-\sin(x-ct)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Ill-Posed Problems 
+\end_layout
+
+\begin_layout Itemize
+Laplace's equation 
+\begin_inset Formula 
+\[
+u_{xx}+u_{yy}=0
+\]
+
+\end_inset
+
+is a elliptic equilibrium equation 
+\end_layout
+
+\begin_layout Itemize
+We expect boundary conditions rather than initial conditions 
+\begin_inset Formula 
+\[
+u(x,0)=f(x),\quad u_{y}(x,0)=g(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $f(x)=g(x)=0$
+\end_inset
+
+.
+ Then is is clear the only solution is 
+\begin_inset Formula $u(x,y)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Next, change the conditions along the boundary 
+\begin_inset Formula 
+\[
+f(x)=\frac{1}{n}\cos nx,\quad g(x)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution 
+\begin_inset Formula 
+\[
+u(x,y)=\frac{1}{n}\cos nx\cosh ny
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suppose 
+\begin_inset Formula $n$
+\end_inset
+
+ is large, then we have changed the boundary condition 
+\begin_inset Formula $u(x,0)=f(x)$
+\end_inset
+
+ by only a small amount compared to 
+\begin_inset Formula $u(x,0)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Yet the solution changed from zero to a large amount.
+ For example at 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{y\rightarrow\infty}u(0,y)=\frac{\cosh ny}{n}\rightarrow\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Small change of the data on the boundary produced a large change in the
+ solution 
+\end_layout
+
+\begin_layout Itemize
+This behavior is disturbing, because in a physical problem, we expect that
+ the solution should depend continuously on the boundary data 
+\end_layout
+
+\begin_layout Itemize
+Property of continuous dependence is called 
+\series bold
+stability
+\end_layout
+
+\begin_layout Itemize
+Cauchy problem for the Laplace's equation is not a well-posed problem 
+\end_layout
+
+\begin_layout Itemize
+Laplace's equation models steady heat flow, it seems physically reasonable
+ that we need only specify the temperature 
+\begin_inset Formula $u(x,0)$
+\end_inset
+
+ along the boundary or specify the flux 
+\begin_inset Formula $u_{y}(x,0)$
+\end_inset
+
+ but not both 
+\end_layout
+
+\begin_layout Itemize
+The term well-posed in PDEs has a technical meaning.
+ A 
+\series bold
+boundary value
+\series default
+ problem, 
+\series bold
+initial
+\series default
+ 
+\series bold
+value
+\series default
+ problem, an 
+\series bold
+initial boundary value
+\series default
+ problem is we-posed if 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+it has a solution
+\end_layout
+
+\begin_layout Enumerate
+the solution is unique 
+\end_layout
+
+\begin_layout Enumerate
+the solution depends continuously on the initial and boundary data 
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
