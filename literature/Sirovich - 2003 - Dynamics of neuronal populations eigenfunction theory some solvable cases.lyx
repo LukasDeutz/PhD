@@ -820,7 +820,7 @@ Initial condition is similarly decomposed
 We write 
 \begin_inset Formula 
 \[
-\frac{d}{d\tau}\rho_{n}=\rho_{n-1}-\rho_{n}+A[\rho_{N}]\delta(v)
+\frac{d}{d\tau}\rho_{n}=T_{h}\rho_{n-1}-\rho_{n}+A[\rho_{N}]\delta(v)
 \]
 
 \end_inset
@@ -906,7 +906,19 @@ Initially
 \end_layout
 
 \begin_layout Itemize
-Decomposition in the first compartment 
+Decomposition 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}\left(\hat{\rho}_{n}+D_{n}\delta()\right)=T_{h}\hat{\rho}_{n-1}+T_{h}D_{n-1}-\hat{\rho}_{n}-D_{n-1}+A[\hat{\rho}_{N}+D_{N}]\delta(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First compartment
 \begin_inset Formula 
 \[
 \frac{d}{d\tau}D_{1}=-D_{1}+A=-D_{1}+D_{N}+\int_{1-h}^{1}\hat{\rho}_{N}(v')dv'
@@ -974,7 +986,7 @@ T_{h} & -1 &  &  &  & \vdots\\
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Split 
@@ -1154,7 +1166,7 @@ From this follows that
 \begin_inset Formula $L$
 \end_inset
 
- has just one non-zero eigenvalue 
+ has just one non-zero eigenvalue with a single eigenvector
 \end_layout
 
 \begin_layout Itemize
@@ -1168,13 +1180,13 @@ One can check that
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Check 
 \begin_inset Formula 
 \[
-Lv=\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+Lv=\begin{pmatrix}-1+ & 0 & \ldots &  &  & 0\\
 T_{h} & -1 &  &  &  & \vdots\\
 0 & T_{h} & -1\\
 \vdots &  & \ddots & \ddots\\
@@ -1201,8 +1213,33 @@ T_{h} & -1 &  &  &  & \vdots\\
 \end_layout
 
 \begin_layout Plain Layout
-Other vectors 
-\begin_inset Formula $e_{i}=(0,\ldots0,1,0\ldots,0)$
+Determinant 
+\begin_inset Formula 
+\begin{align*}
+\bigl|L-\lambda I\bigr|=-a\begin{vmatrix}-a & 0 &  &  & 0\\
+T_{h} & -a\\
+0 & \ddots & \ddots\\
+ &  & \ddots & \ddots & 0\\
+0 &  & 0 & T_{h} & -a
+\end{vmatrix} & =a^{2}\begin{vmatrix}-a & 0 &  & 0\\
+T_{h} & -a\\
+ & \ddots & \ddots\\
+0 &  & T_{h} & -a
+\end{vmatrix}=\ldots-a^{N}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+\text{det}\left(L-\lambda I\right)=-1^{N}(1+\lambda)^{N}
+\]
+
 \end_inset
 
 
@@ -1308,6 +1345,42 @@ The matrix has full rank.
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Geometric multiplicity 
+\begin_inset Formula $1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{\rho}_{N}(v,t)=e^{-\tau}\sum_{k=1}^{N}\frac{(\tau T_{h})}{(N-k)!}\rho_{0}^{k}(v)=e^{-\tau}\sum_{k=1}^{N}\frac{\tau^{N-k}}{(N-k)!}\rho_{k}^{0}(v-(N-k)h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Term 
+\begin_inset Formula 
+\[
+\int_{1-h}^{1}dv'\hat{\rho}_{N}(v')=e^{-\tau}\sum_{k=1}^{N}\frac{\tau^{N-k}}{(N-k)!}f_{k}^{0}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+f_{k}^{0}=\int_{(k-1)h}^{kh}\rho_{k}^{0}(v-(N-k)h)dv
+\]
 
 \end_inset
 
