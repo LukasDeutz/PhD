@@ -1,0 +1,1318 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Dynamics of neuronal populations: eigenfunction theory; some solvable cases
+ 
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+Population density approach models interacting populations instead of the
+ individual dynamics of connected neurons 
+\end_layout
+
+\begin_layout Itemize
+Optical imaging of the cortex might be regarded as the motivation 
+\end_layout
+
+\begin_layout Section
+Review
+\end_layout
+
+\begin_layout Itemize
+Integrate-and-fire equation 
+\begin_inset Formula 
+\[
+\frac{dv}{dt}=-\gamma v+s,\quad0\leq v\leq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Membrane potential has been normalized such that 
+\begin_inset Formula $v=0$
+\end_inset
+
+ marks the rest state and 
+\begin_inset Formula $v=1$
+\end_inset
+
+ the threshold 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Given a threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{\text{rest}}$
+\end_inset
+
+ we can make a variable transformation 
+\begin_inset Formula 
+\[
+v=\frac{V-V_{\text{res}t}}{V_{\text{th}}-V_{\text{rest}}}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\begin{align*}
+v(V_{\text{rest}}) & =0,\quad v(V_{\text{th}})=1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In general, the membrane potential could become negative, i.e.
+ hyper polarized if the neuron receives strong enough inhibitory input 
+\end_layout
+
+\begin_layout Itemize
+Kistler and Knight have demonstrated with some rigour that the LIF equation
+ can be derived from the Hodgkin-Huxley dynamics 
+\end_layout
+
+\begin_layout Itemize
+Under steady-state input agreement can be excellent 
+\end_layout
+
+\begin_layout Itemize
+Under variable input it remains a good approximation if the input modulation
+ frequency is small relative to firing frequency 
+\end_layout
+
+\begin_layout Itemize
+Probability density 
+\begin_inset Formula $\frac{\partial\rho}{\partial t}=-\frac{\partial}{\partial v}J=\frac{\partial}{\partial v}\left(\gamma v\rho-\frac{s}{h}\int_{v-h}^{v}\rho(v',t)dv'\right)=\frac{\partial}{\partial v}(\gamma v\rho)+\frac{s}{h}\rho(v-h)-\frac{s}{h}\rho(v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Compare to [Omurtag, A., Knight, B.
+ W., & Sirovich, L.
+ 2002] 
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}=\gamma\frac{\partial(v\rho)}{\partial v}+\sigma(t)\left\{ \rho(v-h)-\rho(v)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This needs to be solved given initial data 
+\begin_inset Formula 
+\[
+\rho(v,t=0)=\rho_{0}(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrate-and-fire dynamical model is nonlinear since the membrane potential
+ is reset to zero upon reaching threshold 
+\begin_inset Formula $v=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It forgets its past behavior 
+\end_layout
+
+\begin_layout Itemize
+The flux is composed of backward drift due to leakage 
+\begin_inset Formula $\gamma v$
+\end_inset
+
+ and a forward advection due to synaptic arrival rate
+\begin_inset Formula 
+\[
+\sigma=s/h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Rate of the population 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ is given by the flux of neurons leaving the threshold )
+\begin_inset Formula 
+\[
+r=J(v=1,\,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Number of neurons is preserved, the flux of neurons leaving the interval
+ must be equal to that entering at resting potential 
+\begin_inset Formula 
+\[
+J(\rho)_{v=0}=J(\rho)_{v=1}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If inhibitory input is present, then 
+\begin_inset Formula 
+\[
+J(\rho)+J(\rho)_{v=0^{-}}=J(\rho)_{v=0^{+}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability is conserved 
+\begin_inset Formula 
+\[
+\int_{0}^{1}\rho(v,t)dv=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary condition 
+\begin_inset Formula 
+\[
+\rho(v=1,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eigenfunction problem 
+\end_layout
+
+\begin_layout Itemize
+Eigenfunction equation 
+\begin_inset Formula 
+\[
+\gamma\frac{\partial}{\partial v}(v\phi)-\frac{s}{h}\left\{ \phi(v)-\phi(v-h)\right\} =\lambda\phi
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The partial time derivative on the l.h.s of the equation
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\rho=\rho\frac{\partial}{\partial v}(\gamma v\rho)+\frac{s}{h}\rho(v-h)-\frac{s}{h}\rho(v)
+\]
+
+\end_inset
+
+is replaced by 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is replaced by 
+\begin_inset Formula $\phi$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions 
+\begin_inset Formula 
+\[
+J(\phi)_{v=0}=J(\phi)_{v=1},\quad\phi(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The flux condition ensures that 
+\begin_inset Formula $\lambda=0$
+\end_inset
+
+ is an eigenvalue 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The flux is given by 
+\begin_inset Formula 
+\begin{align*}
+J & =-\gamma v\rho+\frac{s}{h}\int_{v-h}^{v}\rho(v',t)dv'=-\left(\gamma v\rho+\frac{s}{h}\rho(v-h)-\frac{s}{h}\rho(v)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Flux condition 
+\begin_inset Formula 
+\[
+J(\phi)=-\left(\gamma v\phi+\frac{s}{h}\phi(v-h)-\frac{s}{h}\phi(v)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Flux 
+\begin_inset Formula 
+\[
+J(\phi)_{v=1}=-\frac{s}{h}\phi(1-h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Flux 
+\begin_inset Formula 
+\[
+J(\phi)_{v=0}=-\gamma v\phi(0)+\frac{s}{h}\phi(0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigentheory is governed largely by the dimensionless parameter 
+\begin_inset Formula 
+\[
+\theta=\frac{s}{\gamma h}=\frac{\sigma}{\gamma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ratio of the synaptic arrival rate 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ to the leakage rate 
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In realistic situations 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a large parameter 
+\end_layout
+
+\begin_layout Itemize
+For some purposes it is also convenient to regard 
+\begin_inset Formula $h$
+\end_inset
+
+ as a formal small parameter 
+\end_layout
+
+\begin_layout Itemize
+Flux condition 
+\begin_inset Formula $J(0)=J(1)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{s}{h}\int_{0-h}^{0}\rho(v')dv'=\frac{s}{h}\int_{1-h}^{1}\rho(v,t)dv'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We are at liberty to take 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+ outside 
+\begin_inset Formula $0\leq v\leq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This underlines the fact that 
+\begin_inset Formula $\rho$
+\end_inset
+
+ has delta function behavior at the origin 
+\end_layout
+
+\begin_layout Itemize
+All neurons in the interval 
+\begin_inset Formula $v\in(1-h,1)$
+\end_inset
+
+ which receive synaptic arrivals reappear at the origin 
+\end_layout
+
+\begin_layout Itemize
+Such neuron remain trapped at the origin until synaptic arrival jump the
+ neurons to the membrane potential 
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is the arrival rate this delta function can be introduced explicitly 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\rho=\gamma\frac{\partial}{\partial v}(v\rho)-\sigma\left\{ \rho(v,t)-\rho(v-h,t)\right\} +\sigma A(t)\delta(v)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $A(t)=\int_{1-h}^{1}\rho(v',t)dv'=A[\rho]$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Does this term enters naturally if one introduces the reset mechanism into
+ the neuron dynamics? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is constant we can make the variable transformation 
+\begin_inset Formula $\tau=\sigma t$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\tau}\rho=\frac{1}{\theta}\frac{\partial}{\partial v}(v\rho)+\rho(v-h)-\rho(v)+A[\rho]\delta(v)=L\rho
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula 
+\[
+\tau=\sigma t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Chain rule yields
+\begin_inset Formula 
+\begin{align*}
+\rho_{t} & =\rho_{\tau}\frac{d\tau}{dt}=\rho_{\tau}\sigma
+\end{align*}
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\begin{align*}
+\sigma\rho_{\tau} & =\gamma\frac{\partial}{\partial v}(v\rho)+\sigma\left\{ \rho(v-h)-\rho(v)\right\} +\sigma A[\rho]\delta(v)\\
+\rho_{\tau} & =\theta\frac{\partial}{\partial v}(v\rho)+\rho(v-h)-\rho(v)+A[\rho]\delta(v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This form incorporate the flux boundary condition 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Starting from
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\rho=-\frac{\partial}{\partial v}J=-\frac{\partial}{\partial v}\left(J_{\text{str}}+J_{\text{imp}}\right)
+\]
+
+\end_inset
+
+the flux is given by 
+\begin_inset Formula 
+\begin{align*}
+J_{\text{str}} & =-\gamma v\rho\\
+J_{\text{imp}} & =\sigma\int_{v-h}^{v}\rho(v')dv'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Additional term 
+\begin_inset Formula 
+\[
+A[\rho]\delta(v)\rightarrow A[\rho]\Theta(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunction equation 
+\begin_inset Formula 
+\[
+L\phi=\lambda\phi,\quad\phi(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Zero leak 
+\end_layout
+
+\begin_layout Itemize
+Equation 
+\begin_inset Formula $18$
+\end_inset
+
+ and 
+\begin_inset Formula $21$
+\end_inset
+
+ are not transitionally invariant as a result of the leakage 
+\end_layout
+
+\begin_layout Itemize
+Forgetfulness engendered by the zero-reset condition also rules out translationa
+l invariance 
+\end_layout
+
+\begin_layout Itemize
+Limit of zero-leak 
+\begin_inset Formula $\theta\rightarrow\infty$
+\end_inset
+
+ with fixed 
+\begin_inset Formula $h$
+\end_inset
+
+ (
+\begin_inset Formula $\gamma\rightarrow0$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\tau}\rho=\rho(v-h)-\rho(v)+A[\rho]\delta(v)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\rho(t=0)=\rho_{0}(v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the synaptic rate is a function of time, 
+\begin_inset Formula $\sigma=\sigma(t)$
+\end_inset
+
+, time dependence is transformed away by introducing 
+\begin_inset Formula 
+\[
+\tau=\int_{0}^{t}\sigma(t)
+\]
+
+\end_inset
+
+which reduces 
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}=\sigma\left\{ \rho(v-h)-\rho(v)+A[\rho]\delta(v)\right\} 
+\]
+
+\end_inset
+
+to the above equation 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula 
+\[
+\tau=\int_{0}^{t}\sigma(t')dt'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Chain rule 
+\begin_inset Formula 
+\[
+\rho_{t}=\rho_{\tau}\frac{d\tau}{dt}=\rho_{\tau}\sigma(t')
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\rho_{\tau}=\rho(v-h)-\rho(v)+A[\rho]\delta(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Unnecessary assumption
+\begin_inset Formula 
+\[
+\frac{1}{h}=N
+\]
+
+\end_inset
+
+is a integer 
+\end_layout
+
+\begin_layout Itemize
+Compartmentalize the density so that 
+\begin_inset Formula 
+\[
+\rho(v,t)=\sum_{k=1}^{N}\rho_{k}(v,t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\rho_{k}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $v\in[(k-1)h,\,kh]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition is similarly decomposed 
+\begin_inset Formula 
+\[
+\rho_{0}(v)=\sum_{k=1}^{N}\rho_{k}^{(0)}(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We write 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}\rho_{n}=\rho_{n-1}-\rho_{n}+A[\rho_{N}]\delta(v)
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\rho_{n}(\tau=0)=\rho_{n}^{(0)}(v)
+\]
+
+\end_inset
+
+which we assume to be smooth 
+\end_layout
+
+\begin_layout Itemize
+After the first instant a delta function appears at the origin as a result
+ of neurons getting exited in the last subinterval 
+\end_layout
+
+\begin_layout Itemize
+Since the density evolves by incremental jumps of 
+\begin_inset Formula $h$
+\end_inset
+
+, at the next instant a delta function appears at 
+\begin_inset Formula $v=h$
+\end_inset
+
+, and at the following at 
+\begin_inset Formula $2h$
+\end_inset
+
+, and so forth 
+\end_layout
+
+\begin_layout Itemize
+Decomposition 
+\begin_inset Formula 
+\[
+\rho_{k}(v,t)=\hat{\rho}_{k}(v,\tau)+D_{k}(\tau)\delta(v-(k-1)h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The delta functions is located at the left border of the interval 
+\begin_inset Formula $[(k-1)h,\,kh]$
+\end_inset
+
+ on which 
+\begin_inset Formula $\rho_{k}$
+\end_inset
+
+ is defined
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $\hat{\rho}_{k}(v,\tau)$
+\end_inset
+
+ is smooth and 
+\begin_inset Formula $D_{k}(0)$
+\end_inset
+
+ represents the strength of the delta function in the 
+\begin_inset Formula $k$
+\end_inset
+
+th interval 
+\end_layout
+
+\begin_layout Itemize
+Initially 
+\begin_inset Formula $D_{k}(0)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Decomposition in the first compartment 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}D_{1}=-D_{1}+A=-D_{1}+D_{N}+\int_{1-h}^{1}\hat{\rho}_{N}(v')dv'
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}\hat{\rho}_{1}=-\hat{\rho}_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second interval 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}D_{2}=D_{1}-D_{2}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}\hat{\rho}_{2}=T_{h}\hat{\rho}_{1}-\hat{\rho}_{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $T_{h}$
+\end_inset
+
+ is the translational operator 
+\begin_inset Formula 
+\[
+T_{h}g(v)=g(v-h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+These steps carry over to an arbitrary, and we define 
+\begin_inset Formula 
+\[
+L=\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Split 
+\begin_inset Formula 
+\[
+L=A-I
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}0 & 0 & \ldots &  &  & 0\\
+T_{h} & 0 &  &  &  & \vdots\\
+0 & T_{h} & 0\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that for 
+\begin_inset Formula $v=(0,1\ldots,)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Av=T_{h}v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The smooth part 
+\begin_inset Formula 
+\[
+\hat{\boldsymbol{\rho}}=[\hat{\rho}_{1},\ldots,\hat{\rho}_{N}]
+\]
+
+\end_inset
+
+satisfies 
+\begin_inset Formula 
+\[
+\frac{d}{d\tau}\hat{\boldsymbol{\rho}}=L\hat{\boldsymbol{\rho}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The membrane potential is just a parameter
+\end_layout
+
+\begin_layout Itemize
+Translational operator commutes with time derivative
+\end_layout
+
+\begin_layout Itemize
+The solution is 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula 
+\[
+\hat{\boldsymbol{\rho}}=e^{\tau L}\boldsymbol{\rho}_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The matrix exponential 
+\begin_inset Formula 
+\[
+e^{\tau L}=\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+\tau T_{h} & -1 &  &  &  & \vdots\\
+\frac{(\tau T_{h})^{2}}{2!} & \tau T_{h} & -1\\
+\frac{(\tau T_{h})^{3}}{3!} & \frac{(\tau T_{h})^{2}}{2!} & \tau T_{h} & \ddots\\
+\vdots &  &  &  &  & 0\\
+\frac{(\tau T_{h})^{N-1}}{(N-1)!} & \frac{(\tau T_{h})^{N-2}}{(N-2)!} &  & 0 & \tau T_{h} & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The matrix exponential is a shorthand for 
+\begin_inset Formula 
+\[
+e^{\tau L}=\sum_{n}\frac{1}{n!}\left(\tau L\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Matrix 
+\begin_inset Formula 
+\begin{align*}
+L^{2} & =\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}\\
+ & =\begin{pmatrix}1 & 0 & \ldots &  &  & 0\\
+-2T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We observe that the columns of 
+\begin_inset Formula $L$
+\end_inset
+
+ have the following structure 
+\end_layout
+
+\begin_layout Itemize
+We multiply the second column by 
+\begin_inset Formula $ $
+\end_inset
+
+ and add it the first column which yields 
+\end_layout
+
+\begin_layout Itemize
+From this follows that 
+\begin_inset Formula $L$
+\end_inset
+
+ has just one non-zero eigenvalue 
+\end_layout
+
+\begin_layout Itemize
+One can check that 
+\begin_inset Formula $v=(0,0,\ldots,1)$
+\end_inset
+
+ is an eigenvector with eigenvalue 
+\begin_inset Formula $\lambda=-1$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Check 
+\begin_inset Formula 
+\[
+Lv=\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}\begin{pmatrix}0\\
+0\\
+\vdots\\
+\\
+0\\
+1
+\end{pmatrix}=-1\begin{pmatrix}0\\
+0\\
+\vdots\\
+\\
+0\\
+1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Other vectors 
+\begin_inset Formula $e_{i}=(0,\ldots0,1,0\ldots,0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+L=\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+T_{h} & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Gaussian Elimination: Multiply the first row with 
+\begin_inset Formula $T_{h}$
+\end_inset
+
+ and add it to the second row 
+\begin_inset Formula 
+\[
+\sim\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+0 & -1 &  &  &  & \vdots\\
+0 & T_{h} & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply second row with 
+\begin_inset Formula $T_{h}$
+\end_inset
+
+ and multiply add to the third row 
+\begin_inset Formula 
+\[
+\sim\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+0 & -1 &  &  &  & \vdots\\
+0 & 0 & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & T_{h} & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This will give us 
+\begin_inset Formula 
+\[
+\begin{pmatrix}-1 & 0 & \ldots &  &  & 0\\
+0 & -1 &  &  &  & \vdots\\
+0 & 0 & -1\\
+\vdots &  & \ddots & \ddots\\
+ &  &  &  &  & 0\\
+0 & \ldots &  & 0 & 0 & -1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The matrix has full rank.
+ Matrix is diagonal 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ eigenvalue 
+\begin_inset Formula $-1$
+\end_inset
+
+ with algebraic multiplicity 
+\begin_inset Formula $N$
+\end_inset
+
+, and geometric multiplicity 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

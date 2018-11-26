@@ -130,17 +130,17 @@ def spsi_n(v):
 # Emission rate
 #===============================================================================
 
-def flux_0(eta, sig2, theta):
+def flux_0(eta, sig2, theta, tau_ref = 0.0):
     
     xi = eta*theta/sig2
     
-    return 1./(sig2/(2*eta**2)*(2*xi + np.exp(-2*xi) -1))
+    return (tau_ref + sig2/(2*eta**2)*(2.*xi + np.exp(-2.*xi) -1.))**(-1)
     
 def flux_n(lam_n, eta, sig2, theta):
     
 
     #------------------------------------------------------------------------------ 
-    # sometimes the solution which comes out solver of the solve 
+    # sometimes the solution which comes out if solver 
     # has a tiny imaginary part which causes problems    
     eps = 1.e-10
     

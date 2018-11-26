@@ -2068,7 +2068,7 @@ If we want to get ride of
 \begin_layout Plain Layout
 \begin_inset Formula 
 \[
-y_{t}=c(x,t)y_{x}
+y_{t}+c(x,t)y_{x}=0
 \]
 
 \end_inset
@@ -7684,19 +7684,19 @@ Solution is very smooth, i.e.
 \end_layout
 
 \begin_layout Itemize
-This is true even if 
-\begin_inset Formula $\phi$
-\end_inset
-
- is piece wise continuous 
-\end_layout
-
-\begin_layout Itemize
 Heat kernel 
 \begin_inset Formula $G(x,t)$
 \end_inset
 
  is also called the Green's function 
+\end_layout
+
+\begin_layout Itemize
+This is true even if 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is piece wise continuous 
 \end_layout
 
 \begin_layout Subsection*
@@ -8110,6 +8110,63 @@ Equation is second order in
 \end_inset
 
 , so both the position and velocity must be specified initially 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Motivation 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+u_{tt}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating by 
+\begin_inset Formula $t$
+\end_inset
+
+ twice yields to constants of integration 
+\begin_inset Formula 
+\[
+u=g(x)t+f(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The units of 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ must be 
+\begin_inset Formula $[u]/\text{time}$
+\end_inset
+
+, i.e.
+ it is a velocity 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -8176,7 +8233,7 @@ status open
 \begin_layout Plain Layout
 Solution
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Introducing the change of dependent variable 
@@ -8322,7 +8379,7 @@ Solution
 status open
 
 \begin_layout Plain Layout
-Start from d'Alembert's formula 
+Start from d'Aleamnnembert's formula 
 \begin_inset Formula 
 \[
 u(x,t)=\frac{1}{2}\left(f(x-ct)+f(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)ds
@@ -8367,7 +8424,7 @@ Integral part
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Subsection*
 Ill-Posed Problems 
 \end_layout
 
@@ -8533,5 +8590,2433 @@ the solution depends continuously on the initial and boundary data
 \end_layout
 
 \end_deeper
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Show that Cauchy problem for the backward diffusion equation 
+\begin_inset Formula 
+\begin{align*}
+u_{t}+u_{xx} & =0\\
+u(x,0) & =f(x)
+\end{align*}
+
+\end_inset
+
+is unstable by considering the solutions
+\begin_inset Formula 
+\[
+u(x,t)=1+\frac{1}{n}e^{n^{2}t}\sin nx
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+First, show that is solves the PDE
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ne^{n^{2}t}\sin nx\\
+u_{x} & =e^{n^{2}t}\cos nx\\
+u_{xx} & =-ne^{n^{2}t}\sin nx
+\end{align*}
+
+\end_inset
+
+The solution diverges if 
+\begin_inset Formula $n$
+\end_inset
+
+ large and 
+\begin_inset Formula $t\neq0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+PDE 
+\begin_inset Formula 
+\begin{align*}
+u_{xy} & =0
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $u(x,y)=f(x,y)$
+\end_inset
+
+ on the boundary of the unit square 
+\begin_inset Formula 
+\[
+u=f(x)+g(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Semi-Infinite Domains
+\end_layout
+
+\begin_layout Itemize
+Study heat equation 
+\begin_inset Formula $0<x<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This there is a boundary in the problem at 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To know how the temperature distribution evolves in a semi-infinite bar
+ one should know 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the initial distribution 
+\end_layout
+
+\begin_layout Itemize
+temperature at 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consider the initial boundary value problem 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx}\\
+u(0,t) & =0\\
+u(x,0) & =\phi(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Method of reflection through the boundary 
+\end_layout
+
+\begin_layout Itemize
+Extent the problem to the entire axis by extending 
+\begin_inset Formula $\phi$
+\end_inset
+
+ to an odd function 
+\begin_inset Formula $\psi$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\psi(x)=\phi(x)$
+\end_inset
+
+ if 
+\begin_inset Formula $x>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\psi(x)=-\phi(-x)$
+\end_inset
+
+ if 
+\begin_inset Formula $x<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\psi(0)=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Physically w attaching a bar occupying the space 
+\begin_inset Formula $-\infty<x<0$
+\end_inset
+
+ and giving it an initial temperature 
+\begin_inset Formula 
+\begin{align*}
+v_{t} & =kv_{xx}\\
+v(x,0) & =\psi(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution 
+\begin_inset Formula 
+\[
+v(x,t)=\int_{-\infty}^{\infty}G(x-y,t)\psi(y)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Breaking up the integral into two parts 
+\begin_inset Formula 
+\begin{align*}
+v(x,t) & =\int_{-\infty}^{0}G(x-y,t)\psi(y)dy+\int_{0}^{\infty}G(x-y,t)\psi(y)dy\\
+ & =-\int_{-\infty}^{0}G(x-y,t)\phi(-y)dy+\int_{0}^{\infty}G(x-y,t)\phi(y)dy\\
+ & =-\int_{0}^{\infty}G(x+y,t)\phi(y)dy+\int_{0}^{\infty}G(x-y,t)\phi(y)dy\\
+ & =\int_{0}^{\infty}\left[G(x-y,t)-G(x+y,t)\right]\phi(y)dy
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Restrict solution to 
+\begin_inset Formula $x>0$
+\end_inset
+
+, and therefore the solution to the PDE on the semi-infinite domain is 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{0}^{\infty}\left[G(x-y,t)-G(x+y,t)\right]\phi(y)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The wave-equation on a semi-definite domain can be solved in the same manner
+ 
+\end_layout
+
+\begin_layout Itemize
+Transverse vibrations of a string occupying 
+\begin_inset Formula $x>0$
+\end_inset
+
+ when at the end 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is held fixed 
+\end_layout
+
+\begin_layout Itemize
+Initial boundary value problem is 
+\begin_inset Formula 
+\begin{align*}
+u_{tt} & =c^{2}u_{xx}\\
+u(0,t) & =0,\quad t>0\\
+u(x,0) & =f(x),\quad u_{t}(x,0)=g(x),\quad x>0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution is given by d'Alembert's formula 
+\begin_inset Formula 
+\[
+u(x,t)=\frac{1}{2}\left(f(x-ct)+f(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)ds,\quad x>ct
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Data given along the 
+\begin_inset Formula $x=0$
+\end_inset
+
+ boundary can not affect the solution in the region 
+\begin_inset Formula $x>ct$
+\end_inset
+
+, since signals travel outward from the boundary at speed 
+\begin_inset Formula $c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To solve the problem for 
+\begin_inset Formula $0<x<ct$
+\end_inset
+
+ we proceed as we did for the heat equation and extend the initial data
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ to odd functions on the entire real axis.
+ Therefore, let us consider the problem 
+\begin_inset Formula 
+\begin{align*}
+v_{tt} & =c^{2}c_{xx}\\
+v(0,t) & =0,\quad t>0\\
+v(x,0) & v_{t}(x,0)=F(x),\quad=G(x)
+\end{align*}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $F(x)=f(x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+,
+\begin_inset Formula $\,F(0)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $F(x)=-f(-x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $G(x)=g(x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+,
+\begin_inset Formula $\,G(0)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $G(x)=-g(-x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By d'Alemebert's formula the solution is given by 
+\begin_inset Formula 
+\[
+v(x,t)=\frac{1}{2}\left(F(x-ct)+F(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{x+ct}G(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the region 
+\begin_inset Formula $x<ct$
+\end_inset
+
+ this becomes (since 
+\begin_inset Formula $x-ct<0$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+v(x,t)=\frac{1}{2}\left(-f(-x+ct)+f(x+ct)\right)+\frac{1}{2c}\int_{x-ct}^{0}-g(-s)ds+\frac{1}{2c}\int_{0}^{x+ct}g(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Replace variable 
+\begin_inset Formula $s$
+\end_inset
+
+ by 
+\begin_inset Formula $-s$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u(x,t)=v(x,t)=\frac{1}{2}\left(f(x+ct)-f(ct-x)\right)+\frac{1}{2}\int_{ct-x}^{ct+x}g(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Sources and Duhamel's Principle 
+\end_layout
+
+\begin_layout Itemize
+How do we proceed if the PDE contains a source term 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx}+f(x,t)\\
+u(x,0) & =0,\quad x\in\mathbb{R}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analyze ordinary differential equation with a source term 
+\begin_inset Formula 
+\[
+y'(t)+ay=F(t),\quad t>0;\quad y(0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply by the integrating factor 
+\begin_inset Formula $e^{at}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dt}(e^{at}y) & =e^{at}F(x)\\
+e^{at}y & =\int_{0}^{t}e^{a\tau}F(\tau)d\tau
+\end{align*}
+
+\end_inset
+
+which can be written as 
+\begin_inset Formula 
+\[
+y(t)=\int_{0}^{t}e^{-a(t-\tau)}F(\tau)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $e^{-a(t-\tau)}$
+\end_inset
+
+ is the solution to the homogeneous differential equation 
+\end_layout
+
+\begin_layout Itemize
+Another problem 
+\begin_inset Formula 
+\[
+w'(t;\tau)+aw'(t;\tau)=0,\quad t=0;\quad w(0,\tau)=F(\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution to the problem is 
+\begin_inset Formula 
+\[
+w(t;\tau)=F(\tau)e^{-at}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution to problem with source term, is the integral of the associated
+ homogeneous solution where the source is included as an initial condition
+ 
+\end_layout
+
+\begin_layout Itemize
+The fact that a particular solution of a linear equation can be deduced
+ from the solution of the homogeneous equation is called 
+\series bold
+Duhamel's principle
+\end_layout
+
+\begin_layout Subsection*
+Duhamel's principle for ODEs 
+\end_layout
+
+\begin_layout Itemize
+Solution to 
+\begin_inset Formula 
+\[
+y'(t)+ay=F(t),\quad t>0;\quad y(0)=0
+\]
+
+\end_inset
+
+is given by 
+\begin_inset Formula 
+\[
+y(t)=\int_{0}^{t}w(t-\tau,\tau)d\tau
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $w=w(t,\tau)$
+\end_inset
+
+ solves the homogeneous equation 
+\begin_inset Formula 
+\begin{align*}
+w'(t;\tau)+aw(t;\tau) & =0,\quad t>0\\
+w(0;\tau) & =F(\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Extrapolate this idea and apply it to the heat flow problem 
+\end_layout
+
+\begin_layout Itemize
+If Duhamel's problem is valid, then the solution to 
+\begin_inset Formula 
+\[
+u_{t}-ku_{xx}=f(x,t)
+\]
+
+\end_inset
+
+should be 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{0}^{t}w(x,t-\tau,\tau)d\tau
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $w(x,t,\tau)$
+\end_inset
+
+ solves the homogeneous problem 
+\begin_inset Formula 
+\begin{align*}
+w_{t} & =kw_{xx}\\
+w(x,0;t) & =f(x,\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution 
+\begin_inset Formula 
+\[
+w(x,t;\tau)=\int_{-\infty}^{\infty}G(x-y,t)f(y,\tau)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therefore, the solution to the problem with source should be given by 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{0}^{t}\int_{-\infty}^{\infty}G(x-y,t-\tau)f(y,\tau)dyd\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is not surprising that the solution turned out to be in integral 
+\end_layout
+
+\begin_layout Itemize
+The PDE has the form 
+\begin_inset Formula $Hu=f$
+\end_inset
+
+ where 
+\begin_inset Formula $H=\partial_{t}-k\partial_{k}^{2}$
+\end_inset
+
+ is a differential operator 
+\end_layout
+
+\begin_layout Itemize
+If we formally write 
+\begin_inset Formula $u=H^{-1}f$
+\end_inset
+
+ as we might do in matrix theory, then we might expect the inverse of 
+\begin_inset Formula $H^{-1}$
+\end_inset
+
+ to be 
+\series bold
+integral operator 
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It makes intuitively sense that the inverse of a differential operator is
+ a integral operator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Formula for the solution to the problem 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx}+f(x,t)\\
+u(x,0) & =\phi(x)
+\end{align*}
+
+\end_inset
+
+where the initial condition is no longer zero 
+\end_layout
+
+\begin_layout Itemize
+By linearity the solution to the problem is the sum of the solutions of
+ the two problems 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx}\\
+u(x,0) & =\phi(x)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx}+f(x,t)\\
+u(x,0) & =\phi(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, the solution is given by 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{-\infty}^{\infty}G(x-y,t)\phi(y)dy+\int_{0}^{t}\int_{-\infty}^{\infty}G(x-y,t-\tau)f(y,\tau)dyd\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is the 
+\series bold
+variation of parameters 
+\series default
+of the problem 
+\end_layout
+
+\begin_layout Itemize
+Duhamel's principle can also be applied to the wave equation 
+\end_layout
+
+\begin_layout Itemize
+The solution to the problem 
+\begin_inset Formula 
+\begin{align*}
+u_{tt}-c^{2}u_{xx} & =f(x,t)\\
+u(x,0) & =u_{t}(x,0)=0
+\end{align*}
+
+\end_inset
+
+is 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{0}^{t}w(x,t-\tau,\tau)d\tau
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $w(x,t;\tau)$
+\end_inset
+
+ is the solution 
+\begin_inset Formula 
+\begin{align*}
+w_{tt}-c^{2}w_{xx} & =0,\quad t>0\\
+w(x,0;\tau) & =0,\quad w_{t}(x,0;\tau)=f(x,\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We put the source term 
+\begin_inset Formula $f$
+\end_inset
+
+ into the initial condition for 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ rather for 
+\begin_inset Formula $w$
+\end_inset
+
+ because 
+\begin_inset Formula $f$
+\end_inset
+
+, like 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ is an acceleration 
+\end_layout
+
+\begin_layout Itemize
+The displacement 
+\begin_inset Formula $u$
+\end_inset
+
+ is a time integral of 
+\begin_inset Formula $w$
+\end_inset
+
+, so 
+\begin_inset Formula $u'$
+\end_inset
+
+ must be a velocity, making 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ an acceleration 
+\end_layout
+
+\begin_layout Itemize
+From d'Alemberts formula 
+\begin_inset Formula 
+\[
+w(x,t;\tau)=\frac{1}{2c}\int_{x-ct}^{x+ct}f(s,\tau)ds
+\]
+
+\end_inset
+
+and therefore by Duhamel's principle the solution to the initial problem
+ is given by
+\begin_inset Formula 
+\[
+u(x,t;\tau)=\frac{1}{2c}\int_{0}^{t}\int_{x-c(t-\tau)}^{x-c(t-\tau)}f(s,\tau)dsdt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Source terms also arise when problems are transformed in order to homogenize
+ the boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Consider diffusion equation 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =ku_{xx},\quad x>0,\,t>0\\
+u(x,0) & =\phi(x),\quad x>0\\
+u(0,t) & =g(t),\quad t>0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We already solved the problem from 
+\begin_inset Formula $g(t)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So let us transform the problem into one where the boundary condition is
+ zero
+\begin_inset Formula 
+\[
+v(x,t)=u(x,t)-g(t)\Leftrightarrow u(x,t)=v(x,t)+g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting 
+\begin_inset Formula 
+\begin{align*}
+v_{t} & =ku_{xx}-g'(t)\\
+v(x,0) & =\phi(x)-g(0)\\
+v(0,t) & =0,\quad t>0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transformation of the dependent variable has changed the problem into one
+ with a homogeneous boundary condition, but a price was paid-an inhomogeneity,
+ or source term 
+\begin_inset Formula $-g'(t)$
+\end_inset
+
+ was introduced into the PDE 
+\end_layout
+
+\begin_layout Itemize
+Inhomogeneous boundary condition can traded for inhomogeneous PDEs 
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Write a formula for the solution of the problem 
+\begin_inset Formula 
+\begin{align*}
+u_{tt}-c^{2}u_{xx} & =\sin x\\
+u(x,0) & =u_{t}(x,0)=0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Problem: Wave equation
+\begin_inset Formula 
+\[
+u_{tt}-c^{2}u_{xx}
+\]
+
+\end_inset
+
+Source term, which is time independent 
+\begin_inset Formula 
+\[
+\sin x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Homogeneous boundary conditions 
+\begin_inset Formula 
+\[
+u(x,0)=u_{t}(x,0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution to the homogeneous problem 
+\begin_inset Formula 
+\begin{align*}
+w_{tt}-c^{2}w_{xx} & =0\\
+w(x,0;\tau) & =0,\quad w_{t}(x,0,\tau)=\sin(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+d'Alembert's formula 
+\begin_inset Formula 
+\begin{align*}
+w(x,t;\tau) & =\frac{1}{2c}\int_{x-ct}^{x+ct}f(s;\tau)ds=\frac{1}{2c}\int_{x-ct}^{x+ct}\sin(s)ds\\
+ & =\frac{1}{2c}\left(\cos(x-ct)-\cos(x+ct)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution to the initial problem 
+\begin_inset Formula 
+\begin{align*}
+u(x,t) & =\frac{1}{2c}\int_{0}^{t}\left(\cos(x-c(t-\tau))-\cos(x+c(t-\tau))\right)d\tau\\
+ & =\frac{1}{2c}\left(\int_{0}^{t}d\tau\cos(x-c(t-\tau))-\int_{0}^{\tau}d\tau\cos(x+c(t-\tau))\right)\\
+ & =\frac{1}{2c^{2}}\left(\left.\sin(x-c(t-\tau))\right|_{0}^{t}+\left.\sin(x+c(t-\tau))\right|_{0}^{t}\right)\\
+ & =\frac{1}{2c^{2}}\left(\sin(x)-\sin(x-ct)+\sin(x)-\sin(x+ct)\right)\\
+ & =\frac{1}{c^{2}}\sin(x)-\frac{1}{2c^{2}}\left(\sin(x+ct)+\sin(x-ct)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =-\frac{1}{2c}\left(\cos(x+ct)-\cos(x-ct)\right)\\
+u_{tt} & =\frac{1}{2}\left(\sin(x+ct)+\sin(x-ct)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+u_{x} & =\frac{1}{c^{2}}\cos(x)-\frac{1}{2c^{2}}\left(\cos(x+ct)+\cos(x-ct)\right)\\
+u_{xx} & =-\frac{1}{c^{2}}\sin(x)+\frac{1}{2c^{2}}\left(\sin(x+ct)+\sin(x-ct)\right)
+\end{align*}
+
+\end_inset
+
+Substituting into the PDE
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\left(\sin(x+ct)+\sin(x-ct)\right)-\frac{1}{2}\left(\sin(x+ct)+\sin(x-ct)\right)+\sin(x) & =\sin(x)\\
+\sin(x+ct)+\sin(x-ct)-\sin(x+ct)-\sin(x-ct) & =0\\
+0 & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Write a formula for the solution of the problem 
+\begin_inset Formula 
+\begin{align*}
+u_{t}-ku_{xx} & =\sin(x)\\
+u(x,0) & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Diffusion equation 
+\begin_inset Formula 
+\[
+u_{t}-ku_{xx}
+\]
+
+\end_inset
+
+with a source term 
+\begin_inset Formula 
+\[
+\sin(x)
+\]
+
+\end_inset
+
+and homogeneous boundary condition 
+\begin_inset Formula 
+\[
+u(x,0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve 
+\begin_inset Formula 
+\[
+w_{t}-ku_{xx}=0
+\]
+
+\end_inset
+
+with initial condition 
+\begin_inset Formula 
+\[
+w(x,0;\tau)=\sin(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Formula 
+\[
+w(x,t;\tau)=\int_{-\infty}^{\infty}G(x-y,t)f(y,\tau)dy
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $G$
+\end_inset
+
+ is the heat kernel 
+\begin_inset Formula 
+\[
+w(x,t;\tau)=\int_{-\infty}^{\infty}\frac{1}{\sqrt{4\pi kt}}e^{-\frac{(x-y)^{2}}{4kt}}\sin(y)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This can be solved by partial integration.
+ Define 
+\begin_inset Formula $4kt=\sigma^{2}(t)$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+w(x,t;\tau)=\frac{1}{\sqrt{\pi}\sigma(t)}\int_{-\infty}^{\infty}e^{-\frac{(x-y)^{2}}{\sigma^{2}(t)}}\sin(y)dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula $x-y=z$
+\end_inset
+
+ so that 
+\begin_inset Formula $dz=-dy$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+w(x,t;\tau)=-\frac{1}{\sqrt{\pi}\sigma(t)}\int_{-\infty}^{\infty}e^{-\frac{z^{2}}{\sigma^{2}(t)}}\sin(x-z)dz
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}e^{-\frac{z^{2}}{\sigma^{2}(t)}}\sin(x-z)dz=\int_{-\infty}^{\infty}e^{-\frac{z^{2}}{\sigma^{2}(t)}}\sin(x-z)dz
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TODO
+\end_layout
+
+\begin_layout Enumerate
+Solve the problem 
+\begin_inset Formula 
+\[
+u_{t}+2u_{x}=xe^{-t};\quad u(x,0)=0
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a advection equation 
+\begin_inset Formula 
+\[
+u_{t}+cu_{x}=xe^{-t};\quad u(x,0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use Duhamel's principle: Solution to the homogeneous advection 
+\begin_inset Formula 
+\[
+w_{t}+cw_{x}=0
+\]
+
+\end_inset
+
+with the initial condition 
+\begin_inset Formula 
+\[
+w(x,0;\tau)=w_{0}(x,0;\tau)=xe^{-\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The solution of the advection equation is 
+\begin_inset Formula 
+\[
+w(x,t)=w_{0}(x-ct,0;\tau)=(x-ct)e^{-\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using Duhamel's principle 
+\begin_inset Formula 
+\begin{align*}
+u & =\int_{0}^{t}(x-c(t-\tau))e^{-\tau}d\tau\\
+ & =\int_{0}^{t}(x-ct+c\tau)e^{-\tau}d\tau\\
+ & =(x-ct)\int_{0}^{t}e^{-\tau}+c\int_{0}^{t}\tau e^{-\tau})d\tau\\
+ & =(x-ct)(1-e^{-t})+c\left(-\left.\tau e^{-\tau}\right|_{0}^{t}+\int_{0}^{t}e^{-\tau}\right)\\
+ & =(x-ct)(1-e^{-t})+c\left(-te^{-t}-e^{-t}+1\right)\\
+ & =x-ct-xe^{-t}+cte^{-t}-cte^{-t}-ce^{-t}+c\\
+ & =x-ct-xe^{-t}-ce^{-t}+c\\
+ & =c+x-ct-xe^{-t}-ce^{-t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Initial condition 
+\begin_inset Formula 
+\[
+u(x,0)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+is fulfilled.
+ First derivative with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+u_{t}=xe^{-t}+ce^{-t}-c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First derivative with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{x}=1-e^{-t}
+\]
+
+\end_inset
+
+Substituting into the PDE 
+\begin_inset Formula 
+\begin{align*}
+-c+xe^{-t}+ce^{-t}+c-ce^{-t} & =xe^{-t}\\
+0 & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Laplace Transforms 
+\end_layout
+
+\begin_layout Itemize
+Laplace transforms are first encountered in elementary differential equations
+ cources as a technique for solving linear, constant-coefficient ordinary
+ differential equation 
+\end_layout
+
+\begin_layout Itemize
+Laplace transforms convert an ODE into an algebra problem 
+\end_layout
+
+\begin_layout Itemize
+The ideas easily extend to PDEs 
+\end_layout
+
+\begin_layout Itemize
+The Laplace transformation converts PDEs to ODEs 
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $u=u(t)$
+\end_inset
+
+ be a piecewise continuous function on 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+ that does not grow too fast 
+\end_layout
+
+\begin_layout Itemize
+For example, assume 
+\begin_inset Formula $u$
+\end_inset
+
+ is of 
+\series bold
+exponential order 
+\series default
+which means that 
+\begin_inset Formula $\bigl|u(t)\bigr|\leq c\exp(at)$
+\end_inset
+
+ for 
+\begin_inset Formula $t$
+\end_inset
+
+ sufficiently large 
+\end_layout
+
+\begin_layout Itemize
+Laplace transform of 
+\begin_inset Formula $u$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\[
+\left[\mathcal{L}u\right](s)=U(s)=\int_{0}^{\infty}u(t)e^{-st}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace transform is an example of an integral transform 
+\end_layout
+
+\begin_layout Itemize
+It takes a given function 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ in the time domain and converts it to a new function 
+\begin_inset Formula $U(s)$
+\end_inset
+
+, in the so-called transform domain 
+\end_layout
+
+\begin_layout Itemize
+The transform is linear 
+\end_layout
+
+\begin_layout Itemize
+If the transform is known than 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ is called the inverse transform of 
+\begin_inset Formula $U(s)$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathcal{L}^{-1}U=u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace transform changes derivative operations into multiplication operations
+ in the transform domain 
+\begin_inset Formula 
+\begin{align*}
+(Lu') & =sU(s)-u(0)\\
+(Lu'') & =s^{2}U(s)-su(0)-u'(0)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Laplace transform
+\begin_inset Formula 
+\[
+U(s)=\int_{0}^{\infty}u(t)e^{-st}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Laplace transform of the derivative 
+\begin_inset Formula 
+\[
+?=\int_{0}^{\infty}u'(t)e^{-st}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrating by parts 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}u'(t)e^{-st}dt & =\left.u(t)e^{-st}\right|_{0}^{\infty}+s\int_{0}^{\infty}u(t)e^{-st}dt\\
+ & =-u(0)+sU(s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second derivative 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}u''(t)e^{-st}dt & =\left.u'(t)e^{-st}\right|_{0}^{\infty}+s\int_{0}^{\infty}u'(t)e^{-st}dt\\
+ & =\left.u'(t)e^{-st}\right|_{0}^{\infty}+su(t)e^{-st}+s^{2}\int_{0}^{\infty}u(t)e^{-st}dt\\
+ & =-u'(0)-su(0)+s^{2}U(s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+: Solve the initial value problem 
+\begin_inset Formula 
+\[
+u''+u=0,\quad t>u;\quad u(0)=0,\quad u'(0)=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the Laplace transform on both sides 
+\begin_inset Formula 
+\begin{align*}
+s^{2}U(s)-su(0)-u'(0)+U(s) & =0\\
+(1+s^{2})U(s)-1 & =0\\
+U(s) & =\frac{1}{1+s^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ordinary differential equation has been transformed into an algebraic equation
+ 
+\end_layout
+
+\begin_layout Itemize
+For PDE, we have more than one unknown 
+\begin_inset Formula $u=u(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We transform on 
+\begin_inset Formula $t$
+\end_inset
+
+, with the variable 
+\begin_inset Formula $x$
+\end_inset
+
+ being a parameter unaffected by the transform 
+\begin_inset Formula 
+\[
+(\mathcal{L}u)(x,s)=U(x,s)=\int_{0}^{\infty}u(x,t)e^{-st}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spatial derivative are left unaffected 
+\begin_inset Formula 
+\[
+(\mathcal{L}u_{x})(x,s)=\int_{0}^{\infty}\frac{\partial}{\partial x}u(x,t)e^{-st}dt=\frac{\partial}{\partial x}\int_{0}^{\infty}u(x,t)e^{-st}dt=U_{x}(x,s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Upon taking the Laplace transform, a PDE in 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ is reduced to an ordinary differential equation in 
+\begin_inset Formula $x$
+\end_inset
+
+, all the 
+\begin_inset Formula $t$
+\end_inset
+
+-derivatives are turned into multiplication in the transform domain
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\begin_inset Formula 
+\begin{align*}
+u_{t}-u_{xx} & =0,\quad x>0,\quad t>0\\
+u(x,0) & =0\\
+u(0,t) & =1,\quad t>0,\quad u(x,t)\,\text{bounded}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the Laplace transform on both sides 
+\begin_inset Formula 
+\begin{align*}
+sU(x,s)-u(x,0)-U_{xx}(x,s) & =0\\
+sU(x,s)-U_{xx}(x,s) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ordinary differential equation with 
+\begin_inset Formula $x$
+\end_inset
+
+ as the independent variable
+\end_layout
+
+\begin_layout Itemize
+Exponential Ansatz 
+\begin_inset Formula $U(x,s)=e^{ax}$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U(x,s)=a(s)e^{-\sqrt{s}x}+b(s)e^{\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+sU(x,s)-U_{xx}(x,s)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula $U(s,x)=e^{ax}$
+\end_inset
+
+ yields 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+se^{ax}-a^{2}e^{ax} & =0\Rightarrow a=\pm\sqrt{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence,
+\begin_inset Formula 
+\[
+U(x,s)=a(s)e^{-\sqrt{s}x}+b(s)e^{\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Because, we want to have a bounded solution, we need to set 
+\begin_inset Formula $b(s)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U(x,s)=a(s)e^{-\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Laplace transform of the boundary condition 
+\begin_inset Formula 
+\[
+u(0,t)=1\Rightarrow U(0,s)=\int_{0}^{\infty}e^{-st}dt=-\frac{1}{s}\left.e^{-st}\right|_{0}^{\infty}=\frac{1}{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From this follows 
+\begin_inset Formula 
+\[
+U(x,0)=a(0)=\frac{1}{s}
+\]
+
+\end_inset
+
+and we arrive at 
+\begin_inset Formula 
+\[
+U(x,s)=\frac{1}{s}e^{-\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The back transform is 
+\begin_inset Formula 
+\[
+u(x,t)=\text{erfc}\left(\frac{x}{\sqrt{4t}}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\text{erfc}(y)=1-\frac{2}{\sqrt{\pi}}\int_{0}^{y}e^{-r^{2}}dr
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $\text{erfc}(y)=1-\text{erf}(y)$
+\end_inset
+
+.
+ Inversion formula 
+\begin_inset Formula 
+\[
+u(t)=(\mathcal{L}^{-1}U)(t)=\frac{1}{2\pi i}\int_{a-i\infty}^{a+i\infty}U(s)e^{st}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Complex contour integral taken over the infinite straight line (called the
+ Bromwich path).
+ The parameter 
+\begin_inset Formula $a$
+\end_inset
+
+ is any real number for which the resulting Bromwich path lies to the right
+ of any singularities 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Convolution Theorem 
+\begin_inset Formula 
+\[
+L(u\ast v)(s)=U(s)V(s)
+\]
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula 
+\[
+(u\ast v)(t)=\int_{0}^{t}u(t-\tau)v(\tau)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace transform is additive, but it is not multiplicative
+\end_layout
+
+\begin_layout Itemize
+Laplace transform of a product is not the product of the Laplace transform
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\begin_inset Formula 
+\begin{align*}
+u_{t}-u_{xx} & =0,\quad x>0,\quad t>0\\
+u(x,0) & =0,\quad x>0\\
+u(0,t) & =f(t),\quad t>0;\quad u(x,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the Laplace transforms of both sides of the PDE gives 
+\begin_inset Formula 
+\[
+sU(x,s)-U_{xx}(x,s)=0
+\]
+
+\end_inset
+
+which has the solution 
+\begin_inset Formula 
+\[
+U(x,s)=a(s)e^{-\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Laplace transform of the boundary condition 
+\begin_inset Formula 
+\[
+U(x,s)=F(s)e^{-\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consulting a table x,
+\begin_inset Formula 
+\[
+\mathcal{L}\left(e^{-\sqrt{s}x}\right)=\frac{x}{\sqrt{4\pi t^{3}}}e^{-x^{2}/4t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Convolution theorem 
+\begin_inset Formula 
+\[
+u(x,t)=\int_{0}^{t}\frac{x}{\sqrt{4\pi(t-\tau)^{2}}}e^{-\frac{x^{2}}{4(t-\tau)}}f(\tau)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Solve the following problem using Laplace transforms 
+\begin_inset Formula 
+\begin{align*}
+u_{tt} & =c^{2}u_{xx}-g\\
+u(0,t) & =0\\
+u(x,0) & =u_{t}(x,0)=0,\quad x>0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Take the Laplace transform on both sides 
+\begin_inset Formula 
+\begin{align*}
+s^{2}U(x,s)-su(x,0)-u_{t}(x,0) & =c^{2}U_{xx}(x,s)-\frac{1}{s}g\\
+s^{2}U(x,s) & =c^{2}U_{xx}(x,s)-\frac{1}{s}g
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ordinary Differential equation in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+U(x,s)-\frac{c^{2}}{s^{2}}U_{xx}(x,s) & =-\frac{1}{s^{3}}g
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+General solution
+\begin_inset Formula 
+\begin{align*}
+U(x,s) & =a(s)e^{-\frac{s}{c}x}+b(s)e^{\frac{s}{c}x}-\frac{1}{s^{3}}g
+\end{align*}
+
+\end_inset
+
+Proof 
+\begin_inset Formula 
+\begin{align*}
+\left(a(s)e^{-\frac{s}{c}x}+b(s)e^{\frac{s}{c}x}-\frac{1}{s^{3}}g\right)+\frac{c^{2}}{s^{2}}\frac{s^{2}}{c^{2}}\left(a(s)e^{-\frac{s}{c}x}+b(s)e^{\frac{s}{c}x}\right) & =-\frac{1}{s^{3}}g\\
+-\frac{1}{s^{3}}g & =-\frac{1}{s^{3}}g
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $s=c/s$
+\end_inset
+
+.
+ The solution must bounded.
+ Hence, 
+\begin_inset Formula 
+\[
+U(x,s)=a(s)e^{-ax}-\frac{1}{s^{3}}g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula 
+\[
+u(0,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Laplace transform 
+\begin_inset Formula 
+\[
+U(0,s)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U(0,s)=a(s)-\frac{1}{s^{3}}g=0\Rightarrow a(s)=\frac{g}{s^{3}}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+U(x,s)=\frac{g}{s^{3}}\left(1-e^{-\frac{cx}{s}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =u_{yy},\quad x,t,y>0\\
+u(x,y,0U) & =0,\quad0,\quad x,y>0\\
+u(0,0,t) & =1,\quad t>0\\
+u_{t}(x,0,t)+u_{x}(x,0,t) & =0,\quad x,t>0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Laplace transform 
+\begin_inset Formula 
+\begin{align*}
+sU(x,y,s)-u(x,y,0) & =U_{yy}(x,y,s)\\
+sU(x,y,s) & =U_{yy}(x,y,s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+General solution 
+\begin_inset Formula 
+\[
+U(x,y,s)=a(x,s)e^{-\sqrt{s}y}+b(x,s)e^{\sqrt{s}x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Bounded solution 
+\begin_inset Formula 
+\[
+U(x,y,s)=a(x,s)e^{-\sqrt{s}y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula 
+\[
+U(0,0,s)=\int_{0}^{\infty}e^{-ts}dt=-\frac{1}{s}\left.e^{-ts}\right|_{0}^{\infty}=+\frac{1}{s}
+\]
+
+\end_inset
+
+Hence,
+\begin_inset Formula 
+\[
+a(0,s)=\frac{1}{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary condition 
+\begin_inset Formula 
+\begin{align*}
+sU(x,0,s)+u(x,0,0)+U_{x}(x,0,s) & =0\\
+sa(x,s)+a_{x}(x,s) & =0\\
+\frac{1}{a}da & =-sdx\\
+a(x,s) & =c(s)e^{-sx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\[
+a(0,s)=c(s)=\frac{1}{s}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+U(x,y,s)=\frac{1}{s}e^{-sx}e^{-\sqrt{s}y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\mathcal{L}\left(\int_{0}^{t}f(\tau)d\tau\right)=F(s)\ast s$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The integral 
+\begin_inset Formula $\int_{0}^{t}f(\tau)d\tau$
+\end_inset
+
+ is the convolution 
+\begin_inset Formula 
+\[
+\int_{0}^{t}f(\tau)d\tau=[1\ast f](t)
+\]
+
+\end_inset
+
+Hence, 
+\begin_inset Formula 
+\[
+\mathcal{L}\left(1\ast f\right)(s)=\mathcal{L}(1)(s)\cdot\mathcal{L}(f)(s)=\frac{1}{s}F(s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\mathcal{L}\left(H(t-a)f(t-a)\right)=e^{-as}F(s)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Convolution 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}\left(H(t-a)f(t-s)\right) & =\int_{0}^{\infty}dt\,H(t-a)f(t-a)e^{-st}\\
+ & =\int_{a}^{\infty}f(t-a)e^{-st}dt
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variable transformation
+\begin_inset Formula 
+\[
+\tau=t-a
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\frac{d\tau}{dt}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{\infty}f(\tau)e^{-s(t+a)}dt & =e^{-sa}\int_{0}^{\infty}f(\tau)e^{-st}dt\\
+ & =e^{-sa}F(s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Fourier transforms
+\end_layout
+
+\begin_layout Itemize
+In PDEs, the Fourier transform is usually applied to the spatial variable
+ when it varies over (-
+\begin_inset Formula $\infty$
+\end_inset
+
+,
+\begin_inset Formula $\infty$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Definition 
+\begin_inset Formula 
+\[
+(\mathcal{F}u)(\xi)=\hat{u}(\xi)=\int_{-\infty}^{\infty}u(x)e^{i\xi x}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u$
+\end_inset
+
+ is absolutely integrable, i.e.
+ 
+\begin_inset Formula $\int_{-\infty}^{\infty}\bigl|u\bigr|dx<\infty$
+\end_inset
+
+, then 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+ can be shown to exist 
+\end_layout
+
+\begin_layout Itemize
+Rapidly decreasing function, along with all their derivatives, decay to
+ zero as 
+\begin_inset Formula $x\rightarrow\pm\infty$
+\end_inset
+
+ faster than any power function 
+\begin_inset Formula $1/x^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $1/x^{6}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+The function 
+\begin_inset Formula $e^{-x^{2}}$
+\end_inset
+
+ is such a rapidly decreasing function 
+\end_layout
+
+\begin_layout Section*
+Orthogonal Expansions
+\end_layout
+
+\begin_layout Itemize
+TODO
+\end_layout
+
 \end_body
 \end_document
