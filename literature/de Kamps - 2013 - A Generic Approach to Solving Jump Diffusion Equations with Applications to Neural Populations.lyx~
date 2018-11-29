@@ -99,7 +99,7 @@ Fokker-Planck equation is derived by assuming that the conditional probability
 
 \begin_layout Itemize
 This requires small efficacy in comparison to length scale on which the
- density is located 
+ density is spread 
 \end_layout
 
 \end_inset
@@ -108,6 +108,476 @@ This requires small efficacy in comparison to length scale on which the
 \end_layout
 
 \begin_layout Itemize
+Diffusion models emerge by replacing the interacting among constituents
+ of a system with themselves and the outside world by a stochastic process
+ 
+\end_layout
+
+\begin_layout Itemize
+Diffusion arises if one assumes that changes in the microscopic state as
+ a consequence of an interacting are vanishing small 
+\end_layout
+
+\begin_layout Itemize
+Jumped diffusion processes may lead to very jagged, locally discontinuous
+ probability density profiles 
+\end_layout
+
+\begin_layout Section*
+Transforming away neural dynamics 
+\end_layout
+
+\begin_layout Itemize
+Deterministic dynamics 
+\begin_inset Formula 
+\[
+\frac{d\boldsymbol{v}}{dt}=\boldsymbol{F}(\boldsymbol{v})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation for the density is governed by differential 
+\series bold
+Chapman-Kolmogorov
+\series default
+ equation
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\frac{\partial}{\partial\boldsymbol{v}}\left(\boldsymbol{F}\rho\right)=\int_{M}dw\{W(\boldsymbol{v}\bigr|\boldsymbol{w})\rho(\boldsymbol{w})-W(\boldsymbol{w}\bigr|\boldsymbol{v})\rho(\boldsymbol{v})\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Method of characteristics 
+\begin_inset Formula 
+\[
+\frac{d\rho'}{dt}=\int_{M'}dw'\left\{ W(\boldsymbol{v}'\bigr|\boldsymbol{w}')\rho'(\boldsymbol{w}')-W(\boldsymbol{v}'\bigr|\boldsymbol{w}')\rho'(\boldsymbol{v}')\right\} 
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\rho'(\boldsymbol{v}',t)=e^{\int^{t}\frac{\partial F(v')}{\partial\boldsymbol{v}'}dt'}\rho(v',t)$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Start from general advection equation 
+\begin_inset Formula 
+\[
+u_{t}+(Fu)_{x}=0
+\]
+
+\end_inset
+
+with the force 
+\begin_inset Formula $F$
+\end_inset
+
+ which is determined by the intrinsic neuron dynamics
+\begin_inset Formula 
+\[
+x_{t}=F(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here we assume that the neuron dynamics are stationary 
+\begin_inset Formula $F(x,t)=F(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The PDE can be written as 
+\begin_inset Formula 
+\[
+u_{t}+Fu{}_{x}+F_{x}u=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The make the variable transformation 
+\begin_inset Formula 
+\[
+y=x-f(t),\quad\tau=t
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ is the solution to ODE
+\begin_inset Formula 
+\[
+\frac{dx}{dt}=F(x)
+\]
+
+\end_inset
+
+meaning that 
+\begin_inset Formula 
+\[
+x=f(t)+y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $y$
+\end_inset
+
+ is integration the constant 
+\end_layout
+
+\begin_layout Itemize
+We define 
+\begin_inset Formula $U(y,\tau)=u(x(y,\tau),t(\tau))$
+\end_inset
+
+ and use the chain rule to obtain 
+\begin_inset Formula 
+\begin{align*}
+u_{t} & =U_{y}\frac{dy}{dt}+U_{\tau}\frac{d\tau}{dt}=-FU_{x}+U_{\tau}\\
+u_{x} & =U_{y}\frac{dy}{dx}=U_{y}\\
+F_{x} & =F_{y}\frac{dy}{dx}=U_{y}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting the above expressions into the PDE yields 
+\begin_inset Formula 
+\begin{align*}
+-FU_{x}+U_{\tau}+FU_{y}+F_{y}U & =0\Leftrightarrow U_{\tau}+F_{y}U=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be simplified further by defining 
+\begin_inset Formula 
+\[
+U'(y,\tau)=e^{\int^{\tau}F_{y}d\tau'}U(y,\tau)
+\]
+
+\end_inset
+
+such that the absolute derivative 
+\begin_inset Formula 
+\[
+\frac{dU'}{d\tau}=e^{\int^{\tau}F_{y}d\tau'}\left(F_{y}U+U_{\tau}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that we do not get a term 
+\begin_inset Formula $U_{y}\frac{dy}{d\tau}$
+\end_inset
+
+ because 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are independent variables 
+\end_layout
+
+\begin_layout Itemize
+Solving for 
+\begin_inset Formula $U_{\tau}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+U_{\tau}=e^{-\int^{\tau}F_{y}d\tau'}\frac{dU'}{dt}-F_{y}U
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+U_{\tau}+F_{y}U=0\Leftrightarrow e^{-\int^{\tau}F_{y}d\tau'}\frac{dU'}{dt}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting into the noise driven PDE 
+\begin_inset Formula 
+\begin{align*}
+e^{-\int^{\tau}F_{y}d\tau'}\frac{dU'}{dt} & =\int_{M}dw\{W(v\bigr|w)U(w)-W(w\bigr|v)U(v)\}\\
+\frac{dU'}{dt} & =\int_{M}dw\{W(v\bigr|w)U'(w)-W(w\bigr|v)U'(v)\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Poisson distributed spike trains causing an instantaneous jump in the membrane
+ potential 
+\begin_inset Formula 
+\[
+W(v'\bigr|v)=\nu\delta(v'-h-v)
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\frac{d\rho}{dt}=\nu\left\{ \rho(v'-v'_{h},t)-\rho(v',t)\right\} +r(t)\delta(v'-v'_{\text{reset}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Internal rate 
+\begin_inset Formula 
+\[
+r(t)=\int_{v'_{\text{th},h}}^{v'_{\text{th}}}\rho(w,t)dw
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In 
+\begin_inset Formula $v'$
+\end_inset
+
+ space all the time evolution is due to synaptic input so that in the absence
+ of noise 
+\begin_inset Formula 
+\[
+\frac{d\rho(v',t)}{dt}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Leaky integrate-and-fire neurons 
+\begin_inset Formula 
+\[
+\tau\frac{dV}{dt}=-V+I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here the 
+\begin_inset Formula $v'$
+\end_inset
+
+-space slowly expands 
+\end_layout
+
+\begin_layout Itemize
+In general, neural dynamics is not slow compared to synaptic input, quadratic
+ integrate-and-fire model 
+\begin_inset Formula 
+\[
+\tau\frac{dV}{dt}=V^{2}+I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Some curves run away to infinity in finite time 
+\end_layout
+
+\begin_layout Itemize
+Large bins will not introduce inaccuracy because all neurons within the
+ same bin share the same fate 
+\end_layout
+
+\begin_layout Itemize
+Modeling advection only requires a pointer update
+\end_layout
+
+\begin_layout Section*
+Representing fast dynamics
+\end_layout
+
+\begin_layout Itemize
+Starting with a model
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=F(v)>0
+\]
+
+\end_inset
+
+everywhere on 
+\begin_inset Formula $(V_{\text{min}},V_{\text{th}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial value problem with 
+\begin_inset Formula $V(t=0)=V_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assuming 
+\begin_inset Formula $V_{0}=V_{\text{min}}$
+\end_inset
+
+ the neuron will reach threshold at finite time 
+\begin_inset Formula $t_{\text{period}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neuron will then be reintroduced at reset 
+\begin_inset Formula $V_{\text{reset}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For simplicity set 
+\begin_inset Formula $V_{\text{reset}}=V_{\text{min}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula 
+\[
+t_{\text{step}}=\frac{t_{\text{period}}}{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho(v)$
+\end_inset
+
+ for given time 
+\begin_inset Formula $t$
+\end_inset
+
+ will be represented in a grid consisting of 
+\begin_inset Formula $N$
+\end_inset
+
+ bins 
+\end_layout
+
+\begin_layout Itemize
+Define limits of bins as follows 
+\begin_inset Formula 
+\[
+v_{i}=V(it_{step})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $V(t)$
+\end_inset
+
+ is the solution of equation 
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=F(v)>0
+\]
+
+\end_inset
+
 
 \end_layout
 

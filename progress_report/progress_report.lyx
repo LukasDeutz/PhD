@@ -1,0 +1,230 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Progress Report 
+\end_layout
+
+\begin_layout Section*
+Review of my progress 
+\end_layout
+
+\begin_layout Itemize
+Provisional title of my thesis: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Spectral analysis of the dynamics of neuronal networks using population-density
+ techniques.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Statement of the research question:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Population density techniques have been applied to investigate the dynamics
+ of large populations of interacting neurons.
+ Most of the studies focus on integrate-and-fire neuron models, i.e.
+ the state of the neuron is described by a set of biophysical variables
+ usually including the membrane potential.
+ The other variables can e.g.
+ account for synaptic dynamics or adaptive behavior of the neuron.
+ Population density techniques employ the redundancy present in subpopulations
+ of cortical networks to introduce a probabilistic description of the entire
+ population.
+ This means that the state of each population is described by a single density
+ function instead of modeling the coupled dynamics of each neuron individually.
+ The density functions gives information about the proportion of neurons
+ at given dynamical state at a given point of time.
+ Like other mean-field approaches, population density techniques drastically
+ reduce the dimensionalty of the problem which makes them suitable for analytica
+l treatment and computational less demanding in large scale simulations.
+ However, even for simple neuronal models, the time evolution of the density
+ is governed by a complicated partial differential equation (PDE).
+ It can only be solved analytically for a view simple cases.
+ For example, analytical expressions for the stationary distribution of
+ the leaky integrate-and-fire neurons have been derived in the diffusion
+ limit.
+ Deviations from the stationary state, as well as models including synaptic
+ dynamics have been studied perturbatively.
+ Besides this analytical treatments, the PDE can also be solved numerically
+ which allows for the study of more complicated models.
+ However, using the numerical approach, it is more difficult and time consuming
+ to get an insight into the relationship between system dynamics and the
+ model parameter.
+ To address this short come, it has been shown that the density can be decompose
+d in terms eigenfunctions of the differential operator which defines the
+ PDE.
+ This decomposition reduces the PDE to a infinite system of ordinary differentia
+l equations (ODEs).
+ Depending on the question of interest, only a view modes can be sufficient
+ to capture the dynamics of the system.
+ Describing the system in terms of eigenfunctions offers a more intuitive
+ description of non equilibrium dynamics of the system.
+ Furthermore, the spectrum can be used to distinguish different dynamical
+ regimes and to determine resonance frequencies of the network.
+ So far, spectrum and eigenfunctions have only be derived for the perfect
+ integrate-and-fire model in the diffusion limit.
+ The eigenfunctions of the leaky integrate-and-fire are known, but the spectrum
+ is still unknown.
+ The goal of this project is to develop a general method to determine the
+ spectra and eigenfunctions numerically for a given integrate-and-fire neuron
+ model using the neuronal simulator Miind.
+ As a next step, we would apply the method to different neuron models which
+ e.g.
+ include synaptic dynamics or adaptive behavior.
+ Our hope is, that knowing the spectra and eigenfunctions of these models
+ would enable us to get more insight into the dynamical properties of these
+ models and how these properties differ.
+ This includes relaxation dynamics due to change in the input, dynamical
+ regimes like asynchronous irregular firing, global oscillations or bursting
+ behavior, resonance frequencies and gain modulation.
+ 
+\end_layout
+
+\begin_layout Itemize
+Population density technique reduces network of interacting to single quantiy
+ Is it possible to reduce the dynamical description of multidimensional
+ neuron models 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Literature review 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Different integrate-and-fire point neuron models and the dynamical properties
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Burkitt2006"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Burkitt2006a"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Learning about the mathematical framework 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Langevin equations 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck formalism 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The population density technique relies on two assumptions.
+ Neurons can be pooled into homogeneous populations, i.e.
+ their dynamics can 
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "progress_report"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
