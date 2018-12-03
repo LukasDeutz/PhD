@@ -1,0 +1,1522 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Helias lecture 
+\end_layout
+
+\begin_layout Section*
+Derivation of the Fokker-Planck equation
+\end_layout
+
+\begin_layout Itemize
+LIF neuron 
+\begin_inset Formula 
+\begin{equation}
+\tau_{m}\frac{dV}{dt}=-V+\tau_{m}\sum_{i=1}^{N}J_{i}s_{i}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The neurons receices independent Poisson input through 
+\begin_inset Formula $\{J_{1},\text{\ensuremath{\ldots},}J_{N}\}$
+\end_inset
+
+ different synapeses 
+\end_layout
+
+\begin_layout Itemize
+Poisson assumption 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Membrane potential dynamics is a 
+\series bold
+Markov process
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Time evolution depends only on the current state and not on the history
+ of the system
+\end_layout
+
+\begin_layout Itemize
+Poisson process itself is a Markov process and the input depends not on
+ the state of the neuron 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Defining object for stochastic description is the probability densisty function
+ 
+\begin_inset Formula $\rho(y,\,t)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+P\left(x(t)\in[y,y+\epsilon]\right)=\int_{y}^{y+\epsilon}dx\,\rho(x,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here, 
+\begin_inset Formula $P\left(x(t)\in[y,y+\epsilon]\right)$
+\end_inset
+
+ is the probability that 
+\begin_inset Formula $x$
+\end_inset
+
+ is in the interval 
+\begin_inset Formula $[y,y+\epsilon]$
+\end_inset
+
+ at time point 
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $\epsilon\rightarrow0$
+\end_inset
+
+ we can approximate the intergral by 
+\begin_inset Formula 
+\begin{equation}
+\lim_{\epsilon\rightarrow0}\int_{y}^{y+\epsilon}dx\,\rho(x,t)=\lim_{\epsilon\rightarrow0}\epsilon\rho(x,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Thus, we can right 
+\begin_inset Formula 
+\begin{equation}
+\rho(y,t)=\lim_{\epsilon\rightarrow0}\frac{1}{\epsilon}P\left(x(t)\in[y,y+\epsilon]\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability function is normalized 
+\begin_inset Formula 
+\begin{equation}
+\int_{-\infty}^{\infty}dy\rho(y,t)=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Our goal is to understand how 
+\begin_inset Formula $\rho(y,t)$
+\end_inset
+
+ evolves as a function of time 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equaton describes the time evolution of 
+\begin_inset Formula $\rho(y,t)$
+\end_inset
+
+ approximatively 
+\end_layout
+
+\begin_layout Itemize
+Markov property allows us to define conditional probability 
+\begin_inset Formula $P(y,t\bigl|x,s)\Rightarrow$
+\end_inset
+
+ conditional proability density 
+\begin_inset Formula $\rho(y,t\bigl|x,s)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If our system would not be Markov process then the conditional probability
+ would depend on the enitre history of the system 
+\begin_inset Formula $P(y(t)\bigl|x(s)\,\forall\,s<t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conditional probabilty is normalized
+\begin_inset Formula 
+\begin{equation}
+\int_{-\infty}^{\infty}dy\rho(y,t\bigl|x,s)=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we have been at 
+\begin_inset Formula $x$
+\end_inset
+
+ at time 
+\begin_inset Formula $s$
+\end_inset
+
+, we need to end up at some 
+\begin_inset Formula $y$
+\end_inset
+
+ at a later time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Joint probability and conditional probabilitz are connected 
+\begin_inset Formula 
+\begin{equation}
+P(x,y)=P(y\bigl|x)P(x)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Marginalizing over 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P(y)=\sum_{x}P(x,y)=\sum_{x}P(y\bigl|x)P(x)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Apply the same reasoning to population density yields the 
+\series bold
+Champman-Kolmogorov equation
+\series default
+
+\begin_inset Formula 
+\begin{equation}
+\rho(y,t)=\int dx\,\rho(y,t\bigl|x,s)\rho(x,s)\label{eq:ckq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Champman-Kolmogorov equation describes the time evolution of the probability
+ density of the system
+\end_layout
+
+\begin_layout Itemize
+It is integral equation which are typically difficut to handle (why?)
+\end_layout
+
+\begin_layout Itemize
+A differential formulation of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ckq"
+
+\end_inset
+
+ can be derived which is called 
+\series bold
+Fokker-Planck equation
+\end_layout
+
+\begin_layout Itemize
+This requires an additional approximation, so the two formulations are not
+ equivalent 
+\end_layout
+
+\begin_layout Itemize
+Main idea: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Short time intervals 
+\begin_inset Formula $\delta t$
+\end_inset
+
+, the transition probability 
+\begin_inset Formula $\rho(y,t+\delta t\bigl|x,t)$
+\end_inset
+
+ will be peaked function in area close to 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Implicit assumption: Process 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ does not possess large jumps 
+\end_layout
+
+\begin_layout Itemize
+Amplitude of synaptic impules must be small compared to the 
+\series bold
+length scale on which the probability varies as a function of
+\series default
+ 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We want to approximate the joint distribution 
+\begin_inset Formula $\rho(y,t+\delta t,x,t)=\rho(y,t+\delta t\bigl|x,t)\rho(x,t)$
+\end_inset
+
+ which is the integrand in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ckq"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula $\Delta=y-x$
+\end_inset
+
+ so that we can write 
+\begin_inset Formula 
+\begin{equation}
+\rho(y,t+\delta t,y-\Delta,t)=\rho(y,t+\delta t\bigl|x,t)\rho(y-\Delta,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho(y,t+\delta t,y-\Delta,t)$
+\end_inset
+
+ must have maximum near 
+\begin_inset Formula $x\simeq y\Rightarrow\Delta=0$
+\end_inset
+
+ for small 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ because 
+\begin_inset Formula $\rho(y,t+\delta t\bigl|x,t)$
+\end_inset
+
+ approaches delta-distribution 
+\end_layout
+
+\begin_layout Itemize
+Approximate maxima by parabola, i.e.
+ Taylor expand joint probability up to second around 
+\begin_inset Formula $\Delta=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+We aim at differential operator which acts on all variables 
+\begin_inset Formula $y$
+\end_inset
+
+ in 
+\begin_inset Formula $\rho(y,t+\delta t\bigl|x,t)\rho(y-\Delta,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We write 
+\begin_inset Formula $\rho(y,t+\delta t\bigl|x,t)\rho(y-\Delta,t)=\rho(y+\Delta'-\Delta,t+\delta t\bigl|x,t)\rho(y-\Delta,t)$
+\end_inset
+
+ which and set 
+\begin_inset Formula $\Delta'=\Delta$
+\end_inset
+
+ at the end
+\end_layout
+
+\begin_layout Itemize
+Second order Taylor expansion 
+\begin_inset Formula 
+\begin{equation}
+\left(1+\Delta\partial_{\Delta}+\frac{1}{2}\Delta^{2}\partial_{\Delta}^{2}\right)\rho(y+\Delta'-\Delta,t+\delta t\bigl|x,t)\rho(y-\Delta,t)\Bigr|_{\Delta=0}+\mathcal{O}(\Delta^{3})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can replace 
+\begin_inset Formula $\partial_{\Delta}$
+\end_inset
+
+ by 
+\begin_inset Formula $-\partial_{y}$
+\end_inset
+
+ because 
+\begin_inset Formula $-\Delta$
+\end_inset
+
+ appears always together with 
+\begin_inset Formula $y$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\left(1-\Delta\partial_{y}+\frac{1}{2}\Delta^{2}\partial_{y}^{2}\right)\rho(y+\Delta',t+\delta t\bigl|x,t)\rho(y,t)+\mathcal{O}(\Delta^{3})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We now set 
+\begin_inset Formula $\Delta'=\Delta$
+\end_inset
+
+ and insert into 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ckq"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\rho(y,t+\delta t)=\int d\Delta\,\left(1-\Delta\partial_{y}+\frac{1}{2}\Delta^{2}\partial_{y}^{2}\right)\rho(y+\Delta,t+\delta t\bigl|x,t)\rho(y,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Where we replaced integration measure 
+\begin_inset Formula $dx$
+\end_inset
+
+ by 
+\begin_inset Formula $-d\Delta$
+\end_inset
+
+ and swapped integral bordes 
+\end_layout
+
+\begin_layout Itemize
+Before integration to obtain differential operator acting on 
+\begin_inset Formula $\rho(y,t)$
+\end_inset
+
+ at the end of the r.h.s.
+ 
+\begin_inset Formula 
+\begin{equation}
+\rho(y,t+\delta t)=\int d\Delta\,\left(1-\Delta\partial_{y}+\frac{1}{2}\Delta^{2}\partial_{y}^{2}\right)\rho(y+\Delta,t+\delta t\bigl|x,t)\rho(y,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define conditional moments 
+\begin_inset Formula 
+\begin{equation}
+a_{n}(y,t+\delta t,\,t)=\int d\Delta\,\Delta^{n}\rho(y+\Delta,t+\delta t\bigl|x,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inuitive interpreation of conditional moments 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $a_{1}(y,t+\delta t,\,t)$
+\end_inset
+
+ describes average drift 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We write
+\begin_inset Formula 
+\begin{align*}
+\rho(y,t+\delta t)-\rho(y,t) & =\left(-\partial_{y}a_{1}(y,t+\delta t,\,t)+\frac{1}{2}\partial_{y}^{2}a_{2}(y,t+\delta t,\,t)\right)\rho(y,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We divide by 
+\begin_inset Formula $\delta t$
+\end_inset
+
+ on both sides and take the limes 
+\begin_inset Formula $\delta t\text{\ensuremath{\rightarrow0}}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\lim_{\delta t\text{\ensuremath{\rightarrow0}}}\frac{\rho(y,t+\delta t)-\rho(y,t)}{\delta t}=\lim_{\delta t\text{\ensuremath{\rightarrow0}}}\frac{1}{\delta t}\left(-\partial_{y}a_{1}(y,t+\delta t,\,t)+\frac{1}{2}\partial_{y}^{2}a_{2}(y,t+\delta t,\,t)\right)\rho(y,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We introduce 
+\begin_inset Formula 
+\begin{equation}
+A_{n}(y,t)=\lim_{\delta t\text{\ensuremath{\rightarrow0}}}\frac{1}{\delta t}a_{n}(y,t+\delta t,\,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at the Fokker-Planck equation
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho(y,t)=\left(-\partial_{y}A_{1}(y,t)+\frac{1}{2}\partial_{y}^{2}A_{2}(y,t)\right)\rho(y,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear partial differential equation of first order in 
+\begin_inset Formula $t$
+\end_inset
+
+ and second order in 
+\begin_inset Formula $y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define probabilty flux 
+\begin_inset Formula 
+\begin{equation}
+\Phi(y,\,t)=\left(A_{1}(y,t)-\frac{1}{2}\partial_{y}A_{2}(y,t)\right)\rho(y,t)
+\end{equation}
+
+\end_inset
+
+Rewrite Fokker-Planck equation as continuity equation 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho(y,t)=-\partial_{y}\Phi(y,\,t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Application to Leaky integrate-and-fire model
+\end_layout
+
+\begin_layout Itemize
+Dynamics 
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=-\frac{1}{\tau}V+\sum_{j=1}^{N}J_{ij}s_{j}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diffusion approximation 
+\begin_inset Formula 
+\[
+\partial_{t}p(V,t)=-\partial_{V}\varphi(V,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux 
+\begin_inset Formula 
+\[
+\varphi(V,t)=\left(-\frac{1}{\tau}(V-\mu)-\frac{1}{2}\frac{\sigma^{2}}{\tau}\partial_{V}\right)p(V,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Variable transformation 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x=\frac{\sqrt{2}}{\sigma}(V-\mu)$
+\end_inset
+
+ and 
+\begin_inset Formula $s=t/\tau$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fokker-Planck equationa after the variable transformation takes the form
+\begin_inset Formula 
+\[
+\partial_{s}\rho(x,s)=-\partial_{x}\Phi(x,s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux 
+\begin_inset Formula 
+\[
+\Phi(x,s)=-(x+\partial_{x})\rho(x,s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Networks of spiking neurons in mean-field approximation: Time-dependent
+ solution
+\end_layout
+
+\begin_layout Itemize
+Stationary solution of the Fokker-Planck equation has different fix points
+ 
+\end_layout
+
+\begin_layout Itemize
+Stability analysis of these fix points 
+\begin_inset Formula 
+\[
+r(t)=r_{0}+r_{1}e^{\lambda t}=r_{0}\left(1+\epsilon e^{\lambda t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\text{Re}(\lambda)>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{Im}(\lambda)=0$
+\end_inset
+
+, then fluctuations will cause the system to exponentially diverge from
+ the stable solution
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\text{Re}(\lambda)>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{Im}(\lambda)\neq0$
+\end_inset
+
+, then the fix point is unstable and the system will show oscillations at
+ the point of transition, so called 
+\series bold
+Hopf-bifurctation
+\end_layout
+
+\begin_layout Itemize
+Notation 
+\begin_inset Formula 
+\[
+r(t)=r+\delta r(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Our objective is to determine the resulting time-dependent firing rate of
+ a neuron or a population 
+\end_layout
+
+\begin_layout Itemize
+First and second 
+\series bold
+infinitesimal moments
+\series default
+ of the Fokker-Planck equation 
+\begin_inset Formula 
+\begin{align*}
+\mu(t) & =\tau KJ(1-\gamma g)r+\mu_{\text{ext}}+\underbrace{\tau KJ(1-\gamma g)\delta r(t-d)}_{\delta\mu(t)}\\
+\sigma^{2}(t) & =\tau KJ^{2}(1-\gamma g)r+\sigma_{\text{ext}}^{2}+\underbrace{\tau KJ^{2}(1-\gamma g)\delta r(t-d)}_{\delta\sigma^{2}(t)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Time-dependent Fokker-Planck equation 
+\begin_inset Formula 
+\begin{align*}
+\tau_{\text{m}}\partial_{t}p(V,t) & =-\partial_{V}(\tau_{\text{m}}\varphi(V,t)+\tau_{\text{m}}\delta\varphi(V,t))\\
+\tau_{\text{m}}\varphi(V,t) & =\left(-(V-\mu)-\frac{\sigma^{2}}{2}\partial_{V}\right)p(V,t)\\
+\tau_{\text{m}}\delta\varphi(V,t) & =\left(\delta u(t)-\frac{\delta\sigma^{2}(t)}{2}\partial_{V}\right)p(V,t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rescaled unitless coordinates 
+\begin_inset Formula 
+\begin{align*}
+x & =\frac{\sqrt{2}}{\sigma}(V-\mu),\quad s=\frac{\tau}{\tau}\\
+\rho(x,s) & =\frac{\sigma}{\sqrt{2}}p(V(x),\tau s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This leads to 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}\rho(x,s) & =\partial_{x}(x+\partial_{x})\rho(x,s)\\
+ & +n(s)\left(-G\partial_{x}+H\partial_{x}^{2}\right)\rho(x,s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relative rate modulation 
+\begin_inset Formula 
+\[
+n(s)=\frac{\partial r(\tau s)}{r}
+\]
+
+\end_inset
+
+as a small parameter 
+\end_layout
+
+\begin_layout Itemize
+Free operator 
+\begin_inset Formula 
+\[
+\mathcal{L}_{0}(x)=\partial_{x}(x+\partial_{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Perturbation operator 
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}(x)=\left(-G\partial_{x}+H\partial_{x}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ are defined as 
+\begin_inset Formula 
+\begin{align*}
+Gn(s) & =\sqrt{2}\frac{\delta u(\tau s)}{\sigma}=\sqrt{2}\frac{KJ(1-\gamma g)\tau r}{\sigma}n(s)=\sqrt{2}\frac{\mu_{\text{loc}}}{\sigma}n(s)\\
+Hn(s) & =\frac{\delta\sigma^{2}(\tau s)}{\sigma^{2}}=\frac{KJ^{2}(1+\gamma g^{2})\tau v}{\sigma^{2}}n(s)=\frac{\sigma_{\text{loc}}^{2}}{\sigma^{2}}n(s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve partial differential equation where 
+\begin_inset Formula $n(s)$
+\end_inset
+
+ must be defined 
+\series bold
+self-consistently
+\series default
+ because it must equal the relative modulation firing rate in the network
+ 
+\begin_inset Formula 
+\begin{align*}
+r\left(1+n\left(\frac{t}{\tau_{\text{m}}}\right)\right) & =\tau_{\text{m}}\varphi(V_{\theta},t)+\tau_{\text{m}}\delta\varphi(V_{\theta},t)=\left.\tau_{\text{m}}\varphi(V_{\theta},t)+\tau_{\text{m}}\varphi(V,t)\right|_{V=V_{\text{r}}^{(-)}}^{V=V_{\text{r}}^{(+)}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+The LIF model: harmonic oscillator of neuroscience
+\end_layout
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}\rho(x,s) & =-\partial_{x}(-x-\partial_{x})\rho(x,s)=\mathcal{L}\rho(x,s)\\
+ & =-\partial_{x}S_{0}\rho(x,s)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux operator 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mathematical complication is that the Fokker-Planck operator is not Hermitian
+\end_layout
+
+\begin_layout Itemize
+Hermicity has the advantage that the eigenfunctions of the operator form
+ a complete orthogonal set 
+\end_layout
+
+\begin_layout Itemize
+Apply a transformation that is possible whenever Fokker-Planck equation
+ posses a stationary solution 
+\begin_inset Formula $\overline{\rho}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To proof that 
+\begin_inset Formula $\overline{\rho}_{0}=e^{-\frac{x^{2}}{2}}$
+\end_inset
+
+ is a stationary solution we need to shows 
+\begin_inset Formula 
+\[
+0=\partial_{x}(x+\partial_{x})\overline{\rho}_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula $\overline{\rho}_{0}=e^{-\frac{x^{2}}{2}}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{x}(x+\partial_{x})e^{-\frac{x^{2}}{2}}\\
+ & =\partial_{x}(x-x)e^{-\frac{x^{2}}{2}}\\
+ & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula $u(x)=\sqrt{\overline{\rho}_{0}(x)}=e^{-\frac{1}{4}x^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It fulfills 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}u(x)\circ & =u(x)\left(-\frac{1}{2}x+\partial_{x}\right)\circ\\
+(x+\partial_{x})u(x)\circ & =u(x)\left(\frac{1}{2}x+\partial_{x}\right)\circ
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define operators 
+\begin_inset Formula 
+\begin{align*}
+a & =\frac{1}{2}x+\partial_{x}\\
+a^{\dagger} & =\frac{1}{2}x-\partial_{x}
+\end{align*}
+
+\end_inset
+
+which fulfill the commutation operator 
+\begin_inset Formula 
+\[
+[a,a^{\dagger}]=aa^{\dagger}-a^{\dagger}a=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define the function 
+\begin_inset Formula $q(x,s)$
+\end_inset
+
+ by 
+\begin_inset Formula $\rho(x,s)=u(x)q(x,s)$
+\end_inset
+
+ the flux operator 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ and the Fokker-Planck operator transform to 
+\begin_inset Formula 
+\begin{align*}
+S_{0}u\circ & =-(x+\partial_{x})u\circ=-ua=-S_{0}\\
+\mathcal{L}u\circ & =\partial_{x}(x+\partial_{x})u\circ=-ua^{\dagger}a\circ
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Fokker-Planck equation can be expressed in terms of 
+\begin_inset Formula $q$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}q(x,s) & =-a^{\dagger}a\,q(x,s)=\left(\partial_{x}^{2}-\frac{1}{4}x^{2}+\frac{1}{2}\right)q(x,s)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Alternative derivation 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Perform similarity transformation
+\begin_inset Formula 
+\begin{align*}
+f^{-1}(x)\partial_{x}(x+\partial_{x})\rho(x)f(x) & =f^{-1}(x)(1+x\partial_{x}+\partial_{x}^{2})f(x)\rho(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Choose 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+f^{-1}(x)(1+x\partial_{x}+\partial_{x}^{2})f(x)\rho(x)=\left(1+\partial_{x}^{2}+V(x)\right)\rho(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we need to solve 
+\begin_inset Formula 
+\[
+f^{-1}(x)\left(x\partial_{x}+\partial_{x}^{2}\right)f(x)\rho(x)=\left(\partial_{x}^{2}+V(x)\right)\rho(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+L.h.s.
+ 
+\begin_inset Formula 
+\begin{align*}
+f^{-1}\left(x\partial_{x}+\partial_{x}^{2}\right)f\rho & =f^{-1}\left(xf_{x}\rho+xf\rho_{x}+\partial_{x}(f_{x}\rho+f\rho_{x})\right)\\
+ & =f^{-1}\left(xf_{x}\rho+xf\rho_{x}+f_{xx}\rho+2f_{x}\rho_{x}+f\rho_{xx}\right)\\
+ & =\frac{xf_{x}\rho}{f}+x\rho_{x}+\frac{f_{xx}\rho}{f}+\frac{2f_{x}\rho_{x}}{f}+\rho_{xx}\\
+ & =\frac{1}{f}\left(xf_{x}+f_{xx}\right)\rho+\left(x+\frac{2f_{x}}{f}\right)\rho_{x}+\rho_{xx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We want to get rid of the term 
+\begin_inset Formula $\rho_{x}$
+\end_inset
+
+ so we require
+\begin_inset Formula 
+\[
+\left(x+\frac{2f_{x}}{f}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This equation simple ODE which can be solved by 
+\begin_inset Formula 
+\begin{align*}
+\frac{df}{dx} & =-\frac{1}{2}xf\\
+\frac{1}{f}df & =-\frac{1}{2}x\,dx\\
+f(x) & =ce^{-\frac{1}{4}x^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $f(x)=\sqrt{\overline{\rho}_{0}}$
+\end_inset
+
+ with 
+\begin_inset Formula $\rho_{0}=e^{-\frac{1}{2}x^{2}}$
+\end_inset
+
+.
+ The constant 
+\begin_inset Formula $c$
+\end_inset
+
+ is not important, because we multiply by 
+\begin_inset Formula $f(x)^{-1}$
+\end_inset
+
+ from the left.
+ The potential is given by 
+\begin_inset Formula 
+\begin{align*}
+V(x) & =\frac{1}{f}\left(xf_{x}+f_{xx}\right)\\
+ & =e^{\frac{1}{4}x^{2}}(-\frac{1}{2}x^{2}-\frac{1}{2}\partial_{x}x)e^{-\frac{1}{4}x^{2}}\\
+ & =e^{\frac{1}{4}x^{2}}\left(-\frac{1}{2}x^{2}-\frac{1}{2}+\frac{1}{4}x^{2}\right)e^{-\frac{1}{4}x^{2}}\\
+ & =\left(-\frac{1}{2}x^{2}-\frac{1}{2}+\frac{1}{4}x^{2}\right)\\
+ & =-\frac{1}{4}x^{2}-\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+f^{-1}(x)\partial_{x}(x+\partial_{x})\rho(x)f(x) & =f^{-1}(x)(1+x\partial_{x}+\partial_{x}^{2})f(x)\rho(x)\\
+ & =\left(\partial_{x}^{2}+V(x)\right)\rho(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+where 
+\begin_inset Formula $V(x)=-\frac{1}{4}x^{2}+\frac{1}{2}$
+\end_inset
+
+.
+ Start from 
+\begin_inset Formula 
+\[
+\partial_{s}\rho=\partial_{x}(x+\partial_{x})\rho(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Insert 
+\begin_inset Formula $\rho(x,s)=f(x)q(x,s)$
+\end_inset
+
+ and multiply with 
+\begin_inset Formula $f^{-1}(x)$
+\end_inset
+
+ from the left 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}f^{-1}\rho & =\left(\partial_{x}^{2}+V\right)q\\
+\partial_{s}q & =\left(\partial_{x}^{2}+V\right)q
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Eigenvalue problem 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}(x+\partial_{x})\rho(x) & =\lambda_{n}\rho(x)\\
+\left(\partial_{x}^{2}+V(x)\right)q(x) & =a_{n}q(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $V(x)=-\frac{1}{4}x^{2}$
+\end_inset
+
+.
+ General solution 
+\begin_inset Formula 
+\[
+y(x)=c_{1}D_{-\frac{1}{2}}(x)+c_{2}D_{-\frac{1}{2}}(ix)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Here 
+\begin_inset Formula 
+\[
+D_{-1/2}(z)=\sqrt{\frac{z}{2\pi}}K_{1/4}\left(\frac{1}{4}z^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary conditions 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We already derived the stationary solution 
+\begin_inset Formula $\rho_{0}=uq_{0}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Higher eigenfunctions can be obtained by repeated application of 
+\begin_inset Formula $a^{\dagger}$
+\end_inset
+
+, as the commutation relation 
+\begin_inset Formula $[a,a^{\dagger}]=1$
+\end_inset
+
+ holds
+\end_layout
+
+\begin_layout Itemize
+Define 
+\begin_inset Formula 
+\[
+q_{n}=(a^{\dagger})^{n}q_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert into partial differential equation 
+\begin_inset Formula 
+\begin{align*}
+a^{\dagger}a\left(a^{\dagger}\right)^{n}q_{0} & =a^{\dagger}aa^{\dagger}(a^{\dagger})^{n-1}q_{0}\\
+ & =a^{\dagger}\left(a^{\dagger}a+[a,a^{\dagger}]\right)(a^{\dagger})^{n-1}q_{0}\\
+ & =a^{\dagger}\left(a^{\dagger}a+1\right)(a^{\dagger})^{n-1}q_{0}\\
+ & =\ldots\\
+ & =(a^{\dagger})^{n}(a^{\dagger}a+n)q_{0}\\
+ & =n(a^{\dagger})^{n}q_{0}\\
+ & =nq_{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We see that 
+\begin_inset Formula $q_{n}$
+\end_inset
+
+ is an eigenfunction of the operator 
+\begin_inset Formula $a^{\dagger}a$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spectrum of the operator is discrete 
+\end_layout
+
+\begin_layout Itemize
+Full problem 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}\rho(x,s) & =\partial_{x}(x+\partial_{x})\rho(x,s)+n(s)\left(-G\partial_{x}+H\partial_{x}^{2}\right)\rho(x,s)
+\end{align*}
+
+\end_inset
+
+which becomes 
+\begin_inset Formula 
+\begin{align*}
+\partial_{s}q(x,s) & =\left(\partial_{x}^{2}-\frac{1}{4}x^{2}+\frac{1}{2}\right)q(x,s)+n(s)u^{-1}(x)\left(-G\partial_{x}+H\partial_{x}^{2}\right)u(x)q(x,s)\\
+ & =\left(\partial_{x}^{2}-\frac{1}{4}x^{2}+\frac{1}{2}\right)q(x,s)+n(s)\left(\frac{1}{2}(G-1)x+\frac{1}{4}x^{2}H-\frac{1}{2}\right)q(x,s)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Formula 
+\begin{align*}
+ & u^{-1}(x)\left(-G\partial_{x}+H\partial_{x}^{2}\right)u(x)\\
+= & e^{\frac{1}{4}x^{2}}\left(-G\partial_{x}+H\partial_{x}^{2}\right)e^{-\frac{1}{4}x^{2}}\\
+= & e^{\frac{1}{4}x^{2}}\left(\frac{1}{2}Gx+H-\frac{1}{2}\partial_{x}x\right)e^{-\frac{1}{4}x^{2}}\\
+= & e^{\frac{1}{4}x^{2}}\left(\frac{1}{2}Gx+H-\frac{1}{2}x+\frac{1}{4}x^{2}-\frac{1}{2}\right)e^{-\frac{1}{4}x^{2}}\\
+= & \frac{1}{2}(G-1)x+\frac{1}{4}x^{2}H-\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Perturbative treatment of the time-dependent Fokker-Planck operator 
+\end_layout
+
+\begin_layout Itemize
+Make the ansatz 
+\begin_inset Formula 
+\[
+q(x,s)=q_{0}(x)+q_{1}(x,s)
+\]
+
+\end_inset
+
+which we insert into the partial differential equation
+\begin_inset Formula 
+\[
+\partial_{s}q_{1}=\mathcal{L}_{0}q_{1}+\mathcal{L}_{1}q_{1}+\mathcal{O}(n^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Partial differential equation for 
+\begin_inset Formula $q_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

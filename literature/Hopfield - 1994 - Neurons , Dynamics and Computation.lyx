@@ -1,0 +1,650 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Neurons, Dynamics and Computation
+\end_layout
+
+\begin_layout Itemize
+Brains performs computation to solve tasks 
+\end_layout
+
+\begin_layout Itemize
+Consider computer as an input-output device, with input and output signals
+ in the same general medium or format 
+\end_layout
+
+\begin_layout Itemize
+Computer performs transformation of input bits into output bits 
+\end_layout
+
+\begin_layout Itemize
+In this view, the brain is a computer 
+\end_layout
+
+\begin_layout Itemize
+Million axons carry chemical pulses from the eyes to the brain 
+\end_layout
+
+\begin_layout Itemize
+Input pulse (vision) output pulse sequence triggers speech 
+\end_layout
+
+\begin_layout Itemize
+Idea of 
+\series bold
+composition
+\series default
+, the output of one computer can be used as the input for another computer
+ of the same general type 
+\end_layout
+
+\begin_layout Itemize
+Each chip is a computer 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ each neuron is a computer (input-output device)
+\end_layout
+
+\begin_layout Section*
+Computer as dynamical systems
+\end_layout
+
+\begin_layout Itemize
+A physical digital computer is a dynamical system which computes by following
+ a pah in its space of discrete physical states 
+\end_layout
+
+\begin_layout Itemize
+Batch-mode computation, all input is supplied at the beginning of the computatio
+n 
+\end_layout
+
+\begin_layout Itemize
+Computer has 
+\begin_inset Formula $N$
+\end_inset
+
+ storage registers, each storing a single binary digit 
+\begin_inset Formula $100010101\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This number specifies the state of the machine at a particular time 
+\end_layout
+
+\begin_layout Itemize
+Binary state changes into new state each clock cycle 
+\end_layout
+
+\begin_layout Itemize
+Transition map describes which state follows which 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ describe the machine as a dynamical system that changes its discrete state
+ in discrete time 
+\end_layout
+
+\begin_layout Itemize
+Answer is found when system reaches stable state from which there are no
+ transitions 
+\end_layout
+
+\begin_layout Itemize
+Batch-mode analog computation can be similarly described with continuous
+ time and state-space variable 
+\end_layout
+
+\begin_layout Itemize
+Final state is typically a point attractor, a location to which all nearby
+ states will evolve 
+\end_layout
+
+\begin_layout Itemize
+Associative memory, partial and erroneous knowledge (stimuli) of a memory
+ can nevertheless give access to 
+\series bold
+complete
+\series default
+ memory 
+\end_layout
+
+\begin_layout Itemize
+System with high dimensional state space dominated by a 
+\series bold
+substantial
+\series default
+ number of point attractor can be regarded as associative memory 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What does substantial means.
+ How does stability of global attractor (resting state) suffers from introducing
+ additional attractors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Location of a particular point attractor can be obtained from partial informatio
+n (inexact description of the attractor location)
+\end_layout
+
+\begin_layout Itemize
+Biological requirements 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Insert new memories attractor by a biological plausible algorithm (synaptic
+ plasticity)
+\end_layout
+
+\begin_layout Enumerate
+Error-correction codes used with data transmission can also be construed
+ as attractors 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+More complicated computations than the recovery of memories are available
+\end_layout
+
+\begin_layout Itemize
+Optimization problem, for which the stable (fixed) points are minima of
+ the desired variable 
+\end_layout
+
+\begin_layout Section*
+A simple dynamical model of neurobiology 
+\end_layout
+
+\begin_layout Itemize
+Cell functions at an input-output device 
+\end_layout
+
+\begin_layout Itemize
+Inputs are made on its dendrites or on the cell body 
+\end_layout
+
+\begin_layout Itemize
+Inputs can cause cell outputs which are received as input by other cells
+\end_layout
+
+\begin_layout Itemize
+Resting potential 
+\begin_inset Formula $-70$
+\end_inset
+
+mV
+\end_layout
+
+\begin_layout Itemize
+Threshold 
+\begin_inset Formula $-50$
+\end_inset
+
+mV
+\end_layout
+
+\begin_layout Itemize
+Membrane is only about 
+\begin_inset Formula $75\mathring{\text{A}}$
+\end_inset
+
+ thick, so there is appreciable capacitance 
+\begin_inset Formula $C$
+\end_inset
+
+ between the inside and the outside of the cell 
+\end_layout
+
+\begin_layout Itemize
+Integrate-and-fire 
+\begin_inset Formula 
+\[
+C\frac{du}{dt}=\frac{-(u-u_{0})}{R}+i(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $i(t)$
+\end_inset
+
+ is large constant current, then 
+\begin_inset Formula $u$
+\end_inset
+
+ will charge to threshold almost linearly 
+\end_layout
+
+\begin_layout Itemize
+Time between equally spaced action potentials is roughly 
+\begin_inset Formula 
+\[
+P=C\frac{u_{\text{thresh}}-u_{\text{reset}}}{i_{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When potential reaches synaptic terminal after spike emission, ion conductivity
+ channels open 
+\end_layout
+
+\begin_layout Itemize
+For reasons including diffusion and chemical inactivation, conductivity
+ pulse 
+\begin_inset Formula $\sigma(t)$
+\end_inset
+
+ is not a delta function but has nonzero duration 
+\end_layout
+
+\begin_layout Itemize
+It can be modeled as 
+\begin_inset Formula 
+\[
+\sigma(t)=se^{-(t-t_{0})\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each synapse has its own particular maximum conductivity 
+\end_layout
+
+\begin_layout Itemize
+For a synapse from cell 
+\begin_inset Formula $j$
+\end_inset
+
+ to cell 
+\begin_inset Formula $k$
+\end_inset
+
+, an action potential arriving on cell 
+\begin_inset Formula $j$
+\end_inset
+
+'s axon at time 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ causes current 
+\begin_inset Formula 
+\[
+i(t)=S_{kj}e^{-\frac{(t-t_{0})}{\tau}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{kj}=V_{\text{ion}}s_{kj}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula 
+\[
+f_{k}(t)=\sum_{n}\delta(t-t_{n}^{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Time evolution 
+\begin_inset Formula 
+\[
+\frac{di_{k}}{dt}=-\frac{i_{k}}{\tau}+\sum_{j}S_{kj}f_{j}(t)+\text{sensory term}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The sensory term must be included for sensory cells 
+\end_layout
+
+\begin_layout Section*
+Synapse evolution algorithms 
+\end_layout
+
+\begin_layout Itemize
+Synaptic strength 
+\begin_inset Formula $S_{kj}$
+\end_inset
+
+ can change with time
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+During the development of an immature nervous system 
+\end_layout
+
+\begin_layout Enumerate
+During learning and adaptation that go in a mature one
+\end_layout
+
+\begin_layout Enumerate
+Strength 
+\begin_inset Formula $S_{kj}$
+\end_inset
+
+ changes as a result of roughly simultaneous activity of cells 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Change algorithm which involves only the simultaneous activity of pre- and
+ post-synaptic neurons and no other details is called a Hebbian synapse
+ 
+\end_layout
+
+\begin_layout Itemize
+Simple version of such dynamics might be written 
+\begin_inset Formula 
+\[
+\frac{dS_{kj}}{dt}=\alpha i_{k}f_{j}(t)-\text{decay term}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $i_{k}$
+\end_inset
+
+ is total current into cell 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is positive 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f_{j}(t)$
+\end_inset
+
+ is the rate of neuron 
+\begin_inset Formula $j$
+\end_inset
+
+ projecting to 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If the current is negative, i.e.
+ the probability of a neuron to spike in the near feature is decreased
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $S_{kj}$
+\end_inset
+
+ will decrease if neuron 
+\begin_inset Formula $j$
+\end_inset
+
+ is active 
+\end_layout
+
+\begin_layout Itemize
+If the current is negative, i.e.
+ the probability of a neuron to spike in the near feature is increased
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula $S_{kj}$
+\end_inset
+
+ will increase if neuron 
+\begin_inset Formula $j$
+\end_inset
+
+ is active 
+\end_layout
+
+\begin_layout Itemize
+Decay accounts for forgetting old not used information 
+\end_layout
+
+\begin_layout Itemize
+Slightly more complex synapse change rules of a Hebbian type reproduce results
+ of a variety of experiments in the visual cortex of cats 
+\end_layout
+
+\begin_layout Itemize
+Learning and development involve synaptic changes 
+\end_layout
+
+\begin_layout Itemize
+Dynamics of neural activity is what performs computation 
+\end_layout
+
+\begin_layout Section*
+Classical neurodynamics 
+\end_layout
+
+\begin_layout Itemize
+Neuroscience can be described in two extreme limits
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Classical approximation
+\series default
+, individual action potential have little effect and their precise timing
+ is unimportant for coding information 
+\end_layout
+
+\begin_layout Itemize
+This view deals than with large number of action potentials in a statistic
+ fashion 
+\end_layout
+
+\begin_layout Itemize
+Opposite paradigm, precise relative timing of action potentials arrive along
+ different axons, ISI along a single axon are used to code significant informati
+on 
+\end_layout
+
+\begin_layout Section*
+Computation with fixed connections 
+\end_layout
+
+\begin_layout Itemize
+Symmetric network 
+\end_layout
+
+\begin_layout Itemize
+Energy function 
+\end_layout
+
+\begin_layout Itemize
+Show that dynamic variables stop at minima of the energy function 
+\end_layout
+
+\begin_layout Itemize
+Change synaptic function such that energy function is minimized 
+\end_layout
+
+\begin_layout Itemize
+Biological more plausible networks 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fixed patterns of inhibitory connections 
+\end_layout
+
+\begin_layout Itemize
+Low mean activity rates 
+\end_layout
+
+\begin_layout Itemize
+Carrying information only in excitatory connections 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Might think of the single convergence to a fixed point as the fundamental
+ computing step of a brain like single clock cycle is the fundamental computing
+ step of a conventional digital machine 
+\end_layout
+
+\begin_layout Subsection*
+Action potential synchronization 
+\end_layout
+
+\begin_layout Itemize
+Forgoing analysis was based on the idea that individual action potentials
+ are insignificant and that precise information about when particular action
+ potentials occur is generally no relevant
+\end_layout
+
+\begin_layout Itemize
+Information is implicitly encoded in short-time average of the number of
+ generated by each cell 
+\end_layout
+
+\begin_layout Itemize
+Neuron is called strongly responsive to a stimulus if it shows high rate
+ only during presentation 
+\end_layout
+
+\begin_layout Itemize
+Precise timing is important 
+\end_layout
+
+\begin_layout Itemize
+Binaural localization of owl, delay between arrival at different ears is
+ used for localization 
+\end_layout
+
+\end_body
+\end_document
