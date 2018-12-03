@@ -5,8 +5,17 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage[style=authoryear, natbib=true]{biblatex}
+%\usepackage{natbib}
+%\setcitestyle{square}
+\addbibresource{progress_report.bib}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
+\begin_local_layout
+Provides natbib 1
+\end_local_layout
 \language english
 \language_package default
 \inputencoding auto
@@ -24,7 +33,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command biber
 \index_command default
 \paperfontsize 12
 \spacing single
@@ -83,24 +92,17 @@ Progress Report
 Review of my progress 
 \end_layout
 
-\begin_layout Itemize
-Provisional title of my thesis: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Spectral analysis of the dynamics of neuronal networks using population-density
- techniques.
+\begin_layout Standard
+Provisional title of my thesis: Spectral analysis of the dynamics of neuronal
+ networks using population-density techniques.
  
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection*
 Statement of the research question:
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
 Population density techniques have been applied to investigate the dynamics
  of large populations of interacting neurons.
  Most of the studies focus on integrate-and-fire neuron models, i.e.
@@ -161,18 +163,37 @@ l equations (ODEs).
  
 \end_layout
 
-\begin_layout Itemize
-Population density technique reduces network of interacting to single quantiy
- Is it possible to reduce the dynamical description of multidimensional
- neuron models 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsection*
 Literature review 
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+In computational neuroscience, the most common method to simulate neural
+ circuits is by means of direct simulation.
+ This approach follows the dynamics of all neurons individually taking into
+ account interactions modeled by connectivity blueprint and synaptic dynamics.
+ This method gives access to observables, like membrane potential, firing
+ rate, correlation measures, on the level of single neurons.
+ However, due to the large number of neurons and synaptic connections in
+ the mammalian cortex, modeling of a small area of cortex requires a fast
+ amount computational power.
+ Furthermore, the complexity of the problem makes it unfeasible for analytic
+ studies.
+ At the end of the last century, an alternative approach has been put forward
+ by different authors, namely modeling the interaction of entire populations
+ in terms density functions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag,Knight2000a"
+
+\end_inset
+
+.
+ This approach drastically reduces the dimensionality of the problem, but
+ it comes on a price.
+ 
+\end_layout
+
 \begin_layout Itemize
 Different integrate-and-fire point neuron models and the dynamical properties
  
@@ -181,33 +202,36 @@ Different integrate-and-fire point neuron models and the dynamical properties
 \begin_deeper
 \begin_layout Itemize
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Burkitt2006"
 
 \end_inset
 
 , 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Burkitt2006a"
 
 \end_inset
 
-
+ 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 Learning about the mathematical framework 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Langevin equations 
-\end_layout
+Langevin equations, Fokker-Planck formalism, Partial differential equations
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Logan2014,Riksen1992"
 
-\begin_layout Itemize
-Fokker-Planck formalism 
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -215,10 +239,35 @@ Fokker-Planck formalism
 The population density technique relies on two assumptions.
  Neurons can be pooled into homogeneous populations, i.e.
  their dynamics can 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "progress_report"
 options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+printbibliography
+\end_layout
 
 \end_inset
 
