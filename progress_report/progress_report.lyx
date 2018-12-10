@@ -172,25 +172,1271 @@ In computational neuroscience, the most common method to simulate neural
  circuits is by means of direct simulation.
  This approach follows the dynamics of all neurons individually taking into
  account interactions modeled by connectivity blueprint and synaptic dynamics.
- This method gives access to observables, like membrane potential, firing
- rate, correlation measures, on the level of single neurons.
+ This method gives access to observables, like the membrane potential, firing
+ rate or correlation measures, on the level of single neurons.
  However, due to the large number of neurons and synaptic connections in
  the mammalian cortex, modeling of a small area of cortex requires a fast
- amount computational power.
- Furthermore, the complexity of the problem makes it unfeasible for analytic
- studies.
- At the end of the last century, an alternative approach has been put forward
- by different authors, namely modeling the interaction of entire populations
- in terms density functions 
+ amount of computational power.
+ Hence, large scale brain simulations, even for extremely simplified neuron
+ models, need to be run on super computers.
+ See [] and [] for an example.
+ The connectivity structure in such models is usually defined in terms of
+ populations which represent neurons of the same type in a specific cortical
+ area.
+ The type of a neuron can be characterized by e.g.
+ its morphology, its electrophysiological properties, or functional properties
+ (e.g.
+ receptivity to a specific stimulus feature).
+ Neurons within a population are considered to be statistical identical,
+ i.e.
+ they form on average the same number of connections with neurons of other
+ types.
+ The strength of each individual connection is drawn randomly from a distributio
+n which may differ depending on the type of the pre- and postsynaptic neuron.
+ Parameters determining the neuron model are often considered to be identical
+ for neurons belonging to the same population, but could be in principle
+ also drawn from a distribution.
+ In this setting, one is usually not interested in the dynamical features
+ of individual neurons, but instead on the dynamical features of the individual
+ populations as whole like e.g.
+ the average population firing rate, interspike interval statistics (ISI),
+ or the statistics pairwise or higher order correlations of neuronal activity.
+\end_layout
+
+\begin_layout Standard
+This motivated an alternative modeling approach which has been developed
+ at the end of the last century simultaneously by different authors 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Omurtag,Knight2000a"
+key "Omurtag,Knight2000a,Nykamp"
+
+\end_inset
+
+ and which is called population density method.
+ It makes use of the assumed homogeneity within populations, i.e.
+ it describes the dynamics on the level of populations instead of modeling
+ individual neurons.
+ The method presented in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Omurtag"
+
+\end_inset
+
+ can be in principle be applied to any kind of point neuron model.
+ Point neurons are single compartment models, i.e.
+ the cell body of a neuron is collapsed to a single point.
+ This means that they can not account for dynamical features specific to
+ the morphology of a neuron.
+ A neuron receives excitatory and inhibitory inputs which arrive from other
+ neurons by their associated synapses.
+ These inputs are modeled either as injected currents or as a change in
+ conductance.
+ Current based synapses are simpler compared to conductance based models
+ because they produce a current which is independent of the state of the
+ neuron, i.e.
+ multiple synaptic inputs can be summed linearly.
+ Conductance synapse models are state dependent because the synaptic current
+ produced by a conductance change depends on the difference between the
+ membrane potential and the reversal potential of the corresponding synapse.
+ As a consequence, the summation of synaptic input is nonlinear for conductance
+ based models.
+ In absence of synaptic input, the membrane potential relaxes back to its
+ reversal potential which marks equilibrium between cell interior and exterior.
+ The time scale of the relaxation is controlled by a model parameter usually
+ called the membrane time constant.
+ If a neuron receives sufficiently strong excitatory, the membrane potential
+ exceeds a threshold value which will cause the neuron to emit an action
+ potential, followed by a reset and refractory period.
+ This threshold mechanism can be either intrinsically incorporated into
+ the model, like it is for example in Hodgkin-Huxley (H-H) type models 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hodgkin1952"
+
+\end_inset
+
+ or it can be introduced artificially.
+ Prominent examples of neurons models with artificial threshold mechanism
+ are the linear 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fusi1999"
+
+\end_inset
+
+, leaky 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lapicque1907,Stein1967"
+
+\end_inset
+
+ (LIF), quadratic 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ermentrout1996"
+
+\end_inset
+
+ and exponential integrate-and-fire neurons 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud-Trocme2003"
 
 \end_inset
 
 .
- This approach drastically reduces the dimensionality of the problem, but
- it comes on a price.
+ The quadratic and exponential integrate-and-fire neuron incorporate nonlinear
+ dynamics to mimic the superthreshold transients of the membrane potential
+ after spike initiation.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud-Trocme2003"
+
+\end_inset
+
+ showed that these nonlinear dynamics are necessary to reproduce firing
+ rate responses compared to simulations of more realistic H-H type models.
+ The integrate-and-fire models are simpler to study because they have less
+ parameters and less dynamical variables and it has been shown that they
+ are still able to adequately describe subthreshold dynamics of the membrane
+ potential 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bernander1991"
+
+\end_inset
+
+.
+ For an overview on the theory of different integrate-and-fire models see
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Burkitt2006,Burkitt2006a"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+For a given neuron model, the state of a neuron can be determined by a set
+ of variables 
+\begin_inset Formula $\boldsymbol{v}=(v_{1},v_{2},\ldots,v_{n})$
+\end_inset
+
+ usually including the membrane potential which is set to be the first variable
+ 
+\begin_inset Formula $v_{1}=V$
+\end_inset
+
+ by convention.
+ The time evolution of 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ is assumed to be determined by first order kinetics
+\begin_inset Formula 
+\begin{equation}
+\frac{d\boldsymbol{v}}{dt}=\boldsymbol{F}(\boldsymbol{v})+\boldsymbol{S}(\boldsymbol{v},g(t)),\label{eq: neuron dynamics}
+\end{equation}
+
+\end_inset
+
+see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ Eq.
+ (1).
+ The vector field 
+\begin_inset Formula $\boldsymbol{F}(\boldsymbol{v})$
+\end_inset
+
+ represents the time evolution of 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ due to the intrinsic neuron dynamics and 
+\begin_inset Formula $\boldsymbol{S}(\boldsymbol{v},s(t))$
+\end_inset
+
+ models the incoming synaptic current due to synaptic arrivals.
+ Note that the term 
+\begin_inset Formula $\boldsymbol{S}(\boldsymbol{v},g(t))$
+\end_inset
+
+ is a conductance based synapse, i.e.
+ synaptic arrivals cause a conductance changes 
+\begin_inset Formula $g(t)$
+\end_inset
+
+, which in turn produces a current which is state dependent.
+ However, the method presented in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ can be applied to current based synapses models without any modifications.
+ Note that eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ only contains one type of synapse, i.e.
+ it can only model a single excitatory or a single inhibitory input.
+ However, more than one synapse can be included, see e.g.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000,Apfaltrer2006"
+
+\end_inset
+
+.As an example consider 
+\begin_inset Formula 
+\begin{equation}
+\frac{d\boldsymbol{V}}{dt}=\frac{1}{C}g_{s}(t)(V_{s}-V)
+\end{equation}
+
+\end_inset
+
+The population is recurrently connected and receives additional inputs from
+ its external surrounding.
+ Assume that we know all times spike arrivals at synapses associated with
+ neuron 
+\begin_inset Formula $i$
+\end_inset
+
+ represented by sum delta distributions called a spike train 
+\begin_inset Formula 
+\begin{equation}
+s_{i}(t)=\sum_{k}\delta(t-t_{i}^{k}).\label{eq: s_i(t)}
+\end{equation}
+
+\end_inset
+
+By inserting Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: s_i(t)"
+
+\end_inset
+
+ into Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ and integrating the r.h.s., we obtain the deterministic time evolution of
+ 
+\begin_inset Formula $\boldsymbol{v}_{i}$
+\end_inset
+
+ for the specific input 
+\begin_inset Formula $s_{i}(t)$
+\end_inset
+
+.
+ However, note that 
+\begin_inset Formula $s_{i}(t)$
+\end_inset
+
+ is an unknown unless one would model the entire brain on a microscopic
+ level for a given initial condition.
+ For example, in stimulus response experiments, a trial to variability in
+ the response of individual neurons is observed [].
+ This apparently random variations, can be taken into account by adding
+ sources of noise to the model which leads to a stochastic description.
+ In general, the membrane potential of a neuron is subject to two sources
+ of noise : one intrinsic to the neuron, associated with stochastic nature
+ of mechanism controlling release neurotransmitter, opening of ion channels
+ and so on.
+ The other is external, arising from the apparently random arrival of individual
+ spikes 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Burkitt2006"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Mainen1995"
+
+\end_inset
+
+ showed in vitro experiment that neurons in rat cortex are able to reliably
+ respond if stimulated with a noisy input current injected directly into
+ cell body.
+ Spike times over several trials could be reproduced with deviations in
+ the order of 
+\begin_inset Formula $ms$
+\end_inset
+
+.
+ This suggests that intrinsic noise is insignificant compared to external
+ noise associated with the stochastic synaptic input.
+ 
+\end_layout
+
+\begin_layout Standard
+Consequently, the dominant source of randomness is assumed to be the stochastic
+ time arrival times of the synaptic input.
+ These are modeled in most cases as a Poisson process.
+ Note that spikes which arrive at single synapse may differ from a Poisson
+ input.
+ However, as long as they can be approximated by a renewal process, i.e.
+ ISI are identical and independently distributed, than the pooling property
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gallager2011"
+
+\end_inset
+
+ of independent renewal process ensures that the Poisson process provides
+ an adequate description for the overall input summed over a large number
+ of synapses.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In other words, the ISIs at synapse will tend to be large relative to ISIs
+ of summed input.
+ Thus, arrivals that are close together in time will typically come from
+ different synapses.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Note that the above reasoning implies that spike trains arriving at different
+ synapses are uncorrelated, which is in general no true 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Poulet2008"
+
+\end_inset
+
+.
+ Indeed, input correlations are in inevitable consequence of two neurons
+ being part of the same network, and therefore sharing some common synaptic
+ input 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ostojic"
+
+\end_inset
+
+.
+ However, if the network is sparsely connected, i.e.
+ the number of indegrees is small compared to the network size, then the
+ number of common inputs can assumed to be small.
+ Furthermore, it has been shown that in recurrently connected networks inhibitio
+n decorrelates neural activity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Tetzlaff2012,Renart2010"
+
+\end_inset
+
+.
+ Excitation and inhibition tends to balance each other leading to a stationary
+ state where the membrane potential of individual neurons saturates beneath
+ threshold.
+ Threshold crossings in this state are caused by the random fluctuations
+ in the input (noise driven regime) which lead to asynchronous irregular
+ firing (AI), also refereed to as spontaneous activity 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Amit1997"
+
+\end_inset
+
+.
+ In such a setting, assuming the input at different synapses to be independent
+ can be regarded as a zeroth order approximation.
+ Under the assumption of small input correlations, pairwise correlations
+ can be studied perturbatively 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lindner2001"
+
+\end_inset
+
+.
+ For a recent nonpertubative study of the LIF neuron covering weak and strong
+ correlated input dynamics see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Deniz2017"
+
+\end_inset
+
+.
+ For the reminder, we consider the zero order approximation, i.e.
+ that neurons receive independent Poisson input.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $s_{i}(t)$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ is assumed to be a inhomogeneous Poisson process, i.e.
+ it is characterized by instantaneous input rate 
+\begin_inset Formula $\sigma(t)$
+\end_inset
+
+.
+ The product 
+\begin_inset Formula $\sigma(t)\delta t$
+\end_inset
+
+ yields the average number spike arrivals in the time interval 
+\begin_inset Formula $[t,t+\delta t]$
+\end_inset
+
+ in the limes 
+\begin_inset Formula $\delta t\rightarrow0$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $s_{i}(t)$
+\end_inset
+
+ is a stochastic quantity in the approach, Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ becomes a stochastic differential equation.
+ Instead solving Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ for specific realization of 
+\begin_inset Formula $s_{i}(t)$
+\end_inset
+
+, we are interested predicting the average response of a neurons embedded
+ in a network.
+ Hence, starting from the microscopic equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+, the objective is to describe each population by a density function 
+\begin_inset Formula $\rho(\boldsymbol{v},t)$
+\end_inset
+
+ where the product 
+\begin_inset Formula $\rho(\boldsymbol{v},t)d\boldsymbol{v}$
+\end_inset
+
+ gives the proportion of neurons in the population which are within the
+ state space volume 
+\begin_inset Formula $[\boldsymbol{v},\boldsymbol{v}+d\boldsymbol{v}]$
+\end_inset
+
+ at given time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ To arrive at a dynamic equation for the time evolution of 
+\begin_inset Formula $\rho(\boldsymbol{v},t)$
+\end_inset
+
+, the authors in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ make several simplifying assumptions.
+ 
+\end_layout
+
+\begin_layout Standard
+First, they assume that a neurons neurons feels on average the instantaneous
+ firing rate 
+\begin_inset Formula 
+\begin{equation}
+\sigma(t)=\sigma_{0}(t)+Gr(t),\label{eq: input rate}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{0}(t)$
+\end_inset
+
+ is the average firing rate of the external input, 
+\begin_inset Formula $G$
+\end_inset
+
+ is average number of afferent recurrent connections a neuron receives from
+ within the population and 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ is the average firing rate of the population.
+ Secondly, they assume that synaptic time scales are short compared to the
+ membrane time constant and approximate the conductance changes caused by
+ arriving spike to be instantaneous 
+\begin_inset Formula 
+\begin{equation}
+g_{i}(t)=\hat{g}\sum_{n}\delta(t-t_{n}^{i}),\label{eq: g_i(t)}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{g}$
+\end_inset
+
+ is the synaptic strength which is assumed to be constant for all connections.
+ This means that the membrane potential makes a jump of 
+\begin_inset Formula $h=\hat{g}V_{s}/C$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Note that the number of afferent recurrent connections 
+\begin_inset Formula $G$
+\end_inset
+
+ as well as the external input is expected to vary among neurons.
+ Note also that assuming a fixed 
+\begin_inset Formula $\hat{g}$
+\end_inset
+
+ is not biological plausible, because the synaptic strength of connections
+ between different neurons is expected to vary.
+ Furthermore, the strength of a individual synapse may be subject to noise
+ including the possibility to fail with a certain probability.
+ To model this, one would need to to assign different mean values 
+\begin_inset Formula $\hat{g}_{i}$
+\end_inset
+
+ to different synapses as well as making 
+\begin_inset Formula $\hat{g}_{i}$
+\end_inset
+
+ a stochastic quantity drawn randomly at each transmission.
+ However, if one is only interested in predicting the average behavior of
+ the entire population, then in the limes of large networks, the above mentioned
+ inhomogeneities can be assumed to average out.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997a"
+
+\end_inset
+
+ included such inhomogeneities in direct simulations and showed that the
+ theory can predict the reliably the steady state average firing rate population
+s within the network.
+ 
+\end_layout
+
+\begin_layout Standard
+Under the simplifications, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ derive a partial differential equation for the population density
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho}{\partial t}=-\frac{\partial}{\partial\boldsymbol{v}}\left(F(\boldsymbol{v})\rho\right)-\sigma(t)\times\left\{ \rho(\boldsymbol{v},t)-\rho(\boldsymbol{v}''(\boldsymbol{v}),t)\frac{\partial\boldsymbol{v}''}{\partial\boldsymbol{v}}\right\} ,
+\end{equation}
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\rho(\boldsymbol{v},t)=-\frac{\partial}{\partial\boldsymbol{v}}\boldsymbol{J}(\boldsymbol{v},t),\label{eq: continuity equation}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{J}(\boldsymbol{v},t)$
+\end_inset
+
+ is probability flux which determines the flow of probability at point 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ It has two two contributions 
+\begin_inset Formula $\boldsymbol{J}=\boldsymbol{J}_{\text{str}}+\boldsymbol{J}_{\text{imp}}$
+\end_inset
+
+, one accounting for intrinsic neuron dynamics
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{J}_{\text{str}}=\boldsymbol{F}(\boldsymbol{v})\rho(\boldsymbol{v},t),
+\end{equation}
+
+\end_inset
+
+ and the other accounting for the Poisson input which depends on the input
+ rate Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: input rate"
+
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{J}_{\text{imp}}=-\sigma(t)\int_{V}^{V''(V)}\boldsymbol{e}_{V}\rho(W,v_{2},\ldots)dW
+\end{equation}
+
+\end_inset
+
+The firing rate of the population 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ can be determined defining a threshold value 
+\begin_inset Formula $V=V_{\theta}$
+\end_inset
+
+ of the the membrane potential, constructing a Poincare surface at this
+ value and determining the flux which goes through this surface.
+ Hence, the the firing 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ rate can be expressed functional of 
+\begin_inset Formula $\boldsymbol{J}(\boldsymbol{v},t)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+r(t)=R[\boldsymbol{J}(\boldsymbol{v},t)]
+\]
+
+\end_inset
+
+To ensure conversation of probability, the probability which passed through
+ the threshold needs to be reinserted at the reset potential 
+\begin_inset Formula $V_{r}$
+\end_inset
+
+.
+ This can be modeled by a introducing a absorbing boundary at threshold
+ with reset mechanism.
+ The crucial point is that 
+\begin_inset Formula $\boldsymbol{J}(\boldsymbol{v},t)$
+\end_inset
+
+ depends on 
+\begin_inset Formula $r(t)$
+\end_inset
+
+ itself through Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: input rate"
+
+\end_inset
+
+ which makes Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: continuity equation"
+
+\end_inset
+
+ a nonlinear integro partial differential equation.
+ 
+\end_layout
+
+\begin_layout Standard
+It can either be solved numerically 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DeKamps2003,DeKamps2013"
+
+\end_inset
+
+, or analyzed analytically in case of simple neuron models.
+ As a proof of principle, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ compared numerical results from the theory against direct simulations of
+ a population of uncoupled (no recurrent connections) LIF neurons demonstrating
+ excellent agreement.
+ for large number of neurons 
+\begin_inset Formula $\mathcal{O}(>10^{4})$
+\end_inset
+
+.
+ The importance of the work by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+ is due to the fact that their method in general applies to any type of
+ point neuron model.
+ The macroscopic Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: continuity equation"
+
+\end_inset
+
+ for the dynamics on the population level can be derived from the microscopic
+ details of the neuron model without introducing any additional parameter.
+ 
+\end_layout
+
+\begin_layout Standard
+To gain additional insight it is desirable to also study Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: continuity equation"
+
+\end_inset
+
+ analytically.
+ One extensively used method to simplify Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: continuity equation"
+
+\end_inset
+
+ is the diffusion approximation.
+ It replaces the synaptic current in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: neuron dynamics"
+
+\end_inset
+
+ by an average current plus an additional Gaussian white noise.
+ The diffusion approximation can be understood as an approximation of the
+ Poisson input in the limes of large input rates and small synaptic efficacies.
+ The latter means that the post synaptic potential PSP induced by spike
+ arrival is small compared to the distance from the reset to the threshold
+ potential.
+ In other words, jumps of the membrane potential invoked by incoming spikes
+ must be small.
+ The strength of the noise and the average input current depend of the rate
+ of the Poisson input and on the intrinsic parameters of the neuron model.
+ In the diffusion approximation, Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: continuity equation"
+
+\end_inset
+
+ reduces to a Fokker-Planck equation.
+ This can be shown by describing the time evolution of the density by the
+ Chapman-Kolmogorov equation which can be expanded in a Kramer-Moyals expansion
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Riksen1992"
+
+\end_inset
+
+.
+ In case of Poisson input, the Kramers-Moyal expansion has infinite number
+ of terms.
+ Truncating it after the second order yields the diffusion approximation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+ used applied the diffusion approximation to derive the stationary average
+ firing rates in a recurrently randomly connected network of LIF neurons,
+ mimicking a cortical column.
+ The network in the study consists of an excitatory and inhibitory population
+ (EI-Network).
+ The populations receive additional uncorrelated stationary excitatory input
+ from the external surrounding of the network.
+ This external input represents the global spontaneous ongoing activity
+ observed in cortex which has typically low firing rates 
+\begin_inset Formula $1$
+\end_inset
+
+-
+\begin_inset Formula $5$
+\end_inset
+
+ Hz.
+ The purely excitatory external input is motivated by the fact that excitatory
+ pyramidal neurons tend to form longer axons compared to inhibitory neurons
+ which connect more locally 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Braitenberg2013"
+
+\end_inset
+
+.
+ The stationary solution of the Fokker-Planck equation yields the stationary
+ firing rate of the excitatory and inhibitory population for a given input
+ rates 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "A.1953"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+ showed that the equation for the stationary firing rage has a solution
+ for which the average firing rate of the excitatory population matches
+ the spontaneous activity of the external surrounding.
+ This is desirable because the excitatory population connects itself to
+ other cortical columns and the ongoing spontaneous activity is considered
+ to be homogeneous.
+ Finding the solution for which the output rate firing of population matches
+ contribution to input firing due to the same population is often referred
+ to as self-consistent mean-field theory 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+.
+ Spontaneous activity is hypothesized to be a ground state of the brain.
+ Compared to silent networks, a spontaneous active network has the advantage
+ that it places neurons close to threshold, rather at their resting potential
+ so that the network can respond faster to a stimulus.
+ 
+\end_layout
+
+\begin_layout Standard
+The stability of the stationary state presented in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+ has been studied extensively in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000,Brunel1999,Lindner2001"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ used linear stability analysis to seek for time dependent solutions of
+ firing rate of the form 
+\begin_inset Formula 
+\begin{equation}
+r(t)=r_{0}+r_{1}e^{\lambda t}
+\end{equation}
+
+\end_inset
+
+where used a complex notation for convenience and 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ is the stationary firing rate.
+ Note that the Fokker-Planck equation describing the dynamics of the network
+ in the diffusion approximation is linear, i.e.
+ it is sufficient to consider a sinusoidal input modulation.
+ This is because any periodic function can expanded in a Fourier series
+ and each frequency component of the Fourier series can be solved separately
+ due to the linearity of the problem.
+ The amplitude of the modulation 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ is assumed to be small compared the stationary firing rate so that it can
+ be treated a perturbatively 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Knight2000a"
+
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\text{Re}(\lambda)<0,$
+\end_inset
+
+ then the modulation will decay decay to zero over time and the network
+ relaxes back to the stationary state.
+ If 
+\begin_inset Formula $\text{Re}(\lambda)>0$
+\end_inset
+
+, then the modulation will exponentially diverge and the stationary state
+ loses its stability.
+ If 
+\begin_inset Formula $\text{Im}(\lambda)\neq0$
+\end_inset
+
+ at the point of the transition, then it is is called a Hopf bifurcation.
+ It indicates the ability of the network to produce oscillations, i.e synchronize
+d behavior, which is ubiquitously observed in cortex 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Buzsaki2004"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ derived an first order approximation of the time dependent average firing
+ rate of a sparsely randomly recurrently connected EI-Network.
+ The derivation was based on the following simplifying assumptions which
+ are similar to those made in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+.
+ Firstly, neurons receive an identical number of synaptic inputs drawn randomly
+ from the local network and external surrounding.
+ Relaxing this assumption, i.e.
+ allowing different number indegrees, results in broader distribution of
+ firing rates.
+ Secondly, the synaptic current is instantaneous.
+ Nevertheless, the derivation it is still mathematical quite involved.
+ It boils down to solving an inhomogeneous partial differential equation
+ with variable coefficients by separation of variables.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ showed that the point where the stationary state loses stability marks
+ the transition of the network into different dynamical regimes.
+ Depending on the strength of external input, the balance between excitation
+ and inhibition, and the time scale of the synaptic delay, the average firing
+ rate of the populations can show oscillations in different frequency regimes.
+ Independently of the global oscillations, the firing of individual neurons
+ are still highly irregular.
+ The work by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ has been the first analytical study investigating the synchronization propertie
+s of randomly recurrent spiking neural networks.
+ 
+\end_layout
+
+\begin_layout Standard
+Several steps have been made to extend the population density methods to
+ more complex neuron models.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud2002"
+
+\end_inset
+
+ extended the work by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ to include finite synaptic time scales.
+ This introduces temporal correlations in the noise term, so that the white
+ noise becomes colored noise.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud2002"
+
+\end_inset
+
+ assume that synaptic time scale is small compared to the membrane time
+ scale so that the ratio between both can be used as an expansion parameter.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Apfaltrer2006"
+
+\end_inset
+
+ applied the population density method to LIF neurons connected via conductance
+ based synapses.
+ 
+\end_layout
+
+\begin_layout Standard
+In general, one can say that the difficulty with the problem scales drastically
+ with the complexity of the neuron model.
+ Solving 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: continuity equation"
+
+\end_inset
+
+ numerically is possible, but because difficult with increasing dimension.
+ Instead of solving the partial differential directly, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Knight2000a"
+
+\end_inset
+
+ proposed a different method of solution.
+ Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: continuity equation"
+
+\end_inset
+
+ can formally written as 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+.
+ If we assume that the eigenfunctions of the dynamical operator 
+\begin_inset Formula 
+\[
+O\phi_{n}(\boldsymbol{v},t)=\lambda_{n}\phi_{n}(\boldsymbol{v},t)
+\]
+
+\end_inset
+
+form a complete set, then we can expand the density in this basis 
+\begin_inset Formula 
+\[
+\rho(\boldsymbol{v},t)=\sum_{n\text{=1}}c_{n}(t)\phi_{n}(\boldsymbol{v},t),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{n}(t)$
+\end_inset
+
+ are weighting coefficients of the different modes.
+ Note that the dynamical operator is not Hermitian (self-adjoint), i.e.
+ eigenfunctions are not orthogonal.
+ The adjoint operator must be determined from 
+\begin_inset Formula 
+\[
+\left(\boldsymbol{w},O\boldsymbol{v}\right)=\left(O^{\dagger}\boldsymbol{w},\boldsymbol{v}\right).
+\]
+
+\end_inset
+
+taking into account the boundary conditions of the problem.
+ The eigenvalues of the adjoint operator are equivalent to this of 
+\begin_inset Formula $O$
+\end_inset
+
+.
+ If properly normalized, then the eigenfunctions and the adjoint eigenfunctions
+ 
+\begin_inset Formula 
+\[
+O^{\dagger}\tilde{\phi}_{n}(n)=\lambda_{n}\tilde{\phi}_{n}(n)
+\]
+
+\end_inset
+
+form a biorthogonal set 
+\begin_inset Formula 
+\[
+\left(\tilde{\phi}_{m},\tilde{\phi}_{n}\right)=\delta_{nm}
+\]
+
+\end_inset
+
+Inserting this expansion into Eq.
+ gives rise to a linear system of differential equations for 
+\begin_inset Formula $c_{n}(t)$
+\end_inset
+
+.
+ This systems has been analyzed.
+ The difficulty of the original problem determining the eigenfunctions.
+ So fare, this eigenfunctions are only known for linear integrate-and-fire
+ and LIF neuron.
+ Numerically methods have been proposed.
+ Eigenfunction expansion could provide a more intuitive picture of the dynamical
+ properties on the level of individual neurons as well as networks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+ further showed that a stronger recurrently connected attractor network
+ can be embedded into the network leading to an additional stationary network
+ state which they call selective state.
+ In this state, the attractor network has sufficiently larger average firing
+ rates 
+\begin_inset Formula $20$
+\end_inset
+
+-
+\begin_inset Formula $50$
+\end_inset
+
+ Hz whereas the rest of the network remains at the low activity state 
+\begin_inset Formula $1$
+\end_inset
+
+-
+\begin_inset Formula $5$
+\end_inset
+
+ Hz, i.e.
+ the global spontaneous and selective state can coexist.
+ If the network receives a stimulus associated with the attractor network,
+ then the attractor network changes in high activity state and remains there
+ even after removal of the stimulus.
+ The attractor network is can be transition back into the global spontaneous
+ activity state by presenting uncorrelated stimulus.
+ 
+\end_layout
+
+\begin_layout Standard
+Spontaneous activity has the advantage that it places neurons close to threshold
+, rather at their resting potential so that the network can respond faster
+ to a stimulus.
+ The stability of the stationary state of recurrent networks has been analyzed
+ in depth.
+ The density function 
+\begin_inset Formula $\rho(\boldsymbol{v},t)$
+\end_inset
+
+ yields the proportion of neurons in a population at state 
+\begin_inset Formula $\boldsymbol{v}$
+\end_inset
+
+ at given time 
+\begin_inset Formula $t$
+\end_inset
+
+.
  
 \end_layout
 
@@ -241,6 +1487,7 @@ The population density technique relies on two assumptions.
  their dynamics can 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -274,6 +1521,5 @@ printbibliography
 
 \end_layout
 
-\end_deeper
 \end_body
 \end_document

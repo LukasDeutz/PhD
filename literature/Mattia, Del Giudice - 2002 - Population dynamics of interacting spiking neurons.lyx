@@ -4233,7 +4233,7 @@ Proof
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Start from 
@@ -4268,6 +4268,79 @@ Set
 \begin_inset Formula 
 \[
 \partial_{v}\phi_{\lambda}=-c_{\lambda}\frac{\zeta}{\theta}\cosh\zeta+c_{\lambda}\frac{\xi}{\theta}\sinh\left(\zeta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Check that the integral 
+\begin_inset Formula $\int_{0}^{1}dv\,\phi_{n}(v)=0$
+\end_inset
+
+ vanishes 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\int_{0}^{1}c_{\lambda}e^{\frac{\xi}{\theta}v}\sinh\frac{\zeta(\theta-v)}{\theta}=c_{\lambda}\int_{0}^{1}e^{\frac{\xi}{\theta}v}\sinh\frac{\zeta(\theta-v)}{\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Prefactor is not important 
+\begin_inset Formula 
+\[
+\int_{0}^{\theta}e^{\frac{\xi}{\theta}v}\sinh\left(\zeta-\frac{\zeta v}{\theta}\right)=\frac{1}{2}\int_{0}^{\theta}e^{\frac{\xi}{\theta}v}\left(e^{\zeta-\frac{\zeta}{\theta}v}-e^{-\zeta+\frac{\zeta}{\theta}v}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Wolfram alpha
+\begin_inset Formula 
+\[
+\int_{0}^{\theta}e^{\frac{\xi}{\theta}v}\sinh\left(\zeta-\frac{\zeta v}{\theta}\right)=-\theta\frac{-e^{\xi}\zeta+\xi\sinh(\zeta)+\zeta\cosh(\zeta)}{\xi^{2}-\zeta^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that the nominator is the equivalent to the characteristic equation,
+ i.e.
+\begin_inset Formula 
+\[
+\int_{0}^{\theta}e^{\frac{\xi}{\theta}v}\sinh\left(\zeta-\frac{\zeta v}{\theta}\right)=0
 \]
 
 \end_inset
