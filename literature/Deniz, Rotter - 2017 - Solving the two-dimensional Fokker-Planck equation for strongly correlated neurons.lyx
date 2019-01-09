@@ -1,0 +1,633 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Solving the two-dimensional Fokker-Planck equation for strongly correlated
+ neurons
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+Both membrane potentials and action potentials recorded from nearby neurons
+ exhibit nontrivial statistical dependencies 
+\end_layout
+
+\begin_layout Itemize
+Correlations are inevitable consequence if two neurons are part of the same
+ network and share synaptic input 
+\end_layout
+
+\begin_layout Itemize
+For nonlinear neuron models, correlation functions are difficult to compute
+ explicitly 
+\end_layout
+
+\begin_layout Itemize
+Previous analytic approaches have employed perturbation theory to study
+ pair correlations under the assumption of weak input correlations 
+\end_layout
+
+\begin_layout Itemize
+Solution to the corresponding two-dimensional Fokker-Planck equation to
+ describe correlated integrate-and-fire neurons in any regime with arbitrary
+ precision
+\end_layout
+
+\begin_layout Section
+Model and Theory
+\end_layout
+
+\begin_layout Itemize
+Leaky integrate-and-fire model receiving correlated inputs 
+\begin_inset Formula 
+\[
+\tau_{a}\dot{V}_{a}=-V_{a}+\tau_{a}\left(\mu_{a}+\sigma_{\alpha}\left[\sqrt{1-c}\xi_{\alpha}\pm c\xi_{c}\right]\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The input 
+\begin_inset Formula $I_{a}=\mu_{a}+\sigma_{a}\left[\sqrt{1-c}\xi_{a}\pm\sqrt{c}\xi_{c}\right]$
+\end_inset
+
+ with private white noise 
+\begin_inset Formula $\xi_{a}$
+\end_inset
+
+ and shared white noise 
+\begin_inset Formula $\xi_{c}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input correlation coefficient is given as 
+\begin_inset Formula $\pm c$
+\end_inset
+
+, where 
+\begin_inset Formula $0\leq c<1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $\tau_{a},\mu_{a}$
+\end_inset
+
+,
+\begin_inset Formula $\sigma_{a}$
+\end_inset
+
+ are constant parameters 
+\end_layout
+
+\begin_layout Itemize
+Parameterize input 
+\begin_inset Formula 
+\begin{align*}
+\mu_{a} & =J_{Ea}\nu_{Ea}-J_{Ia}\nu_{Ia}\\
+\sigma_{a} & =\sqrt{J_{Ea}^{2}\nu_{Ea}tio+J_{Ia}^{2}\nu_{Ia}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\partial_{1}\left(\left(\frac{V_{1}}{\tau_{1}}-\mu_{1}\right)P\right)+\partial_{2}\left(\left(\frac{V_{2}}{\tau_{2}}-\mu_{2}\right)P\right)+\frac{1}{2}\left(\partial_{1}\partial_{2}\right)\begin{pmatrix}\sigma_{1}^{2} & c\sigma_{1}\sigma_{2}\\
+c\sigma_{1}\sigma_{2} & \sigma_{2}^{2}
+\end{pmatrix}\begin{pmatrix}\partial_{1}\\
+\partial_{2}
+\end{pmatrix}P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Variable transformation 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial P}{\partial t} & =\frac{1}{\tau_{1}}\mathcal{L}_{1}P+\frac{1}{\tau_{2}}\mathcal{L}_{2}P+)\frac{c}{\sqrt{\tau_{1}\tau_{2}}}\mathcal{L}_{12}P,\\
+\mathcal{L}_{1} & =\frac{\partial}{\partial x}x+\frac{1}{2}\frac{\partial}{\partial x^{2}}\\
+\mathcal{L}_{1} & =\frac{\partial}{\partial y}y+\frac{1}{2}\frac{\partial}{\partial y^{2}}\\
+\mathcal{L}_{12} & =\frac{\partial^{2}P}{\partial x\partial y}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{L}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{L}_{2}$
+\end_inset
+
+ represent independent populations, and they fully describe the 
+\begin_inset Formula $2$
+\end_inset
+
+D dynamics for 
+\begin_inset Formula $c=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calculation of Cross-covariance function of output spike trains requires
+ the calculation of the steady state distribution 
+\begin_inset Formula 
+\[
+0=\frac{1}{\tau_{1}}\mathcal{L}_{1}P_{0}+\frac{1}{\tau_{2}}\mathcal{L}_{2}P_{0}+\frac{c}{\sqrt{\tau_{1}\tau_{2}}}\mathcal{L}_{12}P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Derive expansion of the stationary equation in terms of the eigenfunctions
+ of the uncoupled operators 
+\begin_inset Formula $\mathcal{L}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{L}_{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}f_{i}=\lambda_{1i}f_{i},\quad
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The eigenvalue spectrum of the problem is countable with both real and pairs
+ of complex conjugate eigenvalues 
+\end_layout
+
+\begin_layout Itemize
+Order eigenfunctions according 
+\begin_inset Formula $\bigl|Re(\lambda_{i})\bigr|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand solution of non-self adjoint differential operator, the dual eigenvalue
+ problem needs to be solved as well
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}^{\dagger}\tilde{f}_{i}=\lambda_{1i}\tilde{f}_{i},\quad\mathcal{L}_{2}^{\dagger}\tilde{g}_{i}=\lambda_{2i}\tilde{g}_{i}
+\]
+
+\end_inset
+
+with conjugate boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+This guarantees the basis 
+\begin_inset Formula $\{f_{i}\}$
+\end_inset
+
+ and conjugate basis 
+\begin_inset Formula $\{\tilde{f}_{i}\}$
+\end_inset
+
+ are biorthogonal in the Hilbert space
+\begin_inset Formula 
+\[
+\int_{-\infty}^{x_{t}}\tilde{f}_{i}(x)f_{j}(x)dx=\delta_{ij}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution to the full problem can be expanded in terms of functions that
+ individually satisfy the boundary conditions 
+\begin_inset Formula 
+\[
+P_{0}(x,y)=f_{0}(x)g_{0}(y)+F(x)SG(y)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $F(x)SG(y)=\sum_{ij}S_{ij}f_{i}(x)g_{j}(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P=\sum_{i}c_{i}f_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix A: Eignevalue spectrum of 1D operators 
+\end_layout
+
+\begin_layout Itemize
+Sturm Liouville problem 
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}\phi=\frac{\partial\left(x\phi\right)}{\partial x}+\frac{1}{2}\frac{\partial^{2}\phi}{\partial x^{2}}=\lambda\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution 
+\begin_inset Formula 
+\begin{align*}
+\phi_{1}(x,\lambda) & =F_{1}\left(\frac{1-\lambda}{2},\frac{1}{2},-x^{2}\right)\\
+\phi_{2}(x,\lambda) & =\frac{\Gamma(\lambda/2)}{\Gamma\left(\frac{\lambda+1}{2}\right)}F_{1}\left(\frac{1-\lambda}{2},\frac{1}{2},-x^{2}\right)\\
+ & +2x_{1}F_{1}\left(1-\frac{\lambda}{2},\frac{3}{2},-x^{2}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $F_{1}(a,b,z)$
+\end_inset
+
+ is the confluent hypergeometric function of the first kind 
+\end_layout
+
+\begin_layout Itemize
+There is another basis known to be numerically stable, given in terms of
+ parabolic cylinder functions 
+\begin_inset Formula 
+\begin{align*}
+\psi_{1}(x,\lambda) & =e^{-\frac{x^{2}}{2}}D_{-\lambda}\left(\frac{x}{\sqrt{2}}\right)\\
+\psi_{2}(x,\lambda) & =e^{-\frac{x^{2}}{2}}D_{\lambda-1}\left(\frac{ix}{\sqrt{2}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It doesn't matter which basis is used to expand a function in the eigenspace
+ of 
+\begin_inset Formula $\mathcal{L}_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions are unique up to some normalization conditions which we select
+ to be 
+\begin_inset Formula $R(\lambda)=-\frac{1}{2}\partial_{x}f_{\lambda}(x_{t})=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+General family of solution the property 
+\begin_inset Formula $\lim_{x\rightarrow-\infty}f_{\lambda}(x)=0$
+\end_inset
+
+ is given as 
+\begin_inset Formula 
+\[
+f_{\lambda}(x)=\begin{cases}
+a(\lambda)\phi_{1}(\lambda,x)+b(\lambda)\phi_{2}(\lambda,x) & x_{\text{r}}\leq x<x_{t}\\
+d(\lambda)\phi_{2}(\lambda,x) & x\leq x_{r}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From the boundary conditions 
+\begin_inset Formula 
+\[
+f_{\lambda}(x_{t})=\lim_{x\rightarrow-\infty}f_{\lambda}(x)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lim_{\epsilon\rightarrow0^{+}} & \left(f_{\lambda}(x_{r}-\epsilon)=f_{\lambda}(x_{r}+\epsilon)\right)\\
+\lim_{\epsilon\rightarrow0^{+}}\partial_{x}f_{\lambda}(x_{t}) & =\partial_{x}f_{\lambda}(x_{r}-\epsilon)-\partial_{x}f_{\lambda}(x_{r}+\epsilon)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First boundary two conditions 
+\begin_inset Formula 
+\begin{align*}
+d(\lambda)\phi_{2}(\lambda,-\infty) & =0\Leftrightarrow0=0\\
+a(\lambda)\phi_{1}(\lambda,x_{t})+b(\lambda)\phi_{2}(\lambda,x) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Third boundary condition 
+\begin_inset Formula 
+\[
+a(\lambda)\phi_{1}(\lambda,x_{r})+b(\lambda)\phi_{2}(\lambda,x_{r})-d(\lambda)\phi_{2}(\lambda,x_{r})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fourth boundary condition 
+\begin_inset Formula 
+\begin{align*}
+a(\lambda)\phi'_{1}(\lambda,x_{r})+b(\lambda)\phi'_{2}(\lambda,x_{r}) & =d(\lambda)\phi'_{2}(\lambda,x_{r})+a(\lambda)\phi'_{1}(\lambda,x_{t})+b(\lambda)\phi'_{2}(\lambda,x_{t})\\
+a(\lambda)\phi'_{1}(\lambda,x_{r})+b(\lambda)\phi'_{2}(\lambda,x_{r})-d(\lambda)\phi'_{2}(\lambda,x_{r})-a(\lambda)\phi'_{1}(\lambda,x_{t})-b(\lambda)\phi'_{2}(\lambda,x_{t}) & =0\\
+a(\lambda)(\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,+x_{t}))+b(\lambda)(\phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t}))-d(\lambda)\phi'_{2}(\lambda,x_{r}) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at the following linear system of equations 
+\begin_inset Formula 
+\[
+\begin{bmatrix}\phi_{1}(\lambda,x_{t}) & \phi_{2}(\lambda,x_{t}) & 0\\
+\phi_{1}(\lambda,x_{r}) & \phi_{2}(\lambda,x_{r}) & -\phi_{2}(\lambda,x_{r})\\
+\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t}) & \phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t}) & -\phi'_{2}(\lambda,x_{r})
+\end{bmatrix}=0
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Determinant 
+\begin_inset Formula 
+\begin{align*}
+ & -\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})-\phi_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\left(\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t})\right)+\left(\phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t})\right)\phi_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})+\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{r})\phi_{2}(\lambda,x_{t})\\
+= & -\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})-\phi_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})+\phi'_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})+\phi'_{2}(\lambda,x_{r})\phi_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})-\phi'_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})+\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{r})\phi_{2}(\lambda,x_{t})\\
+= & \phi_{2}(\lambda,x_{r})\left\{ -\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})+\phi'_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{t})+\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{t})-\phi'_{2}(\lambda,x_{t})\phi_{1}(\lambda,x_{t})\right\} +\phi_{2}(\lambda,x_{t})\left\{ -\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})+\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{r})\right\} \\
+= & \phi_{2}(\lambda,x_{r})\left\{ \phi'_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{t})-\phi'_{2}(\lambda,x_{t})\phi_{1}(\lambda,x_{t})\right\} +\phi_{2}(\lambda,x_{t})\left\{ -\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})+\phi'_{2}(\lambda,x_{r})\phi_{1}(\lambda,x_{r})\right\} \\
+= & \phi_{2}(\lambda,x_{r})Wr(x_{t})-\phi_{2}(\lambda,x_{t})Wr(x_{r})=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divide by 
+\begin_inset Formula $Wr(x_{t})W_{r}(x_{r})$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{\phi_{2}(\lambda,x_{r})}{Wr(x_{r})}-\frac{\phi_{2}(\lambda,x_{t})}{Wr(x_{t})}=0
+\]
+
+\end_inset
+
+Wronskian determinant 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternatively 
+\begin_inset Formula 
+\[
+f_{\lambda}(x)=u(x)g_{\lambda}(x)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\begin{align*}
+g_{\lambda}(x) & =\begin{cases}
+c(\lambda)U(\lambda,x) & x<x_{r}\\
+a(\lambda)U(\lambda,x)+b(\lambda)V(x,\lambda) & x_{r}\leq x<x_{\theta}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The boundary conditions are equivalent expect for the flux boundary condition
+ 
+\begin_inset Formula 
+\[
+\partial_{x}f_{\lambda}(x_{t})=\partial_{x}f_{\lambda}(x_{r}-\epsilon)-\partial_{x}f_{\lambda}(x_{r}+\epsilon)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux is given by 
+\begin_inset Formula 
+\[
+J_{\lambda}(x)=-xf_{\lambda}(x)-\partial_{x}f_{\lambda}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+J_{\lambda}(x_{t}) & =-\partial_{x}f_{\lambda}(x_{t})\\
+J_{\lambda}(x_{r}+\epsilon)-J_{\lambda}(x_{r}-\epsilon) & =-\partial_{x}f_{\lambda}(x+\epsilon)+\partial_{x}f_{\lambda}(x-\epsilon)
+\end{align*}
+
+\end_inset
+
+from which follows 
+\begin_inset Formula 
+\[
+\partial_{x}g_{\lambda}(x_{r}+\epsilon)-\partial_{x}g_{\lambda}(x_{r}-\epsilon)=g_{\lambda}(x_{t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This simplifies to 
+\begin_inset Formula 
+\begin{align*}
+u(x_{r})\left(\partial_{x}g_{\lambda}(x_{r}-\epsilon)-\partial_{x}g_{\lambda}(x_{r}+\epsilon)\right) & =u(x_{t})g_{\lambda}(x_{t})\\
+a(\lambda)u(x_{r})U'(\lambda,x_{r})+b(\lambda)u(x_{t})V'(x_{r},\lambda)-b(\lambda)V'(x_{r},\lambda)-u(x_{t})a(\lambda)U'(\lambda,x_{t})-u(x_{t})b(\lambda)V'(x_{t},\lambda) & =0\\
+a(\lambda)\left(u(x_{r})U'(\lambda,x_{r})-u(x_{t})U'(\lambda,x_{t})\right)+b(\lambda)\left(u(x_{r})V'(x_{r},\lambda)-u(x_{t})V'(x_{r},\lambda)\right)-b(\lambda)V'(x_{r},\lambda) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+System of equations 
+\begin_inset Formula 
+\[
+\begin{bmatrix}U(\lambda,x_{t}) & V(x_{t},\lambda) & 0\\
+U(\lambda,x_{r}) & V(\lambda,x_{r}) & -U(\lambda,x_{r})\\
+u(x_{r})U'(\lambda,x_{r})-u(x_{t})U'(\lambda,x_{t}) & u(x_{r})V'(x_{r},\lambda)-u(x_{t})V'(x_{r},\lambda) & -V'(x_{r},\lambda)
+\end{bmatrix}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To have nonzero solutions determinant must satisfy 
+\end_layout
+
+\end_body
+\end_document
