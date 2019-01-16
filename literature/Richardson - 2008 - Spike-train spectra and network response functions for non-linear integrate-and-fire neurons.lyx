@@ -1,0 +1,372 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Spike-train sepctra and network response functions of non-linear
+ integrate-and-fire neurons 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Itemize
+Exponential integrate-fire model has shown to agree closely with experimentally
+ measured response of pyramidal cell 
+\end_layout
+
+\begin_layout Itemize
+Rigorous approach to evaluate reduced neuron models against experimental
+ data 
+\end_layout
+
+\begin_layout Itemize
+Important type of reduced spiking-neuron model is the integrate-and-fire
+ class weather at putative beginning or the peak of a spike 
+\end_layout
+
+\begin_layout Itemize
+Hard reset representing the effect of the inward-rectifier potassium channel
+ 
+\end_layout
+
+\begin_layout Itemize
+Leaky integrate-and-fire model 
+\end_layout
+
+\begin_layout Itemize
+LIF can provide a good fit to the average firing rates of cortical cells
+ 
+\end_layout
+
+\begin_layout Itemize
+Non-linear integrate and fire models, QIF and EIF model 
+\end_layout
+
+\begin_layout Itemize
+EIF model provides both an exellent fit to the current-voltage relation
+ and accurate spike prediction 
+\end_layout
+
+\begin_layout Itemize
+Despite their simplicity, properties of non-linear IF neurons subject to
+ stochastic synaptic drive are not always solvable in closed form 
+\end_layout
+
+\begin_layout Itemize
+Steady state rate have been derive for LIF, QIF, EIF
+\end_layout
+
+\begin_layout Itemize
+The time-dependent properties of IF models are considerably harder to derive,
+ whether numerically or analytically 
+\end_layout
+
+\begin_layout Itemize
+Results exist for the LIF model, linear response to current and noise modulation
+, as well as the spike-train spectrum 
+\end_layout
+
+\begin_layout Itemize
+Some asymptotic results are available for the response properties of the
+ non-linear QIF and EIF 
+\end_layout
+
+\begin_layout Section
+General theory
+\end_layout
+
+\begin_layout Itemize
+Continuity equation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}+\frac{\partial J}{\partial V}=\text{initial conditions + sources - sinks}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial conditions can be written as delta-functions of time multiplying
+ initial distributions 
+\end_layout
+
+\begin_layout Itemize
+Source reset and sink threshold can be written as delta-functions of voltage
+ multiplying rate-like quantities 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Stochastic dynamics of a single trajectory
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Non-linear IF neurons that a dynamics of the form 
+\begin_inset Formula 
+\[
+\tau\frac{dV}{dt}=E(t)-V+\psi+\sigma\sqrt{2\tau}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $E(t)$
+\end_inset
+
+ is the instanteneous resting potential 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi$
+\end_inset
+
+ is some non-linear functions voltage that may model an explicit spike mechanism
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+EIF 
+\begin_inset Formula 
+\[
+\psi(V)=\Delta_{T}e^{(V-V_{T})/\Delta_{T}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Onset of the spike is parametererized by 
+\begin_inset Formula $V_{T}$
+\end_inset
+
+ and has a sharpness 
+\begin_inset Formula $\Delta_{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The spike is terminated at some threshold voltage 
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ at which 
+\begin_inset Formula $P(V_{th})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Refractory period 
+\begin_inset Formula $\tau_{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability density must be separated into a component 
+\begin_inset Formula $P$
+\end_inset
+
+ that evolves under continuous dynamics, and a component that is refractory
+ 
+\end_layout
+
+\begin_layout Itemize
+Correct normalization for 
+\begin_inset Formula $P$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\int_{V_{lb}}^{V_{th}}P(V,t)dV+\int_{t-\tau_{r}}^{t}dt'r(t')=1
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The integral
+\begin_inset Formula 
+\[
+\int_{t-\tau_{r}}^{t}dt'r(t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+yields the average number of neurons which have spike in the interval 
+\begin_inset Formula $[t-\tau_{r},t]$
+\end_inset
+
+.
+ This neurons are still in their refractory period, i.e.
+ they do not contribute to 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+The flux
+\series default
+ 
+\begin_inset Formula $J$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The flux appearing in the continuity equation is 
+\begin_inset Formula 
+\[
+\tau J=(E(t)+\psi-V)P-\sigma^{2}\frac{\partial P}{\partial V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The firing rate is the flux at threshold 
+\begin_inset Formula $J(V_{th},t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A lower bound on the voltage
+\end_layout
+
+\begin_layout Itemize
+The value 
+\begin_inset Formula $V_{lb}$
+\end_inset
+
+ is chosen to be sufficiently negative 
+\begin_inset Formula $V_{lb}=-100mV$
+\end_inset
+
+ so that its exact value does not impact significantly on the dynamcis 
+\end_layout
+
+\begin_layout Itemize
+A depolarized valued for such a zero-flux condition has been suggested as
+ an approximation to the effects of the 
+\series bold
+inhibitory synaptic-reversal potential
+\series default
+ 
+\end_layout
+
+\begin_layout Section
+Uncoupled populations of neurons 
+\end_layout
+
+\end_body
+\end_document
