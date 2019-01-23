@@ -75,8 +75,927 @@ Notes: Interspike interval distributions of spiking neurons driven by fluctuatin
 g inputs 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Section*
+Introduction
+\end_layout
 
+\begin_layout Itemize
+ISI distributions of cortical neurons exhibit a range of different shapes
+ 
+\end_layout
+
+\begin_layout Itemize
+Can the full range of ISA distributions be reproduced by modulating this
+ balance 
+\end_layout
+
+\begin_layout Itemize
+Analytic studies of LIF neurons show three key features 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+ISIs distribution displays exponential decay at long ISIs interdependently
+ of the strength of fluctuating input 
+\end_layout
+
+\begin_layout Enumerate
+If the amplitude of the input is increased, the ISI distribution evolves
+ progressively between
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+narrow distribution (superthreshold)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Spiking is driven by average input, clockwise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+exponential with an effective refractory period (subthreshold but suprareset
+ input) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Spiking is driven by fluctuations, IS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+bursting exponential (subreset input) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The shape of the ISI distribution is approximately independent of the mean
+ ISI and determined only by the coefficient of variation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This features are also present in the ISI distributions of the exponential
+ integrate-and-fire model and a Hodgkin-Huxley like model 
+\end_layout
+
+\begin_layout Itemize
+For a fixed mean and coefficient of variation of ISIs, the full ISI distribution
+s of the three models are nearly identical 
+\end_layout
+
+\begin_layout Itemize
+Neuron in Vivo emit action potentials in a irregular manner 
+\end_layout
+
+\begin_layout Itemize
+Neuron activity recorded in cortical slices is regular in highly reproducible
+ 
+\end_layout
+
+\begin_layout Itemize
+The amount of fluctuations in the input can be modulated by the details
+ of the balance between excitation and inhibition 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coefficient of variation (CV) 
+\begin_inset Formula $\sigma/\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+CV: 
+\begin_inset Formula $1$
+\end_inset
+
+ Narrow distribution for low input fluctuations 
+\end_layout
+
+\begin_layout Enumerate
+an exponential distribution with an effective refractory period at intermediate
+ input fluctuations 
+\end_layout
+
+\begin_layout Enumerate
+exponential distribution with bursts for high input fluctuations 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ISI distributions spanned by varying the fluctuating input can be described
+ to first approximation by the family of Gamma distribution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Details 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Probability density function: 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+f(x,k,\theta)=\frac{1}{\Gamma(k)\theta^{k}}x^{k-1}e^{-\frac{x}{\theta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $k>0$
+\end_inset
+
+ shape and 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+ scale.
+ Alternatively 
+\begin_inset Formula 
+\[
+f(x,\alpha,\beta)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $a>0$
+\end_inset
+
+ shape and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ rate.
+ Note that 
+\begin_inset Formula $\theta=\beta^{-1}$
+\end_inset
+
+.
+ Gamma distribution can account for refractory period.
+ If we rename 
+\begin_inset Formula $\beta=r$
+\end_inset
+
+ and 
+\begin_inset Formula $x=t$
+\end_inset
+
+ then 
+\begin_inset Formula 
+\[
+f(t,\alpha,\beta)=\frac{r^{\alpha}}{\Gamma(\alpha)}t^{\alpha-1}e^{-rt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Expectation value and variance 
+\begin_inset Formula 
+\begin{align*}
+\text{E}\left[f(t,\alpha,\beta)\right] & =\mu=\alpha/r\\
+\text{Var}\left[f(t,\alpha,\beta)\right] & =\sigma^{2}=\alpha/r^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Coefficient of variation 
+\begin_inset Formula 
+\[
+\text{CV}=\frac{\sigma}{\mu}=\frac{1}{\sqrt{a}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Setting 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ yields the exponential distribution 
+\begin_inset Formula 
+\[
+f(t,\alpha,\beta)=\frac{r}{\Gamma(1)}e^{-rt}=re^{-rt}
+\]
+
+\end_inset
+
+which described the ISI distribution of a homogeneous Poisson process 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Materials and Methods 
+\end_layout
+
+\begin_layout Subsection*
+Integrate-and-fire models 
+\end_layout
+
+\begin_layout Itemize
+We use generalized integrate-and-fire models with dynamics given by 
+\begin_inset Formula 
+\[
+c_{m}\frac{dV}{dt}=-g_{L}V+g_{L}\psi(V)+I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+LIF neuron 
+\begin_inset Formula $\Psi(V)=0$
+\end_inset
+
+, i.e.
+ there is no spike-generation current
+\end_layout
+
+\begin_layout Itemize
+EIF model.
+ The spike generation current is exponential 
+\begin_inset Formula 
+\[
+\psi(V)=\Delta_{T}\text{exp}\left(\frac{V-V_{\text{th}}}{\Delta_{T}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The parameter 
+\begin_inset Formula $\Delta_{T}$
+\end_inset
+
+ quantifies the sharpness of the AP initiation 
+\end_layout
+
+\begin_layout Subsection*
+Current-Based Inputs to the Neurons 
+\end_layout
+
+\begin_layout Itemize
+Diffusion approximation 
+\begin_inset Formula 
+\[
+I(t)=c_{m}\mu+c_{m}\sigma\sqrt{\tau_{m}}\eta(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The effective parameter 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ can be related to the properties of the synaptic input 
+\begin_inset Formula 
+\begin{align*}
+\mu & =N_{E}J_{E}\nu_{E}+N_{I}J_{I}\nu_{I}\\
+\sigma^{2} & =N_{E}J_{E}^{2}\nu_{E}+N_{I}J_{I}^{2}\nu_{I}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+c_{m}\frac{dV}{dt}=I(t)+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=\mu+\sigma\sqrt{\tau_{m}}\eta(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In most of this study we consider 
+\begin_inset Formula $\eta$
+\end_inset
+
+ is a white-noise process, i.e.
+ 
+\begin_inset Formula $\tau_{n}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $\tau_{n}\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $\eta(t)$
+\end_inset
+
+ was generated using 
+\begin_inset Formula 
+\[
+\tau_{n}\frac{d}{dt}\eta=-\eta+\xi(t)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ is a white noise process 
+\end_layout
+
+\begin_layout Subsection*
+Conductance-Based Inputs to neurons 
+\end_layout
+
+\begin_layout Itemize
+Numerical simulations were performed to verify that results obtained from
+ current-based inputs under the diffusion approximation hold also in more
+ realistic case of conductance-based synapses 
+\begin_inset Formula 
+\[
+I(t)=g_{e}(t)(V-V_{e})+g_{i}(t)(V-E_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The diffusion approximation holds also for conductance-based synaptic inputs.
+ Rescaling of the membrane time constant
+\end_layout
+
+\begin_layout Subsection*
+Description of the dynamics 
+\end_layout
+
+\begin_layout Itemize
+We follow membrane potential from 
+\begin_inset Formula $V_{r}=0$
+\end_inset
+
+ and want to investigate when it reaches the threshold.
+ Instead of looking at the first passage time distribution we drive probability
+ density 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+ with absorbing boundary 
+\begin_inset Formula 
+\[
+P(V,0)=\delta(V-V_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Initial condition 
+\begin_inset Formula 
+\[
+P(V,0)=\delta(V-V_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Once the trajectory crosses the threshold at time 
+\begin_inset Formula $T$
+\end_inset
+
+, it does not contribute to 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+ for 
+\begin_inset Formula $t>T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability current through the threshold at time 
+\begin_inset Formula $T$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P_{ISI}(T)=\left.-\frac{\sigma^{2}}{2\tau_{m}}\frac{\partial P}{\partial V}\right|_{V_{th}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because of the absorbing boundary condition at 
+\begin_inset Formula $V_{th}$
+\end_inset
+
+, the probability density 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+ obeys 
+\begin_inset Formula $\int_{-\infty}^{V_{th}}P(V,t)dV+\int_{0}^{t}P_{ISI}(\tau)d\tau=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The probability is loosing mass because neurons are not reset.
+ The second term accounts for the average number of neurons which reached
+ the threshold in 
+\begin_inset Formula $[0,t]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dynamics of the distribution 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tau_{m}\frac{\partial P}{\partial t}=\mathcal{L}[P]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\mathcal{L}[P]=\frac{\partial}{\partial V}[V-\mu-\psi(V)]f+\frac{\sigma}{2}\frac{\partial^{2}}{\partial V^{2}}f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Operator with the absorbing condition 
+\begin_inset Formula $f(V_{th})$
+\end_inset
+
+ is autoadjoint and negative definite so that eigenvalue are real and strictly
+ negative 
+\begin_inset Formula 
+\[
+\mathcal{L}[\phi_{i}]=-\lambda_{i}\phi_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+(\tilde{\psi},\mathcal{L}\psi)=(\mathcal{L}^{\dagger}\tilde{\psi},\psi)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Move derivatives on the other side 
+\begin_inset Formula 
+\begin{align*}
+ & \int_{-\infty}^{v_{th}}dV\,\tilde{\psi}(V)\frac{\partial}{\partial V}\left([V-\mu-\psi(V)]+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\\
+= & \left.\tilde{\psi}(V)\left([V-\mu-\psi(V)]+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\right|_{-\infty}^{v_{th}}+\int_{-\infty}^{v_{th}}dV\,\frac{\partial\tilde{\psi}(V)}{\partial V}\left([V-\mu-\psi(V)]\psi(V)+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\\
+= & \left.\tilde{\psi}(V)\left([V-\mu-\psi(V)]+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\right|_{-\infty}^{v_{th}}-\int_{-\infty}^{v_{th}}dV\,[V-\mu-\psi(V)]\frac{\partial\tilde{\psi}(V)}{\partial V}\psi(V)+\int_{-\infty}^{v_{th}}dV\,\frac{\partial\tilde{\psi}(V)}{\partial V}\frac{\sigma}{2}\frac{\partial}{\partial V}\psi(V)\\
+= & \left.\tilde{\psi}(V)\left([V-\mu-\psi(V)]+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\right|_{-\infty}^{v_{th}}-\int_{-\infty}^{v_{th}}dV\,[V-\mu-\psi(V)]\frac{\partial\tilde{\psi}(V)}{\partial V}\psi(V)-\left.\frac{\partial\tilde{\psi}(V)}{\partial V}\frac{\sigma}{2}\psi(V)\right|_{-\infty}^{V_{th}}+\int_{-\infty}^{v_{th}}dV\,\frac{\sigma}{2}\frac{\partial^{2}\tilde{\psi}(V)}{\partial V^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}^{\dagger} & =-[V-\mu-\psi(V)]\frac{\partial}{\partial V}+\frac{\sigma}{2}\frac{\partial^{2}}{\partial V^{2}}\\
+ & =\left.\tilde{\psi}(V)\left([V-\mu-\psi(V)]+\frac{\sigma}{2}\frac{\partial}{\partial V}\right)\psi(V)\right|_{-\infty}^{v_{th}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The eigenfunctions 
+\begin_inset Formula $\phi_{i}$
+\end_inset
+
+ form a complete set on which the membrane potential distribution 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+ can be expanded 
+\begin_inset Formula 
+\[
+P(V,t)=\sum_{i}\alpha_{i}\phi_{i}(V)e^{-\lambda_{i}\frac{t}{\tau_{m}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The coefficients 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ are set by the initial condition
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{ISI}(T)$
+\end_inset
+
+ in the eigenbasis 
+\begin_inset Formula 
+\[
+P_{ISI}(T)=-\frac{\sigma}{2\tau_{m}}\sum_{i}\alpha_{i}\partial_{V}\phi_{i}(V_{th})e^{-\lambda_{i}t/\tau_{m}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The eigenvalues 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ are strictly positive, the distribution 
+\begin_inset Formula $P(V,t)$
+\end_inset
+
+ does 
+\series bold
+not
+\series default
+ reach steady state but instead decays asymptotically to zero for large
+ 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If a finite gap is present between the smallest (dominate) eigenvalue
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and the next 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+, the dynamics are dominated by a single exponential
+\begin_inset Formula 
+\begin{align*}
+P(V,t) & \approx\alpha_{1}\phi_{1}(V)e^{-\lambda_{1}t/\tau_{m}}\\
+P_{ISI}(T) & \approx-\frac{\sigma}{2\tau_{m}}\alpha\partial_{V}\phi_{1}(V_{th})e^{-\lambda_{i}T/\tau_{m}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Eigenvalue Decomposition of the Fokker-Planck operator 
+\end_layout
+
+\begin_layout Itemize
+Variable transformation 
+\begin_inset Formula 
+\[
+\mathcal{L}[f]=\frac{\partial}{\partial y}(yf)+\frac{1}{2}\frac{\partial^{2}}{\partial y^{2}}f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions can be determined for the LIF neuron
+\end_layout
+
+\begin_layout Itemize
+For the EIF model, eigenfunctions of the Fokker-Planck operator cannot be
+ written explicitly 
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue equation 
+\begin_inset Formula 
+\[
+\mathcal{L}[\phi]=-\lambda_{i}\phi
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\mathcal{\mathcal{L}}[f]=\frac{\partial}{\partial V}\left[V-\mu-\psi(V)\right]f+\frac{\sigma}{2}\frac{\partial^{2}}{\partial V^{2}}f
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux 
+\begin_inset Formula 
+\[
+\tau_{m}J(V)=\left[\mu-V+\psi(V)\right]\phi-\frac{\sigma^{2}}{2}\frac{\partial\phi}{\partial V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalue equation can be transformed into first order equations 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial V}J_{1} & =\lambda\phi\\
+\frac{\sigma^{2}}{2}\frac{\partial\phi}{\partial V} & =\left[\mu-V+\psi(V)\right]\phi-\tau_{m}J_{1}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof: We start from the eigenvalue equation 
+\begin_inset Formula 
+\[
+\mathcal{L}\phi=-\lambda\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula 
+\[
+\mathcal{L}\phi=\partial_{x}(x\phi)+\frac{1}{2}\partial_{x}^{2}\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The flux associated with eigenfunction 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+J=-\left(x\phi+\frac{1}{2}\partial_{x}\phi\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Write 
+\begin_inset Formula 
+\[
+\partial_{V}J=\lambda\phi
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\frac{1}{2}\partial_{x}\phi=x\phi-J
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This system can be integrated choosing 
+\begin_inset Formula $V_{min}<V_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{max}>V_{th}$
+\end_inset
+
+ and integrating the system of equations from 
+\begin_inset Formula $V_{min}$
+\end_inset
+
+ to 
+\begin_inset Formula $V_{max}$
+\end_inset
+
+.
+ Initial condition 
+\begin_inset Formula $\phi(V_{min})=1$
+\end_inset
+
+ and 
+\begin_inset Formula $J(V_{min})=0$
+\end_inset
+
+ corresponding to the constraint that 
+\begin_inset Formula $J(V)$
+\end_inset
+
+ decays exponentially for 
+\begin_inset Formula $V\rightarrow-\infty$
+\end_inset
+
+.
+ The numerical integration is the value of 
+\begin_inset Formula $\phi(V_{max})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The location of zeros of 
+\begin_inset Formula $\phi(V_{max})$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ determines the eigenvalues.
+ Boundary conditions 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_body

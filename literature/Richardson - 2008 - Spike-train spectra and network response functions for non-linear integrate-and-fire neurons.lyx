@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Title
-Notes: Spike-train sepctra and network response functions of non-linear
+Notes: Spike-train spectra and network response functions of non-linear
  integrate-and-fire neurons 
 \end_layout
 
@@ -113,7 +113,7 @@ Non-linear integrate and fire models, QIF and EIF model
 \end_layout
 
 \begin_layout Itemize
-EIF model provides both an exellent fit to the current-voltage relation
+EIF model provides both an excellent fit to the current-voltage relation
  and accurate spike prediction 
 \end_layout
 
@@ -192,7 +192,7 @@ Non-linear IF neurons that a dynamics of the form
 \begin_inset Formula $E(t)$
 \end_inset
 
- is the instanteneous resting potential 
+ is the instantaneous resting potential 
 \end_layout
 
 \begin_layout Itemize
@@ -217,7 +217,7 @@ EIF
 \end_layout
 
 \begin_layout Itemize
-Onset of the spike is parametererized by 
+Onset of the spike is parameterized by 
 \begin_inset Formula $V_{T}$
 \end_inset
 
@@ -366,6 +366,180 @@ inhibitory synaptic-reversal potential
 
 \begin_layout Section
 Uncoupled populations of neurons 
+\end_layout
+
+\begin_layout Subsection
+Steady-state properties 
+\end_layout
+
+\begin_layout Itemize
+Continuity equation and flux equation can be re-arranged to provide two
+ first-order linear differential equations for the flux 
+\begin_inset Formula 
+\begin{align*}
+-\frac{\partial J_{0}}{\partial V} & =r_{0}\delta(V-V_{th})-r_{0}\delta(V-V_{re})\\
+-\frac{\partial P_{0}}{\partial V} & =\frac{1}{\sigma^{2}}\left(\tau J_{0}+(V-E_{0}-\psi)P_{0}\right)
+\end{align*}
+
+\end_inset
+
+implying that the boundary conditions are 
+\begin_inset Formula $J_{0}(V_{th})=r_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{0}(V_{th})=0$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}+\frac{\partial J}{\partial V}=\text{initial conditions}+\text{sources}+\text{sinks}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Source at threshold 
+\begin_inset Formula 
+\[
+r_{0}\delta(V-V_{re})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Sink at reset 
+\begin_inset Formula 
+\[
+-r_{0}\delta(V-V_{th})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Stationary solution implies 
+\begin_inset Formula $\frac{\partial P}{\partial t}=0$
+\end_inset
+
+, i.e
+\begin_inset Formula 
+\[
+\frac{\partial J_{0}}{\partial V}=r_{0}\delta(V-V_{re})-r_{0}\delta(V-V_{th})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ is unknown but can be scaled out using the variable transformation 
+\begin_inset Formula $j_{0}=r_{0}J_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Integrating over 
+\begin_inset Formula $V$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+-\int_{V_{lb}}^{V_{th}}dV\frac{\partial J_{0}}{\partial V} & =r_{0}\delta(V-V_{th})-r_{0}\delta(V-V_{re})\\
+-\int_{V_{lb}}^{V_{r_{-}}}dV\frac{\partial J_{0}}{\partial V}-\int_{V_{r_{+}}}^{V_{th}}dV\frac{\partial J_{0}}{\partial V} & =r_{0}-r_{0}=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Scale out 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+-\frac{\partial j_{0}}{\partial V} & =\delta(V-V_{th})-\delta(V-V_{re})\\
+-\frac{\partial p_{0}}{\partial V} & =\frac{1}{\sigma^{2}}(\tau j_{0}+(V-E_{0}-\psi)p_{0})
+\end{align*}
+
+\end_inset
+
+with boundary conditions 
+\begin_inset Formula $p_{0}(V_{th})=0$
+\end_inset
+
+ and 
+\begin_inset Formula $j_{0}(V_{th})=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula 
+\[
+r_{0}=\left(\int_{V_{lb}}^{V_{th}}p_{0}(V)dv+\tau_{r}\right)^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+First-passage time, propagator and spike spectrum 
+\end_layout
+
+\begin_layout Itemize
+First-passage time density
+\begin_inset Formula 
+\[
+-\frac{\partial J}{\partial V}=\frac{\partial P}{\partial t}+f(t)\delta(V-V_{th})-\delta(t-t_{0})\delta(V-V_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First-passage time density is equivalent to time-dependent flux at threshold
+ 
+\begin_inset Formula $f(t)=J(V_{th},t)$
+\end_inset
+
+
 \end_layout
 
 \end_body
