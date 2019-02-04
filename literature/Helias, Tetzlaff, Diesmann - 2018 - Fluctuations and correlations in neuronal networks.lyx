@@ -79,6 +79,10 @@
 Notes: Helias lecture 
 \end_layout
 
+\begin_layout Standard
+Measure of pairwise correlation
+\end_layout
+
 \begin_layout Section*
 Derivation of the Fokker-Planck equation
 \end_layout
@@ -855,7 +859,7 @@ Time-dependent Fokker-Planck equation
 Rescaled unitless coordinates 
 \begin_inset Formula 
 \begin{align*}
-x & =\frac{\sqrt{2}}{\sigma}(V-\mu),\quad s=\frac{\tau}{\tau}\\
+x & =\frac{\sqrt{2}}{\sigma}(V-\mu),\quad s=\frac{t}{\tau}\\
 \rho(x,s) & =\frac{\sigma}{\sqrt{2}}p(V(x),\tau s)
 \end{align*}
 
@@ -948,6 +952,93 @@ self-consistently
 \begin{align*}
 r\left(1+n\left(\frac{t}{\tau_{\text{m}}}\right)\right) & =\tau_{\text{m}}\varphi(V_{\theta},t)+\tau_{\text{m}}\delta\varphi(V_{\theta},t)=\left.\tau_{\text{m}}\varphi(V_{\theta},t)+\tau_{\text{m}}\varphi(V,t)\right|_{V=V_{\text{r}}^{(-)}}^{V=V_{\text{r}}^{(+)}}
 \end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Summary: 
+\end_layout
+
+\begin_layout Itemize
+Time dependent Fokker-Planck equation after variable transformation with
+ 
+\begin_inset Formula $s=t/\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\partial_{s}\rho(x,s)=\partial_{x}(x+\partial_{x})\rho(x,s)+n(s)\left(-G\partial_{x}+H\partial_{x}^{2}\right)\rho(x,s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The terms 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ are parameter dependent constants 
+\begin_inset Formula 
+\begin{align*}
+G & =\sqrt{2}\frac{KJ(1-\gamma g)\tau r}{\sigma}=\frac{\mu_{\text{loc}}}{\sigma}\\
+H & =\frac{KJ^{2}(1+\gamma g^{2})\tau v}{\sigma^{2}}=\frac{\sigma_{\text{loc}}^{2}}{\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assuming amplitude of sinusoidal modulation 
+\begin_inset Formula $\partial r(\tau s)$
+\end_inset
+
+ is small, 
+\begin_inset Formula $n(s)=\frac{\partial r(\tau s)}{r}$
+\end_inset
+
+ is used as expansion parameter
+\end_layout
+
+\begin_layout Itemize
+Here, local refers to the contribution from the recurrent local connections
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the denominator is full variance including the contribution from the
+ external input 
+\end_layout
+
+\begin_layout Itemize
+Self-consistent solution must ensure that input must be equal to output
+ 
+\begin_inset Formula 
+\[
+r(1+n(t/\tau_{\text{m}}))=J(x_{\theta})
+\]
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1132,12 +1223,12 @@ The Fokker-Planck equation can be expressed in terms of
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Alternative derivation 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Perform similarity transformation
@@ -1499,7 +1590,20 @@ q(x,s)=q_{0}(x)+q_{1}(x,s)
 
 \end_inset
 
-which we insert into the partial differential equation
+with 
+\begin_inset Formula $q_{1}(x,s)\sim n(s)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Insert into the time dependent Fokker-Planck equation and drop all terms
+ of order 
+\begin_inset Formula $n(s)^{2}$
+\end_inset
+
+ or higher 
 \begin_inset Formula 
 \[
 \partial_{s}q_{1}=\mathcal{L}_{0}q_{1}+\mathcal{L}_{1}q_{1}+\mathcal{O}(n^{2})
@@ -1511,8 +1615,822 @@ which we insert into the partial differential equation
 \end_layout
 
 \begin_layout Itemize
-Partial differential equation for 
+Linear partial differential equation for 
 \begin_inset Formula $q_{1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Due to linearity it is sufficient to solve this equation for sinusoidal
+ modulations 
+\begin_inset Formula 
+\[
+n(s)=n(\omega)e^{i\omega\tau s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Separation ansatz 
+\begin_inset Formula $q_{1}(x,s)=q_{1}(x,\omega)e^{i\omega\tau s}$
+\end_inset
+
+ leads to the ordinary inhomogeneous differential equation of second order
+ 
+\begin_inset Formula 
+\[
+\left(i\omega\tau+a^{\dagger}a\right)q_{1}=n(\omega)a^{\dagger}(G+Ha^{\dagger})q_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\partial_{s}q(x,s)=-a^{\dagger}a\,q_{1}(x,s)+n(s)a^{\dagger}\left(G+Ha^{\dagger}\right)q_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Inserting 
+\begin_inset Formula $q_{1}(x,s)=q_{1}(x,\omega)e^{i\omega\tau s}$
+\end_inset
+
+ and 
+\begin_inset Formula $n(s)=n(\omega)e^{i\omega\tau s}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+i\tau\omega q_{1}(x,\omega)e^{i\omega\tau s}=-a^{\dagger}a\,q_{1}(x,\omega)e^{i\omega\tau s}+n(\omega)e^{i\omega\tau s}a^{\dagger}\left(G+Ha^{\dagger}\right)q_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Diving by 
+\begin_inset Formula $e^{i\omega\tau s}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+i\tau\omega q_{1}(x,\omega)=-a^{\dagger}a\,q_{1}(x,\omega)+n(\omega)a^{\dagger}\left(G+Ha^{\dagger}\right)q_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Homogeneous solution 
+\begin_inset Formula 
+\begin{align*}
+0 & =-a^{\dagger}a\,q_{1}(x,\omega)-i\tau\omega q_{1}(x,\omega)\\
+0 & =a^{\dagger}aq_{1}(x,\omega)+i\tau\omega q_{1}(x,\omega)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Term 
+\begin_inset Formula $\propto\rho_{0}(x)$
+\end_inset
+
+ is just a known function of 
+\begin_inset Formula $x$
+\end_inset
+
+, so it plays the role of a inhomogeneity 
+\end_layout
+
+\begin_layout Itemize
+Since the equation is linear, its solution is a superposition of a particular
+ solution 
+\begin_inset Formula $q_{p}$
+\end_inset
+
+ reproducing the inhomogeneity and the homogeneous solution 
+\begin_inset Formula $q_{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The full solution 
+\begin_inset Formula $q=q_{p}+q_{h}$
+\end_inset
+
+ complies with the boundary condition 
+\end_layout
+
+\begin_layout Subsection*
+Particular solution 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+q_{p}=n(\omega)\left(\frac{G}{1+i\omega\tau}a^{\dagger}q_{0}+\frac{H}{2+i\omega\tau}(a^{\dagger})^{2}q_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Homogeneous solution
+\end_layout
+
+\begin_layout Itemize
+Homogeneous solution 
+\begin_inset Formula 
+\begin{align*}
+\left(i\omega\tau+a^{\dagger}a\right)q_{h} & =0\\
+\left(-\partial_{x}^{2}+\frac{1}{4}x^{2}+i\omega\tau-\frac{1}{2}\right)q_{h} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+General solution 
+\begin_inset Formula 
+\[
+q_{0}(x,\omega)=\begin{cases}
+aU(z,x) & \text{for}\,x<x_{\text{r}}\\
+bU(z,x)+cV(z,x) & \text{for \ensuremath{x_{r}<x<x_{\theta}}}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The homogeneous solution, i.e.
+ the coefficients 
+\begin_inset Formula $a,b$
+\end_inset
+
+ and 
+\begin_inset Formula $c$
+\end_inset
+
+ must be chosen so that the complete solution 
+\begin_inset Formula $q_{1}=q_{p}+q_{h}$
+\end_inset
+
+ obeys boundary conditions 
+\end_layout
+
+\begin_layout Subsection*
+Boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+Function needs to be continuous 
+\begin_inset Formula 
+\[
+q_{1}(x_{r_{+}})-q_{1}(x_{r_{-}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finite flux at threshold 
+\begin_inset Formula 
+\[
+q_{1}(x_{\theta})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $q_{1}=q_{h}+q_{p}$
+\end_inset
+
+, we need to determine the boundary values of the particular solution 
+\end_layout
+
+\begin_layout Itemize
+The particular solution is given by 
+\begin_inset Formula 
+\[
+q_{p}=n(\omega)\left(\frac{G}{1+i\omega\tau}a^{\dagger}q_{0}+\frac{H}{2+i\omega\tau}(a^{\dagger})^{2}q_{0}\right)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\begin{align*}
+a^{\dagger}q_{0} & =\left(\frac{1}{2}x-\partial_{x}\right)q_{0}\\
+\left(a^{\dagger}\right)^{2}q_{0} & =\left(-\frac{1}{2}x^{2}-x\partial_{x}\right)q_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each term which does not contain a derivative 
+\begin_inset Formula $\partial_{x}$
+\end_inset
+
+ vanishes because 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ vanishes at the threshold 
+\begin_inset Formula $q_{0}(x_{\theta})=0$
+\end_inset
+
+ and continuous, i.e.
+ 
+\begin_inset Formula $q(x_{r_{+}})-q(x_{r_{-}})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we only need to consider 
+\begin_inset Formula 
+\begin{align*}
+-\partial_{x}q_{0} & =-\partial_{x}u^{-1}\rho_{0}\\
+-x\partial xq_{0} & =-x\partial_{x}u^{-1}\rho_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using the same argument as before, we can move 
+\begin_inset Formula $u^{-1}$
+\end_inset
+
+ on the left side of the derivative 
+\begin_inset Formula 
+\begin{align*}
+-\partial_{x}q_{0} & =-u^{-1}\partial_{x}\rho_{0}\\
+-x\partial xq_{0} & =-xu^{-1}\partial_{x}\rho_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The latter derivative evaluated at 
+\begin_inset Formula $x_{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{r_{+}}$
+\end_inset
+
+ minus 
+\begin_inset Formula $x_{r_{-}}$
+\end_inset
+
+ is equivalent to the flux over threshold, i.e.
+ the proportional to the emission rate 
+\begin_inset Formula 
+\begin{align*}
+\left.-\partial_{x}q_{0}\right|_{x=x_{\theta}} & =u^{-1}(x_{\theta})\tau\nu\\
+\left.-\partial_{x}q_{0}\right|_{x=x_{r_{-}}}^{x_{r_{+}}} & =u^{-1}(x_{r})\tau\nu\\
+\left.-x\partial xq_{0}\right|_{x=x_{\theta}} & =x_{\theta}u^{-1}(x_{\theta})\tau\nu\\
+\left.-x\partial xq_{0}\right|_{x=x_{r_{-}}}^{x_{r_{+}}} & =x_{r}u^{-1}(x_{r})\tau\nu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we arrive at the following conditions for the coefficients of homogeneous
+ part of the solution 
+\begin_inset Formula 
+\begin{align*}
+q_{h}(x_{\theta}) & =-q_{p}(x_{\theta})=n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{\theta}\right)\tau ru^{-1}(x_{\theta})\\
+q_{h}(x_{r_{+}})-q_{h}(x_{r_{-}}) & =-\left(q_{p}(x_{r_{+}})-q_{p}(x_{r_{-}})\right)=n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{r}\right)\tau ru^{-1}(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Flux boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+The flux at threshold must be equal to the flux re-inserted at reset 
+\end_layout
+
+\begin_layout Itemize
+Firing rate follows the periodic modulation 
+\begin_inset Formula 
+\[
+r(t)=r(1+n(\omega)e^{i\omega t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can express the flux due to the perturbation by using 
+\begin_inset Formula 
+\[
+\tau\nu(1+\overline{n}(\omega))=\left.\left(S_{0}+n(\omega)S_{1}\right)q\right|_{\{x_{r},x_{\theta}\}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The above notation means 
+\begin_inset Formula 
+\[
+\left.\left(S_{0}+n(\omega)S_{1}\right)q\right|_{x_{\theta}}=\left.\left(S_{0}+n(\omega)S_{1}\right)q\right|_{x_{r_{-}}}^{x_{r_{+}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert 
+\begin_inset Formula $q=q_{0}+q_{1}$
+\end_inset
+
+ and keep only terms up to first order in 
+\begin_inset Formula $n(\omega)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left.\left(S_{0}(q_{0}+q_{1})+n(\omega)S_{1}q_{0}\right)\right|_{\{x_{\theta},x_{r}\}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The first term 
+\begin_inset Formula $S_{0}q_{0}$
+\end_inset
+
+ yields the stationary firing rate 
+\begin_inset Formula 
+\[
+S_{0}q_{0}=u^{-1}\tau r
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we find 
+\begin_inset Formula 
+\[
+\overline{n}(\omega)\tau\nu=\left.u\left(S_{0}q_{1}+n(\omega)S_{1}q_{0}\right)\right|_{\{x_{\theta},x_{r}\}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We first look at 
+\begin_inset Formula 
+\[
+S_{0}q_{1}=a(q_{h}+q_{p})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The particular solution 
+\begin_inset Formula $q_{p}$
+\end_inset
+
+ is proportional to 
+\begin_inset Formula $a^{\dagger}q_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $(a^{\dagger})^{2}q_{0}$
+\end_inset
+
+, i.e.
+ we need to compute 
+\begin_inset Formula 
+\begin{align*}
+aa^{\dagger}q_{0} & =q_{0}\\
+a(a^{\dagger})^{2}q_{0} & =2a^{\dagger}q_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Contribution to the flux from particular solution 
+\begin_inset Formula 
+\[
+-aq_{p}=-n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{2H}{2+i\omega\tau}a^{\dagger}\right)q_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The stationary solution vanished at threshold 
+\begin_inset Formula $q_{0}(x_{\theta})$
+\end_inset
+
+ and is continuous at reset, i.e.
+ the first term vanishes and we are left with 
+\begin_inset Formula 
+\begin{align*}
+-aq_{p}\bigr|_{x_{\theta}} & =-n(\omega)\frac{2H}{2+i\omega\tau}u^{-1}(x_{\theta})\tau r\\
+-aq_{p}\bigr|_{x_{r_{-}}}^{x_{r_{+}}} & =-n(\omega)\frac{2H}{2+i\omega\tau}u^{-1}(x_{r})\tau r
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Contribution due to pertubated flux operator 
+\begin_inset Formula 
+\[
+S_{1}q_{0}=\left(G+Ha^{\dagger}\right)q_{0}
+\]
+
+\end_inset
+
+is given by 
+\begin_inset Formula 
+\begin{align*}
+Sq_{0}\bigr|_{x_{\theta}} & =n(\omega)Hu^{-1}(x_{\theta})\tau\nu\\
+Sq_{0}\bigr|_{x_{r_{-}}}^{x_{r_{+}}} & =n(\omega)Hu^{-1}(x_{r})\tau\nu
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Putting everything together yields 
+\begin_inset Formula 
+\begin{align*}
+-n(\omega)\frac{2H}{2+i\omega\tau}u^{-1}(x)\tau r\bigr|_{\{x_{r},x_{\theta}\}}+aq_{h}\bigr|_{\{x_{r},x_{\theta}\}}+n(\omega)Hu^{-1}(x)\tau\nu\bigr|_{\{x_{r},x_{\theta}\}} & =\tau r\overline{n}(\omega)u^{-1}
+\end{align*}
+
+\end_inset
+
+which can be written as
+\begin_inset Formula 
+\[
+n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}u^{-1}(x)\tau r\bigr|_{\{x_{r},x_{\theta}\}}+aq_{h}\bigr|_{\{x_{r},x_{\theta}\}}=\tau r\overline{n}(\omega)u^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting 
+\begin_inset Formula $a=\frac{1}{2}x+\partial_{x}$
+\end_inset
+
+ we arrive at (we drop 
+\begin_inset Formula $\bigr|_{\{x_{r},x_{\theta}\}}$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+\tau r\overline{n}(\omega)u^{-1} & =n(\omega)u^{-1}(x)\tau r\frac{i\omega\tau H}{2+i\omega\tau}-aq_{h}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inserting 
+\begin_inset Formula $a=\left(\frac{1}{2}x+\partial_{x}\right)$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+\left(\frac{1}{2}x+\partial_{x}\right)q_{h} & =n(\omega)u^{-1}(x)\tau r\left(n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}-\overline{n}(\omega)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}q_{h}\bigr|_{x_{\theta}} & =u^{-1}(x_{\theta})\tau r\left(n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}-\overline{n}(\omega)\right)-\frac{1}{2}x_{\theta}q_{h}(x_{\theta})\\
+\partial_{x}q_{h}\bigr|_{x_{r_{-}}}^{x_{r_{+}}} & =u^{-1}(x_{\theta})\tau r\left(n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}-\overline{n}(\omega)\right)-\frac{1}{2}xq_{h}(x)\bigr|_{x_{r_{-}}}^{x_{r_{+}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Replacing 
+\begin_inset Formula $q_{h}(x_{\theta})$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{h}(x_{r_{\pm}})$
+\end_inset
+
+ by the expression derived from the previous boundary conditions 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}q_{h}\bigr|_{x_{\theta}} & =u^{-1}(x_{\theta})\tau r\left(n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}-\overline{n}(\omega)\right)-\frac{1}{2}x_{\theta}\left(n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{\theta}\right)\tau\nu u^{-1}(x_{\theta})\right)\\
+\partial_{x}q_{h}\bigr|_{x_{r_{-}}}^{x_{r_{+}}} & =u^{-1}(x_{r})\tau r\left(n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}-\overline{n}(\omega)\right)-\frac{1}{2}x_{r}\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{r}\right)\tau\nu u^{-1}(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Alternatively 
+\begin_inset Formula 
+\begin{align*}
+q_{h}(x_{\theta}) & +n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{\theta}\right)\tau\nu u^{-1}(x_{\theta})\\
+q_{h}(x_{r_{+}})-q_{h}(x_{r_{-}}) & =-n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{r}\right)\tau\nu u^{-1}(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula 
+\[
+g(x)=-n(\omega)\left(\frac{G}{1+i\omega\tau}+\frac{H}{2+i\omega\tau}x_{\theta}\right)\tau\nu u^{-1}(x_{\theta})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting 
+\begin_inset Formula $q_{h}(x)$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+bU(z,x_{\theta})+cV(z,x_{\theta}) & =g(x_{\theta})\\
+bU(z,x_{r})+cV(z,x_{r})-aU(z,x_{r}) & =g(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This are two equation three unknown coefficients.
+ We need to obtain the third equation from the flux boundary condition.
+ Define
+\begin_inset Formula 
+\[
+h(x)=n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}u^{-1}(x)\tau r
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}x_{\theta}q_{h}(x_{\theta})+\partial_{x}q_{h}(x_{\theta})+h(x_{\theta}) & =\frac{1}{2}x_{r}\left(q_{h}(x_{r_{+}})-q_{h}(x_{r_{-}})\right)+\partial_{x}q_{h}(x_{r_{+}})-\partial_{x}q_{h}(x_{r_{+}})+h(x_{r_{-}})\\
+\frac{1}{2}x_{\theta}\left(bU(z,x_{\theta})+cV(z,x_{\theta})\right)-\frac{1}{2}x_{r}\left(bU(z,x_{r})+cV(z,x_{r})-aU(z,x_{r})\right)+bU'(z,x_{\theta})+cV'(z,x_{\theta})-\left(bU'(z,x_{r})+cV'(z,x_{r})-aU'(z,x_{r})\right) & =h(x_{r_{-}})-h(x_{\theta})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Group terms by coefficients 
+\begin_inset Formula 
+\begin{align*}
+a\left(\frac{1}{2}x_{r}U(z,x_{r})+U'(z,x_{r})\right)+b\left(\frac{1}{2}x_{\theta}U(z,x_{\theta})-\frac{1}{2}x_{r}U(z,x_{r})+U'(z,x_{\theta})-U'(z,x_{r})\right)+c\left(\frac{1}{2}x_{\theta}V(z,x_{\theta})-\frac{1}{2}x_{r}V(z,x_{r})+V'(z,x_{\theta})-V'(z,x_{r})\right) & =h(x_{r})-h(x_{\theta})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at the following inhomogeneous linear set of equations 
+\begin_inset Formula 
+\[
+\begin{pmatrix}0 & U(z,x_{\theta}) & V(z,x_{\theta})\\
+-U(z,x_{r}) & U(z,x_{r}) & V(z,x_{r})\\
+\left(\frac{1}{2}x_{r}U(z,x_{r})+U'(z,x_{r})\right) & \left(\frac{1}{2}x_{\theta}U(z,x_{\theta})-\frac{1}{2}x_{r}U(z,x_{r})+U'(z,x_{\theta})-U'(z,x_{r})\right) & \left(\frac{1}{2}x_{\theta}V(z,x_{\theta})-\frac{1}{2}x_{r}V(z,x_{r})+V'(z,x_{\theta})-V'(z,x_{r})\right)
+\end{pmatrix}\begin{pmatrix}a\\
+b\\
+c
+\end{pmatrix}=\begin{pmatrix}g(x_{\theta})\\
+g(x_{r})\\
+h(x_{r})-h(x_{\theta})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+When I have the coefficients, than I can calculate the output rate modulation
+ from 
+\begin_inset Formula 
+\begin{align*}
+h(x_{\theta})+\frac{1}{2}x_{\theta}q_{h}(x_{\theta})+\partial_{x}q_{h}(x_{\theta}) & =\tau ru^{-1}(x_{\theta})\overline{n}(\omega)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula $\overline{n}(\omega)=\frac{h(x_{\theta})+\frac{1}{2}x_{\theta}q_{h}(x_{\theta})+\partial_{x}q_{h}(x_{\theta})}{\tau ru^{-1}(x_{\theta})}=n(\omega)\frac{i\omega\tau H}{2+i\omega\tau}+\frac{\frac{1}{2}x_{\theta}\left(bU(z,x)+cV(z,x)\right)+\left(bU'(z,x)+cV'(z,x)\right)}{\tau ru^{-1}(x_{\theta})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Transfer function 
+\end_layout
+
+\begin_layout Itemize
+Having found the function value and derivative of threshold, the homogeneous
+ solution is uniquely determined on 
+\begin_inset Formula $x_{r}<x<x_{\theta}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+U(z,x_{\theta})a+V_{2}(z,x_{\theta})b & =q_{1}^{h}(x_{\theta})\\
+U'(z,x_{\theta})a+V'_{2}(z,x_{\theta})b & =\partial_{x}q_{1}^{h}(x_{\theta})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We obtain inhomogeneous linear system of equations 
+\begin_inset Formula 
+\[
+\begin{pmatrix}U(z,x_{\theta}) & V(z,x_{\theta})\\
+U'(z,x_{\theta}) & V'(z,x_{\theta})
+\end{pmatrix}\begin{pmatrix}a\\
+b
+\end{pmatrix}=\begin{pmatrix}q_{1}^{h}(x_{\theta})\\
+\partial_{x}q_{1}^{h}(x_{\theta})
+\end{pmatrix}
+\]
+
 \end_inset
 
 
