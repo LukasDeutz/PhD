@@ -1,0 +1,1192 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: Firing-rate respone of linear and nonlinear integrate-and-fire neurons
+ to modulated current-based and conductance-based synaptic drive 
+\end_layout
+
+\begin_layout Author
+By Magnus J.E.
+ Richardson 
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+A simple scheme is presented that allows for the direct numerical derivation
+ of the first-order dynamics without requiring an intermediate analytic
+ solution
+\end_layout
+
+\begin_layout Itemize
+Analytic solution for the leaky integrate-and-fire neuron under current-based
+ synaptic modulation can be derived in terms of hypergeometric functions
+ 
+\end_layout
+
+\begin_layout Itemize
+These functions need to be evaluated numerically
+\end_layout
+
+\begin_layout Section
+General considerations 
+\end_layout
+
+\begin_layout Itemize
+Continuity equation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}+\frac{\partial J}{\partial V}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic drive is treated in the diffusion approximation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\mathcal{L}P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The operator 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ contains derivatives up to second order in voltage 
+\end_layout
+
+\begin_layout Itemize
+It depends on a set of parameter 
+\begin_inset Formula $\{\alpha,\beta,\gamma,\ldots\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Current operator 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{J}P=J
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The operator 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+ contains derivative up to first oder in voltage 
+\end_layout
+
+\begin_layout Itemize
+Model is accounted by boundary conditions that describe the neuron dynamics
+ at the treshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ and reset 
+\begin_inset Formula $V_{\text{re}}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+P(V_{\text{th}-},t) & =P(V_{\text{r}+},t)-P(V_{\text{r}-},t)=0\\
+J(V_{\text{th}-},t) & =J(V_{\text{r}e-},t)-J(V_{\text{re}-},t)=r(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Numerical solutions of the system a further conditions, rescricting the
+ voltage to be above lower bound 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+J(V_{\text{lb}},t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+A.
+ Treatment of a weak modulation 
+\end_layout
+
+\begin_layout Itemize
+Case of a weak perturbation in which one of the parameters 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is varied cosinusoidally at an angular freqeuncy 
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a(t)=\alpha_{0}+\alpha_{1}\cos(\omega t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This leads to variations in all state variables that to first oder in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ are also cosinusoidal 
+\begin_inset Formula 
+\begin{align*}
+P(V,t) & =P_{0}(V)+P_{\alpha}(V)\text{\cos}[\omega t+\psi_{\alpha}(V)]\\
+J(V,t) & =J_{0}(V)+J_{\alpha}(V)\text{\cos}[\omega t+\gamma_{\alpha}(V)]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consider an allied system which is driven by a sinusoidal drive so that
+ the effect of the modulation can be written in 
+\series bold
+complex form
+\series default
+ 
+\begin_inset Formula 
+\[
+r_{\alpha}\cos(\omega t+\rho_{\alpha})+ir_{\alpha}\sin(\omega t+\rho_{\alpha})=\hat{r}_{\alpha}e^{i\omega t}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\hat{r}_{\alpha}=e^{i\rho_{\alpha}}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\begin{align*}
+r_{\alpha}\cos(\omega t+\rho_{\alpha})+ir_{\alpha}\sin(\omega t+\rho_{\alpha}) & =r_{\alpha}e^{i(\omega t+\rho_{\alpha})}\\
+ & =r_{\alpha}e^{i\rho_{\alpha}}e^{i\omega t}\\
+ & =\hat{r}_{\alpha}e^{i\omega t}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\hat{r}_{\alpha}=e^{i\rho_{\alpha}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The amplitude and the phase of the complex 
+\begin_inset Formula $\hat{r}_{\alpha}$
+\end_inset
+
+ as well as those for 
+\begin_inset Formula $\hat{P}_{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{J}_{\alpha}$
+\end_inset
+
+ characterize the response properties to a modulation of the parameter 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Fokker-Planck equation for the steady state and dynamic perturbations
+ may be written as 
+\begin_inset Formula 
+\begin{align*}
+P & =\mathcal{L}_{0}P_{0}\\
+i\omega\hat{P}_{\alpha} & =\mathcal{L}_{0}\hat{P}_{\alpha}+\frac{\partial F_{\alpha}}{\partial V}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The inhomogeneous term 
+\begin_inset Formula $F_{\alpha}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+F_{\alpha}=-\mathcal{J}_{\alpha}P_{0}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{J}_{\alpha}=\alpha_{1}\left.\frac{\partial\mathcal{J}}{\partial\alpha}\right|_{\alpha=\alpha_{0}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+B.
+ Method for the numerical solution
+\end_layout
+
+\begin_layout Itemize
+Strategy is to break the Fokker-Planck equation into two 
+\series bold
+simultaneous
+\series default
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+ first-order equations for the current 
+\begin_inset Formula $J$
+\end_inset
+
+ and probability density 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Steady-state solution is first constructed by resolving the Fokker-Planck
+ equation into 
+\begin_inset Formula 
+\begin{align*}
+-\frac{\partial J_{0}}{\partial V} & =r_{0}\left[\delta(V-V_{\text{th}})-\delta(V-V_{\text{re}})\right]\\
+\mathcal{J}_{0}P_{0} & =J_{0}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from continuity equation
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}+\frac{\partial J}{\partial V}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+To find the steady state solution, we set 
+\begin_inset Formula $\partial_{t}P_{0}=0$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+-\frac{\partial J_{0}}{\partial V}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can incorporte bounday conditions as sinks and sources 
+\begin_inset Formula 
+\[
+-\frac{\partial J_{0}}{\partial V}=r_{0}[\delta(V-V_{\text{th}})-\delta(V-V_{\text{re}})]
+\]
+
+\end_inset
+
+so that 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+-\int_{V_{\text{th}-}}^{V_{\text{th}_{+}}}\frac{\partial J_{0}}{\partial V}=J_{0}(V_{\text{th}_{+}})-J_{0}(V_{\text{th}_{-}})=r_{0}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+-\int_{V_{\text{re}-}}^{V_{\text{re}_{+}}}\frac{\partial J_{0}}{\partial V}=J_{0}(V_{\text{re}_{-}})-J_{0}(V_{\text{re}_{+}})=-r_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Notes on eigenfunction 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+How does this translate to the eigenfunctions.
+ For the eigenfunctions, we have the boundary condition 
+\begin_inset Formula 
+\[
+J_{n}(V_{\text{th}-})=J_{n}(V_{\text{re}_{+}})-J_{n}(V_{\text{re}_{-}})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $J_{n}$
+\end_inset
+
+ is the flux associated with
+\end_layout
+
+\begin_layout Plain Layout
+However we do not know the value of the eigenfunction at 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+, we only know that 
+\begin_inset Formula 
+\[
+\sum_{n}J_{n}(V_{\text{th}})=r_{0}+\sum_{n>1}2\text{Re}(J_{n}(V_{\text{th}}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+However, we could normalize 
+\begin_inset Formula 
+\[
+\phi(V_{\text{th}-})
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\[
+J_{n}(V_{\text{th}})=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we could write 
+\begin_inset Formula 
+\[
+J_{n}(V_{\text{th}-})=J_{n}(V_{\text{re}_{+}})-J_{n}(V_{\text{re}_{-}})=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Both the current and probability density are proportional to the unkown
+ firing rate 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+, so the substiutions 
+\begin_inset Formula 
+\begin{align*}
+J_{0} & =r_{0}j_{0}\\
+P_{0} & =r_{0}p_{0}
+\end{align*}
+
+\end_inset
+
+allow for the firing rate to be canceled from the pair of equations 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+From
+\begin_inset Formula 
+\[
+J_{0}=r_{0}j_{0}
+\]
+
+\end_inset
+
+follows 
+\begin_inset Formula 
+\[
+\frac{\partial J_{0}}{\partial V}=r_{0}\frac{\partial j_{0}}{\partial V}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\begin{align*}
+-r_{0}\frac{\partial j_{0}}{\partial V} & =r_{0}\left[\delta(V-V_{\text{th}})-\delta(V-V_{\text{re}})\right]\\
+-\frac{\partial j_{0}}{\partial V} & =\left[\delta(V-V_{\text{th}})-\delta(V-V_{\text{re}})\right]
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+r_{0}\mathcal{J}_{0}p_{0}=J_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Resulting equations can integrated backwards from the threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ to the lower bound 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+ with initial conditions 
+\begin_inset Formula 
+\begin{align*}
+j_{0}(V_{\text{th}}) & =1\\
+p(V_{\text{th}}) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The firing rate 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ can be found by noting that the total probability density integrates to
+ one 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ is equivalent to the recriprocal of the integral of 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ over the voltage range 
+\begin_inset Formula 
+\begin{align*}
+\int_{V_{\text{lb}}}^{V_{\text{th}}}dV\,P_{0} & =r_{0}\int_{V_{\text{lb}}}^{V_{\text{th}}}dV\,p_{0}\\
+r_{0} & =\frac{1}{\int_{V_{\text{lb}}}^{V_{\text{th}}}dV\,p_{0}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+A.
+ Leaky IF model 
+\end_layout
+
+\begin_layout Itemize
+Langevin equation for the IF model 
+\begin_inset Formula 
+\[
+\tau\frac{dV}{dt}=E-V+\sigma\sqrt{2}\tau\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\frac{\partial}{\partial V}\left(\frac{V-E}{\tau}P\right)+\frac{\sigma^{2}}{\tau}\frac{\partial^{2}P}{\partial V^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the LIF the steady state equations can written as 
+\begin_inset Formula 
+\begin{align*}
+-\frac{\partial J_{0}}{\partial V} & =r_{0}[\delta(V-V_{\text{th}})+\delta(V-V_{\text{re}})]\\
+-\frac{\partial P_{0}}{\partial V} & =\frac{\tau_{0}}{\sigma_{0}^{2}}\left(\frac{V-E_{0}}{\tau_{0}}P_{0}+J_{0}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To obtain the steady state solution, we need to solve 
+\begin_inset Formula 
+\[
+\frac{\partial J_{0}}{\partial V}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary conditions can be incorporated.
+ The flux is given by 
+\begin_inset Formula 
+\[
+J_{0}\text{=}-\frac{V-E}{\tau}P_{0}-\frac{\sigma^{2}}{\tau}\frac{\partial P_{0}}{\partial V}
+\]
+
+\end_inset
+
+from which follows 
+\begin_inset Formula 
+\[
+-\frac{\partial P_{0}}{\partial V}=\frac{\tau_{0}}{\sigma_{0}^{2}}\left(\frac{V-E}{\tau}P_{0}+J_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix A: Numerical Scheme 
+\end_layout
+
+\begin_layout Itemize
+To perform the integration of the coupled different equations the voltage
+ is descretized over range 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+ to 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ in steps 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+V_{k}=V_{\text{lb}}+k\Delta
+\]
+
+\end_inset
+
+with taking 
+\begin_inset Formula $k=\{0,1,\ldots,n\}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+V_{n}=V_{\text{th}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It proves convenient to choose 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ such that the reset 
+\begin_inset Formula $V_{\text{re}}$
+\end_inset
+
+ falls onto a lattice point 
+\begin_inset Formula $k_{\text{re}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The differential equations for the probability density, steady state and
+ dynamic response are 
+\begin_inset Formula 
+\[
+-\frac{\partial P}{\partial V}=GP+H
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For the steady state solution of the LIF neuron, we have 
+\begin_inset Formula 
+\[
+-\frac{\partial P_{0}}{\partial V}=\frac{\tau_{0}}{\sigma_{0}^{2}}\left(\frac{V-E}{\tau}P_{0}+J_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula $G=\frac{\tau_{0}}{\sigma_{0}^{2}}\frac{V-E}{\tau}$
+\end_inset
+
+ and 
+\begin_inset Formula $H=\frac{\tau_{0}}{\sigma^{2}}J_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrating the equation 
+\begin_inset Formula 
+\[
+P_{k-1}=P_{k}\exp\int_{V_{k-1}}^{V_{k}}G(V)dV+\int_{V_{k-1}}^{V_{k}}dV\,H(V)\exp\int_{V_{k-1}}^{V}G(U)dU
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial V}+G(V)P=-H(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply integrating factor 
+\begin_inset Formula 
+\[
+e^{\int^{V}dU\,G(U)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+whose derivative is given by 
+\begin_inset Formula 
+\[
+\partial_{V}e^{\int^{V}dU\,G(U)}=e^{\int^{V}dU\,G(U)}\partial_{V}\int^{V}dU\,G(U)=G(V)e^{\int^{V}dU\,G(U)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial V}e^{\int^{V}dU\,G(U)}+G(V)e^{\int^{V}dU\,G(U)}P=-He^{\int^{V}dU\,G(U)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we can write 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial V}\left(Pe^{\int^{V}dU\,G(U)}\right)=-He^{\int^{V}dU\,G(U)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate over 
+\begin_inset Formula $V$
+\end_inset
+
+ from 
+\begin_inset Formula $V_{k-1}$
+\end_inset
+
+ to 
+\begin_inset Formula $V_{k}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+P_{k}e^{\int^{V_{k}}dU\,G(U)}-P_{k-1}e^{\int^{V_{k-1}}dU\,G(U)} & =-\int_{V_{k-1}}^{V_{k}}dV\,H(V)e^{\int^{V}dU\,G(U)}\\
+P_{k-1} & =P_{k}\frac{e^{\int^{V_{k}}dU\,G(U)}}{e^{\int^{V_{k-1}}dU\,G(U)}}+\frac{\int_{V_{k-1}}^{V_{k}}dV\,H(V)e^{\int^{V}dU\,G(U)}}{e^{\int^{V_{k-1}}dU\,G(U)}}\\
+P_{k-1} & =P_{k}e^{\int_{V_{k-1}}^{V_{k}}dU\,G(U)}+\frac{\int_{V_{k-1}}^{V_{k}}dV\,H(V)e^{\int^{V}dU\,G(U)}}{e^{\int^{V_{k-1}}dU\,G(U)}}\\
+P_{k-1} & =P_{k}e^{\int_{V_{k-1}}^{V_{k}}dU\,G(U)}+\int_{V_{k-1}}^{V_{k}}dV\,H(V)e^{\int_{V_{k-1}}^{V}dU\,G(U)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note want an expression for 
+\begin_inset Formula $P_{k-1}$
+\end_inset
+
+ because we integrating backwards 
+\end_layout
+
+\begin_layout Itemize
+Expanding 
+\begin_inset Formula $G$
+\end_inset
+
+ and 
+\begin_inset Formula $H$
+\end_inset
+
+ in all integrals around the value 
+\begin_inset Formula $V_{k}$
+\end_inset
+
+ to zero order in 
+\begin_inset Formula $\Delta=V_{k}-V_{k-1}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+P_{k-1}=P_{k}\exp\Delta G{}_{k}+\Delta H(V_{k})\frac{\exp\left(G(V_{k})\Delta\right)-1}{\Delta G(V_{k})}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+\begin_inset Formula 
+\begin{align*}
+P_{k-1} & \approx P_{k}\exp\Delta G{}_{k}+\int_{V_{k-1}}^{V_{k}}dV\,H(V_{k})\exp\int_{V_{k-1}}^{V}G(V_{k})\\
+ & =P_{k}\exp\Delta G{}_{k}+\int_{V_{k-1}}^{V_{k}}dV\,H(V_{k})\exp\left(VG(V_{k})-V_{k-1}G(V_{k})\right)\\
+ & =P_{k}\exp\Delta G{}_{k}+\int_{V_{k-1}}^{V_{k}}dV\,H(V_{k})\exp\left(VG(V_{k})-V_{k-1}G(V_{k})\right)\\
+ & =P_{k}\exp\Delta G{}_{k}+H(V_{k})\frac{1}{G(V_{k})}\exp\left(V_{k}G(V_{k})-V_{k-1}G(V_{k})\right)\\
+ & -\frac{H(V_{k})}{G(V_{k})}\\
+ & =P_{k}\exp\Delta G{}_{k}+H(V_{k})\frac{\exp\left(G(V_{k})\Delta\right)-1}{G(V_{k})}\\
+ & =P_{k}\exp\Delta G{}_{k}+\Delta H(V_{k})\frac{\exp\left(G(V_{k})\Delta\right)-1}{\Delta G(V_{k})}
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This formalism is more variable than the standard Euler method because is
+ is not necessary that 
+\begin_inset Formula $\Delta G_{k}$
+\end_inset
+
+ be small 
+\end_layout
+
+\begin_layout Itemize
+This is crucial for convergence near 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+ for both linear and nonlinear models, and particularly for convergence
+ near the absolute threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+ for nonlinear models 
+\end_layout
+
+\begin_layout Itemize
+Remember, for the LIF 
+\end_layout
+
+\begin_layout Itemize
+It proves convenient to define the dimensionless quantities 
+\begin_inset Formula 
+\begin{align*}
+A_{k} & =e^{\Delta G_{k}}\\
+B_{k} & =\frac{1}{\sigma_{0}^{2}}\frac{e^{\Delta G^{(k)}-1}}{\Delta G^{(k)}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Steady state discretized equations 
+\begin_inset Formula 
+\begin{align*}
+j_{k-1}^{(0)} & =j_{k}^{(0)}-\delta_{k,k_{\text{re}}+1}\\
+p_{(k-1)}^{0} & =p_{k}^{0}A_{k}+\Delta\tau_{0}j_{k}^{(0)}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $H=\frac{\tau_{0}}{\sigma^{2}}J_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenfunctions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\lambda\phi=L\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+LIF
+\begin_inset Formula 
+\[
+\frac{\partial(x\phi)}{\partial x}+\frac{1}{2}\frac{\partial^{2}\phi}{\partial x^{2}}=\lambda\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Which equals 
+\begin_inset Formula 
+\[
+\partial_{x}\phi+\frac{1}{2}\partial_{x}^{2}\phi=(\lambda-1)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Finite difference method 
+\begin_inset Formula 
+\begin{align*}
+\phi(x+h) & =\phi(x)+\phi_{x}(x)h+\frac{1}{2}\phi_{xx}(x)h^{2}\\
+\phi(x-h) & =\phi(x)-\phi(x)h+\frac{1}{2}\phi_{xx}(x)h^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Add both equations 
+\begin_inset Formula 
+\begin{align*}
+\phi(x+h)+\phi(x-h)-2\phi(x) & =\phi_{xx}(x)h^{2}\\
+\frac{\phi(x+h)-\phi(x+h)}{h}= & \phi_{x}(x)h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
