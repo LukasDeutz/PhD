@@ -1939,6 +1939,2647 @@ We call its multiplicity the algebraic multiplicity of the eigenvalue
 
 \end_layout
 
+\begin_layout Itemize
+If 
+\begin_inset Formula $\mu(A,\lambda)=1$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is called 
+\series bold
+simple eigenvalue
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Exercise 2.15 
+\series default
+(Algebraic multiplicity).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{C}^{n\times n}$
+\end_inset
+
+.
+ Prove 
+\begin_inset Formula 
+\[
+\sum_{\lambda\in\sigma(A)}\mu_{\alpha}(A,\lambda)=n
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Fundamental theorem of algebra: Every non-constant complex-valued polynomial
+ has at least one root
+\end_layout
+
+\begin_layout Plain Layout
+Factor theorem: A Polynomial 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ has a factor 
+\begin_inset Formula $(x-k)$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $f(k)$
+\end_inset
+
+ is zero
+\end_layout
+
+\begin_layout Plain Layout
+A complex polynomial of degree 
+\begin_inset Formula $n$
+\end_inset
+
+, has counted with algebraic multiplicity, exactly 
+\begin_inset Formula $n$
+\end_inset
+
+ roots 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Exercise
+\series default
+ 
+\series bold
+2.16 
+\series default
+(Companion matrix)
+\begin_inset Formula 
+\[
+C=\begin{pmatrix}0 & 1\\
+0 & 0 & \ddots\\
+\vdots & \vdots & \ddots & \ddots\\
+0 & 0 & \cdots & 0 & 1\\
+-c_{0} & -c_{1} & \cdots & -c_{n-2} & -c_{n-1}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prove 
+\begin_inset Formula 
+\[
+p_{C}(t)=c_{0}+c_{1}t+\cdots+c_{n-1}t^{n-1}+t^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This means, given polynomial 
+\begin_inset Formula $p$
+\end_inset
+
+ of order 
+\begin_inset Formula $n$
+\end_inset
+
+, we can find matrix 
+\begin_inset Formula $C\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $p_{C}=p$
+\end_inset
+
+, i.e.
+ the task of finding the zeros of a polynomial is equivalent of finding
+ the eigenvalues of a matrix are equivalent 
+\end_layout
+
+\begin_layout Itemize
+The matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ is called companion matrix 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We want to calculate 
+\begin_inset Formula 
+\[
+\text{det}\begin{pmatrix}-t & 1\\
+0 & -t & \ddots\\
+\vdots & \vdots & \ddots & \ddots\\
+0 & 0 & \cdots & -t & 1\\
+-c_{0} & -c_{1} & \cdots & -c_{n-2} & -c_{n-1}-t
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Example 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ matrix 
+\begin_inset Formula 
+\begin{align*}
+\text{det}\begin{pmatrix}-t & 1 & 0\\
+0 & -t & 1\\
+-c_{0} & -c_{1} & -c_{2}-t
+\end{pmatrix} & =-t\cdot\text{det}\begin{pmatrix}-t & 1\\
+-c_{1} & -c_{2}-t
+\end{pmatrix}-c_{0}\text{det}\begin{pmatrix}1 & 0\\
+-t & 1
+\end{pmatrix}\\
+ & =-t(t(c_{2}+t)+c_{1})-c_{0}1\\
+ & =-t^{2}c_{2}-t^{3}-c_{1}t-c_{0}1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+0=t^{3}+t^{2}c_{2}+c_{1}t+c_{0}1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Example 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix 
+\begin_inset Formula 
+\begin{align*}
+\text{det}\begin{pmatrix}-t & 1 & 0 & 0\\
+0 & -t & \ddots & 0\\
+0 & 0 & -t & 1\\
+c_{0} & c_{1} & c_{2} & -c_{3}-t
+\end{pmatrix} & =-t\text{det}\begin{pmatrix}-t & 1 & 0\\
+0 & -t & 1\\
+-c_{1} & -c_{2} & -c_{3}-t
+\end{pmatrix}+c_{0}\text{det}\begin{pmatrix}1 & 0 & 0\\
+-t & 1 & 0\\
+0 & -t & 1
+\end{pmatrix}\\
+ & =-t(-t^{2}c_{3}-t^{3}-c_{2}t-c_{1})\\
+ & =t^{4}+t^{3}c_{3}+c_{2}t^{2}+c_{1}t+c_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Proof by induction 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Abel-Ruffini theorem
+\series default
+ states that there is no general closed-form algebraic solution to polynomial
+ equations of degree 
+\series bold
+five
+\series default
+ or higher
+\end_layout
+
+\begin_layout Itemize
+So we cannot hope to find a general algorithm for computing exact eigenvalues
+ of matrices of dimension five or higher 
+\end_layout
+
+\begin_layout Itemize
+All practical algorithms compute arbitrarily accurate approximations of
+ eigenvalues and eigenvectors 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Similarity transformations 
+\end_layout
+
+\begin_layout Itemize
+Popular algorithms for solving of linear equations are based on transforming
+ the given matrix to a 
+\series bold
+simple form 
+\series default
+(e.g.
+ upper triangular)
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+, let 
+\begin_inset Formula $\lambda\in\sigma(A)$
+\end_inset
+
+, and let 
+\begin_inset Formula $x\in\mathbb{F}^{n}\backslash\{0\}$
+\end_inset
+
+ be an eigenvector of 
+\begin_inset Formula $A$
+\end_inset
+
+ for the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Ax=\lambda x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply 
+\begin_inset Formula $B\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ be an invertible matrix 
+\begin_inset Formula 
+\[
+B^{-1}Ax=\lambda B^{-1}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Introduce 
+\begin_inset Formula $\hat{x}=B^{-1}x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B^{-1}AB\hat{x}=\lambda\hat{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This again is a eigenvalue problem.
+ Instead of looking for the eigenvalues and eigenvectors of 
+\begin_inset Formula $A$
+\end_inset
+
+, we can also look for eigenvectors and eigenvalues of the transformed matrix
+ 
+\begin_inset Formula 
+\[
+\hat{A}=B^{-1}AB
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.17 
+\series default
+(Similar matrices)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{A}\in\mathbb{F}^{n\times n}$
+\end_inset
+
+.
+ We call 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ 
+\series bold
+similar
+\series default
+, if there is a invertible matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\hat{A}=B^{-1}AB
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The mapping 
+\begin_inset Formula $A\mapsto B^{-1}AB$
+\end_inset
+
+ is called a similarity transformation 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Propositions
+\series default
+ 
+\series bold
+2.18
+\series default
+ (Similar matrices)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Spectra are equivalent 
+\begin_inset Formula $\sigma(A)=\sigma(\hat{A})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenspaces are related by 
+\begin_inset Formula $\mathcal{E}(A,\lambda)=B\mathcal{E}(\hat{A},\lambda)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Characteristic polynomial are equivalent 
+\begin_inset Formula $p_{A}=p_{\hat{A}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Geometric and algebraic are conserved 
+\begin_inset Formula $\mu_{g}(A,\lambda)=\mu_{g}(\hat{A},\lambda)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{a}(A,\lambda)=\mu_{a}(\hat{A},\lambda)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Of particular interest are similarity transformations turning a matrix into
+ a diagonal matrix 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.21
+\series default
+ (Diagonalizable matrix) Let 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A matrix is 
+\series bold
+diagonalizable
+\series default
+ if it is similar to a diagonal matrix, i.e.
+ there are an invertible matrix such that 
+\begin_inset Formula 
+\[
+A=BDB^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Proposition 2.22 
+\series default
+(Diagonalizable matrix)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A matrix 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ is diagonalizable if and only if there is a basis 
+\begin_inset Formula $\mathbb{F}^{n}$
+\end_inset
+
+ consisting only of its eigenvectors 
+\begin_inset Formula 
+\[
+\sum_{\lambda\in\sigma(A)}\mu_{g}(A,\lambda)=n
+\]
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+E^{-1}AE\delta_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $E=(e_{1},e_{2},\ldots,e_{n})$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+E^{-1}AE\delta_{j}=E^{-1}Ae_{j}=E^{-1}\lambda_{j}e_{j}=\lambda_{j}E^{-1}E\delta_{j}=\lambda_{j}\delta_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Exercise 2.24 
+\series default
+(Matrix exponential).
+ Let 
+\begin_inset Formula $A\in\mathbb{C}^{n\times n}$
+\end_inset
+
+ be diagonalizable.
+ Prove the matrix that matrix exponential 
+\begin_inset Formula 
+\[
+\exp(A)=\sum_{m=0}^{\infty}\frac{1}{m!}A^{m}
+\]
+
+\end_inset
+
+is diagonalizable and well defined
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\exp(A)=\sum_{m=0}^{\infty}\frac{1}{m!}A^{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We now that 
+\begin_inset Formula 
+\[
+A=BDB^{-1}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\exp(A)=\sum_{m=0}^{\infty}\frac{1}{m!}(BDB^{-1})^{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\begin{align*}
+(BDB^{-1})^{0} & =I\\
+(BDB^{-1})^{1} & =BDB^{-1}\\
+(BDB^{-1})^{2} & =BDB^{-1}BDB^{-1}=BD^{2}B^{-1}\\
+(BDB^{-1})^{3} & =BDB^{-1}BDB^{-1}BDB^{-1}=BD^{3}B^{-1}\\
+ & \vdots
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we have
+\begin_inset Formula 
+\[
+\exp(A)=\sum_{m=0}^{\infty}\frac{1}{m!}(BDB^{-1})^{m}=I+BDB^{-1}+\frac{1}{2}BD^{2}B^{-1}+\frac{1}{6}BD^{3}B^{-1}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply from the left with 
+\begin_inset Formula $B^{-1}$
+\end_inset
+
+ and from the right with 
+\begin_inset Formula $B$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B^{-1}\exp(A)B=I+D+\frac{1}{2}D^{2}+\frac{1}{6}D^{3}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which is a diagonal matrix with entries 
+\begin_inset Formula 
+\[
+D_{ii}=1+\lambda_{i}+\frac{1}{2}\lambda_{i}^{2}+\frac{1}{6}\lambda_{i}^{3}+\ldots=e^{\lambda_{i}}
+\]
+
+\end_inset
+
+and we fine 
+\begin_inset Formula 
+\[
+D=\begin{pmatrix}e^{\lambda_{1}}\\
+ & \ddots\\
+ &  & e^{\lambda_{n}}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The matrix exponential is useful for solving linear ordinary differential
+ equations 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial_{t}}\exp(tA)=A\exp(tA)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Some properties of Hilbert spaces 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathbb{F}^{n}$
+\end_inset
+
+ is a Hilbert space with the inner product given by 
+\begin_inset Formula 
+\[
+\left\langle x,y\right\rangle =\sum_{j=1}^{n}x_{j}\overline{y}_{j}
+\]
+
+\end_inset
+
+and the norm given by 
+\begin_inset Formula 
+\[
+\left\Vert x\right\Vert =\sqrt{\left\langle x,x\right\rangle }=\sqrt{\sum_{j=1}^{n}\bigl|x_{j}\bigr|^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proposition 2.26 
+\series default
+(Cauchy-Schwarz Inequality)
+\begin_inset Formula 
+\[
+\bigl|\left\langle x,y\right\rangle \bigr|\leq\bigl\Vert x\bigr\Vert\bigl\Vert y\bigr\Vert
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Both sides are equal if and only if 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are linearly dependent 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Definition 2.27 
+\series default
+(Adjoint matrix)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $A\in\mathbb{F}^{n\times m}.$
+\end_inset
+
+ The matrix 
+\begin_inset Formula $B\in\mathbb{F}^{m\times n}$
+\end_inset
+
+ given by 
+\begin_inset Formula 
+\[
+b_{ij}=\overline{a}_{ji}
+\]
+
+\end_inset
+
+is called the 
+\series bold
+adjoint
+\series default
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ and denoted 
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Lemma 2.28
+\series default
+ (Adjoint matrix)
+\begin_inset Formula 
+\[
+\bigl\langle Ax,y\bigr\rangle=\bigl\langle x,A^{\ast}y\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This follows from 
+\begin_inset Formula $\left\langle x,y\right\rangle =\sum_{j=1}^{n}x_{j}\overline{y}_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Lemma 2.29 
+\series default
+(Null space and range)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times m}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\bigl\langle x,y\bigr\rangle=0,\quad\text{for all }x\in\mathcal{R}(A),\,y\in\mathcal{N}(A^{*})$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $x\in\mathcal{R}(A)$
+\end_inset
+
+ and 
+\begin_inset Formula $y\in\mathcal{N}(A^{*})$
+\end_inset
+
+.
+ By definition, we can find a 
+\begin_inset Formula $z\in\mathbb{F}^{m}$
+\end_inset
+
+ such that 
+\begin_inset Formula $x=Az$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+\bigl\langle x,y\bigr\rangle=\bigl\langle Az,y\bigr\rangle=\bigl\langle z,A^{\ast}y\bigr\rangle=\bigl\langle z,0\bigr\rangle=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+because 
+\begin_inset Formula $y\in\mathcal{N}(A^{*})$
+\end_inset
+
+.
+ If now 
+\begin_inset Formula $A^{\ast}x=0$
+\end_inset
+
+ holds, we have 
+\begin_inset Formula $x\in\mathcal{N}(A^{*})$
+\end_inset
+
+ and find 
+\begin_inset Formula 
+\[
+\bigl\langle x,x\bigr\rangle=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Two vectors 
+\begin_inset Formula $x,y$
+\end_inset
+
+ are called perpendicular if 
+\begin_inset Formula $\bigl\langle x,y\bigr\rangle=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A vector 
+\begin_inset Formula $x$
+\end_inset
+
+ is called perpendicular on a subspace 
+\begin_inset Formula $\mathcal{W}\subseteq\mathbb{F}^{n}$
+\end_inset
+
+ denoted 
+\begin_inset Formula $x\perp\mathcal{W}$
+\end_inset
+
+, if 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are perpendicular for all 
+\begin_inset Formula $y\in\mathcal{W}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Two subspaces 
+\begin_inset Formula $\mathcal{V},\mathcal{W}$
+\end_inset
+
+ are perpendicular if all pairs 
+\begin_inset Formula $(x,y)\in\mathcal{V}\times\mathcal{W}$
+\end_inset
+
+ are perpendicular 
+\end_layout
+
+\begin_layout Itemize
+The range 
+\begin_inset Formula $A$
+\end_inset
+
+ and the null space of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ are perpendicular 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proposition 2.30 
+\series default
+(Spectrum of adjoint matrix).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+\sigma(A^{*})=\{\overline{\lambda}:\,\lambda\in\sigma(A)\}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+By definition 
+\begin_inset Formula 
+\[
+(\lambda I-A)x=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+ is perpendicular on 
+\begin_inset Formula $\mathcal{R}(A^{*}-\overline{\lambda}I)$
+\end_inset
+
+ because the null space 
+\begin_inset Formula $\mathcal{N}(\lambda I-A)$
+\end_inset
+
+ is perpendicular to 
+\begin_inset Formula $\mathcal{R}(\mathcal{N}(\overline{\lambda}I-A^{*}))$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula 
+\[
+0=\bigl\langle(\lambda I-A)x,y\bigr\rangle=\bigl\langle x,(\lambda I-A)^{*}y\bigr\rangle=\bigl\langle x,(A^{*}-\overline{\lambda}I)y\bigr\rangle
+\]
+
+\end_inset
+
+It looks like we pulled out 
+\begin_inset Formula $-1$
+\end_inset
+
+ from the second to the third step.
+ Since 
+\begin_inset Formula $x$
+\end_inset
+
+ is perpendicular to 
+\begin_inset Formula $\mathcal{R}(A*-\overline{\lambda}I)$
+\end_inset
+
+, the rank nullity theorem implies that 
+\begin_inset Formula 
+\[
+\mathcal{N}(A^{*}-\overline{\lambda}I)\neq0
+\]
+
+\end_inset
+
+and any non-zero element of 
+\begin_inset Formula $\mathcal{N}(A*-\overline{\lambda}I)$
+\end_inset
+
+ is an eigenvector of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ for 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+, so have proven 
+\begin_inset Formula $\overline{\lambda}\in\sigma(A^{*})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.31 
+\series default
+(Self-adjoint matrix).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $A=A^{*}$
+\end_inset
+
+ holds, 
+\begin_inset Formula $A$
+\end_inset
+
+ is called 
+\series bold
+self-adjoint
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lemma 2.32
+\series default
+ (Identity of self-adjoint matrices).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, and let 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ be self-adjoint.
+ If 
+\begin_inset Formula 
+\[
+\bigl\langle Ax,x\bigr\rangle=0
+\]
+
+\end_inset
+
+we have 
+\begin_inset Formula $A=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.33
+\series default
+ (Normal matrix).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $AA^{*}=A^{*}A$
+\end_inset
+
+ holds, A is called 
+\series bold
+normal
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Exercise 2.34 
+\series default
+Proof that following matrices are normal 
+\begin_inset Formula 
+\[
+A_{1}=\begin{pmatrix}0 & -1\\
+1 & 0
+\end{pmatrix},\quad A_{2}=\begin{pmatrix}2 & 3\\
+-3 & 2
+\end{pmatrix},\quad A_{3}=\begin{pmatrix}1 & 2 & 3\\
+3 & 1 & 2\\
+2 & 3 & 1
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The adjoint of matrix 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\begin{align*}
+A_{1} & =\begin{pmatrix}0 & -1\\
+1 & 0
+\end{pmatrix},\quad A_{1}^{*}=\begin{pmatrix}0 & 1\\
+-1 & 0
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We find 
+\begin_inset Formula 
+\begin{align*}
+A_{1}A_{1}^{*} & =\begin{pmatrix}0 & -1\\
+1 & 0
+\end{pmatrix}\begin{pmatrix}0 & 1\\
+-1 & 0
+\end{pmatrix}=\begin{pmatrix}1 & 0\\
+0 & 1
+\end{pmatrix}\\
+A_{1}^{*}A_{1} & =\begin{pmatrix}0 & 1\\
+-1 & 0
+\end{pmatrix}\begin{pmatrix}0 & -1\\
+1 & 0
+\end{pmatrix}=\begin{pmatrix}1 & 0\\
+0 & 1
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The adjoint of matrix 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+A_{2} & =\begin{pmatrix}2 & 3\\
+-3 & 2
+\end{pmatrix},\quad A_{2}=A_{2}^{*}=\begin{pmatrix}2 & -3\\
+3 & 2
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We find 
+\begin_inset Formula 
+\begin{align*}
+A_{2}A_{2}^{*} & =\begin{pmatrix}2 & 3\\
+-3 & 2
+\end{pmatrix}\begin{pmatrix}2 & -3\\
+3 & 2
+\end{pmatrix}=\begin{pmatrix}-5 & 0\\
+0 & 13
+\end{pmatrix}\\
+A_{2}^{*}A_{2} & =\begin{pmatrix}2 & -3\\
+3 & 2
+\end{pmatrix}\begin{pmatrix}2 & 3\\
+-3 & 2
+\end{pmatrix}=\begin{pmatrix}-5 & 0\\
+0 & 13
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lemma 2.35 
+\series default
+(Metric equivalence).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}.$
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is normal if and only if 
+\begin_inset Formula 
+\[
+\bigl\Vert Ax\bigr\Vert=\bigl\Vert A^{*}x\bigr\Vert
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Assume that 
+\begin_inset Formula $A$
+\end_inset
+
+ is normal.
+ For 
+\begin_inset Formula $x\in\mathbb{F}^{n}$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\[
+\bigl\Vert Ax\bigr\Vert^{2}=\bigl\langle Ax,Ax\bigr\rangle=\bigl\langle A^{*}Ax,x\bigr\rangle\overset{\text{normal}}{=}\bigl\langle AA^{*}x,x\bigr\rangle=\bigl\langle A^{*}x,A^{*}x\bigr\rangle=\bigl\Vert A^{*}x\bigr\Vert^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Assume now 
+\begin_inset Formula 
+\begin{align*}
+0 & =\bigl\Vert Ax\bigr\Vert^{2}-\bigl\Vert A^{*}x\bigr\Vert^{2}=\bigl\langle Ax,Ax\bigr\rangle-\bigl\langle A^{*}x,A^{*}x\bigr\rangle=\bigl\langle A^{*}Ax,x\bigr\rangle-\bigl\langle AA^{*}x,x\bigr\rangle\\
+ & =\bigl\langle(A^{*}A-AA^{*})x,x\bigr\rangle
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Since 
+\begin_inset Formula $A^{*}A-AA^{*}$
+\end_inset
+
+ is obviously self-adjoint, we can apply Lemma 2.32 if 
+\begin_inset Formula $B$
+\end_inset
+
+ is self-adjoint and 
+\begin_inset Formula $\bigl\langle B,Bx\bigr\rangle=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in\mathbb{F}^{n}$
+\end_inset
+
+, then 
+\begin_inset Formula $B=0$
+\end_inset
+
+.
+ From this follows 
+\begin_inset Formula 
+\[
+A^{*}A-AA^{*}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proposition 2.36 
+\series default
+(Eigenvectors).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\series bold
+normal matrix 
+\series default
+with eigenvalue 
+\begin_inset Formula $\lambda\in\sigma(A)$
+\end_inset
+
+ and associated eigenvector 
+\begin_inset Formula $e$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+A^{*}e=\overline{\lambda}e
+\]
+
+\end_inset
+
+which means that 
+\begin_inset Formula $e$
+\end_inset
+
+ is a eigenvector of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\overline{\lambda}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is a normal matrix, then 
+\begin_inset Formula $A-\lambda I$
+\end_inset
+
+ is also a normal matrix.
+ From Metric equivalence follows 
+\begin_inset Formula 
+\[
+\bigl\Vert(A-\lambda I)e\bigr\Vert=0\Leftrightarrow\bigl\Vert(A^{*}-\overline{\lambda}I)e\bigr\Vert=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Applying general similarity transformations can cause numerical problems
+ if the transformation is ill-conditioned, e,g, if 
+\series bold
+rounding errors
+\series default
+ lead to 
+\series bold
+mixed eigenspaces
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Unitary transformations leave lengths and angles of vectors unchanged and
+ therefore lead to very stable algorithms 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.37
+\series default
+ (Isometric matrix) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+, and let 
+\begin_inset Formula $Q\in\mathbb{F}^{n\times m}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $Q^{*}Q=I$
+\end_inset
+
+ holds, it is called 
+\series bold
+isometric
+\series default
+.
+ A square isometric matrix is called 
+\series bold
+unitary
+\end_layout
+
+\begin_layout Itemize
+A real unitary matrix is usually also called 
+\series bold
+orthogonal
+\series default
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Lemma 2.38 
+\series default
+(Isometry).
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q$
+\end_inset
+
+ is isometric if and only if 
+\begin_inset Formula 
+\[
+\bigl\Vert Qx\bigr\Vert=\bigl\Vert x\bigr\Vert,\quad x\in\mathbb{F}^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proposition 2.39
+\series default
+ (Unitary inverse)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $Q$
+\end_inset
+
+ is isometric, then 
+\begin_inset Formula 
+\[
+QQ^{*}x=x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $Q$
+\end_inset
+
+ square, i.e.
+ unitary, 
+\begin_inset Formula $Q^{*}$
+\end_inset
+
+ is also unitary and we have 
+\begin_inset Formula $Q^{*}=Q^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Unitary similarity transformations have the advantage that the inverse is
+ given by the readily available adjoint 
+\end_layout
+
+\begin_layout Subsection
+Invariant subspaces
+\end_layout
+
+\begin_layout Itemize
+In general, one 
+\series bold
+cannot
+\series default
+ diagonalize a matrix by unitary similarity transformations, but one can
+ at least transform it to 
+\series bold
+triangular
+\series default
+ form 
+\end_layout
+
+\begin_layout Itemize
+This is the 
+\series bold
+Schur decomposition
+\series default
+, a useful tool that allows to draw conclusions regarding the unitary diagonaliz
+ability of matrices 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.40
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ is called 
+\series bold
+upper triangular
+\series default
+ if
+\begin_inset Formula 
+\[
+r_{ij}=0,\quad\text{holds for all }i,j\in\{1,\ldots,n\}\text{ with }j<i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L$
+\end_inset
+
+ is called 
+\series bold
+lower triangular
+\series default
+ if 
+\begin_inset Formula 
+\[
+r_{ij}=0,\quad\text{holds for all }i,j\in\{1,\ldots,n\}\text{ with }i<j
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Multiplying 
+\begin_inset Formula $R$
+\end_inset
+
+ by a canonical unit vector 
+\begin_inset Formula $\delta_{j}$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\[
+(R\delta_{j})_{i}=r_{ij}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Subspace 
+\begin_inset Formula 
+\[
+\mathcal{X}=\text{span}\{\delta_{1},\ldots,\delta_{j}\}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+Rx\in\mathcal{X}\quad\text{for all }x\in\mathcal{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenspaces share the same structure: if 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ is a matrix and 
+\begin_inset Formula $\lambda\in\sigma(A)$
+\end_inset
+
+ is one of its eigenvalues, we have 
+\begin_inset Formula 
+\[
+Ax=\lambda x\in\mathcal{E}(A,\lambda)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Definition 2.41 
+\series default
+(Invariant subspace)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+.
+ A subspace 
+\begin_inset Formula $\mathcal{X}\subseteq\mathbb{F}^{n}$
+\end_inset
+
+ is called 
+\series bold
+invariant
+\series default
+ with respect to 
+\begin_inset Formula $A$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\[
+Ax\in\mathcal{X}\quad\text{holds for all }x\in\mathcal{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Exercise 2.42 
+\series default
+(Invariant subspaces)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Find at least five different invariant subspaces for the matrix 
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Invariant subspace 
+\begin_inset Formula 
+\[
+A=\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+requires that 
+\begin_inset Formula 
+\[
+Ax\in\mathcal{X}\quad\text{if}\,x\in\mathcal{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First invariant subspace 
+\begin_inset Formula 
+\[
+\mathcal{X}_{1}=\text{span}\{e_{1},e_{2}\}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $e_{1}=(1,0,0,0)$
+\end_inset
+
+ because 
+\begin_inset Formula 
+\[
+A(\alpha e_{1}+\beta e_{2})=\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}\begin{pmatrix}\alpha\\
+\beta\\
+0\\
+0
+\end{pmatrix}=\begin{pmatrix}2\alpha\\
+4\alpha+3\beta\\
+0\\
+0
+\end{pmatrix}\in\mathcal{X}_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second invariant subspace 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{X}_{2} & =\text{span}\{e_{3},e_{4}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+since 
+\begin_inset Formula 
+\[
+A(\alpha e_{3}+\beta e_{4})=\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}\begin{pmatrix}0\\
+0\\
+\alpha\\
+\beta
+\end{pmatrix}=\begin{pmatrix}0\\
+0\\
+7\alpha+8\beta\\
+6\beta
+\end{pmatrix}\in\mathcal{X}_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Invariant subspace 
+\begin_inset Formula $\mathcal{X}_{3}=\text{span}\{(-\alpha,4\alpha)\}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\alpha\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}\begin{pmatrix}-1\\
+4\\
+0\\
+0
+\end{pmatrix}=\alpha\begin{pmatrix}2 & 0 & 0 & 0\\
+4 & 3 & 0 & 0\\
+0 & 0 & 7 & 8\\
+0 & 0 & 0 & 6
+\end{pmatrix}\begin{pmatrix}-1\\
+4\\
+0\\
+0
+\end{pmatrix}=\alpha\begin{pmatrix}-2\\
+8\\
+0\\
+0
+\end{pmatrix}=\alpha2\begin{pmatrix}-1\\
+4\\
+0\\
+0
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In practical algorithms, we can only work with a basis of a subspace 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ instead of the subspace itself 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Proposition 2.43 
+\series default
+(Invariant subspace)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n,m\in\mathbb{N}$
+\end_inset
+
+, let 
+\begin_inset Formula $A\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ and 
+\begin_inset Formula $X\in\mathbb{F}^{n\times m}$
+\end_inset
+
+, the range 
+\begin_inset Formula $\mathcal{X}=\mathcal{R}(X)$
+\end_inset
+
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+ is an invariant subspace with respect to 
+\begin_inset Formula $A$
+\end_inset
+
+ if and only if 
+\begin_inset Formula 
+\[
+AX=X\Lambda
+\]
+
+\end_inset
+
+holds for 
+\series bold
+a 
+\series default
+matrix 
+\begin_inset Formula $\Lambda\in\mathbb{F}^{m\times m}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Assume 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ is invariant with respect to 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $j\in\{1,\ldots,m\}$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $X\delta_{j}\in\mathcal{R}(X)=\mathcal{X}$
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\[
+AX\delta_{j}\in\mathcal{X}=\mathcal{R}(X)
+\]
+
+\end_inset
+
+so we can find 
+\begin_inset Formula $y_{j}\in\mathbb{F}^{m}$
+\end_inset
+
+ with 
+\begin_inset Formula $AX\delta_{j}=Xy_{j}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula 
+\[
+\Lambda_{ij}=(y_{j})_{i}
+\]
+
+\end_inset
+
+and conclude that 
+\begin_inset Formula $\Lambda\delta_{j}=y_{j}$
+\end_inset
+
+ and therefore 
+\begin_inset Formula 
+\[
+AX\delta_{j}=Xy_{j}=X\Lambda\delta_{j}
+\]
+
+\end_inset
+
+This implies 
+\begin_inset Formula 
+\[
+AX=X\Lambda
+\]
+
+\end_inset
+
+Assume now that 
+\begin_inset Formula $AX=X\Lambda$
+\end_inset
+
+ holds.
+ For 
+\begin_inset Formula $x\in\mathcal{X}=\mathcal{R}(X)$
+\end_inset
+
+, we can find 
+\begin_inset Formula $y\in\mathbb{F}^{m}$
+\end_inset
+
+ with 
+\begin_inset Formula $x=Xy$
+\end_inset
+
+ and obtain 
+\begin_inset Formula 
+\[
+Ax=AXy=X\Lambda y\in\mathcal{R}(X)=\mathcal{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Exercise 2.44 
+\series default
+(Invariant subspaces and eigenvalues).
+ Show that any eigenvalue of the matrix 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is an eigenvalue of 
+\begin_inset Formula $A$
+\end_inset
+
+ if 
+\begin_inset Formula $X$
+\end_inset
+
+ is injective 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+AX=X\Lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Assume 
+\begin_inset Formula $y$
+\end_inset
+
+ is a eigenvector of 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ with associated eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+\lambda y=\Lambda y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+AXy=\lambda Xy
+\]
+
+\end_inset
+
+Call 
+\begin_inset Formula $Xy=x$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Ax=\lambda x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+What if we multiply from the left with 
+\begin_inset Formula $X^{-1}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+X^{-1}AXy=\lambda y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ is invertible we have 
+\begin_inset Formula 
+\[
+X^{-1}AX=\Lambda
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which means that 
+\begin_inset Formula 
+\[
+\sigma(A)=\sigma(\Lambda)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Schur decomposition
+\end_layout
+
+\begin_layout Itemize
+Find a invertible matrix 
+\begin_inset Formula $T\in\mathbb{F}^{n\times m}$
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+T=\begin{pmatrix}X & Y\end{pmatrix}
+\]
+
+\end_inset
+
+for a matrix 
+\begin_inset Formula $Y\in\mathbb{F}^{n\times(n-m)}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+T^{-1}AX=T^{-1}X\Lambda=\begin{pmatrix}I_{m}\\
+0
+\end{pmatrix}\Lambda=\begin{pmatrix}\Lambda\\
+0
+\end{pmatrix},\quad T^{-1}AT=\begin{pmatrix}\Lambda & B\\
+ & C
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we can find suitable invariant subspaces for 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+, we can repeat the procedure until we reach upper triangular matrices 
+\end_layout
+
+\begin_layout Itemize
+Ensure that the similarity transformations are unitary 
+\begin_inset Formula 
+\[
+\text{sign}:\mathbb{F\mapsto\mathbb{F}},\quad z\mapsto\frac{z}{\bigl|z\bigr|}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Lemma 2.45 
+\series default
+(Householder reflection).
+ Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $q\in\mathbb{F}^{n}\backslash\{0\}$
+\end_inset
+
+.
+ The matrix 
+\begin_inset Formula $P\in\mathbb{F}^{n\times n}$
+\end_inset
+
+ defined by 
+\begin_inset Formula 
+\[
+w\coloneqq q+\text{sgn}(q_{1})\bigl\Vert q\bigr\Vert\delta_{1},\quad P\coloneqq I-2\frac{ww^{*}}{\bigl\Vert w\bigr\Vert^{2}}
+\]
+
+\end_inset
+
+is called an elemntary Householder reflection.
+ It is unitary and self-adjoint and satisfies 
+\begin_inset Formula 
+\[
+Pq=-\text{sgn}(q_{1})\bigl\Vert q\bigr\Vert\delta_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $P$
+\end_inset
+
+ is obviously self-adjoint
+\begin_inset Formula 
+\begin{align*}
+P^{*}\coloneqq\left(I-2\frac{ww^{*}}{\bigl\Vert w\bigr\Vert^{2}}\right)^{*} & =I-\frac{2}{\bigl\Vert w\bigr\Vert^{2}}(ww^{*})^{*}\\
+ & =I-\frac{2}{\bigl\Vert w\bigr\Vert^{2}}(ww^{*})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+It is also unitary 
+\begin_inset Formula 
+\[
+P^{*}P=\left(I-2\frac{ww^{*}}{\bigl\Vert w\bigr\Vert^{2}}\right)\left(I-2\frac{ww^{*}}{\bigl\Vert w\bigr\Vert^{2}}\right)^{*}=I-4\frac{ww^{*}}{\bigl\Vert w\bigr\Vert^{2}}+4\frac{ww^{*}ww^{*}}{\bigl\Vert w\bigr\Vert^{4}}=I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+With 
+\begin_inset Formula $\sigma=\text{sgn}(q_{1})$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle q,w\bigr\rangle & =\bigl\langle q,q\bigr\rangle+\bigl\langle q,\sigma\bigl\Vert q\bigr\Vert\delta_{1}\bigr\rangle=\bigl\Vert q\bigr\Vert^{2}+\bigl\Vert q\bigr\Vert q_{1}\sigma=\bigl\Vert q\bigr\Vert^{2}+\bigl\Vert q\bigr\Vert\bigl|q_{1}\bigr|\\
+\bigl\Vert w\bigr\Vert^{2} & =\bigl\langle q+\sigma\bigl\Vert q\bigr\Vert\delta_{1},q+\sigma\bigl\Vert q\bigr\Vert\delta_{1}\bigr\rangle\\
+ & =\bigl\langle q,q\bigr\rangle+\overline{\sigma}\bigl\Vert q\bigr\Vert\\
+\\
+ & =2(\bigl\Vert q\bigr\Vert^{2}+\bigl\Vert q\bigr\Vert\bigl|q_{1}\bigr|)\\
+Pq & =q-2w\frac{\bigl\langle q,w\bigr\rangle}{\bigl\Vert w\bigr\Vert^{2}}=q-2(q+\sigma\bigl\Vert q\bigr\Vert\delta_{1})\frac{\bigl\Vert q\bigr\Vert^{2}+\bigl\Vert q\bigr\Vert\bigl|q_{1}\bigr|}{2(\bigl\Vert q\bigr\Vert^{2}+\bigl\Vert q\bigr\Vert\bigl|q_{1}\bigr|)}\\
+ & =q-(q+\sigma\bigl\Vert q\bigr\Vert\delta_{1})\\
+ & =-\sigma\bigl\Vert q\bigr\Vert\delta_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Fundamental theorem of algebra, any complex polynomial has at least one
+ zero 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem 2.46
+\series default
+ (Schur decomposition): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\in\mathbb{C}^{n\times n}$
+\end_inset
+
+.
+ There are unitary matrix 
+\begin_inset Formula $Q\in\mathbb{C}^{n\times n}$
+\end_inset
+
+ and an upper triangular matrix 
+\begin_inset Formula $R\in\mathbb{C}^{n\times n}$
+\end_inset
+
+ satisfying 
+\begin_inset Formula 
+\[
+Q^{*}AQ=R
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+By induction 
+\begin_inset Formula $n\in N$
+\end_inset
+
+.
+ The case 
+\begin_inset Formula $n=1$
+\end_inset
+
+ is trivial.
+ Let now 
+\begin_inset Formula $n\in N$
+\end_inset
+
+ and assume that any 
+\begin_inset Formula $A\in\mathbb{C}^{n\times n}$
+\end_inset
+
+ is unitarily similar to an upper triangular matrix.
+ Let 
+\begin_inset Formula $A\in\mathbb{C}^{(n+1)\times(n+1)}$
+\end_inset
+
+.
+ Due to the fundamental theorem of algebra we can find 
+\begin_inset Formula $\lambda\in\mathbb{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $p_{A}(\lambda)=0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\lambda I-A$
+\end_inset
+
+ is not injective and we can find a vector 
+\begin_inset Formula $q\in\mathcal{N}(\lambda I-A)\backslash\{0\}$
+\end_inset
+
+ with 
+\begin_inset Formula $\bigl\Vert q\bigr\Vert=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \end_body
 \end_document
