@@ -405,5 +405,149 @@ where
 
 \end_layout
 
+\begin_layout Itemize
+Centerered choice is known to lead to stability problems, and is therefore
+ often replaced by the so-called 
+\series bold
+upstream choice
+\series default
+ 
+\begin_inset Formula 
+\[
+F_{K,\sigma}^{(cv,c)}(u_{\mathcal{M}})=v_{K,\sigma}^{+}u_{K}-v_{K,\sigma}^{-}u_{L}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $x^{+}=\text{max}(x,0)$
+\end_inset
+
+ and 
+\begin_inset Formula $x^{-}=-\text{min}(x,0)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Finite volume meshes and space-time discretization 
+\end_layout
+
+\begin_layout Itemize
+General finite volume meshes are used for partial differential equations
+ including first, second order
+\begin_inset Formula 
+\begin{align*}
+d & \in\mathbb{N}^{*}\\
+\Omega & \in\mathbb{R}^{d}\\
+\partial\Omega & =\overline{\Omega}\text{\textbackslash}\Omega
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Linear diffusion 
+\end_layout
+
+\begin_layout Subsection
+Actual problems and schemes 
+\end_layout
+
+\begin_layout Itemize
+Diffusion problem 
+\begin_inset Formula 
+\begin{align*}
+-\text{div}(\Lambda\nabla\overline{u}) & =f\\
+\overline{u} & =0\quad\text{on }\partial\Omega
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Divergent theorem 
+\begin_inset Formula 
+\[
+\int_{\Omega}\Lambda\nabla\overline{u}(\boldsymbol{x})\cdot\nabla v(\boldsymbol{x})d\boldsymbol{x}=\int_{\Omega}f(\boldsymbol{x})v(\boldsymbol{x})d\boldsymbol{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Discretization 
+\begin_inset Formula 
+\[
+\sum_{\sigma\in\mathcal{E}_{K}}\left(-\int_{\sigma}\Lambda(\boldsymbol{x})\nabla u(\boldsymbol{x})\cdot\boldsymbol{n}_{K,\sigma}d\gamma(\boldsymbol{x})\right)=\int_{K}f(\boldsymbol{x})dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Flux 
+\begin_inset Formula $-\int_{\sigma}\Lambda(\boldsymbol{x})\nabla u(\boldsymbol{x})\cdot\boldsymbol{n}_{K,\sigma}d\gamma(\boldsymbol{x})$
+\end_inset
+
+ is approximated by a function 
+\begin_inset Formula $F_{K,\sigma}(u)$
+\end_inset
+
+ of the values 
+\begin_inset Formula $u_{K},u_{\sigma}$
+\end_inset
+
+ at the centers and at the interfaces of the control volumes 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F_{K,\sigma}$
+\end_inset
+
+ depends on 
+\begin_inset Formula $u_{K}$
+\end_inset
+
+ and all 
+\begin_inset Formula $u_{\sigma}$
+\end_inset
+
+ with 
+\begin_inset Formula $\sigma\in\mathcal{E}_{K}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{\sigma\in\mathcal{E}_{K}}F_{K,\sigma}(u)=\int_{K}f(\boldsymbol{x})d\boldsymbol{x},\quad\forall\,K\in\mathcal{M}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Write continuity of the discrete flux for all interior edges 
+\begin_inset Formula 
+\[
+F_{K,\sigma}(u)+F_{L,\sigma}(u)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
