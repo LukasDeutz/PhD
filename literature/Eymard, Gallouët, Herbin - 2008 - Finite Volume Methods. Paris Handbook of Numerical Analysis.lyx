@@ -1,0 +1,409 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Finite Volume Method 
+\end_layout
+
+\begin_layout Section
+Finite volume discretization of balance laws 
+\end_layout
+
+\begin_layout Subsection
+A generic example 
+\end_layout
+
+\begin_layout Itemize
+General Scalar balance 
+\begin_inset Formula 
+\[
+u_{t}+\text{div}(\boldsymbol{F}(u,\nabla u))+s(u)=0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $F=C^{1}(\mathbb{R}\times\mathbb{R}^{d},\mathbb{R}^{d})$
+\end_inset
+
+ and 
+\begin_inset Formula $s\in C(\mathbb{R},\mathbb{R})$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ is a real function of 
+\begin_inset Formula $(\boldsymbol{x},t)\in\Omega\times(0,T)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ containing the control volumes which are subsets of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ which is a open subset of 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrate over control volume 
+\begin_inset Formula $K\in\mathcal{M}$
+\end_inset
+
+ and apply Stokes formula 
+\begin_inset Formula 
+\[
+\int_{K}u_{t}d\boldsymbol{x}+\int_{\partial K}\boldsymbol{F}(u,\nabla u)\cdot\boldsymbol{n}_{K}d\boldsymbol{\gamma}(x)+\int_{K}s(u)d\boldsymbol{x}=0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{n}_{k}$
+\end_inset
+
+ stands for the normal vector to the boundary 
+\begin_inset Formula $\partial K$
+\end_inset
+
+ outward to 
+\begin_inset Formula $K$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ denotes the integration with to 
+\begin_inset Formula $(d-1)$
+\end_inset
+
+-dimensional Lebesgue measure 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Stokes formula 
+\begin_inset Formula 
+\[
+\int\boldsymbol{F}\cdot d\boldsymbol{\Gamma}=\int\int\nabla\times\boldsymbol{F}\cdot d\boldsymbol{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divergence theorem 
+\begin_inset Formula 
+\[
+\int_{V}(\nabla\cdot\boldsymbol{F})dV=\oint_{S}(\boldsymbol{F}\cdot\boldsymbol{n})dS
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let us denote by 
+\begin_inset Formula $\mathcal{E}$
+\end_inset
+
+ the set of edges (faces in 
+\begin_inset Formula $3D$
+\end_inset
+
+) of the mesh and 
+\begin_inset Formula $\mathcal{E}_{K}$
+\end_inset
+
+ the set of edges which form the boundary 
+\begin_inset Formula $\partial K$
+\end_inset
+
+ of the control volume 
+\begin_inset Formula $K$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{K}u_{t}d\boldsymbol{x}+\sum_{\sigma\in\mathcal{E}_{K}}\int_{\sigma}\boldsymbol{F}(u,\nabla u)\cdot\boldsymbol{n}_{K}d\boldsymbol{\gamma}(x)+\int_{K}s(u)d\boldsymbol{x}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Explicit Euler discretization 
+\begin_inset Formula $\delta t=T/M$
+\end_inset
+
+ and 
+\begin_inset Formula $M\in\mathbb{N},\,M\geq1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{K}\frac{u^{(n+1)}-u^{(n)}}{\delta t}d\boldsymbol{x}+\sum_{\sigma\in\mathcal{E}_{K}}\int_{\sigma}\boldsymbol{F}(u^{(n)},\nabla u^{(n)})\cdot\boldsymbol{n}_{K}d\boldsymbol{\gamma}(x)+\int_{K}s(u^{(n)})d\boldsymbol{x}=0
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $u^{(n)}(\cdot,t^{(n)})$
+\end_inset
+
+ and 
+\begin_inset Formula $t^{(n)}=n\delta t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Introduce discrete (unkowns one per control volume per time step) 
+\begin_inset Formula $(u_{K}^{(n)})_{K\in\mathcal{M}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define piece-wise constant function
+\begin_inset Formula 
+\[
+u_{\mathcal{M}}^{(n)}\in H_{\mathcal{M}}(\Omega):\quad u_{\mathcal{M}}^{(n)}=\sum_{K\in\mathcal{M}}u_{k}^{(n)}1_{K}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{\mathcal{M}}^{(n)}\in H_{\mathcal{M}}(\Omega)$
+\end_inset
+
+ denotes the space of function from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ which are constant on each control volume of the mesh 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The fluxes 
+\begin_inset Formula $\int_{\sigma}\boldsymbol{F}(u^{(n)},\nabla u^{(n)})\cdot\boldsymbol{n}_{K}d\gamma(\boldsymbol{x})$
+\end_inset
+
+ need to be approximated as a function of the discrete unknowns 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Simple examples
+\series default
+: Linear convection equation where 
+\begin_inset Formula $\boldsymbol{F}(u,\nabla u)$
+\end_inset
+
+ reduces to 
+\begin_inset Formula $\boldsymbol{F}(u,\nabla u)=\boldsymbol{v}u$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{v}\in\mathbb{R^{d}}$
+\end_inset
+
+and 
+\begin_inset Formula $s(u)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{t}+\text{div}(\boldsymbol{v}u)=0\quad\text{on \ensuremath{\Omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The flux 
+\begin_inset Formula $\boldsymbol{v}n\cdot\boldsymbol{n}$
+\end_inset
+
+ needs to be approximate the value of 
+\begin_inset Formula $u$
+\end_inset
+
+ on these edges, as a function of the discrete unknowns 
+\begin_inset Formula $u_{K}$
+\end_inset
+
+ associated to each control volume 
+\begin_inset Formula $K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This may be done in 
+\series bold
+several
+\series default
+ ways
+\end_layout
+
+\begin_layout Itemize
+Straightforward, approximate the value of u on the edge 
+\begin_inset Formula $\sigma=K|L$
+\end_inset
+
+ separating the control volume 
+\begin_inset Formula $K$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+ by the mean value 
+\begin_inset Formula $\frac{1}{2}(u_{K}+u_{L})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F_{K,\sigma}(u_{\mathcal{M}})=v_{K,\sigma}\frac{u_{K}+u_{L}}{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $v_{K,\sigma}=\int_{\sigma}\boldsymbol{v}\cdot\boldsymbol{n}_{K,\sigma}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{n}_{K,\sigma}$
+\end_inset
+
+ denotes the unit normal vector to the edge 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ outward to 
+\begin_inset Formula $K$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
