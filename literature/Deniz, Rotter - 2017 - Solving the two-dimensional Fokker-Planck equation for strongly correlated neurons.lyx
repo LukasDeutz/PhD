@@ -126,7 +126,7 @@ The input
 \begin_inset Formula $I_{a}=\mu_{a}+\sigma_{a}\left[\sqrt{1-c}\xi_{a}\pm\sqrt{c}\xi_{c}\right]$
 \end_inset
 
- with private white noise 
+ has private white noise 
 \begin_inset Formula $\xi_{a}$
 \end_inset
 
@@ -225,8 +225,12 @@ D dynamics for
 \end_layout
 
 \begin_layout Itemize
-Calculation of Cross-covariance function of output spike trains requires
- the calculation of the steady state distribution 
+In order to calculate the 
+\series bold
+Cross-covariance
+\series default
+ function of output spike trains, we need to calculate the steady state
+ distribution 
 \begin_inset Formula 
 \[
 0=\frac{1}{\tau_{1}}\mathcal{L}_{1}P_{0}+\frac{1}{\tau_{2}}\mathcal{L}_{2}P_{0}+\frac{c}{\sqrt{\tau_{1}\tau_{2}}}\mathcal{L}_{12}P_{0}
@@ -282,6 +286,14 @@ Expand solution of non-self adjoint differential operator, the dual eigenvalue
 \end_inset
 
 with conjugate boundary conditions 
+\begin_inset Formula 
+\[
+\tilde{f}_{i}(x_{t})=\tilde{f}_{i}(x_{r}),\quad\tilde{g}_{i}(y_{t})=\tilde{g}_{i}(y_{r})
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -319,10 +331,217 @@ with
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+The expansion exactly satisfies the constraints for the marginal distributions
+ 
 \begin_inset Formula 
 \[
-P=\sum_{i}c_{i}f_{i}
+\int_{-\infty}^{y_{t}}P_{0}(x,y)dy=f_{0}(x),\quad\int_{-\infty}^{x_{t}}P_{0}(x,y)dx=g_{0}(y)
 \]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{x_{t}}P_{0}(x,y)dy & =g_{0}(y)\int_{-\infty}^{x_{t}}dx\,f_{0}(x)+\int_{-\infty}^{x_{t}}dx\,F(x)SG(y)\\
+ & =g_{0}(y)+\sum_{ij}S_{ij}g_{j}(y)\int_{-\infty}^{x_{t}}f_{i}(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We know that 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{x_{t}}f_{i}(x)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which follows from 
+\begin_inset Formula $\tilde{f}_{i}(x)=\text{const}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability density 
+\begin_inset Formula 
+\[
+f_{0}(x)=2r_{1}\tau_{1}e^{-x^{2}}\int_{x}^{x_{t}}\theta(u-x_{r})e^{u^{2}}du
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Steady state firing rates 
+\begin_inset Formula 
+\[
+r_{1}=\frac{1}{\tau_{1}}\left[\int_{0}^{\infty}e^{-u^{2}}\frac{e^{x_{t}u}-e^{x_{r}u}}{u}du\right]^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution can be written as 
+\begin_inset Formula 
+\[
+F(x)\Lambda_{1}S_{1}G(y)+F(x)S_{2}\Lambda_{2}G(y)+\tilde{c}\partial_{x}F(x)S\partial_{y}G(y)=-\tilde{c}F(x)S\partial_{y}G(y)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\Lambda_{a,ij}=\frac{\lambda_{ai}\delta_{ij}}{\tau_{a}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{c}=c/\sqrt{\tau_{1}\tau_{2}}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=\frac{1}{\tau_{1}}\mathcal{L}_{1}P+\frac{1}{\tau_{2}}\mathcal{L}_{2}P+\frac{c}{\sqrt{\tau_{1}\tau_{2}}}\mathcal{L}_{12}P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Stationary solution 
+\begin_inset Formula $P_{0}(x,y)$
+\end_inset
+
+ fulfills 
+\begin_inset Formula 
+\[
+0=\frac{1}{\tau_{1}}\mathcal{L}_{1}P_{0}(V_{1},V_{2})+\frac{1}{\tau_{2}}\mathcal{L}_{2}P_{0}(V_{1},V_{2})+\frac{c}{\sqrt{\tau_{1}\tau_{2}}}\mathcal{L}_{12}P_{0}(V_{1},V_{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Single population term in new coordinates 
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}P_{0}(x,y)=\partial_{x}(xP_{0})+\frac{1}{2}\partial_{x}^{2}P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use 
+\begin_inset Formula 
+\[
+P_{0}(x,y)=f_{0}(x)g_{0}(y)+F(x)SG(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula 
+\[
+g_{0}(y)\mathcal{L}_{1}f_{0}(x)=0
+\]
+
+\end_inset
+
+by construction.
+ The second term yields 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}_{1}F(x)SG(y) & =\sum_{ij}S_{ij}g_{j}(y)\mathcal{L}_{1}f_{i}(x)\\
+ & =\sum_{ij}S_{ij}g_{j}(y)\lambda_{i}f_{i}(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The same is true for the second term.
+ The mixed term yields 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{L}_{12} & =\frac{\partial^{2}P_{0}}{\partial_{x}\partial_{y}}\\
+ & ==\frac{\partial^{2}}{\partial_{x}\partial_{y}}\left\{ f_{0}(x)g_{0}(y)+F(x)SG(y)\right\} \\
+ & =g_{0}(y)\partial_{x}f_{0}(x)+f_{0}(x)g_{0}(y)+\partial_{x}F(x)S\partial_{y}G(y)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To solve the above equation, we express the action of the derivative operators
+ on the eigenbasis as 
+\begin_inset Formula 
+\begin{align*}
+X_{ij} & =\int_{-\infty}^{x_{t}}\tilde{f}_{i}(x)\partial_{x}f_{j}(x)dx\\
+Y_{ij} & =\int_{-\infty}^{x_{t}}\tilde{g}_{i}(y)\partial_{y}g_{j}(y)dy
+\end{align*}
 
 \end_inset
 
@@ -488,7 +707,7 @@ We arrive at the following linear system of equations
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Determinant 
@@ -519,7 +738,32 @@ Divide by
 
 \end_inset
 
-Wronskian determinant 
+Wronskian determinant.
+ Use Laplace expansion 
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}\phi_{1}(\lambda,x_{t}) & \phi_{2}(\lambda,x_{t}) & 0\\
+\phi_{1}(\lambda,x_{r}) & \phi_{2}(\lambda,x_{r}) & -\phi_{2}(\lambda,x_{r})\\
+\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t}) & \phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t}) & -\phi'_{2}(\lambda,x_{r})
+\end{bmatrix} & =\phi_{1}(\lambda,x_{t})\begin{vmatrix}\phi_{1}(\lambda,x_{r}) & \phi_{2}(\lambda,x_{r})\\
+\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t}) & \phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t})
+\end{vmatrix}-\phi_{2}(\lambda,x_{t})\begin{vmatrix}\phi_{1}(\lambda,x_{r}) & -\phi_{2}(\lambda,x_{r})\\
+\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t}) & \phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{r})
+\end{vmatrix}\\
+ & =\phi_{1}(\lambda,x_{t})\left\{ \phi_{1}(\lambda,x_{r})\left(\phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{t})\right)-\phi_{2}(\lambda,x_{r})\left(\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t})\right)\right\} \\
+ & -\phi_{2}(\lambda,x_{t})\left\{ \phi_{1}(\lambda,x_{r})\left(\phi'_{2}(\lambda,x_{r})-\phi'_{2}(\lambda,x_{r})\right)+\phi_{2}(\lambda,x_{r})\left(\phi'_{1}(\lambda,x_{r})-\phi'_{1}(\lambda,x_{t})\right)\right\} \\
+ & =\phi_{1}(\lambda,x_{t})\left\{ \phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{r})-\phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{t})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\right\} \\
+ & -\phi_{2}(\lambda,x_{t})\left\{ \phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{r})-\phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{r})+\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\right\} \\
+ & =\phi_{1}(\lambda,x_{t})\left\{ \phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{r})-\phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{t})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\right\} \\
+ & -\phi_{2}(\lambda,x_{t})\left\{ -2e^{-x_{r}^{2}}+\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})-\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\right\} \\
+ & =2e^{-x_{r}^{2}}\phi_{2}(\lambda,x_{t})+\phi_{1}(\lambda,x_{t})\phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{r})-\phi_{1}(\lambda,x_{t})\phi_{1}(\lambda,x_{r})\phi'_{2}(\lambda,x_{t})-\phi_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})-\phi_{1}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\\
+ & -\phi_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{r})+\phi_{2}(\lambda,x_{t})\phi_{2}(\lambda,x_{r})\phi'_{1}(\lambda,x_{t})\\
+ & =
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -615,7 +859,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Start from 
@@ -936,10 +1180,206 @@ status open
 \begin_layout Plain Layout
 Additional notes 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Piecewise solution 
+We start from 
+\begin_inset Formula 
+\[
+\partial_{t}p(V,t)=-\partial_{V}J(V,t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+J(V,t)=\left(-\frac{1}{\tau}(V-\mu)-\frac{1}{2}\frac{\sigma^{2}}{\tau}\partial_{V}\right)p(V,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula 
+\[
+s=\frac{t}{\tau},\quad x=\frac{\sqrt{2}}{\sigma}(V-\mu)
+\]
+
+\end_inset
+
+and defining 
+\begin_inset Formula $\rho(x,s)=\frac{\sigma}{\sqrt{2}}p(V,t)$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\[
+\partial_{s}\rho(x,s)=-\partial_{x}j(x,s)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+j(x,s)=-(x+\partial_{x})\rho(x,s)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\lambda\phi=L\phi
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $L=\partial_{x}(x+\partial_{x})$
+\end_inset
+
+.
+ We want to perform similarity transformation 
+\begin_inset Formula $\varphi=f^{-1}(x)\phi(x)$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\[
+f(x)^{-1}Lf(x)=\partial_{x}^{2}+V(x)+c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Choosing 
+\begin_inset Formula $f(x)=e^{-\frac{x^{2}}{4}}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+V(x) & =-\frac{1}{4}x^{2}\\
+c & =\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\left(\partial_{x}^{2}-\frac{1}{4}x^{2}+\frac{1}{2}\right)\varphi & =\lambda\varphi\\
+\partial_{x}^{2}\varphi-\left(\frac{1}{4}x^{2}+z\right)\varphi & =0
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $z=\lambda-\frac{1}{2}$
+\end_inset
+
+.
+ Numerical stable pair of solutions are 
+\begin_inset Formula $U(z,x)$
+\end_inset
+
+ and 
+\begin_inset Formula $V(z,x)$
+\end_inset
+
+ which suggests 
+\begin_inset Formula 
+\[
+\varphi(x)=aU(z,x)+bV(z,x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+However, we need to ensure that 
+\begin_inset Formula 
+\[
+\lim_{x\rightarrow-\infty}x\phi(x)=0
+\]
+
+\end_inset
+
+to ensure that 
+\begin_inset Formula $\rho(x,s)$
+\end_inset
+
+ is normalizable.
+ Asymptotic behavior of 
+\begin_inset Formula $U(z,x)$
+\end_inset
+
+ and 
+\begin_inset Formula $V(z,x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x\rightarrow\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+U(z,x) & \sim e^{-\frac{1}{4}x^{2}}x^{-z-\frac{1}{2}}=e^{-\frac{1}{4}x^{2}}x^{-\lambda}\\
+V(z,x) & \sim e^{\frac{1}{4}x^{2}}\frac{1}{x}x^{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Since, 
+\begin_inset Formula $\phi(x)=e^{-\frac{x^{2}}{4}}\varphi(x)$
+\end_inset
+
+ we need to look at the behavior 
+\begin_inset Formula 
+\begin{align*}
+xf(x)U(z,x) & \sim e^{-\frac{1}{2}x^{2}}x^{-z+\frac{1}{2}}\\
+xf(x)V(z,x) & \sim x^{\lambda}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we see that 
+\begin_inset Formula $V(z,x)$
+\end_inset
+
+ does not vanishes for 
+\begin_inset Formula $x\rightarrow-\infty$
+\end_inset
+
+.
+ Hence, we need to construct a piece-wise solution 
 \begin_inset Formula 
 \[
 \varphi_{n}(x)=\begin{cases}
@@ -954,32 +1394,36 @@ Boundary conditions:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\varphi_{n}(x_{\theta})=\lim_{x\rightarrow-\infty}\varphi_{n}(x)=0$
+\begin_inset Formula $\phi(x_{\theta})=f(x)\varphi(x_{\theta})=0\Rightarrow\varphi(x_{\theta})=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\lim_{\epsilon\rightarrow0^{+}}\left\{ \varphi_{n}(x_{\text{r}}^{(+)})=\varphi_{n}(x_{\text{r}}^{(-)})\right\} $
+\begin_inset Formula $\lim_{x\rightarrow-\infty}x\phi(x)=\lim_{x\rightarrow-\infty}xf(x)\varphi(x)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\frac{f(x_{\theta})}{f(x_{\text{r}})}$
+\begin_inset Formula $\lim_{\epsilon\rightarrow0^{+}}\left\{ \phi(x_{r}-\epsilon)=\phi(x_{r}+\epsilon)\Rightarrow\varphi(x_{r}-\epsilon)=\varphi(x_{r}+\epsilon)\right\} $
 \end_inset
 
 
-\begin_inset Formula $\partial_{x}\varphi_{n}(x_{\theta})=\partial_{x}\varphi_{n}(x_{r}^{(+)})-\partial_{x}\varphi_{n}(x_{r}^{(-)})$
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{\epsilon\rightarrow0^{+}}\left\{ \partial_{x}\phi(x_{r}+\epsilon)-\partial_{x}\phi(x_{r}-\epsilon)\right\} =\partial_{x}\phi(x_{\theta})\Rightarrow f(x_{\theta})\partial_{x}\varphi_{n}(x_{\theta})=\lim_{\epsilon\rightarrow0^{+}}\left\{ f(x_{r}+\epsilon)\partial_{x}\varphi_{n}(x_{r}+\epsilon)-f(x_{r}-\epsilon)\partial_{x}\varphi_{n}(x_{r}-\epsilon)\right\} $
 \end_inset
 
 
 \end_layout
 
 \begin_layout Plain Layout
-The above conditions yield a system of equations for the coefficients 
+The above conditions 1,3 and 4 yield a system of equations for the coefficients
+ 
 \begin_inset Formula $a_{n},b_{n}$
 \end_inset
 
@@ -992,7 +1436,7 @@ The above conditions yield a system of equations for the coefficients
 \begin{align*}
 a_{n}V(z_{n},x_{\theta})+b_{n}U(z_{n},x_{\theta}) & =0\\
 a_{n}V(z_{n},x_{\text{r}})+b_{n}U(z_{n},x_{\text{r}})-c_{n}U(z_{n},x_{\text{r}}) & =0\\
-a_{n}\left\{ V'(z_{n},x_{\text{r}})-\frac{f(x_{\theta})}{f(x_{\text{r}})}V'(z_{n},x_{\theta})\right\} +b_{n}\left\{ U'(z_{n},x_{\text{r}})-\frac{f(x_{\theta})}{f(x_{\text{r}})}U'(z_{n},x_{\theta})\right\} -c_{n}U'(z_{n},x) & =0
+a_{n}\left\{ f(x_{\theta})V'(z_{n},x_{\theta})-f(x_{\text{r}})V'(z_{n},x_{\text{r}})\right\} +b_{n}\left\{ U'(z_{n},x_{\theta})f(x_{\theta})-f(x_{\text{r}})U'(z_{n},x_{\text{r}})\right\} +c_{n}f(x_{\text{r}})U'(z_{n},x_{r}) & =0
 \end{align*}
 
 \end_inset
@@ -1013,7 +1457,7 @@ with
 \[
 A=\begin{pmatrix}V(z_{n},x_{\theta}) & U(z_{n},x_{\theta}) & 0\\
 V(z_{n},x_{\text{r}}) & U(z_{n},x_{\text{r}}) & -U(z_{n},x_{\text{r}})\\
-V'(z_{n},x_{\text{r}})-\frac{f(x_{\theta})}{f(x_{\text{r}})}V'(z_{n},x_{\theta}) & U'(z_{n},x_{\text{r}})-\frac{f(x_{\theta})}{f(x_{\text{r}})}U'(z_{n},x_{\theta}) & -U'(z_{n},x_{\text{r}})
+f(x_{\theta})V'(z_{n},x_{\theta})-f(x_{\text{r}})V'(z_{n},x_{\text{r}}) & U'(z_{n},x_{\theta})f(x_{\theta})-f(x_{\text{r}})U'(z_{n},x_{\text{r}}) & f(x_{\text{r}})U'(z_{n},x_{\text{r}})
 \end{pmatrix}
 \]
 
@@ -1031,6 +1475,84 @@ The eigenvalues
 
 \end_inset
 
+Determinant 
+\begin_inset Formula 
+\[
+\text{det}A=\sqrt{\frac{2}{\pi}}\left(f(x_{\text{r}})U(z_{n},x_{\theta})-U(z_{n},x_{\text{r}})f(x_{\theta})\right)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\text{det}A & =V(z_{n},x_{\theta})\begin{vmatrix}U(z_{n},x_{\text{r}}) & -U(z_{n},x_{\text{r}})\\
+U'(z_{n},x_{\theta})f(x_{\theta})-f(x_{\text{r}})U'(z_{n},x_{\text{r}}) & f(x_{\text{r}})U'(z_{n},x_{\text{r}})
+\end{vmatrix}-U(z_{n},x_{\theta})\begin{vmatrix}V(z_{n},x_{\text{r}}) & -U(z_{n},x_{\text{r}})\\
+f(x_{\theta})V'(z_{n},x_{\theta})-f(x_{\text{r}})V'(z_{n},x_{\text{r}}) & f(x_{\text{r}})U'(z_{n},x_{\text{r}})
+\end{vmatrix}\\
+ & =V(z_{n},x_{\theta})\left\{ f(x_{\text{r}})U(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})+U(z_{n},x_{\text{r}})\left(U'(z_{n},x_{\theta})f(x_{\theta})-f(x_{\text{r}})U'(z_{n},x_{\text{r}})\right)\right\} \\
+ & -U(z_{n},x_{\theta})\left\{ f(x_{\text{r}})V(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})+U(z_{n},x_{\text{r}})\left(f(x_{\theta})V'(z_{n},x_{\theta})-f(x_{\text{r}})V'(z_{n},x_{\text{r}})\right)\right\} \\
+ & =f(x_{\text{r}})V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})+V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})U'(z_{n},x_{\theta})f(x_{\theta})-V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})f(x_{\text{r}})U'(z_{n},x_{\text{r}})\\
+ & -f(x_{\text{r}})U(z_{n},x_{\theta})V(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})-U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})f(x_{\theta})V'(z_{n},x_{\theta})+U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})f(x_{\text{r}})V'(z_{n},x_{\text{r}})\\
+ & =f(x_{\theta})\left(V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})U'(z_{n},x_{\theta})-U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})V'(z_{n},x_{\theta})\right)+f(x_{r})\left(-U(z_{n},x_{\theta})V(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})+U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})V'(z_{n},x_{\text{r}})\right)\\
+ & =U(z_{n},x_{\text{r}})f(x_{\theta})\left(-U(z_{n},x_{\theta})V'(z_{n},x_{\theta})+V(z_{n},x_{\theta})U'(z_{n},x_{\theta})\right)+f(x_{\text{r}})U(z_{n},x_{\theta})\left(-V(z_{n},x_{\text{r}})U'(z_{n},x_{\text{r}})+U(z_{n},x_{\text{r}})V'(z_{n},x_{\text{r}})\right)\\
+ & =\sqrt{\frac{2}{\pi}}\left(f(x_{\text{r}})U(z_{n},x_{\theta})-U(z_{n},x_{\text{r}})f(x_{\theta})\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Hence, we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\sqrt{\frac{2}{\pi}}\left(f(x_{\text{r}})U(z_{n},x_{\theta})-U(z_{n},x_{\text{r}})f(x_{\theta})\right) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Dividing by 
+\begin_inset Formula $\sqrt{2/\pi}$
+\end_inset
+
+ and multiplying by 
+\begin_inset Formula $(f(x_{r})f(x_{\theta}))^{-1}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\frac{U(z_{n},x_{\theta})}{f(\theta)}-\frac{U(z_{n},x_{\text{r}})}{f(x_{\text{r}})}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 If 
 \begin_inset Formula $A_{n}$
 \end_inset
@@ -1203,7 +1725,7 @@ The rank of
  if 
 \begin_inset Formula 
 \[
-0=\frac{U(z_{n},x_{\text{r}})}{f(x_{\text{r}})\text{Wr}(x_{\text{r}})}-\frac{U(z_{n},x_{\theta})}{f(x_{\theta})\text{Wr}(x_{\theta})},
+0=\frac{U(z_{n},x_{\theta})}{f(x_{\theta})\text{Wr}(x_{\theta})}-\frac{U(z_{n},x_{\text{r}})}{f(x_{\text{r}})\text{Wr}(x_{\text{r}})},
 \]
 
 \end_inset
@@ -1322,7 +1844,7 @@ Dividing the above equation by
 
 \begin_inset Formula 
 \[
-\text{Wr}(x)=U'(z_{n},x)V(z_{n},x)-U(z_{n},x)V'(z_{n},x)
+\text{Wr}(x)=U(z_{n},x)V'(z_{n},x)-U'(z_{n},x)V(z_{n},x)=\sqrt{\frac{2}{\pi}}
 \]
 
 \end_inset
@@ -1381,11 +1903,11 @@ We find
 
 \end_inset
 
- Hence if 
+ Hence, the eigenvalues 
 \begin_inset Formula $\lambda_{n}$
 \end_inset
 
- fufills 
+ we are after fulfill 
 \begin_inset Formula 
 \[
 0=\frac{U(z_{n},x_{\text{r}})}{f(x_{\text{r}})\text{Wr}(x_{\text{r}})}-\frac{U(z_{n},x_{\theta})}{f(x_{\theta})\text{Wr}(x_{\theta})},
@@ -1395,6 +1917,160 @@ We find
 
 the solution space of the linear system of equations is one dimensional
  and the eigenvector is unique up to a scalar factor as desired.
+ Determining the coefficients 
+\begin_inset Formula $a(\lambda)$
+\end_inset
+
+ and 
+\begin_inset Formula $b(\lambda)$
+\end_inset
+
+ as functions of 
+\begin_inset Formula $c(\lambda)$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\begin{pmatrix}V(z_{n},x_{\theta}) & U(z_{n},x_{\theta}) & 0\\
+V(z_{n},x_{\text{r}}) & U(z_{n},x_{\text{r}}) & -U(z_{n},x_{\text{r}})\\
+f(x_{\theta})V'(z_{n},x_{\theta})-f(x_{\text{r}})V'(z_{n},x_{\text{r}}) & U'(z_{n},x_{\theta})f(x_{\theta})-f(x_{\text{r}})U'(z_{n},x_{\text{r}}) & f(x_{\text{r}})U'(z_{n},x_{\text{r}})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First row yields 
+\begin_inset Formula 
+\[
+V(z_{n},x_{\theta})a=-U(z_{n},x_{\theta})b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second row yields 
+\begin_inset Formula 
+\begin{align*}
+U(z_{n},x_{\text{r}})b & =-V(z_{n},x_{\text{r}})a+U(z_{n},x_{\text{r}})c\\
+b & =\frac{-V(z_{n},x_{\text{r}})a+U(z_{n},x_{\text{r}})c}{U(z_{n},x_{\text{r}})}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting in the first equation yields 
+\begin_inset Formula 
+\begin{align*}
+V(z_{n},x_{\theta})a & =\frac{U(z_{n},x_{\theta})V(z_{n},x_{\text{r}})a-U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})c}{U(z_{n},x_{\text{r}})}\\
+\left\{ U(z_{n},x_{\theta})V(z_{n},x_{\text{r}})-V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})\right\} a & =U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})c\\
+a & =c\frac{U(z_{n},x_{\theta})U(z_{n},x_{\text{r}})}{U(z_{n},x_{\theta})V(z_{n},x_{\text{r}})-V(z_{n},x_{\theta})U(z_{n},x_{\text{r}})}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divide by 
+\begin_inset Formula $U(z_{n},x_{r})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a=c\frac{U(z_{n},x_{r})}{V(z_{n},x_{\text{r}})-V(z_{n},x_{\theta})\frac{U(z_{n},x_{\text{r}})}{U(z_{n},x_{\theta})}}
+\]
+
+\end_inset
+
+and use 
+\begin_inset Formula 
+\[
+\frac{U(z_{n},x_{\theta})}{U(z_{n},x_{\text{r}})}=\frac{f(x_{\theta})}{f(x_{r})}
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+a=c\frac{f(x_{\theta})U(z_{n},x_{r})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second coefficient
+\begin_inset Formula 
+\begin{align*}
+U(z_{n},x_{r})b & =U(z_{n},x_{\text{r}})c-aV(z_{n},x_{r})\\
+b & =\frac{U(z_{n},x_{\text{r}})-\frac{f(x_{\theta})U(z_{n},x_{r})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})}V(z_{n},x_{r})}{U(z_{n},x_{r})}c\\
+b & =\frac{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})-f(x_{\theta})V(z_{n},x_{r})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})}c\\
+b & =\frac{-f(x_{r})V(z_{n},x_{\theta})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})}c
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Fix 
+\begin_inset Formula $c$
+\end_inset
+
+ with normalization condition 
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}\varphi(x_{\theta}) & =1\\
+a_{n}V'(z_{n},x_{\theta})+b_{n}U'(z_{n},x_{\theta}) & =1\\
+c\frac{f(x_{\theta})U(z_{n},x_{r})V'(z_{n},x_{\theta})-f(x_{r})V(z_{n},x_{\theta})U'(z_{n},x_{\theta})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})} & =1\\
+c\frac{f(x_{\theta})\frac{f(x_{r})}{f(x_{\theta})}U(z_{n},x_{\theta})V'(z_{n},x_{\theta})-f(x_{r})V(z_{n},x_{\theta})U'(z_{n},x_{\theta})}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})} & =1\\
+c\frac{f(x_{r})\left\{ U(z_{n},x_{\theta})V'(z_{n},x_{\theta})-V(z_{n},x_{\theta})U'(z_{n},x_{\theta})\right\} }{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})} & =1\\
+c=\frac{f(x_{r})\sqrt{\frac{2}{\pi}}}{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+c=\frac{f(x_{\theta})V(z_{n},x_{\text{r}})-f(x_{r})V(z_{n},x_{\theta})}{f(x_{r})\sqrt{\frac{2}{\pi}}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+b & =-\sqrt{\frac{\pi}{2}}V(z_{n},x_{\theta})\\
+a & =\sqrt{\frac{\pi}{2}}\frac{f(x_{\theta})}{f(x_{r})}U(z_{n},x_{r})\\
+a & =\sqrt{\frac{\pi}{2}}\frac{U(z_{n},x_{\theta})}{U(z_{n},x_{\text{r}})}U(z_{n},x_{r})\\
+a & =\sqrt{\frac{\pi}{2}}U(z_{n},x_{\theta})
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1513,11 +2189,40 @@ With the current
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+We find the adjoint operator 
+\begin_inset Formula 
+\[
+\mathcal{L}_{1}^{\dagger}\tilde{f}=-x\partial_{x}+\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dual boundary conditions which lead to zero surface term is 
+\begin_inset Formula 
+\[
+\tilde{f}_{i}(x_{r})=\tilde{f}_{i}(x_{t})
+\]
+
+\end_inset
+
+
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Alternative view:
+Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from
 \begin_inset Formula 
 \begin{align*}
 \lambda_{i}\bigl\langle\tilde{f}_{j},f_{i}\bigr\rangle & =\bigl\langle\tilde{f}_{j},\lambda_{i}f_{i}\bigr\rangle\\
@@ -1714,12 +2419,710 @@ where used that
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-We find the adjoint operator 
+This guarantees 
+\begin_inset Formula $\bigl\langle\tilde{f}_{j},f_{i}\bigr\rangle$
+\end_inset
+
+ for appropriate choice of constants 
+\end_layout
+
+\begin_layout Itemize
+Corresponding dual equation is 
 \begin_inset Formula 
 \[
-\mathcal{L}_{1}^{\dagger}\tilde{f}=-x\partial_{x}+\frac{1}{2}
+\mathcal{L}_{1}^{\dagger}\tilde{f}=-x\frac{\partial\tilde{f}}{\partial x}+\frac{1}{2}\frac{\partial^{2}}{\partial x^{2}}=\lambda\tilde{f}
 \]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Transform to Schroedinger equation
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\mathcal{L^{\dagger}}\tilde{f}=\left(-x\partial_{x}+\frac{1}{2}\partial_{x}^{2}\right)\tilde{f}=\lambda\tilde{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Transform 
+\begin_inset Formula $u^{-1}\tilde{f}=\tilde{g}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+u^{-1}\mathcal{L^{\dagger}}u=\partial_{x}^{2}+V(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Let's start from 
+\begin_inset Formula 
+\begin{align*}
+ & u^{-1}\left(-x\partial_{x}+\frac{1}{2}\partial_{x}^{2}\right)u\tilde{f}\\
+= & u^{-1}\left(-xu_{x}\tilde{f}-xu\tilde{f}_{x}+\frac{1}{2}\partial_{x}\left(u_{x}\tilde{f}+u\tilde{f}_{x}\right)\right)\\
+= & u^{-1}\left(-xu_{x}\tilde{f}-xu\tilde{f}_{x}+\frac{1}{2}\left(u_{xx}\tilde{f}+2u_{x}\tilde{f}_{x}+u\tilde{f}_{xx}\right)\right)\\
+=- & \frac{xu_{x}\tilde{f}}{u}+x\tilde{f}_{x}-u_{x}\tilde{f}_{x}+\frac{1}{2}u_{xx}\tilde{f}+\frac{1}{2}\tilde{f}_{xx}\\
+= & \left(\frac{-xu_{x}+\frac{1}{2}u_{xx}}{u}\right)\tilde{f}+(-x+\frac{u_{x}}{u})\tilde{f}_{x}++\frac{1}{2}\tilde{f}_{xx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We need to choose 
+\begin_inset Formula $u$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+-x+\frac{u_{x}}{u}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is an ODE which can be solved by separation of variables 
+\begin_inset Formula 
+\begin{align*}
+\frac{du}{dx} & =xu\\
+\frac{1}{u}du & =xdx\\
+u & =e^{\frac{1}{2}x^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that we can set the integration constant to one because it anyway can
+ canceled out in the potential 
+\begin_inset Formula 
+\begin{align*}
+V(x) & =\frac{-xu_{x}+\frac{1}{2}u_{xx}}{u}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+First and second derivative of 
+\begin_inset Formula $u$
+\end_inset
+
+ are given by 
+\begin_inset Formula 
+\begin{align*}
+u_{x} & =ux\\
+u_{xx} & =(ux)_{x}\\
+ & =u_{x}x+u\\
+ & =ux^{2}+u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+V(x) & =-x^{2}+\frac{1}{2}x^{2}+\frac{1}{2}\\
+ & =-\frac{1}{2}x^{2}++\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that
+\begin_inset Formula 
+\[
+u^{-1}\mathcal{L}^{\dagger}u=-\frac{1}{2}x^{2}+1+\frac{1}{2}\partial_{x}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Check 
+\begin_inset Formula 
+\begin{align*}
+u^{-1}\left(-x\partial_{x}+\frac{1}{2}\partial_{x}^{2}\right)u & =u^{-1}\left(-x^{2}u-xu\partial_{x}+\frac{1}{2}\partial_{x}\left(ux+u\partial_{x}\right)\right)\\
+ & =u^{-1}\left(-x^{2}u-xu\partial_{x}+\frac{1}{2}\left(ux^{2}+u+ux\partial_{x}+xu\partial_{x}+u\partial_{x}^{2}\right)\right)\\
+ & =u^{-1}\left(-x^{2}u-xu\partial_{x}+\frac{1}{2}ux^{2}+\frac{1}{2}u+ux\partial_{x}+\frac{1}{2}u\partial_{x}^{2}\right)\\
+ & =\left(-x^{2}+\frac{1}{2}x^{2}+\frac{1}{2}+\frac{1}{2}\partial_{x}^{2}\right)\\
+ & =-\frac{1}{2}x^{2}+\frac{1}{2}+\frac{1}{2}\partial_{x}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+\left(-\frac{1}{2}x^{2}+\frac{1}{2}\partial_{x}^{2}\right)\tilde{g} & =\left(\lambda-\frac{1}{2}\right)\tilde{g}\\
+\left(-x^{2}+\partial_{x}^{2}\right)\tilde{g} & =z\tilde{g}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $z=2\lambda-1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transformation 
+\begin_inset Formula $u^{-1}(x)\tilde{f}(x)=h(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $u(x)=e^{x^{2}}$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{align*}
+u^{-1}\mathcal{L}_{1}^{\dagger}uu^{-1}\tilde{f} & =\lambda u^{-1}\tilde{f}\\
+u^{-1}\mathcal{L}_{1}^{\dagger}uh & =\lambda h
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+u^{-1}\mathcal{L}_{1}^{\dagger}u=\mathcal{L}_{1}
+\]
+
+\end_inset
+
+so that the dual eigenfunctions are 
+\begin_inset Formula 
+\[
+\tilde{f}_{i}(x)=e^{x^{2}}\left(\tilde{a}(\lambda_{i})\phi_{1}(\lambda_{i},x)+\tilde{b}(\lambda_{i})\phi_{2}(\lambda_{i},x)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that we do not need a piecewise solution because the eigenfunctions
+ of the adjoint operator are expected to continuous and differential at
+ the reset 
+\end_layout
+
+\begin_layout Itemize
+Boundary condition 
+\begin_inset Formula 
+\[
+\tilde{f}_{i}(x)=e^{x^{2}}\left(\tilde{a}(\lambda_{i})\phi_{1}(\lambda_{i},x)+\tilde{b}(\lambda_{i})\phi_{2}(\lambda_{i},x)\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tilde{a}(\lambda_{i})\left(e^{x_{t}^{2}}\phi_{1}(\lambda_{i},x_{t})-e^{x_{r}^{2}}\phi_{1}(\lambda_{i},x_{r})\right)+\tilde{b}(\lambda_{i})\left(e^{x_{t}^{2}}\phi_{2}(\lambda_{i},x_{t})-e^{x_{r}^{2}}\phi_{2}(\lambda_{i},x_{r})\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The second term can be written as 
+\begin_inset Formula 
+\[
+e^{x_{t}^{2}}\phi_{2}(\lambda_{i},x_{t})-e^{x_{r}^{2}}\phi_{2}(\lambda_{i},x_{r})=\frac{\phi_{2}(\lambda_{i},x_{t})}{e^{-x_{t}^{2}}}-\frac{\phi_{2}(\lambda_{i},x_{r})}{e^{-x_{r}^{2}}}=2\left(\frac{\phi_{2}(\lambda_{i},x_{t})}{\text{Wr}(x_{t})}-\frac{\phi_{2}(\lambda_{i},x_{r})}{\text{Wr}(x_{r})}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This latter expression is equivalent to the characteristic equation, and
+ therefor zero which leaves us with 
+\begin_inset Formula 
+\[
+\tilde{a}(\lambda_{i})\left(e^{x_{t}^{2}}\phi_{1}(\lambda_{i},x_{t})-e^{x_{r}^{2}}\phi_{1}(\lambda_{i},x_{r})\right)=0
+\]
+
+\end_inset
+
+from which follows 
+\begin_inset Formula $\tilde{a}(\lambda_{i})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can select 
+\begin_inset Formula $\tilde{b}(\lambda_{i})$
+\end_inset
+
+ such that 
+\begin_inset Formula $\bigl\langle\tilde{f}_{i},f_{j}\bigr\rangle=\delta_{ij}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tilde{f}_{i}=e^{x^{2}}\tilde{b}(\lambda_{i})\phi_{2}(\lambda_{i},x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking the inner product 
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle\tilde{f}_{i},f_{i}\bigr\rangle & =1\\
+\int_{-\infty}^{v_{t}}dx\,e^{x^{2}}\tilde{b}(\lambda_{i})\phi_{2}(\lambda_{i},x)f_{i} & =1\\
+\frac{1}{\int_{-\infty}^{v_{t}}dx\,e^{x^{2}}\tilde{b}(\lambda_{i})f_{i}} & =\tilde{b}(\lambda_{i})\\
+\bigl\langle e^{x^{2}}\phi_{2}(\lambda_{i},x),f_{i}\bigr\rangle & =\tilde{b}(\lambda_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix C: Details of the series expansion
+\end_layout
+
+\begin_layout Itemize
+In order to investigate regularized reset boundary conditions 
+\begin_inset Formula 
+\[
+\partial_{x}f_{0}(x)=2r_{1}\tau_{1}\left[\kappa(x)+\sum_{k}X_{0k}^{(1)}f_{k}(x)\right]+Af_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X^{(1)}$
+\end_inset
+
+ are the generalized Fourier coefficients of a continuous function 
+\begin_inset Formula 
+\[
+\partial\overline{f}_{i}=\partial_{x}f_{i}-R_{1i}\kappa(x)\Leftrightarrow\partial_{x}f_{i}=\partial\overline{f}_{i}+R_{1i}\kappa(x)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The constants 
+\begin_inset Formula $R$
+\end_inset
+
+ are chosen as 
+\begin_inset Formula 
+\[
+R_{1i}=\left.-\frac{1}{2}\partial_{x}f_{i}\right|_{x_{t}}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The box function 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+\kappa(x)=\Theta(x-x_{r})-\Theta(x-x_{t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+One can easily show via direct integration and using boundary conditions
+ 
+\begin_inset Formula 
+\begin{align*}
+\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}\partial_{x}f_{i}(x) & =0\\
+\int_{-\infty}^{y_{t}}dx\,\tilde{g}_{0}\partial_{y}g_{i}(x) & =0
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}\partial_{x}f_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and shift the derivative by partial integration 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}\partial_{x}f_{i}(x)=\left.\tilde{f}_{0}f_{i}(x)\right|_{-\infty}^{x_{t}}-\int_{-\infty}^{x_{t}}dx\,f_{i}(x)\partial_{x}\tilde{f}_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The first term is zero because 
+\begin_inset Formula $f_{i}(x)$
+\end_inset
+
+ vanishes at the boundary and the second term vanished because 
+\begin_inset Formula $\tilde{f}_{0}$
+\end_inset
+
+ is a constant 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From this follows
+\begin_inset Formula 
+\begin{align*}
+A & =-\int_{x_{r}}^{x_{t}}dx\tilde{f}_{0}=x_{r}-x_{t}\\
+B & =-\int_{y_{r}}^{y_{t}}dy\tilde{g}_{0}=y_{r}-y_{t}
+\end{align*}
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+0=\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}\partial_{x}f_{i}(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0 & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}R_{1i}\kappa(x)+\sum_{k}X_{ik}^{(1)}\bigl\langle\tilde{f}_{0},f_{k}(x)\bigr\rangle+\frac{A}{2r_{1}\tau_{1}}\bigl\langle\tilde{f}_{0},f_{0}(x)\bigr\rangle\\
+ & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}R_{1i}\kappa(x)+\frac{A}{2r_{1}\tau_{1}}\\
+\frac{A}{2r_{1}\tau_{1}} & =-\int_{x_{r}}^{x_{t}}dx\,\tilde{f}_{0}R_{1i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What is the derivative 
+\end_layout
+
+\begin_layout Itemize
+Stationary solution of the Fokker-Planck equation is given by 
+\begin_inset Formula 
+\begin{align*}
+ & F(x)\Lambda_{1}SG(y)+F(x)S\Lambda_{2}G(y)+\tilde{c}\partial_{x}F(x)S\partial_{y}G(y)\\
+= & -\tilde{c}\partial_{x}f_{0}(x)\partial_{y}g_{0}(y)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Express action of derivative operators on the eigenbasis 
+\begin_inset Formula 
+\begin{align*}
+X_{ij} & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{i}(x)\partial_{x}f_{j}(x)\\
+Y_{ij} & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{i}(x)\partial_{y}f_{j}(x)\\
+X_{i0} & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}(x)\partial_{x}f_{j}(x)\\
+X_{i0} & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{0}(x)\partial_{x}f_{j}(x)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+\partial_{x}f_{i}(x)=R_{1i}\kappa(x)+\sum_{k}X_{ik}^{(1)}f_{k}(x)+\frac{A}{2r_{1}\tau_{1}}f_{0}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply with 
+\begin_inset Formula $\tilde{f}_{i}(x)$
+\end_inset
+
+ and integrate over 
+\begin_inset Formula $x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle\tilde{f}_{i}(x),\partial_{x}f_{j}(x)\bigr\rangle & =\int_{-\infty}^{x_{t}}dx\,\tilde{f}_{i}(x)\left\{ R_{1j}\kappa(x)+\sum_{k}X_{jk}^{(1)}f_{k}(x)+\frac{A}{2r_{1}\tau_{1}}f_{0}(x)\right\} \\
+ & =\int_{-\infty}^{x_{t}}\tilde{f}_{i}(x)R_{1i}\kappa(x)+X_{ji}^{(1)}\\
+ & =R_{1i}\int_{-\infty}^{x_{t}}\tilde{f}_{i}(x)\Theta(x-x_{r})-\Theta(x-x_{t})\\
+ & =R_{1i}\int_{x_{r}}^{x_{t}}\tilde{f}_{i}(x)+X_{ji}^{(1)}\\
+ & =R_{1i}\tilde{f}_{i}(x_{t})-\tilde{f}_{i}(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The covariance functions of two stationary spike trains represented as a
+ sum of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ functions is given by 
+\begin_inset Formula 
+\[
+C_{ij}(\tau)=\bigl\langle S_{1}(t+\tau)S_{2}(t)\bigr\rangle-\bigl\langle S_{1}(t+\tau)\bigr\rangle\bigl\langle S_{2}(t)\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It can be simplified in terms of the conditional rate 
+\begin_inset Formula $r_{i\bigr|j}(\tau)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+C_{ij}(\tau)=r_{i}(r_{i\bigr|j}(\tau)-r_{j})
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Formula 
+\[
+C_{ij}(\tau)=\bigl\langle S_{1}(t+\tau)S_{2}(t)\bigr\rangle-\bigl\langle S_{1}(t+\tau)\bigr\rangle\bigl\langle S_{2}(t)\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Stationary case 
+\begin_inset Formula 
+\begin{align*}
+\bigl\langle S_{1}(t+\tau)\bigr\rangle\bigl\langle S_{2}(t)\bigr\rangle & =r_{i}r_{j}\\
+\bigl\langle S_{1}(t+\tau)S_{2}(t)\bigr\rangle & =r_{i}r_{i\bigr|j}(\tau)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For given 
+\begin_inset Formula $P_{0}(x,y)$
+\end_inset
+
+, the distribution of the membrane potential conditional to a spike at 
+\begin_inset Formula $t_{0}=0$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+P_{a\bigr|b}(x)=\text{Pr}\left(x\bigr|\text{spie in }[t_{0}+t_{0}+dt]\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conditional probability of observing a spike in the sequel is then 
+\begin_inset Formula 
+\[
+P_{1\bigr|2}(x)=
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Covariance function can be expressed with the help of conditional spike
+ trains?
+\end_layout
 
 \end_inset
 
