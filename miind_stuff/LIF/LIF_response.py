@@ -4,7 +4,7 @@ Created on 3 Jan 2019
 @author: lukas
 '''
 import numpy as np
-from mpmath import findroot, cosh, sinh, pcfu, pcfv, exp
+from mpmath import findroot, cosh, sinh, pcfu, pcfv, exp, mpc
 import h5py as h5
 from timeit import itertools
 import miind_api as api
@@ -773,8 +773,17 @@ class LIF_Theory():
             
         self.model_param = model_param
         self.diffusion_approximation()
+        self.variable_trafo()
         self.lam_cache = {}
-                        
+    
+    def variable_trafo(self):
+        '''Fokker-Planck equation be simplifite by variable transformation'''
+        
+        self.x_th = np.sqrt(2)*(self.v_th - self.mu)/self.sig
+        self.x_r  = np.sqrt(2)*(self.v_r - self.mu)/self.sig
+    
+        return
+    
     def diffusion_approximation(self):
                                 
         h_arr     = self.model_param['h_arr'] # efficacy               
@@ -895,53 +904,63 @@ class LIF_Theory():
     def EV_brute_force(self):
         '''Find numeric solution for eigenvalues determined by the characteristic equation brute force'''
         
-        x_th    = self.model_parameter['x_th']
-        x_reset = self.model_parameter['x_reset']
-                        
-        # make a mesh
-        L = 500                
-        x = np.arange(-L, L)
-        y = x 
-                
-        X, Y = np.meshgrid(x, y)
+        # Brute Force scan complex plane    
+        x_arr = np.linspace(-5, 0, 100)
+        y_arr = np.linspace(0, 5, 100)
+
+        X,Y = np.meshgrid(x_arr, y_arr)
         
-        err_arr = np.zeros(X.size)
+        # Eigenfunctions are given by a linear combination of parabolic cylinder functions 
+        # The three coefficients which need to chosen such that the eigenfunctions fulfil the bc 
+        # This leads to homogeneous matrix equation for the coefficients
+        # We look for those ev for which the determinant of the matirx is zero 
+        deter = np.zeros_like(x_arr)
         
-        for i, x,y in enumerate(zip(X.flatten(), Y.flatten())):
+        f_th = exp(-0.25*self.x_th)
+        f_r  = exp(-0.25*self.x_r)
+        
+        for i, x in enumerate(x_arr):
             
-            lam_n = np.complex(x, y)
-            z_n   = 1. - lam_n              
-            err_arr[i] = pcfu(z_n, x_reset) - pcfu(z_n, x_th)
-            
-        err_mat = np.reshape(err_arr, (L, L))
+            deter[i] = f_th*pcfu(z_n, self.x_th) - f_r*pcfu(z_n, self.x_r) 
+        
+                                
+#         for i, x,y in enumerate(zip(X.flatten(), Y.flatten())):
+#               
+#             lam_n = np.complex(x, y)
+#             z_n   = 1. - lam_n              
+#             err_arr[i] = pcfu(z_n, x_reset) - pcfu(z_n, x_th)
+#               
+#         err_mat = np.reshape(err_arr, (L, L))
         
         pass
-        
+                
         return
         
             
-    def EV(self, n, m = 1):
+    def EV(self, n, m = 1. method = 'bf'):
         '''Find numeric solution for eigenvalues determined by the characteristic equation'''
-         
-        # Brute Force scan complex plane    
-        x = np.linspace(-5, 0, 100)
-        y = np.linspace(0, 5, 100)
+        
+        if method == 'bf'
+            self.EV_brute_force()
+        
+        
+        
         
         X = np.meshgrid(x)
         Y = np.meshgrid(y)
         
         err = np.zeros_like(X)
         
-        f_th = exp(-0.25*self.x_th)
-        f_r  = exp(-0.25*self.x_r)
-        
-            
+        f_th = exp(0.25*self.x_th)
+        f_r  = exp(0.25*self.x_r)
+                    
         for i, x in enumerate(X):
             for j, y in enumerate(Y):
             
-                z = mp.mpc(x, y)
+                z = mpc(x, y)
             
                 err[j, i] = pcfu(self.x_th, z)/f_th - pcfu(self.x_r, z)/f_r
+                    
                      
         return
                      

@@ -1,10 +1,10 @@
 import numpy as np
 import h5py as h5
 import matplotlib.pyplot as plt
-import nest
+# import nest
 
 from LIF_response import LIF_Response, LIF_Theory
-from nest import pynestkernel
+# from nest import pynestkernel
 
 def test_nest_0():
         
@@ -459,8 +459,19 @@ def test_theory_stationary_rate():
         
     plt.show()
 
+def test_theory_ev():
 
-def test_theory():
+    mu  = 0.8
+    sig = 0.2
+    
+    model_param = model_parameter(mu, sig)    
+    
+    theory = LIF_Theory(model_param)
+
+    theory.EV(1)
+
+
+def test_theory_rate():
         
     mu  = 0.8
     sig = 0.1
@@ -474,17 +485,17 @@ def test_theory():
             
 if __name__ == '__main__':
     
-    hE = 0.01
-    
-    filename = f'./data/test_hE_{hE}.h5'    
-
+#     hE = 0.01    
+#     filename = f'./data/test_hE_{hE}.h5'    
 
 #     run(filename, nest = False, mc = True)
 
-    plot_rate(filename, nest=False, mc = True, miind = False)    
+#     plot_rate(filename, nest=False, mc = True, miind = False)    
 #     plot_stationary_density(filename, miind = False)    
 #     plot_stationary_density(filename, miind=False, mc=True, nest=False)    
 #     test_theory_stationary_rate()
+
+    test_theory_ev()
     
     print('Finished')
     
