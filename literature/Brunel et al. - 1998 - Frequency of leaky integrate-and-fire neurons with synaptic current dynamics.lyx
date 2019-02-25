@@ -1,0 +1,652 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Firing frequency of leaky integrate-and-fire neuron with synaptic current
+ dynamics 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Itemize
+Integrate-and-fire with time constant 
+\begin_inset Formula $\tau'$
+\end_inset
+
+ much smaller than the membrane time constant 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+First order correction to the frequency due to 
+\begin_inset Formula $\tau'$
+\end_inset
+
+ is proportional to the square rote of the ratio 
+\begin_inset Formula $\sqrt{\tau'/\tau}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This implies that a correction is important even when 
+\begin_inset Formula $\tau'$
+\end_inset
+
+ small to 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The goal of this paper is to understand how the introduction of synaptic
+ current dynamics modifies the firing properties of the neuron 
+\end_layout
+
+\begin_layout Itemize
+Calculation suggests that a neuron with a finite synaptic time constant
+ can be 
+\series bold
+reduced
+\series default
+ to an effective IF neuron without synaptic current dynamics but with an
+ 
+\series bold
+effective threshold
+\series default
+ 
+\end_layout
+
+\begin_layout Section
+Model 
+\end_layout
+
+\begin_layout Itemize
+Leaky integrate-and-fire 
+\begin_inset Formula 
+\[
+\tau\dot{V}(t)=-V(t)+\tau I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dynamics of the afferent current 
+\begin_inset Formula 
+\[
+\tau'\dot{I}=-I(t)+\sum_{i=1}^{N}J_{i}\sum_{k}\delta(t_{i}^{k}-t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Model incoming spikes as Poisson process 
+\begin_inset Formula $S(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Approximate Poisson process by diffusion process with the same mean and
+ variance as the Poisson process 
+\begin_inset Formula 
+\[
+\left\langle S(t)\right\rangle =JN\nu=\tilde{\mu}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\langle S(t)S(t')\right\rangle =J^{2}\nu N\delta(t-t')=\tilde{\sigma}^{2}\delta(t-t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The equation for 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $I$
+\end_inset
+
+ become 
+\begin_inset Formula 
+\begin{align*}
+\tau\dot{V}(t) & =-V(t)+\tau I(t)\\
+\dot{I} & =-\frac{1}{\tau'}\left(I(t)+\tau'\tilde{\mu}\right)+\frac{\tilde{\sigma}}{\tau'}\xi(t)
+\end{align*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Transformation of variables 
+\begin_inset Formula 
+\begin{align*}
+I & =\tilde{\mu}+\frac{\tilde{\sigma}}{\sqrt{2\tau'}}z\\
+V & =\tau\tilde{\mu}+\sqrt{\frac{\tau}{2}}\tilde{\sigma}x
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This leads to 
+\begin_inset Formula 
+\begin{align*}
+\dot{x} & =-\frac{x}{\tau}+\frac{z}{\sqrt{\tau\tau'}}\\
+\dot{z} & =-\frac{z}{\tau'}+\sqrt{\frac{2}{\tau'}}\xi(t)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+\dot{I}=-\frac{1}{\tau'}\left(I(t)+\tilde{\mu}\right)+\frac{\tilde{\sigma}}{\tau'}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use 
+\begin_inset Formula 
+\[
+\dot{I}=\frac{\tilde{\sigma}}{\sqrt{2\tau'}}\dot{z}
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula 
+\begin{align*}
+\frac{\tilde{\sigma}}{\sqrt{2\tau'}}\dot{z} & =-\frac{1}{\tau'}\left(I(t)+\tilde{\mu}\right)+\frac{\tilde{\sigma}}{\tau'}\xi(t)\\
+ & =-\frac{1}{\tilde{\sigma}}\sqrt{\frac{2}{\tau'}}\left(I(t)+\tilde{\mu}\right)+\sqrt{\frac{2}{\tau'}}\xi(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula 
+\[
+z=\frac{\sqrt{2\tau'}}{\tilde{\sigma}}\left(I-\tilde{\mu}\right)
+\]
+
+\end_inset
+
+we find 
+\begin_inset Formula 
+\[
+\dot{z}=-\frac{z}{\tau'}+\sqrt{\frac{2}{\tau'}}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second equation
+\begin_inset Formula 
+\[
+\tau\dot{V}(t)=-V(t)+\tau I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+can be written as 
+\begin_inset Formula 
+\[
+\dot{V}(t)=-\frac{1}{\tau}V(t)+I(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula 
+\[
+\dot{V}=\sqrt{\frac{\tau}{2}}\tilde{\sigma}\dot{x}
+\]
+
+\end_inset
+
+yields 
+\begin_inset Formula 
+\begin{align*}
+\sqrt{\frac{\tau}{2}}\tilde{\sigma}\dot{x} & =-\frac{1}{\tau}V(t)+I(t)\\
+\dot{x} & =-\frac{\sqrt{2}}{\tilde{\sigma}\tau^{3/2}}V(t)+\frac{1}{\tilde{\sigma}}\sqrt{\frac{2}{\tau}}I(t)\\
+\dot{x} & =-\frac{\sqrt{2}}{\tilde{\sigma}\tau^{3/2}}V(t)+\frac{1}{\tilde{\sigma}}\sqrt{\frac{2}{\tau}}\left(\tilde{\mu}+\frac{\tilde{\sigma}}{\sqrt{2\tau'}}z\right)\\
+\dot{x} & =-\frac{\sqrt{2}}{\tilde{\sigma}\tau^{3/2}}V(t)+\frac{1}{\tilde{\sigma}}\sqrt{\frac{2}{\tau}}\tilde{\mu}+\frac{1}{\sqrt{\tau\tau'}}z\\
+\dot{x} & =-\frac{1}{\tau}\frac{1}{\tilde{\sigma}}\sqrt{\frac{2}{\tau}}\left(V-\tau\tilde{\mu}\right)+\frac{1}{\sqrt{\tau\tau'}}z
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using
+\begin_inset Formula 
+\[
+x=\frac{1}{\sigma}\sqrt{\frac{2}{\tau}}\left(V-\tau\tilde{\mu}\right)
+\]
+
+\end_inset
+
+we arrive at
+\begin_inset Formula 
+\[
+\dot{x}=-\frac{1}{\tau}x+\frac{1}{\sqrt{\tau\tau'}}z
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Threshold and reset potential in the new variables
+\begin_inset Formula 
+\[
+\hat{\theta}=\sqrt{2}\frac{\theta-\mu}{\sigma},\quad\hat{H}=\sqrt{2}\frac{H-\mu}{\sigma}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu=\tau\tilde{\mu}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma=\tilde{\sigma}\sqrt{\tau}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stationary distribution of 
+\begin_inset Formula $z$
+\end_inset
+
+ is now a Gaussian distribution with zero mean and unit variance 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rescale time 
+\begin_inset Formula $t\rightarrow\tau t$
+\end_inset
+
+ leads to
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tau}\dot{x} & =-\frac{x}{\tau}+\frac{z}{\sqrt{\tau\tau'}}\\
+\frac{1}{\tau}\dot{z} & =-\frac{z}{\tau'}+\sqrt{\frac{2}{\tau'}}\xi(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Defining 
+\begin_inset Formula $k=\sqrt{\tau'/\tau}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\dot{x} & =-x+\frac{z}{k}\\
+\dot{z} & =-\frac{z}{k^{2}}+\frac{\sqrt{2}}{k}\xi(t)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+There is a 
+\begin_inset Formula $\tau'$
+\end_inset
+
+ missing in the second term of the second equation?
+\begin_inset Formula 
+\[
+\dot{z}=-\frac{z}{k^{2}}+\frac{\sqrt{2}}{k}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The correlation function 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow\infty}c(\tau)=\left\langle z(t)z(t+\tau)\right\rangle \sim\text{exp}\left(-\frac{\left|\tau\right|}{k^{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Wiener-Khintchine theorem
+\begin_inset Formula 
+\[
+2\pi C(\omega)=\left\langle Z(\omega)Z(\omega)^{*}\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Taking the Fourier transform of 
+\begin_inset Formula 
+\[
+\dot{z}=-\frac{z}{k^{2}}+\frac{\sqrt{2}}{k}\xi(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+yields 
+\begin_inset Formula 
+\[
+i\omega Z=-\frac{Z}{k^{2}}+\frac{\sqrt{2}}{k}\Xi(\omega)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solving for 
+\begin_inset Formula $Z$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\left(i\omega+k^{-2}\right)Z=\frac{\sqrt{2}}{k}\frac{\Xi(\omega)}{\left(i\omega+k^{-2}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting into the first equation 
+\begin_inset Formula 
+\begin{align*}
+2\pi C(\omega) & =\frac{2}{k^{2}}\left\langle \frac{\Xi(\omega)}{\left(i\omega+k^{-2}\right)}\frac{\Xi^{*}(\omega)}{\left(-i\omega+k^{-2}\right)}\right\rangle \\
+ & =\frac{2}{k^{2}}\frac{1}{\omega^{2}+k^{-4}}\left\langle \Xi(\omega)\Xi^{*}(\omega)\right\rangle \\
+ & =\frac{2}{k^{2}}\frac{1}{\omega^{2}+k^{-4}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Where we used that 
+\begin_inset Formula 
+\[
+\left\langle \Xi(\omega)\Xi^{*}(\omega)\right\rangle =1
+\]
+
+\end_inset
+
+which follows from 
+\begin_inset Formula $\left\langle \xi(t)\xi(t')\right\rangle =\delta(t-t')$
+\end_inset
+
+.
+ Hence, we find 
+\begin_inset Formula 
+\begin{align*}
+2\pi c(\tau) & =\frac{2}{k^{2}}F^{-1}\left[\frac{1}{\omega^{2}+k^{-4}}\right]\\
+2\pi c(\tau) & =\frac{2}{k^{2}}\exp\left(\frac{\left|\tau\right|}{k^{2}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+One time scales much longer than 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+ the current may be considered as Gaussian white noise
+\end_layout
+
+\begin_layout Itemize
+To understand the effect of the current dynamics, consider two stochastic
+ processes 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $k=0$
+\end_inset
+
+: 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ which follows 
+\begin_inset Formula $\dot{x}_{0}=-x_{0}+\sqrt{2}\xi(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k\neq0$
+\end_inset
+
+: 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ follows coupled equation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consider square root of the mean quadratic difference between both processes
+ 
+\begin_inset Formula 
+\[
+\Delta(t)=k\sqrt{z(0)^{2}\left(e^{-2t}-e^{-2t/k^{2}}\right)+1-e^{-2t/k^{2}}}+\mathcal{O}(k^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
