@@ -1,0 +1,775 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+How Spike Generation Mechanisms Determine the Neuronal Response to Fluctuating
+ Inputs 
+\end_layout
+
+\begin_layout Section*
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+Input-output transformation performed by a neuron is characterized by 
+\begin_inset Formula $f$
+\end_inset
+
+-
+\begin_inset Formula $I$
+\end_inset
+
+ relationship 
+\end_layout
+
+\begin_layout Itemize
+Fluctuating time-dependent inputs are not covered by 
+\begin_inset Formula $f$
+\end_inset
+
+-
+\begin_inset Formula $I$
+\end_inset
+
+ curve 
+\end_layout
+
+\begin_layout Itemize
+If temporal variations of the input are small enough, the dynamics are dominated
+ by the 
+\series bold
+linear response properties
+\series default
+ of the neurons 
+\begin_inset Formula 
+\[
+T(t)=\frac{r_{\text{out}}(t)}{r_{\text{in}}(t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, response of the neuron to an arbitrary input with weak temporal variation
+s can be predicted if we determine how its instantaneous firing rate is
+ modulated by 
+\series bold
+sinusoidal
+\series default
+ inputs 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Take period time signal 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ with period 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Fourier series
+\begin_inset Formula 
+\[
+f(x)=a_{0}+\sum_{n=1}^{N}\left[a_{n}\cos(\omega t)+b_{n}\sin(\omega t)\right]
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\omega=2\pi/T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Theoretical studies
+\end_layout
+
+\begin_layout Itemize
+In the presence of white noise, LIF neurons behave like 
+\series bold
+low-pass filters
+\series default
+ with a 
+\series bold
+cutoff
+\series default
+ depending on the passive membrane the constant and the average firing rate
+ of the neuron 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The time scale on which the neuron can respond to temporal changes to the
+ input are controlled by the membrane time constant.
+ The neuron can not respond arbitrary fast? Cut off at high frequencies?
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The gain of the filter decays as 
+\begin_inset Formula $1/\sqrt{f}$
+\end_inset
+
+, where 
+\begin_inset Formula $f$
+\end_inset
+
+ is the input frequency 
+\end_layout
+
+\begin_layout Itemize
+It phase shift reaches the value of 
+\begin_inset Formula $45^{\circ}$
+\end_inset
+
+ at sufficient large 
+\begin_inset Formula $f$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Conductance-based models behave differently 
+\end_layout
+
+\begin_layout Section*
+Materials and Methods 
+\end_layout
+
+\begin_layout Itemize
+Synaptic current 
+\begin_inset Formula 
+\[
+I_{\text{syn}}(t)=I_{0}+\delta I(t)+I_{\text{noise}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Firing rate 
+\begin_inset Formula $\nu(t)$
+\end_inset
+
+ is determined as a function of 
+\begin_inset Formula $I_{0}+\delta I(t)$
+\end_inset
+
+ averaging over many realization of 
+\begin_inset Formula $I_{\text{noise}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the limit of small 
+\begin_inset Formula $\delta I(t)$
+\end_inset
+
+, a linear relationship can be written between 
+\begin_inset Formula $\nu(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta I(t)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nu(t)=\Phi(I_{0})+\int_{0}^{\infty}dt'\kappa(t')\delta I(t-t')
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hence,
+\begin_inset Formula 
+\[
+\delta\nu(t)=\int_{0}^{\infty}dt'\kappa(t')\delta I(t-t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can set the lower integral border to 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ and change the arguments 
+\begin_inset Formula 
+\[
+\delta\nu(t)=\int_{-\infty}^{\infty}dt'\kappa(t-t')\delta I(t')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The kernel 
+\begin_inset Formula $\kappa(t-t')=\kappa(-(t'-t))$
+\end_inset
+
+ is shifted by 
+\begin_inset Formula $t$
+\end_inset
+
+ to the right and it as flipped at the 
+\begin_inset Formula $y$
+\end_inset
+
+-axis.
+ To ensure causality 
+\begin_inset Formula $\kappa(t-t')=0$
+\end_inset
+
+ for 
+\begin_inset Formula $t'>t$
+\end_inset
+
+.
+ Take the Fourier transform on both sides and use the convolution theorem
+\begin_inset Formula 
+\[
+\delta\hat{\nu}(\omega)=\hat{\kappa}(\omega)\delta\hat{I}(\omega)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Here 
+\begin_inset Formula $\Phi(I_{0})$
+\end_inset
+
+ is the average firing rate of the neuron in response to a current 
+\begin_inset Formula $I_{0}$
+\end_inset
+
+ in presence of noise 
+\end_layout
+
+\begin_layout Itemize
+For sinusoidally modulation 
+\begin_inset Formula 
+\[
+I_{\text{syn}}(t)=I_{0}+I_{1}\cos(2\pi ft)+I_{\text{noise}}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $I_{1}\ll I_{0}$
+\end_inset
+
+ the response is 
+\begin_inset Formula 
+\[
+\nu(t)=\nu_{0}+\nu_{1}(f)\cos\left(2\pi ft+\phi(f)\right)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $v_{1}(f)$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi(f)$
+\end_inset
+
+ are related to the modulus and the argument of the Fourier transform of
+ 
+\begin_inset Formula $\kappa$
+\end_inset
+
+,
+\begin_inset Formula $\hat{\kappa}(f)$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\begin{align*}
+v_{1}(f) & =I_{1}\left|\hat{\kappa}(f)\right|\\
+\phi(f) & =\text{arg}\hat{\kappa}(f)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We showed before 
+\begin_inset Formula 
+\[
+\delta\hat{v}(\omega)=\hat{\kappa}(\omega)\delta\hat{I}(\omega)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\delta\hat{\nu}(\omega)=\nu_{1}(f)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\delta I(t)=I_{1}\cos(\omega_{0}t)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\delta\hat{I}(\omega)=I_{1}\pi\left(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Back transform 
+\begin_inset Formula 
+\begin{align*}
+\delta I(t) & =I_{1}\frac{1}{2}\int d\omega\,\left(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0})\right)e^{i\omega\tau}\\
+ & =I_{1}\frac{1}{2}\left(e^{-i\omega_{0}t}+e^{i\omega_{0}\tau}\right)\\
+ & =I_{1}\cos(\omega t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can write 
+\begin_inset Formula 
+\begin{align*}
+\hat{\kappa}(\omega) & =\left|\hat{\kappa}(\omega)\right|e^{i\text{arg}\left[\hat{\kappa}(\omega)\right]}
+\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula 
+\begin{align*}
+\hat{\kappa}(\omega)\delta\hat{I}(\omega) & =\left|\hat{\kappa}(\omega)\right|e^{i\text{arg}\left[\hat{\kappa}(\omega)\right]}I_{1}\pi\left(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0})\right)\\
+ & =I_{1}\left|\hat{\kappa}(\omega)\right|\pi\left(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0})\right)e^{i\text{arg}\left[\hat{\kappa}(\omega)\right]}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Back transform 
+\begin_inset Formula 
+\begin{align*}
+ & I_{1}\left|\hat{\kappa}(\omega)\right|\frac{1}{2}\int_{-\infty}^{\infty}d\omega\left(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0})\right)e^{i\text{arg}\left[\hat{\kappa}(\omega)\right]}e^{i\omega t}\\
+= & I_{1}\left|\hat{\kappa}(\omega)\right|\frac{1}{2}\left(e^{i(\omega_{0}t+\text{arg}\left[\hat{\kappa}(\omega_{0})\right])}+e^{i(-\omega_{0}t+\text{arg}\left[\hat{\kappa}(-\omega_{0})\right])}\right)\\
+= & I_{1}\left|\hat{\kappa}(\omega)\right|\frac{1}{2}\left(e^{i(\omega_{0}t+\text{arg}\left[\hat{\kappa}(\omega_{0})\right])}+e^{-i(\omega_{0}t+\text{arg}\left[\hat{\kappa}(\omega_{0})\right])}\right)\\
+= & I_{1}\left|\hat{\kappa}(\omega)\right|\cos(\omega_{0}t+\text{arg}\left[\hat{\kappa}(\omega_{0})\right])
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+gain
+\series default
+ of the response at frequency 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $v_{1}(f)/I_{1}$
+\end_inset
+
+ and the phase response 
+\begin_inset Formula $\phi(f)$
+\end_inset
+
+ completely characterize the linear filtering properties of the neuron 
+\end_layout
+
+\begin_layout Itemize
+Diffusion approximation 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If postsynaptic currents are instantaneous then the Gaussian noise is white
+ 
+\end_layout
+
+\begin_layout Itemize
+For exponentially decaying synaptic currents, the Gaussian noise is colored
+ with a correlation equal to the synaptic time constant 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Conductance-based models 
+\end_layout
+
+\begin_layout Subsection*
+Nonlinear integrate-and-fire neuron models
+\end_layout
+
+\begin_layout Itemize
+Family of one-variable neuronal models 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)+I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Synaptic current 
+\begin_inset Formula $I_{\text{syn}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi(V)$
+\end_inset
+
+ is a function of voltage that describes the spike-generating currents 
+\end_layout
+
+\begin_layout Itemize
+Passive membrane time constant is 
+\begin_inset Formula $\tau_{m}=C/g_{L}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+LIF neuron: 
+\begin_inset Formula $\psi(V)=0$
+\end_inset
+
+, the resulting spike is instantaneous, and the neuron reset to voltage
+ 
+\begin_inset Formula $V_{r}$
+\end_inset
+
+ after a spike
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $\psi(V)$
+\end_inset
+
+ is supralinear, the membrane potential diverges to infinity in 
+\series bold
+finite time 
+\end_layout
+
+\begin_layout Itemize
+This divergence can be identified with the firing of a spike, if one supplements
+ the equation with a reset condition 
+\end_layout
+
+\begin_layout Itemize
+A threshold 
+\begin_inset Formula $V_{T}$
+\end_inset
+
+ can be defined as the voltage at which the slope of the 
+\begin_inset Formula $I$
+\end_inset
+
+-
+\begin_inset Formula $V$
+\end_inset
+
+ curves vanishes which is given by 
+\begin_inset Formula 
+\[
+\psi'(V_{T})=g_{L}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Take the derivative of the r.h.s.
+ of 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and look for the zero 
+\begin_inset Formula 
+\begin{align*}
+\frac{d}{dV}\left[-g_{L}(V-V_{L})+\psi(V)\right] & =0\\
+\psi'(V) & =g_{L}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is the point where the derivative changes its sign.
+ The corresponding current 
+\begin_inset Formula $I_{T}=g_{L}(V_{T}-V_{L})-\psi(V_{T})$
+\end_inset
+
+ is the threshold current above which tonic firing occurs.
+ Set derivative 
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula $V=V_{T}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0 & =-g_{L}(V_{T}-V_{L})+\psi(V_{T})+I_{T}\\
+I_{T} & =g_{L}(V_{T}-V_{L})-\psi(V_{T})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spike slope factor 
+\begin_inset Formula 
+\[
+\Delta_{T}=\frac{g_{L}}{\psi''(V_{T})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Parameter is inversely proportional to the curvature of the 
+\begin_inset Formula $I$
+\end_inset
+
+-
+\begin_inset Formula $V$
+\end_inset
+
+ curve at the threshold 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+What is the 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
