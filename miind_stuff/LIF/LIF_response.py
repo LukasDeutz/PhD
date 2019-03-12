@@ -3,19 +3,23 @@ Created on 3 Jan 2019
 
 @author: lukas
 '''
+
+import os
 import numpy as np
-from mpmath import findroot, cosh, sinh, pcfu, pcfv, exp, mpc
 import h5py as h5
-from timeit import itertools
 import miind_api as api
 import mesh3
+import mpmath as mp 
+import itertools as it
+
+
+from scipy.optimize import brentq, root
+from scipy.integrate import quad
+from scipy.ndimage import gaussian_filter
+
 
 from miind_library.generate_simulation import generate_model, generate_empty_fid, generate_matrix
 
-# from scipy.integrate import quad
-# from scipy.special import erf
-
-import mpmath as mp 
 import nest
 
 class LIFMeshGenerator:
@@ -37,26 +41,32 @@ class LIFMeshGenerator:
         self.N_grid  = self.miind_param['N_grid'] # number of points in the interval [V_res, self.v_th); e.g if self.v_min = self.v_th, the grid holds double this number of bins
         self.dt      = self.miind_param['dt'] # timestep for each bin
         self.strip_w = self.miind_param['w_strip']# arbitrary value for strip width
-        
-        
+                
     def generateLIFMesh(self):
-                        
-        # Add extra cells add the end avoid that neurin mass gets kicked out of the strip
-        self.v_max = self.v_th + 2*self.hE
-              
+                                      
         if self.v_min > self.v_reset:
             raise ValueError ("v_min must be less than v_reset.")
 
         with open(self.basename + '.mesh','w') as meshfile:
             meshfile.write('ignore\n')
             meshfile.write('{}\n'.format(self.dt))
-
+                                    
             ts = self.dt * np.arange(self.N_grid)
+                                                                                    
             pos_vs = self.v_rev + (self.v_th - self.v_rev)*np.exp(-ts/self.tau)
-            pos_vs = np.insert(pos_vs, 0, self.v_max)
+            
+            # Add additional cells
+            # The first will become the threshold cell
+            pos_vs = np.insert(pos_vs, 0, self.v_th + 2*self.hE)
+            # And the second cell will serve as the reversal cell when mass reaches the stationary cell
+            pos_vs = np.insert(pos_vs, 0, self.v_th + 4*self.hE)
+            
             neg_vs = self.v_rev + (self.v_min - self.v_rev)*np.exp(-ts/self.tau)
 
-            self.dv_stat = pos_vs[-1]
+            # right border stat cell
+            self.v_stat_rb = pos_vs[-1]
+            # left border stat cell
+            self.v_stat_lb = neg_vs[-1]
 
             if len(neg_vs) > 0:
                 for v in neg_vs:
@@ -92,15 +102,15 @@ class LIFMeshGenerator:
 
     def generateLIFStationary(self):
         statname = self.basename + '.stat'
-
-        v_plus = self.v_rev + self.dv_stat
-        self.v_min  = self.v_rev - self.dv_stat
+        
+        v0 = self.v_stat_lb
+        v1 = self.v_stat_rb
 
         with open(statname,'w') as statfile:
             statfile.write('<Stationary>\n')
             format = "%.9f"
             statfile.write('<Quadrilateral>')
-            statfile.write('<vline>' +  str(self.v_min) + ' ' + str(self.v_min) + ' ' +  str(v_plus) + ' ' + str(v_plus) + '</vline>')
+            statfile.write('<vline>' +  str(v0) + ' ' + str(v0) + ' ' +  str(v1) + ' ' + str(v1) + '</vline>')
             statfile.write('<wline>' +  str(0)     + ' ' + str(self.strip_w)     + ' ' +  str(self.strip_w)      + ' ' + str(0)      + '</wline>')
             statfile.write('</Quadrilateral>\n')
             statfile.write('</Stationary>')
@@ -210,7 +220,9 @@ class LIF_Response_Nest():
         dt        = self.nest_param['dt'] # time step
         t_end     = self.nest_param['t_end']
         dt_report = self.nest_param['dt_report']
-            
+        
+        
+        nest.ResetKernel()
         nest.SetKernelStatus({'resolution': dt*1.e3})
                     
         pop = nest.Create('iaf_psc_delta', N, params = self.nest_model_parameter())
@@ -274,7 +286,6 @@ class LIF_Response_Nest():
             path = 'nest/rate/' + key
             h5f.create_dataset(path, data = value)
             
-
         # save parameter                            
         h5f.create_group('nest/parameter')        
         h5f['nest/parameter'].update(self.nest_param)
@@ -423,11 +434,14 @@ class LIF_Response_Miind():
         # generate model from mesh
         v_reset   = self.model_param['v_reset'] # reset potential
         v_th      = self.model_param['v_th'] # threshold potential
+        hE        = self.model_param['hE'] # efficacy        
         h_arr     = self.model_param['h_arr'] # efficacy
         N_mc      = self.miind_param['N_mc'] # number of monte carlo samples
         uac       = self.miind_param['uac'] # caculate transition matrix geomtrically
+                
+        eps = 0.01*hE
         
-        generate_model(self.basename, v_reset, v_th)
+        generate_model(self.basename, v_reset, v_th, eps = eps)
         generate_empty_fid(self.basename)    
                 
         for i, h in enumerate(h_arr):
@@ -460,6 +474,7 @@ class LIF_Response_Miind():
 <Reporting>
 <Density node="LIF0" t_start="0.0" t_end="{t_end}" t_interval="{t_report}" />
 <Rate node="LIF0" />
+<!-- Display node="LIF0" -->
 </Reporting>
 <Connections>
 <Connection In="ExcInp0" Out="LIF0">{K} {hE} 0</Connection>
@@ -517,6 +532,7 @@ class LIF_Response_Miind():
 <Reporting>
 <Density node="LIF0" t_start="0.0" t_end="{t_end}" t_interval="{t_report}" />
 <Rate node="LIF0" />
+<!-- Display node="LIF0" -->
 </Reporting>
 <Connections>
 <Connection In="ExcInp0" Out="LIF0">{KE} {hE} 0</Connection>
@@ -781,7 +797,14 @@ class LIF_Theory():
         
         self.x_th = np.sqrt(2)*(self.v_th - self.mu)/self.sig
         self.x_r  = np.sqrt(2)*(self.v_r - self.mu)/self.sig
-    
+        
+        # similarity trafo f transform FP eq. into Schroedinger eq.
+        self.f_th = mp.exp(-0.25*self.x_th**2)
+        self.f_r  = mp.exp(-0.25*self.x_r**2)
+        
+        self.y_th = -self.x_th
+        self.y_r  = -self.x_r
+
         return
     
     def diffusion_approximation(self):
@@ -820,9 +843,7 @@ class LIF_Theory():
     
         if self.mu > self.v_th:
             self.r0_approx = 1./(self.tau*np.log(self.mu/(self.mu - self.v_th)))
-        
-#         r0 = 1./(self.tau*mp.sqrt(2.*mp.pi))*mp.quad(lambda x: mp.exp(-0.5*x**2), [b, mp.inf])
-        
+                
         self.r0 = float(r0)
                         
         return self.r0
@@ -861,106 +882,391 @@ class LIF_Theory():
     def get_lam(self, n):
         '''Get eigenvalues '''
         
-        if not self.lam_cache.has_key(n):            
-            self.lam_cache[n] = self.EV(n)
+        if not n in self.lam_cache:            
+            self.EV(n)
         
         return self.lam_cache[n]
 
-    def get_zeta(self, n):
+
+    def EV_cxroot(self):
         
-        return self.theta/self.sig2*np.sqrt(self.eta**2 + 2*self.sig2*self.get_lam(n)) 
+        import cxroots
         
-    def CEAS(self, n, m = 1):
-        '''Calculates analytic approximation of the characteristic equation'''
-            
-        i = np.complex(0, 1)
-        a_n = 2*np.pi*n
+        L = 5
+
+        f_th = mp.exp(-0.25*self.x_th**2)
+        f_r  = mp.exp(-0.25*self.x_r**2)
         
-        if self.xi == 0: 
-            
-            zeta = i*2*np.pi*n    
+        f  = lambda z: np.complex(mp.pcfu(z, self.x_th)/f_th - mp.pcfu(z, self.x_r)/f_r)
+                
+#         C = cxroots.Rectangle([-L, 0], [-0.1, L])
         
-        elif self.xi < 0: # noise-dominated regime: Eigenvalues are real, i.e. zeta must be purely imaginary or real                
-            
-            zeta = i * (a_n + 1./a_n * (1. + self.xi - np.exp(self.xi) + (-1)**m * np.sqrt((1 + self.xi - np.exp(self.xi))**2 - 2.*a_n**2*(np.exp(self.xi) - 1))))                 
+        C = cxroots.Rectangle([-L, 0], [-0.1, 0.1])
         
-        else: # drift-dominated regime: Eigenvalues are complex, i.e. zeta must have a nonzero real and complex part        
+        r = C.roots(f)
+        r.show()
+        
+        return
+        
+    def phi_n(self, n, v):
             
-            zeta = self.xi + np.log(1 + np.sqrt(1 - np.exp(-2*self.xi))) + (-1)**m*i*a_n
+        # coefficients 
+        lam = self.get_lam(n)
+        z = -0.5 + lam
+        
+        f_th = mp.exp(-0.25*self.y_th**2)
+        f_r  = mp.exp(-0.25*self.y_r**2)
+                
+        a =  mp.pcfu(z, self.y_th)/f_th
+        b = -mp.pcfv(z, self.y_th)/f_th                
+        c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
+
+        phi_arr = np.zeros_like(v, dtype = np.complex)
+
+        v_arr = v[v < self.v_r]
+        
+        y_arr = -np.sqrt(2)*(v_arr - self.mu)/self.sig
+                
+        for i, y in enumerate(y_arr):
             
-        return zeta
+            phi_arr[i] = c*mp.exp(-0.25*y**2)*mp.pcfu(z, y)
+
+        v_arr = v[v >= self.v_r]
+        y_arr = -np.sqrt(2)*(v_arr - self.mu)/self.sig
+
+        k = i+1
+
+        for y in y_arr:
+            phi_arr[k] = mp.exp(-0.25*y**2)*(a*mp.pcfv(z, y) + b*mp.pcfu(z, y))
+            k += 1
+       
+        return phi_arr             
+    
+    def dphi_n(self, n, v):
+
+        # coefficients 
+        lam = self.get_lam(n)
+        z = -0.5 + lam
+        
+        f_th = mp.exp(-0.25*self.y_th**2)
+        f_r = mp.exp(-0.25*self.y_r**2)
+                
+        a =  mp.pcfu(z, self.y_th)/f_th
+        b = -mp.pcfv(z, self.y_th)/f_th                
+        c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
+
+        dphi_n = np.zeros_like(v, dtype = np.complex)
+
+        v_arr = v[v < self.v_r]
+        
+        y_arr = -np.sqrt(2)*(v_arr - self.mu)/self.sig
+                        
+        for i, y in enumerate(y_arr):
             
-    def CES(self, n, m = 1):
-        '''Finds numeric solution for characteristic equation for given n and xi'''
+            dphi_n[i] = -c*mp.exp(-0.25*y**2)*mp.pcfu(z-1, y)
+
+        v_arr = v[v >= self.v_r]
+        y_arr = -np.sqrt(2)*(v_arr - self.mu)/self.sig
+
+        k = i+1
+
+        for x in y_arr:
+            dphi_n[k] = -mp.exp(-0.25*y**2)*(a*mp.rf(0.5 - z, 1)*mp.pcfv(z-1, y) + b*mp.pcfu(z-1, y))
+            k += 1
+       
+        return dphi_n 
+    
+    def phi_tilde_n(self, n, v):
+
+        # coefficients 
+        lam = self.get_lam(n)
+        z = -0.5 + lam
+        
+        f_th = mp.exp(-0.25*self.y_th**2)
+        f_r  = mp.exp(-0.25*self.y_r**2)
+                
+        a =  mp.pcfu(z, self.y_th)/f_th
+        b = -mp.pcfv(z, self.y_th)/f_th                
+        c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
+        
+        def phi(x):
             
-        # characteristic equation
-        ce = lambda zeta: zeta*cosh(zeta) + self.xi*sinh(zeta) - np.exp(self.xi)*zeta
-        # find root using analytic approximation as the start point
+            if x < self.x_r:
+                phi_x = c*mp.exp(-0.25*x**2)*mp.pcfu(z, -x)
+                
+            elif x >= self.x_r:
+                phi_x = mp.exp(-0.25*x**2)*(a*mp.pcfv(z, -x) + b*mp.pcfu(z, -x))
+
+            return phi_x
+
+        v_min = -10*(self.v_th - self.v_r)
+        x_min = np.sqrt(2)*(v_min - self.mu)/self.sig
+                
+        b = mp.quad(lambda x: mp.exp(0.25*x**2)*mp.pcfu(z, -x)*phi(x), [x_min, self.x_th]) #mp.mpf('-inf')
+        
+        x_arr = np.sqrt(2)*(v-self.mu)/np.sqrt(self.sig)
+
+        phi_tilde_n = np.zeros_like(x_arr)
+
+        for i, x in enumerate(x_arr):
+
+            phi_tilde_n[i] = mp.pcfu(z, x)
+        
+        return phi_tilde_n
+
+    def cluster(self, r_cand_arr):
+        
+        # threshold distance 
+        cluster_arr = [r_cand_arr[0, :]]
+                
+        center_arr = [r_cand_arr[0, :]]
                     
-        zeta = findroot(ce, self.CEAS(n, m), maxsteps= 100) 
+        th = 1
+                    
+        for r in r_cand_arr[1:,:]:
             
-        return zeta
+            for i, center in enumerate(center_arr):
+                
+                new_cluster = True                               
+                dist = np.linalg.norm(r - center)
+                    
+                if dist < th:
+                    cluster_arr[i] = np.vstack((cluster_arr[i], r)) 
+                    center_arr[i] = np.mean(cluster_arr[i], axis = 0)
+                    new_cluster = False
+                    break
+            
+            if new_cluster:                
+                cluster_arr.append(r)
+                center_arr.append(r)
+                
+        return center_arr
+
+    def EV_save(self):
+
+        filename = f'EV_mu_{self.mu}_sig_{self.sig}.h5'
+        
+        data_path = './data/eigenvalues/'        
+        files = [f for f in os.listdir(data_path) if f.endswith('.h5')]
+        
+        if any(filename in f for f in files):
+            pass
+        else:
+            with h5.File(filename, mode = 'w') as hf5:            
+                # save eigenvalues
+                dset  = hf5.create_dataset('complex', self.lam_complex)                         
+                dset.attrs['N'] = len(self.lam_complex)                  
+                dset = hf5.create_group('real', self.lam_real)
+                dset.attrs['N'] = len(self.lam_real)
+        
+        return 
+                                
+    def EV_test(self):
+
+        L = 20
+        Nx = 200
+        Ny = 200
+        
+        x_arr = np.linspace(-L, -0.4, Nx)
+        y_arr = np.linspace(0, 20, Ny)
+  
+        f_th = mp.exp(-0.25*self.x_th**2)
+        f_r  = mp.exp(-0.25*self.x_r**2)
+                                                
+        deter = lambda z: mp.pcfu(z, self.y_th)*f_r - mp.pcfu(z, self.y_r)*f_th
+
+        zc_real_mat = np.zeros((Ny, Nx-1), dtype = np.float)
+        zc_imag_mat = np.zeros((Ny, Nx-1), dtype = np.float)
+ 
+        for j, y in enumerate(y_arr):             
+            
+            deter_arr = np.zeros(Nx, dtype = np.complex)
+            
+            for i, x in enumerate(x_arr):
+                                
+                z = complex(x, y) 
+                deter_arr[i] = deter(z)
+                
+            zc_real_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.real)))/2
+            zc_imag_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.imag)))/2
+
+        sig = 2
+
+        blur_zc_real_mat = gaussian_filter(zc_real_mat, sigma = sig, mode = 'mirror')
+        blur_zc_imag_mat = gaussian_filter(zc_imag_mat, sigma = sig, mode = 'mirror')
+
+        poles_mat = blur_zc_real_mat*blur_zc_imag_mat
+                
+        # consider only candidates larger than threshold
+        th = 0.3*np.max(poles_mat.flatten())                
+        poles_mat[poles_mat < th] = 0
+        
+        X, Y = np.meshgrid(x_arr[:-1], y_arr)
+    
+        # candidate locations
+        x_cand_arr = X[poles_mat > 0]
+        y_cand_arr = Y[poles_mat > 0]
+               
+        r_cand_arr = np.column_stack((x_cand_arr, y_cand_arr))
+               
+        z0_cand_arr = self.cluster(r_cand_arr)        
+        z0_arr = np.zeros(len(z0_cand_arr), dtype = np.complex)
+        
+        for i, z0 in enumerate(z0_cand_arr):
+            
+            success = True
+            
+            for method in ['mueller', ]
+                        
+            try: 
+                z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver='muller')
+            except:
+                success = False
+                print(f'Mueller method failed at {z0}')
+            if not success:
+                try: 
+                    z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver='newton')
+                    print(f'Newton method failed at {z0}')
+                except:
+                    print
+            
+            
+                
+                         
+        return
+                
+                
+        
+        
+        
+        
+
+
+
+#         zc_mat = zc_real_mat - zc_imag_mat
+# 
+#         k = 2
+# 
+#         X, Y = np.meshgrid(np.arange(-k, k), np.arange(-k, k))
+#         
+#         K = np.exp(-0.5*(X+Y)**2)/np.sqrt(2*np.pi)
+# 
+#         I, J = np.meshgrid(len(x_arr), len(y_arr))
+#         
+# #         i0_arr = I[zc_real_mat == 1]
+# #         j0_arr = J[zc_real_mat == 1]
+#          
+#         k = 4
+#                 
+#         for i in range(np.size(zc_mat, 1)):
+#             for j in range(np.size(zc_mat, 0)):
+#                                                 
+#                 x_start = i - k
+#                 x_end   = i + k
+#                 
+#                 y_start = j - k
+#                 y_end   = j + k
+# 
+#         gs = plt.GridSpec(1,1)
+#         ax0 = plt.subplot(gs[0])
+#         ax0.imshow(zc_mat)
+# #         ax1 = plt.subplot(gs[1])
+# #         ax1.imshow(zc_imag_mat)        
+#         plt.show()
+    
+        
+        
+        return
     
     def EV_brute_force(self):
         '''Find numeric solution for eigenvalues determined by the characteristic equation brute force'''
         
-        # Brute Force scan complex plane    
-        x_arr = np.linspace(-5, 0, 100)
-        y_arr = np.linspace(0, 5, 100)
+        import matplotlib.pyplot as plt
+        
+        basis = 'pcf'
+         
+        if basis == 'pcf': 
+            # Eigenfunctions are given by a linear combination of parabolic cylinder functions 
+            # The three coefficients which need to chosen such that the eigenfunctions fulfil the bc 
+            # This leads to homogeneous matrix equation for the coefficients
+            # We look for those ev for which the determinant of the matirx is zero 
 
-        X,Y = np.meshgrid(x_arr, y_arr)
+            f_th = mp.exp(-0.25*self.x_th**2)
+            f_r  = mp.exp(-0.25*self.x_r**2)
+                                                
+            y_r  = -self.x_th
+            y_th = -self.x_r
+
+            deter = lambda z: mp.pcfu(z, y_th)*f_r - mp.pcfu(z, y_r)*f_th
+#             deter = lambda z: mp.pcfu(z, self.x_th)*f_r - mp.pcfu(z, self.x_r)*f_th
+                  
+        elif basis == 'chf':
+            pass
+#             deter = lambda z: phi_1(z, self.x_th)*f_r - phi_2(z, self.x_r)*f_th
         
-        # Eigenfunctions are given by a linear combination of parabolic cylinder functions 
-        # The three coefficients which need to chosen such that the eigenfunctions fulfil the bc 
-        # This leads to homogeneous matrix equation for the coefficients
-        # We look for those ev for which the determinant of the matirx is zero 
-        deter = np.zeros_like(x_arr)
+        #=======================================================================
+        # Zeros on the real line
+        #=======================================================================
+        L = 20        
+        M = 1000
         
-        f_th = exp(-0.25*self.x_th)
-        f_r  = exp(-0.25*self.x_r)
+        z_arr = np.linspace(-L, -0.4, M)
+
+        deter_arr = np.zeros_like(z_arr)
+         
+        for i, x in enumerate(z_arr):
+                        
+            z = x
+             
+            deter_arr[i] = deter(z)
+ 
+        # zero cross idx                
+        zc_idx = np.abs(np.diff(np.sign(deter_arr)))/2
+        zc_idx = np.append(zc_idx, 0)
+        zc_idx = zc_idx.astype(np.bool)
+         
+        a_arr = z_arr[zc_idx]
+        b_arr = z_arr[np.roll(zc_idx, 1)]
+         
+        z0_arr = np.zeros_like(a_arr)
+  
+        for i, (a, b) in enumerate(zip(a_arr, b_arr)):
+             
+            z0_arr[i] = brentq(deter, a, b)
+ 
+        lam_arr = z0_arr[::-1] + 0.5
         
-        for i, x in enumerate(x_arr):
-            
-            deter[i] = f_th*pcfu(z_n, self.x_th) - f_r*pcfu(z_n, self.x_r) 
+        for n, lam in enumerate(lam_arr):
         
-                                
-#         for i, x,y in enumerate(zip(X.flatten(), Y.flatten())):
-#               
-#             lam_n = np.complex(x, y)
-#             z_n   = 1. - lam_n              
-#             err_arr[i] = pcfu(z_n, x_reset) - pcfu(z_n, x_th)
-#               
-#         err_mat = np.reshape(err_arr, (L, L))
+            self.lam_cache[n] = lam
         
-        pass
-                
         return
         
             
-    def EV(self, n, m = 1. method = 'bf'):
+    def EV(self, n, m = 1., method = 'bf'):
         '''Find numeric solution for eigenvalues determined by the characteristic equation'''
-        
-        if method == 'bf'
+                
+        if method == 'bf':
             self.EV_brute_force()
-        
-        
-        
-        
-        X = np.meshgrid(x)
-        Y = np.meshgrid(y)
-        
-        err = np.zeros_like(X)
-        
-        f_th = exp(0.25*self.x_th)
-        f_r  = exp(0.25*self.x_r)
-                    
-        for i, x in enumerate(X):
-            for j, y in enumerate(Y):
-            
-                z = mpc(x, y)
-            
-                err[j, i] = pcfu(self.x_th, z)/f_th - pcfu(self.x_r, z)/f_r
-                    
+        elif method == 'cx_root':
+            self.EV_cxroot()
+        elif method == 'test':
+            self.EV_test()
+#         X = np.meshgrid(x)
+#         Y = np.meshgrid(y)
+#         
+#         err = np.zeros_like(X)
+#         
+#         f_th = exp(0.25*self.x_th)
+#         f_r  = exp(0.25*self.x_r)
+#                     
+#         for i, x in enumerate(X):
+#             for j, y in enumerate(Y):
+#             
+#                 z = mpc(x, y)
+#             
+#                 err[j, i] = pcfu(self.x_th, z)/f_th - pcfu(self.x_r, z)/f_r
+#                     
                      
         return
                      
@@ -995,11 +1301,7 @@ class LIF_Theory():
         '''Stationary solution of the Fokker-Planck operator'''
 
         pass
-        
-    def phi_n(self, n, v):
-        '''Eigenfunction corresponding to lam_n'''
-    
-        pass
+
 
 
 
