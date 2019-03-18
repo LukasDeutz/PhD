@@ -1839,14 +1839,53 @@ where
 
 
 \begin_inset Formula 
-\begin{align*}
-\mu & =\tau_{\text{m}}KJ\\
-\sigma^{2} & =\tau_{\text{m}}KJ^{2}
-\end{align*}
+\begin{align}
+\mu(t) & =KJr(t)\\
+\sigma^{2}(t) & =KJ^{2}r(t)
+\end{align}
 
 \end_inset
 
-This is illustrated in 
+This turns into a Langevin equation 
+\begin_inset Formula 
+\[
+\tau_{\text{m}}\frac{dV}{dt}=f(V)+\mu+\sqrt{\tau_{m}}\sigma^{2}\xi(t),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ is Gaussian white noise with zero mean and unit variance
+\begin_inset Formula 
+\[
+\left\langle \xi(t)\xi(t')\right\rangle =\delta(t-t')
+\]
+
+\end_inset
+
+Can be transformed into a Fokker-Planck equation describing 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+This is illustrated in Fig.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
