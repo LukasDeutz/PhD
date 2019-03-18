@@ -360,6 +360,13 @@ In theoretical neuroscience, neuronal dynamics are studied analytically.
 
 \begin_layout Subsection
 The population density method
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-population-density"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -606,7 +613,7 @@ key "Lapicque1907,Stein1967"
 
 \end_inset
 
- (LIF), 
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq: H-H"
@@ -1319,23 +1326,7 @@ reference "eq: r"
 \end_layout
 
 \begin_layout Standard
-To study analytically, approximate 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq: PDE"
-
-\end_inset
-
-.
- To gain additional insight it is desirable to also study Eq.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq: PDE"
-
-\end_inset
-
- analytically.
+analytically.
  One extensively used method to simplify Eq.
  
 \begin_inset CommandInset ref
@@ -1352,70 +1343,41 @@ The diffusion approximation
 \end_layout
 
 \begin_layout Standard
-If a neuron receives sufficiently strong excitatory input, then the membrane
- potential exceeds a threshold value which will cause the neuron to emit
- an action potential, followed by a reset and refractory period.
- This threshold mechanism can be either intrinsically incorporated into
- the model, like it is for example in Hodgkin-Huxley (H-H) type models 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Hodgkin1952"
+Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: PDE"
 
 \end_inset
 
- or it can be introduced artificially.
- Prominent examples of neuron models with artificial threshold mechanism
- are the linear 
+ has been studied analytically for different types of integrate-and-fire
+ neuron models 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "Fusi1999"
-
-\end_inset
-
-, leaky 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Lapicque1907,Stein1967"
-
-\end_inset
-
- (LIF), quadratic 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Ermentrout1996"
-
-\end_inset
-
- and exponential integrate-and-fire neuron 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Fourcaud-Trocme2003"
+LatexCommand cite
+key "Amit1997,Brunel2000"
 
 \end_inset
 
 .
- The quadratic and exponential integrate-and-fire neuron incorporate nonlinear
- dynamics to mimic the superthreshold transients of the membrane potential
- after a spike is initiated.
+ The state of an integrate-and-fire neuron is only described by the membrane
+ potential 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Hence, they are easier to study compared e.g.
+ to the four dimensional H-H type model introduced in Eq.
  
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Fourcaud-Trocme2003"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: H-H"
 
 \end_inset
 
- compared the response of simple integrate-and-fire and more realistic H-H
- type neurons to a noisy sinusoidal input.
- They showed that nonlinear superthreshold dynamics must be included to
- achieve a better agreement with the more realistic models.
+, while still being able to capture important dynamical features observed
+ on a single neuron level, or in a network context.
  
-\end_layout
-
-\begin_layout Standard
-Simple integrate-and-fire models are easier to investigate because they
- have less parameters and less dynamical variables, but they are still able
- to capture the main features of the subthreshold dynamics of the membrane
- potential 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Bernander1991"
@@ -1423,16 +1385,502 @@ key "Bernander1991"
 \end_inset
 
 .
- For an overview on the theory of different integrate-and-fire models see
+ The most prominent example is the leaky integrate-and-fire neuron model
  
 \begin_inset CommandInset citation
-LatexCommand citet
-key "Burkitt2006,Burkitt2006a"
+LatexCommand citep
+key "Lapicque1907,Stein1967"
+
+\end_inset
+
+ (LIF).
+ It only describes the subthreshold dynamics of the membrane potential which
+ can be modeled by RC circuit
+\begin_inset Formula 
+\begin{equation}
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+I_{\text{s}}(t),\label{eq: LIF}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $I_{s}(t)$
+\end_inset
+
+ is the external synaptic current.
+ The LIF neuron is not capable of modeling the generation of an action potential
+ which needs to be included by introducing an artificial threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+.
+ If the membrane potential of the neuron exceeds 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+, a spike is emitted and the membrane potential is reset to a reset value
+ 
+\begin_inset Formula $V_{\text{r}}$
+\end_inset
+
+.
+ Other examples of integrate-and-fire models, are the quadratic integrate-and-fi
+re 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ermentrout1996"
+
+\end_inset
+
+ (QIF) 
+\begin_inset Formula 
+\begin{equation}
+C\frac{dV}{dt}=\frac{g_{L}}{2\Delta_{\text{th}}}(V-V_{L})(V-V_{\text{th}})+I_{\text{s}}(t),\label{eq: QIF}
+\end{equation}
+
+\end_inset
+
+and exponential integrate-and-fire neuron model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud-Trocme2003"
+
+\end_inset
+
+ (EIF)
+\begin_inset Formula 
+\begin{equation}
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+g_{L}\Delta_{\text{th}}\exp\left(\frac{V-V_{\text{th}}}{\Delta_{\text{th}}}\right)+I_{\text{s}}(t),\label{eq: EIF}
+\end{equation}
+
+\end_inset
+
+Both models contain nonlinear dynamics to mimic the superthreshold transients
+ of the membrane potential due to spike initiation.
+ In case of the of the QIF neuron, they are quadratic, and in case of the
+ EIF they are exponential.
+ The parameter 
+\begin_inset Formula $\Delta_{\text{th}}$
+\end_inset
+
+ is inversely proportional to the curvature of the 
+\begin_inset Formula $I$
+\end_inset
+
+-
+\begin_inset Formula $V$
+\end_inset
+
+ curve at threshold, i.e.
+ it measures the sharpness of spike initiation.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud-Trocme2003"
+
+\end_inset
+
+ compared the response of the LIF, QIF and EIF neuron to noisy input with
+ the response of more realistic H-H type models and showed that the nonlinear
+ dynamics must be included to achieve a good agreement.
+ We can write Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: LIF"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: QIF"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: EIF"
+
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+\tau_{\text{m}}\frac{dV}{dt}=f(V)+I_{\text{s}}(t),
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tau_{\text{m}}=C/g_{L}$
+\end_inset
+
+ is the membrane time constant and 
+\begin_inset Formula $g_{L}$
+\end_inset
+
+ has been absorbed into synaptic current which is now in units of voltage.
+ The membrane time constant is typically in the order of 
+\begin_inset Formula $20$
+\end_inset
+
+ms.
+ For synaptic current based model, contributions from individual synapses
+ superimpose linearly and we can write 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I_{\text{s}}(t)=\tau_{\text{m}}\sum_{i=1}^{K}I_{i}(t),\label{eq: synaptic current}
+\end{equation}
+
+\end_inset
+
+The temporal characteristics of the synaptic dynamics 
+\begin_inset Formula $I_{i}(t)$
+\end_inset
+
+ depend on the type of the corresponding synapse.
+ Common types of receptors are 
+\end_layout
+
+\begin_layout Enumerate
+AMPA receptors which have decay time constants of the order of 
+\begin_inset Formula $2$
+\end_inset
+
+ms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Angulo1999"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+GABA
+\begin_inset Formula $_{\text{A}}$
+\end_inset
+
+ receptors which have decay time constants typically 
+\begin_inset Formula $5$
+\end_inset
+
+-
+\begin_inset Formula $10$
+\end_inset
+
+ms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Xiang1998"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+NMDA which have time decay constants about 
+\begin_inset Formula $100$
+\end_inset
+
+ms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sah1990"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Synaptic currents caused by a spike arrival have a raise and decay.
+ If the synaptic time constant is much smaller as the membrane time constant,
+ then the simplest approximation is to assume synaptic currents to be instantane
+ous
+\begin_inset Formula 
+\begin{equation}
+I_{i}(t)=J_{i}\sum_{n}\delta(t-t_{n}^{(i)}),\label{eq: delta synapse}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+ is the synaptic efficacy of the respective synapse in mV.
+ For current based delta-synapses, the membrane potential makes a jump by
+ 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+ at each spike arrival followed by an exponential decay.
+ If raise time of the synapse is fast compared to its decay time, then the
+ synaptic current can be approximated as a jump exponential decay 
+\begin_inset Formula 
+\begin{equation}
+\tau_{\text{s}}\frac{d}{dt}I_{i}(t)=-I_{i}(t)+\tau_{\text{m}}J_{i}\sum_{n}\delta(t-t_{n}^{(i)}),\label{eq: exponential synapse}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tau_{\text{s}}$
+\end_inset
+
+ synaptic time constant.
+ At each spike arrival, 
+\begin_inset Formula $I_{i}(t)$
+\end_inset
+
+ makes a jump by 
+\begin_inset Formula $J_{i}$
+\end_inset
+
+ followed by an exponential decay back to zero which is illustrated by the
+ blue curve in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: current-based synapse"
+
+\end_inset
+
+.
+ To include a synaptic raise time, 
+\begin_inset Formula $I_{i}(t)$
+\end_inset
+
+ can be modeled by the set of two equations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fourcaud2002"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\tau_{\text{s}}\frac{dI_{\text{s}}}{dt} & =-I_{\text{s}}(t)+I_{\text{r}}(t)\nonumber \\
+\tau_{\text{r}}\frac{dI_{\text{r}}}{dt} & =-I_{\text{r}}(t)+\tau_{\text{m}}J_{i}\sum_{n}\delta(t-t_{n}^{(i)}).\label{eq: synaptic current raise}
+\end{align}
+
+\end_inset
+
+The synaptic value for different ratios 
+\begin_inset Formula $\tau_{\text{r}}$
+\end_inset
+
+ is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: current-based synapse"
 
 \end_inset
 
 .
  
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/current_based_synapse.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Synaptic current (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: synaptic current raise"
+
+\end_inset
+
+) caused by single spike arrival for 
+\begin_inset Formula $\tau_{\text{s}}=2.0$
+\end_inset
+
+ ms and different values for 
+\begin_inset Formula $\tau_{\text{r}}=[0,\,0.5,\,1.0,\,2.0]$
+\end_inset
+
+.
+ Note that for 
+\begin_inset Formula $\tau_{\text{r}}=0$
+\end_inset
+
+, we recover Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: exponential synapse"
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: current-based synapse"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+For simplicity, we assume that the sum in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: current-based synapse"
+
+\end_inset
+
+ contains only a single type of synapses.
+ Using a mean-field ansatz introduced 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-population-density"
+
+\end_inset
+
+, and replacing all quantities in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: delta synapse"
+
+\end_inset
+
+by their respective averages yields 
+\begin_inset Formula 
+\[
+I_{\text{s}}(t)=\tau_{\text{m}}KJ\sum_{n}\delta(t-t_{n}^{(i)}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the average number of indegrees and 
+\begin_inset Formula $J$
+\end_inset
+
+ the average synaptic efficacy.
+ The spike times are Poisson distributed with rate 
+\begin_inset Formula $r(t)=K\overline{r}(t)$
+\end_inset
+
+.
+ The number of indegrees a cortical neuron in receives are typically in
+ the order of 
+\begin_inset Formula $10^{3}$
+\end_inset
+
+-
+\begin_inset Formula $10^{4}$
+\end_inset
+
+.
+ Hence, neurons are bombarded with inputs.
+ If the individually inputs cause only a small change in the membrane potential,
+ i.e.
+ 
+\begin_inset Formula $J$
+\end_inset
+
+ is small compared to the distance from the reset value 
+\begin_inset Formula $V_{\text{r}}$
+\end_inset
+
+ to threshold 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+, then 
+\begin_inset Formula $I_{\text{s}}(t)$
+\end_inset
+
+ can be well approximated by a Gaussian white noise with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}=\tau_{\text{m}}KJ$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mu & =\tau_{\text{m}}KJ\\
+\sigma^{2} & =\tau_{\text{m}}KJ^{2}
+\end{align*}
+
+\end_inset
+
+This is illustrated in 
+\end_layout
+
+\begin_layout Standard
+If the rate pooled inputs is large, and the change jumps caused in the synaptic
+ current is small, then the can be approximated by a Gaussian white noise.
+ This is illustrated in figure [] The normalized contribution of a single
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+-function input is called postsynaptic response function 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Burkitt2006a"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\epsilon(t)=\frac{1}{\tau_{\text{m}}}e^{-\frac{t}{\tau_{\text{m}}}}\theta(t)
+\]
+
+\end_inset
+
+The normalized postsynaptic response function is given by 
+\begin_inset Formula 
+\begin{equation}
+\epsilon(t)=\frac{e^{-\frac{t}{\tau_{\text{m}}}}-e^{-\frac{t}{\tau_{\text{s}}}}}{\tau_{\text{m}}-\tau_{\text{s}}}\theta(t)
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
