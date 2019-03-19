@@ -1311,23 +1311,24 @@ reference "eq: continuity equation"
 
  for the dynamics on the population level can be derived from the microscopic
  details of the neuron model without introducing any additional parameter.
- It can be generalized to several populations by by introducing multiple
- density functions representing the individual populations.
- Synaptic delays can be introduced into Eq.
+ It can be generalized to networks with multiple populations each described
+ by a single density function.
+ Different synaptic delays can be included into Eq.
  
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq: r"
 
 \end_inset
 
-.
+ to mimic a spatial arrangement of the populations within the network.
+ A large drawback of the PDM is that it can not model synaptic plasticity,
+ because all heterogeneity in the connectivity is averaged out.
  
 \end_layout
 
 \begin_layout Standard
-analytically.
- One extensively used method to simplify Eq.
+In theoretical neuroscience, Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1335,24 +1336,8 @@ reference "eq: PDE"
 
 \end_inset
 
- is the diffusion approximation.
-\end_layout
-
-\begin_layout Subsection
-The diffusion approximation 
-\end_layout
-
-\begin_layout Standard
-Eq.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq: PDE"
-
-\end_inset
-
- has been studied analytically for different types of integrate-and-fire
- neuron models 
+ has been studied subsequently for more and more complex integrate-and-fire
+ neurons 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Amit1997,Brunel2000"
@@ -1360,14 +1345,25 @@ key "Amit1997,Brunel2000"
 \end_inset
 
 .
- The state of an integrate-and-fire neuron is only described by the membrane
+ All these studies are based on the diffusion approximation which we will
+ introduce in section ...
+ .
+ Before, we discuss the most prominent examples of integrate-and-fire neurons.
+ 
+\end_layout
+
+\begin_layout Subsection
+Integrate-and-fire neurons 
+\end_layout
+
+\begin_layout Standard
+The state of an integrate-and-fire neuron is only described by the membrane
  potential 
 \begin_inset Formula $V$
 \end_inset
 
-.
- Hence, they are easier to study compared e.g.
- to the four dimensional H-H type model introduced in Eq.
+ which simplifies the analysis if compared e.g.
+ against the four dimensional H-H type model introduced in Eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1375,8 +1371,9 @@ reference "eq: H-H"
 
 \end_inset
 
-, while still being able to capture important dynamical features observed
- on a single neuron level, or in a network context.
+.
+ Despite their simplicity, they are still able to capture important dynamical
+ features observed on a single neuron level, or in a network context.
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1385,7 +1382,7 @@ key "Bernander1991"
 \end_inset
 
 .
- The most prominent example is the leaky integrate-and-fire neuron model
+ The most commonly used point neuron model is leaky integrate-and-fire neuron
  
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1527,6 +1524,7 @@ where
 \end_inset
 
 ms.
+ In the analytical studies, current based synapses .
  For synaptic current based model, contributions from individual synapses
  superimpose linearly and we can write 
 \end_layout
@@ -1693,10 +1691,6 @@ reference "fig: current-based synapse"
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \align center
