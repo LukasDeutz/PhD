@@ -273,9 +273,9 @@ Understanding the behavior of large recurrent networks of spiking neurons
  A first step in understanding the dynamical properties of such networks
  is to determine the location and stability of equilibria and how they depend
  on the connectivity profile and single neuron properties.
- A network may exhibit multiple fix points associated with different dynamical
- behaviors, like asynchronous irregular, global oscillatory or bursting
- activity all obsequiously observed in experiment [].
+ A network may have multiple fix points each associated with a different
+ dynamical behavior, like asynchronous irregular, global oscillatory or
+ bursting activity all obsequiously observed in experiment [].
  To better understand how these different dynamical regimes emerge, and
  how the network can transition between them by e.g.
  changing the external drive or the interplay between excitation and inhibition
@@ -288,10 +288,10 @@ Understanding the behavior of large recurrent networks of spiking neurons
 \end_layout
 
 \begin_layout Standard
-In computational neuroscience, the most common method to simulate neural
- circuits is by means of direct simulation.
+In computational neuroscience, the most common method is to simulate neural
+ circuits by means of direct simulation.
  This approach follows the dynamics of all neurons individually.
- Interactions between pairs neurons are mediated via synapses.
+ Interactions between pairs of neurons are mediated via synapses.
  A huge advantage of direct simulations are that they give access to observables
  like firing rate statistics, or correlation measures, on the level of single
  neurons.
@@ -325,8 +325,8 @@ n which may differ depending on the type of the pre- and postsynaptic neuron.
  Parameters which define the neuron model are often assumed to be identical
  for all neurons in the same population have the same parameters.
  In this setting, one is usually not interested in the dynamical features
- of individual neurons, but instead on the dynamical features of the individual
- populations as whole like e.g.
+ of individual neurons, but instead on the dynamical features of the populations
+ as a whole like e.g.
  the average population firing rate, interspike interval statistics (ISI),
  or the statistics of pairwise or higher order correlations between neuron
  activity.
@@ -1348,12 +1348,44 @@ key "Amit1997,Brunel2000"
  All these studies are based on the diffusion approximation which we will
  introduce in section ...
  .
- Before, we discuss the most prominent examples of integrate-and-fire neurons.
  
 \end_layout
 
 \begin_layout Subsection
-Integrate-and-fire neurons 
+Diffusion approximation
+\end_layout
+
+\begin_layout Standard
+In the diffusion approximation, the jump process represented by the second
+ term in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: PDE"
+
+\end_inset
+
+ is replaced by a diffusion advection process.
+ The diffusion and advection coefficients can be derived by describing the
+ time evolution of the probability density by the Chapman-Kolmogorov equation
+ and expanding it in a Kramer-Moyals expansion 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Riksen1992"
+
+\end_inset
+
+.
+ In case of a Poisson process, the Kramers-Moyal expansion has infinite
+ number of terms.
+ Truncating it after the second order yields the diffusion approximation.
+ We will illustrate how the diffusion approximation comes about for a general
+ integrate-and-fire neuron model with current based synapse.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Integrate-and-fire neuron
 \end_layout
 
 \begin_layout Standard
@@ -1455,7 +1487,7 @@ C\frac{dV}{dt}=-g_{L}(V-V_{L})+g_{L}\Delta_{\text{th}}\exp\left(\frac{V-V_{\text
 Both models contain nonlinear dynamics to mimic the superthreshold transients
  of the membrane potential due to spike initiation.
  In case of the of the QIF neuron, they are quadratic, and in case of the
- EIF they are exponential.
+ EIF, they are exponential.
  The parameter 
 \begin_inset Formula $\Delta_{\text{th}}$
 \end_inset
@@ -1505,7 +1537,7 @@ reference "eq: EIF"
  as 
 \begin_inset Formula 
 \begin{equation}
-\tau_{\text{m}}\frac{dV}{dt}=f(V)+I_{\text{s}}(t),
+\tau_{\text{m}}\frac{dV}{dt}=f(V)+I_{\text{s}}(t),\label{eq: integrate-and-fire}
 \end{equation}
 
 \end_inset
@@ -1518,31 +1550,58 @@ where
 \begin_inset Formula $g_{L}$
 \end_inset
 
- has been absorbed into synaptic current which is now in units of voltage.
+ has been absorbed into synaptic current which is now in the units of voltage.
  The membrane time constant is typically in the order of 
 \begin_inset Formula $20$
 \end_inset
 
 ms.
- In the analytical studies, current based synapses .
- For synaptic current based model, contributions from individual synapses
- superimpose linearly and we can write 
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Current-based synapses 
+\end_layout
+
+\begin_layout Standard
+Current-based synapses are state do not depend on the state of the neuron,
+ i.e.
+ contributions from individual synapses superimpose linearly so that 
+\begin_inset Formula $I_{\text{s}}(t)$
+\end_inset
+
+ can be written as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-I_{\text{s}}(t)=\tau_{\text{m}}\sum_{i=1}^{K}I_{i}(t),\label{eq: synaptic current}
+I_{\text{s}}(t)=\tau_{\text{m}}\sum_{j=1}^{K}I_{j}(t),\label{eq: synaptic current}
 \end{equation}
 
 \end_inset
 
-The temporal characteristics of the synaptic dynamics 
-\begin_inset Formula $I_{i}(t)$
+where 
+\begin_inset Formula $I_{j}(t)$
 \end_inset
 
- depend on the type of the corresponding synapse.
- Common types of receptors are 
+ is the synaptic current associated with the 
+\begin_inset Formula $j$
+\end_inset
+
+th synapse.
+ Synaptic currents have due to a spike arrival have typically a fast raise
+ time followed by slower the decay time Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: current-based synapse"
+
+\end_inset
+
+.
+ The time scale of the decay time depends on the receptor type of the synapse.
+ Common receptors are 
 \end_layout
 
 \begin_layout Enumerate
@@ -1599,13 +1658,12 @@ key "Sah1990"
 \end_layout
 
 \begin_layout Standard
-Synaptic currents caused by a spike arrival have a raise and decay.
- If the synaptic time constant is much smaller as the membrane time constant,
- then the simplest approximation is to assume synaptic currents to be instantane
-ous
+If the synaptic time constant is much smaller as the membrane time constant,
+ then the simplest approximation is to assume that synaptic currents are
+ instantaneous (delta-synapses)
 \begin_inset Formula 
 \begin{equation}
-I_{i}(t)=J_{i}\sum_{n}\delta(t-t_{n}^{(i)}),\label{eq: delta synapse}
+I_{j}(t)=\tau_{\text{m}}J_{j}\sum_{n}\delta(t-t_{n}^{(j)}),\label{eq: delta synapse}
 \end{equation}
 
 \end_inset
@@ -1615,17 +1673,17 @@ where
 \end_inset
 
  is the synaptic efficacy of the respective synapse in mV.
- For current based delta-synapses, the membrane potential makes a jump by
- 
+ For delta-synapses, the membrane potential makes a jump by 
 \begin_inset Formula $J_{i}$
 \end_inset
 
  at each spike arrival followed by an exponential decay.
- If raise time of the synapse is fast compared to its decay time, then the
- synaptic current can be approximated as a jump exponential decay 
+ If the raise time of the synapse is much faster compared to its decay time,
+ then the synaptic current can be approximated as a jump exponential decay
+ 
 \begin_inset Formula 
 \begin{equation}
-\tau_{\text{s}}\frac{d}{dt}I_{i}(t)=-I_{i}(t)+\tau_{\text{m}}J_{i}\sum_{n}\delta(t-t_{n}^{(i)}),\label{eq: exponential synapse}
+\tau_{\text{s}}\frac{d}{dt}I_{j}(t)=-I_{j}(t)+\tau_{\text{m}}J_{j}\sum_{n}\delta(t-t_{n}^{()}),\label{eq: exponential synapse}
 \end{equation}
 
 \end_inset
@@ -1653,11 +1711,11 @@ reference "fig: current-based synapse"
 \end_inset
 
 .
- To include a synaptic raise time, 
+ A synaptic raise time can be included by modeling 
 \begin_inset Formula $I_{i}(t)$
 \end_inset
 
- can be modeled by the set of two equations 
+ by the set of equations 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Fourcaud2002"
@@ -1750,6 +1808,14 @@ name "fig: current-based synapse"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Subsubsection
+Gaussian white noise
+\end_layout
+
+\begin_layout Standard
 For simplicity, we assume that the sum in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1758,53 +1824,122 @@ reference "fig: current-based synapse"
 \end_inset
 
  contains only a single type of synapses.
- Using a mean-field ansatz introduced 
+ In a network context, for an arbitrary neuron 
+\begin_inset Formula $i$
+\end_inset
+
+, Eq.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:The-population-density"
+reference "eq: synaptic current"
 
 \end_inset
 
-, and replacing all quantities in 
+ can be written as 
+\begin_inset Formula 
+\begin{equation}
+I_{\text{s},i}(t)=\tau_{\text{m}}\sum_{j=1}^{K_{i}}I_{ij}(t),
+\end{equation}
+
+\end_inset
+
+For delta-synapses 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq: delta synapse"
 
 \end_inset
 
-by their respective averages yields 
+, 
+\begin_inset Formula $I_{ij}(t)$
+\end_inset
+
+ is given by 
 \begin_inset Formula 
-\[
-I_{\text{s}}(t)=\tau_{\text{m}}KJ\sum_{n}\delta(t-t_{n}^{(i)}),
-\]
+\begin{equation}
+I_{ij}(t)=J_{ij}\sum_{n=1}\delta(t-t_{n}^{(ij)})\label{eq: delta synapse-1}
+\end{equation}
 
 \end_inset
 
-where 
-\begin_inset Formula $K$
+Using the mean-field ansatz introduced in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-population-density"
+
 \end_inset
 
- is the average number of indegrees and 
-\begin_inset Formula $J$
+, we replace all quantities in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: delta synapse-1"
+
 \end_inset
 
- the average synaptic efficacy.
- The spike times are Poisson distributed with rate 
-\begin_inset Formula $r(t)=K\overline{r}(t)$
+ by their population averaged counterparts such that
+\begin_inset Formula 
+\begin{equation}
+I_{\text{s}}(t)=\tau_{\text{m}}J\sum_{n}\delta(t-t_{n}^{(i)}),\label{eq: synaptic current-1}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $K=\bigl\langle K_{i}\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $J=\bigl\langle J_{ij}\bigr\rangle$
 \end_inset
 
 .
- The number of indegrees a cortical neuron in receives are typically in
- the order of 
-\begin_inset Formula $10^{3}$
+ The spike times are Poisson distributed with rate 
+\begin_inset Formula $Kr(t)$
+\end_inset
+
+.
+ The number of indegrees a cortical neuron receives are typically in the
+ order of 
+\begin_inset Formula $K\sim\mathcal{O}(10^{3}$
 \end_inset
 
 -
-\begin_inset Formula $10^{4}$
+\begin_inset Formula $10^{4})$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Braitenberg2013"
+
+\end_inset
+
+ and firing rates are in the order of 
+\begin_inset Formula $r(t)\sim\mathcal{O}(1$
+\end_inset
+
+-
+\begin_inset Formula $10^{2})$
+\end_inset
+
+Hz 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Source TODO
+\end_layout
+
 \end_inset
 
 .
- Hence, neurons are bombarded with inputs.
+ Hence, neurons receive a large number of inputs in a time interval of the
+ size of the membrane time constant 
+\begin_inset Formula $\tau_{\text{m}}$
+\end_inset
+
+.
  If the individually inputs cause only a small change in the membrane potential,
  i.e.
  
@@ -1823,51 +1958,7 @@ where
 \begin_inset Formula $I_{\text{s}}(t)$
 \end_inset
 
- can be well approximated by a Gaussian white noise with mean 
-\begin_inset Formula $\mu$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma^{2}=\tau_{\text{m}}KJ$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align}
-\mu(t) & =KJr(t)\\
-\sigma^{2}(t) & =KJ^{2}r(t)
-\end{align}
-
-\end_inset
-
-This turns into a Langevin equation 
-\begin_inset Formula 
-\[
-\tau_{\text{m}}\frac{dV}{dt}=f(V)+\mu+\sqrt{\tau_{m}}\sigma^{2}\xi(t),
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\xi(t)$
-\end_inset
-
- is Gaussian white noise with zero mean and unit variance
-\begin_inset Formula 
-\[
-\left\langle \xi(t)\xi(t')\right\rangle =\delta(t-t')
-\]
-
-\end_inset
-
-Can be transformed into a Fokker-Planck equation describing 
-\begin_inset Formula 
-\[
-\]
-
-\end_inset
-
-This is illustrated in Fig.
+ can be approximated by a Gaussian white noise which is illustrated in Fig.
  
 \begin_inset Note Note
 status open
@@ -1880,9 +1971,284 @@ TODO
 
 .
  
+\begin_inset Formula 
+\begin{equation}
+I_{\text{s}}(t)\approx\mu(t)+\sqrt{\tau_{\text{m}}}\sigma(t)\xi(t)\label{eq: synaptic current diffusion approx}
+\end{equation}
+
+\end_inset
+
+with mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ given by
+\begin_inset Formula 
+\begin{align}
+\mu(t) & =\tau_{\text{m}}KJr(t),\label{eq: mu}\\
+\sigma^{2}(t) & =\tau_{\text{m}}KJ^{2}r(t),\label{eq: sig}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\xi(t)$
+\end_inset
+
+ is Gaussian white noise with zero mean and unit variance 
+\begin_inset Formula 
+\begin{equation}
+\left\langle \xi(t)\right\rangle =0,\quad\left\langle \xi(t)\xi(t')\right\rangle =\delta(t-t')
+\end{equation}
+
+\end_inset
+
+Substituting 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: synaptic current diffusion approx"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: integrate-and-fire"
+
+\end_inset
+
+ yields the Langevin equation 
+\begin_inset Formula 
+\begin{equation}
+\tau_{\text{m}}\frac{dV}{dt}=f(V)+\mu+\sqrt{\tau_{m}}\sigma^{2}\xi(t)\label{eq: integrate-and-fire diffusion approx}
+\end{equation}
+
+\end_inset
+
+ The Langavin equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: integrate-and-fire diffusion approx"
+
+\end_inset
+
+ can be equivalently by described as Fokker-Planck equation (FPE) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Riksen1992"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\tau_{\text{m}}\frac{\partial\rho(V,t)}{\partial t}=-\frac{\partial}{\partial V}[\mu+f(V)]\rho(V,t)+\frac{\sigma^{2}}{2}\frac{\partial^{2}}{\partial V}\rho(V,t),\label{eq: FPE}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\rho(V,t)$
+\end_inset
+
+ is the probability density function already introduced in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-population-density"
+
+\end_inset
+
+.
+ By equivalence we mean that 
+\begin_inset Formula $\rho(V,t)$
+\end_inset
+
+ yields the same moments 
+\begin_inset Formula $\bigl\langle V^{m}\bigr\rangle$
+\end_inset
+
+ as we would obtain from the Langevin equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: integrate-and-fire diffusion approx"
+
+\end_inset
+
+.
+ The FPE is a linear 2nd order partial differential equation which describes
+ an advection diffusion process with time dependent drift 
+\begin_inset Formula $D_{1}$
+\end_inset
+
+ and diffusion coefficient 
+\begin_inset Formula $D_{2}$
+\end_inset
+
+ given by
+\begin_inset Formula 
+\begin{align*}
+D_{1} & =-\frac{1}{\tau_{\text{m}}}[\mu(t)+f(V)],\quad D_{2}=\frac{\sigma(t)^{2}}{2\tau_{\text{m}}}.
+\end{align*}
+
+\end_inset
+
+Note the that 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE"
+
+\end_inset
+
+ is equivalent to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: PDE"
+
+\end_inset
+
+, expect that the jumps process due to Poisson input is replaced by a diffusion
+ process.
+ A strength of formulating the problem in terms of a FPE is that the threshold
+ and reset mechanism can be incorporated into the boundary conditions.
+ To show this we rewrite 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE"
+
+\end_inset
+
+ as a continuity equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho(V,t)}{\partial t}=-\frac{\partial}{\partial V}J(V,t),\label{eq: FPE continuity}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{equation}
+J(V,t)=\frac{\mu+f(V)}{\tau_{\text{m}}}\rho(V,t)-\frac{\sigma^{2}}{2\tau_{\text{m}}}\frac{\partial}{\partial V}\rho(V,t).\label{eq: FPE flux}
+\end{equation}
+
+\end_inset
+
+is the probability flux through 
+\begin_inset Formula $V$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Because a spike is emitted each time 
+\begin_inset Formula $V$
+\end_inset
+
+ reaches 
+\begin_inset Formula $V_{\text{th}}$
+\end_inset
+
+, neurons can not reach the region 
+\begin_inset Formula $V>V_{\text{th}}$
+\end_inset
+
+ from which follows that 
+\begin_inset Formula $\rho(V>V_{\text{th}},t)=0$
+\end_inset
+
+.
+ The probability flux 
+\begin_inset Formula $J(V_{\text{th}},t)$
+\end_inset
+
+ yields the fraction of neuron passing through threshold at a given time
+ which is equivalent to the firing rate 
+\begin_inset Formula $J(V_{\text{th}},t)=r(t)$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $\rho(V>V_{\text{th}},t)$
+\end_inset
+
+ follows that 
+\begin_inset Formula $\rho(V_{\text{th}},t)=0$
+\end_inset
+
+ because 
+\begin_inset Formula $\rho(V,t)$
+\end_inset
+
+ would otherwise be discontinuous at threshold and its derivative infinite.
+ Neurons are reset immediately to the reset after the spike emission.
+ To ensure conversation of probability, the probability flux passing the
+ threshold must be reinserted at the reset value 
+\begin_inset Formula 
+\begin{equation}
+\lim_{\epsilon\rightarrow0}J(V_{\text{r}}+\epsilon,t)-J(V_{\text{r}}-\epsilon,t)=J(V_{\text{th}},t).
+\end{equation}
+
+\end_inset
+
+Finally, neurons should not enter the system from 
+\begin_inset Formula $V\rightarrow-\infty$
+\end_inset
+
+ which follows 
+\begin_inset Formula $\lim_{V\rightarrow-\infty}J(V,t)=0$
+\end_inset
+
+.
+ To summarize, we have in total three boundary boundary conditions (BC)
+\end_layout
+
+\begin_layout Enumerate
+Left boundary condition: 
+\begin_inset Formula 
+\begin{equation}
+\lim_{V\rightarrow-\infty}J(V,t)=0\label{eq: left bc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Right boundary condition: 
+\begin_inset Formula 
+\begin{equation}
+\rho(V_{\text{th}},t)=0\label{eq: right bc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Reset boundary condition: 
+\begin_inset Formula 
+\begin{equation}
+\lim_{\epsilon\rightarrow0}J(V_{\text{r}}+\epsilon,t)-J(V_{\text{r}}-\epsilon,t)=J(V_{\text{th}},t)=r(t).\label{eq: reset bc}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 If the rate pooled inputs is large, and the change jumps caused in the synaptic
  current is small, then the can be approximated by a Gaussian white noise.
  This is illustrated in figure [] The normalized contribution of a single
@@ -1916,7 +2282,7 @@ The normalized postsynaptic response function is given by
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 It replaces the synaptic current in Eq.
  
 \begin_inset CommandInset ref
@@ -1939,7 +2305,7 @@ reference "eq: neuron dynamics"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The strength of the noise and the average input current depend on the rate
  of the Poisson input and the parameters of the neuron model.
  In the diffusion approximation, Eq.
@@ -1951,19 +2317,203 @@ reference "eq: continuity equation"
 \end_inset
 
  reduces to a Fokker-Planck equation.
- This can be shown by describing the time evolution of the density by the
- Chapman-Kolmogorov equation which can be expanded in a Kramer-Moyals expansion
  
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Riksen1992"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solving the Fokker-Planck equation
+\end_layout
+
+\begin_layout Subsubsection
+Stationary case 
+\end_layout
+
+\begin_layout Standard
+The determine points of stationary activity 
+\begin_inset Formula $r(t)=r_{0}$
+\end_inset
+
+, one needs to find the stationary solution of Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE continuity"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+0=-\frac{\partial}{\partial V}J(V,t).
+\end{equation}
+
+\end_inset
+
+The above equation tells us that the flux must be constant.
+ From left BC follows 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: left bc"
+
+\end_inset
+
+ that 
+\begin_inset Formula $J(V,t)$
+\end_inset
+
+ must be zero for 
+\begin_inset Formula $V\rightarrow-\infty$
+\end_inset
+
+.
+ From 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: reset bc"
+
+\end_inset
+
+ that the flux must be equivalent to the rate 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ at threshold.
+ Hence, 
+\begin_inset Formula $J(V,t)$
+\end_inset
+
+ is 
+\begin_inset Formula $0$
+\end_inset
+
+ from 
+\begin_inset Formula $V<V_{r}$
+\end_inset
+
+ and makes a jump to 
+\begin_inset Formula $r$
+\end_inset
+
+ at the reset the 
+\begin_inset Formula $V_{r}$
+\end_inset
+
+ which we can write as
+\begin_inset Formula 
+\[
+J(V,t)=r\Theta(V-V_{\text{th}})\Theta(V-V_{\text{r}}).
+\]
+
+\end_inset
+
+Substituting 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE flux"
+
+\end_inset
+
+ into yields the stationary density 
+\begin_inset Formula $\rho_{0}(V)$
+\end_inset
+
+ from which the stationary firing rate can be caclulated.
+\begin_inset Formula 
+\begin{align}
+r=\frac{1}{\tau_{\text{m}}\sqrt{\pi}}\int_{\frac{V_{\text{r}}-\mu}{\sigma}}^{\frac{V_{\text{th}}-\mu}{\sigma}} & (1+\text{erf}(x))e^{x^{2}}dx\label{eq: rate}
+\end{align}
+
+\end_inset
+
+It is crucial to notice that 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ both depend on the firing themselves.
+ Hence, we need to find self-consistent solutions of Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: rate"
 
 \end_inset
 
 .
- In case of Poisson input, the Kramers-Moyal expansion has infinite number
- of terms.
- Truncating it after the second order yields the diffusion approximation.
+ So far we only considered a single population network.
+ In network with multiple populations 
+\begin_inset Formula $\boldsymbol{\alpha}=\{1,2,\ldots,M\}$
+\end_inset
+
+, mean an variance are given by 
+\begin_inset Formula 
+\begin{align}
+\mu_{\alpha}(t) & =\tau_{\text{m}}\sum_{\beta}K_{\alpha\beta}J_{\alpha\beta}r_{\beta}+K_{\alpha,\text{ext}}J_{\alpha,\text{ext}}r_{\text{ext}},\label{eq: mu multi}\\
+\sigma_{a}^{2}(t) & =\tau_{\text{m}}\sum_{\beta}K_{\alpha\beta}J_{\alpha\beta}r_{\beta}+K_{\alpha,\text{ext}}J_{\alpha,\text{ext}}^{2}r_{\text{ext}},\label{eq: sigma multi}
+\end{align}
+
+\end_inset
+
+where we included some additional constant external input from the surrounding
+ of the population.
+ The firing rate of population 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+r_{\alpha}=\frac{1}{\tau_{\text{m}}\sqrt{\pi}}\int_{\frac{V_{\text{r}}-\mu_{\alpha}}{\sigma_{\alpha}}}^{\frac{V_{\text{th}}-\mu_{\alpha}}{\sigma_{\alpha}}}(1+\text{erf}(x))e^{x^{2}}dx,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu_{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\alpha}$
+\end_inset
+
+ depend on 
+\begin_inset Formula $\boldsymbol{r}=\{r_{1},r_{2},\ldots,r_{M},r_{\text{ext}})$
+\end_inset
+
+ which can be seen from Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: mu multi"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: sigma multi"
+
+\end_inset
+
+.
+ To find stationary states of the network, we need to find values for the
+ vector 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ which solve the set of 
+\begin_inset Formula $M$
+\end_inset
+
+ equations in a self-consistent manner.
  
 \end_layout
 
@@ -2021,8 +2571,8 @@ key "Amit1997"
  showed that the equation for the stationary firing rage has a solution
  for which the average firing rate of the excitatory population matches
  the spontaneous activity of the external surrounding.
- This is desirable because the excitatory population can be viewed as the
- external surrounding from the perspective of neighboring cortical columns.
+ This is desirable because the excitatory population is the external surrounding
+ from the perspective of the neighboring cortical columns.
  Finding the solution for the output firing rate of a population which reproduce
 s the initial input firing rate is often referred to as self-consistent
  mean-field theory 
@@ -2039,16 +2589,393 @@ key "Amit1997"
  potential so that the network can respond faster to a stimulus.
 \end_layout
 
-\begin_layout Subsection
-Solving the Fokker-Planck equation
+\begin_layout Subsubsection
+Time dependent case 
+\end_layout
+
+\begin_layout Standard
+Solving the time dependent Fokker-Planck equation is a difficult task.
+ The stability of the stationary state presented in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Amit1997"
+
+\end_inset
+
+ has been studied extensively in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000,Brunel1999,Lindner2001"
+
+\end_inset
+
+.
+ If the temporal modulation of the firing rate is small compare to its stationar
+y baseline 
+\begin_inset Formula 
+\begin{equation}
+r(t)=r+\delta r(t),
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\bigl|\delta r(t)\bigr|\ll r$
+\end_inset
+
+, then perturbation theory 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ applicable.
+ The mean 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: mu"
+
+\end_inset
+
+ and variance 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: sig"
+
+\end_inset
+
+ of the Gaussian white noise can be split into a constant and time dependent
+ part 
+\begin_inset Formula 
+\begin{align}
+\mu(t) & =\mu+\delta\mu(t)\\
+\sigma^{2}(t) & =\sigma^{2}+\delta\sigma^{2}(t)
+\end{align}
+
+\end_inset
+
+and Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE continuity"
+
+\end_inset
+
+ can be written as 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho(V,t)}{\partial t}=-\frac{\partial}{\partial V}\left\{ J(V,t)+\delta J(V,t)\right\} 
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\begin{align}
+J(V,t) & =\left(\frac{\mu+f(V)}{\tau_{\text{m}}}-\frac{\sigma^{2}}{2\tau_{\text{m}}}\frac{\partial}{\partial V}\right)\rho(V,t),\\
+\delta J(V,t) & =\left(\delta\mu(t)-\frac{\delta\sigma^{2}(t)}{2}\frac{\partial}{\partial V}\right)\rho(V,t).
+\end{align}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\delta\mu(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta\sigma(t)$
+\end_inset
+
+ both depend implicitly one time through 
+\begin_inset Formula $\delta r(t)$
+\end_inset
+
+.
+ We define the relative rate modulation 
+\begin_inset Formula $\epsilon(t)=\delta r(t)/r$
+\end_inset
+
+ as a small parameter 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho(V,t)}{\partial t}=L_{0}\rho(V,t)+\epsilon(t)L_{1}\rho(V,t)\label{eq: FPE time dependent}
+\end{equation}
+
+\end_inset
+
+The above equations can be solved to first order in 
+\begin_inset Formula $\epsilon(t)$
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ using the following steps.
+ Expand the 
+\begin_inset Formula $\rho(V,t)$
+\end_inset
+
+ around the stationary solution derived in 
+\begin_inset Formula 
+\begin{equation}
+\rho(V,t)=\rho_{0}(V)+\rho_{1}(V,t)+\rho_{2}(V,t)+\ldots
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\rho_{n}(V,t)\sim\mathcal{O}(\epsilon(t)^{n})$
+\end_inset
+
+.
+ Substituting into Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE time dependent"
+
+\end_inset
+
+ and keeping only those up to first order in 
+\begin_inset Formula $\epsilon(t)$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\rho_{1}(V,t)}{\partial t}=L_{0}\rho_{1}(V,t)+\epsilon(t)L_{1}\rho_{0}(V)+\mathcal{O}(\epsilon)\label{eq: FPE time dependent-1}
+\end{equation}
+
+\end_inset
+
+where we used that 
+\begin_inset Formula $\rho_{0}(V)$
+\end_inset
+
+ is time independent and 
+\begin_inset Formula $L_{0}\rho(V)=0$
+\end_inset
+
+.
+ The above equation is a first order inhomogeneous partial differential
+ equation for 
+\begin_inset Formula $\rho_{1}(V,t)$
+\end_inset
+
+.
+ It is sufficient to consider only sinusoidal modulations 
+\begin_inset Formula $\epsilon(t)$
+\end_inset
+
+, because any periodic function can expanded in a Fourier series and each
+ frequency component of the Fourier series can be solved separately due
+ to the linearity of the problem.
+ It seems natural to choose 
+\begin_inset Formula 
+\[
+\epsilon(t)=\epsilon_{1}(\omega)\cos(\omega t)+\epsilon_{2}(\omega)\sin(\omega t),
+\]
+
+\end_inset
+
+where the frequency dependency of 
+\begin_inset Formula $\epsilon_{1}(\omega)$
+\end_inset
+
+ and 
+\begin_inset Formula $\epsilon_{2}(\omega)$
+\end_inset
+
+ indicates that not all frequencies contribute equally to 
+\begin_inset Formula $\epsilon(t)$
+\end_inset
+
+.
+ However, it is more convenient to make a complex ansatz 
+\begin_inset Formula 
+\[
+\epsilon(t)=\epsilon(\omega)e^{i\omega t}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO explain why this is valid.
+\end_layout
+
+\end_inset
+
+ Substituting into 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE time dependent-1"
+
+\end_inset
+
+ and using separation of variables 
+\begin_inset Formula $\rho_{1}(V,t)=\rho_{1}(V)e^{i\omega t}$
+\end_inset
+
+ yields a inhomogeneous linear ordinary differential equation for 
+\begin_inset Formula 
+\begin{equation}
+\left(i\omega-L_{0}\right)\rho_{1}(V,t)=L_{1}\rho_{0}(V).\label{eq: FPE time dependent-2}
+\end{equation}
+
+\end_inset
+
+To solve Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE time dependent-2"
+
+\end_inset
+
+, we need to find the homogeneous solution and the particular solution which
+ reproduces the inhomogeneity on the r.h.s.
+ of the equation.
+ The free coefficents in the homogeneous solution need to be determined
+ such that the sum of the homogeneous and the particular solution fulfill
+ the boundary conditions which we discussed in section.
+ Without going into the details of the calculation, in the end, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunel2000"
+
+\end_inset
+
+ determines the transfer function 
+\begin_inset Formula $T(\omega)$
+\end_inset
+
+ which how frequency 
+\begin_inset Formula $\epsilon(\omega)$
+\end_inset
+
+ component is transmitted on the 
+\begin_inset Formula $\overline{\epsilon}(\omega)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+T(\omega)\epsilon(\omega)=\overline{\epsilon}(\omega).
+\]
+
+\end_inset
+
+ For the LIF neuron behaves like a low-pass filter.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ derived an first order approximation of the time dependent average firing
+ rate of a sparsely randomly recurrently connected EI-Network.
+ The derivation was based on the following simplifying assumptions which
+ are similar to those made in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Omurtag"
+
+\end_inset
+
+.
+ Firstly, neurons receive an identical number of synaptic inputs drawn randomly
+ from the local network and external surrounding.
+ Relaxing this assumption, i.e.
+ allowing different number indegrees, results in broader distribution of
+ firing rates.
+ Secondly, the synaptic current is instantaneous.
+ Nevertheless, the derivation it is still mathematical quite involved.
+ It boils down to solving an inhomogeneous partial differential equation
+ with variable coefficients by separation of variables.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ showed that the point where the stationary state loses stability marks
+ the transition of the network into different dynamical regimes.
+ Depending on the strength of the external input, the balance between excitation
+ and inhibition, and the time scale of the synaptic delay, the average firing
+ rate of the populations can show oscillations in different frequency regimes.
+ Independently of the global oscillations, the firing of individual neurons
+ are still highly irregular.
+ The work by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ has been the first analytical study investigating the synchronization propertie
+s of randomly recurrent spiking neural networks.
+ 
+\end_layout
+
+\begin_layout Standard
+Several steps have been made to extend the population density methods to
+ more complex neuron models.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud2002"
+
+\end_inset
+
+ extended the work by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Brunel2000"
+
+\end_inset
+
+ to include finite synaptic time scales.
+ This introduces temporal correlations in the noise term and the Gaussian
+ white noise becomes a colored noise.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fourcaud2002"
+
+\end_inset
+
+ assumed that the synaptic time scale is small compared to the membrane
+ time scale so that the ratio between both can be used as an expansion parameter.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Apfaltrer2006"
+
+\end_inset
+
+ applied the population density method to LIF neurons connected via conductance
+ based.
+ A alternative approach to solving the equations is by means of spectral
+ expansion 
 \end_layout
 
 \begin_layout Subsection
-The transfer function 
-\end_layout
-
-\begin_layout Subsection
-Mapping between spiking and rate based models 
+Spectral decomposition
 \end_layout
 
 \begin_layout Section
