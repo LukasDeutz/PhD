@@ -3784,14 +3784,14 @@ reference "subsec:Spectral-decomposition"
 
 \end_inset
 
-.
- For the perfect integrate-and-fire and the leaky integrate-and-fire neuron,
- eigenvalues and eigenfunctions can be determined analytically in the diffusion
- approximation.
+ for wide class of neuron models.
+ In the diffusion approximation, eigenvalues and eigenfunctions of the perfect
+ integrate-and-fire and the leaky integrate-and-fire neuron can be determined
+ analytically.
  Hence, as a first step, we recover the results presented 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Mattia2002,Deniz2017"
+key "Mattia2002,Deniz2017,Brunel1999"
 
 \end_inset
 
@@ -3903,9 +3903,33 @@ reference "eq: PIF phi_n"
 \end_inset
 
  .
+ The free coefficients of the general solution must be determined such that
+ 
+\begin_inset Formula $\phi_{n}(v)$
+\end_inset
+
+ fulfills the BC of 
+\begin_inset Formula $\rho(v,t)$
+\end_inset
+
+.
  Without going into the details of the derivation, in the end one arrives
- at an expression for eigenfunctions and the eigenfunctions of the adjoint
- operator 
+ at an expression for the eigenfunctions 
+\begin_inset Formula $\phi_{n}(v)$
+\end_inset
+
+ and the eigenfunctions of the adjoint operator 
+\begin_inset Formula $\tilde{\phi}_{n}(v)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mattia2002"
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 \phi_{0}(v,t) & =\frac{c}{\eta}\left(1-e^{\frac{-2\xi(\theta-v)}{\theta}}\right),\\
@@ -3923,7 +3947,7 @@ where
 \begin_inset Formula $\zeta_{n}$
 \end_inset
 
- are 
+ are given by
 \begin_inset Formula 
 \[
 \zeta_{n}=\frac{\theta}{\sigma^{2}}\sqrt{\eta^{2}+2\sigma^{2}\lambda_{n}},\quad\xi=\frac{\eta\theta}{\sigma^{2}}.
@@ -3946,20 +3970,219 @@ The roots of this equation determine the infinite countable set of eigenvalues
 \end_inset
 
 .
- Eigenfunctions 
-\begin_inset Formula $\{\phi_{n},\tilde{\phi}_{n}\}$
+ Eigenvalues of the first three modes for different values of 
+\begin_inset Formula $\eta$
 \end_inset
 
- and eigenvalues 
-\begin_inset Formula $\lambda_{n}$
-\end_inset
-
- for different values of 
-\begin_inset Formula $\mu,\sigma$
+ and 
+\begin_inset Formula $\sigma=1$
 \end_inset
 
  are shown in Fig.
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: PIF spectrum"
+
+\end_inset
+
+.
+ Eigenvalues are purely real for 
+\begin_inset Formula $\eta<0$
+\end_inset
+
+ (noise dominated regime) and imaginary for 
+\begin_inset Formula $\eta>0$
+\end_inset
+
+ (drift dominated) regime.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/PIF_spectrum.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Real part and imaginary part 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ for the first mode (blue), second mode (orange), third mode (green) for
+ different values of 
+\begin_inset Formula $\eta$
+\end_inset
+
+.
+ The remaining model parameters are set to
+\begin_inset Formula $\{\sigma=1,v_{\text{r}}=1,v_{\text{th}}=1\}$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: PIF spectrum"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The first three eigenfunctions are shown as an example for two different
+ values of 
+\begin_inset Formula $\eta$
+\end_inset
+
+ (drift and noise dominated regime) in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: PIF eigenfunctions"
+
+\end_inset
+
+.
+ Note that the eigenfunctions fulfill the boundary condition 
+\begin_inset Formula $\phi_{n}(v_{\text{th}})=0$
+\end_inset
+
+ as desired.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/PIF_ef.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Real and imaginary part of the first three eigenfunctions 
+\begin_inset Formula $\phi_{n}(v)$
+\end_inset
+
+ for 
+\begin_inset Formula $\eta=-1$
+\end_inset
+
+ (left column) and 
+\begin_inset Formula $\eta=1$
+\end_inset
+
+ (right) column.
+ The remaining model parameters are set to
+\begin_inset Formula $\{\sigma=1,v_{\text{r}}=1,v_{\text{th}}=1\}$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: PIF eigenfunctions"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Knowing eigenfunctions and eigenvalues, we can predict the time evolution
+ of the density function and the population firing rate at any times for
+ a given initial condition.
+ Figure shows the simulation results for a population of non-interacting
+ PIF neurons which receive a constant external input.
+ In the beginning of the simulation all neurons are placed at the reset
+ potential, i.e.
+ 
+\begin_inset Formula $\rho(V,0)=\delta(v_{\text{r}})$
+\end_inset
+
+.
+ Hence, the initial value of the weighting coefficient of the 
+\begin_inset Formula $n$
+\end_inset
+
+th mode is given by 
+\begin_inset Formula 
+\[
+c_{n}(0)=(\tilde{\phi}_{n},\delta(v_{\text{r}}))=\tilde{\phi}_{n}(v_{\text{r}}).
+\]
+
+\end_inset
+
+This shows us that all modes with 
+\begin_inset Formula $\tilde{\phi}_{n}(v_{\text{r}})\neq0$
+\end_inset
+
+ are needed in beginning to combine to the delta-function 
+\begin_inset Formula $\delta(v_{\text{r}})$
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/PIF_rate_density.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Top panel shows the firing rate of the population over time for 
+\begin_inset Formula $\{\eta=10,\sigma=1,v_{\text{th}}=1,v_{\text{r}}=0,a=\}$
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -3970,24 +4193,351 @@ TODO
 \end_inset
 
 .
- Figure shows the simulation results of population of non-interacting PIF
- neurons which receive a constant external input.
- In the beginning of the simulation all neurons are placed at the reset
- potential, i.e.
+ Theoretical result (black curve) have been calculated using the first three
+ modes.
+ The red dashed line shows the result from the Miind simulation.
+ The green line shows the average firing rate obtained from 
+\begin_inset Formula $1000$
+\end_inset
+
+ Monte Carlo simulations.
+ The background colors mark different time intervals in which only a certain
+ subset of modes is still active while all other have already decayed to
+ zero.
+ In the blue the time interval only the first mode is active, in yellow
+ interval the first two modes are active and in green time interval the
+ first three modes are active.
+ The bottom panel shows the density function relative to the stationary
+ distribution 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ at two different time points indicated by the crosses in the top panel.
+ Theoretical result (black curve) in left panel has been calculated using
+ the first two modes, and only the first mode in the right panel.
+ The red dashed lines show the result from the Miind simulation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The firing starts at zero because all neurons are at the reset in the beginning.
+ The peaks in the beginning can be explained the fact that the drift coefficient
  
-\begin_inset Formula $\rho(V,0)=\delta(v_{\text{r}})$
+\begin_inset Formula $\eta$
+\end_inset
+
+ much stronger compared to the diffusion coefficient 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ coefficient, i.e.
+ the initial density function is relatively peaked when neurons reach the
+ threshold for the first times.
+ However, diffusion will spread out the density function and the firing
+ rate converges to stationart rate.
+ From a mathematical viewpoint, the oscillations of the firing rate are
+ enabled by eigenvalues becoming complex for 
+\begin_inset Formula $\eta>0$
 \end_inset
 
 .
- Hence, the initial value of the weighting coefficients 
-\begin_inset Formula $c_{n}(0)=(\tilde{\phi}_{n},\delta(v_{\text{r}}))=\tilde{\phi}_{n}(v_{\text{r}})$
+ Miind and the MC simulations both show a good agreement with the theoretical
+ prediction.
+ As expected, the first three modes suffice to describe the full time evolution
+ in the colored area.
+ A strength of Miind compared to MC is that it produces smooth curves because
+ it solves Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: PDE"
+
 \end_inset
 
-.
+ directly.
+ Note that the Miind and MC simulations are not carried out in the diffusion
+ limit.
+ 
 \end_layout
 
 \begin_layout Subsubsection
 Leaky integrate-and-fire 
+\end_layout
+
+\begin_layout Standard
+The FP equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: FPE"
+
+\end_inset
+
+ for LIF neuron reads 
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}\rho(V,t)=L\rho(V,t),\quad L=\partial_{V}\left(\frac{1}{\tau}\left[V-\mu(t)\right]+\frac{\sigma^{2}(t)}{2\tau}\partial_{V}\right),
+\end{equation}
+
+\end_inset
+
+where we set reversal potential of the leak channel to 
+\begin_inset Formula $V_{L}=0$
+\end_inset
+
+.
+ The variable transformation 
+\begin_inset Formula 
+\begin{equation}
+s=\frac{t}{\tau},\quad x=\frac{\sqrt{2}}{\sigma}(V-\mu),
+\end{equation}
+
+\end_inset
+
+bring the Fokker-Planck into the simpler form 
+\begin_inset Formula 
+\begin{equation}
+L=\partial_{x}\left(x+\partial_{x}\right),
+\end{equation}
+
+\end_inset
+
+and eigenfunctions are determined by the linear second order ODE 
+\begin_inset Formula 
+\begin{equation}
+\phi(x)+x\phi'(x)+\phi''(x)=\lambda\phi(x).
+\end{equation}
+
+\end_inset
+
+Note that coefficient in front of the first derivative is not constant which
+ complicates the derivation tremendously compare to PIF neuron.
+ Here, we present only the end results for refer Sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec: ef LIF"
+
+\end_inset
+
+ for a detailed derivation.
+ In, end one finds 
+\begin_inset Formula 
+\begin{align}
+\phi_{n}(x)=e^{-\frac{1}{4}x^{2}} & \begin{cases}
+c_{n}U(z_{n},-x) & x<x_{\text{r}}\\
+a_{n}V(z_{n},-x)+b_{n}U(z_{n},-x) & x_{\text{r}}\leq x<x_{\theta}
+\end{cases},
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $z_{n}=\lambda_{n}-1/2$
+\end_inset
+
+.
+ The functions 
+\begin_inset Formula $U(z,x)$
+\end_inset
+
+ and 
+\begin_inset Formula $V(z,x)$
+\end_inset
+
+ are called parabolic cylinder functions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Abramowitz1965"
+
+\end_inset
+
+.
+ Eigenfunctions are unique up to a arbitrary normalization constant which
+ we set to be 
+\begin_inset Formula 
+\begin{equation}
+\partial_{x}\phi(x_{\theta})=e^{-\frac{1}{4}x_{\theta}}\partial_{x}\varphi(x_{\theta})=-\sqrt{\frac{2}{\pi}}.\label{eq: LIF normalization}
+\end{equation}
+
+\end_inset
+
+The coefficients 
+\begin_inset Formula $a_{n},b_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{n}$
+\end_inset
+
+ are chosen such that 
+\begin_inset Formula $\phi_{n}(x)$
+\end_inset
+
+ fulfills the BC.
+ For the specific normalization 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: LIF normalization"
+
+\end_inset
+
+, they are given by 
+\begin_inset Formula 
+\begin{align}
+a_{n} & =\frac{U(z_{n},y_{\theta})}{f(y_{\theta})},\nonumber \\
+b_{n} & =-\frac{V(z_{n},y_{\theta})}{f(y_{\theta})},\nonumber \\
+c_{n} & =\frac{V(z_{n},y_{\text{r}})}{f(y_{\text{r}})}-\frac{V(z_{n},y_{\theta})}{f(y_{\theta})}.
+\end{align}
+
+\end_inset
+
+The eigenfunction of the adjoint operator is given by 
+\begin_inset Formula 
+\begin{equation}
+\tilde{\phi}_{n}(x)=d_{n}e^{\frac{1}{4}x^{2}}U(z_{n},-x)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $d_{n}$
+\end_inset
+
+ defined as 
+\begin_inset Formula 
+\begin{equation}
+d_{n}=(e^{\frac{1}{4}x^{2}}U(z_{n},-x),\phi_{n}(x)),
+\end{equation}
+
+\end_inset
+
+to ensure that 
+\begin_inset Formula $(\tilde{\phi}_{n},\phi_{n})=1$
+\end_inset
+
+.
+ The BC yield a characteristic equation for the eigenvalues 
+\begin_inset Formula 
+\begin{equation}
+e^{-\frac{1}{4}x_{\text{r}}^{2}}U(\lambda_{n}z_{n},y_{\theta})-e^{-\frac{1}{4}x_{\theta}^{2}}U(z_{n},y_{\text{r}})=0\label{eq: characteristic equation}
+\end{equation}
+
+\end_inset
+
+The solutions of Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: characteristic equation"
+
+\end_inset
+
+ yields the infinite countable set of eigenvalues 
+\begin_inset Formula $\{\lambda_{n}\}$
+\end_inset
+
+.
+ Finding solutions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: characteristic equation"
+
+\end_inset
+
+ is not easy because the parabolic cylinder functions change rapidly in
+ the complex plane.
+ A preliminary attempt to solve Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: characteristic equation"
+
+\end_inset
+
+ is discussed in Sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec: ef LIF"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Figure show the eigenvalues spectrum for a specific value of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fig shows the zero crossings of the real part and imaginary part Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: characteristic equation"
+
+\end_inset
+
+ in the complex plane.
+ Solutions can expected at the points where the yellow and blue line cross
+ as well where the blue line crosses the real axis.
+ For the first three eigenvalues for different values of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma=0.2$
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LIF_summary/LIF_eigenvalues_complex_2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4263,6 +4813,17 @@ name "fig: current-based synapse"
 LatexCommand bibtex
 bibfiles "transfer_report"
 options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Spectrum and eigenfunctions of the leaky integrate-and-fire neuron 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec: ef LIF"
 
 \end_inset
 
