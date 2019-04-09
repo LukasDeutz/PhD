@@ -60,8 +60,9 @@ def finite_element(n):
 def analytical_result(x):
         
     u = -0.5*x**2 + 0.5*x
+    sig = -x + 0.5
     
-    return u
+    return u, sig
     
 
 def plot_fe_1():
@@ -107,13 +108,25 @@ def plot_fe_2():
 
     N = 20
     
+    gs = plt.GridSpec(2,1)
+    
     u, x_u, sig, x_sig = finite_element_2(N)
 
     x_theo = np.linspace(0, 1, 1e3)    
-    u_theo = analytical_result(x_theo)
+    u_theo, sig_theo = analytical_result(x_theo)
     
-    plt.plot(x_theo, u_theo, '-', c = 'k')
-    plt.plot(x_u, u, '--o', c = 'r')
+    ax0 = plt.subplot(gs[0])
+    ax0.plot(x_theo, u_theo, '-', c = 'k')
+    ax0.plot(x_u, u, '--o', c = 'r')
+    ax0.set_ylabel(u'$u(x)$', fontsize = 20)
+    ax0.set_xlim([-0.01,1.01])
+
+    ax1 = plt.subplot(gs[1])
+    ax1.plot(x_theo, sig_theo, '-', c = 'k')
+    ax1.plot(x_sig, sig, '--o', c = 'r')
+    ax1.set_ylabel(u'$\sigma(x)$', fontsize = 20)
+    ax1.set_xlabel(u'$x$', fontsize = 20)
+    ax1.set_xlim([-0.01,1.01])
     
     plt.show()
     
