@@ -1,0 +1,1403 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Finite Element 
+\end_layout
+
+\begin_layout Subsection*
+Mixed formulation
+\end_layout
+
+\begin_layout Itemize
+Poisson equation 
+\begin_inset Formula 
+\begin{align*}
+\sigma-\nabla u & =0\\
+\nabla\sigma & =-f
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $u$
+\end_inset
+
+ is the density and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is flux 
+\end_layout
+
+\begin_layout Itemize
+Taking the gradient of the first equation and substituting the second equation
+ into it yields 
+\begin_inset Formula 
+\begin{align*}
+\nabla\sigma-\nabla\nabla u & =0\Leftrightarrow\Delta u=f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions 
+\begin_inset Formula $u=u_{0}$
+\end_inset
+
+ on 
+\begin_inset Formula $\Gamma_{D}$
+\end_inset
+
+ and
+\begin_inset Formula $\sigma\cdot n=g$
+\end_inset
+
+ on 
+\begin_inset Formula $\Gamma_{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply first equation with test function 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and integrate parts 
+\begin_inset Formula 
+\[
+\int_{\Omega}dx(\tau\sigma-u\nabla\tau)=\int_{\Gamma}ds\,\tau\cdot n\,u
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is assumed an open bounded subset of 
+\begin_inset Formula $R^{n}$
+\end_inset
+
+ which is bounded by the manifold gamma.
+ Start from
+\begin_inset Formula 
+\[
+\sigma-\nabla u=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The flux 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a vector and 
+\begin_inset Formula $u$
+\end_inset
+
+ is a scalar function
+\begin_inset Formula 
+\[
+\nabla u=\frac{\partial u_{x}}{\partial x}e_{x}+\frac{\partial u_{y}}{\partial y}e_{y}+\frac{\partial u_{z}}{\partial z}e_{z}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply by 
+\begin_inset Formula $\tau$
+\end_inset
+
+ and integrate over the volume 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{\Omega}dx\left(\sigma-\nabla u\right)\tau=\int_{\Omega}dx\sigma\tau-\int dx\tau\nabla u=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integration by parts 
+\begin_inset Formula 
+\[
+\int dx\tau\nabla u=-\int dxu\nabla\tau+\int_{\Gamma}u\,\tau\cdot nds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This can be shown by using 
+\begin_inset Formula 
+\[
+\nabla(u\tau)=\tau\nabla u+u\nabla\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate both sides 
+\begin_inset Formula 
+\[
+\int_{\Omega}dx\,\tau\nabla u=-\int_{\Omega}dx\,u\nabla\tau+\int_{\Omega}dx\nabla(u\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use identity 
+\begin_inset Formula 
+\[
+\int_{\Omega}dx\nabla(u\tau)=\int_{\Gamma}u\tau\cdot nds
+\]
+
+\end_inset
+
+to arrive at 
+\begin_inset Formula 
+\[
+\int_{\Omega}dx\,\tau\nabla u=-\int_{\Omega}dx\,u\nabla\tau+\int_{\Gamma}u\tau\cdot nds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting into the above equation yields 
+\begin_inset Formula 
+\begin{align*}
+\int_{\Omega}dx\sigma\tau-\int dx\tau\nabla u & =0\\
+\Leftrightarrow\int_{\Omega}dx\sigma\tau+\int_{\Omega}dx\,u\nabla\tau-\int_{\Gamma}u\tau ds & =0\\
+\Leftrightarrow\int_{\Omega}dx(\sigma\tau+u\nabla\tau) & =\int_{\Gamma}u\tau\cdot nds
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply second equation and integrate over domain 
+\begin_inset Formula 
+\[
+\int_{\Omega}dx\,v\nabla\sigma=-\int_{\Omega}fvdx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at the weak formulation 
+\begin_inset Formula 
+\begin{align*}
+\int_{\Omega}dx(\tau\sigma-u\nabla\tau) & =\int_{\Gamma}ds\,\tau\cdot n\,u\\
+\int_{\Omega}dx\,v\nabla\sigma & =-\int_{\Omega}fvdx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Variational form, boundary condition for the flux 
+\begin_inset Formula $\sigma\cdot n=g$
+\end_inset
+
+ is now an essential boundary condition which should be enforced in the
+ function space 
+\end_layout
+
+\begin_layout Itemize
+Inserting boundary conditions, the variational problem can be phrased in
+ the general form: find 
+\begin_inset Formula $(\sigma,u)\in\sum_{g}\times V$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+a((\sigma,u),(\tau,v))=L((\tau,v))
+\]
+
+\end_inset
+
+where the variational forms 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+ are defined as 
+\begin_inset Formula 
+\begin{align*}
+a((\sigma,u),(\tau,v)) & =\int_{\Omega}\sigma\cdot\tau+u\nabla\cdot\tau+v\nabla\cdot\sigma dx\\
+L((\tau,v)) & =-\int_{\Omega}fvdx+\int_{\Gamma_{D}}u_{0}\tau\cdot n\,ds
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+One dimension 
+\end_layout
+
+\begin_layout Itemize
+Start from the one dimensional Poisson equation 
+\begin_inset Formula 
+\begin{equation}
+\frac{d^{2}u}{dx^{2}}=f
+\end{equation}
+
+\end_inset
+
+with homogeneous Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $u(1)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We introduce the flux variable 
+\begin_inset Formula $\sigma=\frac{du}{dx}$
+\end_inset
+
+ and write the above equation as two separate first order equations 
+\begin_inset Formula 
+\begin{align}
+\sigma-\frac{du}{dx} & =0\nonumber \\
+\frac{d\sigma}{dx} & =f
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We want the bring the above system of equations into a variational form
+ 
+\end_layout
+
+\begin_layout Itemize
+First, we multiply the first equation with test functions 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\sigma\tau-\frac{du}{dx}\tau=0
+\end{equation}
+
+\end_inset
+
+and integrate over domain 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}dx\sigma\tau-\int_{0}^{1}\frac{du}{dx}\tau=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using integration by parts 
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}\frac{du}{dx}\tau=u\tau\bigr|_{0}^{1}-\int_{0}^{1}dx\,u\frac{d\tau}{dx}
+\end{equation}
+
+\end_inset
+
+we arrive at 
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}dx\sigma\tau+\int_{0}^{1}dx\,u\frac{d\tau}{dx}=0\label{eq: 1d coservation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that the boundary term vanishes due to the boundary conditions 
+\end_layout
+
+\begin_layout Itemize
+We multiply the second term with the test function 
+\begin_inset Formula $\xi$
+\end_inset
+
+ and integrate over the domain
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}\frac{d\sigma}{dx}\xi\,dx=\int_{0}^{1}f\xi\,dx\label{eq: 1d flux}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We arrive at the coupled set of equations 
+\begin_inset Formula 
+\begin{align}
+a((u,\sigma),(\tau,\nu))=0 & ,\quad b(\sigma,\xi)=\int_{0}^{1}f\,\xi dx
+\end{align}
+
+\end_inset
+
+ where 
+\begin_inset Formula 
+\begin{align*}
+a((u,\sigma),(\tau,\nu)) & =\int_{0}^{1}dx\sigma\tau+\int_{0}^{1}dx\,u\frac{d\tau}{dx}\\
+b(\sigma,\xi) & =\int_{0}^{1}\frac{d\sigma}{dx}\xi\,dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To discretize the above formulation, two discrete function spaces are needed
+ 
+\begin_inset Formula $\sum_{h}\subset\sum$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{h}\subset V$
+\end_inset
+
+ to form a mixed function space 
+\begin_inset Formula $\Sigma_{h}\times V_{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A stable choice of finite element spaces is to let 
+\begin_inset Formula $\sum_{h}$
+\end_inset
+
+ be the Brezzi-Douglas-Marini element of polynomial order 
+\begin_inset Formula $k$
+\end_inset
+
+ and let 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ be discontinuous element of 
+\begin_inset Formula $k-1$
+\end_inset
+
+ polynomial 
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $k=1$
+\end_inset
+
+: A basis for 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ can be constructed by the piecewise linear hat-functions
+\begin_inset Formula 
+\begin{equation}
+\phi_{i}(x)=\begin{cases}
+\frac{x-x_{i-1}}{h} & \text{if }x_{i-1}\leq x<x_{i}\\
+\frac{x_{i+1}-x}{h} & \text{if }\text{\ensuremath{x_{i}\leq x<x_{i+1}}}\\
+0 & \text{otherwise}
+\end{cases},\quad\text{where \ensuremath{i=2,\ldots,N-1}}
+\end{equation}
+
+\end_inset
+
+except for 
+\begin_inset Formula $i=0$
+\end_inset
+
+ and 
+\begin_inset Formula $i=N$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\begin{align}
+\phi_{1}(x) & =\begin{cases}
+\frac{x_{1}-x}{h} & \text{if }0\leq x<x_{1}\\
+0 & \text{otherwise}
+\end{cases}\nonumber \\
+\phi_{N}(x) & =\begin{cases}
+\frac{x-x_{N-1}}{h} & \text{if }x_{N-1}\leq x<x_{N}\\
+0 & \text{otherwise}
+\end{cases}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We expand 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ in the basis functions 
+\begin_inset Formula $\phi_{i}(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\sigma_{h}(x)=\sum_{i=0}^{N}c_{i}\phi_{i}(x)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using that 
+\begin_inset Formula $\phi_{i}(x_{i})=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{j}(x_{i})\neq1$
+\end_inset
+
+ for all 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+, we can identify the coefficients 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ as the values of 
+\begin_inset Formula $\sigma_{h}(x_{i})$
+\end_inset
+
+ at the edge-nodes 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{h}(x_{i})=\sum_{i=0}^{N}c_{i}\phi_{i}(x_{i})=c_{i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we define 
+\begin_inset Formula $c_{i}=\sigma_{i}$
+\end_inset
+
+ and write 
+\begin_inset Formula 
+\begin{equation}
+\sigma_{h}(x_{i})=\sum_{i=0}^{N}\sigma_{i}\phi_{i}(x_{i})\label{eq: sig_h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $k=1$
+\end_inset
+
+: The basis for 
+\begin_inset Formula $u$
+\end_inset
+
+ can be constructed by the piecewise constant functions 
+\begin_inset Formula 
+\begin{equation}
+\psi_{i}=\begin{cases}
+1 & \text{if }x_{i}\leq x<x_{i+1}\\
+0 & \text{otherwise}
+\end{cases},\quad\text{where }i=1,\ldots,N-1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We expand 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ in the basis functions 
+\begin_inset Formula $\psi_{i}(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+u_{h}(x)=\sum_{i=0}^{N-1}c_{i}\psi_{i}(x)\label{eq: u_h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using 
+\begin_inset Formula $\phi_{i}(x_{i})=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{j}(x_{i})\neq1$
+\end_inset
+
+, we can identify the coefficients 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ by the values of 
+\begin_inset Formula $u_{h}(x_{i})$
+\end_inset
+
+ at the mid-nodes 
+\begin_inset Formula 
+\begin{equation}
+u_{h}(x_{i})=\sum_{i=0}^{N-1}c_{i}\psi_{i}(x_{i})=c_{i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we define 
+\begin_inset Formula $c_{i}=u_{i}$
+\end_inset
+
+ and write 
+\begin_inset Formula 
+\begin{equation}
+u_{h}(x_{i})=\sum_{i=0}^{N-1}u_{i}\psi_{i}(x_{i})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choosing 
+\begin_inset Formula $\tau=\phi_{1}(x),\phi_{2}(x),\phi_{3}(x),\ldots$
+\end_inset
+
+ for the test function 
+\begin_inset Formula $\tau$
+\end_inset
+
+ successively leads to the following set of equations 
+\begin_inset Formula 
+\begin{align*}
+\sum_{j=0}^{N}\int_{0}^{1}dx\,\phi_{1}\phi_{j}\sigma_{j}+\sum_{j=0}^{N-1}\int_{0}^{1}dx\,\phi'_{1}\psi_{j}u_{j} & =0\\
+\sum_{j=0}^{N}\int_{0}^{1}dx\,\phi_{2}\phi_{j}\sigma_{j}+\sum_{j=0}^{N-1}\int_{0}^{1}dx\,\phi_{2}'\psi_{j}u_{j} & =0\\
+\vdots
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The system of equations can be written in matrix notation 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{A}\boldsymbol{\sigma}+\boldsymbol{B}\boldsymbol{u}=0\label{eq: matrix 1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+A_{ij} & =\int_{0}^{1}dx\,\phi_{i}\phi_{j}\in\mathbb{R}^{N\times N}\\
+B_{ij} & =\int_{0}^{1}dx\,\phi'_{i}\psi_{j}\in\mathbb{R}^{N\times N-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The matrix elements 
+\begin_inset Formula $A_{ij}$
+\end_inset
+
+ are given by 
+\begin_inset Formula 
+\begin{align}
+A_{11} & =A_{NN}=\frac{1}{3}h\nonumber \\
+A_{ii} & =\frac{2}{3}h,\quad\text{for }i\neq(1,N)\nonumber \\
+A_{ij} & =\frac{1}{6}h
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i,j=1$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+A_{11}=\frac{1}{h^{2}}\int_{0}^{x_{1}}dx\,(x_{1}-x)^{2}=-\frac{1}{h^{2}}\int_{h}^{0}dy\,y^{2}=\frac{1}{3}h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i,j=N$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A_{NN}=\frac{1}{3}h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i=j\neq(1,N)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+h^{2}A_{ii} & =\int_{x_{i-1}}^{x_{i}}dx(x-x_{i-1})^{2}+\int_{x}^{x_{i+1}}(x_{i+1}-x)^{2}\\
+ & =\int_{0}^{h}dy\,y^{2}+\int_{0}^{h}dy\,y^{2}\\
+ & =\frac{2}{3}h^{3}\Rightarrow\\
+A_{ii} & =\frac{2}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i+1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+h^{2}A_{ij} & =\int_{x_{i}}^{x_{i+1}}dx\,(x_{i+1}-x)(x-x_{j-1})\\
+ & =\int_{x_{i}}^{x_{i+1}}dx\,(x_{i+1}-x)(x-x_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Introduce 
+\begin_inset Formula $y=x_{i+1}-x$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+h^{2}A_{ij} & =\int_{0}^{h}dy\,y(x_{i+1}-y-x_{i})\\
+ & =\int_{0}^{h}dy\,y(h-y)\\
+ & =\int_{0}^{h}dy\,yh-y^{2}\\
+ & =\frac{1}{2}h^{3}-\frac{1}{3}h^{3}\\
+ & =\frac{1}{6}h^{3}\Rightarrow\\
+A_{ij} & =\frac{1}{6}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The matrix elements 
+\begin_inset Formula $B_{ij}$
+\end_inset
+
+ are given by 
+\begin_inset Formula 
+\begin{align}
+B_{ii} & =-1\nonumber \\
+B_{i,i-1} & =1
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i=j$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{0}^{1}dx\,\phi'_{i}\psi_{j}=-\int_{x_{i}}^{x_{i+1}}dx\frac{1}{h}=-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i+1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{0}^{1}dx\,\phi'_{i}\psi_{j}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i-1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{0}^{1}dx\,\phi'_{i}\psi_{j}=\int_{x_{i}}^{x_{i+1}}dx\frac{1}{h}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For the second equation we choose 
+\begin_inset Formula $\xi=\psi_{1},\psi_{2},\psi_{3},\ldots$
+\end_inset
+
+ successively and replace 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ by Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: sig_h"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align}
+\sum_{j=1}^{N}\int_{0}^{1}\psi_{i}\phi'_{j}\sigma_{j}\,dx & =\int_{0}^{1}f\psi_{i}\,dx\nonumber \\
+\sum_{j=1}^{N}\int_{0}^{1}\psi_{i}\phi'_{j}\sigma_{j}\,dx & =\int_{0}^{1}f\psi_{i}dx\nonumber \\
+\vdots
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Again, this system of equations can be written as a matrix equation 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{C}\boldsymbol{\sigma}=\boldsymbol{f}\label{eq: matrix 2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align}
+C_{ij} & =\int_{0}^{1}dx\,\psi_{i}\phi'_{j}\in\mathbb{R}^{N-1\times N}\nonumber \\
+f_{i} & =\int_{0}^{1}dxf\psi_{i}\in\mathbb{R}^{N-1}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The elements of matrix 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ are given by
+\begin_inset Formula 
+\begin{align*}
+C_{ii} & =-1\\
+C_{i-1,i} & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ is the transpose of 
+\begin_inset Formula $\boldsymbol{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $f=1$
+\end_inset
+
+, the vector elements 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ are given by 
+\begin_inset Formula 
+\[
+f_{i}=h
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can combine Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: matrix 1"
+
+\end_inset
+
+ and Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: matrix 2"
+
+\end_inset
+
+ to 
+\begin_inset Formula 
+\[
+\begin{pmatrix}\boldsymbol{A} & \boldsymbol{B}\\
+\boldsymbol{C} & 0
+\end{pmatrix}\begin{pmatrix}\boldsymbol{\sigma}\\
+\boldsymbol{u}
+\end{pmatrix}=\begin{pmatrix}0\\
+\boldsymbol{f}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solving this matrix equations yields 
+\begin_inset Formula $\boldsymbol{u}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\sigma}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Leaky integrate-and-fire
+\end_layout
+
+\begin_layout Subsection*
+Standard FE
+\end_layout
+
+\begin_layout Itemize
+The eigenfunctions of the LIF neuron are determined by the Sturm-Liouville
+ problem
+\begin_inset Formula 
+\begin{align*}
+Lu(x) & =\lambda u(x),\\
+L & =\frac{\partial}{\partial x}\left(x+\partial_{x}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be written as +
+\begin_inset Formula 
+\begin{align*}
+u+xu'+u'' & =\lambda u\\
+xu'+u'' & =zu
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $z=\lambda-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We multiply with the test function 
+\begin_inset Formula $v$
+\end_inset
+
+ and integrate over the domain 
+\begin_inset Formula 
+\[
+\int dx\,xu'v+u''v=zu
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Mixed formulation
+\end_layout
+
+\begin_layout Itemize
+The eigenfunctions of the LIF neuron are determined by the Sturm-Liouville
+ problem
+\begin_inset Formula 
+\begin{align*}
+Lu(x) & =\lambda u(x),\\
+L & =\frac{\partial}{\partial x}\left(x+\partial_{x}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We introduce the flux variable 
+\begin_inset Formula $J=-(x+\partial_{x})u$
+\end_inset
+
+ and write the second order equation as two first order equations 
+\begin_inset Formula 
+\begin{align*}
+J'+\lambda u & =0\\
+-J & =xu+u'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Our goal is to bring the above equation into variational form
+\end_layout
+
+\begin_layout Itemize
+We multiply the first equation with the test function 
+\begin_inset Formula $v$
+\end_inset
+
+ and integrate over the domain 
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\theta}}\left(J'v+\lambda uv\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We split the integral into two parts left and right from the reset value
+ 
+\begin_inset Formula $x_{\text{r}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{x_{\text{min}}}^{x_{\theta}}dx\left(\partial_{x}Jv+\lambda uv\right)=\lim_{\epsilon\rightarrow0^{+}}\left\{ \int_{x_{\text{min}}}^{x_{\text{r}}-\epsilon}dx\left(\partial_{x}Jv+\lambda uv\right)+\int_{x_{\text{r}}+\epsilon}^{x_{\theta}}dx\left(\partial_{x}Jv+\lambda uv\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using integration by parts, we can shift the derivative acting on 
+\begin_inset Formula $J$
+\end_inset
+
+ to 
+\begin_inset Formula $v$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{min}}}^{x_{\text{r}}-\epsilon}dx\,J'v & =Jv\Bigr|_{x_{\text{min}}}^{x_{\text{r}}-\epsilon}-\int_{x_{\text{min}}}^{x_{\text{r}}-\epsilon}dx\,Jv'dx\\
+ & =J(x_{\text{r}}-\epsilon)v(x_{\text{r}}-\epsilon)-\int_{x_{\text{min}}}^{x_{\text{r}}-\epsilon}Jv'dx
+\end{align*}
+
+\end_inset
+
+where we used that 
+\begin_inset Formula $J(x_{\text{min}})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Similarly 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{r}}+\epsilon}^{x_{\theta}}dx\,J'v & =Jv\Bigr|_{x_{\text{r}}+\epsilon}^{x_{\theta}}-\int_{x_{\text{r}}+\epsilon}^{x_{\theta}}dx\,Jv'dx\\
+ & =J(x_{\theta})v(x_{\theta})-J(x_{\text{r}}+\epsilon)v(x_{\text{r}}+\epsilon)-\int_{x_{\text{r}}+\epsilon}^{x_{\theta}}dx\,Jv'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we arrive at 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{min}}}^{x_{\theta}}\partial_{x}Jv & =\lim_{\epsilon\rightarrow0}\left\{ J(x_{\text{r}}-\epsilon)v(x_{\text{r}}-\epsilon)+J(x_{\theta})v(x_{\theta})-J(x_{\text{r}}+\epsilon)v(x_{\text{r}}+\epsilon)-\int_{x_{\text{r}}+\epsilon}^{x_{\theta}}Jv'dx\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Thoughts on the boundary terms: We know that 
+\begin_inset Formula 
+\[
+J(x_{\theta})=\lim_{\epsilon\rightarrow0}J(x_{\text{r}}+\epsilon)-J(x_{\text{r}}-\epsilon)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, if we assume that 
+\begin_inset Formula $v$
+\end_inset
+
+ is continuous at the reset 
+\begin_inset Formula 
+\[
+\lim_{\epsilon\rightarrow0}v(x_{\text{r}}-\epsilon)=v(x_{\text{r}}+\epsilon)
+\]
+
+\end_inset
+
+and that 
+\begin_inset Formula $v(x_{\theta})=v(x_{\text{r}})$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\lim_{\epsilon\rightarrow0}\left\{ J(x_{\text{r}}-\epsilon)v(x_{\text{r}}-\epsilon)+J(x_{\theta})v(x_{\theta})-J(x_{\text{r}}+\epsilon)v(x_{\text{r}}+\epsilon)\right\} =v(x_{\theta})\lim_{\epsilon\rightarrow0}\left\{ J(x_{\theta})-\left(J(x_{\text{r}}+\epsilon)-J(x_{\text{r}}-\epsilon)\right)\right\} =0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We multiply the second equation with test function 
+\begin_inset Formula $w$
+\end_inset
+
+ and integrate over the domain 
+\begin_inset Formula 
+\[
+-\int_{x_{\text{min}}}^{x_{\theta}}dxJw=\int_{x_{\text{min}}}^{x_{\theta}}dx\,xuw+\int_{x_{\text{min}}}^{x_{\theta}}dx\,u'w
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Using partial integration, we shift the derivative which acts on 
+\begin_inset Formula $u$
+\end_inset
+
+ in second term on the r.h.s.
+ to the test function 
+\begin_inset Formula $w$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{\text{min}}}^{x_{\theta}}dx\,u'w & =uw\Bigr|_{x_{\text{min}}}^{x_{\theta}}-\int_{x_{\text{min}}}^{x_{\theta}}dx\,uw'\\
+ & =-\int_{x_{\text{min}}}^{x_{\theta}}dx\,uw'
+\end{align*}
+
+\end_inset
+
+where we used that 
+\begin_inset Formula $u$
+\end_inset
+
+ is the zero at the left and right boundary 
+\end_layout
+
+\end_body
+\end_document
