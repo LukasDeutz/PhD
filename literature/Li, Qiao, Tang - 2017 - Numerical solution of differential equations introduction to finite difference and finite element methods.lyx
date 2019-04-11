@@ -1,0 +1,4470 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Numerical solution of differential equations
+\end_layout
+
+\begin_layout Section*
+Finite Element Methods for 1D Boundary Value Problems
+\end_layout
+
+\begin_layout Subsection*
+The Garlerkin FE Method for the 1D Model 
+\end_layout
+
+\begin_layout Itemize
+1D two-point BVP 
+\begin_inset Formula 
+\[
+-u''(x)=f(x),\quad0<x<1,\quad u(0)=0,\quad u(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Garlerkin finite element method described in the following steps 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Construct a variational of weak formulation by multiplying both sides of
+ the differential equation by a 
+\series bold
+test function
+\series default
+ 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ satisfying the BC 
+\begin_inset Formula 
+\[
+-u''v=fv
+\]
+
+\end_inset
+
+and integrate from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}(-u''v)dx & =-u'v\Bigr|_{0}^{1}+\int_{0}^{1}u'v'dx\\
+ & =\int_{0}^{1}u'v'dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Generate a mesh
+\series default
+, e.g.
+ uniform Cartesian mesh 
+\begin_inset Formula $x_{i}=ih$
+\end_inset
+
+ with 
+\begin_inset Formula $i=0,1,\ldots,n$
+\end_inset
+
+ with 
+\begin_inset Formula $h=1/n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Construct a set of 
+\series bold
+basis functions
+\series default
+ on the mesh such as the piecewise linear functions 
+\begin_inset Formula 
+\[
+\phi_{i}(x)=\begin{cases}
+\frac{x-x_{i-1}}{h} & \text{if }x_{i-1}\leq x<x_{i}\\
+\frac{x_{i+1}-x}{h} & \text{if }\text{\ensuremath{x_{i}\leq x<x_{i+1}}}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+ often called 
+\series bold
+hat function.
+ 
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $\phi_{i}(x_{i-1})=0$
+\end_inset
+
+, 
+\begin_inset Formula $\phi_{i}(x_{i})=\frac{x_{i}-x_{i-1}}{h}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{i}(x_{i+1})=0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Represent the approximate solution by the 
+\series bold
+linear combination
+\series default
+ of the basis functions 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{j=1}^{n-1}c_{j}\phi_{j}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The coefficients 
+\begin_inset Formula $c_{j}$
+\end_inset
+
+ are unknowns to be determined 
+\end_layout
+
+\begin_layout Itemize
+If we use the hat basis functions, then 
+\begin_inset Formula $u_{h}(x)$
+\end_inset
+
+ is also a piecewise linear function 
+\end_layout
+
+\begin_layout Itemize
+Derive linear system of equations for the coefficients by substituting the
+ approximate solution 
+\begin_inset Formula $u_{h}(x)$
+\end_inset
+
+ for the exact solution 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ in the weak form 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}u'_{h}v' & =\int_{0}^{1}fvdx\\
+\int_{0}^{1} & \sum_{j-1}^{n-1}c_{j}\phi'_{j}v'dx=\sum_{j=1}^{n-1}c_{j}\int_{0}^{1}\phi'_{j}v'dx\\
+ & =\int_{0}^{1}fvdx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choose the test function 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ as 
+\begin_inset Formula $\phi_{1},\phi_{2},\ldots,\phi_{n-1}$
+\end_inset
+
+ successively so that yields a linear system of equations 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{n-1}c_{j}\int_{0}^{1}\phi'_{j}v'dx=\sum_{i,j}^{n-1}c_{j}\int_{0}^{1}\phi'_{i}\phi'_{j}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\int_{0}^{1}fvdx=\sum_{i}^{n-1}f\phi_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+ we get
+\begin_inset Formula 
+\begin{align*}
+\left(\int_{0}^{1}\phi'_{1}\phi'_{1}\right)c_{1}+\ldots+\left(\int_{0}^{1}\phi'_{1}\phi'_{n-1}\right)c_{n-1} & =\int_{0}^{1}f\phi_{1}dx\\
+\left(\int_{0}^{1}\phi'_{2}\phi'_{1}\right)c_{1}+\ldots+\left(\int_{0}^{1}\phi'_{2}\phi'_{n-1}\right)c_{n-1} & =\int_{0}^{1}f\phi_{2}dx\\
+ & \vdots\\
+\left(\int_{0}^{1}\phi'_{n-1}\phi'_{1}\right)c_{1}+\ldots+\left(\int_{0}^{1}\phi'_{n-1}\phi'_{n-1}\right)c_{n-1} & =\int_{0}^{1}f\phi_{n-1}dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The can be written in matrix form 
+\begin_inset Formula 
+\[
+\begin{pmatrix}a(\phi_{1},\phi_{1}) & a(\phi_{1},\phi_{2}) & \cdots & a(\phi_{1},\phi_{n-1})\\
+a(\phi_{2},\phi_{1}) & a(\phi_{2},\phi_{2}) & \cdots & a(\phi_{2},\phi_{n-1})\\
+\vdots & \vdots & \vdots & \vdots\\
+a(\phi_{n-1},\phi_{1}) & a(\phi_{n-1},\phi_{2}) & \cdots & a(\phi_{n-1},\phi_{n-1})
+\end{pmatrix}\begin{pmatrix}c_{1}\\
+c_{2}\\
+\vdots\\
+c_{n-1}
+\end{pmatrix}=\begin{pmatrix}(f,\phi_{1})\\
+(f,\phi_{2})\\
+\vdots\\
+(f,\phi_{n-1})
+\end{pmatrix}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+a(\phi_{i},\phi_{j})=\int_{0}^{1}\phi'_{i}\phi'_{j}dx,\quad(f,\phi_{i})=\int_{0}^{1}f\phi_{i}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Term 
+\begin_inset Formula $a(u,v)$
+\end_inset
+
+ is called bilinear form because it is linear with each variable 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $(f,v)$
+\end_inset
+
+ is called a linear form 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\phi_{i}$
+\end_inset
+
+ are the hat functions, then 
+\begin_inset Formula 
+\[
+\begin{pmatrix}\frac{2}{h} & -\frac{1}{h}\\
+-\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+ & -\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+\\
+ &  &  & -\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+ &  &  &  & \frac{2}{h} & -\frac{1}{h}
+\end{pmatrix}\begin{pmatrix}c_{1}\\
+c_{2}\\
+c_{3}\\
+\vdots\\
+c_{n-2}\\
+c_{n-1}
+\end{pmatrix}=\begin{pmatrix}(f,\phi_{1})\\
+(f,\phi_{2})\\
+\vdots\\
+(f,\phi_{n-1})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solve the linear system of equations for the coefficients and obtain approximate
+ solution 
+\begin_inset Formula $u_{h}(x)=\sum_{i}c_{i}\phi_{i}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Error analysis 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Questions often raised about 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How to represent ODE or PDE problems in a weak form
+\end_layout
+
+\begin_layout Itemize
+Which are good basis functions 
+\begin_inset Formula $\phi$
+\end_inset
+
+, in view of ODE/PDE, mesh, and the BC 
+\end_layout
+
+\begin_layout Itemize
+How to implement the finite element method
+\end_layout
+
+\begin_layout Itemize
+Solve linear system of equations 
+\end_layout
+
+\begin_layout Itemize
+Error analysis 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Go through model 1D step by step 0
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from ordinary differential equation
+\begin_inset Formula 
+\[
+-u''(x)=f(x),\quad0<x<1,\quad u(0)=0,\quad u(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variational formulation
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'v'dx=\int_{0}^{1}fv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Uniform mesh 
+\begin_inset Formula $x_{i}=hi$
+\end_inset
+
+ for 
+\begin_inset Formula $i=0,1,\ldots,n$
+\end_inset
+
+ and 
+\begin_inset Formula $h=1/n$
+\end_inset
+
+.
+ Basis function 
+\begin_inset Formula 
+\[
+\phi_{i}(x)=\begin{cases}
+\frac{x-x_{i-1}}{h} & \text{if }x_{i-1}\leq x<x_{i}\\
+\frac{x_{i+1}-x}{h} & \text{if }\text{\ensuremath{x_{i}\leq x<x_{i+1}}}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Represent 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{j=1}^{n-1}c_{j}\phi_{j}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Choose 
+\begin_inset Formula $v$
+\end_inset
+
+ to be 
+\begin_inset Formula 
+\[
+v(x)=\sum_{i}\phi_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substituting into weak form 
+\begin_inset Formula 
+\[
+\int_{0}^{1}\sum_{i,j=1}^{n-1}c_{j}\phi'_{j}\phi'_{i}=\sum_{i}\int_{0}^{1}f\phi_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $a(\phi_{i},\phi_{j})=\int_{0}^{1}\phi'_{j}(x)\phi'_{i}(x)dx$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\sum_{i,j=1}^{n-1}a(\phi_{i},\phi_{j})c_{j}=\sum_{i}\int_{0}^{1}f\phi_{i}
+\]
+
+\end_inset
+
+which can be written in matrix form 
+\begin_inset Formula 
+\[
+\begin{pmatrix}a(\phi_{1},\phi_{1}) & a(\phi_{1},\phi_{2}) & \cdots & a(\phi_{1},\phi_{n-1})\\
+a(\phi_{2},\phi_{1}) & a(\phi_{2},\phi_{2}) & \cdots & a(\phi_{2},\phi_{n-1})\\
+\vdots & \vdots & \vdots & \vdots\\
+a(\phi_{n-1},\phi_{1}) & a(\phi_{n-1},\phi_{2}) & \cdots & a(\phi_{n-1},\phi_{n-1})
+\end{pmatrix}\begin{pmatrix}c_{1}\\
+c_{2}\\
+\vdots\\
+c_{n-1}
+\end{pmatrix}=\begin{pmatrix}(f,\phi_{1})\\
+(f,\phi_{2})\\
+\vdots\\
+(f,\phi_{n-1})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The matrix elements are given by 
+\begin_inset Formula 
+\begin{align*}
+a(\phi_{i},\phi_{i}) & =\frac{1}{h^{2}}\int_{x_{i-1}}^{x_{i}}dx+\int_{x_{i}}^{x_{i+1}}\frac{1}{h^{2}}dx\\
+ & =\frac{2}{h}
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+a(\phi_{i},\phi_{i+1}) & =-\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}dx\\
+ & =-\frac{1}{h}
+\end{align*}
+
+\end_inset
+
+and zero otherwise.
+ Hence 
+\begin_inset Formula 
+\[
+\begin{pmatrix}\frac{2}{h} & -\frac{1}{h}\\
+-\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+ & -\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+\\
+ &  &  & -\frac{1}{h} & \frac{2}{h} & -\frac{1}{h}\\
+ &  &  &  & \frac{2}{h} & -\frac{1}{h}
+\end{pmatrix}\begin{pmatrix}c_{1}\\
+c_{2}\\
+c_{3}\\
+\vdots\\
+c_{n-2}\\
+c_{n-1}
+\end{pmatrix}=\begin{pmatrix}(f,\phi_{1})\\
+(f,\phi_{2})\\
+\vdots\\
+(f,\phi_{n-1})
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $f=1$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+(f,\phi_{i})=\int_{x_{i-1}}^{x_{i}}\frac{x-x_{i-1}}{h}dx+\int_{x_{i}}^{x_{i+1}}\frac{x_{i+1}-x}{h}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $y=x-x_{i-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $z=x_{i+1}-x$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\begin{align*}
+(f,\phi_{i}) & =\frac{1}{h}\int_{0}^{h}y\,dy-\frac{1}{h}\int_{h}^{0}z\,dz\\
+ & =\frac{1}{2}h+\frac{1}{2}h\\
+ & =h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Different Mathematical Formulations for the 1D Model 
+\end_layout
+
+\begin_layout Itemize
+1D two-point BVP 
+\begin_inset Formula 
+\[
+-u''(x)=f(x),\quad0<x<1,\quad u(0)=0,\quad u(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+D-form, the original differential equation 
+\end_layout
+
+\begin_layout Enumerate
+V-form, the variational or weak form 
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'v'dx=\int_{0}^{1}fv\,dx
+\]
+
+\end_inset
+
+for any test function 
+\begin_inset Formula $v\in H_{0}^{1}(0,1)$
+\end_inset
+
+.
+ Corresponding finite element method is often called the 
+\series bold
+Galerkin method
+\series default
+ 
+\end_layout
+
+\begin_layout Enumerate
+The M-form, the minimization form 
+\begin_inset Formula 
+\[
+\min_{v(x)\in H_{0}^{1}(0,1)}\left\{ \int_{0}^{1}\left(\frac{1}{2}(v'')^{2}-fv\right)dx\right\} 
+\]
+
+\end_inset
+
+often called the 
+\series bold
+Ritz method
+\series default
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+A Physical example 
+\end_layout
+
+\begin_layout Itemize
+Equilibrium position of an elastic string of unit length, with to ends fixed
+ subject to an external force 
+\end_layout
+
+\begin_layout Itemize
+Equilibrium is the state that minimizes the total energy 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Mathematical Equivalence 
+\end_layout
+
+\begin_layout Itemize
+We proved that (D) is equivalent to (V) using integration by parts 
+\end_layout
+
+\begin_layout Itemize
+Under certain conditions (V) is equivalent to (D), and (V) to (M), and (M)
+ to (V)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem 6.1: 
+\series default
+(V)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+(D).
+ If 
+\begin_inset Formula $u_{xx}$
+\end_inset
+
+ exists and is continuous, then
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'v'dx=\int_{0}^{1}fvdx,\quad v(0)=v(1)=0
+\]
+
+\end_inset
+
+implies that 
+\begin_inset Formula $-u_{xx}=f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $H^{1}(0,1)$
+\end_inset
+
+ is the Sobolev space, of all functions that have a first-order derivative
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Integration by parts 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}u'v' & =u'v\Bigr|_{0}^{1}-\int_{0}^{1}u''v\,dx\\
+ & =-\int_{0}^{1}u''v\,dx=\int_{0}^{1}fv\,dx
+\end{align*}
+
+\end_inset
+
+which can be written as 
+\begin_inset Formula 
+\[
+\int_{0}^{1}(u''+f)vdx=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Since 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ is arbitrary continuous, and 
+\begin_inset Formula $u''$
+\end_inset
+
+ and 
+\begin_inset Formula $f$
+\end_inset
+
+ are continuous, we mus have 
+\begin_inset Formula 
+\[
+u''+f=0
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Theorem
+\series default
+ 
+\series bold
+6.2
+\series default
+: (V)
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+(M)
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'*v'dx=\int_{0}^{1}vfdx
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ ...
+ .
+ Then 
+\begin_inset Formula 
+\[
+F(u*)\leq F(u)
+\]
+
+\end_inset
+
+or 
+\begin_inset Formula 
+\[
+\frac{1}{2}\int_{0}^{1}(u*)_{x}^{2}dx-\int_{0}^{1}fu*dx\leq\frac{1}{2}\int_{0}^{1}u_{x}^{2}dx-\int_{0}^{1}fudx
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+F(u)=F(u*+u-u*)=F(u*+w)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $w=u-u*$
+\end_inset
+
+ and 
+\begin_inset Formula $w(0)=w(1)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+F(u) & =\int_{0}^{1}\left(\frac{1}{2}(u*+w)_{x}^{2}-(u*+w)f\right)dx\\
+ & =\int_{0}^{1}\left(\frac{(u*)_{x}^{2}+(w*)_{x}^{2}+2(u*)_{x}(w*)_{x}}{2}-u*f-wf\right)dx\\
+ & =\int_{0}^{1}\left(\frac{1}{2}(u*)_{x}^{2}-u*f\right)dx+\int_{0}^{1}\frac{1}{2}(w*)_{x}^{2}dx+\int_{0}^{1}\left((u*)_{x}(w*)_{x}-wf\right)dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The last term vanishes because of 
+\begin_inset Formula $u*$
+\end_inset
+
+ fulfills the variational problem 
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'*v'dx=\int_{0}^{1}vfdx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+F(u) & =\int_{0}^{1}\left(\frac{1}{2}(u*)_{x}^{2}-u*f\right)dx+\int_{0}^{1}\frac{1}{2}(w*)_{x}^{2}dx\\
+ & =F(u*)+\frac{1}{2}\int_{0}^{1}(w*)_{x}^{2}dx\\
+ & \geq F(u*)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $u$
+\end_inset
+
+ fulfills variational problem, then it also minimizes 
+\begin_inset Formula $F(u)=\int_{0}^{1}\left(\frac{1}{2}(u'')^{2}-fu\right)dx$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Key Components of the FE Method for the 1D Model
+\end_layout
+
+\begin_layout Itemize
+How to use the 
+\series bold
+Galerkin
+\series default
+ and 
+\series bold
+Ritz
+\series default
+ method
+\end_layout
+
+\begin_layout Itemize
+How to assemble the stiffness matrix using the element by element approach
+ 
+\end_layout
+
+\begin_layout Itemize
+The first step is to choose an integral form, usually the weak form say
+ 
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'v'dx=\int_{0}^{1}fv\,dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Mesh and Basis Functions 
+\end_layout
+
+\begin_layout Itemize
+For a 1D problem, a mesh is a set of points in the interval of interest,
+ say 
+\begin_inset Formula $x_{0}=0,x_{1},x_{2},\ldots,x_{M}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $h_{i}=x_{i+1}-x_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $i=0,1,\ldots,M-1$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is called a 
+\series bold
+node
+\series default
+, or a nodal point
+\end_layout
+
+\begin_layout Itemize
+(
+\begin_inset Formula $x_{i},x_{i+1}$
+\end_inset
+
+) is called an 
+\series bold
+element
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h={\displaystyle \max_{0\leq i\leq M-1}\{h_{i}\}}$
+\end_inset
+
+ is the 
+\series bold
+mesh size
+\series default
+, a measure of how 
+\series bold
+fine
+\series default
+ the partition is 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Define a Finite Dimensional Space on the Mesh
+\end_layout
+
+\begin_layout Itemize
+Let the solution be in the 
+\begin_inset Formula $V$
+\end_inset
+
+ space which is 
+\begin_inset Formula $H_{0}^{1}(0,1)$
+\end_inset
+
+ (Sobolev space, all functions which have a 1st derivative) for our problem
+ 
+\end_layout
+
+\begin_layout Itemize
+Based on the mesh, we wish to construct a subspace 
+\begin_inset Formula 
+\[
+V_{h}(\text{a finite dimensional space})\subset V(\text{the solution space})
+\]
+
+\end_inset
+
+such that the discrete problem is contained in the continuous problem 
+\end_layout
+
+\begin_layout Itemize
+Different finite elements methods generate different finite element solutions
+ 
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ has finite dimension, we can find a set of of basis functions 
+\begin_inset Formula 
+\[
+\phi_{1},\phi_{2},\ldots,\phi_{M-1}\subset V_{h}
+\]
+
+\end_inset
+
+which are linearly independent 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ is the space spanned by the basis functions 
+\begin_inset Formula 
+\[
+V_{h}=\begin{cases}
+v_{h}(x), & v_{h}(x)=\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+simplest
+\series default
+ finite dimensional space is the piecewise continuous linear function space
+ defined over the mesh 
+\begin_inset Formula 
+\[
+V_{h}=\left\{ v_{h}(x),\,v_{h}(x)\text{ is continuous piecewise linear, }v_{h}(0)=v_{h}(1)=0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It easy to show that 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ has a finite dimension, even though there are infinite number of elements
+ in 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Find the Dimension of 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A linear function 
+\begin_inset Formula $l(x)$
+\end_inset
+
+ in an interval 
+\begin_inset Formula $(x_{i},x_{i+1})$
+\end_inset
+
+ is uniquely determined by 
+\series bold
+its values
+\series default
+ at 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i+1}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+l(x)=l(x_{i})\frac{x-x_{i+1}}{x_{i}-x_{i+1}}+l(x_{i+1})\frac{x-x_{i}}{x_{i+1}-x_{i}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Straight line 
+\begin_inset Formula 
+\[
+l(x)=ax+b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula 
+\[
+a=\frac{l(x_{i})-l(x_{i+1})}{x_{i}-x_{i+1}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+b=l(x_{i})-\frac{l(x)-l(x_{i+1})}{x_{i}-x_{i+1}}x_{i}
+\]
+
+\end_inset
+
+Hence, we have 
+\begin_inset Formula 
+\[
+l(x)=\frac{l(x_{i})-l(x_{i+1})}{x_{i}-x_{i+1}}x+l(x_{i})-\frac{l(x)-l(x_{i+1})}{x_{i}-x_{i+1}}x_{i}
+\]
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\begin{align*}
+l(x) & =\frac{l(x_{i})x-l(x_{i+1})x+l(x_{i})x_{i}-l(x_{i})x_{i+1}-l(x_{i})x_{i}+l(x_{i+1})x_{i}}{x_{i}-x_{i+1}}\\
+ & =\frac{l(x_{i})x-l(x_{i})x_{i+1}-l(x_{i+1})x+l(x_{i+1})x_{i}}{x_{i}-x_{i+1}}\\
+ & =l(x_{i})\frac{x-x_{i+1}}{x_{i}-x_{i+1}}+l(x_{i+1})\frac{x-x_{i}}{x_{i+1}-x_{i}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $M-1$
+\end_inset
+
+ nodal values 
+\begin_inset Formula $l(x_{1}),l(x_{2}),\ldots,l(x_{M-1})$
+\end_inset
+
+ for a continuous functions over the mesh in addition to 
+\begin_inset Formula $l(x_{0})=l(x_{M})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Given a vector 
+\begin_inset Formula $[l(x_{1}),l(x_{2}),\ldots,l(x_{M-1})]^{T}\in R^{M-1}$
+\end_inset
+
+ we can construct a 
+\begin_inset Formula $v_{h}(x)\in V_{h}$
+\end_inset
+
+ by taking 
+\begin_inset Formula $v_{h}(x_{i})=l(x_{i})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+On the other hand, given 
+\begin_inset Formula $v_{h}(x)\in V_{h}$
+\end_inset
+
+ we get a vector 
+\begin_inset Formula $[v(x_{1}),v(x_{2}),\ldots,v(x_{M-1})]^{T}\in R^{M-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There is a 
+\series bold
+one to one
+\series default
+ relation between 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ and 
+\begin_inset Formula $R^{M-1}$
+\end_inset
+
+, so 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ has the finite dimension 
+\begin_inset Formula $M-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Find a Set of Basis Functions
+\end_layout
+
+\begin_layout Itemize
+The finite dimensional space can be spanned by a set of basis functions
+\end_layout
+
+\begin_layout Itemize
+There are infinitely many sets of basis functions, but we should choose
+ one that is:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+simple
+\end_layout
+
+\begin_layout Itemize
+has 
+\series bold
+compact
+\series default
+ 
+\series bold
+(minimum support)
+\series default
+, i.e.
+ zero almost everywhere except for a small region 
+\end_layout
+
+\begin_layout Itemize
+meets the regularity requirement, i.e.m continuous and differentiable, 
+\series bold
+except
+\series default
+ at nodal points
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The simplest is the set of hat functions 
+\begin_inset Formula 
+\begin{align*}
+\phi(x_{1}) & =1,\quad\phi_{1}(x_{j})=0,\quad j=0,2,3,\ldots,M\\
+\phi(x_{2}) & =1,\quad\phi_{2}(x_{j})=0,\quad j=0,1,3,\ldots,M\\
+ & \vdots\\
+\phi(x_{M-1}) & =1,\quad\phi_{M-1}(x_{j})=0,\quad j=0,1,\ldots M-2,M
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Analytic form of the hat functions 
+\begin_inset Formula 
+\begin{align*}
+\phi_{i}(x) & =\begin{cases}
+0, & \text{if }x<x_{i-1}\\
+\frac{x-x_{i-1}}{h_{i}} & \text{if }x_{i-1}\leq x<x_{i}\\
+\frac{x_{i+1}-x}{h_{i+1}} & \text{if }x_{i}\leq x<x_{i+1}\\
+0 & \text{if }x_{i+1}\leq x
+\end{cases}
+\end{align*}
+
+\end_inset
+
+and the finite element solution is 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Either the minimization form (M) or variational or weak form (V) can be
+ used to derive linear system of equations for the coefficients 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we use the hat functions at a basis we have 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}(x_{i})=\alpha_{i}\phi(x_{i})=\alpha_{i}
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ is an appropriate solution to the exact solution at 
+\begin_inset Formula $x=x_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+The Ritz Method
+\end_layout
+
+\begin_layout Itemize
+For the model problem 
+\begin_inset Formula 
+\begin{align*}
+-u''(x) & =f(x),\quad0<x<1\\
+u(0) & =0\\
+u(1) & =0
+\end{align*}
+
+\end_inset
+
+the minimization form is
+\begin_inset Formula 
+\[
+F(v)=\frac{1}{2}\int_{0}^{1}(v_{x})^{2}dx-\int_{0}^{1}fvdx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As before, we look for an approximate solution of the form 
+\begin_inset Formula $u_{h}(x)=\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting into the functional form gives 
+\begin_inset Formula 
+\[
+F(v)=\frac{1}{2}\int_{0}^{1}(\sum_{j}^{M-1}\alpha_{j}\phi'_{j}(x))^{2}dx-\int_{0}^{1}f\sum_{j=1}^{M-1}\alpha_{j}\phi_{j}(x)dx
+\]
+
+\end_inset
+
+which is a multivariate function of 
+\begin_inset Formula $\alpha_{1},\alpha_{2},\ldots,\alpha_{M-1}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F(u_{h})=F(\alpha_{1},\alpha_{2},\ldots,\alpha_{M-1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Necessary condition for a global minimum (also a local minimum) is 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial F}{\partial\alpha_{1}} & =0\\
+\frac{\partial F}{\partial\alpha_{2}} & =0\\
+\vdots\\
+\frac{\partial F}{\partial\alpha_{M-1}} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Taking he partial derivatives with respect to 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial F}{\partial\alpha_{1}} & =\int_{0}^{1}(\sum_{j}^{M-1}\alpha_{j}\phi'_{j}(x))\phi'_{1}(x)dx-\int_{0}^{1}f\phi_{1}(x)dx\\
+\vdots\\
+\frac{\partial F}{\partial\alpha_{i}} & =\int_{0}^{1}(\sum_{j}^{M-1}\alpha_{j}\phi'_{j}(x))\phi'_{i}(x)dx-\int_{0}^{1}f\phi_{i}(x)dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Exchanging the order of integration and summation yields 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{M-1}\left(\int_{0}^{1}\phi'_{j}\phi'_{i}\right)a_{j}=\int_{0}^{1}f\phi_{i}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is the same system of equations that follow from the Galerkin method
+ with the weak form 
+\end_layout
+
+\begin_layout Itemize
+For many problems, the Ritz and the Galerkin methods are theoretically equivalen
+t 
+\end_layout
+
+\begin_layout Itemize
+Ritz method is based on the minimization form, and optimization techniques
+ can be used to solve the problem 
+\end_layout
+
+\begin_layout Itemize
+Galerkin method usuall has weaker requirements than the Ritz method.
+ Not 
+\series bold
+every
+\series default
+ problem has a minimization form, whereas almost all problems have some
+ kind of weak form
+\end_layout
+
+\begin_layout Subsection*
+Exercises 
+\end_layout
+
+\begin_layout Enumerate
+Consider the following BVP 
+\begin_inset Formula 
+\[
+-u''(x)+u(x)=f(x),\quad0<x<1,\quad u(0)=u(1)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Sow that the weak form (variational form) is 
+\begin_inset Formula 
+\[
+(u',v')+(u,v)=(f,v)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+(u,v) & =\int_{0}^{1}u(x)v(x)dx\\
+H_{0}^{1}(0,1) & =\left\{ v(x),\quad v(0)=v(1)=0,\quad\int_{0}^{1}v^{2}dx<\infty\right\} 
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from
+\begin_inset Formula 
+\[
+-u''(x)+u(x)=f(x)
+\]
+
+\end_inset
+
+Multiply with test function 
+\begin_inset Formula $v$
+\end_inset
+
+ and integrate over domain 
+\begin_inset Formula 
+\[
+\int dx(-u''v+uv)=\int dx\,fv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use integration by parts to write the first integral as 
+\begin_inset Formula 
+\begin{align*}
+\int dxu''v & =u'v\bigr|_{0}^{1}-\int dxu'v'\\
+ & =-\int dxu'v'
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\[
+\int dxu'v'+\int dxuv=\int dx\,fv
+\]
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\[
+(u'v')+(u,v)=(f,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Derive the linear system of the equations for the finite element approximation
+ 
+\begin_inset Formula 
+\[
+u_{h}=\sum_{j=1}^{3}\alpha_{j}\phi_{j}(x)
+\]
+
+\end_inset
+
+with the following information 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f(x)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the nodal points are indexed as 
+\begin_inset Formula 
+\begin{align*}
+x_{0} & =0,x_{2}=\frac{1}{4},x_{3}=\frac{1}{2}x_{1}=\frac{3}{4},x_{4}=1\\
+\Omega_{1} & =[x_{3},x_{1}]\\
+\Omega_{2} & =[x_{1},x_{4}]\\
+\Omega_{3} & =[x_{2},x_{3}]\\
+\Omega_{4} & =[x_{0},x_{2}]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the basis functions are the hat functions 
+\begin_inset Formula $\phi_{i}(x_{j})=1$
+\end_inset
+
+ for 
+\begin_inset Formula $i=j$
+\end_inset
+
+ and 
+\begin_inset Formula $0$
+\end_inset
+
+ otherwise
+\end_layout
+
+\begin_layout Itemize
+assemble the stiffness matrix and the load vector element by element 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $u_{h}={\displaystyle \sum_{j=1}^{N-1}u_{j}\phi_{j}(x)}$
+\end_inset
+
+ into the variational form 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{N-1}(v',\phi'_{j})u_{j}+\sum_{j=1}^{N-1}(v,\phi_{j},)u_{j}=(f,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Successively use 
+\begin_inset Formula $v=\phi_{1},\phi_{2},\ldots$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{j=1}^{N-1}(\phi_{1}',\phi'_{j})u_{j}+\sum_{j=1}^{N-1}(\phi_{1},\phi_{j})u_{j} & =(f,\phi_{1})\\
+\sum_{j=1}^{N-1}(\phi_{2}',\phi'_{j})u_{j}+\sum_{j=1}^{N-1}(\phi_{2},\phi_{j})u_{j} & =(f,\phi_{2})\\
+\vdots\\
+\sum_{j=1}^{N-1}(\phi_{N-1}',\phi'_{j})u_{j}+\sum_{j=1}^{N-1}(\phi_{N-1},\phi_{j})u_{j} & =(f,\phi_{N-1})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The system of equations can be written in matrix form 
+\begin_inset Formula 
+\[
+\boldsymbol{A}\boldsymbol{u}+\boldsymbol{B}\boldsymbol{u}=\boldsymbol{f}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+A_{ij} & =(\phi_{i}',\phi'_{j})\\
+B_{ij} & =(\phi_{i},\phi{}_{j})\\
+f_{i} & =(f,\phi_{i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+I have calculated these elements already 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section*
+Theoretical Foundations of the Finite Element Method 
+\end_layout
+
+\begin_layout Itemize
+Using finite element methods we need to answer these questions 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is the appropriate functional space 
+\begin_inset Formula $V$
+\end_inset
+
+ for the solution 
+\end_layout
+
+\begin_layout Itemize
+What is the appropriate weak or variational form of a differential equation
+\end_layout
+
+\begin_layout Itemize
+What kind of basis functions or finite element spaces should we choose
+\end_layout
+
+\begin_layout Itemize
+How accurate is the finite element solution
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Functional Spaces 
+\end_layout
+
+\begin_layout Itemize
+A 
+\series bold
+functional space 
+\series default
+is a 
+\series bold
+set 
+\series default
+of functions with 
+\series bold
+operations
+\series default
+: For example
+\series bold
+
+\begin_inset Formula 
+\[
+C(\Omega)=C^{0}(\Omega)=\left\{ u(x),\quad u(x)\text{ is continiuous on }\Omega\right\} 
+\]
+
+\end_inset
+
+
+\series default
+is
+\series bold
+ 
+\series default
+a 
+\series bold
+linear
+\series default
+ space that contains all continuous functions on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, the domain where the functions are defined 
+\end_layout
+
+\begin_layout Itemize
+The space is linear because for any real number 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{1}\in C(\Omega)$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2}\in C(\Omega)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\alpha u_{1}+\beta u_{2}\in C(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The functional space with first-order continuous derivatives in 1D is 
+\begin_inset Formula 
+\[
+C^{1}(\Omega)=\left\{ u(x),\quad u(x),u'(x)\,\text{are continuous on }\Omega\right\} 
+\]
+
+\end_inset
+
+and similarly 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Obviously,
+\begin_inset Formula 
+\[
+C^{0}\supset C^{1}\supset C\ldots\supset C^{m}\supset\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $m\rightarrow\infty$
+\end_inset
+
+, we define 
+\begin_inset Formula 
+\[
+C^{\infty}(\Omega)=\left\{ u(x),\quad u(x)\text{ is definitely differentiable on }\Omega\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Multidimensional Spaces and Multi-index Notations 
+\end_layout
+
+\begin_layout Itemize
+multidimensional functions 
+\begin_inset Formula $u(\boldsymbol{x})=u(x_{1},x_{2},\ldots,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Represent partial derivatives as 
+\begin_inset Formula 
+\[
+D^{\boldsymbol{\alpha}}=\frac{\partial^{\bigl|\boldsymbol{\alpha}\bigr|}u}{\partial x_{1}^{\alpha_{1}}\partial x_{2}^{\alpha_{2}}\ldots\partial x_{n}^{\alpha_{n}}},\quad\bigl|\alpha\bigr|=\alpha_{1}+\alpha_{2}+\ldots+\alpha_{n},\quad\alpha_{i}\geq0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $n=2$
+\end_inset
+
+ and 
+\begin_inset Formula $u(\boldsymbol{x})=u(x_{1},x_{2})$
+\end_inset
+
+, all possible 
+\begin_inset Formula $D^{\boldsymbol{\alpha}}u$
+\end_inset
+
+ for 
+\begin_inset Formula $\bigl|\boldsymbol{\alpha}\bigr|=2$
+\end_inset
+
+ are 
+\begin_inset Formula 
+\begin{align*}
+\alpha & =(2,0),\quad D^{\boldsymbol{\alpha}}u=\frac{\partial^{2}u}{\partial^{2}x_{1}^{2}}\\
+\alpha & =(1,1),\quad D^{\boldsymbol{\alpha}}u=\frac{\partial^{2}u}{\partial x_{1}\partial x_{2}}\\
+\alpha & =(0,2),\quad D^{\boldsymbol{\alpha}}u=\frac{\partial^{2}u}{\partial^{2}x_{2}^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+With the multi-index notation, the 
+\begin_inset Formula $C^{m}$
+\end_inset
+
+ space in a domain 
+\begin_inset Formula $\Omega\in R^{n}$
+\end_inset
+
+ can be defined as 
+\begin_inset Formula 
+\[
+C^{m}(\Omega)=\{u(\boldsymbol{x}),\quad D^{\boldsymbol{\alpha}}u\text{ are continuous on }\bigl|\boldsymbol{\alpha}\bigr|\leq m\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+ has infinite dimensions 
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+distance 
+\series default
+in
+\series bold
+ 
+\begin_inset Formula $C^{0}(\Omega)$
+\end_inset
+
+ 
+\series default
+is can be defined as
+\series bold
+ 
+\begin_inset Formula 
+\[
+d(u,v)=\max_{x\in\Omega}\bigl|u(x)-v(x)\bigr|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Linear space with a distance is called a 
+\series bold
+metric spac
+\series default
+e
+\end_layout
+
+\begin_layout Itemize
+A norm in 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+ is a nonnegative function of 
+\begin_inset Formula $u$
+\end_inset
+
+ that satisfies 
+\begin_inset Formula 
+\begin{align*}
+\bigl\Vert u(x)\bigr\Vert & \geq0\\
+\bigl\Vert\alpha u(x)\bigr\Vert & =\bigl|\alpha\bigr|\bigl\Vert u(x)\bigr\Vert\\
+\bigl\Vert u(x)+v(x)\bigr\Vert & \leq\bigl\Vert u(x)\bigr\Vert+\bigl\Vert v(x)\bigr\Vert
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+, the distance and the norm are defined as 
+\begin_inset Formula 
+\begin{align*}
+d(u,v) & =\max_{0\leq\bigl|\boldsymbol{\alpha}\bigr|\leq m}\max_{x\in\Omega}\bigl\Vert D^{\boldsymbol{\alpha}}u(x)-D^{\boldsymbol{\alpha}}v(x)\bigr\Vert\\
+\bigl\Vert u(x)\bigr\Vert & =\max_{0\leq\bigl|\boldsymbol{\alpha}\bigr|\leq m}\max_{x\in\Omega}\bigl\Vert D^{\boldsymbol{\alpha}}u(x)-D^{\boldsymbol{\alpha}}v(x)\bigr\Vert
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Spaces for Integral Forms, 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+ and 
+\begin_inset Formula $L^{p}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In analogy to pointwise spaces 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+, we can define Sobolev spaces 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ in integral forms.
+ The square-integrable space 
+\begin_inset Formula $H^{0}(\Omega)=L^{2}(\Omega)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+L^{2}(\Omega)=\left\{ u(x),\quad\int_{\Omega}u^{2}(x)dx<\infty\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Corresponding to the pointwise 
+\begin_inset Formula $C^{0}(\Omega)$
+\end_inset
+
+ space.
+ It is easy to see that 
+\begin_inset Formula 
+\[
+C(\Omega)=C^{0}(\Omega)\subset L^{2}(\Omega)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The integral of a squared continuous function over a finite domain is finite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Function 
+\begin_inset Formula $y(x)=x^{-1/4}$
+\end_inset
+
+ is in 
+\begin_inset Formula $L^{2}(0,1)$
+\end_inset
+
+ but not in 
+\begin_inset Formula $C(0,1)$
+\end_inset
+
+ since 
+\begin_inset Formula $y(x)$
+\end_inset
+
+ blows up as 
+\begin_inset Formula $x\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A piecewise constant function is in 
+\begin_inset Formula $L^{2}(0,1)$
+\end_inset
+
+ nut not in 
+\begin_inset Formula $C(0,1)$
+\end_inset
+
+ since the function is discontinuous at transition 
+\end_layout
+
+\begin_layout Itemize
+The distance of 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+d(f,g)=\{\int_{\Omega}\bigl|f-g\bigr|^{2}dx\}^{1/2}
+\]
+
+\end_inset
+
+which satisfies 
+\begin_inset Formula $d(f,g)\geq0$
+\end_inset
+
+, 
+\begin_inset Formula $d(f,g)=0$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $f=g$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+d(f,g+h) & \leq d(f,g)+d(f,h)\\
+\{\int_{\Omega}\bigl|f-(g+h)\bigr|^{2}dx\}^{1/2} & \leq\{\int_{\Omega}\bigl|f-g\bigr|^{2}dx\}^{1/2}+\{\int_{\Omega}\bigl|f-h\bigr|^{2}dx\}^{1/2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We say two functions 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ are identical 
+\begin_inset Formula $(f=g)$
+\end_inset
+
+ in 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+ if 
+\begin_inset Formula $d(f,g)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The norm in the 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+ space is defined as 
+\begin_inset Formula 
+\[
+\bigl\Vert u\bigr\Vert_{L^{2}}=\bigl\Vert u\bigr\Vert_{0}=\left\{ \int_{\Omega}\bigl|u\bigr|^{2}dx\right\} ^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+The Inner product in 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For any two vectors 
+\begin_inset Formula 
+\begin{align*}
+x & =(x_{1},x_{2},\ldots,x_{n})\\
+y & =(y_{1},y_{2},\ldots,y_{n})
+\end{align*}
+
+\end_inset
+
+in 
+\begin_inset Formula $R^{n}$
+\end_inset
+
+, we recall the inner product is 
+\begin_inset Formula 
+\[
+\bigl(x,y\bigr)=x^{T}y=\sum_{i=1}^{n}x_{i}y_{i}=x_{1}y_{1}+x_{2}y_{1}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The inner product in 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+ space in 
+\begin_inset Formula $R$
+\end_inset
+
+, is defined as 
+\begin_inset Formula 
+\[
+(f,g)=\int_{\Omega}f(x)g(x)dx
+\]
+
+\end_inset
+
+and satisfies the familiar properties 
+\begin_inset Formula 
+\begin{align*}
+(f,g) & =(g,f)\\
+(\alpha f,g) & =(f,\alpha g)=\alpha(f,g)\\
+(f,g+w) & =(f,g)+(f,w)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Norm distance and inner product are relates as 
+\begin_inset Formula 
+\[
+\bigr\Vert u\bigr\Vert=\sqrt{(u,u)}=d(u,\theta)=\left\{ \int_{\Omega}\bigl|u\bigr|^{2}dx\right\} ^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+With the 
+\begin_inset Formula $L^{2}(0,1)$
+\end_inset
+
+ inner product, for the simple model problem 
+\begin_inset Formula 
+\[
+-u''=f,\quad u(0)=u(1)=0
+\]
+
+\end_inset
+
+we can rewrite the weak form as 
+\begin_inset Formula 
+\[
+(u',v')=(f,v),\quad v\in H_{0}^{1}(0,1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A complete Banach space with an inner product defined is called a 
+\series bold
+Hilbert space
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Formula $L^{p}(\Omega)$
+\end_inset
+
+ Spaces 
+\end_layout
+
+\begin_layout Itemize
+An 
+\begin_inset Formula $L^{p}(\Omega)$
+\end_inset
+
+ space is defined as 
+\begin_inset Formula 
+\[
+L^{p}(\Omega)=\left\{ u(x),\quad\int_{\Omega}\bigl|u(x)\bigr|^{p}dx<\infty\right\} 
+\]
+
+\end_inset
+
+and the distance in 
+\begin_inset Formula $L^{p}(\Omega)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+d(f,g)=\left\{ \int_{\Omega}\bigl|f-g\bigr|^{p}dx\right\} ^{1/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $L^{p}(\Omega)$
+\end_inset
+
+ space has a distance and it is complete, so it is a Banach space.
+ However, it is not a Hilbert space, because no corresponding inner product
+ is defined unless 
+\begin_inset Formula $p=2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Sobolev Spaces and Weak Derivatives 
+\end_layout
+
+\begin_layout Itemize
+Similar to 
+\begin_inset Formula $C^{m}(\Omega)$
+\end_inset
+
+ spaces (
+\begin_inset Formula $C^{m}(\Omega)=\{u(\boldsymbol{x}),\quad D^{\boldsymbol{\alpha}}u\text{ are continuous on }\bigl|\boldsymbol{\alpha}\bigr|\leq m\}$
+\end_inset
+
+), we use Sobolev spaces 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ to define function spaces with derivatives involving integral forms 
+\end_layout
+
+\begin_layout Itemize
+If there is no derivative, then the relevant Sobolev space is 
+\begin_inset Formula 
+\[
+H^{0}(\Omega)=L^{2}(\Omega)=\left\{ v(x),\int_{\Omega}\bigl|v\bigr|^{2}<\infty\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Definition of Weak Derivatives 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $u(x)\in C^{1}[0,1]$
+\end_inset
+
+, then for any function 
+\begin_inset Formula $\phi\in C^{1}(0,1)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\phi(0)=\phi(1)=0$
+\end_inset
+
+ we recall 
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'(x)\phi(x)=u\phi\bigr|_{0}^{1}-\int_{0}^{1}u(x)\phi'(x)=-\int_{0}^{1}u(x)\phi'(x)dx
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is a test function in 
+\begin_inset Formula $C_{0}^{1}(0,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The first-order 
+\series bold
+weak derivative 
+\series default
+of 
+\begin_inset Formula $u(x)\in L^{2}(\Omega)$
+\end_inset
+
+ is defined to be a function 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ satisfying 
+\begin_inset Formula 
+\[
+\int_{\Omega}v(x)\phi(x)=-\int_{0}^{1}u(x)\phi'(x)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If such a function exists, then we write 
+\begin_inset Formula $v(x)=u'(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example 
+\series default
+hat function
+\series bold
+
+\begin_inset Formula 
+\[
+u(x)=\begin{cases}
+\frac{x}{2} & \text{if }0\leq x<\frac{1}{2}\\
+\frac{1-x}{2} & \text{if }\frac{1}{2}\leq x\leq1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is obvious that 
+\begin_inset Formula $u(x)\in C[0,1]$
+\end_inset
+
+ but 
+\begin_inset Formula $u'(x)\notin C(0,1)$
+\end_inset
+
+ since the classic derivative does not exist at 
+\begin_inset Formula $x=\frac{1}{2}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\phi(x)\in C^{1}(0,1)$
+\end_inset
+
+ be any functions that vanishes at two ends, i.e.
+ 
+\begin_inset Formula $\phi(0)=\phi(1)=0$
+\end_inset
+
+, and has a first-order continuous derivative on 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We carry out the integration by parts 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}\phi'udx & =\int_{0}^{1/2}\phi'udx+\int_{1/2}^{1}\phi'udx\\
+ & =-\int_{0}^{1}\psi(x)\phi(x)dx
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\psi(x)=\begin{cases}
+\frac{1}{2} & \text{if }0<x<\frac{1}{2}\\
+-\frac{1}{2} & \text{if }\frac{1}{2}<x<1
+\end{cases}
+\]
+
+\end_inset
+
+which is what we would expect 
+\end_layout
+
+\begin_layout Itemize
+We define the weak derivative of 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ as 
+\begin_inset Formula $u'(x)=\psi(x)$
+\end_inset
+
+ which is an 
+\begin_inset Formula $H^{1}(0,1)$
+\end_inset
+
+ but not a 
+\begin_inset Formula $C(0,1)$
+\end_inset
+
+ function 
+\begin_inset Formula 
+\[
+\int_{\Omega}v(x)\phi(x)=(-1)^{m}\int_{\Omega}u(x)\phi^{(m)}(x)dx
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $\phi(x)\in C_{0}^{m}(\Omega)$
+\end_inset
+
+ with 
+\begin_inset Formula $\phi(x)=\phi'(x)=\ldots=\phi^{(m-1)}=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x=\partial\Omega$
+\end_inset
+
+.
+ If such a function exists, then we write 
+\begin_inset Formula $v(x)=u^{(m)}(x)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Weak derivative: I start from 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dxu(x)\phi(x)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $u(a)=u(b)=0$
+\end_inset
+
+.
+ Using partial integration, we can write
+\begin_inset Formula 
+\[
+\int_{a}^{b}dxu'(x)\phi(x)=-\int_{a}^{b}dxu(x)\phi'(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $u'(x)$
+\end_inset
+
+ does not exist in 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ we may still be able to find a function 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,v(x)\phi(x)=-\int_{a}^{b}dxu(x)\phi'(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If so, then we call 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ the first weak derivative of 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+ We can generalize this to 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dxu^{(n)}(x)\phi(x)
+\]
+
+\end_inset
+
+assuming that 
+\begin_inset Formula $\phi(x)=\phi'(x)=\ldots=\phi^{(m-1)}(x)=0$
+\end_inset
+
+ at 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Definition of Sobolev Spaces 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Sobolev space 
+\begin_inset Formula $H^{1}(\Omega)$
+\end_inset
+
+ defines as 
+\begin_inset Formula 
+\[
+H^{1}(\Omega)=\left\{ v(x),\quad D^{\alpha}v\in L^{2}(\Omega),\,\bigr|\boldsymbol{\alpha}\bigr|\leq1\right\} 
+\]
+
+\end_inset
+
+involves first order derivatives 
+\begin_inset Formula 
+\[
+H^{1}(a,b)=\left\{ v(x),\,a<x<b,\,\int_{a}^{b}v^{2}dx<\infty,\,\int_{a}^{b}(v')^{2}dx<\infty\right\} 
+\]
+
+\end_inset
+
+and in two space dimensions 
+\begin_inset Formula $H^{1}(\Omega)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H^{1}(a,b)=\left\{ v(x,y),\,v\in L^{2}(\Omega),\,\frac{\partial v}{\partial x}\in L^{2}(\Omega),\,\frac{\partial v}{\partial y}\in L^{2}(\Omega)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sobolev space of general dimension 
+\begin_inset Formula 
+\[
+H^{m}(\Omega)=\left\{ v(\boldsymbol{x}),\,D^{\alpha}v\in L^{2}(\Omega),\,\bigl|\alpha\bigr|\leq m\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Inner Products in 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ spaces
+\end_layout
+
+\begin_layout Itemize
+The inner product in 
+\begin_inset Formula $H^{0}(\Omega)$
+\end_inset
+
+ is the same as that in 
+\begin_inset Formula $L^{2}(\Omega)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(u,v)_{0}=\int_{\Omega}uvdx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The inner product in 
+\begin_inset Formula $H^{1}(a,b)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+(u,v)_{1}=\int_{a}^{b}(uv+u'v')dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The inner product in 
+\begin_inset Formula $H^{1}(\Omega)$
+\end_inset
+
+ of two variables is 
+\begin_inset Formula 
+\[
+(u,v)_{1}=\int\int_{\Omega}\left(uv+\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y}\frac{\partial v}{\partial y}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The inner product in 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ of general dimension is 
+\begin_inset Formula 
+\[
+(u,v)_{m}=\int_{\Omega}\sum_{\bigl|\boldsymbol{\alpha}\bigr|\leq m}(D^{\boldsymbol{\alpha}}u(\boldsymbol{x}))(D^{\boldsymbol{\alpha}}v(\boldsymbol{x}))d\boldsymbol{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The norm in 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ of general dimension is 
+\begin_inset Formula 
+\[
+\bigl\Vert u\bigr\Vert_{m}=\left\{ \int_{\Omega}\sum_{\bigl|\boldsymbol{\alpha}\bigr|\leq m}\bigl|D^{\boldsymbol{\alpha}}u(\boldsymbol{x})\bigr|^{2}dx\right\} ^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence the norm is generated by the inner product and 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ is a Hilbert space.
+ 
+\end_layout
+
+\begin_layout Itemize
+The distance in 
+\begin_inset Formula $H^{m}(\Omega)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+d(u,v)=\bigl\Vert u-v\bigr\Vert
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+The Sobolev Embedding theorem 
+\end_layout
+
+\begin_layout Itemize
+In 
+\begin_inset Formula $1$
+\end_inset
+
+D spaces, we have 
+\begin_inset Formula 
+\begin{align*}
+H^{1}(\Omega) & \subset C^{0}(\Omega)\\
+H^{2}(\Omega) & \subset C^{1}(\Omega)\\
+\vdots\\
+H^{2}(\Omega) & \subset C^{j}(\Omega)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Theorem: 
+\series default
+If
+\series bold
+ 
+\begin_inset Formula $2m>n$
+\end_inset
+
+, 
+\series default
+then
+\series bold
+ 
+\begin_inset Formula 
+\[
+H^{m+j}\subset C^{j},\quad j=0,1,\ldots
+\]
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the dimension of the independent variables of the elements in the Sobolev
+ space 
+\end_layout
+
+\begin_layout Itemize
+In 
+\begin_inset Formula $2D$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H^{2+j}\subset C^{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In 
+\begin_inset Formula $3D$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H^{2+j}\subset C^{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $u(x)\in C^{m}$
+\end_inset
+
+ or 
+\begin_inset Formula $u(x)\in C^{m}$
+\end_inset
+
+, the larger 
+\begin_inset Formula $m$
+\end_inset
+
+ the smoother the function 
+\end_layout
+
+\begin_layout Subsection*
+FE Analysis for 1D BVPs
+\end_layout
+
+\begin_layout Itemize
+For the simple 
+\begin_inset Formula $1$
+\end_inset
+
+D model problem 
+\begin_inset Formula 
+\[
+u''=f,\quad0<x<1,\quad u(0)=u(1)=0
+\]
+
+\end_inset
+
+we know the weak form is 
+\begin_inset Formula 
+\[
+\int_{0}^{1}u'v'=\int_{0}^{1}fvdx
+\]
+
+\end_inset
+
+or 
+\begin_inset Formula $(u',v')=(f,v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Because 
+\begin_inset Formula $v$
+\end_inset
+
+ is an arbitrary test function, we can take 
+\begin_inset Formula $v=f$
+\end_inset
+
+ or 
+\begin_inset Formula $v=u$
+\end_inset
+
+ to get 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}u'v' & =\int_{0}^{1}(u')^{2}dx\\
+\int_{0}^{1}fvdx & =\int_{0}^{1}f^{2}dx
+\end{align*}
+
+\end_inset
+
+so 
+\begin_inset Formula $u,u',f,v$
+\end_inset
+
+ and 
+\begin_inset Formula $v'$
+\end_inset
+
+ should belong to 
+\begin_inset Formula $L^{2}(0,1)$
+\end_inset
+
+, i.e.
+ we have 
+\begin_inset Formula $u\in H_{0}^{1}(0,1)$
+\end_inset
+
+ and 
+\begin_inset Formula $v\in H_{0}^{1}(0,1)$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The subscript 
+\begin_inset Formula $0$
+\end_inset
+
+ means those subset of function in 
+\begin_inset Formula $H^{1}(0,1)$
+\end_inset
+
+ which are zero at the boundary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We should also take 
+\begin_inset Formula $v$
+\end_inset
+
+ in the same space for a 
+\series bold
+conforming 
+\series default
+finite element method
+\end_layout
+
+\begin_layout Itemize
+From the Sobolev embedding theorem, we also know that 
+\begin_inset Formula $H^{1}\subset C^{0}$
+\end_inset
+
+, so the solution is continuous 
+\end_layout
+
+\begin_layout Subsubsection*
+Conforming FE Methods 
+\end_layout
+
+\begin_layout Itemize
+If the finite element space is a subspace of the solution space, then the
+ finite element space is called a 
+\series bold
+conforming finite element space 
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+conforming = sich anpassend
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The finite element method is called a 
+\series bold
+conforming FE method
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+The piecewise linear function over a given mesh is a conforming finite element
+ space for the model problem 
+\end_layout
+
+\begin_layout Itemize
+Define solution space 
+\begin_inset Formula 
+\[
+H_{0}^{1}(0,1)=\left\{ v(x),\quad v(0)=v(1)=0,\quad v\in H^{1}(0,1)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we look for a finite element solution in a finite-dimensional space 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+, it should be a subspace of 
+\begin_inset Formula $H_{0}^{1}(0,1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Given a mesh for the 
+\begin_inset Formula $1$
+\end_inset
+
+D model, we can define a finite-dimensional space using piecewise continuous
+ linear functions over the mesh
+\begin_inset Formula 
+\[
+V_{h}=\{v_{h},v_{h}(0)=v_{h}(1)=0,\,v_{h}\,\text{is continuous piecewise linear}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the solution of the weak for is in 
+\begin_inset Formula $H_{0}^{1}(0,1)$
+\end_inset
+
+ but not in the space 
+\begin_inset Formula $V_{h},$
+\end_inset
+
+then an error is introduced 
+\end_layout
+
+\begin_layout Itemize
+Nevertheless, the finite element solution is the best approximation in 
+\begin_inset Formula $V_{h}$
+\end_inset
+
+ in some norm
+\end_layout
+
+\begin_layout Subsubsection*
+FE Analysis for 
+\begin_inset Formula $1$
+\end_inset
+
+D Sturm-Liouville Problems 
+\end_layout
+
+\begin_layout Itemize
+A 
+\begin_inset Formula $1$
+\end_inset
+
+D Sturm-Liouville problem on 
+\begin_inset Formula $[x_{l},x_{r}]$
+\end_inset
+
+ with a Dirichlet boundary condition at two end is 
+\begin_inset Formula 
+\begin{align*}
+-(p(x)u'(x))'+q(x)u(x) & =f(x),\quad x_{l}<x<x_{r}\\
+u(x_{l}) & =0\\
+u(x_{r}) & =0\\
+p(x)> & 0\\
+q(x)> & 0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The conditions on 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ guarantee the problem is well posed 
+\end_layout
+
+\begin_layout Itemize
+It is convenient to assume 
+\begin_inset Formula $p(x)\in C(x_{l},x_{r})$
+\end_inset
+
+ and 
+\begin_inset Formula $q(x)\in C(x_{l},x_{r})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Derive weak form, multiply both sides of the equation by a test function
+ 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $v(x_{l})=v(x_{r})=0$
+\end_inset
+
+ and integrate over the domain
+\begin_inset Formula 
+\[
+-\int_{x_{l}}^{x_{r}}dx\,(p(x)u'(x))'v(x)+\int_{x_{l}}^{x_{r}}dx\,q(x)u(x)v(x)=\int dx\,f(x)v(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integration by parts 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{l}}^{x_{r}}dx\,(p(x)u'(x))'v(x) & =p(x)u'(x)v(x)\bigr|_{x_{l}}^{x_{r}}-\int_{x_{l}}^{x_{r}}dx\,(p(x)u'(x))v'(x)\\
+ & =-\int_{x_{l}}^{x_{r}}dx\,(p(x)u'(x))v'(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, 
+\begin_inset Formula 
+\[
+\int_{x_{l}}^{x_{r}}dx\,\left(pu'v'+quv\right)+\int_{x_{l}}^{x_{r}}fv\,dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The integral 
+\begin_inset Formula 
+\[
+a(u,v)=\int_{x_{l}}^{x_{r}}dx\left(pu'v'+quv\right)
+\]
+
+\end_inset
+
+is a bilinear form, because it is linear for both 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ since 
+\begin_inset Formula 
+\begin{align*}
+a(\alpha u+\beta w,v) & =\int_{x_{l}}^{x_{r}}dx\left(p(\alpha u'+\beta w')v'+q(\alpha u+\beta w)v\right)\\
+ & =\alpha\int_{x_{l}}^{x_{r}}dx\left(pu'v'+quv\right)+\beta\int_{x_{l}}^{x_{r}}dx\left(pw'v'+qwv\right)\\
+ & =\alpha a(u,v)+\beta a(w,v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is noted that this bilinear form forms a inner product, usually different
+ from the 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $H^{1}$
+\end_inset
+
+ inner products, but if 
+\begin_inset Formula $p=1$
+\end_inset
+
+ and 
+\begin_inset Formula $q=1$
+\end_inset
+
+ then 
+\begin_inset Formula 
+\[
+a(u,v)=(u,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $a(u,v)$
+\end_inset
+
+ is an inner product under the conditions 
+\begin_inset Formula $p(x)>0$
+\end_inset
+
+ and 
+\begin_inset Formula $q(x)>0$
+\end_inset
+
+, we can define the 
+\series bold
+energy norm
+\series default
+ as 
+\begin_inset Formula 
+\[
+\bigl\Vert u\bigr\Vert_{a}=\sqrt{a(u,u)}=\left\{ \int_{x_{l}}^{x_{r}}\left(p(u')^{2}+qu^{2}\right)dx\right\} ^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The first term may be interpreted as the kinetic energy and the second term
+ as the potential energy 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Issues of the FE Method in One Space Dimension 
+\end_layout
+
+\begin_layout Subsection*
+Boundary Conditions 
+\end_layout
+
+\begin_layout Itemize
+For a second-order two-point BVP, typical boundary conditions (BC) include
+ one of the following at each end, say 
+\begin_inset Formula $x=x_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+a Dirichlet condition 
+\begin_inset Formula $u(x_{l})=u_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+a Neumann condition, 
+\begin_inset Formula $u'(x_{l})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Robin (mixed) condition, 
+\begin_inset Formula $\alpha u(x_{l})+\beta u'(x_{l})=\gamma$
+\end_inset
+
+ is given, where 
+\begin_inset Formula $\alpha,\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ are know but 
+\begin_inset Formula $u(x_{l})$
+\end_inset
+
+ and 
+\begin_inset Formula $u'(x_{l})$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Boundary conditions affect the bilinear and linear for, and solution space
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Example
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+-u'' & =f,\quad0<x<1\\
+u(0) & =0\\
+u'(1) & =0
+\end{align*}
+
+\end_inset
+
+involves a Dirichlet BC at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and a Neumann BC at 
+\begin_inset Formula $x=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The weak form 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}-u''v\,dx & =\int_{0}^{1}fvdx\\
+-u'v\bigr|_{0}^{1}+\int_{0}^{1}u'v'dx & =\int_{0}^{1}fv\,dx\\
+-u'(1)v(1)+u'(0)v(0)+\int_{0}^{1}u'v'dx & =\int_{0}^{1}fv\,dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For a 
+\series bold
+conforming finite element method
+\series default
+, the solution function 
+\begin_inset Formula $u$
+\end_inset
+
+ and the test functions 
+\begin_inset Formula $v$
+\end_inset
+
+ should be in the same space
+\end_layout
+
+\begin_layout Itemize
+So it is natural to require that the test functions 
+\begin_inset Formula $v$
+\end_inset
+
+ satisfy the same homogeneous Dirichlet BC, we require 
+\begin_inset Formula $v(0)=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+The Dirichlet condition is therefore called an 
+\series bold
+essential
+\series default
+ boundary condition 
+\end_layout
+
+\begin_layout Itemize
+On the other hand, since 
+\begin_inset Formula $u'(1)=0$
+\end_inset
+
+, the first term in the expression is zero, so it does not matter what 
+\begin_inset Formula $v(1)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There is no constraint on 
+\begin_inset Formula $v(1);$
+\end_inset
+
+ so the Neumann BC is called a natural boundary condition 
+\end_layout
+
+\begin_layout Itemize
+It is noted that 
+\begin_inset Formula $u(1)$
+\end_inset
+
+ is unknown 
+\end_layout
+
+\begin_layout Itemize
+The weak form of this example is the same as before for homogeneous Dirichlet
+ BC at both ends, but now the solution space is different 
+\begin_inset Formula 
+\[
+(u',v')=(f,v),\quad v\in H_{E}^{1}(0,1)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+H_{E}^{1}(0,1)=\left\{ v(x),v(0)=0,v\in H^{1}(0,1)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The subscript 
+\begin_inset Formula $E$
+\end_inset
+
+ in 
+\begin_inset Formula $H_{E}^{1}(0,1)$
+\end_inset
+
+ to indicated an essential boundary condition 
+\end_layout
+
+\begin_layout Subsubsection*
+Mixed Boundary Conditions 
+\end_layout
+
+\begin_layout Itemize
+Consider a Sturm-Liouville problem 
+\begin_inset Formula 
+\begin{align*}
+-(pu')'+qu & =f,\quad x_{l}<x<x_{r},\quad p(x)\geq p_{\text{min}}>0,\quad g(x)\geq0\\
+u(x_{l}) & =0\\
+\alpha u(x_{r})+\beta u'(x_{r}) & =\gamma\\
+\beta & \neq0\\
+\frac{\alpha}{\beta} & \geq0
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+,
+\begin_inset Formula $\beta$
+\end_inset
+
+, and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ are known constants but 
+\begin_inset Formula $u(x_{r})$
+\end_inset
+
+ and 
+\begin_inset Formula $u'(x_{r})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Weak formulation
+\begin_inset Formula 
+\[
+-\int_{x_{l}}^{x_{r}}(pu')'v\,dx+\int_{x_{l}}^{x_{r}}quv\,dx=\int_{x_{l}}^{x_{r}}fv\,dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integration by parts 
+\begin_inset Formula 
+\begin{align*}
+\int_{x_{l}}^{x_{r}}(pu')'v & =pu'v\bigr|_{x_{l}}^{x_{r}}-\int_{x_{l}}^{x_{r}}(pu')v'\,dx\\
+ & =p(x_{r})u'(x_{r})v(x_{r})-p(x_{l})u'(x_{l})v(x_{l})-\int_{x_{l}}^{x_{r}}(pu')v'\,dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence
+\begin_inset Formula 
+\[
+-p(x_{r})u'(x_{r})v(x_{r})+p(x_{l})u'(x_{l})v(x_{l})+\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx=\int_{x_{l}}^{x_{r}}fvdx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As explained 
+\begin_inset Formula $v(x_{l})=0$
+\end_inset
+
+ (an essential BC).
+ Now we express the mixed BC as 
+\begin_inset Formula 
+\[
+u'(x_{r})=\frac{\gamma-au(x_{r})}{\beta}
+\]
+
+\end_inset
+
+and substitute this into to obtain 
+\begin_inset Formula 
+\[
+-p(x_{r})v(x_{r})\frac{\gamma-au(x_{r})}{\beta}+\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx=\int_{x_{l}}^{x_{r}}fvdx
+\]
+
+\end_inset
+
+or equivalently 
+\begin_inset Formula 
+\[
+\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})=\int_{x_{l}}^{x_{r}}fvdx+\frac{\gamma}{\beta}p(x_{r})v(x_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We define 
+\begin_inset Formula 
+\begin{align*}
+a(u,v) & =\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})\\
+L(v) & =(f,v)+\frac{\gamma}{\beta}p(x_{r})v(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can prove that
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $a(u,v)=a(v,u)$
+\end_inset
+
+ is symmetric 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Since 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ appear symmetrically in 
+\begin_inset Formula $a(u,v)$
+\end_inset
+
+ if follows 
+\begin_inset Formula 
+\[
+a(v,u)=\int_{x_{l}}^{x_{r}}(pv'u'+qvu)dx+\frac{\alpha}{\beta}p(x_{r})v(x_{r})u(x_{r})=a(u,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a(u,v)$
+\end_inset
+
+ is a bilinear form, i.e.
+ 
+\begin_inset Formula 
+\begin{align*}
+a(ru+sw,v) & =ra(u,v)+sa(w,v)\\
+a(u,rv+sw) & =ra(u,v)+sa(w,v)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We start from
+\begin_inset Formula 
+\[
+a(u,v)=\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply 
+\begin_inset Formula $u$
+\end_inset
+
+ with scalar 
+\begin_inset Formula $c$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+a(cu,v) & =\int_{x_{l}}^{x_{r}}(pcu'v'+qcuv)dx+\frac{\alpha}{\beta}p(x_{r})cu(x_{r})v(x_{r})\\
+ & =c\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})\\
+ & =ca(u,v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can also show that
+\begin_inset Formula 
+\begin{align*}
+a(u+w,v) & =\int_{x_{l}}^{x_{r}}(p(u'+w')v'+q(u+w)v)dx+\frac{\alpha}{\beta}p(x_{r})(u(x_{r})+w(x_{r}))v(x_{r})\\
+ & =\int_{x_{l}}^{x_{r}}(p(u'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})+\int_{x_{l}}^{x_{r}}(p(w'v'+qwv)dx+\frac{\alpha}{\beta}p(x_{r})w(x_{r})v(x_{r})\\
+ & =a(u,v)+a(w,v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+a(ru+sw,v)=ra(u,v)+sa(w,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $a(u,v)$
+\end_inset
+
+ is an inner product, and the corresponding energy norm is 
+\begin_inset Formula 
+\[
+\bigl\Vert u\bigr\Vert_{a}=\sqrt{a(u,u)}=\{\int_{x_{l}}^{x_{r}}(p(u')^{2}+qu^{2})+\frac{\alpha}{\beta}p(x_{r})u(x_{r})^{2}\}^{\frac{1}{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is know evident why we require 
+\begin_inset Formula $\beta\neq0,\quad\frac{\alpha}{\beta}\geq0$
+\end_inset
+
+ because otherwise the norm could be negative 
+\end_layout
+
+\begin_layout Itemize
+Using the inner product, the solution of the weak form 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\begin{align*}
+a(u,v) & =L(v),\quad\forall\,v\in H_{E}^{1}(x_{l},x_{r})\\
+H_{E}^{1}(x_{l},x_{r}) & =\left\{ v(x),\quad v(x_{l})=0,\quad v\in H^{1}(x_{l},x_{r})\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+The solution 
+\begin_inset Formula $u$
+\end_inset
+
+ is also the minimizer of the functional 
+\begin_inset Formula 
+\[
+F(v)=\frac{1}{2}a(v,v)-L(v)
+\]
+
+\end_inset
+
+in the 
+\begin_inset Formula $H_{E}^{1}(x_{l},x_{r})$
+\end_inset
+
+ space 
+\end_layout
+
+\begin_layout Subsubsection*
+Non-homogeneous Dirichlet Boundary Conditions 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $u(x_{l})=u_{l}\neq0$
+\end_inset
+
+.
+ In this case, the solution can be decomposed as the sum of the particular
+ solution 
+\begin_inset Formula 
+\begin{align*}
+-(pu'_{1})+qu_{1} & =0,\quad x_{l}<x<x_{r}\\
+u_{1}(x_{l}) & =u_{l}\\
+\alpha u_{1}(x_{r})+\beta u'_{1}(x_{r}) & =0,\quad\beta\neq0,\quad\frac{\alpha}{\beta}\geq0
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+-(pu'_{2})'+qu_{2} & =f\\
+u_{2}(x_{l}) & =0\\
+\alpha u_{2}(x_{r})+\beta u_{2}'(x_{r}) & =\gamma\\
+\beta & =0\\
+\frac{\alpha}{\beta} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use weak form to find the solution 
+\begin_inset Formula $u_{2}(x)$
+\end_inset
+
+ corresponding to the homogeneous Dirichlet BC at 
+\begin_inset Formula $x=x_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Another simple way is to choose a function 
+\begin_inset Formula $u_{0}(x)\in H^{1}(x_{l},x_{r})$
+\end_inset
+
+ that satisfies 
+\begin_inset Formula 
+\[
+u_{0}(x_{l})=u_{l},\quad\alpha u_{0}(x_{r})+\beta u'_{0}(x_{r})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For example, the function 
+\begin_inset Formula $u_{0}(x)=u_{l}\phi_{0}(x)$
+\end_inset
+
+ would be such a function, where 
+\begin_inset Formula $\phi_{0}(x)$
+\end_inset
+
+ is the hat function centered at 
+\begin_inset Formula $x_{l}$
+\end_inset
+
+ id a mesh 
+\begin_inset Formula $\{x_{i}\}$
+\end_inset
+
+ is given 
+\end_layout
+
+\begin_layout Itemize
+Then 
+\begin_inset Formula $\hat{u}(x)=u(x)-u_{0}(x)$
+\end_inset
+
+ would satisfy the homogeneous Dirichlet BC at 
+\begin_inset Formula $x_{l}$
+\end_inset
+
+ and the following SL-Problem 
+\begin_inset Formula 
+\begin{align*}
+-(p\hat{u}')'+qu' & =f(x)+(pu'_{0})'-qu_{0}\\
+\hat{u}(x_{l}) & =0\\
+\alpha\hat{u}'(x_{r})+\beta\hat{u}(x_{r}) & =\gamma
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can apply the finite element method for 
+\begin_inset Formula $\hat{u}(x)$
+\end_inset
+
+ as previously discussed with the modified source term 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ where the weak form is the same as before 
+\begin_inset Formula 
+\[
+a_{1}(\hat{u},v)=L_{1}(v),\quad\forall\,v(x)\in H_{E}^{1}(x_{l},x_{r})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+a_{1}(\hat{u},v) & =\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})\\
+L_{1}(v) & =(f,v)+\frac{\gamma}{\beta}p(x_{r})v(x_{r})+\int_{x_{l}}^{x_{r}}\left((pu'_{0})'v-qu_{0}v\right)dx\\
+ & =(f,v)+\frac{\gamma}{\beta}p(x_{r})v(x_{r})-\int_{x_{l}}^{x_{r}}\left((pu_{0}v'+qu_{0}v\right)dx\\
+ & -\frac{\alpha}{\beta}p(x_{r})u_{0}(x_{r})v(x_{r})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If we define 
+\begin_inset Formula 
+\begin{align*}
+a(u,v) & =\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})\\
+L(v) & =(f,v)+\frac{\gamma}{\beta}p(x_{r})v(x_{r})
+\end{align*}
+
+\end_inset
+
+then we have 
+\begin_inset Formula 
+\begin{align*}
+a_{1}(u-u_{0},v) & =L_{1}(v)\\
+a(u-u_{0},v) & =L_{1}(v)\\
+a(u,v)-a(u_{0},v) & =L(v)-a(u_{0},v)
+\end{align*}
+
+\end_inset
+
+or 
+\begin_inset Formula 
+\[
+a(u,v)=L(v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+While we still have 
+\begin_inset Formula $a(u,v)=L(v),$
+\end_inset
+
+ the solution is not in 
+\begin_inset Formula $H_{E}^{1}(x_{l},x_{r})$
+\end_inset
+
+ space due to the nonhomogeneous Dirichlet boundary condition
+\end_layout
+
+\begin_layout Subsection*
+The FE Method for Sturm-Liouville Problems 
+\end_layout
+
+\begin_layout Itemize
+Consider finite element method using the piecewise linear function over
+ a mesh 
+\begin_inset Formula $x_{1}=x_{l},x_{2},\ldots,x_{M}=x_{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sturm-Liouville problem 
+\begin_inset Formula 
+\begin{align*}
+-(pu')'+qu & =f,\quad x_{l}<x<x_{r}\\
+u(x_{l}) & =u_{l}\\
+\alpha u(x_{r})+\beta u'(x_{r}) & =\gamma,\quad\frac{\alpha}{\beta}\geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use hat functions as the basis such that 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{i=0}^{M}\alpha_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution is unknown at 
+\begin_inset Formula $x=x_{r}$
+\end_inset
+
+, so it is not surprising to have 
+\begin_inset Formula $\phi_{M}(x)$
+\end_inset
+
+ for the natural BC 
+\end_layout
+
+\begin_layout Itemize
+The first term 
+\begin_inset Formula $\phi_{0}(x)$
+\end_inset
+
+ is the function used as 
+\begin_inset Formula $u_{0}(x)$
+\end_inset
+
+ to deal with the non homogeneous Dirichlet BC 
+\end_layout
+
+\begin_layout Itemize
+The local stiffness matrix is 
+\begin_inset Formula 
+\begin{align*}
+K_{i}^{e} & =\begin{bmatrix}a(\phi_{i},\phi_{i}) & a(\phi_{i},\phi_{i+1})\\
+a(\phi_{i-1},\phi_{i}) & a(\phi_{i+1},\phi_{i+1})
+\end{bmatrix}_{(x_{i},x_{i}+1)}\\
+ & =\begin{bmatrix}\int_{x_{i}}^{x_{i+1}}p(\phi'_{i})^{2} & \int_{x_{i}}^{x_{i+1}}p\phi'_{i}\phi'_{i+1}\\
+\int_{x_{i}}^{x_{i+1}}p\phi'_{i+1}\phi'_{i} & \int_{x_{i}}^{x_{i+1}}p(\phi'_{i+1})^{2}
+\end{bmatrix}_{(x_{i},x_{i}+1)}\\
+ & +\begin{bmatrix}\int_{x_{i}}^{x_{i+1}}q(\phi{}_{i})^{2} & \int_{x_{i}}^{x_{i+1}}q\phi'_{i}\phi'_{i+1}\\
+\int_{x_{i}}^{x_{i+1}}q\phi'_{i+1}\phi'_{i} & \int_{x_{i}}^{x_{i+1}}q(\phi'_{i+1})^{2}
+\end{bmatrix}_{(x_{i},x_{i}+1)}\\
+ & +\frac{\alpha}{\beta}p(x_{r})\begin{bmatrix}\phi_{i}^{2}(x_{r}) & \phi_{i}(x_{r})\phi_{i+1}(x_{r})\\
+\phi_{i+1}^{2}(x_{r})\phi_{i}(x_{r}) & \phi_{i+1}^{2}(x_{r})
+\end{bmatrix}_{(x_{i},x_{i}+1)}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Local stiffness matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ and load vector 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ One way is by 
+\series bold
+assembling element by element
+\begin_inset Formula 
+\begin{align*}
+(x_{0},x_{1}), & \Omega_{1}\\
+(x_{1},x_{2}), & \Omega_{2}\\
+ & \vdots\\
+(x_{i-1},x_{i}) & \Omega_{i}\\
+ & \vdots\\
+(x_{M-1},x_{M}) & \Omega_{M}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The idea is to break up the integration element by element, so that for
+ any integrable function 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\int_{0}^{1}g(x)dx=\sum_{k=1}^{M}\int_{x_{k-1}}^{x_{k}}g(x)dx=\sum_{k=1}^{M}\int_{\Omega_{k}}g(x)dx
+\]
+
+\end_inset
+
+The stiffness matrix can be written as 
+\begin_inset Formula 
+\begin{align*}
+A & =\begin{bmatrix}\int_{0}^{1}(\phi'_{1})^{2}dx & \int_{0}^{1}\phi'_{1}\phi'_{2}dx & \cdots & \int_{0}^{1}\phi'_{1}\phi'_{M-1}dx\\
+\int_{0}^{1}\phi'_{2}\phi'_{1}dx & \int_{0}^{1}(\phi'_{2})^{2}dx & \cdots & \int_{0}^{1}\phi'_{2}\phi'_{M-1}dx\\
+\vdots & \vdots & \vdots & \vdots\\
+\int_{0}^{1}\phi'_{M-1}\phi'_{1}dx & \int_{0}^{1}\phi'_{M-1}\phi'_{2}dx & \cdots & \int_{0}^{1}(\phi'_{M-1})^{2}dx
+\end{bmatrix}\\
+ & =\begin{bmatrix}\int_{x_{0}}^{x_{1}}(\phi'_{1})^{2}dx & \int_{x_{0}}^{x_{1}}\phi'_{1}\phi'_{2}dx & \cdots & \int_{x_{0}}^{x_{1}}\phi'_{1}\phi'_{M-1}dx\\
+\int_{x_{0}}^{x_{1}}\phi'_{2}\phi'_{1}dx & \int_{x_{0}}^{x_{1}}(\phi'_{2})^{2}dx & \cdots & \int_{x_{0}}^{x_{1}}\phi'_{2}\phi'_{M-1}dx\\
+\vdots & \vdots & \vdots & \vdots\\
+\int_{x_{0}}^{x_{1}}\phi'_{M-1}\phi'_{1}dx & \int_{x_{0}}^{x_{1}}\phi'_{M-1}\phi'_{2}dx & \cdots & \int_{x_{0}}^{x_{1}}(\phi'_{M-1})^{2}dx
+\end{bmatrix}\\
+ & \vdots\\
+ & +\begin{bmatrix}\int_{x_{M-1}}^{x_{M}}(\phi'_{1})^{2}dx & \int_{x_{M-1}}^{x_{M}}\phi'_{1}\phi'_{2}dx & \cdots & \int_{x_{M-1}}^{x_{M}}\phi'_{1}\phi'_{M-1}dx\\
+\int_{x_{M-1}}^{x_{M}}\phi'_{2}\phi'_{1}dx & \int_{x_{M-1}}^{x_{M}}(\phi'_{2})^{2}dx & \cdots & \int_{x_{M-1}}^{x_{M}}\phi'_{2}\phi'_{M-1}dx\\
+\vdots & \vdots & \vdots & \vdots\\
+\int_{x_{M-1}}^{x_{M}}\phi'_{M-1}\phi'_{1}dx & \int_{x_{M-1}}^{x_{M}}\phi'_{M-1}\phi'_{2}dx & \cdots & \int_{x_{M-1}}^{x_{M}}(\phi'_{M-1})^{2}dx
+\end{bmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For the hat basis functions it is noted that each interval has only two
+ nonzero basis functions 
+\begin_inset Formula 
+\[
+A=\begin{bmatrix}\int_{x_{0}}^{x_{1}}(\phi'_{1})^{2}dx & 0 & \cdots & 0\\
+0 & 0 & \cdots & 0\\
+\vdots & \vdots & \vdots & \vdots\\
+0 & 0 & \cdots & 0
+\end{bmatrix}+\begin{bmatrix}\int_{x_{1}}^{x_{2}}(\phi'_{1})^{2}dx & \int_{x_{1}}^{x_{2}}\phi'_{1}\phi'_{2}dx & \cdots & 0\\
+\int_{x_{1}}^{x_{2}}\phi'_{2}\phi'_{1}dx & \int_{x_{1}}^{x_{2}}(\phi'_{2})^{2}dx & \cdots & 0\\
+\vdots & \vdots & \vdots & \vdots\\
+0 & 0 & \cdots & 0
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The nonzero contribution from a particular element is 
+\begin_inset Formula 
+\[
+K_{i}^{e}=\begin{bmatrix}\int_{x_{0}}^{x_{1}}(\phi'_{i})^{2}dx & \int_{x_{i}}^{x_{i+1}}\phi'_{i}\phi'_{i+1}dx\\
+\int_{x_{i}}^{x_{i+1}}\phi'_{i+1}\phi'_{i}dx & \int_{x_{i}}^{x_{i+1}}(\phi'_{i+1})^{2}dx
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Bilinear form 
+\begin_inset Formula 
+\[
+a(u,v)=\int_{x_{l}}^{x_{r}}(pu'v'+quv)dx+\frac{\alpha}{\beta}p(x_{r})u(x_{r})v(x_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula 
+\[
+u_{h}(x)=\sum_{i=0}^{M}\alpha_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{j=0}^{M}\int_{x_{l}}^{x_{r}}(pv'\phi'_{j}\alpha_{j}+qv\phi_{j}\alpha_{j})dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Set 
+\begin_inset Formula $v'=\phi_{i}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{i=0}^{M}\int_{x_{l}}^{x_{r}}(p\phi_{i}'\phi'_{j}\alpha_{j}+q\phi_{i}\phi_{j}\alpha_{j})dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrals 
+\begin_inset Formula 
+\[
+\int_{x_{i}}^{x_{i+1}}p\phi'_{i}^{2}dx
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+K_{i}^{e}=\begin{bmatrix}\\
+\\
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
