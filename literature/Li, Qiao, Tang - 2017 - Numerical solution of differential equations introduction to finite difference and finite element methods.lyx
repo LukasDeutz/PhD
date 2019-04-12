@@ -1922,15 +1922,23 @@ a
 \series bold
 linear
 \series default
- space that contains all continuous functions on 
+ space that contains all continuous (
+\begin_inset Formula $C$
+\end_inset
+
+) functions on 
 \begin_inset Formula $\Omega$
 \end_inset
 
-, the domain where the functions are defined 
+ (domain on which functions are defined) 
 \end_layout
 
 \begin_layout Itemize
-The space is linear because for any real number 
+The space is 
+\series bold
+linear
+\series default
+ because for any real number 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -2092,7 +2100,7 @@ in
 
  
 \series default
-is can be defined as
+can be defined as
 \series bold
  
 \begin_inset Formula 
@@ -2245,7 +2253,7 @@ A piecewise constant function is in
 \begin_inset Formula $L^{2}(0,1)$
 \end_inset
 
- nut not in 
+ but not in 
 \begin_inset Formula $C(0,1)$
 \end_inset
 
@@ -2269,7 +2277,7 @@ which satisfies
 \begin_inset Formula $d(f,g)\geq0$
 \end_inset
 
-, 
+ and 
 \begin_inset Formula $d(f,g)=0$
 \end_inset
 
@@ -2308,6 +2316,16 @@ We say two functions
 
  if 
 \begin_inset Formula $d(f,g)=0$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+They do not need to be same functions
+\end_layout
+
 \end_inset
 
 
