@@ -1,5 +1,7 @@
-import numpy as np
+from scipy.linalg import eig
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def poisson_mixed_fe(N):
@@ -57,6 +59,121 @@ def poisson_fe(n):
 
     return x, u
 
+
+def poisson_ev_fe(N):
+
+    h = np.pi/N # mesh size 
+    x = h*np.arange(1, N)
+    
+    A = np.diag(2.*np.ones(N-1))   
+    A = A + np.diag(-1.*np.ones(N-2), k = 1)
+    A = A + np.diag(-1.*np.ones(N-2), k = -1)
+    A = A/h
+    
+    # create diagoNal matrix
+    B = np.diag(2./3*np.ones(N-1))
+    # fill off diagonals
+    B = B + np.diag(1./6*np.ones(N-2), k = 1)
+    B = B + np.diag(1./6*np.ones(N-2), k = -1)
+    B = B*h
+           
+    lam, vr = eig(A, B)
+               
+    return lam, vr, x
+
+def poisson_ev_mixed_fe(N):
+
+    h = np.pi/(N-1)
+    
+    A = np.diag(2./3*np.ones(N))
+    A[0,0] = 1./3
+    A[-1,-1] = 1./3
+        
+    A = A + np.diag(1./6*np.ones(N-1), k = 1)
+    A = A + np.diag(1./6*np.ones(N-1), k = -1)
+    A = h*A
+    
+    B = np.zeros((N, N-1))    
+    np.fill_diagonal(B, -1)
+    np.fill_diagonal(B[1:, :], 1)
+            
+    A_block  = np.bmat([[A, B], [B.T, np.zeros((N-1, N-1))]])
+    
+    D = h*np.diag(np.ones(N-1))
+    
+    B_block = np.bmat([[np.zeros_like(A), np.zeros_like(B)], 
+                       [np.zeros_like(B.T), D]])
+    
+    lam, vr = eig(A_block, B_block)    
+
+    idx = np.argsort(lam)
+    lam = lam[idx]
+    vr  = vr[:, idx]
+
+    J = vr[:N, :]
+    u = vr[N:, :]
+        
+    x_u = h*np.arange(0.5, N-1)
+    x_J = h*np.arange(0, N)
+
+    return lam, u, J, x_u, x_J
+
+def LIF_wr_ev_mixed_fe(N):    
+    '''LIF without reset'''
+    
+    h = 1/(N-1)
+        
+    A = np.diag(2./3*np.ones(N))
+    A[0,0] = 1./3
+    A[-1,-1] = 1./3
+        
+    A = A + np.diag(1./6*np.ones(N-1), k = 1)
+    A = A + np.diag(1./6*np.ones(N-1), k = -1)
+    A = h*A
+    
+    x_J = h*np.arange(0, N)
+    
+    B = np.zeros((N, N-1))
+    
+    for i in range(N):
+        for j in range(N-1):
+            if i == j:            
+                B[i,i] = 0.5*x_J[i+1]*h - 1./3*h**2
+            if j == i-1:
+                B[i,i-1] = 0.5*x_J[i-1]*h + 1./3*h**2
+                    
+    C = np.zeros((N, N-1))    
+    np.fill_diagonal(C, -1)
+    np.fill_diagonal(C[1:, :], 1)
+    
+    D = h*np.diag(np.ones(N-1))
+    
+    A_block = np.bmat([[A, B-C], [-C.T, np.zeros((N-1, N-1))]])
+    B_block = np.bmat([[np.zeros_like(A), np.zeros_like(B)], 
+                       [np.zeros_like(B.T), D]]) 
+    
+    lam, vr = eig(A_block, B_block)    
+
+    idx = np.argsort(lam)
+    lam = lam[idx]
+    vr  = vr[:, idx]
+
+    J = vr[:N, :]
+    u = vr[N:, :]
+        
+    x_u = h*np.arange(0.5, N-1)
+        
+    return lam, u, J, x_u, x_J    
+    
+    
+def poisson_ev_ana(x, n, bc = 'u'):
+
+    lam = n**2*np.pi**2
+
+    u = sin(np.sqrt(lam)*x)
+
+    return u
+
 def poisson_analytic(x):
         
     u = -0.5*x**2 + 0.5*x
@@ -102,8 +219,108 @@ def plot_poisson_fe():
     axi1.set_xlabel('x', fontsize = '20')
     
     plt.show()    
-    
 
+def plot_poisson_ev_fe():
+    
+    N = 100
+    
+    lam, v_r, x = poisson_ev_fe(N)
+
+    fz  = 20
+    lfz = 16
+      
+    idx = np.argsort(lam)
+    lam = lam[idx]
+
+    gs = plt.GridSpec(2,1)
+    
+    ax0 = plt.subplot(gs[0])
+    ax0.set_ylabel('eigenvalues', fontsize = fz)
+    ax0.set_xlabel(u'$n$', fontsize = fz)
+    ax0.grid(True)
+    
+    M = 10
+    
+    ax0.plot(np.arange(1, M+1), lam[:M], '-o')
+
+
+    v_r = v_r[:, idx]
+          
+    P = 3
+
+    ax1 = plt.subplot(gs[1])            
+             
+    for i in range(P):
+            
+        ax1.plot(x, v_r[:, i], 'o--', ms = 2.0, label = 'n = %s' % str(i+1))
+
+    ax1.set_ylabel('eigenfunctions', fontsize = fz)
+    ax1.set_xlabel(u'$x$', fontsize = fz)
+    ax1.legend(fontsize = lfz)
+    ax1.grid(True)
+    ax1.set_xlim([0, np.pi])
+
+                 
+    plt.show()
+    
+def plot_poisson_ev_mixed_fe():
+    
+    N = 100
+    
+    lam, u, J, x_u, x_J = poisson_ev_mixed_fe(N)
+      
+    fz  = 20
+    lfz = 16
+
+    gs = plt.GridSpec(2,1)
+    
+    # plot first M eigenvalues
+    M = 10    
+    ax0 = plt.subplot(gs[0])
+    
+    m = np.linspace(0, M, 1e3)
+    
+    ax0.plot(m, m**2, '-', label = 'theory')    
+    ax0.plot(np.arange(1, M+1), lam[:M], 'o', label = 'fe')
+    
+    ax0.set_ylabel('eigenvalues', fontsize = fz)
+    ax0.set_xlabel(u'$n$', fontsize = fz)
+    ax0.legend()
+    ax0.set_xlim([0, M+0.1])
+    ax0.grid(True)
+
+    # plot first P eigenvalues
+    P = 3
+
+    normalize = True
+
+    ax1 = plt.subplot(gs[1])            
+             
+    for i in range(P):
+            
+        n = i + 1            
+        
+        x = np.linspace(0, np.pi, 1.e3)
+        ax1.plot(x, np.sin(n*x), '-', c = 'k')
+        
+        u_i = u[:, i]
+        
+        if normalize:
+            
+            max_u = np.max(np.abs(u_i))
+            u_i = -1./max_u*u_i
+                    
+        ax1.plot(x_u, u_i, 'o--', ms = 2.0)
+        
+    ax1.set_ylabel('eigenfunctions', fontsize = fz)
+    ax1.set_xlabel(u'$x$', fontsize = fz)
+    ax1.legend(fontsize = lfz)
+    ax1.grid(True)
+    ax1.set_xlim([0, np.pi])
+    
+    plt.show()
+    
+        
 def plot_poisson_mixed_fe():
 
     N = 20
@@ -128,6 +345,25 @@ def plot_poisson_mixed_fe():
     ax1.set_xlabel(u'$x$', fontsize = 20)
     ax1.set_xlim([-0.01,1.01])
     
+    plt.show()
+
+def plot_ev_LIF_wr_mixed_fe():
+    
+    N = 100
+    
+    lam, u, J, x_u, x_J = LIF_wr_ev_mixed_fe(N)
+      
+    fz  = 20
+    lfz = 16
+
+    gs = plt.GridSpec(2,1)
+    
+    # plot first M eigenvalues
+    M = 10    
+    
+    ax0 = plt.subplot(gs[0])
+    ax0.plot(lam[:M].real, lam[:M].imag, 'o', label = 'fe')
+
     plt.show()
 
 def LIF_wo_reset_mixed_fe(N):
@@ -219,6 +455,8 @@ def plot_wo_reset_mixed_fe():
     
 if __name__ == '__main__':
     
-    plot_wo_reset_mixed_fe()
+#     plot_wo_reset_mixed_fe()
+#     plot_poisson_ev_fe()
+#     plot_poisson_ev_mixed_fe()
 
-
+    plot_ev_LIF_wr_mixed_fe()
