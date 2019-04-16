@@ -2,6 +2,7 @@ from scipy.linalg import eig
 
 import matplotlib.pyplot as plt
 import numpy as np
+import mpmath as mp
 
 
 def poisson_mixed_fe(N):
@@ -102,7 +103,7 @@ def poisson_ev_mixed_fe(N):
     D = h*np.diag(np.ones(N-1))
     
     B_block = np.bmat([[np.zeros_like(A), np.zeros_like(B)], 
-                       [np.zeros_like(B.T), D]])
+                       [np.zeros_like(B.T), -D]])
     
     lam, vr = eig(A_block, B_block)    
 
@@ -118,10 +119,49 @@ def poisson_ev_mixed_fe(N):
 
     return lam, u, J, x_u, x_J
 
+def LIF_wr_ev_St_fe(N):
+
+    pass
+
+def LIF_wr_ev_fe(N):
+
+    h = 1./N # mesh size 
+    
+    # create diagonal matrix
+    A = np.diag(2.*np.ones(N-1))
+    # fill off diagonals
+    A = A + np.diag(-1.*np.ones(N-2), k = 1)
+    A = A + np.diag(-1.*np.ones(N-2), k = -1)
+
+    A = A/h
+
+    B = np.diag(2./3*np.ones(N-1))
+        
+    B = B + np.diag(1./6*np.ones(N-2), k = 1)
+    B = B + np.diag(1./6*np.ones(N-2), k = -1)
+    B = h*A
+
+    C = np.zeros((N-1, N-1))
+
+    x = h*np.arange(1, N)
+
+    for i in range(N-1):
+        for j in range(N-1):
+            if i == j:            
+                C[i,j] = - 1./3*h
+            if j == i-1:
+                C[i,j] = 0.5*x[j] - 1./3*h
+            if j == i+1:
+                C[i,j] = -0.5*x[j] - 1./3*h
+
+    lam, vr = eig(B+C-A, B) 
+
+    return lam, vr, x
+
 def LIF_wr_ev_mixed_fe(N):    
     '''LIF without reset'''
     
-    h = 1/(N-1)
+    h = 1./(N-1)
         
     A = np.diag(2./3*np.ones(N))
     A[0,0] = 1./3
@@ -138,9 +178,9 @@ def LIF_wr_ev_mixed_fe(N):
     for i in range(N):
         for j in range(N-1):
             if i == j:            
-                B[i,i] = 0.5*x_J[i+1]*h - 1./3*h**2
+                B[i,j] = 0.5*x_J[i+1]*h - 1./3*h**2
             if j == i-1:
-                B[i,i-1] = 0.5*x_J[i-1]*h + 1./3*h**2
+                B[i,j] = 0.5*x_J[i-1]*h + 1./3*h**2
                     
     C = np.zeros((N, N-1))    
     np.fill_diagonal(C, -1)
@@ -308,13 +348,16 @@ def plot_poisson_ev_mixed_fe():
         if normalize:
             
             max_u = np.max(np.abs(u_i))
-            u_i = -1./max_u*u_i
+            u_i = 1./max_u*u_i
+            
+            if u_i[1] < u_i[0]:
+                u_i = -1*u_i
                     
-        ax1.plot(x_u, u_i, 'o--', ms = 2.0)
+        ax1.plot(x_u, u_i, 'o', ms = 2.0)
         
     ax1.set_ylabel('eigenfunctions', fontsize = fz)
     ax1.set_xlabel(u'$x$', fontsize = fz)
-    ax1.legend(fontsize = lfz)
+#     ax1.legend(fontsize = lfz)
     ax1.grid(True)
     ax1.set_xlim([0, np.pi])
     
@@ -347,9 +390,42 @@ def plot_poisson_mixed_fe():
     
     plt.show()
 
+def plot_ev_LIF_wr_fe():
+    
+    N = 2000
+    
+    lam, u, x = LIF_wr_ev_fe(N)
+      
+    fz  = 20
+    lfz = 16
+
+    gs = plt.GridSpec(2,1)
+    
+    # plot first M eigenvalues
+    M = 10    
+    
+    gs = plt.GridSpec(3, 1)
+    
+    ax0 = plt.subplot(gs[0])
+    ax0.plot(lam[:M].real, lam[:M].imag, 'o', label = 'fe')
+
+    ax1 = plt.subplot(gs[1])
+    ax1.plot(np.arange(1, M+1), lam[:M].real, 'o', label = 'fe')
+
+    ax2 = plt.subplot(gs[2])
+    
+    P = 1
+    
+    for i in range(P):
+        
+        ax2.plot(x, u[:,i])
+
+    plt.show()
+
+
 def plot_ev_LIF_wr_mixed_fe():
     
-    N = 100
+    N = 500
     
     lam, u, J, x_u, x_J = LIF_wr_ev_mixed_fe(N)
       
@@ -361,8 +437,21 @@ def plot_ev_LIF_wr_mixed_fe():
     # plot first M eigenvalues
     M = 10    
     
+    gs = plt.GridSpec(3, 1)
+    
     ax0 = plt.subplot(gs[0])
     ax0.plot(lam[:M].real, lam[:M].imag, 'o', label = 'fe')
+
+    ax1 = plt.subplot(gs[1])
+    ax1.plot(np.arange(1, M+1), lam[:M].real, 'o', label = 'fe')
+
+    ax2 = plt.subplot(gs[2])
+    
+    P = 1
+    
+    for i in range(P):
+        
+        ax2.plot(x_u, u[:,i])
 
     plt.show()
 
@@ -422,6 +511,20 @@ def LIF_wo_reset_mixed_fe(N):
         
     return u, x_u, sig, x_sig
 
+def LIF_wr_ev_analytic(a=0, b=1):
+    
+    
+    z_arr = np.linspace(0, 10000, 1e4)
+    det = np.zeros_like(z_arr)
+    
+    for i, z in enumerate(z_arr):
+    
+        det[i] = mp.pcfv(z, a)*mp.pcfu(z,b) - mp.pcfv(z, b)*mp.pcfu(z,a)
+    
+    plt.plot(z_arr, det)
+    plt.show()
+    
+
 def LIF_wr_analytic(x):
         
     return np.exp(-0.5*x**2)
@@ -458,5 +561,8 @@ if __name__ == '__main__':
 #     plot_wo_reset_mixed_fe()
 #     plot_poisson_ev_fe()
 #     plot_poisson_ev_mixed_fe()
-
-    plot_ev_LIF_wr_mixed_fe()
+#     plot_poisson_mixed_fe()
+    plot_ev_LIF_wr_fe()
+#     plot_ev_LIF_wr_mixed_fe()    
+#     LIF_wr_ev_analytic()
+    

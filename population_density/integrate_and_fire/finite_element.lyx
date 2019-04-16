@@ -928,7 +928,7 @@ status open
 \begin_layout Plain Layout
 Proof 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 For 
@@ -2775,7 +2775,7 @@ Weak form: First equation
 Second equation 
 \begin_inset Formula 
 \[
-(J'v)=-\lambda(u,v)
+(J',v)=-\lambda(u,v)
 \]
 
 \end_inset
@@ -2899,7 +2899,7 @@ First equation
 \begin_inset Formula 
 \begin{align*}
 \sum_{j=0}^{N}\int dx\,J_{j}\phi_{j}t+\sum_{j=0}^{N-1}u_{j}\psi_{j}t' & =0\\
-\sum_{j=0}^{N}\int dx\,J_{j}\phi'_{j}v & =\lambda\sum_{j=0}^{N-1}\int dx\,u_{j}\psi_{j}v
+\sum_{j=0}^{N}\int dx\,J_{j}\phi'_{j}v & =-\lambda\sum_{j=0}^{N-1}\int dx\,u_{j}\psi_{j}v
 \end{align*}
 
 \end_inset
@@ -2945,12 +2945,12 @@ This leads to two system of equations
 and 
 \begin_inset Formula 
 \begin{align*}
-\sum_{j=0}^{N}\int dx\,\psi_{0}\phi'_{j}J_{j} & =\lambda\sum_{j=0}^{N-1}\psi_{0}\psi_{j}u_{j}\\
-\sum_{j=0}^{N}\int dx\,\psi_{1}\phi'_{j}J_{j} & =\lambda\sum_{j=0}^{N-1}\psi_{1}\psi_{j}u_{j}\\
+\sum_{j=0}^{N}\int dx\,\psi_{0}\phi'_{j}J_{j} & =-\lambda\sum_{j=0}^{N-1}\psi_{0}\psi_{j}u_{j}\\
+\sum_{j=0}^{N}\int dx\,\psi_{1}\phi'_{j}J_{j} & =-\lambda\sum_{j=0}^{N-1}\psi_{1}\psi_{j}u_{j}\\
  & \vdots\\
-\sum_{j=0}^{N}\int dx\,\psi_{i}\phi'_{j}J_{j} & =\lambda\sum_{j=0}^{N-1}\psi_{i}\psi_{j}u_{j}\\
+\sum_{j=0}^{N}\int dx\,\psi_{i}\phi'_{j}J_{j} & =-\lambda\sum_{j=0}^{N-1}\psi_{i}\psi_{j}u_{j}\\
  & \vdots\\
-\sum_{j=0}^{N}\int dx\,\psi_{N-1}\phi'_{j}J_{j} & =\lambda\sum_{j=0}^{N-1}\psi_{N-1}\psi_{j}u_{j}
+\sum_{j=0}^{N}\int dx\,\psi_{N-1}\phi'_{j}J_{j} & =-\lambda\sum_{j=0}^{N-1}\psi_{N-1}\psi_{j}u_{j}
 \end{align*}
 
 \end_inset
@@ -2984,7 +2984,7 @@ D_{ij} & =\int dx\,\psi_{i}\psi_{j},\quad i,j=0,\ldots,N-1
 
 \begin_layout Itemize
 Note that 
-\begin_inset Formula $C=B^{T}$
+\begin_inset Formula $\boldsymbol{C}=\boldsymbol{B}^{T}$
 \end_inset
 
 
@@ -3001,8 +3001,8 @@ A_{ij}=\frac{1}{6}h & \text{for }j=i\pm1\\
 0 & \text{otherwise}
 \end{cases}\\
 B_{ij} & =\begin{cases}
-B_{ii}=1\\
-B_{ij}=-1 & \text{for }j=i-1\\
+B_{ii}=-1\\
+B_{ij}=1 & \text{for }j=i-1\\
 0 & \text{otherwise}
 \end{cases}\\
 D_{ij} & =\begin{cases}
@@ -3024,12 +3024,299 @@ Combining both equations, we arrive at
 \boldsymbol{B}^{T} & 0
 \end{bmatrix}\begin{bmatrix}\boldsymbol{j}\\
 \boldsymbol{u}
-\end{bmatrix}=\lambda\begin{bmatrix}0 & 0\\
+\end{bmatrix}=-\lambda\begin{bmatrix}0 & 0\\
 0 & \boldsymbol{D}
 \end{bmatrix}\begin{bmatrix}\boldsymbol{j}\\
 \boldsymbol{u}
 \end{bmatrix}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+FE Method LIF without reset
+\end_layout
+
+\begin_layout Itemize
+We start from 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x}\left(x+\frac{\partial}{\partial x}\right)u=\lambda u,
+\]
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\[
+u+xu'+u''=\lambda u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dirichlet boundary conditions 
+\begin_inset Formula $u(a)=u(b)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Weak formulation 
+\begin_inset Formula 
+\[
+u+xu'+u''=\lambda u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Multiply with 
+\begin_inset Formula $v$
+\end_inset
+
+ and integrate 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,uv+\int_{a}^{b}dx\,xu'v+\int_{a}^{b}dx\,u''v=\lambda\int dx\,uv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Partial integration second derivative term 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,uv+\int_{a}^{b}dx\,xu'v-\int_{a}^{b}dx\,u'v'=\lambda\int dx\,uv
+\]
+
+\end_inset
+
+assuming 
+\begin_inset Formula $v(a)=v(b)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The above equation can be written as 
+\begin_inset Formula 
+\[
+(v,u)+(xu',v)-(u',v')=\lambda(u,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand in pw linear hat functions 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{N}\left\{ (v,\phi_{j})u_{j}+(v,x\phi_{j}')u_{j}-(\phi'_{j},v')u_{j}\right\} =\lambda\sum_{j=1}^{N}(v,\phi_{j})u_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set 
+\begin_inset Formula $v=\phi_{1},\phi_{2},\ldots,\phi_{N}$
+\end_inset
+
+ successively 
+\begin_inset Formula 
+\[
+\left(\boldsymbol{A}-\boldsymbol{B}-\boldsymbol{C}\right)\boldsymbol{u}=-\lambda\boldsymbol{D}\boldsymbol{u}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+A_{ij} & =(\phi'_{i},\phi'_{j})\\
+B_{ij} & =(\phi_{i},\phi_{j})\\
+C_{ij} & =(\phi_{i},x\phi_{j}')\\
+D & =(\phi_{i},\phi_{j})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+C_{ij}=\begin{cases}
+-\frac{1}{3}h & i=j\\
+\frac{1}{2}x_{i+1}-\frac{1}{3}h & j=i+1\\
+-\frac{1}{2}x_{i-1}-\frac{1}{3}h & j=i-1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+C_{ij}=(\phi_{i},x\phi_{j}')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i=j$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+(\phi_{i},x\phi_{i}') & =\frac{1}{h^{2}}\int_{x_{i-1}}^{x_{i}}dx\,x(x-x_{i-1})-\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}dx\,x(x_{i+1}-x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $y=x-x_{i-1}$
+\end_inset
+
+ with 
+\begin_inset Formula $x=y+x_{i-1}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{h^{2}}\int_{x_{i-1}}^{x_{i}}dx\,x(x-x_{i-1}) & =\frac{1}{h^{2}}\int_{0}^{h}dy\,(y+x_{i-1})y\\
+ & =\frac{1}{h^{2}}\int_{0}^{h}dy\,(y^{2}+x_{i-1}y)\\
+ & =\frac{1}{h^{2}}\left(\frac{1}{3}h^{3}+\frac{1}{2}x_{i-1}h^{2}\right)\\
+ & =\frac{1}{2}x_{i-1}+\frac{1}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $y=x_{i+1}-x$
+\end_inset
+
+ with 
+\begin_inset Formula $x=x_{i+1}-y$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}dx\,x(x_{i+1}-x) & =\frac{1}{h^{2}}\int_{0}^{h}dy\,(x_{i+1}-y)y\\
+ & =\frac{1}{h^{2}}\int_{0}^{h}dy\,(x_{i+1}y-y^{2})\\
+ & =\frac{1}{h^{2}}\left(\frac{1}{2}x_{i+1}h^{2}-\frac{1}{3}h^{3}\right)\\
+ & =\frac{1}{2}x_{i+1}-\frac{1}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\begin{align*}
+(\phi_{i},x\phi_{i}') & =\frac{1}{2}x_{i-1}h+\frac{1}{3}h-\left(\frac{1}{2}x_{i+1}-\frac{1}{3}h\right)\\
+ & =\frac{1}{2}\left(x_{i-1}-x_{i+1}\right)+\frac{2}{3}h\\
+ & =\frac{2}{3}h-h\\
+ & =-\frac{1}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i+1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+(\phi_{i},x\phi_{i+1}') & =\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}dx\,x(x_{i+1}-x)\\
+ & =\frac{1}{2}x_{i+1}-\frac{1}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i-1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+(\phi_{i},x\phi_{i-1}') & =-\frac{1}{h^{2}}\int_{x_{i-1}}^{x_{i}}dx\,x(x-x_{i-1})\\
+ & =-\frac{1}{2}x_{i-1}-\frac{1}{3}h
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3090,7 +3377,7 @@ We multiply the first equation with the test function
  and integrate over the domain 
 \begin_inset Formula 
 \[
-\int_{0}^{1}dx\,Jt=-\int_{0}^{1}xut-\int_{0}^{1}u't
+\int_{0}^{1}dx\,Jt+\int_{0}^{1}xut+\int_{0}^{1}u't=0
 \]
 
 \end_inset
@@ -3148,7 +3435,7 @@ Expand
 \begin_inset Formula 
 \begin{align*}
 \sum_{j=0}^{N}(t,\phi_{j})J_{j}+\sum_{j=0}^{N-1}(t,x\psi_{j})u_{j}-\sum_{j=1}^{N-1}(t',\psi_{j})u_{j} & =0\\
--\sum_{j=0}^{N}(v,\phi_{j}')J_{j} & =\lambda\sum_{j=0}^{N-1}(v,\psi_{j})u_{j}
+\sum_{j=0}^{N}(v,\phi_{j}')J_{j} & =-\lambda\sum_{j=0}^{N-1}(v,\psi_{j})u_{j}
 \end{align*}
 
 \end_inset
@@ -3188,10 +3475,10 @@ yields the following system of equations
 and 
 \begin_inset Formula 
 \begin{align*}
--\sum_{j=0}^{N}(\psi_{0},\phi_{j}')J_{j} & =\lambda\sum_{j=0}^{N-1}(\psi_{0},\psi_{j})u_{j}\\
--\sum_{j=0}^{N}(\psi_{1},\phi_{j}')J_{j} & =\lambda\sum_{j=0}^{N-1}(\psi_{1},\psi_{j})u_{j}\\
+\sum_{j=0}^{N}(\psi_{0},\phi_{j}')J_{j} & =-\lambda\sum_{j=0}^{N-1}(\psi_{0},\psi_{j})u_{j}\\
+\sum_{j=0}^{N}(\psi_{1},\phi_{j}')J_{j} & =-\lambda\sum_{j=0}^{N-1}(\psi_{1},\psi_{j})u_{j}\\
  & \vdots\\
--\sum_{j=0}^{N}(\psi_{N-1},\phi_{j}')J_{j} & =\lambda\sum_{j=0}^{N-1}(\psi_{N-1},\psi_{j})u_{j}
+\sum_{j=0}^{N}(\psi_{N-1},\phi_{j}')J_{j} & =-\lambda\sum_{j=0}^{N-1}(\psi_{N-1},\psi_{j})u_{j}
 \end{align*}
 
 \end_inset
@@ -3204,7 +3491,7 @@ The system of equations can written in matrix notation
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{A}\boldsymbol{j}+\boldsymbol{B}\boldsymbol{u}-\boldsymbol{C}\boldsymbol{u} & =0\\
--\boldsymbol{C}^{T}\boldsymbol{j} & =\lambda\boldsymbol{D}\boldsymbol{u}
+\boldsymbol{C}^{T}\boldsymbol{j} & =-\lambda\boldsymbol{D}\boldsymbol{u}
 \end{align*}
 
 \end_inset
@@ -3228,11 +3515,11 @@ The two equations can be written in a block matrix form
 \begin_inset Formula 
 \[
 \begin{bmatrix}\boldsymbol{A} & \boldsymbol{B}-\boldsymbol{C}\\
--\boldsymbol{C}^{T} & 0
+\boldsymbol{C}^{T} & 0
 \end{bmatrix}\begin{bmatrix}\boldsymbol{j}\\
 \boldsymbol{u}
 \end{bmatrix}=\lambda\begin{bmatrix}0 & 0\\
-0 & \boldsymbol{D}
+0 & -\boldsymbol{D}
 \end{bmatrix}\begin{bmatrix}\boldsymbol{j}\\
 \boldsymbol{u}
 \end{bmatrix}
@@ -3357,7 +3644,7 @@ Substitute
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Start from
@@ -3586,7 +3873,416 @@ We can transform
 
 \end_inset
 
-into the Schroedinger equation 
+into a Schroedinger type equation 
+\begin_inset Formula 
+\begin{align*}
+\left(\partial_{x}^{2}w(x)+V(x)\right)w(x) & =\lambda w(x)
+\end{align*}
+
+\end_inset
+
+where the potential 
+\begin_inset Formula $V(x)$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\[
+V(x)=-\frac{1}{4}x^{2}+\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we can write 
+\begin_inset Formula 
+\[
+w''-\frac{1}{4}x^{2}w=(\lambda-\frac{1}{2})\varphi
+\]
+
+\end_inset
+
+which we can write as 
+\begin_inset Formula 
+\[
+w''-\frac{1}{4}x^{2}w=\tilde{\lambda}w
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\lambda}=(\lambda-\frac{1}{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dirichlet boundary conditions 
+\begin_inset Formula $\varphi(a)=\varphi(b)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,w''v-\frac{1}{4}\int_{a}^{b}dx\,x^{2}wv=\tilde{\lambda}\int_{a}^{b}dx\,wv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Partial integration 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dx\,w'v'+\frac{1}{4}\int_{a}^{b}dx\,x^{2}wv=-\tilde{\lambda}\int_{a}^{b}dx\,wv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be written as 
+\begin_inset Formula 
+\[
+(\varphi',w')+\frac{1}{4}(x^{2}w,v)=-\tilde{\lambda}\int_{a}^{b}dx\,wv
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expand 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ in basis of pw linear hat function 
+\begin_inset Formula $\phi_{i}(x)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\sum_{j=1}^{N}(v',\phi'_{j})w_{j}+\frac{1}{4}\sum_{j=1}^{N}(v,x^{2}\phi_{j})w_{j}=-\tilde{\lambda}\int_{a}^{b}dx\,(v,\phi_{j})w_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set 
+\begin_inset Formula $v$
+\end_inset
+
+ successively to 
+\begin_inset Formula $v=\phi_{1},\phi_{2},\ldots,\phi_{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{j=1}^{N}(\phi'_{1},\phi'_{j})w_{j}+\frac{1}{4}\sum_{j=1}^{N}(\phi_{1},x^{2}\phi_{j})w_{j} & =-\tilde{\lambda}\int_{a}^{b}dx\,(\phi_{1},\phi_{j})w_{j}\\
+\sum_{j=1}^{N}(\phi'_{1},\phi'_{j})w_{j}+\frac{1}{4}\sum_{j=1}^{N}(\phi_{1},x^{2}\phi_{j})w_{j} & =-\tilde{\lambda}\int_{a}^{b}dx\,(\phi_{2},\phi_{j})w_{j}\\
+ & \vdots\\
+\sum_{j=1}^{N}(\phi'_{N},\phi'_{j})w_{j}+\frac{1}{4}\sum_{j=1}^{N}(\phi_{N},x^{2}\phi_{j})w_{j} & =-\tilde{\lambda}\int_{a}^{b}dx\,(\phi_{N},\phi_{j})w_{j}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This can be written into a matrix equation 
+\begin_inset Formula 
+\[
+\boldsymbol{A}\boldsymbol{w}+\boldsymbol{B}\boldsymbol{w}=-\tilde{\lambda}\boldsymbol{C}\boldsymbol{w}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\begin{align*}
+A_{ij} & =(\phi'_{i},\phi'_{j})\\
+B_{ij} & =(\phi_{i},x^{2}\phi_{j})\\
+C_{ij} & =(\phi_{N},\phi_{j})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to calculate matrix 
+\begin_inset Formula $B$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B_{ij}=
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+B_{ij}=(\phi_{i},x^{2}\phi_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $i=j$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+B_{ii}=\frac{1}{h}\int_{x_{i-1}}^{x_{i}}dx\,x^{2}(x-x_{i-1})^{2}+\int_{x_{i}}^{x_{i+1}}dx\,x^{2}(x_{i+1}-x)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $y=x-x_{i-1}$
+\end_inset
+
+ with 
+\begin_inset Formula $x=y+x_{i-1}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{h}\int_{0}^{h}dx\,x^{2}(x-x_{i-1}) & =\frac{1}{h^{2}}\int_{0}^{h}dx\,(y+x_{i-1})^{2}y^{2}\\
+ & =\frac{1}{h^{2}}\int_{0}^{h}dx\,y^{4}+2x_{i-1}y^{3}+x_{i-1}^{2}y^{2}\\
+ & =\frac{1}{h^{2}}\left(\frac{1}{5}h^{5}+\frac{1}{2}x_{i-1}h^{4}+\frac{1}{3}x_{i-1}^{2}h^{3}\right)\\
+ & =\frac{1}{5}h^{3}+\frac{1}{2}x_{i-1}h^{2}+\frac{1}{3}x_{i-1}^{2}h^{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $j=i+1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+B_{i,i+1}=\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}x^{2}(x_{i+1}-x)(x-x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $y=x_{i+1}-x$
+\end_inset
+
+ with 
+\begin_inset Formula $x=x_{i+1}-y$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}x^{2}(x_{i+1}-x)(x-x_{i})=\frac{1}{h^{2}}\int_{x_{i}}^{x_{i+1}}x^{2}y(x-x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Analytic result 
+\end_layout
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial x}\left(x+\frac{\partial}{\partial x}\right)u & =\lambda u,\\
+u(a) & =0\\
+u(b) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transform into Schrodinger type equation 
+\begin_inset Formula 
+\[
+\partial_{x}^{2}w-\left(\frac{1}{4}x^{2}+z\right)w=0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $z=\lambda-\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $u(x)=f(x)w(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $f(x)=e^{-\frac{1}{4}x^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions 
+\begin_inset Formula 
+\begin{align*}
+u(a) & =f(a)w(a)=0\Rightarrow w(a)=0\\
+u(a) & =f(b)w(b)=0\Rightarrow w(b)=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution is given by 
+\begin_inset Formula 
+\[
+w(x)=c_{1}V(z,x)+c_{2}U(z,x)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $U$
+\end_inset
+
+ are parabolic cylinder functions 
+\end_layout
+
+\begin_layout Itemize
+We have the boundary conditions 
+\begin_inset Formula 
+\begin{align*}
+c_{1}f(a)V(z,a)+c_{2}f(a)U(z,a) & =0\\
+c_{1}f(b)V(z,b)+c_{2}f(b)U(z,b) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This two equations can be written as 
+\begin_inset Formula 
+\[
+\begin{pmatrix}f(a)V(z,a) & f(a)U(z,a)\\
+f(b)V(z,b) & f(b)U(z,b)
+\end{pmatrix}\begin{pmatrix}c_{1}\\
+c_{2}
+\end{pmatrix}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to find solutions to 
+\begin_inset Formula 
+\begin{align*}
+\begin{vmatrix}f(a)V(z,a) & f(a)U(z,a)\\
+f(b)V(z,b) & f(b)U(z,b)
+\end{vmatrix} & =f(a)f(b)\left\{ V(z,a)U(z,b)-V(z,b)U(z,a)\right\} =0
+\end{align*}
+
+\end_inset
+
+form which follows 
+\begin_inset Formula 
+\[
+V(z,a)U(z,b)-V(z,b)U(z,a)=0
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
