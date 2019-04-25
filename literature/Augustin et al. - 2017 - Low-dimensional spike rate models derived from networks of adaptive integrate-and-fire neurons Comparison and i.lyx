@@ -1,0 +1,1469 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Low-dimensional spike rate models derived from networks of adaptive integrate-an
+d-fire models 
+\end_layout
+
+\begin_layout Itemize
+Adaptive integrate-and-fire describe time evolution of the fast somatic
+ membrane voltage and an adaptation variable that represents slowly-decaying
+ potassium current 
+\end_layout
+
+\begin_layout Section*
+Results
+\end_layout
+
+\begin_layout Subsection*
+Model reduction 
+\end_layout
+
+\begin_layout Itemize
+aEIF neurons 
+\end_layout
+
+\begin_layout Itemize
+synaptic current 
+\begin_inset Formula 
+\[
+I_{\text{syn},i}=I_{\text{ext},i}(t)+I_{\text{rec},i}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input consists of fluctuating network-external drive 
+\begin_inset Formula 
+\[
+I_{\text{ext},i}=C[\mu_{\text{ext}}(t)+\sigma_{\text{ext}}(t)\xi_{\text{ext},i}(t)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take into account adaptation current dynamics that are sufficient slow,
+ allowing to replace the individual adaptation current 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ by its population-average 
+\begin_inset Formula $\left\langle w\right\rangle $
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{d\left\langle w\right\rangle }{dt}=\frac{a(\left\langle V\right\rangle _{\infty}-E_{w})-\left\langle w\right\rangle }{\tau_{w}}+br(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Subthreshold conductance 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reversal potential 
+\begin_inset Formula $E_{w}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+spike triggered increment 
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+time constant 
+\begin_inset Formula $\tau_{w}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck (FP) model 
+\begin_inset Formula 
+\begin{align*}
+\mu_{\text{syn}} & =\mu_{\text{ext}}(t)+JKr_{d}(t),\\
+\sigma_{\text{syn}}^{2} & =\sigma_{\text{ext}}^{2}(t)+J^{2}Kr_{d}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Delayed spike rate 
+\begin_inset Formula $r_{d}$
+\end_inset
+
+ is governed by 
+\begin_inset Formula 
+\[
+\frac{dr_{d}}{dt}=\frac{r-r_{d}}{\tau_{d}}
+\]
+
+\end_inset
+
+which correpsonds to individual propagation delays drawn from an exponentially
+ distributed random variable with mean 
+\begin_inset Formula $\tau_{d}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Methods 
+\end_layout
+
+\begin_layout Subsection*
+Network model
+\end_layout
+
+\begin_layout Itemize
+aEIF 
+\begin_inset Formula 
+\[
+C\frac{dV_{i}}{dt}=I_{L}(V_{i})+I_{\text{exp}}(V_{i})-w_{i}+I_{\text{syn},i}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ionic currents 
+\begin_inset Formula 
+\[
+I_{L}(V_{i})=-g_{L}(V_{i}-E_{L})
+\]
+
+\end_inset
+
+with conductance and reversal potential 
+\begin_inset Formula $E_{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Nonlinear current 
+\begin_inset Formula 
+\[
+I_{\text{exp}}(V_{i})=g_{L}\Delta_{T}\text{exp}((V_{i}-V_{\text{T}})/\Delta_{T})
+\]
+
+\end_inset
+
+that approximates rapidly increasing 
+\begin_inset Formula $\text{Na}^{+}$
+\end_inset
+
+ current at spike initiation 
+\end_layout
+
+\begin_layout Itemize
+Adaptation current 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ which reflects slowly deactivating 
+\begin_inset Formula $\text{K}^{+}$
+\end_inset
+
+ current 
+\begin_inset Formula 
+\[
+\tau_{\text{w}}\frac{dw_{i}}{dt}=a(V_{i}-E_{w})-w_{i}
+\]
+
+\end_inset
+
+with adaptation time constant 
+\begin_inset Formula $\tau_{w}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ increases beyond 
+\begin_inset Formula $V_{T}$
+\end_inset
+
+ it diverges to infinity in finite time due to the exponentially increasing
+ current 
+\begin_inset Formula $I_{\text{exp}}(V_{i})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+downswing 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+of the spike is not explicitly modeled, instead, when 
+\begin_inset Formula $V_{i}\geq V_{s},$
+\end_inset
+
+ the membrane voltage
+\end_layout
+
+\begin_layout Itemize
+At the same time the adaptation current 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ is incremented by a value of parameter 
+\begin_inset Formula $b$
+\end_inset
+
+, which implements 
+\series bold
+suprathreshold
+\series default
+ 
+\series bold
+spike-dependent 
+\series default
+activation of the adaptation current 
+\end_layout
+
+\begin_layout Itemize
+Immediately after the reset, 
+\begin_inset Formula $V_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ are clamped (i.e.
+ remain constant) for a short refractory period 
+\begin_inset Formula $T_{\text{ref}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic current is given by sum of recurrent and external input 
+\begin_inset Formula 
+\[
+I_{\text{syn},i}=I_{\text{rec},i}(t)+I_{\text{ext},i}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Incoming connections 
+\begin_inset Formula $K\ll N$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{\text{rec},i}(t)=C\sum_{j}J_{ij}\sum_{t_{j}}\delta(t-t_{j}-d_{ij})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Delay 
+\begin_inset Formula $d_{ij}$
+\end_inset
+
+ is sampled independently from a probability distribution 
+\begin_inset Formula $p_{d}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Authors use exponentially distributed delays 
+\begin_inset Formula $p_{d}(\tau)=\exp(-\tau/\tau_{\text{d}})/\tau_{\text{d}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second type of synaptic input is a fluctuating current generated from network-ex
+ternal neurons 
+\begin_inset Formula 
+\[
+I_{\text{ext},i}(t)=C[\mu_{\text{ext}}(t)+\sigma_{\text{ext}}(t)\xi_{\text{ext}.i}(t)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Fokker-Planck system 
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Adiabatic approximation
+\end_layout
+
+\begin_layout Itemize
+The time scales of slow 
+\begin_inset Formula $\text{K}^{+}$
+\end_inset
+
+ channel kinetics which are effectively described by the adaptation current
+ 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ are typically much larger than the faster membrane voltage dynamics 
+\begin_inset Formula $\tau_{w}\gg C/g_{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Replace individual adaptation current 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ by its average across the population 
+\begin_inset Formula 
+\[
+\left\langle w\right\rangle _{N}=\frac{1}{N}\sum_{i=1}^{N}w_{i}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean adaptation current 
+\begin_inset Formula 
+\[
+\frac{d\left\langle w\right\rangle _{N}}{dt}=\frac{a(\left\langle V\right\rangle _{N}-E_{w})-\left\langle w\right\rangle _{N}}{\tau_{w}}+br_{N}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Large networks recurrent input can be approximated by a mean part with additive
+ fluctuations 
+\begin_inset Formula 
+\[
+I_{\text{rec},i}/C\approx JKr_{d}(t)+J\sqrt{Kr_{d}(t)}\xi_{\text{rec},i}(t)
+\]
+
+\end_inset
+
+with delayed spike rate 
+\begin_inset Formula 
+\[
+r_{d}=r\ast p_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic input 
+\begin_inset Formula 
+\begin{align*}
+\mu_{\text{syn}} & =\mu_{\text{ext}}(t)+JKr_{d}(t)\\
+\sigma_{\text{syn}}^{2} & =\sigma_{\text{ext}}^{2}(t)+J^{2}Kr_{d}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The population-averaged adaptation current 
+\begin_inset Formula $\left\langle w\right\rangle =\lim_{N\rightarrow\infty}\left\langle V\right\rangle _{N}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{d\left\langle w\right\rangle }{dt}=\frac{a(\left\langle V\right\rangle -E_{w})-\left\langle w\right\rangle }{\tau_{w}}+br(t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\left\langle V\right\rangle =\lim_{N\rightarrow\infty}\left\langle V\right\rangle _{N}$
+\end_inset
+
+ and spike rate 
+\begin_inset Formula $r=\lim_{N\rightarrow\infty,\Delta t\rightarrow0}r_{N}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Continuity equation 
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V,t)+\frac{\partial}{\partial V}q_{p}(V,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Probability flux 
+\begin_inset Formula 
+\[
+q_{p}(V,t)=\left(\frac{I_{L}(V)+I_{\text{exp}}(V)}{C}+\mu_{\text{tot}}(t)\right)p(V,t)-\frac{\sigma_{\text{tot}}^{2}}{2}\frac{\partial}{\partial V}p(V,t)
+\]
+
+\end_inset
+
+with total input mean and standard deviation 
+\begin_inset Formula 
+\begin{align*}
+\mu_{\text{tot}}(t) & =\mu_{\text{syn}}(\mu_{\text{ext}}(t),r_{d}(t))-\left\langle w\right\rangle (t)/C\\
+\sigma_{\text{tot}}(t) & =\sigma_{\text{syn}}(\sigma_{\text{ext}}(t),r_{d}(t))
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Time dependent-mean membrane voltage 
+\begin_inset Formula 
+\[
+\left\langle V\right\rangle =\frac{\int_{-\infty}^{V_{s}}vp(v,t)dv}{p(v,t)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Spike rate 
+\begin_inset Formula $r$
+\end_inset
+
+ is obtained by the probability flux through 
+\begin_inset Formula $V_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reset condition 
+\begin_inset Formula 
+\[
+q_{p}(V_{r}^{+},t)-q_{p}(V_{r}^{-},t)=q_{p}(V_{s},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Absorbing boundary 
+\begin_inset Formula 
+\begin{align*}
+p(V_{s},t) & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reflecting boundary 
+\begin_inset Formula 
+\[
+\lim_{V\rightarrow-\infty}q_{p}(V,t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Together with initial membrane voltage distribution 
+\begin_inset Formula $p(V,0)=p_{0}(V)$
+\end_inset
+
+ and mean adaptation current 
+\begin_inset Formula $\left\langle w\right\rangle (0)=0$
+\end_inset
+
+ the Fokker-Planck mean-field model is now 
+\series bold
+completely specified
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $p(V,t)$
+\end_inset
+
+ only reflects the proportion of neurons which are not refractory at time
+ 
+\begin_inset Formula $t$
+\end_inset
+
+, given by
+\begin_inset Formula 
+\[
+P(t)=\int_{-\infty}^{V_{\text{s}}}p(v,t)dv=1-\int_{t-T_{\text{ref}}}^{t}r(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Total probability density 
+\begin_inset Formula 
+\[
+p(V,t)+p_{\text{ref}}(V,t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+p_{\text{ref}}(V,t)=(1-P(t))\delta(V-V_{\text{r}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In practice we consider a 
+\series bold
+finite reflecting lower barrier
+\series default
+ 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+ instead of negative infinite the numerical solution and for the low-dimensional
+ approximations of the FPE
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+ is chose sufficiently small in order to not distort the free diffusion
+ of the membrane voltage for values below the reset, i.e.
+ 
+\begin_inset Formula $V_{\text{lb}}\ll V_{\text{r}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Finite volume discretization 
+\end_layout
+
+\begin_layout Itemize
+Accurate and robust method of solution that exploits linear form of the
+ FP model 
+\end_layout
+
+\begin_layout Itemize
+Previously described numerical schemes require small time steps due to the
+ steeply increasing exponential current 
+\begin_inset Formula $I_{\text{exp}}$
+\end_inset
+
+ in the flux 
+\begin_inset Formula $q_{p}$
+\end_inset
+
+ close to the spike voltage 
+\begin_inset Formula $V_{s}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+First discretize 
+\series bold
+finite
+\series default
+ domain 
+\begin_inset Formula $[V_{\text{lb}},V_{s}]$
+\end_inset
+
+ into 
+\begin_inset Formula $N_{V}$
+\end_inset
+
+ equidistant grid cells 
+\begin_inset Formula $[V_{m-\frac{1}{2}},V_{m+\frac{1}{2}}]$
+\end_inset
+
+ with centers 
+\begin_inset Formula $V_{m}(m=1,\ldots,N_{V})$
+\end_inset
+
+ that satisfy 
+\begin_inset Formula $V_{1}<V_{2}<\ldots<V_{N_{V}}$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\begin{align*}
+V_{\frac{1}{2}} & =V_{\text{lb}}\\
+V_{N_{V}+\frac{1}{2}} & =V_{\text{s}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Within each cell the numerical approximation of 
+\begin_inset Formula $p(V,t)$
+\end_inset
+
+ is assumed to be constant and corresponds to the average value denoted
+ by 
+\begin_inset Formula $p(V_{m},t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrating the continuity equation over element 
+\begin_inset Formula $m$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V_{m},t)=\frac{q_{p}(V_{m-\frac{1}{2}},t)-q_{p}(V_{m+\frac{1}{2}},t)}{\Delta V}+\delta_{mm_{r}}\frac{1}{\Delta V}q_{p}(V_{N_{V}+\frac{1}{2}},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from continuity equation 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V,t)+\frac{\partial}{\partial V}q_{p}(V)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate over cell 
+\begin_inset Formula $m$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\int_{\Omega_{m}}dV\,p(V,t)+\int_{\Omega_{m}}dV\,q_{p}(V)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Within each cell 
+\begin_inset Formula $p(V,t)$
+\end_inset
+
+ is assumed to be constant, 
+\begin_inset Formula $p(V,t)\approx p(V_{m},t)$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}\int_{\Omega_{m}}dV\,p(V,t)=\frac{\partial}{\partial t}p(V_{m},t)\cdot\Delta V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We integrate the flux 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial V}q_{p}(V)=\int_{\Omega_{m}}dV\,\frac{\partial}{\partial V}q_{p}(V)=q_{p}(V_{m-\frac{1}{2}},t)-q_{p}(V_{m+\frac{1}{2}},t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we arrive at 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V_{m},t)=\frac{q_{p}(V_{m-\frac{1}{2}},t)-q_{p}(V_{m+\frac{1}{2}},t)}{\Delta V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+How to incoporate the reset? 
+\begin_inset Formula 
+\[
+q_{p}(V_{r}^{+},t)-q_{p}(V_{r}^{-},t)=q_{p}(V_{s},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Set grid point on the reset value 
+\begin_inset Formula $m_{r}$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+q_{p}(V_{m_{r}+\frac{1}{2}},t)=q_{p}(V_{m_{r}-\frac{1}{2}},t)+q_{p}(V_{N_{V}+\frac{1}{2}},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence if we integrate over volume 
+\begin_inset Formula $m_{r}$
+\end_inset
+
+, we get 
+\begin_inset Formula 
+\[
+\int_{\Omega_{r}}dV\,\frac{\partial}{\partial V}q_{p}(V)=q_{p}(V_{m_{r}-\frac{1}{2}},t)-q_{p}(V_{m_{r}+\frac{1}{2}},t)+q_{p}(V_{N_{V}+\frac{1}{2}},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can include this by introducing into an additional term 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V_{m},t)=\frac{q_{p}(V_{m-\frac{1}{2}},t)-q_{p}(V_{m+\frac{1}{2}},t)}{\Delta V}+\delta_{mm_{r}}\frac{1}{\Delta V}q_{p}(V_{N_{V}+\frac{1}{2}},t-T_{\text{ref}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To solve the equation forward in time the fluxes at the borders of each
+ cell need to be approximated 
+\end_layout
+
+\begin_layout Itemize
+The Fokker-Planck PDE belongs to the class of drift-diffusion equation which
+ can be accurately calculated by the first order 
+\series bold
+Scharfetter-Gummel flux
+\begin_inset Formula 
+\[
+q_{p}(V_{m+\frac{1}{2}},t)=v_{m+\frac{1}{2}}\frac{p(V_{m},t)-p(V_{m+1},t)\exp(-v_{m+\frac{1}{2}}\Delta V/D)}{1-\exp(-v_{m+\frac{1}{2}}\Delta V/D)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Drift coefficients 
+\begin_inset Formula 
+\begin{align*}
+v_{m+\frac{1}{2}}(t) & =[I_{L}(V_{m+\frac{1}{2}})+I_{\text{exp}}(V_{m+\frac{1}{2}})]/C+\mu_{\text{tot}}(t,r_{d}(t),\left\langle w\right\rangle (t))\\
+D(t) & =\frac{1}{2}\sigma_{\text{tot}}^{2}(t,r_{\text{d}}(t))
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Large drift 
+\begin_inset Formula $\bigl|v_{m+\frac{1}{2}}\bigr|\Delta V\gg D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For time discretization rewrite equation in vectorized form and approximate
+ the involved time derivative as first order backward difference to 
+\series bold
+ensure numerical stability
+\series default
+ 
+\series bold
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial t}p(V_{m},t)\approx\frac{p(V_{m},t)-p(V_{m},t-\Delta t)}{\Delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This yields in each time step of length 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ a linear system for the values 
+\begin_inset Formula $\boldsymbol{p}^{n+1}$
+\end_inset
+
+ of the discretized probability density at 
+\begin_inset Formula $t_{n+1}$
+\end_inset
+
+ given the values 
+\begin_inset Formula $\boldsymbol{p}^{n}$
+\end_inset
+
+ at the previous time step 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ and the spike rate at the time 
+\begin_inset Formula $t_{n+1-n_{\text{ref}}}$
+\end_inset
+
+ for which refractory period just passed 
+\begin_inset Formula 
+\[
+\left(\boldsymbol{I}-\frac{\Delta t}{\Delta V}\boldsymbol{G}^{n}\right)\boldsymbol{p}^{n+1}=\boldsymbol{p}^{n}+g^{n+1-n_{\text{ref}}}
+\]
+
+\end_inset
+
+vector elements 
+\begin_inset Formula $p_{m}^{n}=p(V_{m},t_{n})$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{m}^{n+1-n_{\text{ref}}}=\delta_{mm_{r}}\frac{\Delta t}{\Delta V}r(t_{n+1-n_{\text{ref}}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Low-dimensional approximations 
+\end_layout
+
+\begin_layout Itemize
+Approximate spiking model by simple rate models 
+\end_layout
+
+\begin_layout Itemize
+The derived models are described by low-dimensional ordinary differential
+ equations (ODEs) which depend on a number of quantities defined in the
+ 
+\series bold
+plane
+\series default
+ of generic input mean and standard deviation 
+\begin_inset Formula $(\mu,\sigma)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Steady spike rate as a function of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r_{\infty}(\mu,\sigma)\coloneqq\lim_{t\rightarrow\infty}r(t;\mu_{\text{tot}=\mu},\sigma_{\text{tot}}=\sigma)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When simulating the reduced models these quantities need to be evaluated
+ for each discrete time point 
+\begin_inset Formula $t$
+\end_inset
+
+ at a certain value 
+\begin_inset Formula $(\mu,\sigma)$
+\end_inset
+
+ which depends on the overall synaptic moments 
+\begin_inset Formula $\mu_{\text{syn}}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\text{syn}}^{2}(t)$
+\end_inset
+
+ and on the mean adaptation current 
+\begin_inset Formula $\bigl\langle w\bigr\rangle(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quantities depend on the parameters of the synaptic input and adaption current
+ only through their arguments 
+\begin_inset Formula $(\mu,\sigma)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therefore, for given parameter values of the EIF model 
+\begin_inset Formula $(C,g_{L},E_{L},\Delta_{T},V_{T},V_{r},T_{\text{ref}})$
+\end_inset
+
+ the authors precalculate those quantities on a reasonably large and sufficientl
+y dense grid of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ values, and access them during time integration by interpolating the quantity
+ values 
+\end_layout
+
+\begin_layout Itemize
+The derived low-dimensional models describe the spike rate dynamics and
+ generally do 
+\series bold
+not
+\series default
+ express the evolution of the entire membrane voltage distribution 
+\end_layout
+
+\begin_layout Itemize
+Therefore, the mean adaptation dynamics which depend on the density 
+\begin_inset Formula $p(V,t)$
+\end_inset
+
+ via 
+\begin_inset Formula $\bigl\langle V\bigr\rangle$
+\end_inset
+
+ is adjusted through approximating the mean membrane voltage 
+\begin_inset Formula $\bigl\langle V\bigr\rangle$
+\end_inset
+
+ by the expectation over steady-state 
+\begin_inset Formula 
+\[
+\bigl\langle V\bigr\rangle=\frac{\int_{-\infty}^{V_{s}}vp_{\infty}(v)dv}{\int_{-\infty}^{V_{s}}p_{\infty}(v)dv}
+\]
+
+\end_inset
+
+which is valid for sufficiently slow adaptation current dynamics 
+\end_layout
+
+\begin_layout Subsection*
+Spectral models 
+\end_layout
+
+\begin_layout Itemize
+We can specify Fokker-Planck 
+\begin_inset Formula 
+\[
+\frac{\partial p}{\partial t}=\mathcal{L}(\mu_{\text{tot}}(t),\sigma_{\text{tot}}(t))[p]
+\]
+
+\end_inset
+
+which depends on the 
+\series bold
+time-varying
+\series default
+ total input moments 
+\begin_inset Formula $\mu_{\text{tot}}(t,r_{d},\bigl\langle w\bigr\rangle)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\text{tot}}^{2}(t,r_{d})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For each value of 
+\begin_inset Formula $(\mu,\sigma)$
+\end_inset
+
+ the operator 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+possesses an infinite, discrete set of eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ in the left complex half-plane and associated eigenfunctions 
+\begin_inset Formula 
+\[
+\mathcal{L}[\phi_{n}]=\lambda_{n}\phi_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions need to be fulfilled for each eigenfunctions 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ separately 
+\end_layout
+
+\begin_layout Itemize
+Reset boundary condition 
+\begin_inset Formula 
+\[
+q_{\phi_{n}}(V_{r}^{+})-q_{\phi_{n}}(V_{r}^{-})=q_{\phi_{n}}(V_{s})
+\]
+
+\end_inset
+
+where we neglected the refractory period, i.e.
+ 
+\begin_inset Formula $T_{\text{ref}}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Incorporating the refractory period is straightforward 
+\series bold
+only 
+\series default
+for the time independent 
+\begin_inset Formula $\mu_{\text{tot}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\text{tot}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Adjoint eigenfunctions 
+\begin_inset Formula 
+\[
+\mathcal{L}^{*}[\psi_{n}]=\lambda_{n}\psi_{n}
+\]
+
+\end_inset
+
+need need to satisfy three boundary conditions 
+\begin_inset Formula 
+\begin{align*}
+\psi_{n}(V_{s}) & =\psi_{n}(V_{r})\\
+\frac{\partial\psi_{n}(V_{\text{lb}})}{\partial V} & =0\\
+\frac{\partial\psi_{n}(V_{\text{r}}^{+})}{\partial V} & =\frac{\partial\psi_{n}(V_{\text{r}}^{-})}{\partial V}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Last condition ensures continuous derivative of 
+\begin_inset Formula $\psi_{n}$
+\end_inset
+
+ at 
+\begin_inset Formula $V_{r}$
+\end_inset
+
+ in contrast to the eigenfunctions 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ of 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ that have a kink at the reset due to reinjection condition
+\end_layout
+
+\begin_layout Itemize
+Expand onto 
+\series bold
+moving 
+\series default
+eigenbasis of 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(V,t)=\sum_{n=0}^{\infty}\alpha_{n}(t)\phi_{n}(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infinite dimensional equation for the complex-valued projection coefficients
+ 
+\begin_inset Formula $\boldsymbol{\alpha}(t)=(\alpha_{1}(t),\alpha_{2}(t),\ldots)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{\alpha}}=(\boldsymbol{\Lambda}+\boldsymbol{C}_{\mu}\dot{\mu}_{\text{tot}}+\boldsymbol{C}_{\sigma^{2}}\dot{\sigma}_{\text{tot}}^{2})\boldsymbol{\alpha}+c_{\mu}\dot{\mu}{}_{\text{tot}}+\boldsymbol{c}_{\sigma^{2}}\dot{\sigma}_{\text{tot}}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This dynamic is initialized by 
+\begin_inset Formula $a_{n}(0)=\bigl\langle\psi_{n},p_{0}\bigr\rangle$
+\end_inset
+
+ and is complemented by an expression 
+\begin_inset Formula 
+\[
+r(t)=r_{\infty}+\boldsymbol{f}\cdot\boldsymbol{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The quantities 
+\begin_inset Formula $\boldsymbol{\Lambda},\boldsymbol{C}_{\mu},\boldsymbol{C}_{\sigma^{2}},\boldsymbol{c}_{\mu},\boldsymbol{c}_{\sigma^{2}},r_{\infty},\boldsymbol{f},\bigl\langle V\bigr\rangle_{\infty}$
+\end_inset
+
+ all depend on time via the total input moments 
+\begin_inset Formula $\mu_{\text{tot}},\sigma_{\text{tot}}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Particularly, at time 
+\begin_inset Formula $t$
+\end_inset
+
+ the biorthonormal solution of the eigenvalue problems for 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ and its adjoint 
+\begin_inset Formula $\mathcal{L}^{*}$
+\end_inset
+
+ is required for 
+\begin_inset Formula 
+\begin{align*}
+\mu & =\mu_{\text{tot}}(t,r_{d},\bigl\langle w\bigr\rangle)\\
+\sigma & =\sigma_{\text{tot}}(t,r_{d})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Although the spectral representation is fully equivalent to the original
+ Fokker-Planck equation without refractory period and while it contains
+ only time derivatives it is still an infinite-dimensional and furthermore
+ generally an implicit model 
+\end_layout
+
+\begin_layout Itemize
+Therefore, to derive an explicit low-dimensional ordinary differential model
+ for the spike rate 
+\begin_inset Formula $r(t)$
+\end_inset
+
+, it is not sufficient to truncate the expansion after sum finite number
+ of terms but 
+\series bold
+additional assumptions have to be considered 
+\end_layout
+
+\begin_layout Subsubsection*
+Numerical solver
+\end_layout
+
+\begin_layout Itemize
+
+\end_layout
+
+\end_body
+\end_document
