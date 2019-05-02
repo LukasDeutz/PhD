@@ -201,7 +201,7 @@ Delayed spike rate
 
 \end_inset
 
-which correpsonds to individual propagation delays drawn from an exponentially
+which corresponds to individual propagation delays drawn from an exponentially
  distributed random variable with mean 
 \begin_inset Formula $\tau_{d}$
 \end_inset
@@ -1315,7 +1315,225 @@ Proof
 status open
 
 \begin_layout Plain Layout
-TODO
+What does change when the left boundary is not at minus infinity but instead
+ a relfecting boundary at 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+.
+ Reflecting boundary requires that 
+\begin_inset Formula 
+\[
+q_{\phi}(V_{\text{lb}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We start from 
+\begin_inset Formula 
+\[
+(\psi,L\phi)=-\int_{V_{\text{lb}}}^{V_{\text{th}}}dV\,\psi\partial_{V}q_{\phi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration yields 
+\begin_inset Formula 
+\[
+(\psi,L\phi)=-\left.\psi q_{\phi}\right|_{V_{\text{lb}}}^{V_{\text{th}}}+\int_{V_{\text{lb}}}^{V_{\text{th}}}\partial_{V}\psi q_{\phi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The flux at the left boundary 
+\begin_inset Formula $q_{\phi}(V_{\text{lb}})=0$
+\end_inset
+
+ is zero, hence 
+\begin_inset Formula 
+\[
+(\psi,L\phi)=-\psi(V_{\text{th}})q_{\phi}(V_{\text{th}})+\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)q_{\phi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The integral is given by 
+\begin_inset Formula 
+\begin{align*}
+\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)q_{\phi} & =\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)(a(V)-b\partial_{V})\phi\\
+ & =\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)a(V)\phi-b\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)\partial_{V}\phi
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Partial integration for the second integral yields 
+\begin_inset Formula 
+\[
+\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)\partial_{V}\phi=\left.(\partial_{V}\psi)\phi\right|_{V_{\text{lb}}}^{V_{\text{th}}}-\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}^{2}\psi)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula $\phi(V_{\text{th}})=0$
+\end_inset
+
+ yields 
+\begin_inset Formula 
+\[
+\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}\psi)\partial_{V}\phi=-\psi'(V_{\text{lb}})\phi(V_{\text{lb}})-\int_{V_{\text{lb}}}^{V_{\text{th}}}(\partial_{V}^{2}\psi)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\[
+(\psi,L\phi)=-\psi(V_{\text{th}})q_{\phi}(V_{\text{th}})+\psi'(V_{\text{lb}})\phi(V_{\text{lb}})+\int_{V_{\text{lb}}}^{V_{\text{th}}}\left\{ a(V)(\partial_{V}\psi)+b(\partial_{V}^{2}\psi)\right\} \phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we find 
+\begin_inset Formula 
+\[
+\mathcal{L^{\dagger}}=a(V)\partial_{V}+b\partial_{V}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Choose boundary conditions 
+\begin_inset Formula 
+\[
+\psi'(V_{\text{lb}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+What are we doing with 
+\begin_inset Formula 
+\[
+-\psi(V_{\text{th}})q_{\phi}(V_{\text{th}})=?
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Split integral at the reset 
+\begin_inset Formula 
+\begin{align*}
+(\psi,L\phi) & =-\int_{V_{\text{lb}}}^{V_{\text{th}}}dV\,\psi\partial_{V}q_{\phi}\\
+ & =-\int_{V_{\text{lb}}}^{V_{\text{r}}^{-}}dV\,\psi\partial_{V}q_{\phi}-\int_{V_{\text{r}}^{+}}^{V_{\text{th}}}dV\,\psi\partial_{V}q_{\phi}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+-\int_{a}^{b}dV\,\psi\partial_{V}q_{\phi}=\left.-\psi q_{\phi}\right|_{a}^{b}+\int_{a}^{b}dV\,(\partial_{V}\psi)q_{\phi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Boundary terms 
+\begin_inset Formula 
+\begin{align*}
+-\left\{ \left.\psi q_{\phi}\right|_{V_{\text{lb}}}^{V_{\text{r}}^{-}}+\left.\psi q_{\phi}\right|_{V_{\text{r}}^{+}}^{V_{\text{th}}}\right\}  & =-\left\{ \psi(V_{\text{r}}^{-})q_{\phi}(V_{\text{r}}^{-})+\psi(V_{\text{th}})q_{\phi}(V_{\text{th}})-\psi(V_{\text{r}}^{+})q_{\phi}(V_{\text{r}}^{+})\right\} \\
+ & =\psi(V_{\text{r}}^{+})q_{\phi}(V_{\text{r}}^{+})-\psi(V_{\text{r}}^{-})q_{\phi}(V_{\text{r}}^{-})-\psi(V_{\text{th}})q_{\phi}(V_{\text{th}})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+q_{\phi}(V_{\text{r}}^{+})-q_{\phi}(V_{\text{r}}^{-})=q_{\phi}(V_{\text{th}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, choosing 
+\begin_inset Formula 
+\[
+\psi(V_{\text{r}})=\psi(V_{\text{th}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+makes the boundary term vanish.
+ We continue with 
+\begin_inset Formula 
+\[
+\int_{a}^{b}dV\,(\partial_{V}\psi)q_{\phi}=
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1462,7 +1680,497 @@ Numerical solver
 \end_layout
 
 \begin_layout Itemize
+Start from 
+\begin_inset Formula 
+\[
+\mathcal{L}[\phi_{n}]=\lambda_{n}\phi_{n}
+\]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This second order differential equation can be written as 
+\begin_inset Formula 
+\begin{equation}
+-\frac{d}{dV}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\begin{pmatrix}0 & \lambda\\
+\frac{2}{\sigma^{2}} & -2\frac{g(V)+\mu}{\sigma^{2}}
+\end{pmatrix}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}\label{eq: ev problem}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $g(V)=\frac{I_{L}(V)+I_{\text{exp}}(V)}{C}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We start from 
+\begin_inset Formula 
+\[
+\mathcal{L}[\phi_{n}]=\lambda_{n}\phi_{n}
+\]
+
+\end_inset
+
+which can be written as 
+\begin_inset Formula 
+\[
+-\frac{dq_{\phi}}{dV}=\lambda\phi
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+q_{\phi}=\left(\frac{I_{L}(V)+I_{\text{exp}}(V)}{C}+\mu(t)\right)\phi-\frac{\sigma^{2}}{2}\frac{d\phi}{dV}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solving for 
+\begin_inset Formula $d\phi/dV$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\frac{d\phi}{dV}=\frac{2}{\sigma^{2}}q_{\phi}-\frac{2}{\sigma^{2}}\left(\frac{I_{L}(V)+I_{\text{exp}}(V)}{C}+\mu\right)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula 
+\[
+g(V)=\frac{I_{L}(V)+I_{\text{exp}}(V)}{C}
+\]
+
+\end_inset
+
+we arrive at 
+\begin_inset Formula 
+\[
+-\frac{d\phi}{dV}=\frac{2}{\sigma^{2}}q_{\phi}-2\frac{g(V)+\mu}{\sigma^{2}}\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Both equations can be combined into a matrix equation 
+\begin_inset Formula 
+\[
+-\frac{d}{dV}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\begin{pmatrix}0 & \lambda\\
+\frac{2}{\sigma^{2}} & -2\frac{g(V)+\mu}{\sigma^{2}}
+\end{pmatrix}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A direct discretization, e.g.
+ by a finite difference approximation of the membrane voltage derivatives
+ can be applied 
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions need to be incorporated 
+\end_layout
+
+\begin_layout Itemize
+Poor convergence, i.e.
+ extremely small voltage steps 
+\begin_inset Formula $\Delta V$
+\end_inset
+
+ have to be chosen for the finite difference 
+\end_layout
+
+\begin_layout Itemize
+Alternative solution procedure, reformulate system with boundary conditions
+ as 
+\series bold
+complex valued root finding problem
+\series default
+ 
+\begin_inset Formula 
+\[
+\lambda\mapsto q_{\phi}(V_{\text{lb}},\lambda)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Integrate Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: ev problem"
+
+\end_inset
+
+backward starting from the right boundary 
+\begin_inset Formula $V_{s}$
+\end_inset
+
+ where 
+\begin_inset Formula $\phi(V_{s})=0$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{\phi}(V_{s})\in\mathbb{C\backslash}\{0\}$
+\end_inset
+
+ can be chosen arbitrarily 
+\end_layout
+
+\begin_layout Itemize
+We integrate over the reset boundary conditions 
+\begin_inset Formula $q_{\phi}(V_{r}^{-})=q_{\phi}(V_{r}^{+})-q_{\phi}(V_{s})$
+\end_inset
+
+ which introduces a discontinuity in 
+\begin_inset Formula $q_{\phi}$
+\end_inset
+
+ to the lower bound 
+\begin_inset Formula $V_{\text{lb}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+There a nonzero value of 
+\begin_inset Formula $q_{\phi}(V_{\text{lb}})\in\mathbb{C}$
+\end_inset
+
+ indicates that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is not an eigenvalue since 
+\begin_inset Formula $\phi(V)$
+\end_inset
+
+ violates the reflecting boundary condition 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{\phi}(V)=0$
+\end_inset
+
+ on the other hand shows that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is an eigenvalue 
+\end_layout
+
+\begin_layout Itemize
+Start from 
+\begin_inset Formula $\mu$
+\end_inset
+
+ small enough 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ all eigenvalues are real 
+\end_layout
+
+\begin_layout Itemize
+Find eigenvalues on the real line 
+\begin_inset Formula $\{\lambda_{0},\lambda_{1},\ldots\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eigenvalues depend continuously on the input parameter 
+\begin_inset Formula $\mu,\sigma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Change 
+\begin_inset Formula $\mu,\sigma^{2}$
+\end_inset
+
+ step-wise and use previous set of eigenvalues as initial guess 
+\end_layout
+
+\begin_layout Itemize
+Exponential integration: Start from 
+\begin_inset Formula 
+\[
+-\frac{d}{dV}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\boldsymbol{A}(V)\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can not write down a formal solution because the matrix 
+\begin_inset Formula $\boldsymbol{A}$
+\end_inset
+
+ depends on 
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Instead, we discretize membrane voltage 
+\begin_inset Formula $V_{m}=V_{\text{lb}}+m\Delta V$
+\end_inset
+
+ where 
+\begin_inset Formula $m=0,\ldots,N_{V}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{N_{V}}=V_{\text{s}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Perform integration by steps.
+ We approximate 
+\begin_inset Formula $\boldsymbol{A}(V)$
+\end_inset
+
+ in the interval 
+\begin_inset Formula $[V_{m-1},V_{m}]$
+\end_inset
+
+ by 
+\begin_inset Formula 
+\[
+\boldsymbol{A}(V)\approx\boldsymbol{A}(V_{m-\frac{1}{2}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Next, we integrate 
+\begin_inset Formula 
+\[
+-\frac{d}{dV}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\boldsymbol{A}(V_{m-\frac{1}{2}})\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}
+\]
+
+\end_inset
+
+from 
+\begin_inset Formula $V_{m-1}$
+\end_inset
+
+ to 
+\begin_inset Formula $V_{m}$
+\end_inset
+
+ which yields 
+\begin_inset Formula 
+\[
+\begin{pmatrix}q_{\phi}^{m-1}\\
+\phi^{m-1}
+\end{pmatrix}=\exp\left(\boldsymbol{A}(V_{m-\frac{1}{2}})\Delta V\right)\begin{pmatrix}q_{\phi}^{m}\\
+\phi^{m}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We start from 
+\begin_inset Formula 
+\[
+-\frac{d}{dV}\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\boldsymbol{A}(V_{m-\frac{1}{2}})\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Substitute 
+\begin_inset Formula $v(V)=V_{m}-V$
+\end_inset
+
+.
+ The formal solution of the above equation is 
+\begin_inset Formula 
+\[
+\begin{pmatrix}q_{\phi}\\
+\phi
+\end{pmatrix}=\exp(\boldsymbol{A}(V_{m-\frac{1}{2}})v)\begin{pmatrix}q_{\phi}^{m}\\
+\phi^{m}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Assume that 
+\begin_inset Formula 
+\[
+\begin{pmatrix}q_{\phi}(V_{m})\\
+\phi(V_{m})
+\end{pmatrix}=\begin{pmatrix}q_{\phi}^{m}\\
+\phi^{m}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+is known.
+ Using 
+\begin_inset Formula $v(V_{m})=0$
+\end_inset
+
+, we find 
+\begin_inset Formula 
+\[
+\begin{pmatrix}c_{1}\\
+c_{2}
+\end{pmatrix}=\begin{pmatrix}q_{\phi}^{m}\\
+\phi^{m}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can insert 
+\begin_inset Formula $v(V_{m-1})=V_{m}-V_{m-1}=\Delta V$
+\end_inset
+
+ to obtain
+\begin_inset Formula 
+\[
+\begin{pmatrix}q_{\phi}^{m-1}\\
+\phi^{m-1}
+\end{pmatrix}=\exp(\boldsymbol{A}(V_{m-\frac{1}{2}})\Delta V)\begin{pmatrix}q_{\phi}^{m}\\
+\phi^{m}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The matrix exponential 
+\begin_inset Formula $\exp(\boldsymbol{A}\Delta V)$
+\end_inset
+
+ can inexpensively evaluate as an linear combination of 
+\begin_inset Formula $\boldsymbol{A}\Delta V$
+\end_inset
+
+ and the identity matrix 
 \end_layout
 
 \end_body
