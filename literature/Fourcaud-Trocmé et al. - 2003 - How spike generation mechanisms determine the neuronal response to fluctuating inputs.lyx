@@ -636,6 +636,11 @@ A threshold
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+This is also the largest steady voltage at which the neuron can be maintained
+ by a constant input current 
 \begin_inset Note Note
 status open
 
@@ -672,15 +677,61 @@ and look for the zero
 
 \begin_layout Plain Layout
 This is the point where the derivative changes its sign.
- The corresponding current 
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The corresponding current 
 \begin_inset Formula $I_{T}=g_{L}(V_{T}-V_{L})-\psi(V_{T})$
 \end_inset
 
  is the threshold current above which tonic firing occurs.
- Set derivative 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What is the 
+\begin_inset Formula $I$
+\end_inset
+
+-
+\begin_inset Formula $V$
+\end_inset
+
+ curve? If we apply a constant current 
+\begin_inset Formula $I$
+\end_inset
+
+, we want to now at which value the membrane potential will settle? To answer
+ this, we start from 
 \begin_inset Formula 
 \[
-\frac{dV}{dt}=0
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)+I
+\]
+
+\end_inset
+
+and set the derivative on the l.h.s.
+ to zero 
+\begin_inset Formula 
+\[
+0=-g_{L}(V-V_{L})+\psi(V)+I
 \]
 
 \end_inset
@@ -689,8 +740,12 @@ This is the point where the derivative changes its sign.
 \end_layout
 
 \begin_layout Plain Layout
-and 
+Setting 
 \begin_inset Formula $V=V_{T}$
+\end_inset
+
+, we find the threshold current 
+\begin_inset Formula $I_{T}$
 \end_inset
 
 
@@ -728,7 +783,11 @@ Spike slope factor
 \end_layout
 
 \begin_layout Itemize
-Parameter is inversely proportional to the curvature of the 
+Parameter is inversely 
+\series bold
+proportional
+\series default
+ to the curvature of the 
 \begin_inset Formula $I$
 \end_inset
 
@@ -736,7 +795,11 @@ Parameter is inversely proportional to the curvature of the
 \begin_inset Formula $V$
 \end_inset
 
- curve at the threshold 
+ curve at the threshold
+\end_layout
+
+\begin_layout Itemize
+It measures the sharpness of spike initiation
 \begin_inset Note Note
 status open
 
@@ -749,7 +812,7 @@ status open
 Start from 
 \begin_inset Formula 
 \[
-C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)+I
 \]
 
 \end_inset
@@ -758,13 +821,740 @@ C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)
 \end_layout
 
 \begin_layout Plain Layout
-What is the 
+Set the derivative on the l.h.s.
+ to zero 
+\begin_inset Formula 
+\[
+0=-g_{L}(V-V_{L})+\psi(V)+I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Solve for 
+\begin_inset Formula 
+\[
+I=g_{L}(V-V_{L})-\psi(V)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Take derivative twice 
+\begin_inset Formula 
+\[
+\frac{d^{2}I}{dV^{2}}=-\psi''(V)
+\]
+
+\end_inset
+
+Where does the 
+\begin_inset Formula $g_{L}$
+\end_inset
+
+ come from?
 \end_layout
 
 \end_inset
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quadratic integrate-and-fire 
+\begin_inset Formula 
+\[
+\psi(V)=\frac{g_{L}}{2\Delta_{T}}(V-V_{T})^{2}+g_{L}(V-V_{L})-I_{T}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If we insert this equation into 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)+I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+we arrive at 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=\frac{g_{L}}{2\Delta_{T}}(V-V_{T})^{2}-I_{T}+I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Setting 
+\begin_inset Formula $V=V_{T}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-I_{T}+I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\begin{align*}
+I_{T} & =g_{L}(V_{T}-V_{L})-\left(\frac{g_{L}}{2\Delta_{T}}(V_{T}-V_{T})^{2}+g_{L}(V_{T}-V_{L})-I_{T}\right)\\
+I_{T} & =I_{T}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Exponential integrate-and-fire 
+\begin_inset Formula 
+\[
+\psi(V)=g_{L}\Delta_{T}\exp\left(\frac{V-V_{T}}{\Delta_{T}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+\psi'(V_{T})=\frac{g_{L}\Delta_{T}}{\Delta_{T}}\exp\left(\frac{V_{T}-V_{T}}{\Delta_{T}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula $V_{T}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Delta_{T}=\frac{g_{L}}{\psi''(V_{T})}=\frac{g_{L}}{g_{L}/\Delta_{T}}=\Delta_{T}
+\]
+
+\end_inset
+
+Hence, 
+\begin_inset Formula 
+\[
+\Delta_{T}=\frac{g_{L}}{\frac{d^{2}I}{dV^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fokker-Planck equation 
+\begin_inset Formula 
+\[
+\frac{\partial P}{\partial t}=-\frac{\partial J_{V}}{\partial_{V}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+J_{V}(V,t)=\left[-\frac{V-V_{L}}{\tau_{m}}+\frac{\psi(V)+I(t)}{C}\right]P(V,t)-\frac{\sigma^{2}}{2\tau_{m}}\frac{\partial P}{\partial V}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Exponential integrate-and-fire neuron.
+ Start from 
+\begin_inset Formula 
+\[
+C\frac{dV}{dt}=-g_{L}(V-V_{L})+\psi(V)+I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\psi(V)=g_{L}\Delta_{T}\exp\left(\frac{V-V_{T}}{\Delta_{T}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Divide by 
+\begin_inset Formula $C$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{dV}{dt}=-\frac{1}{\tau_{m}}(V-V_{L})+\frac{1}{\tau_{m}}\Delta_{T}\exp\left(\frac{V-V_{T}}{\Delta_{T}}\right)+\frac{1}{C}I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Variable transformation 
+\begin_inset Formula $v=\frac{V-V_{L}}{V_{\text{th}}-V_{L}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(V_{\text{th}}-V_{L})\frac{dv}{dt}=-\frac{1}{\tau_{m}}(V-V_{L})+\frac{1}{\tau_{m}}\Delta_{T}\exp\left(\frac{V-V_{T}}{\Delta_{T}}\right)+\frac{1}{C}I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using 
+\begin_inset Formula $V=(V_{\text{th}}-V_{L})v+V_{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\frac{dv}{dt} & =-\frac{v}{\tau_{m}}+\frac{\Delta_{T}}{\tau_{m}(V_{\text{th}}-V_{L})}\exp\left(\frac{(V_{\text{th}}-V_{L})(v-1)}{\Delta_{T}}\right)+\frac{1}{C}I_{\text{syn}}(t)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $\tilde{\Delta}_{T}=\frac{\Delta_{T}}{V_{th}-V_{L}}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\frac{dv}{dt}=-\frac{v}{\tau_{m}}+\frac{1}{\tau_{m}}\tilde{\Delta}_{T}\exp\left(\frac{v-1}{\tilde{\Delta}_{T}}\right)+\frac{1}{C}I_{\text{syn}}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Replace synaptic input current by Gaussian white input noise with average
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and fluctuations 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ This leads to Fokker-Planck equation
+\begin_inset Formula 
+\[
+\partial_{t}\rho=-\partial_{v}J
+\]
+
+\end_inset
+
+with probability current 
+\begin_inset Formula 
+\[
+J=\left[-\frac{1}{\tau_{m}}(v-\mu)+\frac{1}{\tau_{m}}\tilde{\Delta}_{T}\exp\left(\frac{v-1}{\tilde{\Delta}_{T}}\right)\right]\rho-\frac{\sigma^{2}}{2\tau_{m}}\partial_{v}\rho
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The continuity equation can also be written as 
+\begin_inset Formula 
+\[
+\partial_{t}\rho=L\rho
+\]
+
+\end_inset
+
+with the Fokker-Planck operator 
+\begin_inset Formula 
+\[
+L=\partial_{v}\left[\frac{1}{\tau_{m}}(v-\mu)-\frac{1}{\tau_{m}}\tilde{\Delta}_{T}\exp\left(\frac{v-1}{\tilde{\Delta}_{T}}\right)\right]+\frac{\sigma^{2}}{2\tau_{m}}\partial_{v}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Make variable transformation 
+\begin_inset Formula 
+\[
+s=\frac{t}{\tau_{m}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{\tau_{m}}\rho_{s}=\left(\partial_{v}\left[\frac{1}{\tau_{m}}(v-\mu)-\frac{1}{\tau_{m}}\tilde{\Delta}_{T}\exp\left(\frac{v-1}{\tilde{\Delta}_{T}}\right)\right]+\frac{\sigma^{2}}{2\tau_{m}}\partial_{v}^{2}\right)\rho
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\[
+L=\partial_{v}\left[(v-\mu)-\tilde{\Delta}_{T}\exp\left(\frac{v-1}{\tilde{\Delta}_{T}}\right)\right]+\frac{\sigma^{2}}{2}\partial_{v}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For the leaky integrate-and-fire we make the variable transformation 
+\begin_inset Formula 
+\[
+x=\sqrt{2}\frac{v-\mu}{\sigma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+so that 
+\begin_inset Formula 
+\begin{align*}
+\rho_{v} & =\frac{\sqrt{2}}{\sigma}\rho_{x}\\
+\rho_{vv} & =\frac{2}{\sigma^{2}}\rho_{xx}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we find 
+\begin_inset Formula 
+\[
+L\rho=\left(1-e^{(v-1)/\tilde{\Delta}_{T}}\right)\rho+\left((v-\mu)-\tilde{\Delta}_{T}e^{e^{(v-1)/\tilde{\Delta}_{T}}}\right)\rho_{v}+\frac{\sigma^{2}}{2}\rho_{vv}
+\]
+
+\end_inset
+
+which becomes 
+\begin_inset Formula 
+\begin{align*}
+\left(1-e^{(v-1)/\tilde{\Delta}_{T}}\right)\rho+\left(x-\frac{\sqrt{2}\tilde{\Delta}_{T}}{\sigma}e^{e^{(v-1)/\tilde{\Delta}_{T}}}\right)\rho_{x}+\rho_{xx}\\
+1\rho-x\partial_{x}\rho+\partial_{xx}\rho & =V(x)+\partial_{x}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+v=\frac{\sigma}{\sqrt{2}}x+\mu
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+x_{\text{th}}=\sqrt{2}\frac{1-\mu}{\sigma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We find 
+\begin_inset Formula 
+\begin{align*}
+e^{(v-1)/\tilde{\Delta}_{T}} & =\exp\left(\frac{\frac{\sigma}{\sqrt{2}}x+\mu-1}{\tilde{\Delta}_{T}}\right)\\
+ & =\exp\left(\frac{x+\frac{\sqrt{2}(\mu-1)}{\sigma}}{\frac{\sqrt{2}}{\sigma}\tilde{\Delta}_{T}}\right)\\
+ & =\exp\left(\frac{x-x_{\text{th}}}{\frac{\sqrt{2}}{\sigma}\tilde{\Delta}_{T}}\right)\\
+ & =\exp\left(\frac{x-x_{\text{th}}}{\overline{\Delta}_{T}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+with 
+\begin_inset Formula $\overline{\Delta}_{T}=\frac{\sqrt{2}}{\sigma}\tilde{\Delta}_{T}$
+\end_inset
+
+.
+ Hence, we find 
+\begin_inset Formula 
+\[
+\left(1-e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\rho+\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\rho_{x}+\rho_{xx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, the Fokker-Planck operator in the new coordinates reads 
+\begin_inset Formula 
+\[
+\left(1-e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)+\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\partial_{x}+\partial_{x}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We want to make a similarity transformation 
+\begin_inset Formula $\varphi=f^{-1}\phi$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+f^{-1}Lf=V(x)+\partial_{x}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula 
+\[
+f^{-1}\left[a(x)+b(x)\partial_{x}+\partial_{x}^{2}\right]f\phi=\left(V(x)+\partial_{x}^{2}\right)\phi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We evaluate the l.h.s.
+ 
+\begin_inset Formula 
+\begin{align*}
+ & a(x)\phi+f^{-1}b(x)\left(f'\phi+f\phi'\right)+f^{-1}\left(f''\phi+2f'\phi'+f\phi''\right)\\
+= & a(x)\phi+f^{-1}b(x)f'\phi+b(x)\phi'+f^{-1}f''\phi+2f^{-1}f'\phi'+\phi''\\
+= & \left(a(x)+f^{-1}b(x)f'+f^{-1}f''\right)\phi+\left(b(x)+2f^{-1}f'\right)\phi'+\phi''
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, we need to choose 
+\begin_inset Formula $f$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\left(b(x)+2f^{-1}f'\right)=0
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)+2\frac{1}{f}\frac{df}{dx}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which is an ordinary differential equation
+\begin_inset Formula 
+\[
+\frac{1}{f}df=-\frac{1}{2}\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Quick check For the LIF 
+\begin_inset Formula $\psi(v)=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula 
+\[
+\frac{1}{f}df=-\frac{1}{2}xdx
+\]
+
+\end_inset
+
+which yields 
+\begin_inset Formula 
+\[
+f=\exp(-\frac{1}{4}x^{2})
+\]
+
+\end_inset
+
+with integration constant set to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ For the exponential integrate-and-fire, we have 
+\begin_inset Formula 
+\begin{align*}
+\ln(f) & =-\frac{1}{4}x^{2}+\frac{1}{2}\overline{\Delta}_{T}^{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\\
+f & =\exp\left(-\frac{1}{4}x^{2}+\frac{1}{2}\overline{\Delta}_{T}^{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Potential 
+\begin_inset Formula 
+\[
+\left(a(x)+f^{-1}b(x)f'+f^{-1}f''\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Quick check for the LIF 
+\begin_inset Formula 
+\begin{align*}
+a(x) & =1\\
+b(x) & =x
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f & =e^{-\frac{1}{4}x^{2}}\\
+f' & =-\frac{1}{2}xf\\
+f'' & =-\frac{1}{2}f+\frac{1}{4}x^{2}f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+So we arrive at 
+\begin_inset Formula 
+\begin{align*}
+ & \left(a(x)-\frac{1}{2}x^{2}+f^{-1}\left(-\frac{1}{2}f+\frac{1}{4}x^{2}f\right)\right)\\
+= & \left(1-\frac{1}{2}x^{2}-\frac{1}{2}+\frac{1}{4}x^{2}\right)\\
+= & \left(\frac{1}{2}-\frac{1}{4}x^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+For the exponential integrate-and-fire we get 
+\begin_inset Formula 
+\begin{align*}
+a(x) & =\left(1-e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\\
+b(x) & =\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula 
+\begin{align*}
+f & =\exp\left(-\frac{1}{4}x^{2}+\frac{1}{2}\overline{\Delta}_{T}^{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\\
+f' & =\left(-\frac{1}{2}x+\frac{1}{2}\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)f\\
+f'' & =\left(-\frac{1}{2}+\frac{1}{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)f+\left(-\frac{1}{2}x+\frac{1}{2}\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)^{2}f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We arrive at 
+\begin_inset Formula 
+\begin{align*}
+ & a(x)+f^{-1}b(x)f'+f^{-1}f''\\
+= & 1-e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}+\left(x-\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)\left(-\frac{1}{2}x+\frac{1}{2}\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)-\frac{1}{2}+\frac{1}{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}+\left(-\frac{1}{2}x+\frac{1}{2}\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)^{2}\\
+= & \frac{1}{2}-\frac{1}{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{2}x^{2}+\frac{1}{2}x\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}+\frac{1}{2}x\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{2}\overline{\Delta}_{T}^{2}e^{2(x-x_{\text{th}})/\overline{\Delta}_{T}}+\frac{1}{4}x^{2}-\frac{1}{2}x\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}+\frac{1}{4}\overline{\Delta}_{T}e^{2(x-x_{\text{th}})/\overline{\Delta}_{T}}\\
+= & 1-\frac{1}{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{4}x^{2}+\frac{1}{2}x\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{4}\overline{\Delta}_{T}^{2}e^{2(x-x_{\text{th}})/\overline{\Delta}_{T}}\\
+= & 1-\frac{1}{2}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{4}x^{2}+\frac{1}{2}x\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{4}\overline{\Delta}_{T}^{2}e^{2(x-x_{\text{th}})/\overline{\Delta}_{T}}\\
+= & 1-\frac{1}{4}x^{2}+\frac{1}{2}\left(x-\frac{1}{2}\right)e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}-\frac{1}{4}\overline{\Delta}_{T}^{2}e^{2(x-x_{\text{th}})/\overline{\Delta}_{T}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Check 
+\begin_inset Formula 
+\[
+f^{-1}\left[a(x)+b(x)\partial_{x}+\partial_{x}^{2}\right]f=a(x)+f^{-1}b(x)\left(-\frac{1}{2}x+\frac{1}{2}\overline{\Delta}_{T}e^{(x-x_{\text{th}})/\overline{\Delta}_{T}}\right)f+f^{-1}f''
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $J$
+\end_inset
+
+ is the probability flux through the potential 
+\begin_inset Formula $V$
+\end_inset
+
+, i.e.
+ the probability per unit of time that the membrane potential of the neuron
+ crosses the value from 
+\begin_inset Formula $V$
+\end_inset
+
+ from below at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The firing rate 
+\begin_inset Formula $v$
+\end_inset
+
+ of the neuron is the flux through 
+\begin_inset Formula $V=\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nu(t)=\lim_{V\rightarrow+\infty}J_{V}(V,t)
+\]
 
 \end_inset
 
