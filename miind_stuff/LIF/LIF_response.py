@@ -11,7 +11,7 @@ import miind_api as api
 import mesh3
 import mpmath as mp 
 import itertools as it
-
+import matplotlib.pyplot as plt
 
 from scipy.optimize import brentq, root
 from scipy.integrate import quad
@@ -21,6 +21,7 @@ from scipy.ndimage import gaussian_filter
 from miind_library.generate_simulation import generate_model, generate_empty_fid, generate_matrix
 
 import nest
+from fileinput import filename
 
 class LIFMeshGenerator:
     
@@ -606,6 +607,117 @@ class LIF_Response_Miind():
         rate['r'] = rates[node_index]
         
         return rate
+
+
+class LIF_Response_EB():
+    '''Estimate repsonse of LIF neuron to Poisson input using a event based simulation'''
+    
+
+    def __init__(self, model_param):
+        
+            
+        self.model_param = model_param
+        
+        self.tau  = model_param['tau']
+        self.v_th = model_param['v_th']
+        self.v_r  = model_param['v_reset']
+
+        self.hE = model_param['hE']
+
+        self.rE    = model_param['KE']*model_param['r_ext_E']
+        
+        if model_param['N_inp'] == 2: 
+            
+            self.hI = model_param['hI']
+            self.rI = model_param['KI']*model_param['r_ext_I']
+            self.h_arr = [self.hE, self.hI]
+                                
+    def generate_spike_trains(self, T):
+        '''
+        Generate N spike trains
+        :param: r: rate in Hz
+        :param: T: simulation time s
+        :param: N: number of trials    
+        '''
+        
+        if self.model_param['N_inp'] == 2:
+                        
+            nE = np.random.poisson(self.rE*T) # draw number of spikes
+            spike_time_arr_E = np.random.uniform(0, T, nE) # generate spike times
+        
+            marker_E = np.zeros(nE, dtype = np.int)
+                    
+            nI = np.random.poisson(self.rI*T) # draw number of spikes
+            spike_time_arr_I = np.random.uniform(0, T, nI) # generate spike times
+            
+            marker_I = np.ones(nI, dtype = np.int)
+                
+            spike_times = np.concatenate((spike_time_arr_E, spike_time_arr_I))
+            spike_type  = np.concatenate((marker_E, marker_I))
+            
+            idx_arr = np.argsort(spike_times)
+            
+            return spike_times[idx_arr], spike_type[idx_arr]
+                              
+        return
+
+    def run_trials(self, N, T, v0 = None):
+        
+        if v0 is None:
+            self.v0 = self.v_r
+                        
+        # membrane potential and output spikes for different trials
+        v_mat = [] 
+        os_mat = []
+
+        for i in range(N):
+            
+            input_spikes, spike_types = self.generate_spike_trains(T)
+            
+            output_spikes, v = self.v_eb(input_spikes, spike_types)
+            os_mat.append(output_spikes)
+            v_mat.append(v)
+            
+        # caculate rate        
+        os_arr = np.concatenate(os_mat)
+        dt = 0.001 # resolution 
+        
+        # bins including the rightmost bin
+        bins = np.arange(0, T+dt-1e-10, dt)
+        
+        spike_count, _ = np.histogram(os_arr, bins)
+        rate = spike_count/dt/N
+        
+        t = bins[:-1] + 0.5*dt
+                      
+        return rate, t
+            
+    def v_eb(self, input_spikes, spike_types):
+        
+        t_ls = 0.0 # time last spike has arrived
+        v_ls = self.v0 # membrane pontential at last spike arrival
+                
+        output_spikes = []
+        v_arr = np.zeros(len(input_spikes))
+                
+        for i, (t_ns, st) in enumerate(zip(input_spikes, spike_types)): 
+            
+            #t_ns is the time of the next spike arrival
+            dt = t_ns - t_ls 
+            
+            t_ls = t_ns
+                        
+            v_ls = v_ls*np.exp(-dt/self.tau) + self.h_arr[st]
+        
+            if v_ls > self.v_th:
+                output_spikes.append(t_ls)
+                v_ls = self.v_r
+            
+            v_arr[i] = v_ls
+        
+        return output_spikes, v_arr    
+    
+    
          
       
 class LIF_Response_MC():
@@ -785,12 +897,30 @@ class LIF_Response_MC():
     
 class LIF_Theory():
     
-    def __init__(self, model_param):
+    def __init__(self, model_param = None, diffusion_param = None):
+
+        if model_param is not None:            
+            self.model_param = model_param
+            self.diffusion_approximation()
+        elif diffusion_param is not None:
+            self.mu   = diffusion_param['mu']
+            self.sig  = diffusion_param['sig']
+            self.sig2 = self.sig**2
+            self.v_th = diffusion_param['v_th']
+            self.v_r = diffusion_param['v_r']
             
-        self.model_param = model_param
-        self.diffusion_approximation()
+            if 'tau' in diffusion_param:            
+                self.tau = diffusion_param['tau']
+            
+            self.r0 = None
+            
         self.variable_trafo()
         self.lam_cache = {}
+        self.coeff_cache = {}
+        
+        # set precision
+        mp.mp.dps = 100
+
     
     def variable_trafo(self):
         '''Fokker-Planck equation be simplifite by variable transformation'''
@@ -879,14 +1009,30 @@ class LIF_Theory():
                     
         return self.phi_0
                   
-    def get_lam(self, n):
-        '''Get eigenvalues '''
-        
-        if not n in self.lam_cache:            
-            self.EV(n)
-        
-        return self.lam_cache[n]
+    def get_lam(self, n, Type):
+        '''Get eigenvalues
+        :param int n: nth eigenvalue
+        :param type str: either real or complex 
+        '''
 
+        data_path = './data/eigenvalues/'
+        filename  = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.h5'
+                
+        if os.path.isfile(data_path + filename):
+        
+            with h5.File(data_path + filename, mode = 'r') as hf5:                                    
+                if Type == 'real':
+                    if hf5[Type].attrs['N'] > n:                    
+                        return hf5[Type][n]                  
+                elif Type == 'complex':
+                    if hf5[Type].attrs['N'] >= n - 1:                    
+                        return hf5[Type][n - 1]  
+
+        print('Eigenvalues have not been caculated yet for \n'
+              f'mu: {self.mu:.2f} \n'
+              f'sig: {self.sig:.2f}')
+        
+        return
 
     def EV_cxroot(self):
         
@@ -907,21 +1053,40 @@ class LIF_Theory():
         r.show()
         
         return
+
+    def get_coefficients(self, n, Type):
         
-    def phi_n(self, n, v):
-            
-        # coefficients 
-        lam = self.get_lam(n)
+        if n in self.coeff_cache:
+            return self.coeff_cache[n]
+        
+        lam = self.get_lam(n, Type)
+
         z = -0.5 + lam
-        
+
         f_th = mp.exp(-0.25*self.y_th**2)
         f_r  = mp.exp(-0.25*self.y_r**2)
                 
         a =  mp.pcfu(z, self.y_th)/f_th
         b = -mp.pcfv(z, self.y_th)/f_th                
         c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
-
-        phi_arr = np.zeros_like(v, dtype = np.complex)
+        
+        self.coeff_cache[n] = [a,b,c]
+        
+        return self.coeff_cache[n]
+        
+    def phi_n(self, n, Type, v):
+        
+        # eigenvalue
+        lam = self.get_lam(n, Type)
+        z = lam -0.5        
+                
+        # coefficients 
+        a,b,c = self.get_coefficients(n, Type)
+        
+        if Type == 'real':
+            phi_arr = np.zeros_like(v)
+        elif Type == 'complex':
+            phi_arr = np.zeros_like(v, dtype = np.complex)
 
         v_arr = v[v < self.v_r]
         
@@ -942,19 +1107,14 @@ class LIF_Theory():
        
         return phi_arr             
     
-    def dphi_n(self, n, v):
+    def dphi_n(self, n, Type, v):
 
         # coefficients 
-        lam = self.get_lam(n)
-        z = -0.5 + lam
-        
-        f_th = mp.exp(-0.25*self.y_th**2)
-        f_r = mp.exp(-0.25*self.y_r**2)
-                
-        a =  mp.pcfu(z, self.y_th)/f_th
-        b = -mp.pcfv(z, self.y_th)/f_th                
-        c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
+        lam = self.get_lam(n, Type)
+        z = lam - 0.5
 
+        a,b,c = self.get_coefficients(n, Type)
+        
         dphi_n = np.zeros_like(v, dtype = np.complex)
 
         v_arr = v[v < self.v_r]
@@ -970,49 +1130,398 @@ class LIF_Theory():
 
         k = i+1
 
-        for x in y_arr:
+        for y in y_arr:
             dphi_n[k] = -mp.exp(-0.25*y**2)*(a*mp.rf(0.5 - z, 1)*mp.pcfv(z-1, y) + b*mp.pcfu(z-1, y))
             k += 1
        
         return dphi_n 
     
-    def phi_tilde_n(self, n, v):
+    def get_b_tilde(self, n, Type):
+    
+        # eigenvalue 
+        lam = self.get_lam(n, Type)
+        z = lam - 0.5
+        
+        # coefficients for phi
+        a,b,c = self.get_coefficients(n, Type)
 
-        # coefficients 
-        lam = self.get_lam(n)
-        z = -0.5 + lam
-        
-        f_th = mp.exp(-0.25*self.y_th**2)
-        f_r  = mp.exp(-0.25*self.y_r**2)
+        # integrand for inner product 
+        def phi_times_phi_tilde(x):
                 
-        a =  mp.pcfu(z, self.y_th)/f_th
-        b = -mp.pcfv(z, self.y_th)/f_th                
-        c =  mp.pcfv(z, self.y_r)/f_r - mp.pcfv(z, self.y_th)/f_th
-        
-        def phi(x):
-            
             if x < self.x_r:
-                phi_x = c*mp.exp(-0.25*x**2)*mp.pcfu(z, -x)
-                
-            elif x >= self.x_r:
-                phi_x = mp.exp(-0.25*x**2)*(a*mp.pcfv(z, -x) + b*mp.pcfu(z, -x))
+                return mp.pcfu(z, -x)*c*mp.pcfu(z, -x)
+            else:
+                return mp.pcfu(z, -x)*(a*mp.pcfv(z, -x) + b*mp.pcfu(z, -x))
+            
+        # inner product
+        inv_b = mp.quad(phi_times_phi_tilde, [-mp.inf, self.x_r, self.x_th])
 
-            return phi_x
+        return 1./inv_b
+    
+    
+    def phi_tilde_n(self, n, Type, v):
+        '''Adjoint eigenfuncti'''
 
-        v_min = -10*(self.v_th - self.v_r)
-        x_min = np.sqrt(2)*(v_min - self.mu)/self.sig
-                
-        b = mp.quad(lambda x: mp.exp(0.25*x**2)*mp.pcfu(z, -x)*phi(x), [x_min, self.x_th]) #mp.mpf('-inf')
-        
-        x_arr = np.sqrt(2)*(v-self.mu)/np.sqrt(self.sig)
+        # eigenvalue 
+        lam = self.get_lam(n, Type)
+        z = lam - 0.5
 
-        phi_tilde_n = np.zeros_like(x_arr)
+        b_tilde = self.get_b_tilde(self, n, Type)
+            
+        x_arr = np.sqrt(2)*(v-self.mu)/self.sig
+
+        phi_tilde = np.zeros_like(x_arr, dtype = np.complex128)
 
         for i, x in enumerate(x_arr):
 
-            phi_tilde_n[i] = mp.pcfu(z, x)
+            phi_tilde[i] = b_tilde*mp.exp(0.25*x**2)*mp.pcfu(z, -x)
+                                                
+        return phi_tilde
+    
+    def c0_n(self, n, Type, v0):
+        '''Initial weighting coefficent assuming all neurons are at located at v0 at t=0
+        which can expressed in terms of a delta-distribution'''
+
+        # coefficients 
+        lam = self.get_lam(n, Type)
+        z = lam - 0.5
         
-        return phi_tilde_n
+        b_tilde = self.get_b_tilde(n, Type)
+      
+        x0 = np.sqrt(2.)*(v0 - self.mu)/self.sig            
+        
+        return b_tilde*mp.exp(0.25*x0**2)*mp.pcfu(z, -x0)
+
+    def sum_r_n(self, k, t):
+        '''Rate dynamics due to modes up to order k'''
+        
+        sum_r = np.zeros(len(t))
+        
+        for n in range(k):
+        
+            sum_r += self.r_n(n, t)
+            
+        return sum_r
+        
+    def r_n(self, n, Type, t, v0 = None):
+        '''Rate dynamics due to mode n'''
+        
+        s = t/self.tau
+        
+        lam = self.get_lam(n, Type)
+        
+        if v0 is None:
+            v0 = self.v_r
+        
+        c0 = np.complex(self.c0_n(n, Type, v0))
+        
+        return np.sqrt(2./np.pi)*2.*(c0*np.exp(lam*s)).real
+                
+    def mode_n(self, n, Type, t, v0 = None):
+        
+        pass
+
+        
+    def EV_save_complex(self):
+        '''Save eigenvalues to file'''
+
+        filename = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.h5'        
+        data_path = './data/eigenvalues/'        
+        
+        # add eigenvalues to old file if its already exitsts 
+        with h5.File(data_path + filename, mode = 'a') as hf5:                                            
+            if 'complex' in hf5:                
+                N = hf5['complex'].attrs['N']
+                M = len(self.lam_complex)
+                hf5['complex'].resize((N+M,))
+                hf5['complex ceq'].resize((N+M,))                
+                hf5['complex'][N:] = self.lam_complex
+                hf5['complex ceq'][N:] =  self.deter_complex                        
+                hf5['complex'].attrs['N'] = N + M                                        
+            else: 
+                N = len(self.lam_complex)                                   
+                dset = hf5.create_dataset('complex', (N,), maxshape=(1000,), dtype = np.complex)
+                dset[:N] = self.lam_complex
+                dset.attrs['min_real'] = self.min_real                
+                dset.attrs['N'] = N                                        
+                dset = hf5.create_dataset('complex ceq', (N,), maxshape=(1000,), dtype = np.complex)
+                dset[:N] = self.deter_complex  
+            if not 'mu' in hf5.attrs.keys():     
+                hf5.attrs['mu'] = self.mu
+                hf5.attrs['sig'] = self.sig
+                
+                    
+    def EV_save_real(self):
+        '''Save eigenvalues to file'''
+
+        filename = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.h5'        
+        data_path = './data/eigenvalues/'        
+        
+        # add eigenvalues to old file if its already exitsts 
+
+        with h5.File(data_path + filename, mode = 'a') as hf5:                                            
+            # save eigenvalues                                
+            if 'real' in hf5:                
+                N = hf5['real'].attrs['N']
+                M = len(self.lam_real)
+                if M > 0:
+                    hf5['real'].resize((N+M,))
+                    hf5['real'][N:] = self.lam_real
+                    hf5['real ceq'][N:] =  self.deter_real    
+                    hf5['real'].attrs['N'] = N + M                                                                                
+            # create new file if it does not exist
+            else:
+                N = len(self.lam_real) + 1                                   
+                dset = hf5.create_dataset('real', (N,), maxshape=(1000,))
+                dset[1:N] = self.lam_real                    
+                dset.attrs['N'] = N
+                dset.attrs['min_real'] = self.min_real
+                dset = hf5.create_dataset('real ceq', (N,), maxshape=(1000,))
+                dset[1:N] = self.deter_real
+            if not 'mu' in hf5.attrs.keys():     
+                hf5.attrs['mu'] = self.mu
+                hf5.attrs['sig'] = self.sig
+        return 
+
+    
+    def EV_check_real(self):
+        
+        filename = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.h5'        
+        data_path = './data/eigenvalues/'        
+        files = [f for f in os.listdir(data_path) if f.endswith('.h5')]
+        
+        done = False
+        
+        if any(filename in f for f in files):
+            with h5.File(data_path + filename, mode = 'r') as hf5:                                                        
+                
+                if 'real' in hf5:
+                    if hf5['real'].attrs['min_real'] < self.min_real:                                        
+                        print('Real eigenvalues have already been caculated for \n'
+                              f'mu: {self.mu:.2f} \n'
+                              f'sig: {self.sig:.2f} \n'                          
+                              f'up to min_real: {hf5["real"].attrs["min_real"]}')
+                        done = True
+                    else: 
+                        print('Eigenvalues have been already caculated for \n'
+                              f'mu: {self.mu:.2f} \n'
+                              f'sig: {self.sig:.2f} \n'                           
+                              f'up to min_lam_real: {hf5["real"].attrs["min_real"]} \n'
+                              f'looking for new ones from {hf5["real"].attrs["min_real"]} to {self.min_real}')
+                        self.max_real = hf5['real'].attrs['min_real']
+        
+        return done
+        
+    def EV_check_complex(self):
+
+        filename = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.h5'        
+        data_path = './data/eigenvalues/'                        
+        files = [f for f in os.listdir(data_path) if f.endswith('.h5')]
+
+        done = False
+                                
+        if any(filename in f for f in files):
+            with h5.File(data_path + filename, mode = 'r') as hf5:             
+                if 'complex' in hf5:         
+                    lam = hf5['complex'][-1]                                                                   
+                    if lam.real < self.min_real:
+                        done = True
+                    if lam.real < self.max_real:
+                        self.max_real = lam.real                                                            
+        
+        return done
+                                
+    def EV_brute_force(self, 
+                       min_real, 
+                       max_real = -0.1,
+                       min_imag = 0,
+                       max_imag = 0, 
+                       real = True,
+                       comp = True,
+                       ev_plot = False):
+    
+        self.min_real = min_real
+        self.max_real = max_real        
+        self.max_imag = max_imag
+        self.min_imag = min_imag
+        self.ev_plot     = ev_plot
+        
+        if real:     
+            if not self.EV_check_r():                            
+                self.EV_real()        
+                self.EV_save_real()
+        if comp:
+            if not self.EV_check_complex():
+                self.EV_complex()
+                self.EV_save_complex()
+                
+        return
+            
+    def EV_real(self):
+        ''' Determine eigenvalues on the real line'''
+                
+        # Eigenfunctions are given by a linear combination of parabolic cylinder functions 
+        # The three coefficients which need to chosen such that the eigenfunctions fulfil the bc 
+        # This leads to homogeneous matrix equation for the coefficients
+        # We look for those ev for which the determinant of the matirx is zero 
+        f_th = mp.exp(-0.25*self.y_th**2)
+        f_r  = mp.exp(-0.25*self.y_r**2)
+                                            
+        deter = lambda z: mp.pcfu(z, self.y_th)*f_r - mp.pcfu(z, self.y_r)*f_th
+                          
+        #=======================================================================
+        # Zeros on the real line
+        #=======================================================================        
+        Nz = 200*int(-self.min_real)
+        
+        z_arr = np.linspace(self.min_real, self.max_real, Nz) - 0.5
+
+        deter_arr = np.zeros_like(z_arr)
+         
+        for i, z in enumerate(z_arr):
+            
+            deter_arr[i] = deter(z)
+ 
+        # zero crossing idx                
+        zc_idx = np.abs(np.diff(np.sign(deter_arr)))/2
+        zc_idx = np.append(zc_idx, 0)
+        zc_idx = zc_idx.astype(np.bool)
+        
+        a_arr = z_arr[zc_idx]
+        b_arr = z_arr[np.roll(zc_idx, 1)]
+         
+        z0_arr = np.zeros(len(a_arr))
+        deter0_arr = np.zeros(len(a_arr))
+  
+        for i, (a, b) in enumerate(zip(a_arr, b_arr)):
+             
+            z0_arr[i] = brentq(deter, a, b)
+            deter0_arr[i] = deter(z0_arr[i])
+        
+        self.lam_real = z0_arr + 0.5
+        # Swap order so that the first eigenvalue is the closest to zero
+        self.lam_real   = self.lam_real[::-1]
+        self.deter_real = deter0_arr[::-1]
+                        
+        return        
+                                                
+    def EV_complex(self):
+        '''Brute force scans complex plane and searches for those eigenvalues for which
+        are roots of the characteristic equation'''
+          
+        # Grid points on the real line
+        Nx = 10*int(self.max_real-self.min_real) 
+        # Grid points on the complex plance    
+        Ny = 10*int(self.max_imag - self.min_imag)
+        
+        x_arr = np.linspace(self.min_real, self.max_real, Nx) - 0.5
+        y_arr = np.linspace(self.min_imag, self.max_imag, Ny)
+
+        # Characteristic equation
+        f_th = mp.exp(-0.25*self.y_th**2)
+        f_r  = mp.exp(-0.25*self.y_r**2)                                        
+        deter = lambda z: mp.pcfu(z, self.y_th)*f_r - mp.pcfu(z, self.y_r)*f_th
+        
+        # Allocate matrices in which we save the crossings of 
+        # the imaginary and real part of the characteristic eq.  
+        zc_real_mat = np.zeros((Ny, Nx-1), dtype = np.float)
+        zc_imag_mat = np.zeros((Ny, Nx-1), dtype = np.float)
+
+        for j, y in enumerate(y_arr):             
+            
+            deter_arr = np.zeros(Nx, dtype = np.complex)
+            
+            for i, x in enumerate(x_arr):
+                                
+                z = complex(x, y) 
+                deter_arr[i] = deter(z)
+                
+            zc_real_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.real)))/2
+            zc_imag_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.imag)))/2
+
+        sig = 1.5
+
+        blur_zc_real_mat = gaussian_filter(zc_real_mat, sigma = sig, mode = 'mirror')
+        blur_zc_imag_mat = gaussian_filter(zc_imag_mat, sigma = sig, mode = 'mirror')
+
+        poles_mat = blur_zc_real_mat*blur_zc_imag_mat
+
+        if self.ev_plot:
+            gs  = plt.GridSpec(1, 2)
+            ax0 = plt.subplot(gs[0])
+            ax1 = plt.subplot(gs[1])
+            
+            ax0.imshow(zc_real_mat-zc_imag_mat)
+            ax0.set_xlabel(u'Real($\lambda$)', fontsize = 18)
+            ax0.set_ylabel(u'Imag($\lambda$)', fontsize = 18)
+            
+            ax1.imshow(poles_mat)
+            ax1.set_xlabel(u'Real($\lambda$)', fontsize = 18)
+            
+            filename = f'EV_mu_{self.mu:.2f}_sig_{self.sig:.2f}.png'
+            
+            plt.savefig('./figures/eigenvalues/' + filename)
+            
+        # consider only candidates larger than threshold
+        th = 0.1*np.max(poles_mat.flatten())                
+        poles_mat[poles_mat < th] = 0
+        
+        X, Y = np.meshgrid(x_arr[:-1], y_arr)
+    
+        # candidate locations
+        x_cand_arr = X[poles_mat > 0]
+        y_cand_arr = Y[poles_mat > 0]
+               
+        r_cand_arr = np.column_stack((x_cand_arr, y_cand_arr))
+               
+        z0_cand_arr = self.cluster(r_cand_arr)        
+        z0_arr = np.zeros(len(z0_cand_arr), dtype = np.complex)        
+        deter0_arr = np.zeros(len(z0_cand_arr), dtype = np.complex)
+        
+        for i, z0 in enumerate(z0_cand_arr):
+                                     
+            for method in ['newton']:
+                
+                success = False
+                                        
+                try: 
+                    z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver = method)
+                    deter0_arr[i] = deter(z0_arr[i])                 
+                except:                    
+                    print(f'{method} failed at {z0}')
+                    z0_arr[i] = np.nan
+                else:
+                    print(f'{method} succeded at {z0}')                                   
+                    success = True
+                    break
+                
+            if not success:
+                    print(f'No sucess at {z0} save value anyway')
+                    z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver = method, verify = False)
+                    deter0_arr[i] = deter(z0_arr[i])                  
+#                     tol = 1e-10
+#                     z0 = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver = 'newton', verify = False)
+#                     deter_0 = mp.fabs(deter(z0)) 
+#                                                             
+#                     eps = 1e-3
+#                     
+#                     z0_nh_arr = [z0 + eps, z0 - eps, z0 + mp.mpc(0, eps), z0 - mp.mpc(0, eps)]
+#                     
+#                     success = True
+#                     for z in z0_nh_arr:
+#                         
+#                         if deter_0/mp.fabs(deter(z)) > tol:
+#                             print('Problem with candidate for eigenvalue at \n'
+#                                   f'{z0}')
+#                             success = False
+#                             break
+#                     if success:
+#                         z0_arr[i] = z0
+                                                        
+        self.lam_complex   = z0_arr + 0.5
+        self.deter_complex = deter0_arr
+        
+        return
 
     def cluster(self, r_cand_arr):
         
@@ -1041,208 +1550,7 @@ class LIF_Theory():
                 center_arr.append(r)
                 
         return center_arr
-
-    def EV_save(self):
-
-        filename = f'EV_mu_{self.mu}_sig_{self.sig}.h5'
-        
-        data_path = './data/eigenvalues/'        
-        files = [f for f in os.listdir(data_path) if f.endswith('.h5')]
-        
-        if any(filename in f for f in files):
-            pass
-        else:
-            with h5.File(filename, mode = 'w') as hf5:            
-                # save eigenvalues
-                dset  = hf5.create_dataset('complex', self.lam_complex)                         
-                dset.attrs['N'] = len(self.lam_complex)                  
-                dset = hf5.create_group('real', self.lam_real)
-                dset.attrs['N'] = len(self.lam_real)
-        
-        return 
-                                
-    def EV_test(self):
-
-        L = 20
-        Nx = 200
-        Ny = 200
-        
-        x_arr = np.linspace(-L, -0.4, Nx)
-        y_arr = np.linspace(0, 20, Ny)
-  
-        f_th = mp.exp(-0.25*self.x_th**2)
-        f_r  = mp.exp(-0.25*self.x_r**2)
-                                                
-        deter = lambda z: mp.pcfu(z, self.y_th)*f_r - mp.pcfu(z, self.y_r)*f_th
-
-        zc_real_mat = np.zeros((Ny, Nx-1), dtype = np.float)
-        zc_imag_mat = np.zeros((Ny, Nx-1), dtype = np.float)
- 
-        for j, y in enumerate(y_arr):             
-            
-            deter_arr = np.zeros(Nx, dtype = np.complex)
-            
-            for i, x in enumerate(x_arr):
-                                
-                z = complex(x, y) 
-                deter_arr[i] = deter(z)
-                
-            zc_real_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.real)))/2
-            zc_imag_mat[j,:] = np.abs(np.diff(np.sign(deter_arr.imag)))/2
-
-        sig = 2
-
-        blur_zc_real_mat = gaussian_filter(zc_real_mat, sigma = sig, mode = 'mirror')
-        blur_zc_imag_mat = gaussian_filter(zc_imag_mat, sigma = sig, mode = 'mirror')
-
-        poles_mat = blur_zc_real_mat*blur_zc_imag_mat
-                
-        # consider only candidates larger than threshold
-        th = 0.3*np.max(poles_mat.flatten())                
-        poles_mat[poles_mat < th] = 0
-        
-        X, Y = np.meshgrid(x_arr[:-1], y_arr)
-    
-        # candidate locations
-        x_cand_arr = X[poles_mat > 0]
-        y_cand_arr = Y[poles_mat > 0]
-               
-        r_cand_arr = np.column_stack((x_cand_arr, y_cand_arr))
-               
-        z0_cand_arr = self.cluster(r_cand_arr)        
-        z0_arr = np.zeros(len(z0_cand_arr), dtype = np.complex)
-        
-        for i, z0 in enumerate(z0_cand_arr):
-            
-            success = True
-            
-            for method in ['mueller', ]
                         
-            try: 
-                z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver='muller')
-            except:
-                success = False
-                print(f'Mueller method failed at {z0}')
-            if not success:
-                try: 
-                    z0_arr[i] = mp.findroot(deter, mp.mpc(z0[0], z0[1]), solver='newton')
-                    print(f'Newton method failed at {z0}')
-                except:
-                    print
-            
-            
-                
-                         
-        return
-                
-                
-        
-        
-        
-        
-
-
-
-#         zc_mat = zc_real_mat - zc_imag_mat
-# 
-#         k = 2
-# 
-#         X, Y = np.meshgrid(np.arange(-k, k), np.arange(-k, k))
-#         
-#         K = np.exp(-0.5*(X+Y)**2)/np.sqrt(2*np.pi)
-# 
-#         I, J = np.meshgrid(len(x_arr), len(y_arr))
-#         
-# #         i0_arr = I[zc_real_mat == 1]
-# #         j0_arr = J[zc_real_mat == 1]
-#          
-#         k = 4
-#                 
-#         for i in range(np.size(zc_mat, 1)):
-#             for j in range(np.size(zc_mat, 0)):
-#                                                 
-#                 x_start = i - k
-#                 x_end   = i + k
-#                 
-#                 y_start = j - k
-#                 y_end   = j + k
-# 
-#         gs = plt.GridSpec(1,1)
-#         ax0 = plt.subplot(gs[0])
-#         ax0.imshow(zc_mat)
-# #         ax1 = plt.subplot(gs[1])
-# #         ax1.imshow(zc_imag_mat)        
-#         plt.show()
-    
-        
-        
-        return
-    
-    def EV_brute_force(self):
-        '''Find numeric solution for eigenvalues determined by the characteristic equation brute force'''
-        
-        import matplotlib.pyplot as plt
-        
-        basis = 'pcf'
-         
-        if basis == 'pcf': 
-            # Eigenfunctions are given by a linear combination of parabolic cylinder functions 
-            # The three coefficients which need to chosen such that the eigenfunctions fulfil the bc 
-            # This leads to homogeneous matrix equation for the coefficients
-            # We look for those ev for which the determinant of the matirx is zero 
-
-            f_th = mp.exp(-0.25*self.x_th**2)
-            f_r  = mp.exp(-0.25*self.x_r**2)
-                                                
-            y_r  = -self.x_th
-            y_th = -self.x_r
-
-            deter = lambda z: mp.pcfu(z, y_th)*f_r - mp.pcfu(z, y_r)*f_th
-#             deter = lambda z: mp.pcfu(z, self.x_th)*f_r - mp.pcfu(z, self.x_r)*f_th
-                  
-        elif basis == 'chf':
-            pass
-#             deter = lambda z: phi_1(z, self.x_th)*f_r - phi_2(z, self.x_r)*f_th
-        
-        #=======================================================================
-        # Zeros on the real line
-        #=======================================================================
-        L = 20        
-        M = 1000
-        
-        z_arr = np.linspace(-L, -0.4, M)
-
-        deter_arr = np.zeros_like(z_arr)
-         
-        for i, x in enumerate(z_arr):
-                        
-            z = x
-             
-            deter_arr[i] = deter(z)
- 
-        # zero cross idx                
-        zc_idx = np.abs(np.diff(np.sign(deter_arr)))/2
-        zc_idx = np.append(zc_idx, 0)
-        zc_idx = zc_idx.astype(np.bool)
-         
-        a_arr = z_arr[zc_idx]
-        b_arr = z_arr[np.roll(zc_idx, 1)]
-         
-        z0_arr = np.zeros_like(a_arr)
-  
-        for i, (a, b) in enumerate(zip(a_arr, b_arr)):
-             
-            z0_arr[i] = brentq(deter, a, b)
- 
-        lam_arr = z0_arr[::-1] + 0.5
-        
-        for n, lam in enumerate(lam_arr):
-        
-            self.lam_cache[n] = lam
-        
-        return
-        
-            
     def EV(self, n, m = 1., method = 'bf'):
         '''Find numeric solution for eigenvalues determined by the characteristic equation'''
                 
@@ -1269,38 +1577,7 @@ class LIF_Theory():
 #                     
                      
         return
-                     
-              
-    def a_0(self, n):
-        '''Initial value of the expansion coefficients assuming density is given by a delta distribution a v=0 at t=0''' 
-        
-        pass
-        
     
-    def sum_r_n(self, k, t):
-        '''Rate dynamics due to modes up to order k'''
-        
-        sum_r = np.zeros(len(t))
-        
-        for n in range(k):
-        
-            sum_r += self.r_n(n, t)
-            
-        return sum_r
-        
-    def r_n(self, n, t):
-        '''Rate dynamics due to mode n'''
-        
-        pass 
-    
-    def flux_n(self, n):
-                
-        pass
-                
-    def phi_0(self, v):
-        '''Stationary solution of the Fokker-Planck operator'''
-
-        pass
 
 
 
