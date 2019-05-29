@@ -1,0 +1,1423 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes: The cell-type specific cortical microcircuit: Relating structure
+ and activity in a full-scale spiking network model
+\end_layout
+
+\begin_layout Author
+Potjans and Diesmann
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Itemize
+Point-neuron model 
+\end_layout
+
+\begin_layout Itemize
+Different cell types are clustered into excitatory and inhibitory neurons
+ 
+\end_layout
+
+\begin_layout Itemize
+Multilaminar extension of the the balanced random network 
+\end_layout
+
+\begin_layout Itemize
+Spiking leaky integrate-and-fire neurons interacting with 
+\series bold
+static
+\series default
+ synapses
+\end_layout
+
+\begin_layout Itemize
+Structural parameters in the model are the
+\series bold
+ connectivity
+\series default
+ and 
+\series bold
+external inputs
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Authors want to analyse dynamical consequences of the connectivity structure
+ unaffected by additional cell-type specificity 
+\end_layout
+
+\begin_layout Itemize
+Parameters of the network model are minimized 
+\end_layout
+
+\begin_layout Itemize
+Algorithmic integration of the connectivity data 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+ avoids any fitting or tuning of the activity
+\end_layout
+
+\begin_layout Subsection*
+Material and Methods
+\end_layout
+
+\begin_layout Itemize
+Model consists of 4 layers L2/3,L4,L5 and L6
+\end_layout
+
+\begin_layout Itemize
+Each layer consists of 2 populations excitatory (e) and inhibitory (i)
+\end_layout
+
+\begin_layout Itemize
+Term 
+\series bold
+connection
+\series default
+ is used with reference to populations defined by pre- and postsynaptic
+ 
+\series bold
+layers
+\series default
+ and neurons 
+\series bold
+types
+\end_layout
+
+\begin_layout Itemize
+The term 
+\series bold
+projection
+\series default
+ is used for the connections of a presynaptic population to 
+\series bold
+both 
+\series default
+populations of a target layer 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Example: population (e) in L4 projects to both populations in layer L4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Connectivity Data
+\end_layout
+
+\begin_layout Itemize
+Anatomical map 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Binzegger T, Douglas RJ, Martin KAC.
+ 2004.
+ A quantitative map of the circuit of cat primary visual cortex.
+ J Neurosci.
+ 39:8441–8453
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+They provide the relative number of synapses participating in a connection
+ (
+\series bold
+population to population
+\series default
+) and the total absolute number of synapses, depending on the pre- and postsynap
+tic type of 
+\series bold
+area 17
+\end_layout
+
+\begin_layout Itemize
+The product of these measures give the 
+\series bold
+absolute number of synapses
+\series default
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ for any connection 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This means there are in total 
+\begin_inset Formula $K$
+\end_inset
+
+ connections from pre- to the postsynaptic population
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synapses are assumed to be randomly distributed allowing for 
+\series bold
+multiple contacts
+\series default
+ between any 2 neurons
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N^{\text{pre}}$
+\end_inset
+
+ is number of neurons in the presynaptic population
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N^{\text{post}}$
+\end_inset
+
+ is the number of in the postsynaptic populations 
+\end_layout
+
+\begin_layout Itemize
+Connections probability 
+\begin_inset Formula 
+\begin{align}
+C_{a} & =1-\left(1-\frac{1}{N^{\text{pre}}N^{\text{post}}}\right)^{K}\label{eq: C_a}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Connection probability 
+\begin_inset Formula $C_{N^{\text{pre}},N^{\text{post}}}(K)$
+\end_inset
+
+ of two neurons of sizes 
+\begin_inset Formula $N^{\text{pre}}$
+\end_inset
+
+ and 
+\begin_inset Formula $N^{\text{post}}$
+\end_inset
+
+ which are randomly connected (with uniform probability) by 
+\begin_inset Formula $K$
+\end_inset
+
+ synapses can be derived as follows: The probability that a particular pair
+ of neurons is connected is equal to one minus the probability that it is
+ not connected 
+\begin_inset Formula 
+\[
+C_{N^{\text{pre}},N^{\text{post}}}(K)=1-q_{N^{\text{pre}},N^{\text{post}}}(K)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Because synapses are drawn randomly, the probability that 
+\series bold
+one
+\series default
+ of the total 
+\begin_inset Formula $K$
+\end_inset
+
+ connections is drawn between one specific pair of neurons in the pre- to
+ the postsynaptic population is equal to the probability to select the pre-synap
+tic neuron 
+\begin_inset Formula $1/N^{\text{pre}}$
+\end_inset
+
+ times the probability to select postsynaptic neuron 
+\begin_inset Formula $1/N^{\text{post}}$
+\end_inset
+
+.
+ Hence, 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+q_{N^{\text{pre}},N^{\text{post}}}(1)=1-\frac{1}{N^{\text{pre}},N^{\text{post}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+is the probability to select any other pair.
+ Rising this probability to the power of 
+\begin_inset Formula $K$
+\end_inset
+
+ give us the probability that there is no connection between a specific
+ pair of neurons in the pre- and postsynaptic population.
+ Hence, the complementary probability 
+\begin_inset Formula 
+\[
+C_{a}=1-\left(1-\frac{1}{N^{\text{pre}}N^{\text{post}}}\right)^{K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+is equal to the probability that there is at least one connection between
+ one specific pair of neurons 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The often used expression
+\begin_inset Formula 
+\begin{equation}
+C_{a}=\frac{K}{N^{\text{pre}}N^{\text{post}}}\label{eq: C_a approx}
+\end{equation}
+
+\end_inset
+
+is the corresponding first-order Taylor series approximation and valid for
+ 
+\begin_inset Formula $K/(N^{\text{pre}}N^{\text{post}})$
+\end_inset
+
+ small 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We expand 
+\begin_inset Formula 
+\begin{align*}
+(1+x) & =1+Kx+\frac{K(K-1)}{2}x^{2}\\
+ & \approx1+Kx+\mathcal{O}(x^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula 
+\[
+C_{a}\approx1-1+\frac{K}{N^{\text{pre}}N^{\text{post}}}=\frac{K}{N^{\text{pre}}N^{\text{post}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Error is in the order of 
+\begin_inset Formula 
+\[
+\frac{K^{2}}{(N^{\text{pre}}N^{\text{post}})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{a}$
+\end_inset
+
+ is the probability that we find at least one connection between a given
+ set of neurons.
+ It depends on the type of the pre- and postsynaptic neuron 
+\end_layout
+
+\begin_layout Itemize
+Authors claim that symmetric inter-neural connectivity (within-layer projections
+) originating from local inter-neurons are probably underestimated in experiment
+al studies
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Within-layer projections means from inhibitory neurons (inter-neurons) in
+ one layer to excitatory and inhibitory neurons within the same layer
+\end_layout
+
+\begin_layout Itemize
+Connections are symmetric, i.e.
+ they have the same strength independent of the type of the target neuron
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Authors account for this underestimation (heuristically?)
+\end_layout
+
+\begin_layout Itemize
+The connection probability derived from the experimental studies depend
+ on the considered 
+\series bold
+surface area
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+The number of synapses 
+\begin_inset Formula $K$
+\end_inset
+
+ and the number of neurons 
+\begin_inset Formula $N^{\text{pre/post}}$
+\end_inset
+
+ depend increase linearly with the surface area 
+\begin_inset Formula $\pi r$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Number of neurons for constant density 
+\begin_inset Formula $\rho_{N}$
+\end_inset
+
+ per surface area 
+\begin_inset Formula 
+\[
+N=\int_{0}^{r}dr\int_{0}^{2\pi}d\varphi r\rho_{N}=\rho_{N}\pi r^{2}\propto\pi r^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If we assume incoming connections land uniformly on a surface area of interest,
+ then 
+\begin_inset Formula 
+\[
+K=\int_{0}^{r}dr\int_{0}^{2\pi}d\varphi r\rho_{K}=\rho_{K}\pi r^{2}\propto\pi r^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+You can see it also this way: The probability that one specific neuron in
+ the presynaptic population makes a connection to the postsynaptic population
+ is independent of the 
+\begin_inset Formula $N_{\text{pre}}$
+\end_inset
+
+, and therefore the area.
+ However, the probability that it connects to one specific neuron decreases
+ because their 
+\begin_inset Formula $\propto\pi\Delta r^{2}$
+\end_inset
+
+ more to choose from.
+ Hence the probability 
+\begin_inset Formula $C_{a}$
+\end_inset
+
+ that their is at least one connection from a pre- to postsynaptic neuron
+ must go down.
+ However, the total number of connection a neurons forms stays constant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, from Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: C_a approx"
+
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\[
+C_{a}\propto\frac{\pi r^{2}}{(\pi r)^{2}}=\frac{1}{\pi r^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This means that the connectivity matrix becomes more sparse if we make 
+\begin_inset Formula $r$
+\end_inset
+
+ larger
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The product of the connection probability and the surface area is constant
+ for large areas 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\tilde{C}_{a}=\lim_{r\rightarrow\infty}C_{a}\pi r^{2} & =\frac{\rho_{K}}{\rho_{N^{\text{pre}}}\rho_{N^{\text{pre}}}}\frac{\pi r^{2}}{\pi r^{2}}\\
+ & =\frac{\rho_{K}}{\rho_{N^{\text{pre}}}\rho_{N^{\text{pre}}}}\\
+ & =\text{const}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Hence, authors use the area-corrected connection probability for all values
+ of the anatomical map 
+\begin_inset Formula 
+\begin{equation}
+\tilde{C}_{a}=\lim_{r\rightarrow\infty}C_{a}\pi r^{2}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Connection probability that their is at least one connection surface area
+ of the model.
+ 
+\begin_inset Formula $\tilde{C}_{a}$
+\end_inset
+
+ should become constant for 
+\begin_inset Formula $r$
+\end_inset
+
+ to infinity 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Physiological hit rate 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Thomson AM, West DC, Wang Y, Bannister A.
+ 2002.
+ Synaptic connec- tions and small circuits involving excitatory and inhibitory
+ neurons in layer 2–5 of adult rat and cat neocortex: triple intra- cellular
+ recordings and biocytin labelling in vitro.
+ Cereb Cortex.
+ 12:936–953.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+C_{p}=\frac{\sum_{i}R_{i}Q_{i}}{\sum_{j}Q_{j}}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ are the hit rate the number of testes pars in the 
+\begin_inset Formula $i$
+\end_inset
+
+th experiment 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hit rate times number of tested pairs divided by the total number of tested
+ pairs equals the probability 
+\begin_inset Formula 
+\[
+\frac{R_{i}Q_{i}}{Q_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The authors classify all connections into 2 main groups: Recurrent intralayer
+ or within-layer connections and connections between different layers or
+ interlayer connections 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+What is the different between interlayer and different layers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Lateral Connectivity Model 
+\end_layout
+
+\begin_layout Itemize
+Anatomical and physiological connectivity maps provide connection probabilities
+ for different cell types in different layers, but sample from different
+ lateral spreads 
+\end_layout
+
+\begin_layout Itemize
+Anatomical data correspond to a 
+\series bold
+very large
+\series default
+ cortical surface area, parameterized by the 
+\series bold
+sampling radius
+\series default
+ 
+\begin_inset Formula $r_{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Physiological map is based on paired recordings in slices and thereby on
+ very local data, sampling cells with a rather 
+\series bold
+low maximal lateral distance
+\series default
+ 
+\begin_inset Formula $r_{p}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use Gaussian model for describing lateral connection probability profile
+ 
+\begin_inset Formula 
+\begin{equation}
+C(r)=C_{0}\exp\left(\frac{-r^{2}}{2\sigma^{2}}\right)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ specifies the peak connection probability and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ specifies the lateral spread of connections 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C(r)$
+\end_inset
+
+ is the probability of finding at least one connection between two neurons
+ at a given distance 
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Experimental data correspond to a random sampling of connections within
+ cylinder of a fixed sampling radius and corresponding 
+\series bold
+mean
+\series default
+ connection probabilities
+\begin_inset Formula 
+\[
+C_{a/p}=\frac{1}{\pi r_{a/p}^{2}}\int_{0}^{r_{a/p}}dr\int_{0}^{2\pi}d\varphi C(r)r
+\]
+
+\end_inset
+
+yielding 
+\begin_inset Formula 
+\begin{align}
+C_{a} & =\frac{2\pi C_{0}\sigma^{2}}{\pi r_{a}^{2}}\left[1-\exp\left(-\frac{r_{a}^{2}}{2\sigma^{2}}\right)\right]\\
+C_{p} & =\frac{2\pi C_{0}\sigma^{2}}{\pi r_{p}^{2}}\left[1-\exp\left(-\frac{r_{p}^{2}}{2\sigma^{2}}\right)\right]
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is the averaged connection probability of finding at least one connection
+ between two neurons.
+ Here, only the lateral distance matters and not the vertical
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Physiological and anatomical experiments provide 
+\begin_inset Formula $C_{a/p}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{a/p}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and can be obtained by equating both equations
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\pi r_{a}^{2}C_{a}}\left[1-\exp\left(-\frac{r_{a}^{2}}{2\sigma^{2}}\right)\right] & =\frac{1}{\pi r_{p}^{2}C_{p}}\left[1-\exp\left(-\frac{r_{p}^{2}}{2\sigma^{2}}\right)\right]\\
+\frac{\tilde{C}_{a}}{1-\exp\left(-\frac{r_{a}^{2}}{2\sigma^{2}}\right)} & =\frac{\pi r_{p}^{2}C_{p}}{1-\exp\left(-\frac{r_{p}^{2}}{2\sigma^{2}}\right)}
+\end{align*}
+
+\end_inset
+
+where we used 
+\begin_inset Formula $\tilde{C}_{a}=\pi r_{a}^{2}C_{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $r_{a}\gg\sigma$
+\end_inset
+
+, 
+\begin_inset Formula $\exp\left(-r_{a}^{2}/2\sigma^{2}\right)=0$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\begin{align*}
+\sigma & =r_{p}\left[-2\ln\left(1-\frac{\pi r_{p}^{2}C_{p}}{\tilde{C}_{a}}\right)\right]^{-1/2}\\
+C_{0} & =\frac{\tilde{C}_{a}}{2\pi\sigma^{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Authors determine 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ only for the global mean connection probabilities of the 2 maps and not
+ for every specific connections between 2 cell types 
+\end_layout
+
+\begin_layout Itemize
+Now we know 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+ from which we obtain the lateral connectivity model 
+\begin_inset Formula 
+\[
+C(r)=C_{0}\exp\left(\frac{-r^{2}}{2\sigma^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lateral connectivity model is 
+\series bold
+exclusively used
+\series default
+ to reconcile the 2 connectivity maps, the simulations use a laterally 
+\series bold
+uniform connectivity profile
+\end_layout
+
+\begin_layout Itemize
+Connectivity between 2 neurons is 
+\series bold
+only
+\series default
+ determined by the cell types and not their location in space 
+\end_layout
+
+\begin_layout Itemize
+The mean connection probability of the model 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ 
+\series bold
+depends
+\series default
+ on the size of the network (surface area 
+\begin_inset Formula $\pi r_{m}^{2}$
+\end_inset
+
+) and the parameter of the lateral model which can be expressed in terms
+ of the experimentally accessible parameters 
+\begin_inset Formula $C_{p},r_{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{C}_{a}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+C_{m} & =\frac{1}{\pi r_{m}^{2}}\int_{0}^{r_{m}}\int_{0}^{2\pi}drd\varphi rC(r)\\
+ & =\frac{2}{r_{m}^{2}}C_{0}\sigma^{2}\left[1-\exp\left(\frac{-r_{m}^{2}}{2\sigma^{2}}\right)\right]\\
+ & =\frac{\overline{\tilde{C}_{a}}}{\pi r_{m}^{2}}\left[1-\left(1-\frac{\pi r_{p}^{2}\overline{C}_{p}}{\overline{\tilde{C}_{a}}}\right)^{r_{m}^{2}/r_{p}^{2}}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, we get 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ by averaging 
+\begin_inset Formula $\tilde{C}_{a}$
+\end_inset
+
+ from the anatomical maps and 
+\begin_inset Formula $C_{p}$
+\end_inset
+
+ from the physiological maps
+\end_layout
+
+\begin_layout Itemize
+To arrive at the individual connection probabilities at a given 
+\series bold
+model size
+\series default
+, it is sufficient to multiply a connectivity map by the ratio 
+\begin_inset Formula 
+\[
+\frac{C_{m}}{\overline{C}_{a/p}}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This seems important but I do not understand it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Connectivity Data Analysis
+\end_layout
+
+\begin_layout Itemize
+Define 
+\series bold
+recurrent strength
+\series default
+ as the ratio of the mean within-layer and the mean interlayer connections
+ probability
+\end_layout
+
+\begin_layout Itemize
+Define 
+\series bold
+loop strength
+\series default
+ as the ratio of the mean connection probability of the cortical feed-forward
+ loop (L4 to L2/3 to L5 to L6 to L4
+\end_layout
+
+\begin_layout Itemize
+For a fair comparison, base the recurrence strength and the loop strength
+ measures only on connections for which estimates within- and interlayer
+ connections are available in both data sets 
+\end_layout
+
+\begin_layout Itemize
+Discrepancy index 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ compares connection probabilities of individual connections (population
+ to population) provided both maps assign nonzero connection probabilities
+ 
+\end_layout
+
+\begin_layout Itemize
+Remove global differences due to later sampling by scaling the maps to mean
+ model connectivity 
+\begin_inset Formula 
+\[
+c'_{a/p}\leftarrow C_{a/p}\cdot C_{m}/\overline{C}_{a/p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quantify specificity of connections 
+\begin_inset Formula 
+\begin{align*}
+T & =\frac{C^{\text{post=e}}-C^{\text{post=i}}}{C^{\text{post=e}}+C^{\text{post=i}}}
+\end{align*}
+
+\end_inset
+
+which one when all connections go to 
+\begin_inset Formula $e$
+\end_inset
+
+ or 
+\begin_inset Formula $i$
+\end_inset
+
+ or
+\end_layout
+
+\begin_layout Subsubsection*
+Consistent Modifications of Target Specificity 
+\end_layout
+
+\begin_layout Itemize
+Connection probabilities are modified to meet a given target specificity
+ value 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+However, we constrain these modifications by demanding consistency with
+ the underlying experimental data
+\end_layout
+
+\begin_layout Itemize
+For anatomical data, this is the number of synapses participating in a 
+\series bold
+projection 
+\series default
+(number synapses from presynaptic population to one layer)
+\end_layout
+
+\begin_layout Itemize
+For physiological data, in 
+\series bold
+several cases
+\series default
+ (data not complete),
+\series bold
+ 
+\series default
+exclusively
+\series bold
+ 
+\series default
+the connection to 
+\begin_inset Formula $1$
+\end_inset
+
+ of the 
+\begin_inset Formula $2$
+\end_inset
+
+ neuron types in a target layer 
+\end_layout
+
+\begin_layout Itemize
+The experimentally not quantified connection is estimated 
+\end_layout
+
+\begin_layout Itemize
+Modifying connection probabilities while conserving the total number of
+ synapses of projections requires 
+\series bold
+redistribution
+\series default
+ of synapses across the target neurons 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Fraction
+\series default
+ of targeting excitatory neurons as a function of requested target specificity
+\begin_inset Formula 
+\begin{align*}
+2T & =\left(1-\frac{1}{N^{\text{post=i}}N^{\text{pre}}}\right)^{(1-\Delta)K}(1+T)\\
+ & -\left(1-\frac{1}{N^{\text{post=e}}N^{\text{pre}}}\right)^{\Delta K}(1-T)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solve equation for 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ and use 
+\begin_inset Formula 
+\begin{align*}
+K_{E} & =\Delta K\\
+K_{I} & =(1-\Delta)K
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For a given 
+\begin_inset Formula $\Delta,$
+\end_inset
+
+ the new connection probabilities can be calculated using Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq: C_a"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Modifications of physiological data is straightforward because, in all cases,
+ only one connection probability is experimentally given to that 
+\begin_inset Formula 
+\[
+C^{\text{post}=i(e)}=\left(\frac{1-T}{1+T}\right)^{+/-1}C^{\text{post}=e(i)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Layer-Specific External Input 
+\end_layout
+
+\begin_layout Itemize
+Authors study 
+\series bold
+spontaneous
+\series default
+ and 
+\series bold
+stimulus-evoked
+\series default
+ activity 
+\end_layout
+
+\begin_layout Itemize
+In both cases, the external 
+\series bold
+background 
+\series default
+activity is activated 
+\end_layout
+
+\begin_layout Itemize
+Authors distinguish between 3 types of inputs to the local cortical network
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Thalamic afferents 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Gray matter
+\series default
+ external inputs: These are intrinsic nonlocal inputs entering the local
+ network through the gray matter
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+White matter
+\series default
+ external inputs 
+\series bold
+which 
+\series default
+include all inputs not covered by the previous types 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Since long-range projections target excitatory and inhibitory neurons, authors
+ choose target specificity values for external inputs to be 
+\series bold
+comparable
+\series default
+ with recurrent connections 
+\end_layout
+
+\begin_layout Itemize
+Data basis is limited, i.e.
+ the effect of the input parameterization has to investigated 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Relevant information in 
+\series bold
+Table
+\series default
+ 
+\series bold
+3
+\end_layout
+
+\begin_layout Itemize
+External inputs per neuron 
+\begin_inset Formula $K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to multiply these number with the input rates
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Network Simulations
+\end_layout
+
+\begin_layout Itemize
+Simulations are full scale, in the sense that they comprise the same number
+ of neurons and synapses as found in the local cortical microcircuit
+\end_layout
+
+\begin_layout Itemize
+Locality is defined by the 
+\series bold
+average lateral range
+\series default
+ of local connectivity
+\end_layout
+
+\begin_layout Itemize
+80 000 neurons and 
+\begin_inset Formula $0.3$
+\end_inset
+
+ billion synapses 
+\end_layout
+
+\begin_layout Itemize
+8 neuronal populations representing the excitatory and inhibitory cells
+ in L2/3, L4, L5 and L6
+\end_layout
+
+\begin_layout Itemize
+Population consist of current-based leaky integrate-and-fire model neurons
+ with 
+\series bold
+exponentially
+\series default
+ synaptic currents 
+\end_layout
+
+\begin_layout Itemize
+Neuron are randomly connected with connection probabilities according to
+ integrated connectivity maps
+\end_layout
+
+\begin_layout Itemize
+Every population receives Poissonian background spike trains
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Firing rates
+\series default
+ of these inputs are determined by the number of external inputs a in particular
+ population receives and the 
+\series bold
+background spike rate contribution by each synapse 
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Synaptic strengths and synaptic time constant of all connections are chosen
+ such that an average excitatory posynaptic potential has an amplitude of
+ 
+\begin_inset Formula $0.15$
+\end_inset
+
+mV with a rise time of 
+\begin_inset Formula $1.6$
+\end_inset
+
+ms and a width of 
+\begin_inset Formula $8.8$
+\end_inset
+
+ ms mimicking the in vivo situation 
+\end_layout
+
+\begin_layout Itemize
+Inhibitory postsynaptic potentials are negative and increased by a factor
+ 
+\begin_inset Formula $g$
+\end_inset
+
+ compared with the excitatory ones 
+\end_layout
+
+\begin_layout Itemize
+Delays in the network are chosen independent of the layer, with excitatory
+ delays being on average around twice as long as inhibitory delays 
+\end_layout
+
+\end_body
+\end_document
