@@ -270,6 +270,27 @@ class Spectral_Solver():
         lam = fit_result.x 
         
         return np.complex(lam[0], lam[1])
+
+
+    def save_J_lb_mat(self, mu, sig, lam_real_arr, lam_imag_arr, idx = 0):
+      
+        J_lb = np.zeros((len(lam_imag_arr), len(lam_real_arr)), dtype = np.complex128)
+        
+        for i, lam_imag in enumerate(lam_imag_arr):
+            for j, lam_real in enumerate(lam_real_arr):
+            
+                lam = np.complex(lam_real, lam_imag)            
+                J_lb[i,j] = self.integrator.calc_J_lb(lam, mu, sig)      
+
+        # save
+        filename = f'J_lb_mu_{mu:.2f}_sig_{sig:.2f}_{idx}.h5'        
+        data_path = './data/' 
+        
+        with h5.File(data_path + filename, mode = 'w') as hf5:                   
+        
+            hf5['J_lb'] = J_lb
+            hf5.attrs['mu']  = mu
+            hf5.attrs['sig'] = sig
                 
     def scan_J_lb(self, mu, sig, lam_real_arr, lam_imag_arr):
         
