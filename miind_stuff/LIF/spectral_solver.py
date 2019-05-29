@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from scipy.optimize import brentq, curve_fit, root
 from scipy.ndimage import gaussian_filter
@@ -25,14 +26,17 @@ class Spectral_Solver():
         N_lam_bf = 3 #solver looks for the first 3 eigenvalues on the real line brute force        
         N_lam    = 10 # number of eigenvalues to be found
         dmu      = 5e-3 # grid spacing on mu axis
+        dsig     = 5e-3 # grid spacing on sig axis
+        
                         
         param = {}
-        param['N_lam_bf'] = N_lam_bf
-        param['N_lam']    = N_lam
-                
-        param['dlam']      = dlam
-        param['lam_max']   = lam_max
-        param['dmu']       = dmu
+        param['N_lam_bf']   = N_lam_bf
+        param['N_lam']      = N_lam
+        param['N_lam_comp'] = N_lam
+        param['dlam']       = dlam
+        param['lam_max']    = lam_max
+        param['dmu']        = dmu
+        param['dsig']       = dsig
         
         return param
         
@@ -54,16 +58,19 @@ class Spectral_Solver():
         
         return
                 
-    def compute_real_ev(self, mu, sig):
+    def compute_real_ev(self, mu, sig, N = None):
         '''Caculate eigenvalues on the real line given sig and mu. It is assumed that mu is 
         choosen small enough to ensure that the spectrum of the FP operator is real.
         :param float mu: mu
-        :param float sig: sigma'''
+        :param float sig: sigma
+        :param int N: find first N eigenvalues'''
+        
 
         #------------------------------------------------------------------------------ 
-        # Find first N_lam_bf eigenvalues brute-force and then switch to extrapolation method         
+        # Find first N eigenvalues brute-force and then switch to extrapolation method         
                 
-        N_lam_bf = self.solver_param['N_lam_bf']          
+        if N == None:                
+            N = self.solver_param['N_lam_bf']          
         lam      = self.solver_param['lam_max'] # start value
         dlam     = self.solver_param['dlam'] # step size
         
@@ -72,12 +79,12 @@ class Spectral_Solver():
         sign_J = np.sign(J_lb)
 
         # bracket zero crossings of J_lb as a function of lambda
-        a_arr = np.zeros(N_lam_bf) # left boundary
-        b_arr = np.zeros(N_lam_bf) # right boundary
+        a_arr = np.zeros(N) # left boundary
+        b_arr = np.zeros(N) # right boundary
         
         k = 0 # number zero crossings found so far 
                         
-        while k < N_lam_bf:
+        while k < N:
             
             lam = lam - dlam
             J = self.integrator.calc_J_lb(lam, mu, sig)
@@ -91,20 +98,62 @@ class Spectral_Solver():
 
         #------------------------------------------------------------------------------ 
         # Determine eigenvalues by finding the roots in the brackets [a_arr, b_arr]        
-        
-        # Allocate output arrays            
-        N_lam = self.solver_param['N_lam']
-        
-        full_lam_arr  = np.zeros(N_lam)
-        full_J_lb_arr = np.zeros(N_lam)
-                    
+        lam_arr = np.zeros(N)
+                
         for i, (a, b) in enumerate(zip(a_arr, b_arr)):
             
             # determine eigenvalu  by root finding root in (a,b)
             lam = brentq(self.integrator.calc_J_lb, a, b, args = (mu, sig), xtol = 1e-20)
-            full_lam_arr[i]  = lam
-            full_J_lb_arr[i] = self.integrator.calc_J_lb(lam, mu, sig)
+            lam_arr[i]  = lam
+#             lam_arr[i] = self.integrator.calc_J_lb(lam, mu, sig)
             print(f'Found eigenvalue {i+1} by brute-force')
+        
+        return lam_arr
+        
+    
+    
+    def compute_ev_mu_arr_sig_arr(self, N_comp, N_real, mu_arr, sig_arr):
+        
+            
+        lam_arr = self.compute_ev_init(N_comp, N_real, mu_arr[0], sig_arr[0])                
+        lam_mat = np.zeros((len(mu_arr), N_comp + N_real), dtype = np.complex128)
+                        
+        for i, (mu,sig) in enumerate(zip(mu_arr, sig_arr)):
+                        
+            lam_mat[i, :] = lam_arr            
+            lam_arr, _ = self.compute_complex_ev_mu_sig(lam_arr, mu, sig)
+            
+        lam_mat[-1, :] = lam_arr
+        
+
+        filename  = f'EV_feed_forward.h5'
+        data_path = './data/eigenvalues/'
+
+        with h5.File(data_path + filename, mode = 'a') as hf5:                   
+        
+            hf5['ev']      = lam_mat
+            hf5['mu_arr']  = mu_arr
+            hf5['sig_arr'] = sig_arr
+
+        
+            
+            
+             
+        
+        
+        
+    
+    
+    
+    def compute_real_ev_by_extrapolation(self, N, lam_arr, mu, sig):
+
+        # Allocate output arrays            
+        N_lam    = N
+        N_lam_bf = self.solver_param['N_lam_bf']          
+        dlam     = self.solver_param['dlam']          
+        
+        full_lam_arr  = np.zeros(N_lam)
+        full_J_lb_arr = np.zeros(N_lam)
 
         #------------------------------------------------------------------------------ 
         # Guess values for remaining N_lam - k eigenvalues by linear extrapolation
@@ -140,7 +189,7 @@ class Spectral_Solver():
             full_J_lb_arr[i] = self.integrator.calc_J_lb(lam_n, mu, sig)
             print(f'Found eigenvalue {n} by extrapolation')
                         
-        return full_lam_arr, full_J_lb_arr  
+        return full_lam_arr
                     
     def bracket_zc(self, lam0, dlam, mu, sig):
         '''Brackets zero crossing for initial guess lam0 by downhill search'''
@@ -201,8 +250,72 @@ class Spectral_Solver():
             print(f'Found eigenvalue {i+1} using 2d root finder')                 
         
         return lam_arr, err_lam_arr
+
+
+    def get_lam_arr_init(self, mu, sig):
+        
+        filename  = f'EV_mu_{mu:.2f}_sig_{sig:.2f}_init.h5'
+        data_path = './data/eigenvalues/'
+        
+        f = h5.File(data_path + filename, 'r+')                    
+        lam_arr = f['ev']  
+
+        return lam_arr
+        
+    def compute_ev_mu_sig(self, mu_min, mu_max, sig_min, sig_max):
+        
+        dmu  = self.solver_param['dmu']
+        dsig = self.solver_param['dsig']
+
+        mu_arr  = np.arange(mu_min, mu_max+0.1*dmu, dmu)
+        sig_arr = np.arange(sig_min, sig_max+0.1*dsig, dsig)
+
+        N_mu  = len(mu_arr)
+        N_sig = len(sig_arr)
+                                                                                                
+        lam_arr = self.get_lam_arr_init(mu_max, sig_min)
+        
+        lam_mat = np.zeros((N_sig, N_mu, len(lam_arr)), dtype = np.complex128)
+        lam_mat[0, -1, :] = lam_arr
+    
+        for i, sig in enumerate(sig_arr[1:]):
+            
+            lam_arr, _ = self.compute_complex_ev_mu_sig(lam_arr, mu_max, sig)        
+            lam_mat[i+1, -1, :] = lam_arr
+            
+        for i, sig in enumerate(sig_arr):
+            
+            lam_arr = lam_mat[i, -1, :]
                         
-    def compute_complex_ev_mu_arr_sig(self, mu_min, mu_max, sig):
+            for j in range(N_mu-2, 0, -1):
+                                
+                mu = mu_arr[j]
+                lam_arr, _ = self.compute_complex_ev_mu_sig(lam_arr, mu, sig)
+                lam_mat[i,j,:] = lam_arr
+        
+        filename  = f'EV_mat_mu_min_{mu_min:.2f}_mu_max_{mu_max:.2f}_sig_min{sig_min:.2f}_sig_max{sig_max:.2f}.h5'
+        data_path = './data/eigenvalues/'
+        
+        with h5.File(data_path + filename) as f:
+            
+            f['ev_mat']  = lam_mat
+            f['mu_arr']  = mu_arr
+            f['sig_arr'] = sig_arr
+            
+        return
+    
+    def compute_ev_neighbour(self, lam_arr_init, mu, sig):
+                
+        lam_arr = np.zeros_like(lam_arr_init, dtype = np.complex128)
+                
+        for n, lam in enumerate(lam_arr):
+            
+            lam_arr[n] = self.find_complex_ev(lam, mu, sig)
+            
+        return
+            
+                        
+    def compute_ev_mu_arr_sig(self, mu_min, mu_max, sig):
         '''Caculate eigenvalues for given mu in mu_arr and given sig
         :param arr mu_arr: mu array
         :param float sig: sigma'''
@@ -338,18 +451,8 @@ class Spectral_Solver():
         # get rid of real eigenvalues
         eps = 1.e-2
         lam_arr = lam_arr[np.abs(lam_arr.imag) > eps]
-        
-        # save
-        filename = f'EV_mu_{mu:.2f}_sig_{sig:.2f}_numeric.h5'        
-        data_path = './data/eigenvalues/' 
-        
-        with h5.File(data_path + filename, mode = 'w') as hf5:                   
-        
-            hf5['complex'] = lam_arr
-            hf5.attrs['mu']  = mu
-            hf5.attrs['sig'] = sig
-                
-        return
+                        
+        return lam_arr
         
     def calc_cluster_center(self, roots):
         '''Caculates centers clusters in blured images'''
@@ -432,6 +535,131 @@ class Spectral_Solver():
             extended_lam_arr[n-1] = self.find_complex_ev(lam_n_init, mu, sig)
             
         return extended_lam_arr
+
+    def compute_real_ev_init(self, N, mu, sig):
+        '''Caculate first N real eigenvalues for given mu and sigma
+        :param int N: number of eigenvalues
+        :param float mu: mu
+        :param float sig: sigma'''
+        
+        data_path = './data/eigenvalues/'
+        filename = f'EV_mu_{mu:.2f}_sig_{sig:.2f}_init.h5'
+                
+        if os.path.isfile(data_path + filename):
+            file = h5.File(data_path + filename, 'r+')
+            if 'real' in list(file.keys()):                            
+                lam_arr = file.pop('real')[:]                                            
+                if len(lam_arr) < N:                    
+                    lam_arr = self.compute_real_ev(mu, sig, N)        
+                file['real'] = lam_arr
+            else:
+                lam_arr = self.compute_real_ev(mu, sig, N)            
+#                 lam_arr = self.compute_real_ev_by_extrapolation(N, lam_arr, mu, sig)
+                file['real']      = lam_arr                                
+        else:
+            lam_arr = self.compute_real_ev(mu, sig, N)            
+#             lam_arr = self.compute_real_ev_by_extrapolation(N, lam_arr, mu, sig)
+            
+            with h5.File(data_path + filename, mode = 'r+') as f:                               
+                f['real']      = lam_arr                
+                f.attrs['mu']  = mu
+                f.attrs['sig'] = sig
+            
+        return lam_arr
+    
+    def compute_complex_ev_init(self, N, mu, sig):
+        '''Caculate first N complex eigenvalues for given mu and sigma
+        :param int N: number of eigenvalues
+        :param float mu: mu
+        :param float sig: sigma'''
+        
+        data_path = './data/eigenvalues/'
+        filename = f'EV_mu_{mu:.2f}_sig_{sig:.2f}_init.h5'
+                
+        if os.path.isfile(data_path + filename):
+            file = h5.File(data_path + filename, 'r')
+            lam_arr = file['complex'][:]
+            if len(lam_arr) < N:
+                lam_arr = self.compute_complex_ev_by_extrapolation(lam_arr, N, mu, sig)                
+                
+                file.close()
+                
+                file = h5.File(data_path + filename, 'w')                
+                file['complex'] = lam_arr                                        
+        else:
+            dlam = 0.05
+            # TODO 
+            lam_real_arr = np.arange(-30, -0.1, dlam)
+            lam_imag_arr = np.arange(0, 20, dlam)
+            
+            lam_arr = self.scan_J_lb(mu, sig, lam_real_arr, lam_imag_arr)
+            lam_arr = self.compute_complex_ev_by_extrapolation(lam_arr, N, mu, sig)
+
+            with h5.File(data_path + filename, mode = 'w') as f:                   
+            
+                f['complex']   = lam_arr
+                f.attrs['mu']  = mu                
+                f.attrs['sig'] = sig
+            
+        return lam_arr
+
+    def compute_ev_init(self, N_comp, N_real, mu, sig):
+        
+        lam_arr_comp = self.compute_complex_ev_init(N_comp, mu, sig)
+        lam_arr_real = self.compute_real_ev_init(N_real, mu, sig)
+        
+        data_path = './data/eigenvalues/'
+        filename = f'EV_mu_{mu:.2f}_sig_{sig:.2f}_init.h5'        
+        
+        lam_arr = np.concatenate((lam_arr_real, lam_arr_comp))
+        
+        idx_arr = np.argsort(np.abs(lam_arr.real))
+
+        lam_arr = lam_arr[idx_arr]
+
+        f = h5.File(data_path + filename, 'r+')
+        
+        if 'ev' in list(f.keys()):
+            if len(lam_arr) < N_comp + N_real:            
+                f.pop('ev')
+                f['ev'] = lam_arr
+        else:
+                f['ev'] = lam_arr
+                
+        return f['ev'][:]
+
+    def compute_complex_ev_mu_arr_sig(self, N, mu_min, mu_max, sig):
+        '''Caculate eigenvalues for given mu in mu_arr and given sig
+        :param int N: number of eigenvalues
+        :param float mu_min: start value mu 
+        :param float mu_max: end value mu
+        :param float sig: sigma'''
+                                                        
+        lam_init_arr = self.compute_complex_ev_init(N, mu_min, sig)        
+        mu_arr = np.arange(mu_min, mu_max, self.solver_param['dmu'])
+        
+        # allocate empty matrix to save eigenvalues
+        lam_mat = np.zeros((N, len(mu_arr)), dtype = np.complex)                                
+        
+        # computate eigenvalues for mu_min assuming that spectrum is real
+        lam_mat[:, 0] = lam_init_arr
+                        
+        for i, mu in enumerate(mu_arr[1:]):
+            
+            lam_arr, err_lam_arr = self.compute_complex_ev_mu_sig(lam_init_arr, mu, sig)
+            lam_init_arr = lam_arr + err_lam_arr
+            lam_mat[:, i+1] = lam_arr
+            print(f'Caculated eigenvalue for mu_{i+1}, {len(mu_arr)-i-2} left')
+        
+        # save
+        filename = f'EV_mu_min_{mu_min:.2f}_mu_max_{mu_max:.2f}_sig_{sig:.2f}.h5'        
+        data_path = './data/eigenvalues/' 
+        
+        with h5.File(data_path + filename, mode = 'a') as hf5:                   
+        
+            hf5['complex']     = lam_mat
+            hf5['mu_arr'] = mu_arr
+            hf5.attrs['sig'] = sig
         
 class Integrator():
         
@@ -579,25 +807,27 @@ class Integrator():
                                                          
         if self.solver_param['integrate_in'] == 'fortran':
            
-            N = self.N
-            
+            N     = self.solver_param['N']            
             J_th  = self.solver_param['J_th']
             v_min = self.model_param['v_min']
             v_th  = self.model_param['v_th']
             
             v_arr = np.linspace(v_min, v_th, N)
             x_arr = self.get_x_arr(v_arr, mu, sig)
- 
+            
+            M = len(x_arr)
+            
             # find index of reset point                
             r_idx = self.get_reset_idx(x_arr, mu, sig)
                     
             if np.iscomplexobj(lam):                                
-                J, phi = real_backward_integration(len(x_arr), lam, J_th, x_arr, r_idx)
+                J, phi = complex_backward_integration(M, lam, J_th, x_arr, r_idx)            
             else:
-                J, phi = complex_backward_integration(len(x_arr), lam, J_th, x_arr, r_idx)            
+                J, phi = real_backward_integration(len(x_arr), lam, J_th, x_arr, r_idx)
         
         elif self.solver_param['integrate_in'] == 'python':
-            J, phi, v_arr = self.backward_integration(lam, mu, sig, J_th)
+            
+            phi, J, v_arr = self.backward_integration(lam, mu, sig)
            
         return phi, J, v_arr
                                                   
@@ -658,7 +888,7 @@ class Integrator():
 
         A = np.array([[0, lam], [1, 0]], dtype = lam_type)
         
-        if output == 'full':    
+        if output == 'all':    
             phi = np.zeros_like(x_arr, dtype = lam_type) # eigenfunction
             J   = np.zeros_like(x_arr, dtype = lam_type) # probability current associated with eigenfunction                        
             phi[-1] = 0.0  # absorbing boundary at threshold

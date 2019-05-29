@@ -121,6 +121,7 @@ def plot_phi_tilde(mu, sig, phi_tilde_min):
     param = model_parameter()
     
     integrator = IF_Backward_Integrator(param)
+    integrator.set_parameter(J_th = np.sqrt(2./np.pi))
 
 #     diffusion_param = param.copy()
 #     diffusion_param['mu']  = mu
@@ -187,6 +188,74 @@ def scan_real_ev(mu,sig):
     
     lam_arr = np.linspace(-0.1, ev_real[-1], 500)    
     spectral_solver.compute_real_ev(lam_arr)
+    
+def compare_phi_to_theory_complex(mu, sig):
+        
+
+    
+    data_path = 'data/eigenvalues/'
+    
+    filename = f'EV_mu_{mu:.2f}_sig_{sig:.2f}.h5'
+    file = h5.File(data_path + filename, 'r')
+    
+    mu  = file.attrs['mu']
+    sig = file.attrs['sig']
+    
+    ev_complex = file['complex'][:]
+
+    model_param  = model_parameter()
+    model_param['v_min'] = -1.0
+    integrator = Integrator(model_param)
+    integrator.set_parameter(J_th = np.sqrt(2./np.pi), 
+                             N = int(2e4),
+                             integrate_in = 'fortran')
+
+    diffusion_param = model_param.copy()
+    diffusion_param['mu']  = mu
+    diffusion_param['sig'] = sig
+    
+    theory = LIF_Theory(diffusion_param = diffusion_param)
+
+    # plot first M eigenfunctions
+    M = 3
+
+    v_arr_1 = np.linspace(model_param['v_min'], model_param['v_th'], int(1e3))
+    fig = plt.figure(figsize = (10./2.54, 7./2.54))
+    gs = plt.GridSpec(M, 2, wspace = 0.4)
+
+    fz = 8
+    lfz = 4
+
+    for i, lam in enumerate(ev_complex[0:M]):
+    
+        ax_i0 = plt.subplot(gs[i, 0])
+                
+        phi0, _, v_arr  = integrator.eigeneq_backwards_integration(lam, mu, sig)
+        
+        phi1 = theory.phi_n(i+1, 'complex', v_arr_1)
+        
+        ax_i0.plot(v_arr_1, phi1.real, ls = '-', c = 'k', label = 'theory')
+        ax_i0.plot(v_arr, phi0.real, ls = '--', c = 'r', label = 'numeric') 
+
+        ax_i0.set_ylabel(f'Real$(\phi_{i+1})$', fontsize = fz)
+
+        ax_i1 = plt.subplot(gs[i, 1])
+
+        ax_i1.plot(v_arr_1, phi1.imag, ls = '-', c = 'k', label = 'theory')
+        ax_i1.plot(v_arr, phi0.imag, ls = '--', c = 'r', label = 'numeric') 
+
+        ax_i1.set_ylabel(f'Imag$(\phi_{i+1})$', fontsize = fz)
+
+        if i == M - 1:
+            ax_i0.set_xlabel(f'$v$', fontsize = fz)
+            ax_i1.set_xlabel(f'$v$', fontsize = fz)
+            
+            ax_i0.legend(fontsize = lfz)
+
+    
+    fig_path = '../../transfer_presentation/figures/'            
+    fig.savefig(fig_path + 'LIF_ef_theory_numeric.svg', format = 'svg')
+
     
 def compare_phi_to_theory_real(mu, sig, J_th):
 
@@ -705,11 +774,126 @@ def test_compute_complex_ev_by_extrapolation(mu, sig):
     ax0.plot(n_arr, lam_arr.imag, 'o')
     
     plt.show()
+
+def complex_ev_scan_mu(mu_min, mu_max, sig):
+
+    model_param = model_parameter()
+    solver = Spectral_Solver(model_param)
+    
+    N = 15
+                        
+    solver.compute_complex_ev_mu_arr_sig(N, mu_min, mu_max, sig)
+
+def plot_complex_ev_mu(mu_min, mu_max, sig):
+    
+    filename = f'EV_mu_min_{mu_min:.2f}_mu_max_{mu_max:.2f}_sig_{sig:.2f}.h5'        
+    data_path = './data/eigenvalues/' 
+    
+    file = h5.File(data_path + filename, 'r')
+    
+    lam_mat = file['complex'][:,:]
+    mu_arr  = file['mu_arr'][:]
+    
+    gs = plt.GridSpec(3,1)
+    ax0 = plt.subplot(gs[0])
+    ax1 = plt.subplot(gs[1])
+    ax2 = plt.subplot(gs[2])
+    
+    M = 15
+    K = 5
+    
+    lam_mat = lam_mat[:M, ]
+    
+    for i, lam_arr in enumerate(lam_mat.T):
+        mu = mu_arr[i]
+        ax0.plot(lam_arr.real, lam_arr.imag, 'o', label = f'$\mu$ = {mu:.2f}')
+        ax1.plot(mu*np.ones_like(lam_arr), lam_arr.real, 'o')
+        ax2.plot(mu*np.ones_like(lam_arr), lam_arr.imag, 'o')
+    
+    plt.show()
+
+def ceq_mat(mu, sig):
+        
+    param = model_parameter()
+
+    diffusion_param = param.copy()
+    diffusion_param['mu']  = mu
+    diffusion_param['sig'] = sig
+    
+    theory = LIF_Theory(diffusion_param = diffusion_param)
+    
+    theory.EV_ceq()
+    
+    print('Finished')
+
+def plot_ceq(mu, sig):
+    
+    filename = f'ceq_mat_mu_{mu:.2f}_sig_{sig:.2f}.h5'        
+    data_path = './data/eigenvalues/' 
+
+    f = h5.File(data_path + filename, 'r')
+    
+    mu  = f.attrs['mu']
+    sig = f.attrs['sig']
+    ceq = f['ceq_mat'][:, :]
+
+    inch = 2.54
+    fig = plt.figure() # figsize = (10/inch, 4.5/inch)
+    ax = plt.subplot(111)
+        
+    plt.imshow(np.abs(ceq))    
+    ax.set_xlabel('RE($\lambda$)', fontsize = 12)
+    ax.set_ylabel('Im($\lambda$)', fontsize = 12)
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    
+    plt.colorbar()
+            
+    fig_path  = '../../transfer_presentation/figures/'
+    fig.savefig(fig_path + 'ceq.svg', format = 'svg')
+
+    fig = plt.figure() # figsize = (10/inch, 4.5/inch)
+    ax = plt.subplot(111)
+        
+    plt.imshow(np.log(np.abs(ceq)))    
+    ax.set_xlabel('RE($\lambda$)', fontsize = 12)
+    ax.set_ylabel('Im($\lambda$)', fontsize = 12)
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    
+    plt.colorbar()
+            
+    fig_path  = '../../transfer_presentation/figures/'
+    fig.savefig(fig_path + 'ceq_log.svg', format = 'svg')
+
+    fig = plt.figure() # figsize = (10/inch, 4.5/inch)
+    ax = plt.subplot(111)
+        
+    B = np.log(np.abs(ceq.imag))        
+    
+    for i in range(np.size(B, 1)):
+    
+        B[200, i] = 0.5*(B[199, i]+B[201, i])
+    
+    plt.imshow(np.log(np.abs(ceq.real))- B)    
+    ax.set_xlabel('RE($\lambda$)', fontsize = 12)
+    ax.set_ylabel('Im($\lambda$)', fontsize = 12)
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    
+    plt.colorbar()
+            
+    fig_path  = '../../transfer_presentation/figures/'
+    fig.savefig(fig_path + 'ceq_real_imag.svg', format = 'svg')
+
+    
+    
+    
     
 if __name__ == '__main__':
     
 #     mu   = 1.2
-#     sig  = 0.20    
+#     sig  = 0.20    0
 #     J_th = np.sqrt(2./np.pi) 
 #     phi_tilde_min = 0.1
 #     plot_phi_tilde(mu, sig, phi_tilde_min)
@@ -738,10 +922,26 @@ if __name__ == '__main__':
 #     check_fortran()
 #     plot_spectrum_theory()
 #     scan_J_lb()
-    mu  = 0.64
-    sig = 0.2
+#     mu  = 0.64
+#     sig = 0.2
 #     compare_complex_ev_to_theory(mu, sig)
+#     test_compute_complex_ev_by_extrapolation(mu, sig)
+#     mu_min = 0.64
+#     mu_max = 1.5
+#     sig = 0.2
+#     complex_ev_scan_mu(mu_min, mu_max, sig)
+#     plot_complex_ev_mu(mu_min, mu_max, sig)
     
-    test_compute_complex_ev_by_extrapolation(mu, sig)
+#     mu  = 0.8
+#     sig = 0.2
     
+#     ceq_mat(mu, sig)    
+#     plot_ceq(mu, sig)
+
+    mu  = 0.81
+    sig = 0.2
+
+    compare_phi_to_theory_complex(mu, sig)
+    
+      
     print('Finished')
