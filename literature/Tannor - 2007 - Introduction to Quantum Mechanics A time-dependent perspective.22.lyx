@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -1613,7 +1613,9 @@ Eigenvalues of unitary operator have magnitude
 \end_layout
 
 \begin_layout Enumerate
-Eigenvectors of unitary operators with distinct eigenvalues are orthogonal
+Eigenvectors of unitary operators with distinct eigenvalues 
+\series bold
+are orthogonal
 \end_layout
 
 \end_deeper
@@ -1872,8 +1874,11 @@ The commutator itself is an operator
 \end_layout
 
 \begin_layout Itemize
-A useful relation involving commutators is the Baker-Hausdorff relation
- 
+A useful relation involving commutators is the 
+\series bold
+Baker-Hausdorff relation 
+\series default
+
 \begin_inset Formula 
 \[
 e^{A+B}=e^{A}e^{B}e^{-\frac{1}{2}[A,B]}
@@ -1910,7 +1915,7 @@ If
 \end_layout
 
 \begin_layout Itemize
-This leads to idea of a complete set of commuting observarbles, which given
+This leads to idea of a complete set of commuting observarbles, which give
  an unambiguous labeling for a quantum state
 \end_layout
 
@@ -2066,6 +2071,974 @@ If a operator does not commute with
 \begin_layout Subsection*
 Discrete Basis Sets: The Bridge between Operators-Wavefunctions: Matrices-Vector
 s 
+\end_layout
+
+\begin_layout Subsubsection*
+Introduction
+\end_layout
+
+\begin_layout Itemize
+Consider set of orthonormal vectors 
+\begin_inset Formula $\{\phi_{j}\}$
+\end_inset
+
+ that span the LVS:
+\begin_inset Formula 
+\[
+\int\phi*_{i}(x)\phi_{j}(j)dx=\delta_{ij}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Arbitrary wavefunction 
+\begin_inset Formula $\psi$
+\end_inset
+
+.
+ We can expand 
+\begin_inset Formula $\psi$
+\end_inset
+
+ in the complete set 
+\begin_inset Formula 
+\[
+\psi(x)=\sum_{i=0}^{\infty}a_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can find 
+\begin_inset Formula $a_{j}$
+\end_inset
+
+ by multiplying with 
+\begin_inset Formula $\phi*_{j}$
+\end_inset
+
+ and taking the inner product 
+\end_layout
+
+\begin_layout Itemize
+We can do a similar manipulation on 
+\begin_inset Formula $A\psi$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A\psi=\sum_{i=0}^{\infty}c_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+c_{j}=\sum_{i=0}^{\infty}\left\{ \int_{-\infty}^{\infty}\phi*_{j}(x)(A\phi_{i}(x))dx\right\} a_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can think about this equation as a matrix equation 
+\begin_inset Formula 
+\[
+A_{ij}=\int_{-\infty}^{\infty}\phi*_{j}(x)(A\phi_{i}(x))dx
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $A_{ij}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+A_{ij}=\int_{-\infty}^{\infty}\phi*_{j}(x)(A\phi_{i}(x))dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Exercise 8.37 
+\end_layout
+
+\begin_layout Standard
+Write the time dependent Schroedinger Equation (TDSE) in matrix form 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+i\hbar\frac{\partial\psi(x,t)}{\partial t}=H\psi(x,t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Expand 
+\begin_inset Formula 
+\[
+\psi(x,t)=\sum_{i}a_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+i\hbar\sum_{i}\frac{\partial a_{i}}{\partial t}\phi_{i}(x)=\sum_{i}a_{i}H\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiply from the left with 
+\begin_inset Formula $\phi*_{j}$
+\end_inset
+
+ and take the inner product 
+\begin_inset Formula 
+\begin{align*}
+i\hbar\sum_{i}\frac{\partial a_{i}}{\partial t}(\phi_{j},\phi_{i}) & =\sum_{i}a_{i}(\phi_{j},H\phi_{i})\\
+i\hbar\frac{\partial a_{j}}{\partial t} & =\sum_{i}(\phi_{j},H\phi_{i})a_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We can write this as a matrix equation 
+\begin_inset Formula 
+\[
+i\hbar\frac{\partial a_{i}}{\partial t}=\sum_{j}H_{ij}a_{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Exercise 
+\series bold
+8.38
+\end_layout
+
+\begin_layout Standard
+Write the time independent Schroedinger Equation (TISE) in matrix form 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+H\psi_{n}=E_{n}\psi_{n}
+\]
+
+\end_inset
+
+Expand 
+\begin_inset Formula 
+\[
+\psi_{n}=\sum a_{in}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and multiply with 
+\begin_inset Formula $\phi*_{j}$
+\end_inset
+
+ and take the inner product 
+\begin_inset Formula 
+\[
+\sum_{i}(\phi*_{j},H\phi_{i}(x))a_{in}=E_{n}\sum_{i}a_{in}(\phi*_{j},\phi_{i}(x))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+which yields 
+\begin_inset Formula 
+\[
+\sum_{i}H_{ji}a_{in}=E_{n}\sum_{i}S_{ji}a_{in}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+If the 
+\begin_inset Formula $\{\phi_{i}\}$
+\end_inset
+
+ are orthonormal, then 
+\begin_inset Formula $S_{ji}=\delta_{ij}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{i}H_{ji}a_{in}=E_{n}a_{jn}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In matrix form equation
+\begin_inset Formula 
+\[
+\sum_{i}H_{ji}a_{in}=E_{n}\sum_{i}S_{ji}a_{in}
+\]
+
+\end_inset
+
+can be written as 
+\begin_inset Formula 
+\[
+(\boldsymbol{H}\boldsymbol{U})_{jn}=(\boldsymbol{SUE})_{jn}
+\]
+
+\end_inset
+
+or alternatively 
+\begin_inset Formula 
+\[
+\boldsymbol{H}\boldsymbol{U}=\boldsymbol{SUE}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+ is a diagonal matrix and 
+\begin_inset Formula $U_{ij}=a_{ij}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+For orthogonal basis above equation simplifies to 
+\begin_inset Formula 
+\[
+\boldsymbol{H}\boldsymbol{U}=\boldsymbol{U}\boldsymbol{E}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+R.h.s
+\begin_inset Formula 
+\[
+\boldsymbol{U}\boldsymbol{E}=\left(E_{1}\boldsymbol{a}_{x1},E_{2}\boldsymbol{a}_{x2},\ldots\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+L.h.s.
+\begin_inset Formula 
+\[
+\boldsymbol{H}\boldsymbol{U}=\begin{pmatrix}\sum_{i}H_{1j}a_{i1}\\
+\sum_{i}H_{2j}a_{i1}\\
+\vdots\\
+\\
+\\
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The first column we can write as 
+\begin_inset Formula 
+\[
+\boldsymbol{H}\boldsymbol{U}=\left(\boldsymbol{H}\boldsymbol{a}_{x1},\boldsymbol{H}\boldsymbol{a}_{x2},\dots\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Hence, each columns yields eigenvalue problem
+\begin_inset Formula 
+\[
+\boldsymbol{H}\boldsymbol{a}_{x1}=E_{1}\boldsymbol{a}_{x1}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ are the eigenvalue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the basis is not orthonormal we need to deal with a general eigenvalue
+ problem 
+\end_layout
+
+\begin_layout Itemize
+Matrix representation of adjoint operator 
+\begin_inset Formula 
+\[
+A_{ij}^{\dagger}=A_{ji}^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For diagonal elements 
+\begin_inset Formula 
+\[
+A_{ii}^{\dagger}=A_{ii}^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Columns of 
+\series bold
+unitary matrices
+\series default
+ need to orthonormal vectors 
+\end_layout
+
+\begin_layout Itemize
+Row of 
+\series bold
+unitary matrices
+\series default
+ need to orthonormal vectors
+\end_layout
+
+\begin_layout Subsubsection*
+Diagonalizing Matrices 
+\end_layout
+
+\begin_layout Itemize
+Finding a unitary transformation that puts the matrix in diagonal form 
+\end_layout
+
+\begin_layout Itemize
+Diagonal element are eigenvalues of the matrix 
+\end_layout
+
+\begin_layout Itemize
+In quantum mechanics one is interested in diagonalizing the Hamiltonian
+ matrices 
+\end_layout
+
+\begin_layout Itemize
+If eigenvalue is degenerate, then measurement is not sufficient to specify
+ completely in which state the system is 
+\end_layout
+
+\begin_layout Itemize
+The state of the system has been determined to within a degenerate manifold
+ of the Hilbert space 
+\end_layout
+
+\begin_layout Itemize
+Other measurements need to be determined 
+\series bold
+simultaneously
+\series default
+, on observables that are not codegenerate but yet commute with the original
+ operator
+\end_layout
+
+\begin_layout Itemize
+Trace is invariant under similarity transformation 
+\end_layout
+
+\begin_layout Itemize
+Determinant is invariant under similarity transformation
+\end_layout
+
+\begin_layout Itemize
+Unitary transformation can be thought of as a change of basis, and a change
+ of basis can be thought of as a unitary transformation 
+\end_layout
+
+\begin_layout Subsubsection*
+Matrices as Representations of Operators: Dirac Notation 
+\end_layout
+
+\begin_layout Itemize
+Definition of Dirac notation 
+\begin_inset Formula 
+\[
+A_{ij}=\int\phi_{j}^{*}(x)(A\phi_{i}(x))=\bigl\langle\phi_{j}\bigr|A\bigl|\phi_{i}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Setting 
+\begin_inset Formula $A=I$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A_{ij}=\int\phi_{j}^{*}(x)\phi_{i}(x)=\bigl\langle\phi_{j}\bigr|\phi_{i}\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inner product 
+\begin_inset Formula 
+\[
+(v,Au)=(A^{\dagger}v,u)=(u,A^{\dagger}v)*
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula 
+\[
+\bigl\langle\phi\bigr|A\bigl|\psi\bigr\rangle=\bigl\langle\phi\bigr|A\psi\bigr\rangle=\bigl\langle A^{\dagger}\phi\bigr|\psi\bigr\rangle=\bigl\langle A^{\dagger}\phi\bigr|\psi\bigr\rangle=\bigl\langle\psi\bigr|A^{\dagger}\phi\bigr\rangle^{*}=\bigl\langle\psi\bigr|A^{\dagger}\bigl|\phi\bigr\rangle^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Examples of the use of Dirac notation
+\end_layout
+
+\begin_layout Enumerate
+TDSE 
+\begin_inset Formula $i\hbar\frac{\partial\psi}{\partial t}=H\psi$
+\end_inset
+
+ in matrix for 
+\begin_inset Formula 
+\begin{align*}
+i\hbar\frac{da_{j}(t)}{dt} & =\sum_{i=0}^{\infty}H_{ji}a_{i}(t)\\
+i\hbar\bigl\langle\phi_{j}\bigr|\psi\bigr\rangle & =\bigl\langle\phi_{j}\bigr|H\bigl|\psi\bigr\rangle=\sum_{i}\bigl\langle\phi_{j}\bigr|H\bigl|\phi_{i}\bigr\rangle\bigl\langle\phi_{i}\bigr|\psi\bigr\rangle
+\end{align*}
+
+\end_inset
+
+Comparing this two forms in Dirac Notation leads to the identification 
+\begin_inset Formula 
+\[
+\bigl|\phi_{i}\bigr\rangle\bigl\langle\phi_{i}\bigr|=\boldsymbol{1}
+\]
+
+\end_inset
+
+This is called 
+\begin_inset Quotes eld
+\end_inset
+
+closure
+\begin_inset Quotes erd
+\end_inset
+
+ relation and is a statement of the completeness of the basis set 
+\begin_inset Formula $\{\phi_{i}\}$
+\end_inset
+
+ and the 
+\series bold
+invariance
+\series default
+ of the scalar product with a change of basis 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula $\bigl\langle\phi_{j}\bigr|H\bigl|\psi\bigr\rangle$
+\end_inset
+
+ where 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ are in some arbitrary basis.
+ Change to basis 
+\begin_inset Formula $\{\phi_{i}\}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bigl\langle\phi_{j}\bigr|H\bigl|\phi_{i}\bigr\rangle\bigl\langle\phi_{i}\bigr|\psi\bigr\rangle
+\]
+
+\end_inset
+
+Using 
+\begin_inset Formula $\bigl|\phi_{i}\bigr\rangle\bigl\langle\phi_{i}\bigr|=\boldsymbol{1}$
+\end_inset
+
+ we get back to 
+\begin_inset Formula 
+\[
+\bigl\langle\phi_{j}\bigr|H\bigl|\psi\bigr\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ One great simplifying feature of the Dirac notation is the ability to insert
+ the above expression for the identity operator 
+\begin_inset Formula $\boldsymbol{1}$
+\end_inset
+
+ wherever desired, referring to any complete basis.
+ For 
+\series bold
+nonorthogonal
+\series default
+ bases the closure relation takes the form 
+\begin_inset Formula 
+\[
+\sum_{ij}\bigl|\phi_{i}\bigr\rangle\left(S^{-1}\right)_{ij}\bigl\langle\phi_{i}\bigr|=\boldsymbol{1}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{S}$
+\end_inset
+
+ is the overlap matrix, with elements 
+\begin_inset Formula $\boldsymbol{S}_{ij}=\bigl\langle\phi_{i}\bigr|\phi_{j}\bigr\rangle$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+As a second example, we reexamine the equation for diagonalizing a matrix
+ in Dirac notation 
+\begin_inset Formula 
+\[
+U^{-1}AU=A'
+\]
+
+\end_inset
+
+In Dirac notation
+\begin_inset Formula 
+\[
+\bigl\langle i\bigr|U^{-1}AU\bigl|j\bigr\rangle=\bigl\langle i\bigr|A'\bigl|j\bigr\rangle
+\]
+
+\end_inset
+
+where we used 
+\begin_inset Formula $\bigl|i\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl|j\bigr\rangle$
+\end_inset
+
+ as 
+\begin_inset Formula $\bigl|\phi_{i}\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl|\phi_{j}\bigr\rangle$
+\end_inset
+
+.
+ Taking 
+\begin_inset Formula $\bigl|i\bigr\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\bigl|j\bigr\rangle$
+\end_inset
+
+ as the old basis 
+\begin_inset Formula $U$
+\end_inset
+
+,
+\begin_inset Formula $U^{-1}$
+\end_inset
+
+ transform the operator into a new operator that is diagonal in the old
+ basis.
+ An alternative interpretation is obtained by writing 
+\begin_inset Formula $\bigl|j'\bigr\rangle=\bigl|Uj\bigr\rangle$
+\end_inset
+
+, 
+\begin_inset Formula $\bigl|i'\bigr\rangle=\bigl|Ui\bigr\rangle$
+\end_inset
+
+.
+ From this perspective unitary operators rotate the original basis vectors
+ to a basis in which 
+\begin_inset Formula $A$
+\end_inset
+
+ is diagonal.
+ Inserting the closure relationship 
+\begin_inset Formula 
+\begin{align*}
+\sum_{kl}\bigl\langle i\bigr|U^{-1}\bigl|l\bigr\rangle\bigl\langle l\bigr|A\bigl|k\bigr\rangle\bigl\langle k\bigr|U\bigl|j\bigr\rangle & =\sum_{kl}\bigl\langle i'\bigr|l\bigr\rangle\bigl\langle l\bigr|A\bigl|k\bigr\rangle\bigl\langle k\bigr|j'\bigr\rangle\\
+ & =\bigl\langle i'\bigr|A\bigr|j'\bigr\rangle
+\end{align*}
+
+\end_inset
+
+This leads to the identification 
+\begin_inset Formula 
+\[
+\bigl\langle k\bigr|U\bigl|j\bigr\rangle=\bigl\langle k\bigr|j'\bigr\rangle
+\]
+
+\end_inset
+
+Matrix of 
+\begin_inset Formula $U$
+\end_inset
+
+ in the original representation can be formed by taking inner product of
+ the original basis 
+\begin_inset Formula $\{k,l\}$
+\end_inset
+
+ with the basis that diagonalizes 
+\begin_inset Formula $A,$
+\end_inset
+
+ 
+\begin_inset Formula $\{i',j'\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Continuous Basis Sets 
+\end_layout
+
+\begin_layout Itemize
+One great milestones in the history of quantum mechanics was the development
+ by Dirac of a unified symbolic treatment of Schroedinger's wave mechanics
+ and Heisenberg's matrix mechanics 
+\end_layout
+
+\begin_layout Itemize
+Dirac's insight was that the quantum formalism of matrices as representations
+ of operators could be applied using the continuous bases 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+, just as well as using any discrete basis set 
+\end_layout
+
+\begin_layout Subsubsection*
+Momentum Representation 
+\end_layout
+
+\begin_layout Itemize
+Expansion in discrete basis 
+\begin_inset Formula 
+\[
+\psi(x)=\sum_{i=0}^{\infty}a_{i}\phi_{i}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Momentum basis
+\begin_inset Formula 
+\[
+\phi_{i}(x)\Rightarrow e^{ipx/\hbar}
+\]
+
+\end_inset
+
+which we could write as 
+\begin_inset Formula $\phi_{p}(x)$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $p$
+\end_inset
+
+ is continuous and not discrete we need a integral 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}dp\,a_{p}\phi_{p}(x)=\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}dp\,\tilde{\psi}(p)e^{ipx/\hbar}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Orthonormality can be expressed by Dirac-Delta 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}dp\,e^{-ipx/\hbar}e^{ip'x/\hbar}=\int_{-\infty}^{\infty}dp\,e^{i(p'-p)x/\hbar}=\delta(p-p')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expansion coefficient 
+\begin_inset Formula 
+\[
+a_{i}=\int_{-\infty}^{\infty}\phi_{i}^{*}(x)\psi(x)dx\Rightarrow\tilde{\psi}(p)=\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\psi(x)e^{-ipx/\hbar}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Completeness relation 
+\begin_inset Formula 
+\[
+\bigl\langle\psi\bigr|\psi\bigr\rangle=\int_{-\infty}^{\infty}dp\bigl|\tilde{\psi}(p)\bigr|^{2}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This relation can be written as 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\bigl|\psi(x)\bigr|^{2}dx=\int_{-\infty}^{\infty}\bigl|\psi(p)\bigr|^{2}dp
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Position Representation
+\end_layout
+
+\begin_layout Itemize
+Expansion 
+\begin_inset Formula 
+\[
+\psi(x)=\sum_{i=0}^{\infty}a_{i}\phi_{i}(x)\Rightarrow\psi(x)=\int_{-\infty}^{\infty}\underbrace{\psi(x')}_{a_{i}}\underbrace{\delta(x-x')}_{\phi_{i}(x)}dx
+\]
+
+\end_inset
+
+which shows us that 
+\begin_inset Formula $\phi_{x'}(x)=\delta(x-x')$
+\end_inset
+
+ which is really strange
+\end_layout
+
+\begin_layout Itemize
+Orthogonality 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\phi_{i}^{*}(x)\phi_{j}(x)dx=\delta_{ij}\Rightarrow\int_{-\infty}^{\infty}\delta(x-x')\delta(x-x'')=\delta(x'-x'')
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coefficients 
+\begin_inset Formula 
+\[
+a_{i}=\int_{-\infty}^{\infty}\phi_{i}^{*}(x)\psi(x)dx\Rightarrow\psi(x')=\int_{-\infty}^{\infty}\psi(x)\delta(x-x')dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Dirac Notation for Continuous Basis Sets 
+\end_layout
+
+\begin_layout Itemize
+Basis functions 
+\begin_inset Formula 
+\begin{align*}
+\phi_{i}(x) & \Rightarrow\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}}\Rightarrow\delta(x-x_{0})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Coefficients 
+\begin_inset Formula 
+\[
+a_{i}\Rightarrow\tilde{\psi}(p)\Rightarrow\psi(x_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Expression of the inner product 
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{\infty}b_{i}^{*}a_{i} & \Rightarrow\sum_{i=1}^{\infty}\bigl\langle\phi\bigr|\phi_{i}\bigr\rangle\bigl\langle\phi_{i}\bigr|\psi\bigr\rangle\\
+\int_{-\infty}^{\infty}\phi^{*}(x)\psi(x) & \Rightarrow\int_{-\infty}^{\infty}\bigl\langle\phi\bigr|x\bigr\rangle\bigl\langle x\bigr|\psi\bigr\rangle dx\\
+\int_{-\infty}^{\infty}\tilde{\phi}^{*}(p)\tilde{\psi}(p) & \Rightarrow\int_{-\infty}^{\infty}\bigl\langle\phi\bigr|p\bigr\rangle\bigl\langle p\bigr|\psi\bigr\rangle dp
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_body
