@@ -1,0 +1,2072 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notes Introduction to Quantum Mechanics.
+ A time dependent perspective.
+ 
+\end_layout
+
+\begin_layout Author
+David Tannor
+\end_layout
+
+\begin_layout Part*
+Formal Theory and Methods of Approximation
+\end_layout
+
+\begin_layout Section*
+Linear Algebra and Quantum Mechanics 
+\end_layout
+
+\begin_layout Itemize
+Analogy between set of all square normalizable wavefunctions have the same
+ mathematical properties as a vector space
+\end_layout
+
+\begin_layout Itemize
+Add two members with finite coefficients and the sum is also a member of
+ the space 
+\end_layout
+
+\begin_layout Itemize
+Important concepts carry over: Linear dependence, subspaces, dot (or inner
+ products), orthogonality, normalization, completeness 
+\end_layout
+
+\begin_layout Subsection*
+Linear Vector Spaces 
+\end_layout
+
+\begin_layout Itemize
+Square integral of a wave function is the probability density to find a
+ particle somewhere 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\bigl|\psi(x)\bigr|^{2}dx<+\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Properties of linear vector space.
+ To prove that 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ wavefunctions comprise an LVS show 
+\begin_inset Formula 
+\[
+\bigl|\alpha\psi_{1}+\beta\psi_{2}\bigr|<+\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dimensions of the square normalizable wavefunction space is infinite.
+ It is called Hilbert space 
+\end_layout
+
+\begin_layout Itemize
+A linear 
+\series bold
+manifold
+\series default
+ is a subset of an LVS that is itself an LVS
+\end_layout
+
+\begin_layout Itemize
+Examples
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+0 the empty set
+\end_layout
+
+\begin_layout Enumerate
+S the original set
+\end_layout
+
+\begin_layout Enumerate
+the sec of vectors 
+\begin_inset Formula $a\psi$
+\end_inset
+
+, where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is any complex number
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The linear manifold essentially divides the complete LVS into two parts,
+ the part in the manifold and outside
+\end_layout
+
+\begin_layout Itemize
+Any vector in the full LVS can written as 
+\begin_inset Formula $v=v_{M}+v_{\bot}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dot product is a measure of 
+\series bold
+linear dependence
+\series default
+ and 
+\series bold
+length
+\end_layout
+
+\begin_layout Itemize
+Inner product is defined by three properties 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(u,v)=(v,u)*$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(u,u)\geq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $(u,\alpha v_{1}+\beta v_{2})=\alpha(u,v_{1})+\beta(u,v_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.1
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+Show that 
+\begin_inset Formula $(\alpha u_{1}+b_{2}u_{2},v)=a*(u_{1},v)+b*(u_{2},v)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We want to proof 
+\begin_inset Formula 
+\begin{align*}
+(\alpha u_{1}+b_{2}u_{2},v) & =a*(u_{1},v)+b*(u_{2},v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use property 1 
+\begin_inset Formula 
+\[
+(\alpha u_{1}+\beta u_{2},v)=(v,\alpha u_{1}+\beta u_{2})^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Use linearity 
+\begin_inset Formula 
+\begin{align*}
+(v,\alpha u_{1}+\beta u_{2})^{*} & =[\alpha(v,u_{1})]*+[\beta(v,u_{2})]*\\
+ & =\alpha*(u_{1},v)+\beta*(u_{2},v)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Linearity can be used in the first argument, put we need to take the complex
+ conjugate of the coefficients 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The normalization is measure of length 
+\begin_inset Formula 
+\[
+\bigl\Vert\psi\bigr\Vert=\left\{ \int_{-\infty}^{\infty}\bigl|\psi(x)\bigr|^{2}dx\right\} ^{1/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Schwarz inequality: 
+\begin_inset Formula $\bigl|(u,v)\bigr|\leq\bigl\Vert u\bigr\Vert\bigl\Vert v\bigr\Vert$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The equality is only true if 
+\begin_inset Formula $u=v$
+\end_inset
+
+.
+ The overlap squared length of the overlap of two vectors will always be
+ smaller then the product of the length of the individual vectors.
+ Unless both vectors are equal 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Triangle inequality: 
+\begin_inset Formula $\bigl\Vert u+v\bigr\Vert\leq\bigl\Vert u\bigr\Vert+\bigl\Vert v\bigr\Vert$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Draw a rectangle: Again, the equality holds if 
+\begin_inset Formula $u=v$
+\end_inset
+
+, if the angle between the vectors is zero 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Operators: Mapping a Wavefunction to Another Wavefunction
+\end_layout
+
+\begin_layout Itemize
+Operators take a vector in the LVS to another vector 
+\begin_inset Formula $Av=v',\,\text{with }\bigl\Vert v\bigr\Vert'\leq\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Linear algebra is the study of linear operators:
+\begin_inset Formula 
+\[
+A(\alpha v_{1}+bv_{2})=\alpha Av_{1}+bAv_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Products of operators are defined as operating from the right to left
+\end_layout
+
+\begin_layout Itemize
+Power of operators 
+\begin_inset Formula $A^{n}=AA\ldots A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Function of operators are defined in terms of their Taylor Series, and hence
+ in terms of sums of powers of the fundamental operator 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.8
+\end_layout
+
+\begin_layout Itemize
+Proof that if 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are linear operators then 
+\begin_inset Formula $BA$
+\end_inset
+
+ is also a linear operator 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We need to proof that 
+\begin_inset Formula 
+\begin{align*}
+AB(\alpha v_{1}+\beta v_{2}) & =\alpha ABv_{1}+\beta ABv_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using the linearity of 
+\begin_inset Formula $B$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+AB(\alpha v_{1}+\beta v_{2})=A\left(\alpha Bv_{1}+\beta Bv_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using the linearity of 
+\begin_inset Formula $A$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A\left(\alpha Bv_{1}+\beta Bv_{2}\right)=\alpha ABv_{1}+\beta ABv_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.9
+\end_layout
+
+\begin_layout Itemize
+Prove that if 
+\begin_inset Formula $A$
+\end_inset
+
+ is a linear operator so is 
+\begin_inset Formula $e^{A}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We want to show that 
+\begin_inset Formula 
+\[
+e^{A}(\alpha v_{1}+\beta v_{2})=\alpha e^{A}v_{1}+\beta e^{A}v_{2}
+\]
+
+\end_inset
+
+Use
+\begin_inset Formula 
+\[
+e^{A}=I+A+\frac{1}{2!}A^{2}+\frac{1}{3!}A^{3}+\ldots
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e^{A}(\alpha v_{1}+\beta_{2}v_{2})=I(\alpha v_{1}+\beta v_{2})+A(\alpha v_{1}+\beta v_{2})+\frac{1}{2!}A^{2}(\alpha v_{1}+\beta v_{2})+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Using the results from the previous exercise 
+\begin_inset Formula 
+\begin{align*}
+I(\alpha v_{1}+\beta v_{2})+A(\alpha v_{1}+\beta v_{2})+\frac{1}{2!}A^{2}(\alpha v_{1}+\beta v_{2})+\ldots & =\alpha Iv_{1}+\beta Iv_{2}+\alpha Av_{1}+\beta Av_{2}+\frac{1}{2!}\alpha A^{2}v_{1}+\frac{1}{2!}\beta A^{2}v_{2}\\
+ & =\alpha e^{A}v_{1}+\beta e^{A}v_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In quantum mechanics an operator maps an 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ wave function onto another wavefunction 
+\end_layout
+
+\begin_layout Itemize
+Common examples:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+multiplication 
+\begin_inset Formula $A\psi(x)=x\psi(x)$
+\end_inset
+
+ where 
+\begin_inset Formula $x$
+\end_inset
+
+ is a number
+\end_layout
+
+\begin_layout Enumerate
+differentiation 
+\begin_inset Formula $A\psi(x)=\frac{d}{dx}\psi(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+translation 
+\begin_inset Formula $A\psi(x)=e^{a\frac{d}{dx}}\psi(x)=\psi(x+a)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+scaling or dilation: 
+\begin_inset Formula $A\psi(x)=e^{a\frac{d}{dx}}\psi(x)=\psi(e^{a}x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+evolution: 
+\begin_inset Formula $A\psi(x)=e^{-iHt/\hbar}\psi(x)=\psi(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+projection
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A\psi(x)=h(x)\begin{cases}
+h(x)=0 & x<0\\
+h(x)=1 & x\geq0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A\psi(x)=\frac{1}{\sqrt{2}}[\psi(x)+\psi(-x)]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Exercise 8.10-8.12 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Shift operator 
+\begin_inset Formula 
+\[
+e^{a\frac{d}{d}x}\psi(x)=\left(1+a\frac{d}{dx}+\frac{1}{2!}a^{2}\frac{d^{2}}{dx^{2}}+\frac{1}{3!}a^{3}\frac{d}{dx^{3}}\right)\psi(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The r.h.s is equivalent to the Taylor series expansion of 
+\begin_inset Formula $\psi(x+a)$
+\end_inset
+
+ around 
+\begin_inset Formula $x=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The scaling or dilation operator squeezes the wavefunction.
+ Define 
+\begin_inset Formula 
+\[
+f(x,a)=e^{ax\frac{d}{dx}}\psi(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Differentiation both sides of this equation with respect to 
+\begin_inset Formula $a$
+\end_inset
+
+ we obtain 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\alpha}=x\frac{\partial f}{\partial x},\quad f(0,x)=\psi(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The solution is 
+\begin_inset Formula 
+\[
+f=\psi(e^{a}x)
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Proof 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Formula $f=\psi(e^{a}x)$
+\end_inset
+
+ needs to fulfill 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\alpha}=x\frac{\partial f}{\partial x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+L.h.s 
+\begin_inset Formula 
+\[
+\frac{\partial\psi(e^{a}x)}{\partial a}=\frac{\partial\psi(z)}{\partial z}\frac{\partial z}{\partial\alpha}=\frac{\partial\psi(z)}{\partial z}e^{a}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+R.h.s 
+\begin_inset Formula 
+\[
+x\frac{\partial f}{\partial x}=x\frac{\partial\psi(e^{a}x)}{\partial x}=x\frac{\partial\psi(z)}{\partial z}\frac{\partial z}{\partial x}=xe^{a}\frac{\partial\psi(z)}{\partial z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A variant of the scaling operator that preserves the norm is 
+\begin_inset Formula 
+\[
+A\psi(x)=e^{a(x\frac{d}{dx}+\frac{d}{dx}x)}\psi(x)=e^{a}\psi(e^{2a}x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The time evolution operator is so named because it generates the evolution
+ of 
+\begin_inset Formula $\psi(x,t=0)$
+\end_inset
+
+ into 
+\begin_inset Formula $\psi(x,t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To prove this consider the Time-Dependent Schroedinger Equation: 
+\begin_inset Formula 
+\[
+i\hbar\frac{\partial\psi}{\partial t}=H\psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Separating variables and integrating both sides 
+\begin_inset Formula 
+\[
+\int_{\psi(0)}^{\psi(t)}\frac{d\psi}{\psi}=\int_{0}^{t}\frac{1}{i\hbar}Hd'
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Why can we bring 
+\begin_inset Formula $\psi$
+\end_inset
+
+ on the other side when 
+\begin_inset Formula $H$
+\end_inset
+
+ acts on 
+\begin_inset Formula $\psi$
+\end_inset
+
+? Alternatively, we could just show that 
+\begin_inset Formula 
+\[
+\psi(x,t)=e^{-iHt/\hbar}\psi(x)
+\]
+
+\end_inset
+
+ is a formal solution of the Schroedinger equation.
+ Taking the derivative 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\psi(x,t)}{\partial t} & =i\hbar\frac{-iH}{\hbar}e^{-iHt/\hbar}\psi(x)\\
+ & =H\psi(x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A projection operator has the property 
+\begin_inset Formula $P^{2}=P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.14
+\end_layout
+
+\begin_layout Standard
+Show that the projection cited above fulfill 
+\begin_inset Formula $A^{2}\psi=A\psi$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+First operator 
+\begin_inset Formula 
+\[
+A\psi(x)=h(x)\begin{cases}
+h(x)=0 & x<0\\
+h(x)=1 & x\geq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A^{2}\psi(x)=Ah(x)=h(x)=A\psi(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Second operator 
+\begin_inset Formula 
+\begin{align*}
+A^{2}\psi(x) & =\frac{1}{\sqrt{2}}[A\psi(x)+A\psi(-x)]\\
+ & =\frac{1}{2}[\psi(x)+\psi(-x)+\psi(-x)+\psi(x)]\\
+ & =\psi(x)+\psi(-x)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Much of linear algebra deals with solutions of equation 
+\begin_inset Formula $Av=\lambda v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is known as an eigenvalue equation
+\end_layout
+
+\begin_layout Itemize
+The vectors 
+\begin_inset Formula $v$
+\end_inset
+
+ are known as eigenvectors and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is known as an eigenvalue
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.15
+\end_layout
+
+\begin_layout Standard
+Find eigenvectors of the above operators
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Enumerate
+Multiplication operator 
+\begin_inset Formula 
+\[
+A\psi(x)=x\psi(x)
+\]
+
+\end_inset
+
+Every wavefunction is an eigenvector of 
+\begin_inset Formula $A$
+\end_inset
+
+ with corresponding eigenvalues 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+differentiation 
+\begin_inset Formula 
+\[
+A\psi(x)=\frac{d}{dx}\psi(x)
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\psi(x)=e^{\lambda x}$
+\end_inset
+
+ is an eigenfunction with eigenwert 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+translation 
+\begin_inset Formula $A\psi(x)=\psi(x+a)$
+\end_inset
+
+ with 
+\begin_inset Formula $A=e^{a\frac{d}{dx}}$
+\end_inset
+
+.
+ A function wich is periodic in 
+\begin_inset Formula $a$
+\end_inset
+
+ is a eigenfunction of 
+\begin_inset Formula $A$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An operator 
+\begin_inset Formula $A$
+\end_inset
+
+ has a spectrum of eigenvalues, which may be finite or infinite, discrete
+ or continuous.
+\end_layout
+
+\begin_layout Itemize
+Specification of a degenerate eigenvalue is not sufficient to determine
+ the eigenfucntion
+\end_layout
+
+\begin_layout Itemize
+The portion of the LVS associated with a particular degenerate eigenvalue
+ is a linear manifold, sometimes called degenerate manifold
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.16
+\end_layout
+
+\begin_layout Standard
+Show that any linear combination of eigenvectors in the degenerate manifold
+ is also an eigenvector 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The manifold is spans a linear manifold 
+\begin_inset Formula 
+\[
+B=\{v_{1},v_{2},\ldots,v_{N}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Choose an arbitrary vector in manifold
+\begin_inset Formula 
+\[
+v=\alpha_{1}v_{1}+\alpha_{2}v_{2}+\ldots+\alpha_{N}v_{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Acting with operator 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $v$
+\end_inset
+
+ yields
+\begin_inset Formula 
+\begin{align*}
+Av & =\lambda(\alpha_{1}v_{1}+\alpha_{2}v_{2}+\ldots+\alpha_{N}v_{N})\\
+ & =\lambda v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Exercise 8.17
+\end_layout
+
+\begin_layout Standard
+Show if 
+\begin_inset Formula $v$
+\end_inset
+
+ is an eigenfunction of 
+\begin_inset Formula $A,$
+\end_inset
+
+ 
+\begin_inset Formula $v$
+\end_inset
+
+ is also an eigenfunction 
+\begin_inset Formula $f(A)$
+\end_inset
+
+, where 
+\begin_inset Formula $f(A)$
+\end_inset
+
+ is any linear function of 
+\begin_inset Formula $A$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start from 
+\begin_inset Formula 
+\[
+Av=\lambda v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Know show that 
+\begin_inset Formula 
+\[
+f(A)v=f(\lambda)v
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+if 
+\begin_inset Formula $A$
+\end_inset
+
+ is linear.
+ Use Taylor representation of 
+\begin_inset Formula $f(A)=I+a_{1}A+\frac{1}{2!}a_{2}A^{2}+\ldots$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\begin{align*}
+\left(I+a_{1}A+\frac{1}{2!}a_{2}A^{2}+\ldots\right)v & =\left(1+a_{1}\lambda+\frac{1}{2!}a_{2}\lambda^{2}+\ldots\right)v\\
+ & =f(\lambda)v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Adjoint of an operator
+\end_layout
+
+\begin_layout Itemize
+Given an operator 
+\begin_inset Formula $A$
+\end_inset
+
+, its adjoint, 
+\begin_inset Formula $A^{\dagger}$
+\end_inset
+
+, is defined as 
+\begin_inset Formula 
+\[
+(u,Av)=(A^{\dagger}u,v)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In terms of wavefunctions this relation is 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}\phi^{*}(x)(A\psi(x))dx=\int_{-\infty}^{\infty}(A^{\dagger}\phi^{*}(x))\psi(x)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.18
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Exercise
+\series default
+ 
+\series bold
+8.19
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula $C=AB$
+\end_inset
+
+ and want to know 
+\begin_inset Formula $C^{\dagger}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\int\phi^{*}(x)(C\psi(x))dx & =\int\phi^{*}(x)(AB\psi(x))dx\\
+ & =\int\phi^{*}(x)(A(B(\psi(x)))dx\\
+ & =\int A^{\dagger}\phi^{*}(x)(B\psi(x))dx\\
+ & =\int(B^{\dagger}A^{\dagger}\phi^{*}(x))\psi(x)
+\end{align*}
+
+\end_inset
+
+Hence, we find 
+\begin_inset Formula 
+\[
+C^{\dagger}=B^{\dagger}A^{\dagger}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Hermitian Operator
+\end_layout
+
+\begin_layout Itemize
+Hermitian operator 
+\begin_inset Formula $A^{\dagger}=A$
+\end_inset
+
+ that leads to the property that inner products of the form 
+\begin_inset Formula $(u,Au)$
+\end_inset
+
+ are real
+\end_layout
+
+\begin_layout Itemize
+Main properties
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Eigenvalues of a Hermitian operator are reak
+\end_layout
+
+\begin_layout Enumerate
+Eigenfunction are orthogonal
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Exercise 8.22 
+\series default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is Hermitian, then 
+\begin_inset Formula $AB$
+\end_inset
+
+ is Hermitian if 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ commute because 
+\begin_inset Formula 
+\[
+(AB)^{\dagger}=B^{\dagger}A^{\dagger}=BA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Inverse of an Operator
+\end_layout
+
+\begin_layout Itemize
+The inverse of an operator 
+\begin_inset Formula $A$
+\end_inset
+
+,
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+, is defined 
+\begin_inset Formula 
+\[
+Au=v\Rightarrow u=A^{-1}v
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ in the space
+\end_layout
+
+\begin_layout Itemize
+Not 
+\series bold
+all
+\series default
+ operators have inverses
+\end_layout
+
+\begin_layout Itemize
+Consider a situation in which an operator 
+\begin_inset Formula $A$
+\end_inset
+
+ brings two different initial vectors to the same final vector 
+\begin_inset Formula 
+\begin{align*}
+Au_{1} & =v\\
+Au_{2} & =v
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In this case, we have no way to decide weather 
+\begin_inset Formula $A^{-1}v=u_{1}$
+\end_inset
+
+ or 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An instructive way of expressing the condition for the nonexistence of the
+ inverse is obtained by 
+\begin_inset Formula 
+\[
+A(u_{1}-u_{2})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Exercise 8.24
+\end_layout
+
+\begin_layout Enumerate
+Consider an operator that maps every eigenstate of the harmonic oscillator
+ onto the state below 
+\begin_inset Formula 
+\[
+A\psi_{n}=\psi_{n-1}
+\]
+
+\end_inset
+
+with the rule 
+\begin_inset Formula $A\psi_{0}=0$
+\end_inset
+
+.
+ Inverse 
+\begin_inset Formula 
+\[
+A^{-1}\psi_{n}=\psi_{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Consider an operator that maps every eigenstate of the harmonic oscillator
+ onto the state above 
+\begin_inset Formula 
+\[
+A\psi_{n}=\psi_{n+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Unitary Operators
+\end_layout
+
+\begin_layout Itemize
+Another important class of operator is that of the unitary operator.
+ Unitary operators are defined by 
+\begin_inset Formula 
+\[
+A^{-1}=A^{\dagger}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Important porperties
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Unitary operators are norm preserving
+\end_layout
+
+\begin_layout Enumerate
+Eigenvalues of unitary operator have magnitude 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eigenvectors of unitary operators with distinct eigenvalues are orthogonal
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Exercise 8.26
+\series default
+ If 
+\begin_inset Formula $A$
+\end_inset
+
+ is unitary and 
+\begin_inset Formula $B$
+\end_inset
+
+ is unitary, what are the conditions for 
+\begin_inset Formula $AB$
+\end_inset
+
+ to be unitary
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is unitary and 
+\begin_inset Formula $B$
+\end_inset
+
+ is unitary, then 
+\begin_inset Formula $(AB)^{\dagger}=B^{\dagger}A^{\dagger}=B^{-1}A^{-1}$
+\end_inset
+
+ is the inverse of 
+\begin_inset Formula 
+\[
+B^{-1}A^{-1}AB=I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Projection Operators
+\end_layout
+
+\begin_layout Itemize
+Projection operators project a vector 
+\series bold
+onto a manifold
+\series default
+ of the linear vector space
+\end_layout
+
+\begin_layout Itemize
+An example of this in three-dimensional space is the projection of an arbitrary
+ vector on the x-axis 
+\begin_inset Formula 
+\[
+P(v_{1},v_{2},v_{3})=(v_{1},0,0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can express the action of a projection operator in terms of linear manifolds.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ discards that portion of the vector that is not inside the manifold 
+\begin_inset Formula 
+\begin{align*}
+\phi & =\phi_{M}+\phi_{\bot}\\
+P\phi_{M} & =\phi_{M}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Key properties of a projection operator
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $P^{2}=P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P$
+\end_inset
+
+ is Hermitian 
+\begin_inset Formula $P^{\dagger}=P$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Eigenvalues of 
+\begin_inset Formula $P$
+\end_inset
+
+ are either 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Exercise 8.30
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ is a projection operator and 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ is a projection operator, what is the condition that 
+\begin_inset Formula $P_{1}P_{2}$
+\end_inset
+
+ is a projection operator 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Solution 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ commute, then
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+(P_{1}P_{2})^{2} & =P_{1}P_{2}P_{1}P_{2}\\
+ & =P_{1}^{2}P_{2}^{2}\\
+ & =P_{1}P_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From this follows that 
+\begin_inset Formula $P_{1}P_{2}$
+\end_inset
+
+ is a projection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Commutators of Operators
+\end_layout
+
+\begin_layout Itemize
+In general operators do not commute 
+\begin_inset Formula 
+\[
+AB\neq BA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The commutator of two operators 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+[A,B]=AB-BA
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The commutator itself is an operator
+\end_layout
+
+\begin_layout Itemize
+A useful relation involving commutators is the Baker-Hausdorff relation
+ 
+\begin_inset Formula 
+\[
+e^{A+B}=e^{A}e^{B}e^{-\frac{1}{2}[A,B]}
+\]
+
+\end_inset
+
+valid if 
+\begin_inset Formula $[A,B]$
+\end_inset
+
+ commutes with 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If two operators do not commute their corresponding observarbles cannot
+ be measured simultaneously
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $[A,B]$
+\end_inset
+
+ one can find a set of common eigenfunctions
+\end_layout
+
+\begin_layout Itemize
+This leads to idea of a complete set of commuting observarbles, which given
+ an unambiguous labeling for a quantum state
+\end_layout
+
+\begin_layout Itemize
+Of particular importance are operators which commute with the Hamiltonian
+ operator 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finding an operator that commutes with 
+\begin_inset Formula $H$
+\end_inset
+
+ may simplify the problem of finding eigenvalues and eigenfunctions of 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $[A,H]=0$
+\end_inset
+
+, and if one can find easily eigenvalues and eigenfunctions of 
+\begin_inset Formula $A$
+\end_inset
+
+, one can use these eigenfunctions as a basis to solve for eigenvalues and
+ eigenfunctions of 
+\begin_inset Formula $H$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This partitions the problem of finding eigenvalues and eigenfunctions of
+ 
+\begin_inset Formula $H$
+\end_inset
+
+ into separate, smaller problems 
+\series bold
+associated 
+\series default
+with each different eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A well known example is the hydrogen atom, where 
+\begin_inset Formula $H$
+\end_inset
+
+,
+\begin_inset Formula $L^{2}$
+\end_inset
+
+,
+\begin_inset Formula $L_{z}$
+\end_inset
+
+ and 
+\begin_inset Formula $s$
+\end_inset
+
+ commute, allowing one to find common eigenfunctions of all four of these
+ operators
+\end_layout
+
+\begin_layout Itemize
+The eigenfunction is then labeled by the indices 
+\begin_inset Formula $\{n,l,m,s\}$
+\end_inset
+
+ which gives a unique specification
+\end_layout
+
+\begin_layout Itemize
+Commutators are closely related to invariance principles
+\end_layout
+
+\begin_layout Itemize
+If a operator commutes with 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ it is translation invariant
+\end_layout
+
+\begin_layout Itemize
+If it commutes with 
+\begin_inset Formula $H$
+\end_inset
+
+, it is time invariant 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We have 
+\begin_inset Formula $HA\psi=AH\psi$
+\end_inset
+
+.
+ Hence acting with 
+\begin_inset Formula $\psi$
+\end_inset
+
+ on 
+\begin_inset Formula $A$
+\end_inset
+
+ and evolving in time is the has first evolving in time and than acting
+ with 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $\psi$
+\end_inset
+
+.
+ Hence, the measure associated with 
+\begin_inset Formula $A$
+\end_inset
+
+ must be time invariant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If a operator does not commute with 
+\begin_inset Formula $H$
+\end_inset
+
+ it cannot be time invariant
+\end_layout
+
+\begin_layout Subsection*
+Discrete Basis Sets: The Bridge between Operators-Wavefunctions: Matrices-Vector
+s 
+\end_layout
+
+\end_body
+\end_document
